@@ -22,4 +22,4 @@ What's open now: `b_H(t)` handles hard-threshold selection but not soft optimiza
 
 Red flags fired: one `[confident]` negative claim triggered adversarial review and was logged as clear but narrow.
 
-Commit: pending at time of log entry.
+Commit: `5e62ebe` (`Refine dimensional dependence coupling`).
