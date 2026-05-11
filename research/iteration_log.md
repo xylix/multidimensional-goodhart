@@ -34,4 +34,4 @@ What's open now: weighted response still assumes a fixed baseline distribution. 
 
 Red flags fired: the scheduled iteration-3 adversarial pass downgraded the scope of threshold response and motivated the weighted-response generalization.
 
-Commit: pending.
+Commit: `f6186d8` (`Add weighted selection response iteration`).
