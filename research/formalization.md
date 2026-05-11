@@ -30,3 +30,16 @@ Proposed resolution [tentative]: keep `phi: R^m -> R^k` as the regulator's inten
 
 Toy example: citation count is intended to track research quality. Some quality dimensions, like long-run conceptual fertility, may be in `ker phi`; bot citations or citation cartels live mostly in residual proxy variation.
 
+## Selection response notation
+
+For a scalar proxy score `P` and hidden goal vector `H`, define the threshold response
+
+`b_H(t) = E[H | P >= t] - E[H]`,
+
+whenever the conditional expectation exists.
+
+Claim [tentative]: `b_H(t)` is a better primitive than the covariance vector `Cov(H, P)` for non-Gaussian Goodhart questions, because it describes the actual displacement caused by selection at pressure level `t`. Toy example: a hiring score may have zero linear correlation with "weird but valuable research taste" while still selecting against it among only the highest-score applicants.
+
+Counterexample attempt: `b_H(t)` depends on the selected threshold and ignores what happens under smoother optimization policies, such as Boltzmann weighting by `exp(beta P)`. So it is not the final primitive for all selection mechanisms; it is a threshold-selection primitive.
+
+In the Gaussian scalar-selection toy model, `b_H(t) = sigma_1 lambda(t / sigma_1) r`, so the earlier covariance-ratio vector `r` is a sufficient statistic for all threshold responses in that restricted model.

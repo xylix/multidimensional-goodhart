@@ -10,3 +10,12 @@ Adversarial pass: the statement is valid only inside the Gaussian toy model. Rev
 
 Residual concern: this result is elementary and uses strong distributional assumptions, so it should not be rhetorically inflated into a general Goodhart theorem.
 
+## Iteration 2: confident zero-covariance counterexample
+
+Claim: zero covariance between a hidden coordinate and a scalar proxy does not imply zero hidden drift under threshold selection.
+
+Trigger: tagged `[confident]`, so adversarial review was required.
+
+Adversarial pass: clear for the stated claim. Checked a concrete construction `P = Z`, `H = Z^2 - 1`, with `Z ~ N(0, 1)`: covariance is zero by odd moments, while the upper-tail conditional mean is `t lambda(t)`. The result is narrow and negative; it does not establish the positive framework by itself.
+
+Residual concern: the example is simple and somewhat engineered, so it should be used to reject covariance as a universal primitive, not to claim that real systems generically have U-shaped hidden dependence.

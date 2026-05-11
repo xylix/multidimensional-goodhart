@@ -5,4 +5,5 @@
 3. How does adding proxy dimensions change `ker phi` and the residual `epsilon` simultaneously in a linear-Gaussian model?
 4. Can the "conservation of weirdness" claim be made precise as a tradeoff between residual norm and entropy under fixed regulator effort?
 5. In Pareto selection rather than scalarized selection, when does the selected distribution compress enough to break identifiability of unmeasured dimensions?
-
+6. What selection-response operator should replace `b_H(t)` for soft optimization, repeated selection, or adversarial adaptation?
+7. Which weak dependence assumptions, if any, make covariance ratios adequate approximations to threshold response curves?

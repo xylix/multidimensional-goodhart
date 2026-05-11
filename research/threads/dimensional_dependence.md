@@ -75,3 +75,67 @@ Counterexample attempt: if hidden dimensions are independent of `X_1`, the condi
 
 Claim [tentative]: the clean first version of dimensional dependence is not "more hidden dimensions automatically cause more Goodhart," but "under a per-dimension coupling model, threshold selection induces hidden drift whose norm scales with the coupling vector norm `||r||_2`; this becomes dimensional scaling only after a substantive assumption about how `||r||_2` grows with hidden dimension." Toy example: adding ten independent unmeasured quality dimensions each weakly correlated with speed creates more hidden displacement than splitting one quality dimension into ten labels.
 
+## Iteration 2: covariance is not enough outside Gaussian linearity
+
+### 1. Constraints on definitions
+
+The next definition must not silently equate "uncorrelated" with "selection-invariant." That equivalence is valid in the multivariate Gaussian calculation above, but the draft's target domain includes organizations, humans, and adaptive systems where nonlinear dependence is normal.
+
+The notation should preserve the linear-Gaussian result as a tractable special case while leaving room for nonlinear tail effects.
+
+### 2. Motivation
+
+The red flag from iteration 1 is that the clean zero-covariance claim is too easy to misread as general. Repairing it matters because the draft wants a multidimensional Goodhart framework, not just a Gaussian exercise.
+
+### 3. Current pondering
+
+The live question is whether the coupling object should be covariance, regression coefficient, mutual information, or something more directly tied to the selection operator.
+
+### 4. Plausible approaches
+
+- Construct a concrete zero-covariance but nonzero-tail-response example.
+- Define a threshold response vector `b_H(t) = E[H | P >= t] - E[H]`.
+- Ask later whether `b_H(t)` can be replaced by a policy response for non-threshold optimization.
+
+### 5. Approaches not yet considered
+
+- Use copulas to separate marginal distributions from dependence structure.
+- Use monotone likelihood-ratio or positive-association assumptions as weaker replacements for Gaussianity.
+
+### 6. Counterexample first
+
+A covariance-based theorem would say that if `Cov(H, P) = 0`, selecting on high `P` should not move `H`. The likely counterexample shape is nonlinear dependence: `H` is small near average `P` and large in both tails, so positive and negative linear covariance cancel while upper-tail selection still moves `H`.
+
+### 7. Outward pointers
+
+Relevant known tools include conditional expectation as an `L^2` projection, tail conditional expectation, copulas, and selection bias. This also resembles the ML distinction between uncorrelated residuals and residuals that are conditionally structured in high-score regions.
+
+### Counterexample
+
+Let `P = Z` where `Z ~ N(0, 1)`, and let the hidden one-dimensional goal coordinate be
+
+`H = Z^2 - 1`.
+
+Then `E[H] = 0` and
+
+`Cov(H, P) = E[(Z^2 - 1) Z] = E[Z^3] - E[Z] = 0`.
+
+But under threshold selection `A_t = {Z >= t}`,
+
+`E[H | A_t] = E[Z^2 - 1 | Z >= t] = t lambda(t)`,
+
+where `lambda(t) = varphi(t) / (1 - Phi(t))`. For `t > 0`, this is positive.
+
+Claim [confident]: zero covariance between a hidden coordinate and a scalar proxy does not imply zero hidden drift under threshold selection. Toy example: an academic evaluation score may be uncorrelated with intellectual conformity overall because both very low-score and very high-score candidates are unusual, while selecting only very high scores still enriches for a particular kind of unusualness.
+
+Counterexample attempt: this example defines `H` as a deterministic nonlinear function of `P`, so it may feel too engineered. But that is exactly the point against covariance: nonlinear dependence can be invisible to covariance while completely determining tail behavior. A less deterministic version `H = Z^2 - 1 + xi` with independent mean-zero noise `xi` preserves the same covariance and tail mean shift while weakening the functional-dependence objection.
+
+Claim [tentative]: for threshold-selection Goodhart, the natural local object is the response curve `b_H(t) = E[H | P >= t] - E[H]`, not just a covariance vector. Toy example: for a sales target, the relevant question is not whether burnout linearly correlates with measured sales across all employees, but how burnout changes among employees above the bonus threshold.
+
+Counterexample attempt: if selection is not a hard threshold, `b_H(t)` gives the wrong operator. For example, soft selection proportional to `exp(beta P)` is described by `E_beta[H] - E[H]`, not by one threshold. This suggests a family of selection-response operators rather than a single universal definition.
+
+### Repair to iteration 1
+
+Claim [tentative]: the Gaussian result should be read as a sufficiency theorem: in the multivariate Gaussian scalar-threshold model, covariance ratios fully determine hidden mean drift at every threshold. It should not be read as saying covariance is the right dependence measure in general. Toy example: when applicant traits are approximately jointly normal, test-score covariance with curiosity predicts curiosity shift after score thresholding; when curiosity is U-shaped in test score, covariance can miss the effect.
+
+Counterexample attempt: even in approximately Gaussian data, tail behavior is often less Gaussian than central behavior. Since Goodhart pressure selects tails, Gaussian approximations may fail exactly where the theory wants to operate. Future claims should either remain local-moderate-threshold claims or use tail-specific assumptions.
