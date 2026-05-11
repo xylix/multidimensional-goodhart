@@ -7,3 +7,5 @@
 5. In Pareto selection rather than scalarized selection, when does the selected distribution compress enough to break identifiability of unmeasured dimensions?
 6. What selection-response operator should replace `b_H(t)` for soft optimization, repeated selection, or adversarial adaptation?
 7. Which weak dependence assumptions, if any, make covariance ratios adequate approximations to threshold response curves?
+8. How should the framework represent policies that change the baseline distribution `mu`, rather than merely reweighting it?
+9. For repeated Boltzmann selection, when does integrating `Cov_beta(H, P)` along the path yield closed-form or bounded hidden drift?

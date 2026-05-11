@@ -19,3 +19,13 @@ Trigger: tagged `[confident]`, so adversarial review was required.
 Adversarial pass: clear for the stated claim. Checked a concrete construction `P = Z`, `H = Z^2 - 1`, with `Z ~ N(0, 1)`: covariance is zero by odd moments, while the upper-tail conditional mean is `t lambda(t)`. The result is narrow and negative; it does not establish the positive framework by itself.
 
 Residual concern: the example is simple and somewhat engineered, so it should be used to reject covariance as a universal primitive, not to claim that real systems generically have U-shaped hidden dependence.
+
+## Iteration 3: scheduled adversarial pass
+
+Claim reviewed: threshold response `b_H(t)` is a better primitive than covariance for non-Gaussian threshold-selection Goodhart.
+
+Trigger: every third iteration.
+
+Adversarial pass: the claim is useful but too broad as originally worded. It handles hard threshold selection, not soft optimization, repeated selection, or causal/adversarial changes to the state-generating process. The repair is to place `b_H(t)` inside a wider weighted-response notation.
+
+Residual concern: weighted response still models selection from a fixed baseline distribution. It does not yet capture causal Goodhart or strategic adaptation.

@@ -23,3 +23,15 @@ What's open now: `b_H(t)` handles hard-threshold selection but not soft optimiza
 Red flags fired: one `[confident]` negative claim triggered adversarial review and was logged as clear but narrow.
 
 Commit: `5e62ebe` (`Refine dimensional dependence coupling`).
+
+## Iteration 3
+
+Question tackled: what selection-response operator should replace threshold response for soft optimization.
+
+What changed: added weighted selection response notation to `formalization.md` and created `research/threads/selection_response.md`. The main derivation shows that under Boltzmann selection `W_beta = exp(beta P)`, `d E_beta[H] / d beta = Cov_beta(H, P)`, so covariance is a local velocity along a selection path rather than a finite-pressure summary.
+
+What's open now: weighted response still assumes a fixed baseline distribution. Causal and adversarial Goodhart need a model where the distribution `mu` changes with the regulator's policy.
+
+Red flags fired: the scheduled iteration-3 adversarial pass downgraded the scope of threshold response and motivated the weighted-response generalization.
+
+Commit: pending.

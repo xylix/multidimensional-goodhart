@@ -43,3 +43,25 @@ Claim [tentative]: `b_H(t)` is a better primitive than the covariance vector `Co
 Counterexample attempt: `b_H(t)` depends on the selected threshold and ignores what happens under smoother optimization policies, such as Boltzmann weighting by `exp(beta P)`. So it is not the final primitive for all selection mechanisms; it is a threshold-selection primitive.
 
 In the Gaussian scalar-selection toy model, `b_H(t) = sigma_1 lambda(t / sigma_1) r`, so the earlier covariance-ratio vector `r` is a sufficient statistic for all threshold responses in that restricted model.
+
+## Weighted selection response
+
+Let `mu` be the baseline distribution over states, and let a selection policy be represented by a nonnegative weight function `W_t(s)` with `0 < E_mu[W_t] < infinity`. Define the selected expectation
+
+`E_t[F] = E_mu[F W_t] / E_mu[W_t]`
+
+and the response of a hidden goal vector `H` as
+
+`B_H(t) = E_t[H] - E_mu[H]`.
+
+Claim [tentative]: weighted response is a more general primitive than threshold response, since hard thresholding is recovered by `W_t = 1{P >= t}` and soft optimization is recovered by choices such as `W_beta = exp(beta P)`. Toy example: a grant process might either fund every proposal above a cutoff or fund probabilistically with odds increasing in score; both are selection policies that reweight the applicant distribution.
+
+Counterexample attempt: not every control process is pure reweighting of a fixed baseline distribution. Interventions can change the state-generating mechanism itself, especially when agents adapt strategically. Weighted response is therefore a selection model, not yet a full causal-control model.
+
+For Boltzmann selection `W_beta = exp(beta P)`, whenever differentiation under the expectation is valid,
+
+`d/d beta E_beta[H] = Cov_beta(H, P)`.
+
+Claim [tentative]: covariance is best interpreted as the local velocity of hidden drift under infinitesimal soft optimization, not as a global finite-pressure summary. Toy example: at low bonus pressure, the initial rate at which burnout changes with sales incentives is the current covariance between burnout and sales; after employees adapt or the selected population shifts, the covariance must be recomputed under the new weighted distribution.
+
+Counterexample attempt: if `P` has heavy tails, `E[exp(beta P)]` may be infinite for positive `beta`; the Boltzmann path may not exist. This is not a small technicality, because Goodhart often concerns extreme tails.
