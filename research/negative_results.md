@@ -63,3 +63,11 @@ Tried claim: as proxy optimization pressure increases, hidden drift converges to
 Failure: selection channels do not optimize over feasible hidden drifts at all; they reweight a baseline, so hidden movement follows the baseline tail response. A baseline can produce diffuse hidden drift, e.g. thresholding `P = Z` with `H_i = Z + xi_i` shifts every hidden coordinate. In intervention channels, the optimizer selects according to cost/search geometry. With quadratic cost `c(a) = (1/2) a^T C^{-1} a` and proxy target `w . a >= d`, the KKT solution is `a^* = d C w/(w^T C w)`, which can be dense under symmetric costs.
 
 Postmortem: the surviving claim is conditional: minimum-complexity attractors require a mechanism that aligns response geometry with the chosen complexity functional, such as fixed activation costs, sparse affordances, low-rank action maps, parameter-function multiplicity, or an explicit simplicity-biased search prior. "Cheap", "simple", and "low-complexity" must remain separate until such a mechanism is specified.
+
+## Iteration 9: overbroad response-shape predictions fail
+
+Tried claim: the repaired Q18 table can say that quadratic costs predict dense drift, fixed activation or linear costs predict one-channel drift, low-rank action maps predict spectrally concentrated drift, and simplicity-biased search predicts low-description-length drift.
+
+Failure: each row needs extra clauses. Quadratic costs predict `a^*` proportional to `C w`; this is sparse if `C w` is sparse and can change under rank deficiency, caps, nonnegativity, or active constraints. Linear/fixed-charge one-channel drift fails under caps, ties, convex marginal costs, detection penalties, or diversification. Low-rank maps restrict the image of possible drift but do not make a basis-invariant spectral claim. Low-description-length search bias is not predictive unless the description language or search prior is fixed before the failure is observed.
+
+Postmortem: the geometry-to-shape table is still useful, but only as conditional claim license. Use it to generate tests with pre-specified coordinates, constraints, and search priors; do not present it as a general theorem about the shape of Goodhart drift.

@@ -91,3 +91,13 @@ What changed: created `research/reviews/recursive_goodhart_q18.md` and `research
 What's open now: a future generate/simulation iteration should pick one pre-specified complexity or shape measure and compare response geometries under that measure. A later edit iteration could tighten `draft.md`'s "complexity" language if that draft is still active.
 
 Red flags fired: yes, but as a repair to an existing red flag rather than a new theorem. Logged that "response-geometry attractor" is safe but too broad unless it preserves geometry-to-shape predictions.
+
+## Iteration 9
+
+Question tackled: scheduled adversarial review of the Iteration 8 response-shape predictions for repaired Q18.
+
+What changed: created `research/reviews/response_shape_predictions.md` and updated `claim_audits.md`, `red_flags.md`, and `negative_results.md`. The review preserved the geometry-to-shape table but narrowed each row: quadratic models predict cost-minimal drift along `C w`, dense only when `C w` is dense and constraints do not bind; fixed-charge/linear models predict one-channel drift only in the uncapped, no-tie, linear marginal case; low-rank action maps restrict drift to a low-dimensional image rather than giving a basis-invariant spectral claim; simplicity-biased search requires a pre-specified coding/search prior.
+
+What's open now: a future generate or simulation iteration should choose one row of the narrowed table and test it under explicit coordinates, constraints, and value basis. The most useful next candidates are capped fixed-charge models, active-face quadratic models, or a pre-specified search-prior toy.
+
+Red flags fired: yes. The sharper Iteration 8 table risked becoming a new overclaim. The repair keeps the informative predictions while attaching model clauses and representation caveats.

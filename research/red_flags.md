@@ -71,3 +71,13 @@ Trigger: review iteration following the Iteration 7 `needs-adversarial-review` f
 Review result: the repair is epistemically safer but can become too broad to inform the reader. "Response geometry" says the response process determines the drift, but by itself it does not say whether the drift should be sparse, dense, low-rank, high-entropy, low-description-length, or goal-improving.
 
 Repair: keep "response-geometry attractor" only as the top-level container. Preserve information by naming geometry-to-shape predictions: quadratic cost predicts dense cost-minimal drift along `C w`; fixed activation or linear costs predict sparse one-channel drift absent caps; low-rank action maps predict spectrally concentrated drift; simplicity-biased search priors predict low-description-length drift. Action: future draft prose should use these sharper conditional subclaims rather than the generic umbrella alone.
+
+## Iteration 9: response-shape predictions needed guardrails
+
+Claim reviewed: the Iteration 8 geometry-to-shape table for repaired Q18.
+
+Trigger: scheduled every-third-iteration adversarial pass. The sharper table preserved information, but each row could be overread as a representation-invariant Goodhart law.
+
+Review result: the table survives only as a menu of conditional model predictions. Quadratic cost gives the cost-minimal direction `C w`, which is dense only when `C w` is dense and no additional constraints bind. Fixed-charge or linear costs give one-channel drift only in the uncapped, no-tie, linear marginal model; caps, convex costs, detection penalties, and diversification can spread drift. Low-rank action maps restrict drift to a low-dimensional image, but spectral concentration depends on the hidden representation and value basis. Simplicity-biased search predicts low-description-length failures only when the coding/search prior is specified before the observed failure.
+
+Repair: keep the geometry-to-shape table, but attach model clauses to each entry. The reader-facing claim should remain separate from the math claim: response processes determine which hidden residuals are reached, but the predicted shape is licensed only under a named geometry, representation, and constraint set.
