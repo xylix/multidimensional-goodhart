@@ -71,3 +71,11 @@ Tried claim: the repaired Q18 table can say that quadratic costs predict dense d
 Failure: each row needs extra clauses. Quadratic costs predict `a^*` proportional to `C w`; this is sparse if `C w` is sparse and can change under rank deficiency, caps, nonnegativity, or active constraints. Linear/fixed-charge one-channel drift fails under caps, ties, convex marginal costs, detection penalties, or diversification. Low-rank maps restrict the image of possible drift but do not make a basis-invariant spectral claim. Low-description-length search bias is not predictive unless the description language or search prior is fixed before the failure is observed.
 
 Postmortem: the geometry-to-shape table is still useful, but only as conditional claim license. Use it to generate tests with pre-specified coordinates, constraints, and search priors; do not present it as a general theorem about the shape of Goodhart drift.
+
+## Iteration 10: capped fixed-charge response is not always sorted filling
+
+Tried claim: adding caps to the fixed activation / linear-cost model makes the optimizer fill channels in increasing effective marginal cost `q_j/w_j` until each cap binds.
+
+Failure: that sorted-staircase result is correct for capped linear costs with no activation costs, or after activation costs are already paid. It is not correct for the full fixed-charge model. Positive `F_j` can make a high-marginal, low-fixed-cost channel optimal for small deficits and a low-marginal, high-fixed-cost channel optimal for larger deficits. The optimizer may skip a cheaper small-deficit channel instead of filling it first.
+
+Postmortem: the useful claim is two-stage. Capped linear costs produce ordered spillover. Fixed charges add entry thresholds, so the exact object is a finite active-set comparison. The robust Goodhart shape is lumpy regime change, not universal marginal-cost sorting.

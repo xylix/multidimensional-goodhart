@@ -101,3 +101,13 @@ What changed: created `research/reviews/response_shape_predictions.md` and updat
 What's open now: a future generate or simulation iteration should choose one row of the narrowed table and test it under explicit coordinates, constraints, and value basis. The most useful next candidates are capped fixed-charge models, active-face quadratic models, or a pre-specified search-prior toy.
 
 Red flags fired: yes. The sharper Iteration 8 table risked becoming a new overclaim. The repair keeps the informative predictions while attaching model clauses and representation caveats.
+
+## Iteration 10
+
+Question tackled: capped fixed-charge response shapes as a concrete Q18 geometry-to-shape prediction.
+
+What changed: created `research/threads/capped_fixed_charge_response.md` and updated `claim_audits.md`, `negative_results.md`, and `open_questions.md`. The new thread separates the uncapped one-channel result from capped linear spillover and the full fixed-charge-plus-caps model. In the no-activation/already-activated capped linear case, channels fill by increasing effective marginal cost `q_j/w_j` until caps bind. With positive fixed costs, sorted filling is no longer universal; active sets can switch as `d` crosses fixed-cost and cap thresholds.
+
+What's open now: compare the capped fixed-charge support path against active-face quadratic response under the same hidden coordinate system; add convex marginal costs, detection penalties, or risk diversification to see when lumpy spillover becomes smoother spreading.
+
+Red flags fired: no new scheduled adversarial pass. A narrower negative result was logged: capped fixed-charge response should not be summarized as universal sorted marginal-cost filling.
