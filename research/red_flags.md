@@ -29,3 +29,9 @@ Trigger: every third iteration.
 Adversarial pass: the claim is useful but too broad as originally worded. It handles hard threshold selection, not soft optimization, repeated selection, or causal/adversarial changes to the state-generating process. The repair is to place `b_H(t)` inside a wider weighted-response notation.
 
 Residual concern: weighted response still models selection from a fixed baseline distribution. It does not yet capture causal Goodhart or strategic adaptation.
+
+## Iteration 4: elementary selection-channel drift bound (watch item, not yet `needs-adversarial-review`)
+
+Claim: under a selection channel, `||B_H(theta)||_2 <= delta · ||s||_2` with `delta = ||L_theta - 1||_{L^2(mu_0)}`, `s_i = sd_{mu_0}(H_i)`.
+
+Why watched: it is one line of Cauchy-Schwarz — flag pattern "suspiciously short/elementary" is borderline. Mitigation: the question it answers (is selection drift bounded by baseline quantities?) is not itself hard, so the brevity is appropriate, not suspicious. The load-bearing claim of iteration 4 is the *contrast* — that intervention channels admit no such bound and need an exogenous agent cost model — not the inequality. Action: do not inflate the inequality into a headline theorem; if a future iteration leans on it for something substantive, run the adversarial sub-protocol then. No `[confident]` tag was used in iteration 4, so the scheduled trigger did not fire (next scheduled adversarial pass: iteration 6).

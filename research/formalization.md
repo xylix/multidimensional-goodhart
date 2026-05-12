@@ -65,3 +65,15 @@ For Boltzmann selection `W_beta = exp(beta P)`, whenever differentiation under t
 Claim [tentative]: covariance is best interpreted as the local velocity of hidden drift under infinitesimal soft optimization, not as a global finite-pressure summary. Toy example: at low bonus pressure, the initial rate at which burnout changes with sales incentives is the current covariance between burnout and sales; after employees adapt or the selected population shifts, the covariance must be recomputed under the new weighted distribution.
 
 Counterexample attempt: if `P` has heavy tails, `E[exp(beta P)]` may be infinite for positive `beta`; the Boltzmann path may not exist. This is not a small technicality, because Goodhart often concerns extreme tails.
+
+## Response channels (selection vs. intervention)
+
+A **response channel** is a map `R: Theta -> P(S)`, `theta |-> mu_theta`, with `mu_{theta_0} = mu_0` (a null policy). Hidden drift along it: `B_H(theta) = E_{mu_theta}[H] - E_{mu_0}[H]`.
+
+`R` is a **selection channel** if `mu_theta << mu_0` for all `theta` (so `L_theta := d mu_theta/d mu_0` exists and `mu_theta` is `mu_0` reweighted by `L_theta`); otherwise it is an **intervention channel**.
+
+Claim [tentative]: all of the above (covariance, threshold response `b_H(t)`, weighted response `B_H(theta)`) is the selection-channel case, with `L_theta = W_theta / E_{mu_0}[W_theta]`. Intervention channels — Manheim & Garrabrant's causal Goodhart (the policy structurally breaks `P ≈ phi(G)`) and adversarial Goodhart (the policy is chosen worst-case for the regulator) — are not in this class: `mu_theta` can be mutually singular with `mu_0`. Toy example: choosing which of a fixed applicant pool to admit is a selection channel; announcing the admissions formula and letting applicants re-train is an intervention channel.
+
+Counterexample attempt: an agent model that only lets agents toggle their own inclusion (participate or not) yields `mu_theta` = restricted-and-renormalized `mu_0`, a selection channel. The selection/intervention distinction is substantive exactly when agents can move in state space (change `(P, H)` at fixed type), not merely choose inclusion.
+
+Drift bound, selection channel: by Cauchy-Schwarz in `L^2(mu_0)`, `||B_H(theta)||_2 <= delta · ||s||_2` where `delta = ||L_theta - 1||_{L^2(mu_0)}` (`delta^2 = chi^2(mu_theta || mu_0)`) and `s_i = sd_{mu_0}(H_i)`. Every term is a `mu_0`-functional; bounded reweighting + bounded hidden variance ⇒ bounded hidden drift. Claim [tentative]: no a-priori analogue holds for intervention channels (no `L_theta`); any bound must be imported from an agent cost/feasibility model. In the linear-Gaussian Stackelberg gaming toy (quadratic gaming cost `a^2/(2kappa)`, selection value `V`; see `threads/intervention_response.md`), the proxy's worst-case bias and the induced hidden harm both scale with `Delta = sqrt(2 kappa V)` — exogenous to `mu_0`.

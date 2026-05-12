@@ -35,3 +35,15 @@ What's open now: weighted response still assumes a fixed baseline distribution. 
 Red flags fired: the scheduled iteration-3 adversarial pass downgraded the scope of threshold response and motivated the weighted-response generalization.
 
 Commit: `f6186d8` (`Add weighted selection response iteration`).
+
+## Iteration 4
+
+Question tackled: open question 8 — how the framework should represent policies that change the baseline distribution `mu`, not merely reweight it (causal/adversarial Goodhart).
+
+What changed: introduced the **response channel** `R: Theta -> P(S)` as the top-level object, split into selection channels (`mu_theta << mu_0`; contains all of iterations 1-3) and intervention channels (`mu_theta` can be singular w.r.t. `mu_0`). Proved an elementary drift bound for selection channels (`||B_H|| <= delta · ||s||`, all baseline functionals) and argued no baseline analogue exists for intervention channels. Built a linear-Gaussian Stackelberg gaming toy model: agents pay quadratic cost `a^2/(2kappa)` to inflate the proxy, selection worth `V`; equilibrium gaming wedge `Delta = sqrt(2 kappa V)` sets both the proxy's worst-case bias and the induced hidden harm, and is exogenous to `mu_0`. Created `research/threads/intervention_response.md`; updated `formalization.md`, `open_questions.md` (added Q10-13), `red_flags.md`.
+
+What's open now: a general intervention-channel bound for convex (non-quadratic) gaming costs (Q10); endogenous-stakes / performative fixed point (Q11); exact agent-model condition for staying inside the selection class (Q12); multidimensional gaming reconnecting to the dimensional thread (Q13).
+
+Red flags fired: none triggered the adversarial sub-protocol (no `[confident]` claims; iteration 4 is not a multiple of 3). Logged one watch item in `red_flags.md`: the selection-channel bound is elementary — don't over-sell the inequality; the contrast is the content. Next scheduled adversarial pass: iteration 6.
+
+Commit: (recorded in a follow-up bookkeeping commit).

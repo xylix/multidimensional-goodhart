@@ -9,3 +9,7 @@
 7. Which weak dependence assumptions, if any, make covariance ratios adequate approximations to threshold response curves?
 8. How should the framework represent policies that change the baseline distribution `mu`, rather than merely reweighting it?
 9. For repeated Boltzmann selection, when does integrating `Cov_beta(H, P)` along the path yield closed-form or bounded hidden drift?
+10. For an intervention channel, what is the analogue of the selection-channel bound `||B_H|| <= delta · ||s||`? Conjecture: it factors through the agents' cost geometry (a "gaming budget"), not through any divergence from `mu_0`. Can this be stated for general convex gaming costs, not just quadratic?
+11. Stackelberg gaming toy with endogenous `V` (selection is valuable only if the metric is trusted; trust decays as gaming is observed): does the regulator-agent game have a performative-stable fixed point, and does it still carry hidden harm at the fixed point?
+12. Which agent models keep an intervention channel inside the selection class (only-toggle-inclusion is one)? Is "agents cannot change `(P, H)` at fixed type" the exact condition, or are there subtler intermediate cases (e.g. agents can change `P` but `H` is pinned)?
+13. Multidimensional gaming: with proxy vector `P in R^k` and per-component gaming costs, does balloon-squeezing reappear — gaming one component cheaply displaces effort/harm into the component the regulator next starts measuring? This is where the intervention thread should rejoin the dimensional thread.
