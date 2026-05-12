@@ -1,0 +1,834 @@
+// Multidimensional Goodhart — draft of Chapters 1–3
+// Compile with:  typst compile multidimensional-goodhart.typ
+//
+// Source material: research/formalization.md, research/threads/*.md,
+// research/iteration_log.md, draft.md (this repo). This is an *expository*
+// rewrite of the research-journal content; the journal's iteration history
+// is preserved in remarks/footnotes rather than in the main text.
+
+#set document(title: "Multidimensional Goodhart", author: "Kerkko Pelttari")
+#set page(numbering: "1", margin: (x: 1.4in, y: 1.2in))
+#set par(justify: true, leading: 0.62em)
+#set text(size: 11pt, font: "New Computer Modern")
+#set heading(numbering: "1.1")
+#show raw: set text(font: "DejaVu Sans Mono", size: 0.92em)
+
+#show heading.where(level: 1): it => {
+  pagebreak(weak: true)
+  v(1.2em)
+  text(size: 1.4em, weight: "bold")[#it]
+  v(0.6em)
+}
+
+// ---- small environments -----------------------------------------------------
+#let claim(body) = block(
+  width: 100%, inset: 8pt, radius: 3pt, fill: luma(245),
+  stroke: (left: 2pt + luma(160)),
+)[#body]
+#let remark(body) = block(width: 100%, inset: (left: 10pt))[
+  #text(style: "italic")[Remark.] #body
+]
+#let wip(body) = block(width: 100%, inset: 8pt, radius: 3pt,
+  fill: rgb(235, 245, 255), stroke: (left: 2pt + rgb(70, 130, 200)))[
+  #text(weight: "bold")[In progress.] #body
+]
+#let openq(body) = block(width: 100%, inset: 8pt, radius: 3pt,
+  fill: rgb(255, 250, 235), stroke: (left: 2pt + rgb(210, 170, 60)))[
+  #text(weight: "bold")[Future question.] #body
+]
+
+#align(center)[
+  #v(2cm)
+  #text(size: 2.1em, weight: "bold")[Multidimensional Goodhart]
+  #v(0.4cm)
+  #text(size: 1.2em)[How controlling for a proxy reshapes, rather than removes, its error]
+  #v(1cm)
+  #text(size: 1em)[Working draft — Chapters 1–3]
+  #v(0.3cm)
+  #text(size: 0.95em, style: "italic")[#datetime.today().display()]
+]
+#v(2cm)
+
+#outline(depth: 2, indent: auto)
+
+// =============================================================================
+= Goodhart's law, multidimensionally
+// =============================================================================
+
+== The shape of the problem
+
+Goodhart's law is usually quoted in one of two forms. The popular slogan,
+which is actually Strathern's compression @strathern1997:
+
+#quote(block: true)[When a measure becomes a target, it ceases to be a good measure.]
+
+and Goodhart's own statement @goodhart1975:
+
+#quote(block: true)[Any observed statistical regularity will tend to collapse once pressure
+is placed upon it for control purposes.]
+
+Both are stated about a *scalar* measure: a single number that was correlated
+with something we cared about, until we started optimising it. The thesis of
+this book is that the scalar framing hides most of the structure. Real goals —
+the goals of a person, a team, a company, a state, or a trained model — are
+*multidimensional*, and the proxies we use to steer toward them are
+multidimensional too, usually with a different (and smaller) set of dimensions.
+Once that is taken seriously, "the regularity collapses" is replaced by a more
+precise and more useful claim: as you add structure to a proxy in order to
+control for Goodhart in the dimensions you can see, the residual error does not
+vanish. It moves — into dimensions you cannot see, or into a form (strategic,
+adversarial, harder to summarise) that the tools that controlled the original
+error do not reach.
+
+This is not, by itself, a theorem; it is a research programme. The job of these
+first chapters is to build the vocabulary precisely enough that the programme's
+sub-claims become statable, and to prove the ones that are currently provable.
+The starting point is the variant taxonomy of Manheim and Garrabrant
+@manheim2018categorizing — regressional, extremal, causal, and adversarial
+Goodhart — and Wentworth's geometric reconstruction of the regressional case
+@wentworth2018constructing; the contribution here is to make the *vector*
+structure (and the selection-vs-intervention split that organises that
+taxonomy) explicit.
+
+== A worked intuition: the hierarchy of proxies
+
+Consider a company with leadership whose real objectives are something like
+_make a product customers want_, _make money_, _enjoy the work_, _gain
+prestige_, and a dozen other things, in some weighting that no written document
+captures. Call that vector of objectives $G$. Each quarter the leadership sets a
+proxy $P$: a handful of metrics — revenue, delivery dates, an NPS number.
+The teams that implement $P$ have their own objectives, and the proxy they
+*actually* optimise, $P_i$, folds their incentives into the official one. Its
+dimensionality is at least that of the most complex implementer's goals.
+
+Now suppose leadership notices that Team 1 is "optimising too hard on the
+metrics" — the dashboard looks better than the product. They intervene. The
+correction they apply is _not_ the gap between $G$ and Team 1's true output. It
+is the gap between the *felt proxy* by which leadership noticed the problem and
+Team 1's measured performance. The error term is being filtered through several
+layers of proxy, each with its own residual.
+
+Two things follow, and they recur throughout the book:
+
++ When a simpler agent (fewer goal dimensions) sets goals for a more complex
+  agent, the proxy it can write down is necessarily missing dimensions of the
+  complex agent's behaviour — and therefore *cannot even score* the complex
+  agent's drift in those dimensions. If a human writes a proxy intended to align
+  a system whose objectives have more dimensions than the human's, the proxy
+  contains error in dimensions the human's $G$ has no coordinate for. Call it
+  incomputable noise: not noise the human is failing to measure well, but noise
+  the human's objective cannot be _compared against at all_.
+
++ Whether the multi-layer correction process converges depends on whether the
+  layers' perception errors are roughly independent. If each layer's residual is
+  its own, a dimension of error that one layer sees can be corrected even though
+  no layer sees the whole picture. If the residuals are strongly correlated — a
+  centrally-planned organisation, a single dominant metric — the system is
+  fragile: every layer is blind in the same direction at once.
+
+#remark[There is an ML reading of all this. Optimising an empirical scalar
+proxy selects for large residual generalisation error; that is regressional
+Goodhart. The vector version says the residual is not one scalar gap but a
+*subspace* of gaps, some of which are instrumented and some of which are not.
+Existing hyperparameter-optimisation and distribution-shift theory already
+implements pieces of this picture; we will point at the correspondences as they
+arise rather than develop them.]
+
+== Setup: goals, proxies, and two kinds of gap
+
+Fix a state space $S$ — the set of configurations the world (or the
+organisation, or the model) can be in. A *true goal map* is a function
+$G : S -> RR^m$; its $m$ coordinates are substantively distinct things the
+principal cares about. A *proxy map* is $P : S -> RR^k$, the $k$ things actually
+measured and acted on. The principal also has in mind an *intended model*
+$phi : RR^m -> RR^k$ — "the proxy should be roughly $phi$ of the goal" — and the
+discrepancy is the *residual*
+
+$ epsilon(s) = P(s) - phi(G(s)). $
+
+This little decomposition already separates two distinct Goodhart channels:
+
+- A *dimension gap*: $ker phi != {0}$, so some directions in goal space are
+  invisible to the proxy. No amount of measuring $P$ accurately tells you
+  anything about movement along $ker phi$.
+- An *observation gap*: $epsilon != 0$, so even the directions the proxy is
+  meant to track are corrupted — by noise, by lag, or (Chapter 3) by deliberate
+  manipulation.
+
+#claim[*Toy example.* Let product quality be $G = ("reliability", "delight")$ and
+let the proxy be uptime. Then "delight" lies in $ker phi$ — the dimension gap.
+Noisy uptime instrumentation is part of $epsilon$ — the observation gap. A
+research-evaluation example: citation count is *intended* to track research
+quality; "long-run conceptual fertility" may be in $ker phi$, while bot
+citations and citation cartels are residual variation in proxy space.]
+
+#remark[A caution that will shape the notation. If the principal's "true"
+objective is genuinely scalar, then $ker phi != {0}$ may be an artefact of
+having written that scalar goal in redundant coordinates. So dimension-gap
+claims should always be made *after* choosing coordinates whose components are
+substantively distinct goal variations, not arbitrary embeddings. We will keep
+$phi : RR^m -> RR^k$ as the principal's intended correspondence and consistently
+distinguish three subspaces:
+- $ker phi$: goal variation invisible to the intended proxy;
+- $im phi$: proxy variation intended to track goal variation;
+- residual proxy directions: variation of $P$ not explained by $phi(G)$.]
+
+== A first specialisation, and a roadmap
+
+Throughout Chapter 2 we work the simplest non-trivial case: $G(s) = X in RR^m$
+with $X$ Gaussian, a single scalar proxy that is one coordinate (or one linear
+combination) of $X$ plus noise, and *selection* — keep the states scoring above
+a threshold. This isolates the two classical "easy" Goodhart effects,
+*regressional* and *extremal* Goodhart @manheim2018categorizing, from the
+harder ones. It is the right
+first probe precisely because it is the regime where, as Chapter 2 shows, hidden
+harm turns out to be *bounded by quantities visible in the pre-selection
+distribution*. Chapter 3 then asks what changes when the principal's policy does
+not merely re-select from a fixed population but changes the population itself —
+when agents *respond* — and shows that this is where the "deep Goodhart" story
+has teeth, and where the bound from Chapter 2 has no analogue.
+
+A reader who wants the punchline before the construction: there is a clean
+dichotomy between *selection channels* (the policy reweights a fixed baseline
+distribution; all classical regressional/extremal Goodhart lives here; hidden
+drift $<= delta dot norm(s)$ with every term a baseline functional) and
+*intervention channels* (the policy moves probability mass to where the baseline
+had none; causal and adversarial Goodhart live here; no baseline bound exists,
+and any bound must be imported from a model of what the responding agents can
+afford to do). Chapters 2 and 3 are those two halves.
+
+// =============================================================================
+= Selection channels: when the principal only re-selects
+// =============================================================================
+
+== The Gaussian threshold model
+
+Let $X = (X_1, dots, X_m) ~ cal(N)(0, Sigma)$. Take the proxy to be the first
+coordinate, $P = X_1$, with selection $A_t = {X_1 >= t}$; the *hidden* goal
+coordinates are $H = (X_2, dots, X_m)$, so in this stripped-down picture
+$dim(ker phi) = d = m - 1$. (We have set the observation noise to zero on
+purpose: whatever effect appears here comes from the dimension gap, not from
+measurement error.)
+
+For each hidden coordinate write $rho_j = "Cov"(X_j, X_1) / "Var"(X_1)$. The
+Gaussian conditional-mean formula gives $EE[X_j mid(|) X_1 = x] = rho_j x$, and
+hence
+
+$ EE[X_j mid(|) A_t] = rho_j dot EE[X_1 mid(|) X_1 >= t]. $
+
+If $X_1 ~ cal(N)(0, sigma_1^2)$ then $EE[X_1 mid(|) X_1 >= t] = sigma_1 lambda(alpha)$
+with $alpha = t / sigma_1$ and $lambda(alpha) = phi.alt(alpha) / (1 - Phi(alpha))$
+the inverse Mills ratio. So the hidden mean-shift vector is
+
+$ EE[H mid(|) A_t] = sigma_1 lambda(alpha) dot r, quad quad r = (rho_2, dots, rho_m). $
+
+#claim[*Selection moves only what correlates with the proxy (in this model).* In
+the Gaussian threshold model, thresholding on $X_1$ produces no expected drift
+in a hidden coordinate $X_j$ exactly when $"Cov"(X_j, X_1) = 0$. _Toy example:_
+if a school rewards only test scores and student curiosity is statistically
+independent of test scores in the applicant pool, thresholding on scores does
+not change mean curiosity.]
+
+#remark[This is a *Gaussian* fact and must not be read as a general one — see
+@sec:cov-not-enough. It is true here only because Gaussian conditional
+expectations are linear; for non-Gaussian variables, zero covariance does not
+imply a flat tail-conditional mean. Read correctly, it is a *sufficiency*
+statement: in the multivariate-Gaussian scalar-threshold model, the covariance
+ratios $r$ are a complete summary of hidden mean drift at every threshold.]
+
+== Does the harm scale with the number of hidden dimensions?
+
+The motivating intuition wants "more hidden dimensions $=>$ more Goodhart". The
+honest version is weaker.
+
+If every hidden dimension has the *same* covariance ratio $rho_j = rho$, then
+$ norm(EE[H mid(|) A_t])_2 = sqrt(d) dot abs(rho) dot sigma_1 lambda(alpha), $
+so the aggregate hidden mean drift grows like $sqrt(dim(ker phi))$ at fixed
+per-dimension coupling. But "fixed per-dimension coupling" is a strong scaling
+assumption. If instead the *total* correlation budget is bounded,
+$sum_j rho_j^2 <= C$, then $norm(EE[H mid(|) A_t])_2 <= sigma_1 lambda(alpha) sqrt(C)$,
+which does not grow with $d$ at all. Whether dimensional growth is real depends
+entirely on whether new dimensions bring new *independent* coupling to the proxy
+or merely subdivide a fixed amount of coupling into finer coordinates.
+
+#claim[The clean first version of dimensional dependence is therefore *not*
+"more hidden dimensions automatically cause more Goodhart". It is: under a
+per-dimension coupling model, threshold selection induces hidden drift whose
+*norm scales with the coupling-vector norm* $norm(r)_2$; this becomes
+*dimensional* scaling only after a substantive assumption about how $norm(r)_2$
+grows with $d$.]
+
+#remark[Two negative results worth recording, because they kill the obvious
+shortcuts. (i) If hidden dimensions are independent of the proxy, thresholding
+leaves the hidden distribution unchanged — more hidden dimensions alone do
+nothing. (ii) The *signed* aggregate hidden error is the wrong target: positive
+and negative hidden correlations cancel in a signed sum even while the normed or
+squared hidden displacement grows. Use normed drift, squared loss, tail
+probability, or a domain-specific loss — never the raw signed sum. And for a
+squared-harm functional $L(H) = norm(H)_2^2$, selection can raise harm through
+*either* a mean shift or a change in conditional variance, so the mean-drift
+vector alone does not determine expected harm.]
+
+== Covariance is not a general coupling primitive <sec:cov-not-enough>
+
+Outside Gaussian linearity, covariance fails. Let $P = Z$ with $Z ~ cal(N)(0, 1)$
+and let the hidden coordinate be
+
+$ H = Z^2 - 1. $
+
+Then $EE[H] = 0$ and $"Cov"(H, P) = EE[(Z^2 - 1) Z] = EE[Z^3] - EE[Z] = 0$. But
+under threshold selection $A_t = {Z >= t}$,
+
+$ EE[H mid(|) A_t] = EE[Z^2 - 1 mid(|) Z >= t] = t lambda(t) > 0 quad "for" t > 0. $
+
+#claim[Zero covariance between a hidden coordinate and a scalar proxy does *not*
+imply zero hidden drift under threshold selection. _Toy example:_ an academic
+evaluation score may be uncorrelated with intellectual conformity overall —
+because both very-low-score and very-high-score candidates are unusual — while
+selecting only the very highest scores still enriches for one particular kind of
+unusualness.]
+
+#remark[The example writes $H$ as a deterministic function of $P$, which feels
+engineered; but that is exactly the point against covariance — nonlinear
+dependence can be invisible to covariance while completely determining tail
+behaviour. A less deterministic version $H = Z^2 - 1 + xi$ with independent
+mean-zero $xi$ keeps the same covariance and the same tail-mean shift while
+weakening the functional-dependence objection. The right takeaway is *not* that
+real systems generically have U-shaped hidden dependence; it is that covariance
+cannot be the universal coupling primitive.]
+
+The repair is to take the *response curve itself* as primitive. For a scalar
+proxy $P$ and hidden vector $H$, define the *threshold response*
+
+$ b_H(t) = EE[H mid(|) P >= t] - EE[H], $
+
+whenever the conditional expectation exists. This describes the actual
+displacement caused by selection at pressure level $t$, with no linearity
+assumption. In the Gaussian scalar model it reduces to what we already have:
+$b_H(t) = sigma_1 lambda(t / sigma_1) r$, so $r$ is a sufficient statistic for
+*all* threshold responses in that restricted model — but only there.
+
+#remark[$b_H(t)$ is a *threshold-selection* primitive, not the final one. It
+says nothing about smoother optimisation policies — funding everyone above a
+cutoff is one thing; funding probabilistically with odds increasing in score is
+another. The next section generalises.]
+
+== Weighted selection response
+
+Let $(S, cal(F), mu)$ be the baseline probability space, $H : S -> RR^d$ the
+hidden coordinates, $P : S -> RR$ the scalar proxy. A *selection policy* is a
+nonnegative weight $W_theta : S -> [0, infinity)$ with $0 < EE_mu[W_theta] < infinity$.
+Define the *selected expectation* and the *hidden response*
+
+$ EE_theta[F] = (EE_mu[F W_theta]) / (EE_mu[W_theta]), quad quad
+  B_H(theta) = EE_theta[H] - EE_mu[H]. $
+
+Hard thresholding is the special case $W_t = bb(1){P >= t}$ (recovering
+$b_H(t)$). Soft optimisation is $W_beta = exp(beta P)$ — Boltzmann selection —
+whenever $EE[exp(beta P)]$ is finite. Probabilistic funding with score-increasing
+odds, replicator-style repeated reweighting by performance, top-$q$-fraction
+selection (thresholding at an endogenous quantile): all are weight functions.
+
+#remark[Two caveats on the soft-optimisation case. First, if $P$ is heavy-tailed,
+$EE[exp(beta P)]$ may be infinite for positive $beta$ — the Boltzmann path may
+not exist. This is not a technicality; Goodhart is often precisely about extreme
+tails. For heavy tails, bounded weights or quantile selection are safer models.
+Second, not every control process is a reweighting of a fixed baseline at all —
+interventions can change the state-generating mechanism. That is Chapter 3.]
+
+=== Covariance as a local velocity
+
+For Boltzmann selection, $EE_beta[H] = EE[H exp(beta P)] / EE[exp(beta P)]$, and
+assuming enough integrability to differentiate under the expectation,
+
+$ dif / (dif beta) EE_beta[H] = EE_beta[H P] - EE_beta[H] EE_beta[P] = "Cov"_beta(H, P). $
+
+#claim[Covariance is best read as the *local velocity* of hidden drift under
+infinitesimal soft optimisation, evaluated under the *current* selected
+distribution — not as a global finite-pressure summary. _Toy example:_ at low
+bonus pressure, the rate at which burnout changes with sales incentives is the
+current covariance between burnout and sales; after employees adapt or the
+selected population shifts, the covariance must be recomputed under the new
+weighted distribution.]
+
+That local velocity does not pin down finite movement. Take again $P = Z ~ cal(N)(0,1)$,
+$H = Z^2 - 1$. Boltzmann tilting by $exp(beta Z)$ gives $Z_beta ~ cal(N)(beta, 1)$,
+so
+
+$ EE_beta[H] = EE[Z_beta^2 - 1] = beta^2. $
+
+The covariance at $beta = 0$ is zero — matching @sec:cov-not-enough — yet finite
+pressure gives strictly positive hidden drift for every $beta != 0$. Baseline
+covariance alone is insufficient even for *finite* soft optimisation; one needs
+the covariance field $"Cov"_beta(H, P)$ along the whole tilted path.
+
+#claim[*The hierarchy of selection primitives.* covariance (infinitesimal
+Boltzmann velocity) $subset$ threshold response $b_H(t)$ (hard cutoffs) $subset$
+weighted response $B_H(theta)$ (generic non-causal selection). All three are
+functionals of the baseline $mu$ alone. Causal and adversarial Goodhart need a
+further layer in which $mu$ itself changes with the principal's policy — the
+subject of Chapter 3.]
+
+== The selection-channel drift bound
+
+This is the structural payoff of staying inside the reweighting picture. With
+$W_theta$ a selection policy, write the likelihood ratio
+$L_theta = W_theta / EE_mu[W_theta]$, so the selected law is $mu_theta = L_theta mu$.
+By Cauchy–Schwarz in $L^2(mu)$, for each hidden coordinate $H_i$,
+
+$ abs(B_(H_i)(theta)) = abs(EE_mu[(L_theta - 1)(H_i - EE_mu H_i)])
+  <= norm(L_theta - 1)_(L^2(mu)) dot norm(H_i - EE_mu H_i)_(L^2(mu)). $
+
+So, writing $delta := norm(L_theta - 1)_(L^2(mu))$ — a *reweighting budget*,
+with $delta^2 = chi^2(mu_theta parallel mu)$ the chi-square divergence — and
+$s_i := "sd"_mu(H_i)$,
+
+$ abs(B_(H_i)(theta)) <= delta dot s_i, quad quad norm(B_H(theta))_2 <= delta dot norm(s)_2. $
+
+#claim[Under a selection channel, hidden Goodhart drift is controlled by two
+things that *are* visible in the baseline distribution: how hard you reweight
+($delta$) and how variable the hidden coordinates are ($s$). Bounded reweighting
+budget plus bounded hidden variance $=>$ bounded hidden drift — full stop. The
+$sqrt(d)$ growth from Chapter 2's per-dimension model is exactly the
+$norm(s)_2$ term, and that term is the *only* way the number of dimensions
+enters.]
+
+#remark[This bound is one line of Cauchy–Schwarz, and it should not be inflated
+into a headline theorem. It is a worst-case envelope, not a prediction (the
+actual drift is the inner product, not the product of norms), and it is vacuous
+when $delta$ is large — extreme selection such as "top $1 slash n$" can have
+$delta$ growing with sample size. Its job is purely structural: *every term on
+the right is a $mu$-functional*. The content of Chapter 3 is the contrast — that
+intervention channels admit no such bound, not the inequality itself.]
+
+// =============================================================================
+= Intervention channels: when agents respond
+// =============================================================================
+
+== Why selection is not enough
+
+A selection policy can only move probability mass that already exists toward
+high-$P$ regions: the selected law $mu_theta = L_theta mu$ is absolutely
+continuous with respect to $mu$, so any event with baseline probability zero
+keeps probability zero. Causal and adversarial Goodhart violate exactly this.
+Announcing a metric changes how agents behave; probability mass appears in parts
+of state space the baseline never visited. Teaching to the test, metric-specific
+optimisation, outright fabrication — none of these are reweightings of last
+year's population. They *transport* mass to new places.
+
+#claim[*The sharp boundary.* The selection/intervention distinction is
+substantive exactly when agents can *move in state space* — change their
+$(P, H)$ at a fixed underlying type — not merely toggle their own inclusion. If
+agents only choose whether to *participate* (apply, submit, enter the pool) but
+cannot alter their measured features, then the post-policy law is just $mu$
+restricted to the participating set and renormalised — a selection channel after
+all. Genuine causal Goodhart lives in features that are *cheap to change without
+changing the thing they were supposed to proxy*.]
+
+== Response channels: the top-level object
+
+Let $(S, cal(F))$ be a measurable state space, $mu_0$ the baseline law,
+$H : S -> RR^d$ the hidden goal coordinates, $P : S -> RR$ the scalar proxy, and
+$phi$ the principal's intended model $P approx phi(G)$. A *response channel* is a
+map
+
+$ cal(R) : Theta -> cal(P)(S), quad theta |-> mu_theta, quad mu_(theta_0) = mu_0, $
+
+for some null policy $theta_0$. Hidden drift along the channel is
+$B_H(theta) = EE_(mu_theta)[H] - EE_(mu_0)[H]$, exactly as before.
+
+#claim[*Definition.* $cal(R)$ is a *selection channel* if $mu_theta << mu_0$ for
+all $theta$ — then $L_theta := dif mu_theta slash dif mu_0$ exists and
+$mu_theta$ is $mu_0$ reweighted by $L_theta$. Otherwise $cal(R)$ is an
+*intervention channel*: $mu_theta$ may be mutually singular with $mu_0$.]
+
+The entire apparatus of Chapter 2 — covariance, threshold response, weighted
+response — is the selection-channel case, with $L_theta = W_theta / EE_(mu_0)[W_theta]$.
+In Manheim and Garrabrant's taxonomy @manheim2018categorizing, *causal* Goodhart
+is an intervention channel in which the policy structurally breaks
+$P approx phi(G)$, and *adversarial* Goodhart is an intervention channel in
+which $theta$ is chosen worst-case for the principal. The ML instances of this
+regime are *strategic classification* @hardt2016strategic — agents manipulate
+features in response to a published classifier — and *performative prediction*
+@perdomo2020performative — the act of deploying a predictor changes the
+distribution it is predicting. The drift bound of Chapter 2 has no analogue here: there is no
+$L_theta$, so nothing plays the role of $delta$. Any bound on intervention drift
+must be *imported from the agent side* — a feasibility set or cost function
+describing what re-arrangements of mass agents can afford. The rest of the
+chapter computes such a bound in toy models and reads off the controlling
+quantity.
+
+== A linear–Gaussian Stackelberg gaming model
+
+A continuum of agents; an agent's type is its true quality $Q ~ cal(N)(0, sigma_Q^2)$,
+and the true scalar goal is $G = Q$. There is a hidden coordinate $H$ = "gaming
+externality": effort spent corrupting the proxy rather than improving $Q$ —
+teaching to the test, metric-specific optimisation, Campbell's-law distortion
+@campbell1979. The principal believes $P approx Q$.
+
+*Baseline channel $mu_0$* (metric not announced, not gameable): the agent does
+nothing special, $P_0 = Q + eta$ with $eta ~ cal(N)(0, sigma_eta^2)$ independent,
+and $H_0 equiv 0$. So $mu_0$ is supported on the plane ${H = 0}$ in
+$(Q, P, H)$-space.
+
+*Intervention channel* (metric announced, agents best-respond; Stackelberg,
+principal commits first): the principal picks a threshold policy $A_t = {P >= t}$;
+selection is worth $V > 0$ to an agent. An agent of type $Q$ chooses gaming
+effort $a >= 0$, getting $P = Q + a + eta$ at private cost $c(a) = a^2 slash (2 kappa)$
+($kappa > 0$ measures the ease of gaming) and incurring hidden externality
+$H = a$. The agent maximises $V dot Pr(Q + a + eta >= t) - a^2 slash (2 kappa)$.
+
+=== The noiseless cut
+
+Set $sigma_eta = 0$, so selection is $Q + a >= t$. An agent with $Q >= t$ sets
+$a = 0$. An agent with $Q < t$ either games to exactly $a = t - Q$ (cost
+$(t - Q)^2 slash (2 kappa)$, payoff $V$) or sets $a = 0$ (payoff $0$). Gaming is
+worth it iff $(t - Q)^2 slash (2 kappa) <= V$, i.e.
+
+$ t - Q <= Delta, quad quad Delta := sqrt(2 kappa V). $
+
+So the best response is $a^*(Q) = (t - Q) dot bb(1){t - Delta <= Q < t}$, and the
+selected set is ${Q >= t - Delta}$. Compared to the *selection* counterfactual
+(agents cannot game; the principal thresholds $P = Q$ at the same nominal $t$;
+selected set ${Q >= t}$; $H equiv 0$):
+
++ *The metric lies, by up to $Delta$.* The principal believes selection $=>$
+  $P >= t$ $=>$ (under $phi$) $Q >= t$. Actually $Q$ among the selected ranges
+  down to $t - Delta$. The proxy-to-goal gap $epsilon = P - phi(G) = a$ is no
+  longer noise — it is a deliberate wedge of size up to $Delta$.
+
++ *Hidden harm appears at order $Delta$.* $EE[H mid(|) "selected"]
+  = EE[(t - Q) bb(1){t - Delta <= Q < t}] slash Pr(Q >= t - Delta) > 0$, monotone
+  increasing in $Delta = sqrt(2 kappa V)$. In the selection regime $H$ is
+  *identically zero* in this model — consistent with Chapter 2's bound, since
+  $s_H = 0 => B_H = 0$. The harm is created entirely by the intervention.
+
++ *The controlling quantity is not a $mu_0$-functional.* $Delta$ depends on
+  $kappa$ (technological ease of gaming) and $V$ (the stakes), neither of which
+  is visible in the baseline $(Q, P_0, H_0)$ law. This is the promised
+  contrast: intervention drift is bounded by the agents' cost–benefit ratio, not
+  by any reweighting budget.
+
++ *Why this is not a selection channel.* $mu_0$ lives on ${H = 0}$; the
+  post-intervention law puts positive mass on ${H > 0}$ (the gamers — a set of
+  types of positive measure). The two laws are mutually singular in the
+  $(Q, H)$-marginal: there is no $L_theta$. The state was *transported*, not
+  reweighted.
+
+#claim[In a Stackelberg gaming model with quadratic gaming cost $a^2 slash (2 kappa)$
+and selection value $V$, the metric's worst-case bias and the induced hidden
+harm both scale with $Delta = sqrt(2 kappa V)$ — the square root of (ease of
+gaming $times$ stakes) — and this regime is invisible to, and unbounded by, the
+baseline distribution. _Toy example:_ doubling the funding tied to a test score
+multiplies the gaming wedge by $sqrt(2)$; halving the cost of test-prep drilling
+does the same.]
+
+#remark[The quadratic cost is a modelling choice. A cost with a hard cap
+$a <= a_"max"$ bounds gaming at $a_"max"$ regardless of $V$; a cost that is
+cheaper at the margin for high-$Q$ agents skews *who* games. So
+$Delta = sqrt(2 kappa V)$ is the quadratic-cost signature, not a universal law —
+but the qualitative point (a positive-measure set of agents leaves the $H = 0$
+locus; drift is set by agent economics, not by $mu_0$) is robust to the cost's
+shape. And if $V$ is itself endogenous — selection is valuable only if the
+metric is trusted, and trust erodes as gaming is observed — there is a feedback
+loop not modelled here. @sec:openq flags it.]
+
+=== The noisy refinement (sketch)
+
+With Gaussian proxy noise, $Pr("selected" mid(|) Q, a) = 1 - Phi((t - Q - a) slash sigma_eta)$
+is smooth in $a$, so the best response is interior everywhere:
+
+$ a^*(Q) = (kappa V slash sigma_eta) dot phi.alt((t - Q - a^*(Q)) slash sigma_eta) $
+
+(implicit; the right side is the marginal selection-probability gain). Every
+agent games a little: $a^*(Q) > 0$ for all $Q$, peaking near $Q approx t - a^*$
+and decaying in $abs(Q - (t - a^*))$. Hidden harm $EE[H mid(|) "selected"]
+= EE[a^*(Q) mid(|) "selected"] > 0$ for every threshold. The hard-threshold
+version is the $sigma_eta -> 0$ limit, where gaming concentrates on the band
+$[t - Delta, t)$. The lesson: noise *spreads* gaming across the whole population
+rather than removing it.
+
+== Multidimensional gaming: does adding a measured dimension help?
+
+Now the dimensional thread of Chapter 1 rejoins the picture, inside the
+intervention regime. The motivating "deep Goodhart" move is: the principal,
+fighting scalar Goodhart, *adds proxy dimensions*. When agents game, does adding
+a measured dimension redistribute harm, conserve it, shrink it, or grow it? The
+answer depends critically — and instructively — on how the metric *aggregates*
+its dimensions, so the aggregation rule must be a visible parameter, not a hidden
+default.
+
+=== The additive model
+
+Take $k$ gaming channels and, in the base case, true quality $Q = 0$ for
+everyone (pure gaming). An agent allocates effort $a = (a_1, dots, a_k) >= 0$;
+channel $j$ costs $a_j^2 slash (2 kappa_j)$ and produces hidden harm $H_j = a_j$
+(all gaming equally wasteful, $H = sum_j a_j$). The principal *measures* a set
+$M subset.eq {1, dots, k}$ and scores additively, $"score" = sum_(j in M) a_j$
+(unit weights for now); selection (worth $V$) iff $"score" >= t$. An agent never
+games an unmeasured channel.
+
+The agent's problem is $min_(a_j >= 0, j in M) sum_(j in M) a_j^2 slash (2 kappa_j)$
+subject to $sum_(j in M) a_j >= t$, then game iff that minimum cost is $<= V$.
+At the optimum the constraint binds and $a_j slash kappa_j = lambda$ for all
+$j in M$ (a water-filling allocation), so with $K_M := sum_(j in M) kappa_j$,
+
+$ lambda = t slash K_M, quad a_j = t kappa_j slash K_M, quad
+  "min cost" = lambda^2 K_M slash 2 = t^2 slash (2 K_M). $
+
+Hence *gaming occurs iff $K_M >= t^2 slash (2 V)$* (call the right side $K_"min"$),
+and when it occurs, the per-agent hidden harm for this fixed pure-gaming target
+is $H = sum_(j in M) a_j = lambda K_M = t$ — *independent of $M$*. What $M$
+controls is (i) *whether* $K_M$ clears $K_"min"$, and (ii) *how* the fixed harm
+$t$ is split across the measured channels — proportional to $kappa_j$.
+
+#claim[*Conservation under re-routing (narrow form).* With a unit-weight
+additive metric and gaming that is equally wasteful per unit of score, the
+principal cannot reduce per-agent harm for a fixed pure-gaming score deficit by
+changing *which* channels it measures, as long as the measured set keeps enough
+aggregate gaming capacity ($K_M >= K_"min"$): the harm is pinned at $H = t$ and
+merely re-routes. Closing a gamed channel just spreads $t$ over the others.
+_Toy example:_ a hospital ranked on readmission rates clamps down on coding of
+"readmission" — the gaming reappears as patient selection, discharge timing,
+observation-status reclassification; the per-case distortion needed to clear the
+cutoff is unchanged.]
+
+#claim[*Adding a gameable measured dimension backfires.* Expanding $M$ strictly
+increases $K_M$, which *lowers* the gaming cost $t^2 slash (2 K_M)$, which
+weakly *enlarges* the population that finds gaming worthwhile. With quality
+heterogeneity $Q ~ cal(N)(0, sigma^2)$ — an agent needs $"score" >= t - Q$, at
+cost $(t - Q)^2 slash (2 K_M)$, and games iff $t - Q <= sqrt(2 K_M V)$ — the
+gaming-eligibility cutoff $Q >= t - sqrt(2 K_M V)$ moves *down* as $K_M$ grows.
+More agents game; the fraction of selected agents who are pure gamers rises.
+_Toy example:_ a university worried that "publication count" is gamed adds "grant
+income" and "media mentions" to the scorecard; each is independently inflatable,
+so the cheapest path to any target score is now cheaper, and more faculty shift
+from research to portfolio-padding.]
+
+#claim[*The effective levers are aggregate, not allocative.* In this model the
+principal reduces gaming harm only by (a) shrinking aggregate gaming capacity
+$K_M$ below $K_"min"$ — narrowing the measured set to channels that are
+individually hard to game (small $kappa_j$), or hardening channels; (b) raising
+the bar $t$ (but this raises $K_"min"$ too; the net effect on the
+$K_M >= t^2 slash (2 V)$ test depends on whether real signal scales with $t$);
+(c) cutting the prize $V$; or (d) abandoning additive aggregation. Shuffling
+attention between channels of equal hardness does nothing. _Toy example:_
+anti-cheating in exams works by making the exam itself hard to game — proctoring,
+item rotation — not by adding more graded components.]
+
+=== A conjunctive metric flips the sign
+
+Suppose instead that passing requires $a_j >= t$ for *every* $j in M$ — the
+principal demands the agent clear a bar on all measured dimensions. The
+cost-minimal way to pass is $a_j = t$ for all $j in M$, at cost
+$sum_(j in M) t^2 slash (2 kappa_j)$, and total harm $H = sum_(j in M) t = t abs(M)$.
+Now harm grows *linearly in the number of measured dimensions*: adding a
+dimension unambiguously increases per-gamer gaming harm — though it also raises
+the cost of clearing the metric, so fewer agents do, a genuine trade-off
+(harm-per-gamer up, gamer-count down).
+
+#claim[Gaming harm's dependence on the *number* of measured proxy dimensions is
+governed by the aggregation rule. Unit-weight compensatory/additive metrics
+conserve fixed-deficit per-agent harm ($H = t$, re-routing only) — when measured
+channels are equally harmful per score unit; conjunctive/$min$ metrics *multiply*
+per-gamer harm ($H = t abs(M)$). Real scorecards are usually compensatory
+(weighted sums of KPIs), which is the regime where "just add another metric" can
+backfire by cheapening the cheapest gaming path and expanding the gaming
+population. The selection-regime $sqrt(d)$-type scaling from Chapter 2 and these
+intervention-regime flat/linear behaviours are *different phenomena* and should
+not be conflated.]
+
+#remark[Scope, made explicit. The additive claims above assume (1) unit-weight
+additive aggregation, (2) all gaming equally wasteful per unit score, (3) a
+fixed pure-gaming target deficit, and (4) the binding-constraint deterministic
+regime. Relax (2) — let channel $j$ also contribute $gamma_j in [0, 1]$ to the
+true goal, so $H = sum_j (1 - gamma_j) a_j$ — and then $H = sum_(j in M)(1 - gamma_j) t kappa_j slash K_M$,
+which the principal *can* shrink by steering effort onto high-$gamma$ channels
+(measure the ones where "gaming" is half-real). So conservation is exactly the
+equally-wasteful idealisation; in practice the principal's job is partly to pick
+proxies whose cheapest inflation is also partially the real thing. Relax (3)
+with quality heterogeneity and endogenous participation: aggregate population
+harm rises with $K_M$ because more agents enter the gaming band. Relax (4) with
+proxy noise: agents overshoot for a safety margin, so per-gamer $H$ rises
+slightly above the deterministic deficit, but the re-routing logic still
+applies. The clean additive/conjunctive dichotomy is the two extremes; real
+metrics live on the interpolation, and *where* on it is itself a design choice
+with predictable consequences.]
+
+=== The exchange-rate condition
+
+The conservation claim above is the unit-weight special case of something
+sharper. Let the score be $sum_(j in M) w_j a_j$, costs $sum_j a_j^2 slash (2 kappa_j)$,
+and hidden harm $H = sum_j h_j a_j$. The cost-minimal allocation for a score
+deficit $d$ is $a_j = d kappa_j w_j slash W_M$ with $W_M = sum_(i in M) kappa_i w_i^2$,
+and its harm is
+
+$ H_M (d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). $
+
+This is *not* invariant in $M$. (Two equally easy channels, $kappa_1 = kappa_2 = 1$,
+equal physical harm $h_1 = h_2 = 1$: measuring only channel 1 with $w_1 = 2$
+gives $H = d slash 2$; measuring only channel 2 with $w_2 = 1$ gives $H = d$;
+measuring both gives $H = 3 d slash 5$.) Re-routing can raise *or* lower harm,
+depending on the score weights.
+
+#claim[*Conservation, correctly stated.* For a fixed score deficit $d$, quadratic
+separable costs, and additive score $sum w_j a_j$, per-agent harm is conserved
+under re-routing *if and only if* social harm is proportional to score
+contribution on every available channel — $h_j = c w_j$ on the active measured
+set. Then $H_M (d) = c d$, independent of $M$; otherwise $H_M (d)$ depends on
+$M$ through the cost-weighted average above. _Toy example:_ if every point of
+score inflation is equally socially wasteful no matter which KPI supplies it,
+re-routing conserves harm; if grant-padding produces less waste per score point
+than citation-padding, moving weight toward grant-padding genuinely reduces harm.]
+
+#remark[This is the same structure as cost-benefit-weighted strategic
+classification @hardt2016strategic, and as isoquant choice in production theory: agents pick the
+cheapest input bundle for a target output, while social damage is a *different*
+linear functional of the bundle. Conservation appears only when target output
+and social damage use the same exchange rates. One residual worry for later:
+real score weights are sometimes partly arbitrary normalisation choices, so
+future work must distinguish harmless unit changes from substantive incentive
+exchange rates.]
+
+== What we have, and what is open <sec:openq>
+
+The two-chapter arc gives a clean dichotomy. *Selection channels* — the policy
+reweights a fixed baseline — contain all of regressional and extremal Goodhart;
+hidden drift is bounded, $norm(B_H(theta))_2 <= delta dot norm(s)_2$, with
+every term a baseline functional, and the number of dimensions enters only
+through $norm(s)_2$. *Intervention channels* — the policy transports mass to
+where the baseline had none — contain causal and adversarial Goodhart; there is
+no baseline bound, and the controlling quantity (e.g. $Delta = sqrt(2 kappa V)$
+in quadratic Stackelberg gaming) is exogenous to $mu_0$, set by the responding
+agents' cost geometry. In the multidimensional intervention regime, "fight
+Goodhart by measuring more dimensions" has a precise predicted failure mode:
+under a compensatory rule it conserves fixed-deficit per-agent harm only when
+channels are equally harmful per score unit, and it lowers the cheapest gaming
+cost, recruiting more gamers — a population-level backfire; under a conjunctive
+rule it multiplies harm by the number of bars. The principal's real levers are
+aggregate (shrink total gaming capacity, harden channels, raise the bar relative
+to real signal, cut the prize) or structural (pick low-harm-per-score proxies
+whose cheapest inflation is partly real; change weights; or go conjunctive and
+accept harm scaling with the number of bars).
+
+Two appendices catalogue what is not yet settled. Appendix A lists the questions
+*currently being worked on* — they have partial answers in toy models, but not
+yet at the level of polish the chapters above aim for. Appendix B lists
+questions that *surfaced during this work and are deliberately parked* — worth
+recording so they are not rediscovered from scratch, but not on the critical
+path.
+
+// =============================================================================
+= Appendix A — Currently in progress
+// =============================================================================
+
+These are the live research questions feeding the chapters above. Each has a
+toy-model partial answer in the working notes; what is missing is generality,
+the right level of abstraction, or an adversarial pass that the chapter
+treatment would require.
+
+#wip[*An intervention bound for general convex gaming costs.* The
+selection-channel bound is $norm(B_H) <= delta dot norm(s)$ (Chapter 2). Is
+there an intervention analogue that factors through the agents' cost geometry —
+a "gaming budget" — rather than through any divergence from $mu_0$? The
+quadratic case gives $Delta = sqrt(2 kappa V)$. Conjecture: a version holds for
+general convex gaming costs, with the bound governed by the convex conjugate of
+the cost. Not yet stated or proved.]
+
+#wip[*The exact selection-class condition.* Agents who can only toggle their own
+inclusion stay inside the selection class; agents who can move $(P, H)$ at fixed
+type do not. Is "cannot change $(P, H)$ at fixed type" the precise boundary, or
+are there genuine intermediate cases — e.g. agents can move $P$ but $H$ is
+pinned, or agents can move within a sub-manifold? A clean classification theorem
+is wanted.]
+
+#wip[*Adaptive hardening dynamics.* A principal that each period hardens
+whichever measured channel is currently most-gamed (lowers its $kappa_j$) drives
+$K_M$ down over time. Does this converge to no-gaming ($K_M < t^2 slash (2 V)$),
+and how fast? Is "harden the active channel" optimal among principal policies,
+or does committing to a narrow, hard-to-game $M$ from the start dominate?
+Currently only a heuristic argument that attrition eventually wins.]
+
+#wip[*The measurement frontier.* The principal must measure enough channels to
+recover real signal about $G$, but every gameable channel measured enlarges the
+attack surface $K_M$. Characterise the frontier between "informative enough" and
+"small enough attack surface". Is it ever empty — i.e. are there goal/proxy
+geometries where no admissible measured set is both informative and safe?]
+
+#wip[*Sub- vs. super-modularity of $H(M)$.* In the measured set $M$ the
+unit-weight equal-harm additive case is modular-trivial ($H = t$ on the gaming
+region, with a discontinuity at the $K_M = K_"min"$ boundary) and conjunctive is
+modular ($H = t abs(M)$). Weighted aggregation and population entry may be
+genuinely sub- or super-modular — which would say something about whether greedy
+principal policies (add/remove one channel at a time) are sane. Not yet
+computed.]
+
+#wip[*Per-agent vs. population welfare.* For heterogeneous quality $Q$, aggregate
+gaming harm is $EE[(t - Q) bb(1){0 < t - Q <= sqrt(2 K_M V)}]$ in the
+unit-weight additive model. How does this change under proxy noise, nonlinear
+costs, and endogenous $V$ — and which aggregate (per-gamer, population total,
+population mean, tail) is the right welfare object for the framework? The
+chapters above currently slide between these; the book version should not.]
+
+#wip[*Endogenous stakes / performative fixed points.* Make $V$ endogenous:
+selection is valuable only if the metric is trusted, and trust decays as gaming
+is observed. Does the principal–agent game have a performative-stable fixed
+point, and does hidden harm persist at it? Sketched as a Stackelberg toy with a
+trust state variable; the fixed-point analysis is not done.]
+
+// =============================================================================
+= Appendix B — Future open questions (not currently pursued)
+// =============================================================================
+
+These surfaced during the work and are recorded for later. They are not blocking
+anything in Chapters 1–3, and most need a substantial new piece of machinery.
+
+#openq[*Spectral / basis decomposition of the error.* Three decompositions, each
+carrying different information, should be kept distinct: (i) the SVD of $phi$ —
+right singular vectors are the $G$-directions $phi$ distinguishes; small singular
+values mark structural blind spots, decomposing the *dimension gap*; (ii) the
+eigendecomposition of $"Cov"(epsilon)$ — principal directions of measurement
+noise, decomposing the *observation gap*; (iii) the selection-induced shift of
+$G$ — compare the law of $G(s)$ before and after restricting to the selected set,
+the most diagnostic of actual Goodhart and the least obvious to compute. The
+bad-case corner is the *conjunction*: a $G$-direction where $phi$ has a small
+singular value (low signal), $"Cov"(epsilon)$ has mass (high noise), and the
+selection shift is large.]
+
+#openq[*Value-weighted Goodhart susceptibility.* PCA/SVD is value-neutral;
+Goodhart is value-laden. A huge principal component orthogonal to the value
+structure of $G$ is harmless; a tiny one aligned with a load-bearing
+$G$-dimension can dominate harm. Proposed scalar per $G$-direction: (value
+importance) $times$ ($1 slash$ singular value of $phi$) $times$ (noise variance)
+$times$ (selection shift), under a value-weighted inner product on $G$-space.
+*Open:* whether the value-weighting requirement makes this a non-starter in
+practice, or whether reasonable proxies for value importance (the principal's
+true utility gradient, or a proxy for it) recover useful structure. *Also open:*
+a strategic system can shape $epsilon$ to lie in low-variance components of the
+historical observation while remaining maximally goal-harmful, so PCA-based
+detection is geometrically blind to value-aware adversaries — does the
+value-weighted version close that hole?]
+
+#openq[*Pareto selection rather than scalarisation.* Chapter 2 scalarises (a
+weighted score, then a threshold). Pareto-frontier selection preserves diversity
+across measured dimensions in a way scalar thresholding destroys. When does
+selecting the Pareto-undominated set compress the selected distribution enough to
+break identifiability of the *unmeasured* dimensions — and when does it not? This
+is a different selection operator and needs its own response theory.]
+
+#openq[*The $phi$-as-partial-observation alternative.* The chapters fix
+$phi : RR^m -> RR^k$ as the principal's intended correspondence. An alternative
+is to represent the proxy as a partial observation of $G$ plus independent
+artifacts, which changes what "$ker phi$" means and may interact better with
+partial-hypothesis formalisms. Worth a comparison; not done.]
+
+#openq[*Incomputable noise and agents more complex than their principals.* If a
+human writes a proxy intended to align a system whose objectives have *more*
+dimensions than the human's, the proxy contains error in directions the human's
+$G$ has no coordinate for — error that cannot be scored, only suffered. Can
+partial hypotheses (in the style of infra-Bayesianism) recover any handle on
+this? And: is there any reason to expect a more capable system to have *fewer*
+goal dimensions than a human, rather than more? Both are wide open and somewhat
+speculative.]
+
+#bibliography("refs.bib", title: "References", style: "association-for-computing-machinery")
