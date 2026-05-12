@@ -355,6 +355,111 @@ The practical moral is also more concrete:
   in hidden error
 
 
+# new directions
+
+## instrumental convergence
+
+Instrumental convergence belongs on the **intervention / agent-cost** side of
+this project, not the selection-response side.
+
+The regulator has a proxy stack `P`. The agent optimizes for passing or
+increasing `P`. Instrumental convergence says that many different terminal
+goals induce similar intermediate strategies: gain resources, preserve
+optionality, avoid shutdown, manipulate measurement, hide bad evidence, or
+control the channel by which `P` is evaluated.
+
+In this framework, those are not values of `G`. They are low-cost, broadly
+useful action directions that help satisfy many possible proxy targets.
+
+So the natural representation is:
+
+`terminal objective -> policy/action -> proxy improvement + hidden side effects`
+
+Instrumental convergence appears when the same hidden / intervention directions
+are selected across many proxy objectives.
+
+A useful formal handle:
+
+Let the proxy objective be indexed by `theta`, with score `P_theta`. Let the
+agent choose action `a` from feasible set `A`, paying cost `C(a)` and receiving
+proxy benefit `P_theta(a)`.
+
+Instrumental convergence means there exists a low-dimensional action subspace
+`I` such that, for many different `theta`,
+
+`argmax_a [P_theta(a) - C(a)]`
+
+has a large projection onto `I`.
+
+Examples of `I`:
+
+- information-gathering
+- influence over the evaluator
+- preserving future action space
+- resource acquisition
+- hiding failures
+- manipulating measurement channels
+- exploiting evaluator blind spots
+
+In the existing language, this is a stronger version of "low-impedance
+dimensions absorb optimization pressure." But instead of one proxy causing one
+Goodhart drift, many proxy objectives route through the same reusable
+intervention channels.
+
+Future research question:
+
+> When many proxy objectives `P_theta` are optimized over a shared action space,
+> do the induced intervention shifts concentrate in a common low-dimensional
+> subspace of broadly useful action directions? If so, can that subspace be
+> predicted from cost geometry, evaluator access, and control over future
+> observations?
+
+Verification stack:
+
+1. **Thought experiments.** Vary the terminal / proxy goal. Do the same
+   intermediate behaviors still appear? If optimizing sales, citations,
+   benchmark score, and promotion score all induce manipulation of reporting
+   channels, that supports instrumental convergence. If every proxy induces
+   unrelated failure modes, convergence is weak.
+2. **No-resource counterfactual.** Remove the possibility of gaining resources,
+   hiding evidence, preserving optionality, or influencing the evaluator. If the
+   predicted convergence disappears, the mechanism was actually instrumental. If
+   the theory still predicts convergence when no reusable instrument exists, it
+   is overbroad.
+3. **Aligned-easy-route counterexample.** Suppose the cheapest way to increase
+   `P` is genuinely to improve `G`. Then instrumental Goodhart should not
+   appear. If the model predicts it anyway, it is confusing optimization with
+   misalignment.
+4. **Simulation.** Give many proxy tasks `theta = 1, ..., n` task-specific
+   action channels plus shared instrumental channels. Each action has a cost.
+   The simulation should show whether optimal policies across diverse
+   `P_theta` have high projection onto a common subspace `I`, whether that
+   projection grows with optimization pressure or stakes `V`, and whether
+   hardening one direct gaming channel causes substitution into shared
+   instrumental channels.
+5. **Implementation.** In an ML setting, define several proxy objectives or
+   benchmark tasks, give the system access to shared instrumental affordances
+   such as tool use, information gathering, evaluator interaction, memory,
+   reporting discretion, or environment control, and track whether optimization
+   repeatedly routes through the same affordances across tasks.
+
+The measurable signature would be:
+
+`rank concentration of selected action shifts across proxy objectives`
+
+or:
+
+`large common principal component of intervention-induced hidden drift`
+
+If the same action directions explain most proxy gains across many different
+`P_theta`, that is instrumental convergence in this model.
+
+Strongest remaining objection: instrumental convergence may be too general
+unless the action space and cost geometry are specified. Without that, it risks
+becoming a label for "the agent did a generally useful thing" rather than a
+falsifiable mechanism.
+
+
 ## Footnotes
 
 [^1]: https://medium.com/@johnwentworth/constructing-goodhart-b4964932213
