@@ -71,3 +71,13 @@ What's open now: population-vs-per-agent welfare object for gaming harm (Q17); g
 Red flags fired: scheduled adversarial pass did fire and found a real overstatement. Claim repaired and downgraded in scope; no `[confident]` claims added.
 
 Commit: `0e2b166` (`Run adversarial pass on conservation claim`).
+
+## Iteration 7
+
+Question tackled: Q18 — whether proxy optimization pressure induces a minimum-complexity hidden-drift attractor.
+
+What changed: added `research/threads/minimum_complexity_attractor.md` as a `generate` iteration. The main result is negative/repairing: selection channels follow baseline tail response, not a complexity optimum; intervention channels follow cost/search geometry. In a quadratic intervention model with target `w . a >= d` and cost `(1/2) a^T C^{-1} a`, the KKT solution is `a^* = d C w/(w^T C w)`, which can be dense. Sparse minimum-complexity behavior appears in fixed-charge or linear-cost models, where the cheapest single route can dominate. Updated `formalization.md`, `open_questions.md`, `negative_results.md`, `red_flags.md`, and `verification_stack.md`.
+
+What's open now: choose a pre-specified complexity functional (support, rank/spectral concentration, description length, KL from max-entropy prior) and test which response geometries align with it; separate private cost, search accessibility, and semantic simplicity; decide whether Appendix G should get a later review/edit iteration before any stronger draft claim.
+
+Red flags fired: yes. The broad Q18 claim was rhetorically convenient and equivocated between cheap, simple, sparse, low-rank, and low-description-length. Logged as `needs-adversarial-review`; repaired to a conditional response-geometry attractor claim.

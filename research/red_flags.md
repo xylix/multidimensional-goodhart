@@ -51,3 +51,13 @@ Trigger: scheduled every-third-iteration adversarial pass.
 Adversarial pass: not clear as originally worded. The Lagrange calculation was correct, but the summary "total harm is conserved" collapsed per-agent fixed-deficit harm with population aggregate harm, and it hid the unit-weight assumption. With weighted additive score `sum w_j a_j` and harm `sum h_j a_j`, harm is `d (sum h_j kappa_j w_j)/(sum kappa_j w_j^2)`, so re-routing can raise or lower harm unless `h_j/w_j` is constant. With heterogeneous `Q`, adding a channel increases aggregate population harm by recruiting additional agents into the gaming band.
 
 Repair: conservation is now stated only for fixed-deficit per-agent harm among channels equally harmful per score unit. The broader framework claim becomes an exchange-rate condition: aggregation rule and harm-per-score ratios determine dimensional gaming behavior. Residual concern: real score weights may be partly arbitrary normalization choices, so future work must distinguish harmless unit changes from substantive incentive exchange rates.
+
+## Iteration 7: minimum-complexity attractor equivocation (`needs-adversarial-review`)
+
+Claim reviewed: Q18's broad attractor claim — proxy pressure drives hidden drift toward the minimum-complexity feasible configuration.
+
+Trigger: red-flag pattern fired. The conclusion is rhetorically convenient for the recursive-Goodhart story, and the argument can silently equate several different notions: low private cost, easy search, low support, low rank, low description length, and low entropy.
+
+Adversarial pass: not clear as a generic claim. Selection does not optimize hidden drift; it follows baseline tail response. Quadratic intervention selects `a^* = d C w/(w^T C w)`, which is cost-minimal but can be dense. Sparse attraction appears in fixed-charge or linear-cost models, but that is a property of the cost geometry, not a universal property of Goodhart pressure.
+
+Repair: state the surviving claim as a response-geometry attractor. Minimum-complexity attraction is licensed only after specifying a complexity functional and a response mechanism that favors it. Action: do not promote Appendix G's recursive cartoon into a theorem without a later review/edit iteration and a pre-specified complexity measure.

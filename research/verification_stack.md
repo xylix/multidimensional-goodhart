@@ -164,7 +164,63 @@ response estimation and for controlled intervention/gaming environments.
 | Adaptive hardening (`Q14`) | Simulation | Repeated game where principal hardens the currently most-gamed channel; compare to static commitment | Dynamics cycle, increase attack surface, or lose to static narrow hardening |
 | Measurement frontier (`Q15`) | Thought experiment -> simulation | Construct signal-value vs. attack-surface frontier over measured sets `M` | Frontier is vacuous because all informative metrics are safe or all safe metrics are uninformative only by assumption |
 | Value-weighted susceptibility | Thought experiment -> real-world correspondence | Test whether value weighting changes rankings relative to SVD/PCA on known proxy-failure examples | Value weights are unavailable or arbitrary enough to make the scalar post hoc |
-| Minimum-complexity / recursive attractor (`Q4`, `Q18`, Appendix G) | Thought experiment | Predefine complexity measure and hidden axes; ask whether plausible counterexamples route residuals into high-complexity or goal-improving paths | No invariant notion of "minimum complexity" survives simple representation changes |
+| Minimum-complexity / recursive attractor (`Q4`, `Q18`, Appendix G) | Thought experiment -> simulation | Predefine complexity measure and hidden axes; compare quadratic, fixed-charge, sparse, capped, and low-rank response geometries | Attractor tracks cost/search geometry rather than complexity, or "complexity" changes under harmless representation changes |
+
+## Iteration 7: Q18 verification pass
+
+Idea: proxy pressure induces hidden drift toward the minimum-complexity feasible configuration.
+
+Layer 1: thought experiments
+
+Passed:
+- Sparse cheap exploit: if one hidden route has low activation cost and high proxy yield, optimization repeatedly uses it. This supports a conditional attractor mechanism.
+- Fixed-charge/linear costs: with target `sum w_j a_j >= d`, no caps, and objective `sum F_j 1{a_j > 0} + sum q_j a_j`, the optimum uses a single cheapest channel `argmin_j (F_j + d q_j/w_j)`. This gives a toy sparse-attractor model.
+
+Survived only barely:
+- "Simple" can mean low support, low rank, short description, or high prior probability. These agree in some examples and disagree in others.
+- A diffuse vector like `(1,...,1)` is high support but short description under a symmetric representation. Complexity claims require a fixed representation or an invariant complexity measure.
+
+Killed:
+- The unconditional Q18 claim. Selection follows baseline tail response and can shift all hidden coordinates diffusely. Quadratic intervention follows `a^* = d C w/(w^T C w)`, which can be dense. Proxy pressure alone does not select minimum complexity.
+
+Layer 2: real-world correspondence
+
+Passed:
+- Some ML and evolutionary literatures plausibly support simplicity-biased search or parameter-function maps [guess], which could instantiate the missing mechanism.
+- Institutional gaming often does concentrate on a small number of cheap loopholes, matching fixed-charge or lumpy-cost intuition.
+
+Survived only barely:
+- The same domains also contain diffuse adaptation: many small KPI optimizations, broad teaching-to-the-test changes, and smooth effort substitution. These look more like quadratic or convex cost geometry than sparse minimum-complexity attraction.
+
+Killed:
+- Directly importing ML simplicity-bias claims as a theorem about Goodhart drift. At most they motivate one possible response-channel mechanism.
+
+Layer 3: simulation
+
+Passed or ready:
+- Compare quadratic costs, `l1`/linear costs, fixed activation costs, capped channels, and low-rank action maps under the same proxy target and complexity functional.
+- Measure support size, rank/spectral concentration, description length proxy, and KL from a max-entropy feasible distribution.
+
+Survived only barely:
+- Simulation will only be meaningful after the complexity functional is fixed before seeing the outcome.
+
+Killed if simulation shows:
+- Sparse attraction disappears under minor caps/noise/detection penalties.
+- Different reasonable complexity measures rank the same response geometries in opposite orders.
+
+Layer 4: implementation
+
+Passed or plausible:
+- For ML evals, predefine exploit families or hidden failure axes and test whether benchmark optimization concentrates in a small number of simple failure modes versus diffuse degradation.
+
+Survived only barely:
+- Requires pre-specified hidden axes and complexity measures. Otherwise it becomes post hoc story-fitting.
+
+Killed if implementation shows:
+- Repeated proxy repair mostly produces broad, diffuse, or goal-improving adaptations rather than concentrated low-complexity routes, once hidden axes are pre-registered.
+
+Verdict:
+- The broad idea dies at Layer 1. The surviving claim is narrow: minimum-complexity attraction can occur when the response channel has a simplicity-biased cost geometry, search prior, or candidate-generation process. The strongest remaining objection is that "complexity" may be representation-dependent enough to make the claim non-invariant unless fixed by the application.
 
 ## Concise verdict
 

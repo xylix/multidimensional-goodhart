@@ -55,3 +55,11 @@ Tried claim: additive/compensatory metrics conserve total gaming harm under re-r
 Failure: with weighted additive score `sum w_j a_j`, quadratic costs, and harm `sum h_j a_j`, the fixed-deficit optimum has harm `H_M(d) = d (sum h_j kappa_j w_j)/(sum kappa_j w_j^2)`, which depends on `M` unless `h_j = c w_j` on the active channels. Separately, with heterogeneous quality, increasing `K_M` enlarges the set of agents for whom gaming is worthwhile, so aggregate population harm increases even when each fixed-deficit gamer has conserved harm.
 
 Postmortem: the useful conservation statement is narrower: re-routing conserves fixed-deficit per-agent harm only among channels that are equally harmful per score unit. This is not a defect; it identifies the exact exchange-rate condition under which conservation Goodhart is substantive rather than a unit-weight artifact.
+
+## Iteration 7: unconditional minimum-complexity attraction fails
+
+Tried claim: as proxy optimization pressure increases, hidden drift converges to the lowest-complexity feasible configuration.
+
+Failure: selection channels do not optimize over feasible hidden drifts at all; they reweight a baseline, so hidden movement follows the baseline tail response. A baseline can produce diffuse hidden drift, e.g. thresholding `P = Z` with `H_i = Z + xi_i` shifts every hidden coordinate. In intervention channels, the optimizer selects according to cost/search geometry. With quadratic cost `c(a) = (1/2) a^T C^{-1} a` and proxy target `w . a >= d`, the KKT solution is `a^* = d C w/(w^T C w)`, which can be dense under symmetric costs.
+
+Postmortem: the surviving claim is conditional: minimum-complexity attractors require a mechanism that aligns response geometry with the chosen complexity functional, such as fixed activation costs, sparse affordances, low-rank action maps, parameter-function multiplicity, or an explicit simplicity-biased search prior. "Cheap", "simple", and "low-complexity" must remain separate until such a mechanism is specified.

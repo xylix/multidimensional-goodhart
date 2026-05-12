@@ -90,3 +90,19 @@ Adversarial repair from iteration 6: for weighted additive score `sum w_j a_j` a
 `H_M(d) = d · (sum_{j in M} h_j kappa_j w_j) / (sum_{j in M} kappa_j w_j^2)`.
 
 Thus conservation under re-routing holds iff social harm is proportional to score contribution (`h_j = c w_j`) on the active measured channels. Otherwise changing measured channels or weights can raise or lower harm. Claim [tentative]: the dimensional dependence of gaming harm is governed by aggregation and exchange rates, not by dimension count alone; compensatory metrics conserve fixed-deficit harm only in the equal-harm-per-score case, while conjunctive metrics multiply it. Scope: if channel `j` also contributes `gamma_j in [0,1]` to the true goal then `H = sum_{j in M}(1-gamma_j) t kappa_j/K_M` in the unit-weight case and the regulator *can* shrink harm by steering effort onto high-`gamma` channels. Effective regulator levers under the additive rule are aggregate (shrink `K_M` below `t^2/(2V)`, harden channels, raise `t` vs. real signal, cut `V`) or structural (high-`gamma` / low-`h_j/w_j` proxies; switch aggregation rule), not mere re-routing among equally harmful-per-score channels.
+
+## Minimum-complexity attractor: repaired as response-geometry attractor
+
+Q18 asks whether increasing optimization pressure makes the hidden drift in `ker phi` converge to the lowest-complexity configuration compatible with hitting the proxy target. Iteration 7 (`threads/minimum_complexity_attractor.md`) found that this is not a generic consequence of the current framework.
+
+Claim [tentative]: in selection channels, there is no independent optimization over hidden drifts; the selected drift is the baseline response `B_H(theta) = E_theta[H] - E_mu[H]`. Therefore a minimum-complexity attractor in selection requires a distributional assumption that high-proxy tails are already biased toward low-complexity hidden configurations. Toy example: selecting high-scoring programs from a fixed model zoo favors a short reward hack only if that hack is overrepresented among high-scoring programs in the candidate distribution.
+
+Counterexample attempt: if the baseline distribution was produced by training or search, the simplicity bias may be real but upstream. Then the selection channel appears to select low-complexity failures, but the mechanism is the candidate generator, not selection itself.
+
+For intervention channels with linear proxy deficit `w . a >= d` and quadratic cost `c(a) = (1/2) a^T C^{-1} a`, the KKT conditions give the cost-minimal action
+
+`a^* = d C w / (w^T C w)`.
+
+Claim [tentative]: intervention pressure selects a response-geometry optimum, not a complexity optimum by default. In the quadratic model, the attractor is minimum-cost; it is low-support, low-rank, or low-description-length only when the cost/search geometry is aligned with that complexity measure. Toy example: if all KPI-padding channels are equally cheap and equally weighted, a quadratic-cost agent spreads distortion across all of them; if one common exploit has a much lower activation cost, the agent repeatedly uses that exploit.
+
+Counterexample attempt: some processes have simplicity bias not represented as explicit private cost, e.g. parameter-function multiplicity, spectral bias, or training dynamics [guess]. The formalization should therefore allow search priors and dynamics as part of the response channel, not equate "cost" with "complexity."
