@@ -41,3 +41,13 @@ Why watched: it is one line of Cauchy-Schwarz — flag pattern "suspiciously sho
 Claims: (a) additive metric ⇒ total gaming harm `H = t`, invariant to which channels are measured; (b) conjunctive metric ⇒ `H = t|M|`; (c) hence "add a KPI" backfires under the (realistic) additive rule.
 
 Red-flag scan: the derivation is a one-shot Lagrange/water-filling argument — borderline "suspiciously short". Mitigation: the brevity is appropriate (cost-minimal allocation under a linear constraint is genuinely short), and the content lives in the comparative statics and the additive-vs-conjunctive contrast, both of which *use* the structural hypotheses essentially (relaxing equally-wasteful gaming, or unit weights, or additivity each visibly changes the conclusion — documented inline and in `negative_results.md`). Conclusion is not rhetorically convenient: it is a *mixed* result (conservation, not growth, under re-routing; backfire, not redistribution, on adding dims), which is not the maximally tidy story for either "Goodhart worsens" or "more dims help". All claims left `[tentative]`; no `[confident]` tag, so the scheduled adversarial trigger did not fire. Action: if a later iteration leans on conservation as load-bearing, run the adversarial sub-protocol then. Next scheduled adversarial pass: iteration 6 (and iteration 6 should treat this thread as the most-recent significant claim to attack).
+
+## Iteration 6: scheduled adversarial pass repaired the conservation claim
+
+Claim reviewed: additive metric conservation under re-routing from iteration 5.
+
+Trigger: scheduled every-third-iteration adversarial pass.
+
+Adversarial pass: not clear as originally worded. The Lagrange calculation was correct, but the summary "total harm is conserved" collapsed per-agent fixed-deficit harm with population aggregate harm, and it hid the unit-weight assumption. With weighted additive score `sum w_j a_j` and harm `sum h_j a_j`, harm is `d (sum h_j kappa_j w_j)/(sum kappa_j w_j^2)`, so re-routing can raise or lower harm unless `h_j/w_j` is constant. With heterogeneous `Q`, adding a channel increases aggregate population harm by recruiting additional agents into the gaming band.
+
+Repair: conservation is now stated only for fixed-deficit per-agent harm among channels equally harmful per score unit. The broader framework claim becomes an exchange-rate condition: aggregation rule and harm-per-score ratios determine dimensional gaming behavior. Residual concern: real score weights may be partly arbitrary normalization choices, so future work must distinguish harmless unit changes from substantive incentive exchange rates.

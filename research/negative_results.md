@@ -38,7 +38,7 @@ Tried claim: a regulator facing a gamed metric can cut total gaming harm by swit
 
 Failure: in the additive-metric, equally-wasteful-gaming, quadratic-cost toy, the cost-minimal allocation is water-filling `a_j = t kappa_j / K_M`, so total harm `H = sum_j a_j = t` regardless of `M` — closing a gamed channel just spreads the same total `t` over the remaining measured channels. Worse, *adding* a gameable channel raises `K_M`, lowers the cheapest gaming cost `t^2/(2K_M)`, and recruits more gamers.
 
-Postmortem: harm is conserved under re-routing in compensatory metrics; the effective levers are aggregate (shrink `K_M` below `t^2/(2V)`, harden channels, raise the bar relative to real signal, cut the prize) or structural (proxies whose cheapest inflation is partly real, i.e. `gamma_j > 0`; or switch to a conjunctive metric, accepting `H = t|M|`). "Add another KPI" is not a fix and is usually a backfire.
+Postmortem: superseded/narrowed by iteration 6. Harm is conserved under re-routing only for fixed-deficit per-agent gaming in compensatory metrics whose channels are equally harmful per score unit. The effective levers are aggregate (shrink `K_M` below `t^2/(2V)`, harden channels, raise the bar relative to real signal, cut the prize) or structural (proxies whose cheapest inflation is partly real, i.e. `gamma_j > 0`; low `h_j/w_j` channels; changed aggregation). "Add another KPI" is not a fix and is often a population-level backfire.
 
 ## Iteration 5: "more measured dimensions" has no sign without fixing the aggregation rule
 
@@ -47,3 +47,11 @@ Tried claim: gaming harm increases (or: stays constant, by conservation) with th
 Failure: additive metric gives `H = t` (flat in `|M|`); conjunctive metric gives `H = t|M|` (linear in `|M|`); these are opposite conclusions from the same primitives. Unequal-weight additive metrics interpolate.
 
 Postmortem: dimensional-dependence claims in the intervention regime must be stated relative to the aggregation rule. The selection-regime `sqrt(d)`-type scaling and the intervention-regime flat/linear scaling are different phenomena that should not be conflated.
+
+## Iteration 6: strong additive conservation is not invariant to weights or population entry
+
+Tried claim: additive/compensatory metrics conserve total gaming harm under re-routing.
+
+Failure: with weighted additive score `sum w_j a_j`, quadratic costs, and harm `sum h_j a_j`, the fixed-deficit optimum has harm `H_M(d) = d (sum h_j kappa_j w_j)/(sum kappa_j w_j^2)`, which depends on `M` unless `h_j = c w_j` on the active channels. Separately, with heterogeneous quality, increasing `K_M` enlarges the set of agents for whom gaming is worthwhile, so aggregate population harm increases even when each fixed-deficit gamer has conserved harm.
+
+Postmortem: the useful conservation statement is narrower: re-routing conserves fixed-deficit per-agent harm only among channels that are equally harmful per score unit. This is not a defect; it identifies the exact exchange-rate condition under which conservation Goodhart is substantive rather than a unit-weight artifact.

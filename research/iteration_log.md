@@ -59,3 +59,15 @@ What's open now: adaptive-hardening dynamics and convergence (Q14); the regulato
 Red flags fired: none triggered the adversarial sub-protocol (all claims `[tentative]`; iteration 5 not a multiple of 3). Logged a watch item; iteration 6 is a scheduled adversarial-pass iteration and should attack the conservation-under-re-routing claim.
 
 Commit: `40ed0b9` (`Add multidimensional gaming iteration`).
+
+## Iteration 6
+
+Question tackled: scheduled adversarial pass on iteration 5's conservation-under-re-routing claim.
+
+What changed: attacked the additive conservation result as a skeptical referee. The original Lagrange solution is still correct, but the headline was too broad. Re-solved the additive quadratic model with score weights `w_j` and harm rates `h_j`: for fixed score deficit `d`, harm is `H_M(d) = d (sum h_j kappa_j w_j)/(sum kappa_j w_j^2)`, so conservation under re-routing holds iff channels are equally harmful per score unit (`h_j = c w_j`). Also separated per-agent fixed-deficit harm from aggregate population harm: with heterogeneous quality, adding a gameable channel raises `K_M`, expands the profitable gaming band, and increases aggregate harm whenever there is population mass in that band. Updated `threads/intervention_response.md`, `formalization.md`, `open_questions.md` (Q17), `negative_results.md`, and `red_flags.md`.
+
+What's open now: population-vs-per-agent welfare object for gaming harm (Q17); general convex-cost version of the exchange-rate condition (Q10); adaptive hardening dynamics (Q14); sub/supermodularity with weighted aggregation (Q16).
+
+Red flags fired: scheduled adversarial pass did fire and found a real overstatement. Claim repaired and downgraded in scope; no `[confident]` claims added.
+
+Commit: `fc39be0` (`Run adversarial pass on conservation claim`).
