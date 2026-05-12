@@ -98,6 +98,21 @@ harder-to-elicit dimensions as the proxy stack is patched — is an empirical
 conjecture. The job of these first chapters is to make all three layers
 statable without pretending they have the same epistemic status.
 
+#remark[*Licensed claims.* These chapters license three narrow uses. First, when
+pressure only reweights a fixed baseline distribution, the right quantities are
+selection-response functionals of that baseline: covariance locally, threshold
+response in the tails, and a chi-square drift budget for bounded selection.
+Second, when agents can change the state-generating process, the drift budget is
+not a baseline statistic; in the quadratic Stackelberg toy model it is
+$sqrt(2 kappa V)$, a function of gaming ease and stakes. Third, for intervention
+channels with compensatory additive scores and separable quadratic gaming
+costs, adding an independently gameable measured dimension increases aggregate
+gaming capacity $K_M$, lowers the minimum cost of clearing a fixed score gap,
+and weakly expands the population of agents for whom gaming pays. These claims
+are meant for designing scorecards, benchmarks, and evaluation suites; they do
+not prove the recursive-Goodhart hypothesis or generalize automatically to
+non-convex training dynamics.]
+
 The starting point is the variant taxonomy of Manheim and Garrabrant
 @manheim2018categorizing — regressional, extremal, causal, and adversarial
 Goodhart — and Wentworth's geometric reconstruction of the regressional case
@@ -143,6 +158,11 @@ Two things follow, and they recur throughout the book:
   to incomputable noise: not noise the principal is failing to measure well, but
   behaviour whose relation to the principal's goal has not been represented in
   the proxy space at all.
+  This is the *dimension gap*: if the proxy map has no coordinate for a
+  goal-relevant degree of freedom, optimisation can move that degree of freedom
+  without registering as proxy error. The later formal claims are about special
+  cases where that movement is observable as either selection response or
+  intervention cost.
 
 + Whether the multi-layer correction process converges depends on whether the
   layers' perception errors are roughly independent. If each layer's residual is
@@ -151,17 +171,19 @@ Two things follow, and they recur throughout the book:
   centrally-planned organisation, a single dominant metric — the system is
   fragile: every layer is blind in the same direction at once.
 
-#remark[There is an ML reading of all this. Pretraining, validation-set
-selection, and model selection are selection regimes when they reweight or
-choose among behaviours already present in the candidate distribution. RLHF and
-reward-model optimisation are intervention regimes once the learner changes its
-policy to exploit the reward channel; this is the reward-gaming setting studied
-by @skalse2022rewardgaming and @pan2022rewardmisspecification. Mesa-optimisation
-is the sharper intervention case in which the responding agent's cost geometry
-and search process are partly adversarial to the evaluator. The framework below
-does not solve those ML problems, but it marks which quantities would have to be
-modelled: baseline response curves for selection, and cost geometry plus stakes
-for intervention.]
+#remark[There is an ML reading of all this, but it is diagnostic rather than a
+finished model of training. Pretraining, validation-set selection, and model
+selection are selection regimes when they choose among behaviours already
+present in the candidate distribution. RLHF and reward-model optimisation become
+intervention-like once the learner changes its policy to exploit the reward
+channel; this is the reward-gaming setting studied by @skalse2022rewardgaming
+and @pan2022rewardmisspecification. What plays the role of $kappa$ in a neural
+network is not settled: it might be gradient accessibility, representation
+density from pretraining, benchmark contamination, reward-model feature
+simplicity, or optimiser search efficiency. The framework below therefore does
+not claim that quadratic Stackelberg gaming describes RLHF. It says what an ML
+version would have to estimate: baseline response curves for selection; cost
+geometry, stakes, and available gaming channels for intervention.]
 
 == Setup: goals, proxies, and two kinds of gap
 
@@ -599,6 +621,15 @@ shape. And if $V$ is itself endogenous — selection is valuable only if the
 metric is trusted, and trust erodes as gaming is observed — there is a feedback
 loop not modelled here. @sec:openq flags it.]
 
+#remark[*For ML evals.* This toy model maps cleanly to evaluator behaviour before
+it maps to neural training. For a benchmark designer, $V$ is the prize attached
+to passing or ranking well, and $kappa$ is the ease of benchmark-specific score
+inflation. For a trained model, the corresponding quantity may not be a scalar
+cost at all: it could be an optimiser-dependent route through representation
+space, a memorised benchmark feature, or a reward-model vulnerability. Treating
+RLHF as this Stackelberg game is therefore a hypothesis to test, not a licensed
+conclusion of the chapter.]
+
 === The noisy refinement (sketch)
 
 With Gaussian proxy noise, $Pr("selected" mid(|) Q, a) = 1 - Phi((t - Q - a) slash sigma_eta)$
@@ -757,7 +788,41 @@ heterogeneity, and aggregate population harm rises with $K_M$ because more
 agents enter the gaming band. Real scorecards are often nonlinear within each
 KPI — saturating, threshold-clipped, rubric-scored, or capped — so the linear
 additive model is not innocuous. Its value is that it isolates the exchange-rate
-condition under which conservation is real rather than an artefact of units.]
+condition under which conservation is real rather than an artefact of units. The
+empirical discriminator is not whether a scorecard is literally quadratic; it is
+whether added dimensions contribute independent, substitutable gaming capacity.
+If the new channel is cost-correlated with existing channels, if gaming has a
+hard bottleneck, or if the principal dynamically reweights after seeing attacks,
+$kappa_"new"$ should not be counted as a full additive increment to $K_M$.]
+
+== Evaluation-suite design implications
+
+The selection/intervention split is directly useful for benchmarks and
+leaderboards. An evaluation suite should first ask what kind of pressure it
+creates. If it only chooses among fixed candidates, the relevant audit is a
+selection audit: which hidden properties covary with the reported score, how far
+into the tail the selection goes, and whether the weighting rule amplifies a
+known residual. If training or submission behaviour adapts to the eval, the
+audit becomes an intervention audit: what score-increasing moves are available,
+what they cost, what prize they buy, and which hidden harms they induce.
+
+#claim[*Scorecard design claim.* Adding a benchmark dimension is protective only
+when it either measures real capability cheaply enough to displace gaming, or
+raises the cost of gaming more than it raises the menu of compensatory
+substitutes. Under an additive leaderboard, a low-cost gameable task is an
+extra route to the same aggregate score. Under a conjunctive leaderboard, every
+task becomes a gate: fewer systems pass, but any system gaming its way through
+must clear more bars.]
+
+This makes the usual "more metrics means less Goodhart" heuristic conditional.
+For an additive benchmark, the design question is whether a proposed task adds
+real signal or mostly adds independent $kappa_j$. For a conjunctive benchmark,
+the design question is whether the extra bar screens out benchmark-specific
+optimisation or merely filters out genuinely capable systems with one narrow
+deficit. Either way, eval results should be treated as experiments rather than
+leaderboard decorations: pre-state the comparison the score is meant to support,
+report uncertainty where stochasticity matters, document prompts/configs, and
+separate the measured score from the broader capability or alignment claim.
 
 == A convex-cost intervention bound? <sec:convex-cost-conjecture>
 
@@ -816,6 +881,33 @@ exploit. The chapters above do not prove that conjecture. They say what one
 would have to measure to make it precise: the baseline response curve, the
 coupling norm, the cost geometry, the aggregation rule, the gaming capacity, and
 the score-to-harm exchange rates.
+
+#figure(
+  table(
+    columns: (1.15fr, 1.35fr, 1.15fr),
+    inset: 6pt,
+    align: horizon,
+    [*Claim one might use*], [*What the chapters show*], [*Boundary*],
+    [Adding additive metrics can worsen gaming.],
+    [In the deterministic quadratic water-filling model, adding an independently
+      gameable measured channel increases $K_M$, lowers $t^2 slash (2 K_M)$,
+      and weakly expands the gaming band.],
+    [Does not cover non-substitutable, capped, correlated, or dynamically
+      reweighted channels.],
+    [Selection and intervention are different Goodhart channels.],
+    [Selection is reweighting of $mu_0$; intervention can move mass outside
+      baseline support, so baseline-only drift bounds no longer apply.],
+    [Does not by itself model arbitrary causal mechanisms or training
+      dynamics.],
+    [Recursive Goodhart is plausible.],
+    [The framework identifies mechanisms by which patched proxies can leave
+      residual error in hidden dimensions.],
+    [Not a theorem; it requires empirical estimates of legibility, coupling,
+      and gaming cost.],
+  ),
+  caption: [Claim audit: what these chapters license, and where the license
+    stops.],
+) <fig:claim-audit>
 
 The appendices serve two different roles. Appendix A lists the questions
 *currently being worked on* — they have partial answers in toy models, but not
@@ -878,6 +970,14 @@ unit-weight additive model. How does this change under proxy noise, nonlinear
 costs, and endogenous $V$ — and which aggregate (per-gamer, population total,
 population mean, tail) is the right welfare object for the framework? The
 chapters above currently slide between these; the book version should not.]
+
+#wip[*Mapping $kappa$ to neural training.* In the Stackelberg toy model,
+$kappa$ is a scalar ease-of-gaming parameter. For RLHF or benchmark-driven
+finetuning, the analogue might be gradient accessibility, pretraining density,
+benchmark contamination, reward-model feature simplicity, or optimiser search
+efficiency. These are not interchangeable. A useful ML version of the theory
+has to say which one predicts reward hacking under a specified training setup,
+and what observation would distinguish it from the others.]
 
 #wip[*Endogenous stakes / performative fixed points.* Make $V$ endogenous:
 selection is valuable only if the metric is trusted, and trust decays as gaming
@@ -1086,6 +1186,14 @@ turn out to be. The cartoon assigns them synthetic, mixed movements because the
 framework alone does not say whether their correlations with the monitored proxy
 dimensions are positive, negative, or close to zero.
 
+The hypothesis would earn support if successive proxy patches predictably
+reduced visible residuals while increasing residuals on pre-specified hidden
+dimensions that were less legible, less represented in training/evaluation, or
+cheaper to exploit. It would lose support if hidden residuals improved along
+with the monitored axes, moved idiosyncratically with no relation to legibility
+or cost, or if the cheapest route to high score became genuinely goal-improving
+rather than merely less visible.
+
 #figure(
   image("figures/appendix-g-recursive-goodhart-cartoon.pdf", width: 83%),
   caption: [
@@ -1097,7 +1205,8 @@ dimensions are positive, negative, or close to zero.
     outcome quality improves too. In unfavorable cases, residual error moves
     into dimensions that are less legible to the evaluator, less represented in
     the training signal, or cheaper for the model to exploit. The plotted values
-    are synthetic and illustrative; they are not empirical measurements.
+    are synthetic and illustrative; they are not empirical measurements, and the
+    hypothesis needs pre-specified hidden dimensions before it can be tested.
   ],
 ) <fig:recursive-goodhart-cartoon>
 

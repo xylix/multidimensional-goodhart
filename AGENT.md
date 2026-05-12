@@ -56,6 +56,10 @@ Then do the work. Then update notes.
 - `research/iteration_log.md` — append-only short log per iteration
 - `research/negative_results.md` — failed approaches with brief postmortem
 - `research/red_flags.md` — claims flagged for adversarial review, not yet resolved
+- `research/reviews/<topic>.md` — paper-quality audits, skeptical-reader passes, and claim-license checks
+- `research/applications/<domain>.md` — mappings from formal primitives to target domains such as evals, ML training, organizations, or institutions
+- `research/claim_audits.md` — compact inventory of load-bearing claims, what each licenses, and what it does not support
+- `research/verification_stack.md` — running verification-stack audit of the current claims and most salient research questions
 
 Commit at end of each iteration with a one-line summary.
 
@@ -115,6 +119,123 @@ Keep two failure-mode gaps distinct throughout:
 - Lyapunov stability for coupled systems
 - Specification gaming literature (Krakovna et al)
 - Pareto exploration in multi-objective RL
+
+## Iteration types
+
+Each iteration must declare one type at the top: `generate`, `edit`, `review`, or `application-mapping`.
+
+### Generate iteration
+
+Goal: create new formal content, examples, or conjectures.
+
+Use the existing working approach. Claims must be tagged with confidence and paired with toy examples. Speculation is allowed, but must be marked. Output usually goes to `research/threads/`, `research/formalization.md`, `research/open_questions.md`, `research/negative_results.md`, or `research/red_flags.md`.
+
+### Edit iteration
+
+Goal: convert research notes into paper-ready prose.
+
+Required passes:
+
+1. Licensed-claim pass: state what each load-bearing claim actually proves or derives.
+2. Scope pass: distinguish theorem/result, toy-model implication, and empirical conjecture.
+3. Use-case pass: state what the claim is useful for.
+4. Overclaim pass: list the stronger tempting claim the text must not imply.
+
+Prefer making claims more precise over adding generic caveats. A weak broad claim should usually become a sharper conditional claim, not a hedged slogan.
+
+### Review iteration
+
+Goal: audit existing prose as a skeptical reader or referee.
+
+Use this template:
+
+- Claim I might use:
+- What the text actually shows:
+- Evidence type:
+- Main inferential gap:
+- Stronger claim not supported:
+- Top 3 alternative explanations or model-breakers:
+- Measurement concern:
+- Generalization boundary:
+- Action: keep / narrow / move to conjecture / cut / test
+
+Any mismatch between "Claim I might use" and "What the text actually shows" must either be repaired in prose or logged in `red_flags.md`.
+
+For any new load-bearing claim, run the verification-stack pass below unless an
+equivalent pass already exists in `research/verification_stack.md`.
+
+### Application-mapping iteration
+
+Goal: map formal primitives to a target domain such as ML evals, RLHF, benchmarks, organizations, or institutions.
+
+Required passes:
+
+1. Primitive map: identify what corresponds to each formal variable.
+2. Non-map pass: identify primitives that do not have a clean analogue.
+3. Discriminator pass: say what observation would distinguish the proposed mapping from nearby alternatives.
+4. Failure-mode pass: list cases where the toy result should not transfer.
+
+Do not claim an application follows from the model unless the primitive map is explicit.
+
+For any application claim that would change what a reader should do, run at
+least layers 1-2 of the verification stack. Descend to simulation or
+implementation only if the cheaper layers do not kill or sufficiently narrow
+the claim.
+
+### Verification-stack pass
+
+Goal: stress-test a claim, conjecture, or research-question answer at the
+cheapest layer that can kill it. Cost per bit rises as the pass descends, so do
+not move to expensive validation after a cheaper layer has already killed the
+idea. Stop and report failure as soon as a layer kills it.
+
+Use this template:
+
+```md
+Idea: ...
+
+Layer 1: thought experiments
+- Construct 2-4 scenarios that would expose the idea if wrong: edge cases,
+  limits, adversarial inputs, or implications the idea should not have.
+- Passed:
+- Survived only barely:
+- Killed:
+
+Layer 2: real-world correspondence
+- Ask whether the idea predicts things already observed, conflicts with known
+  facts, established results, or base rates. Cite specifics where possible.
+- Passed:
+- Survived only barely:
+- Killed:
+
+Layer 3: simulation
+- Sketch a toy model, calculation, or worked example that exercises the
+  mechanism. State what it would have to show.
+- Passed or ready:
+- Survived only barely:
+- Killed if simulation shows:
+
+Layer 4: implementation
+- Describe a minimal real test/build, what it costs, and what failure looks
+  like.
+- Passed or plausible:
+- Survived only barely:
+- Killed if implementation shows:
+
+Verdict:
+- If the idea dies, name the killing layer and observation. No consolation
+  prizes.
+- If it survives all four, state the narrow surviving claim and the strongest
+  remaining objection.
+```
+
+The verification stack is especially important for new claims promoted into the
+draft, currently salient research questions, and any answer that sounds useful
+enough to guide evaluation-suite or benchmark design.
+
+### Promotion rule
+
+Before any result from `research/threads/` is promoted into the draft, run either an `edit` iteration or a `review` iteration on it. Promotion is only allowed after the licensed claim, unsupported stronger claim, and intended use are written down.
 
 ## Iteration protocol
 
