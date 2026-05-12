@@ -101,9 +101,21 @@ statable without pretending they have the same epistemic status.
 The starting point is the variant taxonomy of Manheim and Garrabrant
 @manheim2018categorizing — regressional, extremal, causal, and adversarial
 Goodhart — and Wentworth's geometric reconstruction of the regressional case
-@wentworth2018constructing; the contribution here is to make the *vector*
-structure (and the selection-vs-intervention split that organises that
-taxonomy) explicit.
+@wentworth2018constructing, plus Wentworth's later warning that experiments and
+metrics often measure a different latent quantity than their designers think
+they do @wentworth2022notmeasuring. The economic ancestor is the multitask
+principal-agent line: Holmstrom and Milgrom's canonical model of measurable and
+unmeasurable tasks @holmstrom1991multitask, Baker's performance-measurement
+model @baker1992incentive, and Prendergast's survey of incentive provision
+@prendergast1999provision. In AI safety, the closest formal neighbours are
+reward gaming and misspecification models @skalse2022rewardgaming
+@pan2022rewardmisspecification and the partial-objective model of misaligned AI
+@zhuang2020consequences. The contribution here is to put these literatures in
+one frame: the Goodhart taxonomy supplies the failure modes, strategic
+classification and performative prediction supply adaptive distribution shift,
+principal-agent theory supplies substitution toward measured tasks, and the
+selection/intervention split makes the vector structure of both regimes
+explicit.
 
 == A worked intuition: the hierarchy of proxies
 
@@ -125,15 +137,12 @@ layers of proxy, each with its own residual.
 
 Two things follow, and they recur throughout the book:
 
-+ When a simpler agent (fewer goal dimensions) sets goals for a more complex
-  agent, the proxy it can write down is necessarily missing dimensions of the
-  complex agent's behaviour — and therefore *cannot even score* the complex
-  agent's drift in those dimensions. If a human writes a proxy intended to align
-  a system whose objectives have more dimensions than the human's, the proxy
-  contains error in dimensions the human's $G$ has no coordinate for. Call it
-  incomputable noise: not noise the human is failing to measure well, but noise
-  the human's objective cannot be _compared against at all_.
-#wip[The claim should be relaxed a bit - I think the intuition here is that to constrain an agent with more complicated Goal dimensions / behavioural dimensions than the humans, we need to do some kind of dimensional reduction or addition in one direction.]
++ When a principal constrains an agent whose behaviour has more degrees of
+  freedom than the principal's proxy, the proxy must compress, ignore, or invent
+  coordinates. Some residuals are ordinary measurement errors. Others are closer
+  to incomputable noise: not noise the principal is failing to measure well, but
+  behaviour whose relation to the principal's goal has not been represented in
+  the proxy space at all.
 
 + Whether the multi-layer correction process converges depends on whether the
   layers' perception errors are roughly independent. If each layer's residual is
@@ -142,13 +151,17 @@ Two things follow, and they recur throughout the book:
   centrally-planned organisation, a single dominant metric — the system is
   fragile: every layer is blind in the same direction at once.
 
-#remark[There is an ML reading of all this. Optimising an empirical scalar
-proxy selects for large residual generalisation error; that is regressional
-Goodhart. The vector version says the residual is not one scalar gap but a
-*subspace* of gaps, some of which are instrumented and some of which are not.
-Existing hyperparameter-optimisation and distribution-shift theory already
-implements pieces of this picture; we will point at the correspondences as they
-arise rather than develop them.]
+#remark[There is an ML reading of all this. Pretraining, validation-set
+selection, and model selection are selection regimes when they reweight or
+choose among behaviours already present in the candidate distribution. RLHF and
+reward-model optimisation are intervention regimes once the learner changes its
+policy to exploit the reward channel; this is the reward-gaming setting studied
+by @skalse2022rewardgaming and @pan2022rewardmisspecification. Mesa-optimisation
+is the sharper intervention case in which the responding agent's cost geometry
+and search process are partly adversarial to the evaluator. The framework below
+does not solve those ML problems, but it marks which quantities would have to be
+modelled: baseline response curves for selection, and cost geometry plus stakes
+for intervention.]
 
 == Setup: goals, proxies, and two kinds of gap
 
@@ -221,6 +234,32 @@ it is a speculative cartoon of the recursive-Goodhart intuition. Its purpose is
 to say what the framework might help test, not to smuggle an additional theorem
 into the paper.
 
+== Summary of results
+
+The proved or directly derived results in these chapters are:
+
+- Gaussian threshold selection shifts hidden means by
+  $EE[H mid(|) A_t] = sigma_1 lambda(t slash sigma_1) r$ in the linear-Gaussian
+  model.
+- Covariance is not a universal coupling primitive: with $P = Z$ and
+  $H = Z^2 - 1$, baseline covariance vanishes while threshold and finite
+  Boltzmann selection still move $H$.
+- Under Boltzmann selection, covariance is the local velocity:
+  $dif EE_beta[H] slash dif beta = "Cov"_beta(H, P)$.
+- Selection-channel drift satisfies the coordinate-free bound
+  $norm(B_H(theta))_2 <= delta dot norm(s)_2$, with
+  $delta^2 = chi^2(mu_theta parallel mu_0)$.
+- In the quadratic Stackelberg gaming model, the gaming wedge is
+  $Delta = sqrt(2 kappa V)$.
+- In the additive multidimensional gaming model, quadratic costs give the
+  water-filling allocation, and the weighted additive case gives the
+  exchange-rate condition $h_j = c w_j$ for conservation of fixed-deficit harm.
+
+The additive-versus-conjunctive flip and the noisy Stackelberg refinement are
+illustrative models, not general theorems. The convex-cost intervention analogue
+of the selection bound is stated below as a conjecture with a Fenchel-duality
+sketch. The remaining items in Appendix A are open.
+
 // =============================================================================
 = Selection channels: when the principal only re-selects
 // =============================================================================
@@ -263,7 +302,8 @@ ratios $r$ are a complete summary of hidden mean drift at every threshold.]
 == Does the harm scale with the number of hidden dimensions?
 
 The motivating intuition wants "more hidden dimensions $=>$ more Goodhart". The
-honest version is weaker.
+honest version is weaker, and Chapter 2's final bound gives the clean statement.
+This Gaussian calculation is only the first view.
 
 If every hidden dimension has the *same* covariance ratio $rho_j = rho$, then
 $ norm(EE[H mid(|) A_t])_2 = sqrt(d) dot abs(rho) dot sigma_1 lambda(alpha), $
@@ -282,20 +322,15 @@ per-dimension coupling model, threshold selection induces hidden drift whose
 *dimensional* scaling only after a substantive assumption about how $norm(r)_2$
 grows with $d$.]
 
-Appendix C visualises both parts of this claim: threshold selection moves hidden
-coordinates only through their response to the proxy, and dimensional scaling
-appears only when adding dimensions also adds coupling.
+This is the same lesson that the selection-channel drift bound will express
+coordinate-free: dimension enters through the hidden variability and coupling
+budget, not through a bare count of unmeasured coordinates. Appendix C visualises
+both parts of the claim.
 
-#remark[Two negative results worth recording, because they kill the obvious
-shortcuts. (i) If hidden dimensions are independent of the proxy, thresholding
-leaves the hidden distribution unchanged — more hidden dimensions alone do
-nothing. (ii) The *signed* aggregate hidden error is the wrong target: positive
-and negative hidden correlations cancel in a signed sum even while the normed or
-squared hidden displacement grows. Use normed drift, squared loss, tail
-probability, or a domain-specific loss — never the raw signed sum. And for a
-squared-harm functional $L(H) = norm(H)_2^2$, selection can raise harm through
-*either* a mean shift or a change in conditional variance, so the mean-drift
-vector alone does not determine expected harm.]
+#remark[Two shortcuts fail. If hidden dimensions are independent of the proxy,
+thresholding leaves them unchanged. And the signed aggregate hidden error is the
+wrong target: positive and negative hidden correlations can cancel while normed
+or squared displacement grows.]
 
 == Covariance is not a general coupling primitive <sec:cov-not-enough>
 
@@ -422,13 +457,14 @@ $sqrt(d)$ growth from Chapter 2's per-dimension model is exactly the
 $norm(s)_2$ term, and that term is the *only* way the number of dimensions
 enters.]
 
-#remark[This bound is one line of Cauchy–Schwarz, and it should not be inflated
-into a headline theorem. It is a worst-case envelope, not a prediction (the
-actual drift is the inner product, not the product of norms), and it is vacuous
-when $delta$ is large — extreme selection such as "top $1 slash n$" can have
-$delta$ growing with sample size. Its job is purely structural: *every term on
-the right is a $mu$-functional*. The content of Chapter 3 is the contrast — that
-intervention channels admit no such bound, not the inequality itself.]
+#remark[The proof is only Cauchy–Schwarz, but the formulation is doing real
+work. It is the clean coordinate-free statement of why selection-regime Goodhart
+is tame: if a policy only reweights a baseline distribution, then hidden drift
+is bounded by a reweighting budget and baseline hidden variability, both
+$mu$-functionals. The caveats are still important: this is a worst-case envelope,
+not a prediction, and it can be vacuous under extreme selection when $delta$ is
+large. The rest of the book is about what breaks when the policy is not a
+reweighting and no such baseline-only budget exists.]
 
 // =============================================================================
 = Intervention channels: when agents respond
@@ -589,15 +625,54 @@ its dimensions, so the aggregation rule must be a visible parameter, not a hidde
 default. Appendices E and F give the geometric picture for the additive,
 conjunctive, and exchange-rate cases.
 
-=== The additive model
+=== The exchange-rate condition
 
-Take $k$ gaming channels and, in the base case, true quality $Q = 0$ for
-everyone (pure gaming). An agent allocates effort $a = (a_1, dots, a_k) >= 0$;
-channel $j$ costs $a_j^2 slash (2 kappa_j)$ and produces hidden harm $H_j = a_j$
-(all gaming equally wasteful, $H = sum_j a_j$). The principal *measures* a set
+Start with the general additive case, because it is the result that survives
+changes of units. Let the score be $sum_(j in M) w_j a_j$, costs
+$sum_j a_j^2 slash (2 kappa_j)$, and hidden harm $H = sum_j h_j a_j$. The
+cost-minimal allocation for a score deficit $d$ is
+$a_j = d kappa_j w_j slash W_M$ with $W_M = sum_(i in M) kappa_i w_i^2$, and its
+harm is
+
+$ H_M (d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). $
+
+This is *not* invariant in $M$. (Two equally easy channels, $kappa_1 = kappa_2 = 1$,
+equal physical harm $h_1 = h_2 = 1$: measuring only channel 1 with $w_1 = 2$
+gives $H = d slash 2$; measuring only channel 2 with $w_2 = 1$ gives $H = d$;
+measuring both gives $H = 3 d slash 5$.) Re-routing can raise *or* lower harm,
+depending on the score weights. @fig:exchange-rate-condition records the
+numbers.
+
+#claim[*Conservation, correctly stated.* For a fixed score deficit $d$, quadratic
+separable costs, and additive score $sum w_j a_j$, per-agent harm is conserved
+under re-routing *if and only if* social harm is proportional to score
+contribution on every available channel — $h_j = c w_j$ on the active measured
+set. Then $H_M (d) = c d$, independent of $M$; otherwise $H_M (d)$ depends on
+$M$ through the cost-weighted average above. _Toy example:_ if every point of
+score inflation is equally socially wasteful no matter which KPI supplies it,
+re-routing conserves harm; if grant-padding produces less waste per score point
+than citation-padding, moving weight toward grant-padding genuinely reduces harm.]
+
+#remark[This is the same structure as cost-benefit-weighted strategic
+classification @hardt2016strategic, and as isoquant choice in production theory:
+agents pick the cheapest input bundle for a target output, while social damage
+is a *different* linear functional of the bundle. Conservation appears only when
+target output and social damage use the same exchange rates. One residual worry
+for later: real score weights are sometimes partly arbitrary normalisation
+choices, so future work must distinguish harmless unit changes from substantive
+incentive exchange rates.]
+
+=== Unit-weight additive model
+
+The narrow conservation slogan is the unit-weight illustration of the
+exchange-rate result. Take $k$ gaming channels and, in the base case, true
+quality $Q = 0$ for everyone (pure gaming). An agent allocates effort
+$a = (a_1, dots, a_k) >= 0$; channel $j$ costs $a_j^2 slash (2 kappa_j)$ and
+produces hidden harm $H_j = a_j$ (all gaming equally wasteful,
+$H = sum_j a_j$). The principal *measures* a set
 $M subset.eq {1, dots, k}$ and scores additively, $"score" = sum_(j in M) a_j$
-(unit weights for now); selection (worth $V$) iff $"score" >= t$. An agent never
-games an unmeasured channel.
+(unit weights); selection (worth $V$) iff $"score" >= t$. An agent never games
+an unmeasured channel.
 
 The agent's problem is $min_(a_j >= 0, j in M) sum_(j in M) a_j^2 slash (2 kappa_j)$
 subject to $sum_(j in M) a_j >= t$, then game iff that minimum cost is $<= V$.
@@ -671,58 +746,46 @@ population. The selection-regime $sqrt(d)$-type scaling from Chapter 2 and these
 intervention-regime flat/linear behaviours are *different phenomena* and should
 not be conflated. See @fig:additive-vs-conjunctive.]
 
-#remark[Scope, made explicit. The additive claims above assume (1) unit-weight
-additive aggregation, (2) all gaming equally wasteful per unit score, (3) a
-fixed pure-gaming target deficit, and (4) the binding-constraint deterministic
-regime. Relax (2) — let channel $j$ also contribute $gamma_j in [0, 1]$ to the
-true goal, so $H = sum_j (1 - gamma_j) a_j$ — and then $H = sum_(j in M)(1 - gamma_j) t kappa_j slash K_M$,
-which the principal *can* shrink by steering effort onto high-$gamma$ channels
-(measure the ones where "gaming" is half-real). So conservation is exactly the
-equally-wasteful idealisation; in practice the principal's job is partly to pick
-proxies whose cheapest inflation is also partially the real thing. Relax (3)
-with quality heterogeneity and endogenous participation: aggregate population
-harm rises with $K_M$ because more agents enter the gaming band. Relax (4) with
-proxy noise: agents overshoot for a safety margin, so per-gamer $H$ rises
-slightly above the deterministic deficit, but the re-routing logic still
-applies. The clean additive/conjunctive dichotomy is the two extremes; real
-metrics live on the interpolation, and *where* on it is itself a design choice
-with predictable consequences.]
+#remark[Scope, made explicit. The additive claims assume linear score
+aggregation and quadratic separable gaming costs. The unit-weight conservation
+illustration further assumes equal harm per score unit, a fixed pure-gaming
+target deficit, and the binding-constraint deterministic regime. Relax equal
+harm — let channel $j$ also contribute $gamma_j in [0, 1]$ to the true goal, so
+$H = sum_j (1 - gamma_j) a_j$ — and the principal can shrink harm by steering
+effort onto high-$gamma$ channels. Relax fixed participation with quality
+heterogeneity, and aggregate population harm rises with $K_M$ because more
+agents enter the gaming band. Real scorecards are often nonlinear within each
+KPI — saturating, threshold-clipped, rubric-scored, or capped — so the linear
+additive model is not innocuous. Its value is that it isolates the exchange-rate
+condition under which conservation is real rather than an artefact of units.]
 
-=== The exchange-rate condition
+== A convex-cost intervention bound? <sec:convex-cost-conjecture>
 
-The conservation claim above is the unit-weight special case of something
-sharper. Let the score be $sum_(j in M) w_j a_j$, costs $sum_j a_j^2 slash (2 kappa_j)$,
-and hidden harm $H = sum_j h_j a_j$. The cost-minimal allocation for a score
-deficit $d$ is $a_j = d kappa_j w_j slash W_M$ with $W_M = sum_(i in M) kappa_i w_i^2$,
-and its harm is
+The selection-channel bound says that hidden drift is controlled by a
+chi-square/reweighting budget $delta$. The intervention examples say that, once
+agents can move in state space, the analogous budget has to come from the
+agents' cost geometry. In the quadratic one-dimensional model that budget is
+$Delta = sqrt(2 kappa V)$.
 
-$ H_M (d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). $
+#claim[*Conjecture.* Let an agent choose an intervention $a$ at convex cost
+$c(a)$ in order to gain value at most $V$ from selection, and let hidden harm be
+bounded by a linear functional $ell(a)$. Then the intervention analogue of the
+selection budget should be governed by the convex conjugate $c^*(lambda ell)$:
+schematically, stakes $V$ buy a feasible displacement set whose support function
+is controlled by Fenchel duality, not by any divergence from $mu_0$.]
 
-This is *not* invariant in $M$. (Two equally easy channels, $kappa_1 = kappa_2 = 1$,
-equal physical harm $h_1 = h_2 = 1$: measuring only channel 1 with $w_1 = 2$
-gives $H = d slash 2$; measuring only channel 2 with $w_2 = 1$ gives $H = d$;
-measuring both gives $H = 3 d slash 5$.) Re-routing can raise *or* lower harm,
-depending on the score weights. @fig:exchange-rate-condition records the
-numbers.
+The proof sketch is the standard Fenchel move. For any multiplier $lambda > 0$,
 
-#claim[*Conservation, correctly stated.* For a fixed score deficit $d$, quadratic
-separable costs, and additive score $sum w_j a_j$, per-agent harm is conserved
-under re-routing *if and only if* social harm is proportional to score
-contribution on every available channel — $h_j = c w_j$ on the active measured
-set. Then $H_M (d) = c d$, independent of $M$; otherwise $H_M (d)$ depends on
-$M$ through the cost-weighted average above. _Toy example:_ if every point of
-score inflation is equally socially wasteful no matter which KPI supplies it,
-re-routing conserves harm; if grant-padding produces less waste per score point
-than citation-padding, moving weight toward grant-padding genuinely reduces harm.]
+$ ell(a) = (1 slash lambda) dot lambda ell(a)
+  <= (1 slash lambda) dot (c(a) + c^*(lambda ell)). $
 
-#remark[This is the same structure as cost-benefit-weighted strategic
-classification @hardt2016strategic, and as isoquant choice in production theory: agents pick the
-cheapest input bundle for a target output, while social damage is a *different*
-linear functional of the bundle. Conservation appears only when target output
-and social damage use the same exchange rates. One residual worry for later:
-real score weights are sometimes partly arbitrary normalisation choices, so
-future work must distinguish harmless unit changes from substantive incentive
-exchange rates.]
+If the agent only takes actions with cost at most the selection value $V$, this
+gives $ell(a) <= (V + c^*(lambda ell)) slash lambda$, then optimises over
+$lambda$. For quadratic cost this recovers a square-root scale, matching the
+$sqrt(2 kappa V)$ wedge above. This is not yet a theorem at the level of the
+selection-channel bound: the exact statement must specify the action space, the
+harm functional, stochastic policies, participation, and how selection value
+constrains realised cost. Appendix A keeps those variants open.
 
 == What we have, and what is open <sec:openq>
 
@@ -778,7 +841,8 @@ there an intervention analogue that factors through the agents' cost geometry �
 a "gaming budget" — rather than through any divergence from $mu_0$? The
 quadratic case gives $Delta = sqrt(2 kappa V)$. Conjecture: a version holds for
 general convex gaming costs, with the bound governed by the convex conjugate of
-the cost. Not yet stated or proved.]
+the cost. Section @sec:convex-cost-conjecture states the conjecture and the
+Fenchel sketch; the exact theorem is still open.]
 
 #wip[*The exact selection-class condition.* Agents who can only toggle their own
 inclusion stay inside the selection class; agents who can move $(P, H)$ at fixed
