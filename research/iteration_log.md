@@ -58,4 +58,4 @@ What's open now: adaptive-hardening dynamics and convergence (Q14); the regulato
 
 Red flags fired: none triggered the adversarial sub-protocol (all claims `[tentative]`; iteration 5 not a multiple of 3). Logged a watch item; iteration 6 is a scheduled adversarial-pass iteration and should attack the conservation-under-re-routing claim.
 
-Commit: (recorded in a follow-up bookkeeping commit).
+Commit: `40ed0b9` (`Add multidimensional gaming iteration`).
