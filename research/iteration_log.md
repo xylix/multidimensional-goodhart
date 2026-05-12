@@ -47,3 +47,15 @@ What's open now: a general intervention-channel bound for convex (non-quadratic)
 Red flags fired: none triggered the adversarial sub-protocol (no `[confident]` claims; iteration 4 is not a multiple of 3). Logged one watch item in `red_flags.md`: the selection-channel bound is elementary — don't over-sell the inequality; the contrast is the content. Next scheduled adversarial pass: iteration 6.
 
 Commit: `406c75c` (`Add intervention-vs-selection response iteration`).
+
+## Iteration 5
+
+Question tackled: open question 13 — multidimensional gaming. Does adding a measured proxy dimension redistribute, conserve, shrink, or grow gaming harm in the intervention regime? Rejoins the dimensional thread.
+
+What changed: built a multidimensional Stackelberg gaming toy — `k` channels, channel `j` costs `a_j^2/(2 kappa_j)` and yields harm `H_j = a_j`, regulator measures set `M` and aggregates. **Additive/compensatory metric**: cost-minimal allocation is water-filling `a_j = t kappa_j / K_M` (`K_M = sum_{j in M} kappa_j`); gaming occurs iff `K_M >= t^2/(2V)`; total harm `H = t`, invariant to `M` — closing a gamed channel only re-routes the fixed total; expanding `M` raises `K_M`, lowers the cheapest gaming cost, recruits more gamers (backfire). **Conjunctive metric**: `H = t|M|`, linear in measured dimensions. So dimensional dependence of gaming harm is governed by the aggregation rule, not dimension count. Scope: assumes equally-wasteful gaming; with goal-aligned channels (`gamma_j > 0`) the regulator *can* shrink harm by steering effort onto high-`gamma` channels. Added Iteration-5 sections to `threads/intervention_response.md` and a cross-ref in `threads/dimensional_dependence.md`; updated `formalization.md`, `open_questions.md` (Q14-16), `negative_results.md` (two entries: re-routing doesn't reduce harm; "more dims" has no sign without fixing aggregation), `red_flags.md` (watch item).
+
+What's open now: adaptive-hardening dynamics and convergence (Q14); the regulator's measurement frontier between informativeness and attack-surface size (Q15); sub/supermodularity of `H(M)` for mixed aggregation (Q16); unequal-weight additive metrics interpolating the additive/conjunctive extremes.
+
+Red flags fired: none triggered the adversarial sub-protocol (all claims `[tentative]`; iteration 5 not a multiple of 3). Logged a watch item; iteration 6 is a scheduled adversarial-pass iteration and should attack the conservation-under-re-routing claim.
+
+Commit: (recorded in a follow-up bookkeeping commit).

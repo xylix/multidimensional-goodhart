@@ -113,3 +113,75 @@ Every agent games a little, `a*(Q) > 0` for all `Q`, peaking near `Q ≈ t - a*`
 Claim [tentative]: the right top-level object is a *response channel* `R: Theta -> P(S)`. It splits into **selection channels** (`mu_theta << mu_0`; all of iterations 1-3 live here; hidden drift `<= delta · ||s||_2`, every term a baseline functional) and **intervention channels** (`mu_theta` can be singular w.r.t. `mu_0`; no baseline bound; the drift bound, if any, comes from an agent cost model — e.g. `Delta = sqrt(2 kappa V)` in the quadratic-gaming case). The selection/intervention boundary is sharp: it is non-trivial exactly when agents can move in state space rather than only choose their own inclusion. Causal Goodhart = intervention channel that breaks `P ≈ phi(G)` structurally; adversarial Goodhart = intervention channel where `pi` is chosen worst-case for the regulator. Toy example: which students to admit from a pool = selection channel; announcing the admissions formula and watching applicant behavior change = intervention channel, with gaming intensity set by test-prep economics, not by last year's score distribution.
 
 Counterexample attempt: if essentially all real Goodhart is intervention (everything adapts), the selection layer is a toy and the `delta · ||s||_2` bound is rarely the binding constraint. Rebuttal: regressional and extremal Goodhart are genuine selection effects (cross-validation overfitting, order-statistic inflation) and occur even against non-adaptive nature; the selection layer is not empty. But the framework should not present the bounded selection regime as the typical case — the unbounded intervention regime is where the "deep Goodhart" story has teeth, and it requires the extra agent-model structure to say anything quantitative.
+
+## Iteration 5: multidimensional gaming — is balloon-squeezing real, and does adding a measured dimension help?
+
+This rejoins the dimensional thread (`threads/dimensional_dependence.md`) inside the intervention regime, which iteration 4 argued is the regime with teeth. Open question 13.
+
+### 1. Constraints on definitions
+
+The notation must let the agent split gaming effort across several proxy channels with channel-specific costs, let the regulator choose *which* channels it measures (the multidimensional analogue of "add a KPI"), and let the metric aggregate measured channels. It must not bake in a particular aggregation rule — the result will turn out to depend critically on additive vs. conjunctive aggregation, so that choice has to be a visible parameter, not a hidden default.
+
+### 2. Motivation
+
+The motivating "deep Goodhart" story: a regulator fights scalar Goodhart by adding proxy dimensions, and error/harm redistributes rather than disappearing. Iterations 1-3 examined this for *selection*; iteration 4 said selection is the bounded, well-behaved regime. The sharp test is in the *intervention* regime: when agents game, does adding a measured dimension redistribute harm, conserve it, shrink it, or grow it? Open questions 2 (conservation Goodhart) and 13.
+
+### 3. Current pondering
+
+Iteration 4's single-channel gaming toy: agent pays `a^2/(2 kappa)` to inflate `P` by `a`, gets `V` if selected, harm `H = a`, equilibrium gaming wedge `Delta = sqrt(2 kappa V)`. The natural multidimensional lift: `k` channels, agent allocates effort, regulator measures a subset `M` and scores by aggregating it.
+
+### 4. Plausible approaches
+
+- Additive metric, quadratic per-channel costs, deterministic. Solve the agent's cost-minimal allocation by Lagrange multipliers; read off total harm and its dependence on `M`. Cheap, likely closed form.
+- Same with a `min`/conjunctive metric. Compare.
+- Same with channels that partially serve the true goal (gaming efficiency split into wasteful and useful parts).
+- Dynamic: regulator closes a gamed channel each period, agent re-routes. Convergence?
+
+### 5. Approaches not yet considered
+
+- Regulator's *own* optimization: it must measure enough real signal to do its job, but every gameable channel it watches enlarges the attack surface. There may be a real frontier between "measures enough to be informative" and "measures so much it invites gaming". Not solved here; flagged.
+- Submodular/supermodular structure of harm in the measured set `M`.
+
+### 6. Counterexample first
+
+A counterexample to "balloon-squeezing is real" would be a model where re-routing which channels are measured strictly *reduces* total gaming harm — e.g. if measured channels differ in how wasteful gaming them is, steering effort onto a low-waste channel cuts `H`. So I expect conservation to hold only when all gaming is equally wasteful; the model should make that assumption explicit and then I should immediately relax it and watch conservation break. A counterexample to "adding a dimension can backfire" would be a conjunctive metric, where a new measured dimension is one more thing the agent is forced to satisfy — that should make harm grow, not shrink and not stay constant. So the headline can't be unconditional in either direction; it has to be indexed by aggregation rule and by gaming-wastefulness.
+
+### 7. Outward pointers
+
+Strategic classification with multiple manipulable features (Hardt et al.); "what gets measured gets gamed" / Campbell's law; balloon analogy in conservation Goodhart (AGENT.md open question 2); water-filling / equalizing-marginal-cost allocations (the Lagrange solution below is a water-filling allocation); KPI-stuffing and "surrogation" in management accounting.
+
+### Toy model: additive metric, quadratic channel costs
+
+`k` gaming channels. Agent (take true quality `Q = 0` for everyone in the base case — pure gaming) allocates effort `a = (a_1, ..., a_k) >= 0`. Gaming channel `j` costs `a_j^2 / (2 kappa_j)` and produces hidden harm `H_j = a_j` (all gaming equally wasteful: `H = sum_j a_j`). The regulator measures a set `M subseteq {1,...,k}` and scores additively: `score = sum_{j in M} a_j` (unit weights for cleanliness). Selection (worth `V`) iff `score >= t`. The agent never games an unmeasured channel (it costs and buys no score), so effectively `a_j = 0` for `j notin M`.
+
+Agent's problem: `min_{a_j >= 0, j in M} sum_{j in M} a_j^2 / (2 kappa_j)` s.t. `sum_{j in M} a_j >= t`, then game iff the min cost is `<= V`.
+
+Lagrange: at the optimum the constraint binds and `a_j / kappa_j = lambda` for all `j in M`, so `a_j = lambda kappa_j` and `lambda sum_{j in M} kappa_j = t`, giving
+
+`lambda = t / K_M`, `K_M := sum_{j in M} kappa_j`,  `a_j = t kappa_j / K_M`.
+
+Minimal cost: `sum_{j in M} (lambda kappa_j)^2 / (2 kappa_j) = (lambda^2 / 2) K_M = t^2 / (2 K_M)`.
+
+So **gaming occurs iff `K_M >= t^2 / (2V)`** (call the RHS `K_min`), and **when it occurs, total hidden harm is `H = sum_{j in M} a_j = lambda K_M = t` — independent of `M`.** What `M` controls is (i) *whether* `K_M` clears `K_min`, and (ii) *how* the fixed total harm `t` is split: proportional to `kappa_j` across the measured channels.
+
+Claim [tentative] (conservation under re-routing): with an additive metric and equally-wasteful gaming, the regulator cannot reduce total gaming harm by changing *which* channels it measures, as long as the measured set retains enough aggregate gaming capacity (`K_M >= K_min`); the harm is pinned at `H = t` and merely re-routes. Closing a gamed channel just spreads `t` over the others. Toy example: a hospital ranked on readmission rates clamps down on coding of "readmission" — the gaming reappears as patient-selection, discharge timing, observation-status reclassification; the total distortion needed to clear the rank cutoff is unchanged.
+
+Claim [tentative] (adding a gameable measured dimension backfires): expanding `M` strictly increases `K_M`, which lowers the gaming cost `t^2 / (2 K_M)`, which (weakly) *enlarges* the population that finds gaming worthwhile. With quality heterogeneity `Q ~ N(0, sigma^2)` (agent needs `score >= t - Q`, cost `(t-Q)^2 / (2 K_M)`, games iff `t - Q <= sqrt(2 K_M V)`), the gaming-eligibility cutoff is `Q >= t - sqrt(2 K_M V)`, which moves *down* as `K_M` grows — more agents game, and the fraction of selected agents who are pure gamers rises. Toy example: a university worried that "publication count" is gamed adds "grant income" and "media mentions" to the scorecard; each is independently inflatable, so the cheapest path to any target score is now cheaper, and more faculty shift from research to portfolio-padding.
+
+Claim [tentative] (the only effective levers are aggregate): in this model the regulator reduces gaming harm only by (a) shrinking aggregate gaming capacity `K_M` below `K_min` — i.e. *narrowing* the measured set to channels that are individually hard to game (small `kappa_j`), or hardening channels (lowering `kappa_j`); (b) raising the bar `t` (but this raises `K_min` too — net effect on the `K_M >= t^2/(2V)` test depends on whether real signal scales with `t`); (c) cutting the prize `V`; or (d) abandoning additive aggregation (next subsection). Shuffling attention between channels of equal hardness does nothing. Toy example: anti-cheating in exams works by making the exam itself hard to game (proctoring, item rotation), not by adding more graded components.
+
+Counterexample attempt / scope: every claim above assumes (1) additive aggregation, (2) all gaming equally wasteful (`H_j = a_j`), (3) the binding-constraint deterministic regime. Relax (2): let channel `j` also contribute `gamma_j in [0,1]` to the true goal, so `H = sum_j (1 - gamma_j) a_j`. Then `H = sum_{j in M} (1 - gamma_j) t kappa_j / K_M`, which the regulator *can* shrink by steering effort onto high-`gamma` channels (measure the ones where "gaming" is half-real). So conservation is exactly the equally-wasteful idealization; in reality the regulator's job is partly to choose proxies where the cheapest way to inflate them is also partially the real thing. Relax (3) by adding proxy noise: agents overshoot for a safety margin, so `H` rises slightly above `t`, but the re-routing invariance and the backfire direction are unchanged. Relax (1): see below — it flips.
+
+### Conjunctive metric flips the sign
+
+Suppose instead `score`-passing requires `a_j >= t` for every `j in M` (the regulator demands the agent be good on *all* measured dimensions — a `min`-style or all-of-the-above rule). Then the cost-minimal way to pass is `a_j = t` for all `j in M`, cost `sum_{j in M} t^2 / (2 kappa_j)`, and total harm `H = sum_{j in M} t = t |M|`. Now harm grows *linearly in the number of measured dimensions*, and adding a dimension unambiguously increases gaming harm (and gaming cost, so fewer agents clear it — a genuine tradeoff: harm-per-gamer up, gamer-count down).
+
+Claim [tentative]: gaming harm's dependence on the number of measured proxy dimensions is governed by the aggregation rule — compensatory/additive metrics *conserve* total gaming harm (`H = t`, re-routing only), conjunctive/`min` metrics *multiply* it (`H = t|M|`). Real-world scorecards are overwhelmingly compensatory (weighted sums of KPIs), which is the regime where "just add another metric" neither helps nor visibly redistributes — it backfires by cheapening the cheapest gaming path. Toy example: a compensatory teacher-evaluation rubric (test scores + observations + surveys, weighted-summed) lets a teacher trade a bad classroom observation against great test scores, so effort flows to whichever component is cheapest to inflate; a conjunctive rubric (must clear a bar on *each*) forces gaming of every component, multiplying the distortion but also failing more teachers.
+
+Counterexample attempt: the conjunctive case as stated ignores that a regulator using a hard `min` over many noisy components will fail almost everyone by chance — in practice "conjunctive" metrics have slack, putting them somewhere between the two regimes. And a weighted-sum metric with very unequal weights behaves locally like a single-channel metric on the heavy-weight component (the agent games only that one until its marginal cost rises) — so "additive" isn't monolithic either; the conservation result used equal weights, and unequal weights make `H` depend on the weight vector. So the clean dichotomy is the two extremes; real metrics live on the interpolation, and *where* on it is itself a regulator design choice with predictable consequences.
+
+### Immediate takeaway
+
+Claim [tentative]: in the intervention regime, "fight Goodhart by measuring more dimensions" has a precise predicted failure mode that depends on aggregation. Under the realistic compensatory/additive rule, total gaming harm is conserved (`H = t`) and merely re-routes when a gamed channel is closed; adding a new gameable measured channel *lowers* the cheapest gaming cost and so recruits more gamers — a backfire, not a redistribution-with-growth and not a help. The regulator's only real levers are aggregate (shrink total gaming capacity, harden channels, raise the bar relative to real signal, cut the prize) or structural (pick proxies whose cheapest inflation is partly real; or go conjunctive and accept that harm now scales with the number of bars). This is the multidimensional, intervention-regime form of conservation Goodhart (AGENT.md open question 2). Toy example: the durable lesson from metric-gaming case studies (hospital league tables, school accountability, citation metrics, sales quotas) is that closing one gaming route reroutes effort to the next-cheapest one at roughly constant total distortion, and that bolting on extra KPIs tends to make things worse, not better — consistent with the additive-metric prediction here.
+
+Counterexample attempt: the model has no dynamics and no regulator learning — a regulator who *adaptively* hardens whichever channel is currently most-gamed is driving `kappa_j -> 0` on the active channels, which in the limit does push `K_M` below `K_min` and stops gaming. So the pessimistic reading ("can't win by re-routing") is a static statement; an adaptive hardening loop can win, slowly, by attrition of gaming capacity rather than by clever choice of what to measure. That dynamic version (open question, below) is the natural iteration-6+ target.
