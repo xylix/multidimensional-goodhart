@@ -70,4 +70,4 @@ What's open now: population-vs-per-agent welfare object for gaming harm (Q17); g
 
 Red flags fired: scheduled adversarial pass did fire and found a real overstatement. Claim repaired and downgraded in scope; no `[confident]` claims added.
 
-Commit: `fc39be0` (`Run adversarial pass on conservation claim`).
+Commit: `0e2b166` (`Run adversarial pass on conservation claim`).
