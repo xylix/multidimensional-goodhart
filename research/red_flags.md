@@ -61,3 +61,13 @@ Trigger: red-flag pattern fired. The conclusion is rhetorically convenient for t
 Adversarial pass: not clear as a generic claim. Selection does not optimize hidden drift; it follows baseline tail response. Quadratic intervention selects `a^* = d C w/(w^T C w)`, which is cost-minimal but can be dense. Sparse attraction appears in fixed-charge or linear-cost models, but that is a property of the cost geometry, not a universal property of Goodhart pressure.
 
 Repair: state the surviving claim as a response-geometry attractor. Minimum-complexity attraction is licensed only after specifying a complexity functional and a response mechanism that favors it. Action: do not promote Appendix G's recursive cartoon into a theorem without a later review/edit iteration and a pre-specified complexity measure.
+
+## Iteration 8: Q18 review repaired a low-information narrowing
+
+Claim reviewed: the repair "minimum-complexity attractor -> response-geometry attractor."
+
+Trigger: review iteration following the Iteration 7 `needs-adversarial-review` flag.
+
+Review result: the repair is epistemically safer but can become too broad to inform the reader. "Response geometry" says the response process determines the drift, but by itself it does not say whether the drift should be sparse, dense, low-rank, high-entropy, low-description-length, or goal-improving.
+
+Repair: keep "response-geometry attractor" only as the top-level container. Preserve information by naming geometry-to-shape predictions: quadratic cost predicts dense cost-minimal drift along `C w`; fixed activation or linear costs predict sparse one-channel drift absent caps; low-rank action maps predict spectrally concentrated drift; simplicity-biased search priors predict low-description-length drift. Action: future draft prose should use these sharper conditional subclaims rather than the generic umbrella alone.

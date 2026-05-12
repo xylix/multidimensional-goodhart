@@ -81,3 +81,13 @@ What changed: added `research/threads/minimum_complexity_attractor.md` as a `gen
 What's open now: choose a pre-specified complexity functional (support, rank/spectral concentration, description length, KL from max-entropy prior) and test which response geometries align with it; separate private cost, search accessibility, and semantic simplicity; decide whether Appendix G should get a later review/edit iteration before any stronger draft claim.
 
 Red flags fired: yes. The broad Q18 claim was rhetorically convenient and equivocated between cheap, simple, sparse, low-rank, and low-description-length. Logged as `needs-adversarial-review`; repaired to a conditional response-geometry attractor claim.
+
+## Iteration 8
+
+Question tackled: review of recursive Goodhart / Q18 claim license after Iteration 7.
+
+What changed: created `research/reviews/recursive_goodhart_q18.md` and `research/claim_audits.md`. The review found that the PDF already handles Appendix G cautiously, but the generic repair "response-geometry attractor" is too low-information unless paired with specific response-shape predictions. The audit now distinguishes dense quadratic-cost drift, sparse fixed-charge/linear-cost drift, low-rank affordance drift, and low-description-length search-prior drift.
+
+What's open now: a future generate/simulation iteration should pick one pre-specified complexity or shape measure and compare response geometries under that measure. A later edit iteration could tighten `draft.md`'s "complexity" language if that draft is still active.
+
+Red flags fired: yes, but as a repair to an existing red flag rather than a new theorem. Logged that "response-geometry attractor" is safe but too broad unless it preserves geometry-to-shape predictions.
