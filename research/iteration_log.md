@@ -46,4 +46,4 @@ What's open now: a general intervention-channel bound for convex (non-quadratic)
 
 Red flags fired: none triggered the adversarial sub-protocol (no `[confident]` claims; iteration 4 is not a multiple of 3). Logged one watch item in `red_flags.md`: the selection-channel bound is elementary — don't over-sell the inequality; the contrast is the content. Next scheduled adversarial pass: iteration 6.
 
-Commit: (recorded in a follow-up bookkeeping commit).
+Commit: `406c75c` (`Add intervention-vs-selection response iteration`).
