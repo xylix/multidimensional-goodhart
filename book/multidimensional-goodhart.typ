@@ -6,7 +6,7 @@
 // rewrite of the research-journal content; the journal's iteration history
 // is preserved in remarks/footnotes rather than in the main text.
 
-#set document(title: "Multidimensional Goodhart", author: "Kerkko Pelttari")
+#set document(title: "Multidimensional Goodhart", author: "Kerkko 'Xylix' Pelttari")
 #set page(numbering: "1", margin: (x: 1.4in, y: 1.2in))
 #set par(justify: true, leading: 0.62em)
 #set text(size: 11pt, font: "New Computer Modern")
@@ -74,15 +74,30 @@ the goals of a person, a team, a company, a state, or a trained model — are
 *multidimensional*, and the proxies we use to steer toward them are
 multidimensional too, usually with a different (and smaller) set of dimensions.
 Once that is taken seriously, "the regularity collapses" is replaced by a more
-precise and more useful claim: as you add structure to a proxy in order to
-control for Goodhart in the dimensions you can see, the residual error does not
-vanish. It moves — into dimensions you cannot see, or into a form (strategic,
-adversarial, harder to summarise) that the tools that controlled the original
-error do not reach.
+precise and more useful question: *how does pressure on a proxy reshape the
+distribution of its residual error?*
 
-This is not, by itself, a theorem; it is a research programme. The job of these
-first chapters is to build the vocabulary precisely enough that the programme's
-sub-claims become statable, and to prove the ones that are currently provable.
+The answer depends on the channel. In a *selection* regime, the policy reweights
+a fixed baseline distribution; hidden drift is governed by the baseline response
+of hidden coordinates to the selected proxy, and dimensionality matters only
+through coupling and variance structure. In an *intervention* regime, agents
+respond; probability mass moves to states the baseline did not contain, and the
+drift is governed by cost geometry, stakes, and available gaming channels. A
+broader recursive-Goodhart hypothesis is that repeated proxy refinement often
+pushes the remaining error into dimensions that are less legible to the
+evaluator. This book treats that as a hypothesis suggested by the framework, not
+as a theorem of the framework.
+
+So there are three layers to keep separate. First, the formal chapters prove or
+derive toy results about selection response, baseline drift bounds,
+intervention channels, and multidimensional gaming. Second, those models imply
+conditional design lessons: additive scorecards, conjunctive scorecards, and
+different harm-per-score exchange rates behave differently. Third, the
+recursive story — that residual error may migrate into less-monitored or
+harder-to-elicit dimensions as the proxy stack is patched — is an empirical
+conjecture. The job of these first chapters is to make all three layers
+statable without pretending they have the same epistemic status.
+
 The starting point is the variant taxonomy of Manheim and Garrabrant
 @manheim2018categorizing — regressional, extremal, causal, and adversarial
 Goodhart — and Wentworth's geometric reconstruction of the regressional case
@@ -118,6 +133,7 @@ Two things follow, and they recur throughout the book:
   contains error in dimensions the human's $G$ has no coordinate for. Call it
   incomputable noise: not noise the human is failing to measure well, but noise
   the human's objective cannot be _compared against at all_.
+#wip[The claim should be relaxed a bit - I think the intuition here is that to constrain an agent with more complicated Goal dimensions / behavioural dimensions than the humans, we need to do some kind of dimensional reduction or addition in one direction.]
 
 + Whether the multi-layer correction process converges depends on whether the
   layers' perception errors are roughly independent. If each layer's residual is
@@ -197,6 +213,14 @@ had none; causal and adversarial Goodhart live here; no baseline bound exists,
 and any bound must be imported from a model of what the responding agents can
 afford to do). Chapters 2 and 3 are those two halves.
 
+The appendices are organised the same way. Appendices C--F are visual aids for
+claims made in the formal chapters: selection response, dimensional coupling,
+selection versus intervention, additive versus conjunctive gaming, and the
+exchange-rate condition for conservation. Appendix G is deliberately different:
+it is a speculative cartoon of the recursive-Goodhart intuition. Its purpose is
+to say what the framework might help test, not to smuggle an additional theorem
+into the paper.
+
 // =============================================================================
 = Selection channels: when the principal only re-selects
 // =============================================================================
@@ -258,6 +282,10 @@ per-dimension coupling model, threshold selection induces hidden drift whose
 *dimensional* scaling only after a substantive assumption about how $norm(r)_2$
 grows with $d$.]
 
+Appendix C visualises both parts of this claim: threshold selection moves hidden
+coordinates only through their response to the proxy, and dimensional scaling
+appears only when adding dimensions also adds coupling.
+
 #remark[Two negative results worth recording, because they kill the obvious
 shortcuts. (i) If hidden dimensions are independent of the proxy, thresholding
 leaves the hidden distribution unchanged — more hidden dimensions alone do
@@ -306,7 +334,8 @@ whenever the conditional expectation exists. This describes the actual
 displacement caused by selection at pressure level $t$, with no linearity
 assumption. In the Gaussian scalar model it reduces to what we already have:
 $b_H(t) = sigma_1 lambda(t / sigma_1) r$, so $r$ is a sufficient statistic for
-*all* threshold responses in that restricted model — but only there.
+*all* threshold responses in that restricted model — but only there. See
+@fig:selection-thresholds for the corresponding three-case picture.
 
 #remark[$b_H(t)$ is a *threshold-selection* primitive, not the final one. It
 says nothing about smoother optimisation policies — funding everyone above a
@@ -414,7 +443,8 @@ keeps probability zero. Causal and adversarial Goodhart violate exactly this.
 Announcing a metric changes how agents behave; probability mass appears in parts
 of state space the baseline never visited. Teaching to the test, metric-specific
 optimisation, outright fabrication — none of these are reweightings of last
-year's population. They *transport* mass to new places.
+year's population. They *transport* mass to new places. Appendix D draws this
+reweighting-versus-transport distinction.
 
 #claim[*The sharp boundary.* The selection/intervention distinction is
 substantive exactly when agents can *move in state space* — change their
@@ -556,7 +586,8 @@ fighting scalar Goodhart, *adds proxy dimensions*. When agents game, does adding
 a measured dimension redistribute harm, conserve it, shrink it, or grow it? The
 answer depends critically — and instructively — on how the metric *aggregates*
 its dimensions, so the aggregation rule must be a visible parameter, not a hidden
-default.
+default. Appendices E and F give the geometric picture for the additive,
+conjunctive, and exchange-rate cases.
 
 === The additive model
 
@@ -581,6 +612,8 @@ and when it occurs, the per-agent hidden harm for this fixed pure-gaming target
 is $H = sum_(j in M) a_j = lambda K_M = t$ — *independent of $M$*. What $M$
 controls is (i) *whether* $K_M$ clears $K_"min"$, and (ii) *how* the fixed harm
 $t$ is split across the measured channels — proportional to $kappa_j$.
+@fig:additive-substitution shows the same water-filling geometry in effort
+space.
 
 #claim[*Conservation under re-routing (narrow form).* With a unit-weight
 additive metric and gaming that is equally wasteful per unit of score, the
@@ -636,7 +669,7 @@ per-gamer harm ($H = t abs(M)$). Real scorecards are usually compensatory
 backfire by cheapening the cheapest gaming path and expanding the gaming
 population. The selection-regime $sqrt(d)$-type scaling from Chapter 2 and these
 intervention-regime flat/linear behaviours are *different phenomena* and should
-not be conflated.]
+not be conflated. See @fig:additive-vs-conjunctive.]
 
 #remark[Scope, made explicit. The additive claims above assume (1) unit-weight
 additive aggregation, (2) all gaming equally wasteful per unit score, (3) a
@@ -669,7 +702,8 @@ This is *not* invariant in $M$. (Two equally easy channels, $kappa_1 = kappa_2 =
 equal physical harm $h_1 = h_2 = 1$: measuring only channel 1 with $w_1 = 2$
 gives $H = d slash 2$; measuring only channel 2 with $w_2 = 1$ gives $H = d$;
 measuring both gives $H = 3 d slash 5$.) Re-routing can raise *or* lower harm,
-depending on the score weights.
+depending on the score weights. @fig:exchange-rate-condition records the
+numbers.
 
 #claim[*Conservation, correctly stated.* For a fixed score deficit $d$, quadratic
 separable costs, and additive score $sum w_j a_j$, per-agent harm is conserved
@@ -711,12 +745,23 @@ to real signal, cut the prize) or structural (pick low-harm-per-score proxies
 whose cheapest inflation is partly real; change weights; or go conjunctive and
 accept harm scaling with the number of bars).
 
-Two appendices catalogue what is not yet settled. Appendix A lists the questions
+That is the strong claim. The weaker, broader conjecture is recursive: in many
+real systems, once the visible failures are patched, the residual error that
+remains will be concentrated in dimensions that are less legible, less
+represented in the training or evaluation signal, or cheaper for agents to
+exploit. The chapters above do not prove that conjecture. They say what one
+would have to measure to make it precise: the baseline response curve, the
+coupling norm, the cost geometry, the aggregation rule, the gaming capacity, and
+the score-to-harm exchange rates.
+
+The appendices serve two different roles. Appendix A lists the questions
 *currently being worked on* — they have partial answers in toy models, but not
 yet at the level of polish the chapters above aim for. Appendix B lists
 questions that *surfaced during this work and are deliberately parked* — worth
 recording so they are not rediscovered from scratch, but not on the critical
-path.
+path. Appendices C--F are visual aids for the formal chapters. Appendix G is a
+speculative cartoon of the recursive hypothesis, explicitly not a conclusion of
+the formal results.
 
 // =============================================================================
 = Appendix A — Currently in progress
@@ -830,5 +875,166 @@ partial hypotheses (in the style of infra-Bayesianism) recover any handle on
 this? And: is there any reason to expect a more capable system to have *fewer*
 goal dimensions than a human, rather than more? Both are wide open and somewhat
 speculative.]
+
+// =============================================================================
+= Visual appendices
+// =============================================================================
+
+The following appendices are visual rather than foundational. Appendices C--F
+illustrate claims made in the formal chapters: selection drift depends on
+baseline response curves, dimensional scaling requires coupling assumptions,
+intervention channels transport mass rather than reweight it, and adding
+measured dimensions changes gaming through aggregation and cost geometry.
+Appendix G is different: it sketches a broader recursive-Goodhart hypothesis
+motivated by the framework but not proved by it. The formal chapters do not show
+that residual error generically becomes more dimensional under repeated proxy
+refinement; they show which quantities would have to be measured for such a
+claim to become precise.
+
+// =============================================================================
+= Appendix C — Selection drift is coupling-dependent, not dimension-dependent
+// =============================================================================
+
+The selection results in Chapter 2 are deliberately conditional. A proxy
+threshold moves hidden coordinates through the baseline response curve
+$b_H(t) = EE[H mid(|) P >= t] - EE[H]$. In the Gaussian-linear model,
+covariance ratios summarize this curve. Outside that model, covariance is only a
+local linear summary and can miss the tail response that selection actually
+uses.
+
+#figure(
+  image("figures/appendix-c-selection-thresholds.pdf", width: 100%),
+  caption: [
+    Selection only moves hidden dimensions through the baseline response curve.
+    In the Gaussian-linear case, covariance summarizes this response. Outside
+    that case, covariance can vanish while threshold response remains large. The
+    right primitive is not baseline covariance but the selection response
+    $EE[H mid(|) P >= t] - EE[H]$.
+  ],
+) <fig:selection-thresholds>
+
+The same point controls dimension. More hidden dimensions do not automatically
+create more drift. Dimensional growth appears only when adding dimensions also
+adds coupling to the selected proxy.
+
+#figure(
+  image("figures/appendix-c-dimensional-scaling.pdf", width: 72%),
+  caption: [
+    More hidden dimensions do not automatically imply more Goodhart drift.
+    Dimensional scaling appears only when adding dimensions also adds coupling
+    to the selected proxy. If total coupling is conserved, hidden drift need not
+    grow with dimension.
+  ],
+) <fig:dimensional-scaling>
+
+// =============================================================================
+= Appendix D — Selection versus intervention as reweighting versus transport
+// =============================================================================
+
+#figure(
+  image("figures/appendix-d-selection-vs-intervention.pdf", width: 88%),
+  caption: [
+    Selection reweights; intervention transports. A selection policy can only
+    increase the weight of states already present in the baseline distribution.
+    An intervention channel changes the state-generating mechanism, moving mass
+    into regions the baseline never visited. This is why the selection-channel
+    drift bound has no baseline-only analogue for intervention channels.
+  ],
+) <fig:selection-vs-intervention>
+
+The Stackelberg toy model in Chapter 3 is the smallest algebraic version of the
+right panel. At baseline, $H = 0$. After the metric is announced, an agent can
+pay cost $a^2 slash (2 kappa)$ to raise the proxy by $a$, and selection is worth
+$V$. In the noiseless threshold case, the gaming band has width
+$Delta = sqrt(2 kappa V)$: agents with $Q in [t - Delta, t)$ game just enough to
+pass. The resulting proxy bias and hidden harm depend on $kappa$ and $V$, not on
+baseline hidden variance. Indeed, the baseline hidden variance is zero in this
+toy model.
+
+// =============================================================================
+= Appendix E — Adding measured dimensions can expand the attack surface
+// =============================================================================
+
+Under additive aggregation, the agent can substitute between measured gaming
+channels. For unit weights and quadratic costs, the cost-minimal allocation for
+score threshold $t$ is $a_j = t kappa_j slash K_M$, where
+$K_M = sum_(j in M) kappa_j$. The minimum cost is $t^2 slash (2 K_M)$, so gaming
+occurs iff $K_M >= t^2 slash (2 V)$. Adding a gameable measured dimension weakly
+increases $K_M$ and weakly lowers the cost of reaching the same score deficit.
+
+#figure(
+  image("figures/appendix-e-additive-substitution.pdf", width: 68%),
+  caption: [
+    Under additive aggregation, adding a gameable measured dimension can lower
+    the cost of reaching the score threshold. The per-agent harm for a fixed
+    pure-gaming score deficit may be conserved under equal harm-per-score
+    assumptions, but the population of agents for whom gaming is worthwhile
+    expands as aggregate gaming capacity increases.
+  ],
+) <fig:additive-substitution>
+
+The sign of a "more metrics" result is therefore not determined by the number of
+dimensions. It is determined by the aggregation rule.
+
+#figure(
+  image("figures/appendix-e-additive-vs-conjunctive.pdf", width: 82%),
+  caption: [
+    Aggregation rule controls dimensional effects. Additive scorecards permit
+    substitution across dimensions; conjunctive scorecards require clearing
+    every measured dimension. Thus adding metrics can either create cheaper
+    routes to the same score or raise the cost of passing, depending on how the
+    metric aggregates.
+  ],
+) <fig:additive-vs-conjunctive>
+
+// =============================================================================
+= Appendix F — Exchange-rate condition for conservation
+// =============================================================================
+
+The narrow conservation result in the additive model assumes that a point of
+score inflation is equally socially harmful no matter which channel supplies it.
+With weighted additive score $sum w_j a_j$, quadratic costs, and hidden harm
+$sum h_j a_j$, the fixed-deficit harm is
+
+$ H_M(d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). $
+
+#figure(
+  image("figures/appendix-f-exchange-rate-condition.pdf", width: 78%),
+  caption: [
+    Re-routing conserves harm only when social harm uses the same exchange rates
+    as the score. If $h_j = c w_j$ on the active measured set, then every unit
+    of score inflation is equally socially harmful and per-agent harm is
+    conserved. Otherwise, moving weight across channels can raise or lower harm.
+  ],
+) <fig:exchange-rate-condition>
+
+// =============================================================================
+= Appendix G — A speculative recursive-Goodhart cartoon
+// =============================================================================
+
+This appendix is not a theorem of Chapters 1--3. It is a cartoon of a broader
+empirical hypothesis suggested by the framework. The axes labelled $h_1$ through
+$h_5$ are deliberately not proxy dimensions. They stand for outcome-relevant
+properties of the policy or model that the proxy stack does not fully capture:
+long-horizon effects, strategic pressure, rare-context behaviour, objective
+stability, institutional fit, or whatever the domain-specific hidden variables
+turn out to be. The cartoon assigns them synthetic, mixed movements because the
+framework alone does not say whether their correlations with the monitored proxy
+dimensions are positive, negative, or close to zero.
+
+#figure(
+  image("figures/appendix-g-recursive-goodhart-cartoon.pdf", width: 83%),
+  caption: [
+    Speculative recursive-Goodhart cartoon. As more proxy dimensions are
+    explicitly constrained, the cheapest route to high score changes. The
+    monitored axes can improve while unproxied hidden dimensions $h_1, dots, h_5$
+    move differently, depending on their empirical correlations with the proxy
+    stack and on the available gaming channels. In favorable cases, hidden
+    outcome quality improves too. In unfavorable cases, residual error moves
+    into dimensions that are less legible to the evaluator, less represented in
+    the training signal, or cheaper for the model to exploit. The plotted values
+    are synthetic and illustrative; they are not empirical measurements.
+  ],
+) <fig:recursive-goodhart-cartoon>
 
 #bibliography("refs.bib", title: "References", style: "association-for-computing-machinery")

@@ -1,6 +1,6 @@
 # Multidimensional Goodhart — book draft
 
-Working draft of Chapters 1–3 (plus two catalogue appendices) of a longer
+Working draft of Chapters 1–3 (plus catalogue and visual appendices) of a longer
 treatment of multidimensional Goodhart. This is an *expository* rewrite of the
 research-journal material in `../research/`; the iteration history lives there,
 not here.
@@ -12,14 +12,30 @@ not here.
   before anything goes out).
 - `multidimensional-goodhart.pdf` — compiled output (regenerated, not
   hand-edited).
+- `scripts/make_appendix_figures.py` — deterministic figure generator for
+  Appendices C–G.
+- `figures/` — generated appendix figure PDFs.
 
 ## Build
+
+With `make`:
+
+```sh
+make all
+```
+
+Or directly:
 
 ```sh
 typst compile multidimensional-goodhart.typ
 ```
 
 Needs [Typst](https://typst.app) ≥ 0.14. `refs.bib` is picked up automatically.
+To regenerate appendix figures first:
+
+```sh
+uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
+```
 
 ## Contents
 
@@ -37,3 +53,8 @@ Needs [Typst](https://typst.app) ≥ 0.14. `refs.bib` is picked up automatically
 - **Appendix A** — Currently in progress: live research questions feeding the
   chapters.
 - **Appendix B** — Future open questions, parked for now.
+- **Appendices C–F** — Visual aids for the formal claims: selection response,
+  coupling-dependent dimensional scaling, selection versus intervention,
+  additive/conjunctive gaming, and the exchange-rate condition.
+- **Appendix G** — Speculative recursive-Goodhart cartoon; illustrative, not an
+  empirical measurement or theorem.
