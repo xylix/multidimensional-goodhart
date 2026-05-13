@@ -45,6 +45,16 @@
 | Response modeling replaces Goodhart slogans. | Different contracts license different calculations: selection curves, reweighting bounds, intervention budgets, aggregation exchange rates, or shape predictions. | The empty statement that "everything depends on assumptions." A useful contract must name a downstream calculation or falsifier. | Make the framework methodological rather than slogan-driven. |
 | Proxy-only manipulation is intervention. | It can be intervention for proxy validity when `K_theta` changes at fixed type. | A hidden-welfare harm claim. Harm requires a separately declared `H`, value weight, or welfare model. | Keep proxy validity, action response, and welfare harm distinct. |
 
+## Core proposition audit (Iteration 15)
+
+| Claim one might use | What is licensed | What is not licensed | Intended use |
+| --- | --- | --- | --- |
+| Pure-selection hidden value drift is bounded by chi-square reweighting and baseline covariance. | For `L = d mu_theta / d mu_0`, finite second moments, and declared scalar value `v . H`, `|Delta V_H| <= sqrt(chi^2(mu_theta || mu_0)) sqrt(v^T Sigma_H v)`. | A welfare/value metric inferred from `mu_theta`, or a coordinate-free harm claim before declaring value weights. | Use as the proposition-style selection bound; recover the Euclidean coordinate bound only as a declared-metric corollary. |
+| The selection bound is representation-free after the operator rewrite. | It is invariant to harmless coordinate bookkeeping once the scalar value functional or value norm is fixed. | Invariance under changing the value metric itself, such as counting duplicated coordinates twice by declaring identity on the duplicate representation. | Prevent coordinate splitting from masquerading as extra hidden harm. |
+| Convex intervention budgets give theorem-like score-deficit costs. | In finite-dimensional linear-gain convex-cost models, `m(d) = sup_{lambda >= 0} [lambda d - c^*(lambda w)]` under regularity; quadratic toy wedges follow. | A baseline-distribution theorem, nonconvex fixed-charge result, or welfare bound without hidden harm/value weights. | State the intervention analogue as imported action geometry, not a `mu_0`-internal bound. |
+| Additive conservation is an iff-condition. | With separable quadratic costs, additive score, linear harm, and fixed deficit, harm is conserved across active channels iff `h_j = c w_j`. | Population-level conservation, arbitrary costs, arbitrary aggregation rules, or conservation under unequal harm-per-score ratios. | Use conservation Goodhart only as an exchange-rate theorem sketch, not a slogan. |
+| The response-modeling contract is now a theorem. | The proposition pass raises rigor for several conditional calculations. | A theorem that costs, type spaces, response kernels, or value weights are identified from selected distributions. | Keep the contract methodological: it declares the objects needed for theorem use. |
+
 ## Response-shape prediction audit (Iteration 9)
 
 | Shape prediction | What is licensed | What is not licensed | Intended use |

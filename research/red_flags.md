@@ -107,3 +107,11 @@ Claim reviewed: intervention channels admit a cost-geometry analogue of the sele
 Red-flag scan: the Fenchel-duality formula is formally tidy and could be overread as a general Goodhart theorem. It is not. It applies after declaring an action space, cost, feasible set, proxy-gain direction, stakes, and hidden harm functional. It also handles smooth convex response better than fixed charges, endogenous stakes, stochastic equilibria, or empirical cost estimation.
 
 Repair: present the result as a conditional modeling primitive. It licenses "if these are the action costs, here is the gaming budget," not "observed distributions imply this intervention bound" or "convexity makes hidden harm small."
+
+## Iteration 15: proposition language watch item
+
+Claim reviewed: promoting the selection bound, convex intervention budget, and additive conservation calculation into proposition sketches.
+
+Red-flag scan: proposition language can make conditional bookkeeping look like stronger theorem work than it is. The main danger is that readers infer (i) hidden value weights are supplied by the selected distribution, (ii) the operator selection bound is representation-free without a declared value metric, or (iii) convex action budgets and additive conservation automatically imply welfare conclusions.
+
+Repair: keep the new thread's results as "Proposition sketch" claims with hypotheses visible. State that the scalar/operator selection bound fixes coordinate duplication only after declaring the value functional or norm; convex budgets require action/cost geometry; additive conservation is an iff-condition only in the separable quadratic, fixed-deficit model; and the response-modeling contract remains methodological, not a theorem.

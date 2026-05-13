@@ -151,3 +151,13 @@ What changed: created `research/threads/response_modeling_contract.md` and updat
 What's open now: write domain-specific application templates and use the contract to guide the next book chapter. The danger is turning "response modeling" into the empty statement that assumptions matter; the repair is to require each contract to name the calculation or falsifier it licenses.
 
 Red flags fired: no scheduled adversarial pass. A scope guard was added in the thread and audit: the contract does not license a new universal theorem, identification from marginal distributions alone, or welfare conclusions from proxy movement without a hidden harm model.
+
+## Iteration 15
+
+Question tackled: math-quality consolidation of the core response-modeling claims, especially the coordinate bookkeeping gap in the selection bound.
+
+What changed: created `research/threads/core_propositions_and_value_norms.md`. The new thread promotes three calculations into proposition sketches: the pure-selection drift bound with `L = d mu_theta / d mu_0`, finite second moments, and `chi^2(mu_theta || mu_0) < infinity`; the convex intervention score-deficit budget `m(d) = sup_{lambda >= 0} [lambda d - c^*(lambda w)]` under finite-dimensional convex regularity; and the additive conservation iff-condition for quadratic separable costs, weighted additive score, linear harm, and fixed deficit. It also replaces the coordinate-only selection bound with a scalar/operator value version: for `V_H = v . (H - E H)`, `|Delta V_H| <= delta sqrt(v^T Sigma_H v)`, with the old Euclidean bound recovered only after declaring identity as the hidden value metric.
+
+What's open now: value weights, type spaces, costs, and response kernels remain modeling commitments or empirical targets; they are not identified from `mu_theta` alone. Simulations are still needed for population harm, stochastic response, adaptive hardening, and repeated proxy-repair dynamics.
+
+Red flags fired: proposition language watch item. The pass raises Layer-1 rigor but should not be read as a new universal theorem or as making the selection bound representation-free without a declared hidden value metric.

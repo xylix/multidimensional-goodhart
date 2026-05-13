@@ -121,7 +121,29 @@ policy selects schools, changes the same schools' teaching kernel, changes only
 reporting, or changes participation; what costs/caps govern those moves; and
 what evidence would distinguish these stories.
 
-Drift bound, selection channel: by Cauchy-Schwarz in `L^2(mu_0)`, `||B_H(theta)||_2 <= delta · ||s||_2` where `delta = ||L_theta - 1||_{L^2(mu_0)}` (`delta^2 = chi^2(mu_theta || mu_0)`) and `s_i = sd_{mu_0}(H_i)`. Every term is a `mu_0`-functional; bounded reweighting + bounded hidden variance ⇒ bounded hidden drift. This is coordinate-explicit, not invariant to arbitrary hidden-coordinate relabeling; a basis-invariant version would need a declared covariance, value-weighted norm, or operator formulation.
+Drift bound, selection channel: by Cauchy-Schwarz in `L^2(mu_0)`, for
+`L_theta = d mu_theta / d mu_0`,
+`delta = ||L_theta - 1||_{L^2(mu_0)}` (`delta^2 = chi^2(mu_theta || mu_0)`),
+and any declared scalar hidden-value functional
+`V_H = v . (H - E_{mu_0} H)`,
+
+`|E_{mu_theta}[V_H] - E_{mu_0}[V_H]|
+ <= delta sqrt(v^T Sigma_H v)`,
+
+where `Sigma_H = Cov_{mu_0}(H)`. More generally, for a declared value norm
+`||.||_V`,
+
+`||B_H(theta)||_V
+ <= delta sup_{||v||_{V,*} <= 1} sqrt(v^T Sigma_H v)`.
+
+For a positive definite matrix norm `||x||_M = sqrt(x^T M x)`, this is
+`||B_H(theta)||_M <= delta sqrt(lambda_max(M^{1/2} Sigma_H M^{1/2}))`
+(with the corresponding quotient/support-function reading for semidefinite
+`M`). The old coordinate Euclidean bound is the special case after declaring
+hidden coordinates and the identity value metric:
+`||B_H(theta)||_2 <= delta ||s||_2`, `s_i = sd_{mu_0}(H_i)`. This fixes the
+coordinate-bookkeeping problem only after the hidden value metric is declared;
+value weights are not identified from `mu_theta` alone.
 
 Iteration 13 repair: no baseline-only analogue holds for intervention channels;
 even when `L_theta` exists, it describes the induced distribution after response

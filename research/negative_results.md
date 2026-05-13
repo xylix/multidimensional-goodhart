@@ -96,6 +96,14 @@ Failure: the inequality is correct after choosing hidden coordinates and a Eucli
 
 Postmortem: call the result coordinate-explicit. A coordinate-invariant version would need a specified value metric, covariance operator, or other representation-aware norm. This does not weaken the pure-selection lesson; it prevents the norm bookkeeping from being mistaken for an invariant harm measure.
 
+## Iteration 15: selection-bound invariance requires a declared value metric
+
+Tried claim: rewriting the selection bound in covariance/operator form makes it representation-free by itself.
+
+Failure: the scalar-value bound `|Delta V_H| <= delta sqrt(v^T Sigma_H v)` is invariant to coordinate duplication only when the value functional is held fixed. If one duplicates a hidden coordinate and then declares the identity metric on the enlarged coordinate list, the hidden norm has changed: the same underlying variable is counted twice.
+
+Postmortem: the repaired selection theorem is representation-aware, not value-metric-free. It solves arbitrary coordinate bookkeeping after the application declares a value functional, norm, or PSD weight matrix. It does not identify those value weights from `mu_theta`.
+
 ## Iteration 11: response-kernel boundary is not representation-free or marginally identifiable
 
 Tried claim: the response-kernel definition gives an intrinsic, observable boundary between selection and intervention.
