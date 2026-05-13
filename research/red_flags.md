@@ -89,3 +89,13 @@ Claim reviewed: selection/intervention should be classified by whether the polic
 Red-flag scan: the repair is useful but could be overread as an intrinsic boundary. It is not. The type space `U` is a modeling choice: too rich a `U` can absorb future responses into type, while too coarse a `U` can make heterogeneity look like intervention. Also, marginal distributions `mu_theta` usually do not identify `W_theta` versus `K_theta`.
 
 Repair: state the claim as relative to a declared causal type/action representation. The useful requirement for applications is not "observe `mu_theta` and classify"; it is "declare what is fixed type, what is manipulable action, and what evidence distinguishes reweighting from response."
+
+## Iteration 12: scheduled adversarial pass on response-kernel boundary
+
+Claim reviewed: pure selection changes only `W_theta`, while intervention changes `K_theta` at fixed type.
+
+Trigger: scheduled every-third-iteration adversarial pass.
+
+Review result: the boundary survives, but only as a representation-relative causal distinction. It correctly classifies participation-only response as selection and epsilon-baseline gaming as intervention despite absolute continuity. It also correctly allows proxy-only manipulation to be intervention without hidden harm. The main failure modes are still load-bearing: a too-rich `U` can encode future response plans as type, a too-coarse `U` can make stable heterogeneity look like kernel change, and the same marginal `mu_theta` can come from changed `W_theta` or changed `K_theta`.
+
+Repair: keep the compact definition unchanged, but present it as a modeling discipline rather than an observational classifier. Applications must declare the type/action representation and state what evidence distinguishes reweighting from fixed-type response.

@@ -121,3 +121,13 @@ What changed: created `research/threads/response_kernel_boundary.md` as a `gener
 What's open now: the boundary is representation-relative and not identifiable from marginal `mu_theta` alone. Applications must declare what counts as fixed type, what counts as manipulable action, and what evidence distinguishes reweighting from response. This sets up later work on convex intervention bounds and ML mappings of `kappa`.
 
 Red flags fired: a representation caveat was logged. The response-kernel repair is useful, but not an intrinsic observed-law classification; too rich a type space can absorb interventions into type, while too coarse a type space can make heterogeneity look like kernel change.
+
+## Iteration 12
+
+Question tackled: scheduled adversarial review of Iteration 11's response-kernel boundary.
+
+What changed: created `research/reviews/response_kernel_boundary.md` and updated `claim_audits.md`, `negative_results.md`, and `red_flags.md`. The review stress-tested whether "selection changes only `W_theta`; intervention changes `K_theta` at fixed type" is useful or just hides ambiguity in the type space. It found the boundary useful but strictly representation-relative: participation-only response remains pure selection; epsilon-baseline gaming remains intervention despite absolute continuity; proxy-only manipulation is intervention for proxy validity but not necessarily hidden harm; and representation changes can flip the classification unless `U` is declared as part of the causal model.
+
+What's open now: applications need explicit evidence plans. Marginal `mu_theta` data alone generally cannot identify whether a change came from type reweighting or fixed-type response; credible use needs repeated-type observations, randomized policy exposure, action traces, or structural assumptions. No change was needed to the compact definition in `formalization.md`.
+
+Red flags fired: scheduled adversarial pass. The stronger claim "the boundary is identifiable from distributions alone" was logged as dead; the surviving claim is a causal type/action representation license, not an intrinsic observed-law classifier.

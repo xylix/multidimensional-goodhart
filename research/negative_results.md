@@ -103,3 +103,11 @@ Tried claim: the response-kernel definition gives an intrinsic, observable bound
 Failure: the boundary depends on the declared type space `U`. If `U` is enriched to include the whole policy-contingent response plan, an apparent intervention can be redescribed as selection over richer types. If `U` is too coarse, ordinary type heterogeneity can look like a kernel change. Separately, the marginal induced law `mu_theta` generally cannot identify whether change came from type weights `W_theta` or from fixed-type response kernels `K_theta`.
 
 Postmortem: the repaired claim is relative to a causal type/action representation. This is still useful: applications must say what is fixed type, what is action, and what observations would distinguish reweighting from response. But the framework should not pretend the distinction is recoverable from marginal score distributions alone.
+
+## Iteration 12: response-kernel decomposition is not unique
+
+Tried claim: once the framework writes `mu_theta` using `W_theta(u)` and `K_theta(ds | u)`, observed policy-indexed distributions can be decomposed into a selection part and an intervention part.
+
+Failure: the decomposition is not unique without type-level evidence or structural assumptions. With `U = {0, 1}`, `S = {0, 1}`, and `nu` uniform, any target marginal `Pr_theta(S = 1) = q` can be represented as pure selection if `K_0(S = 1 | u) = u` and `W_theta` reweights type `1`; the same marginal can be represented as intervention by keeping `W_theta = 1` and setting `K_theta(S = 1 | u) = q` for both types. Richer or coarser choices of `U` change the classification again.
+
+Postmortem: the response-kernel boundary is a causal modeling discipline, not an estimator from marginals. Applications need a declared type/action representation plus evidence such as repeated observations of the same type, randomized policy exposure, action traces, or defended structural constraints.
