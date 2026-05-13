@@ -213,3 +213,30 @@ Red flags fired: the coordinate-free selection-bound issue is narrowed because
 the book now separates coordinate-explicit and value-weighted/operator forms.
 The proposition-language watch remains open: later prose must keep hypotheses,
 license boundaries, and methodological claims distinct.
+
+## Iteration 17
+
+Question tackled: welfare-object discipline for intervention gaming claims,
+especially conservation, backfire, and dimensional gaming.
+
+What changed: introduced the notation `H_per(M, d)` for fixed-deficit
+per-agent harm and `H_pop(M; F_Q, V)` for population harm after heterogeneous
+agents decide whether gaming is worthwhile. Updated the book's Chapter 3
+multidimensional-gaming section so Proposition 4 is explicitly a conservation
+result for `H_per`, while "adding a gameable measured dimension backfires" is
+an `H_pop` claim driven by expansion of the gaming band. The unit-weight
+equal-harm case now states `H_per(M, d) = d`, with the old `H = t` slogan
+limited to the fixed-deficit pure-gaming case. The conjunctive section now
+separates per-gamer harm `t|M|` from population harm, whose sign depends on
+entry. Propagated the same distinction through
+`research/threads/intervention_response.md`, `research/claim_audits.md`,
+`research/formalization.md`, and `research/open_questions.md`.
+
+What's open now: the right population welfare object under noise, nonlinear
+costs, endogenous stakes, and stochastic response remains unresolved. Broader
+welfare-bound packaging, prevalence-sensitive notation, and nonlinear welfare
+objects remain later work rather than part of this pass.
+
+Red flags fired: no contradiction exposed. The pass narrowed ambiguous prose:
+conservation remains strong under Proposition 4's hypotheses, but only for
+`H_per`; population-level backfire is a separate entry effect.

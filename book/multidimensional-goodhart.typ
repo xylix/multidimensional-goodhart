@@ -39,6 +39,8 @@
   fill: rgb(255, 250, 235), stroke: (left: 2pt + rgb(210, 170, 60)))[
   #text(weight: "bold")[Future question.] #body
 ]
+#let per = "per"
+#let pop = "pop"
 
 #align(center)[
   #v(2cm)
@@ -153,10 +155,11 @@ The multidimensional scorecard results are also promising because they explain
 why proxy repair can have signs that scalar Goodhart cannot express. Under an
 additive compensatory score, adding an independently gameable dimension can
 lower the cheapest cost of clearing a score deficit and recruit more agents into
-gaming. Under a conjunctive score, the same added dimension can block
-substitution but raise per-gamer burden and false-negative risk. Conservation of
-fixed-deficit harm appears only under an exchange-rate condition: hidden harm
-must be proportional to score contribution on the active channels. This is the
+gaming, raising $H_pop$ through entry. Under a conjunctive score, the same added
+dimension can block substitution but raise per-gamer burden and false-negative
+risk, so the population sign depends on entry. Conservation of $H_per$ appears
+only under an exchange-rate condition: hidden harm must be proportional to score
+contribution on the active channels. This is the
 kind of claim I want from the paper: not "more metrics are bad", but "given this
 aggregation rule and these exchange rates, here is the distortion geometry".
 Notice the parallel with the selection case, but also the difference. For
@@ -201,9 +204,10 @@ minimum-cost directions, which can be dense. Selection follows baseline tails.
 Fixed charges, low-rank affordances, or search priors can produce sparse or
 low-description-length failures only when those mechanisms are specified first.
 
-Strong additive conservation does not work. Re-routing conserves fixed-deficit
-per-agent harm only when harm-per-score exchange rates match. Change weights,
-harm coefficients, or the participating population, and the conclusion changes.
+Strong additive conservation does not work. Re-routing conserves $H_per(M, d)$
+only when harm-per-score exchange rates match. Change weights, harm
+coefficients, or the participating population, and the relevant welfare object
+changes.
 
 The scalar-$kappa$ mapping to neural training does not work yet. In the toy
 model, $kappa$ is ease of gaming. In RLHF or benchmark-driven finetuning, the
@@ -271,12 +275,12 @@ is trying to prove.
   legibility measure fixed *before* the patching sequence is used as
   evidence. Without that, the recursive hypothesis is not yet testable.
 
-- *Per-agent versus population welfare.* The unit-weight additive model
-  gives aggregate harm $EE[(t - Q) bb(1){0 < t - Q <= sqrt(2 K_M V)}]$ for
-  heterogeneous quality $Q$. Open: which aggregate is the right welfare
-  object under noise, nonlinear costs, and endogenous $V$? The conservation
-  results currently fold together per-agent fixed-deficit harm and
-  population entry effects that need to be separated.
+- *Per-agent versus population welfare.* The additive gaming section now
+  separates fixed-deficit harm $H_per(M, d)$ from population harm
+  $H_pop (M, F_Q, V)$. In the unit-weight equal-harm model,
+  $H_pop = EE[(t - Q) bb(1){0 < t - Q <= sqrt(2 K_M V)}]$ for heterogeneous
+  quality $Q$. Open: which population welfare object is right under noise,
+  nonlinear costs, and endogenous $V$?
 
 - *ML mappings for $kappa$.* In the toy Stackelberg model $kappa$ is scalar
   ease of gaming. In RLHF, finetuning, and benchmark-driven optimisation,
@@ -418,8 +422,10 @@ $sqrt(2 kappa V)$, a function of gaming ease and stakes. Third, for intervention
 channels with compensatory additive scores and separable quadratic gaming
 costs, adding an independently gameable measured dimension increases aggregate
 gaming capacity $K_M$, lowers the minimum cost of clearing a fixed score gap,
-and weakly expands the population of agents for whom gaming pays. These claims
-are meant for designing scorecards, benchmarks, and evaluation suites. Fourth,
+and weakly expands the population of agents for whom gaming pays; this is a
+population-harm statement, while fixed-deficit $H_per$ is conserved only under
+the exchange-rate condition. These claims are meant for designing scorecards,
+benchmarks, and evaluation suites. Fourth,
 proxy pressure does not generically select a minimum-complexity residual; a
 response-shape prediction needs a named response geometry, constraint set, and
 complexity or shape measure. Fifth, a Goodhart claim is incomplete until it
@@ -593,7 +599,8 @@ The proved or directly derived results in these chapters are:
   $Delta = sqrt(2 kappa V)$.
 - In the additive multidimensional gaming model, quadratic costs give the
   water-filling allocation, and the weighted additive case gives the
-  exchange-rate condition $h_j = c w_j$ for conservation of fixed-deficit harm.
+  exchange-rate condition $h_j = c w_j$ for conservation of fixed-deficit
+  $H_per(M, d)$.
 - In the quadratic response-shape model, an intervention target $w dot a >= d$
   with cost $(1/2) a^T C^(-1) a$ selects the minimum-cost direction
   $a^* = d C w slash (w^T C w)$, not a minimum-complexity direction as such.
@@ -1068,13 +1075,22 @@ conjunctive, and exchange-rate cases.
 === The exchange-rate condition
 
 Start with the general additive case, because it is the result that survives
-changes of units. Let the score be $sum_(j in M) w_j a_j$, costs
+changes of units. There are two welfare objects to keep separate. The first is
+fixed-deficit per-agent harm, written $H_per(M, d)$: conditional on an agent
+choosing to buy score deficit $d$, how much hidden harm does the cost-minimal
+gaming action cause? The second is population harm, written
+$H_pop (M, F_Q, V)$: after heterogeneous agents draw quality $Q$ from $F_Q$ and
+decide whether gaming is worth the prize $V$, how much harm is produced in the
+population?
+
+Let the additive score be $sum_(j in M) w_j a_j$, costs
 $sum_j a_j^2 slash (2 kappa_j)$, and hidden harm $H = sum_j h_j a_j$. The
 cost-minimal allocation for a score deficit $d$ is
 $a_j = d kappa_j w_j slash W_M$ with $W_M = sum_(i in M) kappa_i w_i^2$, and its
-harm is
+per-agent harm is
 
-$ H_M (d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). $
+$ H_per(M, d) =
+  d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). $
 
 This is *not* invariant in $M$. (Two equally easy channels, $kappa_1 = kappa_2 = 1$,
 equal physical harm $h_1 = h_2 = 1$: measuring only channel 1 with $w_1 = 2$
@@ -1092,19 +1108,19 @@ $H(a) = sum_(j in M) h_j a_j$. The cost-minimal action satisfying the deficit is
 $ a_j^* = d kappa_j w_j slash W_M, quad
   W_M = sum_(i in M) kappa_i w_i^2, $
 
-and fixed-deficit harm is
+and fixed-deficit per-agent harm is
 
-$ H_M(d) =
+$ H_per(M, d) =
   d dot (sum_(j in M) h_j kappa_j w_j)
     slash (sum_(j in M) kappa_j w_j^2). $
 
-Therefore fixed-deficit harm is conserved across active measured sets if and
+Therefore fixed-deficit per-agent harm is conserved across active measured sets if and
 only if $h_j = c w_j$ on the channels being compared, in which case
-$H_M(d) = c d$.
+$H_per(M, d) = c d$.
 
 Licenses: under separable quadratic costs, additive score, linear harm, and a
-fixed score deficit, conservation is an exchange-rate theorem, not a dimension
-count slogan.
+fixed score deficit, conservation of $H_per$ is an exchange-rate theorem, not a
+dimension count slogan.
 
 Does not license: population-level conservation, arbitrary costs, arbitrary
 aggregation rules, or conservation when harm-per-score ratios differ. Shared
@@ -1145,9 +1161,11 @@ $ lambda = t slash K_M, quad a_j = t kappa_j slash K_M, quad
 
 Hence *gaming occurs iff $K_M >= t^2 slash (2 V)$* (call the right side $K_"min"$),
 and when it occurs, the per-agent hidden harm for this fixed pure-gaming target
-is $H = sum_(j in M) a_j = lambda K_M = t$ — *independent of $M$*. What $M$
-controls is (i) *whether* $K_M$ clears $K_"min"$, and (ii) *how* the fixed harm
-$t$ is split across the measured channels — proportional to $kappa_j$.
+is $H_per(M, t) = sum_(j in M) a_j = lambda K_M = t$ — *independent of $M$*.
+Thus the earlier slogan $H = t$ is only the fixed-deficit pure-gaming object
+$H_per(M, t)$, not a population welfare claim. What $M$ controls is (i)
+*whether* $K_M$ clears $K_"min"$, and (ii) *how* the fixed harm $t$ is split
+across the measured channels — proportional to $kappa_j$.
 @fig:additive-substitution shows the same water-filling geometry in effort
 space.
 
@@ -1155,20 +1173,30 @@ space.
 additive metric and gaming that is equally wasteful per unit of score, the
 principal cannot reduce per-agent harm for a fixed pure-gaming score deficit by
 changing *which* channels it measures, as long as the measured set keeps enough
-aggregate gaming capacity ($K_M >= K_"min"$): the harm is pinned at $H = t$ and
-merely re-routes. Closing a gamed channel just spreads $t$ over the others.
+aggregate gaming capacity ($K_M >= K_"min"$): $H_per(M, t)$ is pinned at $t$
+and merely re-routes. Closing a gamed channel just spreads $t$ over the others.
 _Toy example:_ a hospital ranked on readmission rates clamps down on coding of
 "readmission" — the gaming reappears as patient selection, discharge timing,
 observation-status reclassification; the per-case distortion needed to clear the
 cutoff is unchanged.]
 
-#claim[*Adding a gameable measured dimension backfires.* Expanding $M$ strictly
+#claim[*Adding a gameable measured dimension backfires at population level.* Expanding $M$ strictly
 increases $K_M$, which *lowers* the gaming cost $t^2 slash (2 K_M)$, which
-weakly *enlarges* the population that finds gaming worthwhile. With quality
+weakly *enlarges* the population that finds gaming worthwhile, even though
+$H_per(M, d) = d$ for each fixed deficit in the unit-weight equal-harm case.
+With quality
 heterogeneity $Q ~ cal(N)(0, sigma^2)$ — an agent needs $"score" >= t - Q$, at
 cost $(t - Q)^2 slash (2 K_M)$, and games iff $t - Q <= sqrt(2 K_M V)$ — the
 gaming-eligibility cutoff $Q >= t - sqrt(2 K_M V)$ moves *down* as $K_M$ grows.
-More agents game; the fraction of selected agents who are pure gamers rises.
+The population object is
+
+$ H_pop (M, F_Q, V) =
+  EE[H_per(M, t - Q) bb(1){0 < t - Q <= sqrt(2 W_M V)}], $
+
+with $W_M = sum_(j in M) kappa_j w_j^2$; in this unit-weight case,
+$W_M = K_M$ and $H_per(M, t - Q) = t - Q$. More agents game; the fraction of
+selected agents who are pure gamers rises, and $H_pop$ increases whenever there
+is positive mass in the newly admitted gaming band.
 _Toy example:_ a university worried that "publication count" is gamed adds "grant
 income" and "media mentions" to the scorecard; each is independently inflatable,
 so the cheapest path to any target score is now cheaper, and more faculty shift
@@ -1190,22 +1218,24 @@ item rotation — not by adding more graded components.]
 Suppose instead that passing requires $a_j >= t$ for *every* $j in M$ — the
 principal demands the agent clear a bar on all measured dimensions. The
 cost-minimal way to pass is $a_j = t$ for all $j in M$, at cost
-$sum_(j in M) t^2 slash (2 kappa_j)$, and total harm $H = sum_(j in M) t = t abs(M)$.
-Now harm grows *linearly in the number of measured dimensions*: adding a
-dimension unambiguously increases per-gamer gaming harm — though it also raises
-the cost of clearing the metric, so fewer agents do, a genuine trade-off
-(harm-per-gamer up, gamer-count down).
+$sum_(j in M) t^2 slash (2 kappa_j)$, and per-gamer harm
+$H_per^"conj"(M, t) = sum_(j in M) t = t abs(M)$. Now per-gamer harm grows
+*linearly in the number of measured dimensions*: adding a dimension
+unambiguously increases harm conditional on gaming — though it also raises the
+cost of clearing the metric, so fewer agents may do it. The sign of $H_pop$ is
+a genuine trade-off between harm-per-gamer and gamer-count.
 
 #claim[Gaming harm's dependence on the *number* of measured proxy dimensions is
-governed by the aggregation rule. Unit-weight compensatory/additive metrics
-conserve fixed-deficit per-agent harm ($H = t$, re-routing only) — when measured
-channels are equally harmful per score unit; conjunctive/$min$ metrics *multiply*
-per-gamer harm ($H = t abs(M)$). Real scorecards are usually compensatory
+governed by the aggregation rule and by the welfare object. Unit-weight
+compensatory/additive metrics conserve fixed-deficit per-agent harm
+($H_per(M, t) = t$, re-routing only) — when measured channels are equally
+harmful per score unit; conjunctive/$min$ metrics *multiply* per-gamer harm
+($H_per^"conj"(M, t) = t abs(M)$). Real scorecards are usually compensatory
 (weighted sums of KPIs), which is the regime where "just add another metric" can
-backfire by cheapening the cheapest gaming path and expanding the gaming
-population. The selection-regime $sqrt(d)$-type scaling from Chapter 2 and these
-intervention-regime flat/linear behaviours are *different phenomena* and should
-not be conflated. See @fig:additive-vs-conjunctive.]
+backfire for $H_pop$ by cheapening the cheapest gaming path and expanding the
+gaming population. The selection-regime $sqrt(d)$-type scaling from Chapter 2
+and these intervention-regime flat/linear behaviours are *different phenomena*
+and should not be conflated. See @fig:additive-vs-conjunctive.]
 
 #remark[Scope, made explicit. The additive claims assume linear score
 aggregation and quadratic separable gaming costs. The unit-weight conservation
@@ -1318,10 +1348,11 @@ $Delta = sqrt(2 kappa V)$ in quadratic Stackelberg gaming) is exogenous to
 $mu_0$, set by the responding agents' cost geometry. In the multidimensional
 intervention regime, "fight
 Goodhart by measuring more dimensions" has a precise predicted failure mode:
-under a compensatory rule it conserves fixed-deficit per-agent harm only when
-channels are equally harmful per score unit, and it lowers the cheapest gaming
-cost, recruiting more gamers — a population-level backfire; under a conjunctive
-rule it multiplies harm by the number of bars. The principal's real levers are
+under a compensatory rule it conserves $H_per(M, d)$ only when channels are
+equally harmful per score unit, and it lowers the cheapest gaming cost,
+recruiting more gamers — an $H_pop (M, F_Q, V)$ backfire; under a conjunctive
+rule it multiplies per-gamer harm while the population sign depends on entry.
+The principal's real levers are
 aggregate (shrink total gaming capacity, harden channels, raise the bar relative
 to real signal, cut the prize) or structural (pick low-harm-per-score proxies
 whose cheapest inflation is partly real; change weights; or go conjunctive and
@@ -1350,7 +1381,8 @@ its constraints are specified, what shape of hidden residual should it produce?
     [Adding additive metrics can worsen gaming.],
     [In the deterministic quadratic water-filling model, adding an independently
       gameable measured channel increases $K_M$, lowers $t^2 slash (2 K_M)$,
-      and weakly expands the gaming band.],
+      and weakly expands the gaming band; this is an $H_pop$ claim, not a claim
+      that fixed-deficit $H_per$ rises.],
     [Does not cover non-substitutable, capped, correlated, or dynamically
       reweighted channels.],
     [Selection and intervention are different Goodhart channels.],
@@ -1826,15 +1858,16 @@ score threshold $t$ is $a_j = t kappa_j slash K_M$, where
 $K_M = sum_(j in M) kappa_j$. The minimum cost is $t^2 slash (2 K_M)$, so gaming
 occurs iff $K_M >= t^2 slash (2 V)$. Adding a gameable measured dimension weakly
 increases $K_M$ and weakly lowers the cost of reaching the same score deficit.
+It leaves $H_per(M, d) = d$ in the unit-weight equal-harm case, but can increase
+$H_pop (M, F_Q, V)$ by admitting more agents into the gaming band.
 
 #figure(
   image("figures/appendix-e-additive-substitution.pdf", width: 68%),
   caption: [
     Under additive aggregation, adding a gameable measured dimension can lower
-    the cost of reaching the score threshold. The per-agent harm for a fixed
-    pure-gaming score deficit may be conserved under equal harm-per-score
-    assumptions, but the population of agents for whom gaming is worthwhile
-    expands as aggregate gaming capacity increases.
+    the cost of reaching the score threshold. $H_per(M, d)$ may be conserved
+    under equal harm-per-score assumptions, but the population of agents for
+    whom gaming is worthwhile expands as aggregate gaming capacity increases.
   ],
 ) <fig:additive-substitution>
 
@@ -1859,17 +1892,18 @@ dimensions. It is determined by the aggregation rule.
 The narrow conservation result in the additive model assumes that a point of
 score inflation is equally socially harmful no matter which channel supplies it.
 With weighted additive score $sum w_j a_j$, quadratic costs, and hidden harm
-$sum h_j a_j$, the fixed-deficit harm is
+$sum h_j a_j$, the fixed-deficit per-agent harm is
 
-$ H_M(d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). $
+$ H_per(M, d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). $
 
 #figure(
   image("figures/appendix-f-exchange-rate-condition.pdf", width: 78%),
   caption: [
     Re-routing conserves harm only when social harm uses the same exchange rates
     as the score. If $h_j = c w_j$ on the active measured set, then every unit
-    of score inflation is equally socially harmful and per-agent harm is
-    conserved. Otherwise, moving weight across channels can raise or lower harm.
+    of score inflation is equally socially harmful and $H_per(M, d)$ is
+    conserved. Otherwise, moving weight across channels can raise or lower
+    fixed-deficit harm.
   ],
 ) <fig:exchange-rate-condition>
 

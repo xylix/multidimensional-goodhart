@@ -12,24 +12,6 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
-## Iteration 17: Welfare-Object Discipline
-
-Type: `edit`.
-
-Scope:
-
-- Introduce stable notation distinguishing per-agent harm from population harm,
-  for example `H_per(d)` and `H_pop(M; F_Q, V)`.
-- Apply the notation consistently in book Chapter 3, claim/proposition blocks,
-  and `research/threads/intervention_response.md`.
-- Update `research/claim_audits.md` rows that currently conflate conservation,
-  backfire, per-agent harm, and population harm.
-
-Slack rule:
-
-- If the notation exposes a contradiction in an existing claim, narrow the
-  claim in place and log the change rather than forcing terminology over it.
-
 ## Iteration 18: Remaining Math Guardrails
 
 Type: `edit` or `review`.
