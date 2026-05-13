@@ -34,7 +34,7 @@ Residual concern: weighted response still models selection from a fixed baseline
 
 Claim: under a selection channel, `||B_H(theta)||_2 <= delta · ||s||_2` with `delta = ||L_theta - 1||_{L^2(mu_0)}`, `s_i = sd_{mu_0}(H_i)`.
 
-Why watched: it is one line of Cauchy-Schwarz — flag pattern "suspiciously short/elementary" is borderline. Mitigation: the question it answers (is selection drift bounded by baseline quantities?) is not itself hard, so the brevity is appropriate, not suspicious. The load-bearing claim of iteration 4 is the *contrast* — that intervention channels admit no such bound and need an exogenous agent cost model — not the inequality. Action: do not inflate the inequality into a headline theorem; if a future iteration leans on it for something substantive, run the adversarial sub-protocol then. No `[confident]` tag was used in iteration 4, so the scheduled trigger did not fire (next scheduled adversarial pass: iteration 6).
+Why watched: it is one line of Cauchy-Schwarz — flag pattern "suspiciously short/elementary" is borderline. Mitigation: the question it answers (is selection drift bounded by baseline quantities?) is not itself hard, so the brevity is appropriate, not suspicious. The load-bearing claim of iteration 4 is the *contrast* — that intervention channels require an exogenous agent response/cost model — not the inequality. Additional repair after external analysis: do not call the Euclidean vector bound coordinate-free. It is coordinate-explicit unless a value-weighted covariance/operator norm is declared. Also do not define intervention merely by failure of absolute continuity; small baseline mass on gaming-like behavior can preserve `mu_theta << mu_0` while the causal response kernel changes. Action: keep the inequality as a pure-selection bound only.
 
 ## Iteration 5: conservation-under-re-routing and the additive/conjunctive dichotomy (watch item)
 
@@ -81,3 +81,11 @@ Trigger: scheduled every-third-iteration adversarial pass. The sharper table pre
 Review result: the table survives only as a menu of conditional model predictions. Quadratic cost gives the cost-minimal direction `C w`, which is dense only when `C w` is dense and no additional constraints bind. Fixed-charge or linear costs give one-channel drift only in the uncapped, no-tie, linear marginal model; caps, convex costs, detection penalties, and diversification can spread drift. Low-rank action maps restrict drift to a low-dimensional image, but spectral concentration depends on the hidden representation and value basis. Simplicity-biased search predicts low-description-length failures only when the coding/search prior is specified before the observed failure.
 
 Repair: keep the geometry-to-shape table, but attach model clauses to each entry. The reader-facing claim should remain separate from the math claim: response processes determine which hidden residuals are reached, but the predicted shape is licensed only under a named geometry, representation, and constraint set.
+
+## Iteration 11: response-kernel boundary representation caveat
+
+Claim reviewed: selection/intervention should be classified by whether the policy changes the fixed-type response kernel `K_theta(ds | u)`.
+
+Red-flag scan: the repair is useful but could be overread as an intrinsic boundary. It is not. The type space `U` is a modeling choice: too rich a `U` can absorb future responses into type, while too coarse a `U` can make heterogeneity look like intervention. Also, marginal distributions `mu_theta` usually do not identify `W_theta` versus `K_theta`.
+
+Repair: state the claim as relative to a declared causal type/action representation. The useful requirement for applications is not "observe `mu_theta` and classify"; it is "declare what is fixed type, what is manipulable action, and what evidence distinguishes reweighting from response."

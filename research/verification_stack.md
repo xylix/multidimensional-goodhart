@@ -22,6 +22,10 @@ Passed:
   killed covariance as a general Goodhart primitive.
 - Toggle-only agents: agents who can only enter or leave the pool remain a
   selection channel. This supports the selection/intervention boundary.
+- Epsilon-baseline gaming: if a small amount of gaming-like behavior already
+  exists, an induced intervention can remain absolutely continuous with respect
+  to baseline. This killed absolute continuity as the causal boundary and
+  motivated response kernels at fixed type.
 - Additive vs. conjunctive scorecards: adding dimensions has opposite effects
   depending on aggregation. This killed dimension-count-only intervention
   claims.
@@ -33,6 +37,8 @@ Survived only barely:
   rates, population entry, or partially real improvements can flip the result.
 - The recursive hypothesis survives only as a hypothesis about pre-specified
   hidden dimensions and costs/legibility. Without that, it is too elastic.
+- The response-kernel boundary survives only relative to a declared type/action
+  representation. It is not identifiable from marginal `mu_theta` alone.
 
 Killed:
 - Unconditional dimensional scaling.
@@ -57,6 +63,9 @@ Passed:
 - Strategic classification and performative prediction match the claim that
   policies can change the data-generating distribution rather than merely
   reweight it (`hardt2016strategic`, `perdomo2020performative`).
+- Principal-agent models match the Iteration-11 split between type,
+  participation/selection, action, and output: selection changes weights over
+  types; intervention changes action/output at fixed type.
 - Reward gaming and reward misspecification work match the intervention/gaming
   framing in ML (`skalse2022rewardgaming`, `pan2022rewardmisspecification`).
 

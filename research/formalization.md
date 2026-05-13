@@ -70,13 +70,27 @@ Counterexample attempt: if `P` has heavy tails, `E[exp(beta P)]` may be infinite
 
 A **response channel** is a map `R: Theta -> P(S)`, `theta |-> mu_theta`, with `mu_{theta_0} = mu_0` (a null policy). Hidden drift along it: `B_H(theta) = E_{mu_theta}[H] - E_{mu_0}[H]`.
 
-`R` is a **selection channel** if `mu_theta << mu_0` for all `theta` (so `L_theta := d mu_theta/d mu_0` exists and `mu_theta` is `mu_0` reweighted by `L_theta`); otherwise it is an **intervention channel**.
+Iteration 11 repair: the causal version of the selection/intervention boundary
+should be stated with a type space and response kernel. Let `U` be a declared
+type space with baseline type law `nu`, let `K_theta(ds | u)` be the
+policy-indexed response kernel from types to observed states, and optionally let
+`W_theta(u)` be a participation/selection weight. Then
 
-Claim [tentative]: all of the above (covariance, threshold response `b_H(t)`, weighted response `B_H(theta)`) is the selection-channel case, with `L_theta = W_theta / E_{mu_0}[W_theta]`. Intervention channels — Manheim & Garrabrant's causal Goodhart (the policy structurally breaks `P ≈ phi(G)`) and adversarial Goodhart (the policy is chosen worst-case for the regulator) — are not in this class: `mu_theta` can be mutually singular with `mu_0`. Toy example: choosing which of a fixed applicant pool to admit is a selection channel; announcing the admissions formula and letting applicants re-train is an intervention channel.
+`mu_theta(A) = int W_theta(u) K_theta(A | u) nu(du) / int W_theta(u) nu(du)`.
 
-Counterexample attempt: an agent model that only lets agents toggle their own inclusion (participate or not) yields `mu_theta` = restricted-and-renormalized `mu_0`, a selection channel. The selection/intervention distinction is substantive exactly when agents can move in state space (change `(P, H)` at fixed type), not merely choose inclusion.
+`R` is a **pure selection channel relative to `(U, K_0)`** if `K_theta = K_0`
+for `nu`-almost every type and policy dependence enters only through
+`W_theta`. It is an **intervention channel relative to `(U, K_0)`** if
+`K_theta != K_0` on a positive-`nu` set of types: agents can choose actions that
+move `(P, H)` or otherwise change the state-generating mechanism. Mutual
+singularity with `mu_0` is decisive evidence of intervention, but it is not
+required for the causal distinction.
 
-Drift bound, selection channel: by Cauchy-Schwarz in `L^2(mu_0)`, `||B_H(theta)||_2 <= delta · ||s||_2` where `delta = ||L_theta - 1||_{L^2(mu_0)}` (`delta^2 = chi^2(mu_theta || mu_0)`) and `s_i = sd_{mu_0}(H_i)`. Every term is a `mu_0`-functional; bounded reweighting + bounded hidden variance ⇒ bounded hidden drift. Claim [tentative]: no a-priori analogue holds for intervention channels (no `L_theta`); any bound must be imported from an agent cost/feasibility model. In the linear-Gaussian Stackelberg gaming toy (quadratic gaming cost `a^2/(2kappa)`, selection value `V`; see `threads/intervention_response.md`), the proxy's worst-case bias and the induced hidden harm both scale with `Delta = sqrt(2 kappa V)` — exogenous to `mu_0`.
+Claim [tentative]: all of the above (covariance, threshold response `b_H(t)`, weighted response `B_H(theta)`) is the pure-selection case, with `L_theta = W_theta / E_{mu_0}[W_theta]`. Intervention channels — Manheim & Garrabrant's causal Goodhart (the policy structurally breaks `P ≈ phi(G)`) and adversarial Goodhart (the policy is chosen worst-case for the regulator) — are not just passive reweightings, even when their induced distributions are technically absolutely continuous. Toy example: choosing which of a fixed applicant pool to admit is a selection channel; announcing the admissions formula and letting applicants re-train is an intervention channel.
+
+Counterexample attempt: an agent model that only lets agents toggle their own inclusion (participate or not) has `K_theta = K_0` and changes only `W_theta`, so it is selection. Conversely, the old absolute-continuity boundary is too brittle: if baseline behavior already has `epsilon` probability on gaming-like actions, an announced metric can increase those actions while preserving `mu_theta << mu_0`. The selection/intervention distinction is substantive exactly when agents can move in state space (change `(P, H)` at fixed type), not merely choose inclusion. Representation caveat: this is relative to the declared type space `U`; if `U` is allowed to include the whole future policy-contingent response plan, the distinction can be trivialized.
+
+Drift bound, selection channel: by Cauchy-Schwarz in `L^2(mu_0)`, `||B_H(theta)||_2 <= delta · ||s||_2` where `delta = ||L_theta - 1||_{L^2(mu_0)}` (`delta^2 = chi^2(mu_theta || mu_0)`) and `s_i = sd_{mu_0}(H_i)`. Every term is a `mu_0`-functional; bounded reweighting + bounded hidden variance ⇒ bounded hidden drift. This is coordinate-explicit, not invariant to arbitrary hidden-coordinate relabeling; a basis-invariant version would need a declared covariance, value-weighted norm, or operator formulation. Claim [tentative]: no baseline-only analogue holds for intervention channels; even when `L_theta` exists, it describes the induced distribution after response rather than the cost geometry that made the response available. Any useful intervention bound must be imported from an agent cost/feasibility model. In the linear-Gaussian Stackelberg gaming toy (quadratic gaming cost `a^2/(2kappa)`, selection value `V`; see `threads/intervention_response.md`), the proxy's worst-case bias and the induced hidden harm both scale with `Delta = sqrt(2 kappa V)` — exogenous to `mu_0`.
 
 ## Multidimensional gaming: aggregation rule controls dimensional scaling
 

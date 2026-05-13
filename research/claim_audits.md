@@ -10,6 +10,23 @@
 | Response-geometry attractor is the repaired Q18 concept. | Top-level safety correction: the response process selects according to cost/search/baseline geometry. | By itself, it is too broad to be informative. It must be paired with a predicted shape: dense, sparse, low-rank, low-description-length, etc. | Organize Q18 subcases without overclaiming. |
 | Appendix G is speculative. | The PDF explicitly says it is not a theorem and gives support/failure conditions. | That the recursive hypothesis has been operationalized enough for a domain test. | Keep as orientation; do not promote without review/edit iteration. |
 
+## External skeptical-analysis audit
+
+| Claim one might use | What is licensed | What is not licensed | Intended use |
+| --- | --- | --- | --- |
+| Selection vs. intervention is exactly absolute continuity vs. singularity. | Absolute continuity is the right formalism for pure reweighting, and singularity is decisive evidence that baseline-only selection bounds fail. | A causal boundary. If baseline has `epsilon` mass on gaming-like behavior, an induced intervention can remain absolutely continuous while still changing the response kernel at fixed type. | Define intervention by fixed-type response/action kernels; use singularity only as a clean special case. |
+| The selection bound is coordinate-free. | `||B_H||_2 <= delta ||s||_2` is valid after declaring hidden coordinates and the Euclidean norm. | Invariance to splitting, rotating, or duplicating hidden coordinates. | Relabel as coordinate-explicit unless rewritten with a value-weighted covariance/operator norm. |
+| `Delta = sqrt(2 kappa V)` explains neural training. | It is the signature of the one-dimensional quadratic Stackelberg toy. | Any direct RLHF, finetuning, or reward-model claim without identifying what `kappa` and `V` correspond to. | Use as a contrast class: ML mappings must specify gradient accessibility, pretraining density, contamination, feature simplicity, or search efficiency. |
+| More metrics are worse. | In separable additive scorecards, an independently gameable measured dimension lowers the minimum gaming cost and can recruit more gamers. | A general sign claim under correlated costs, caps, bottlenecks, dynamic reweighting, conjunctive gates, or high-real-signal tasks. | Benchmark-design checklist, not slogan. |
+
+## Response-kernel boundary audit (Iteration 11)
+
+| Claim one might use | What is licensed | What is not licensed | Intended use |
+| --- | --- | --- | --- |
+| Pure selection means reweighting fixed type-conditional behavior. | With type law `nu`, response kernel `K_0(ds | u)`, and participation weight `W_theta`, pure selection has `K_theta = K_0` and changes only type weights. The joint law on `(u, s)` is a reweighting of baseline. | A claim that the type space is uniquely determined by observed data. | State exactly when selection-response bounds apply. |
+| Intervention means fixed-type response changes. | If `K_theta != K_0` on a positive-mass set of types, the policy changes behavior at fixed type even if the induced `mu_theta` remains absolutely continuous. | A welfare claim that every intervention is harmful. Proxy-only manipulation can change `P` while leaving `H` fixed. | Route intervention analysis toward cost/action geometry. |
+| The distinction is causal and representation-relative. | The boundary is meaningful after declaring the type/action representation. | Identifiability from marginal `mu_theta` alone, or invariance under arbitrary redefinition of `U`. | Force application mappings to state what is fixed type and what is action. |
+
 ## Response-shape prediction audit (Iteration 9)
 
 | Shape prediction | What is licensed | What is not licensed | Intended use |

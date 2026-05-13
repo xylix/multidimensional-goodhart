@@ -111,3 +111,13 @@ What changed: created `research/threads/capped_fixed_charge_response.md` and upd
 What's open now: compare the capped fixed-charge support path against active-face quadratic response under the same hidden coordinate system; add convex marginal costs, detection penalties, or risk diversification to see when lumpy spillover becomes smoother spreading.
 
 Red flags fired: no new scheduled adversarial pass. A narrower negative result was logged: capped fixed-charge response should not be summarized as universal sorted marginal-cost filling.
+
+## Iteration 11
+
+Question tackled: open questions 8 and 12 — repair the selection/intervention boundary after the absolute-continuity criterion proved too brittle.
+
+What changed: created `research/threads/response_kernel_boundary.md` as a `generate` iteration. The new formal object is a type space `U`, baseline type law `nu`, participation weights `W_theta(u)`, and response kernels `K_theta(ds | u)`, with induced law `mu_theta(A) = int W_theta(u) K_theta(A | u) nu(du) / int W_theta(u) nu(du)`. Pure selection is now defined relative to `(U, K_0)` by `K_theta = K_0` and policy dependence only through `W_theta`; intervention is `K_theta != K_0` on a positive-mass set of types. This preserves weighted selection while handling epsilon-baseline gaming, where `mu_theta << mu_0` can still hold even though the policy changes fixed-type behavior. Updated `formalization.md`, `open_questions.md`, `claim_audits.md`, `negative_results.md`, `red_flags.md`, and `verification_stack.md`.
+
+What's open now: the boundary is representation-relative and not identifiable from marginal `mu_theta` alone. Applications must declare what counts as fixed type, what counts as manipulable action, and what evidence distinguishes reweighting from response. This sets up later work on convex intervention bounds and ML mappings of `kappa`.
+
+Red flags fired: a representation caveat was logged. The response-kernel repair is useful, but not an intrinsic observed-law classification; too rich a type space can absorb interventions into type, while too coarse a type space can make heterogeneity look like kernel change.

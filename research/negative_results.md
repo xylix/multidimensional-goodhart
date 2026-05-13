@@ -79,3 +79,27 @@ Tried claim: adding caps to the fixed activation / linear-cost model makes the o
 Failure: that sorted-staircase result is correct for capped linear costs with no activation costs, or after activation costs are already paid. It is not correct for the full fixed-charge model. Positive `F_j` can make a high-marginal, low-fixed-cost channel optimal for small deficits and a low-marginal, high-fixed-cost channel optimal for larger deficits. The optimizer may skip a cheaper small-deficit channel instead of filling it first.
 
 Postmortem: the useful claim is two-stage. Capped linear costs produce ordered spillover. Fixed charges add entry thresholds, so the exact object is a finite active-set comparison. The robust Goodhart shape is lumpy regime change, not universal marginal-cost sorting.
+
+## External analysis: absolute continuity is not the causal intervention boundary
+
+Tried claim: intervention channels can be defined as exactly those response laws that fail `mu_theta << mu_0`.
+
+Failure: the clean singularity example works because the baseline has `H == 0` for gaming harm. Add an `epsilon` amount of baseline variation on gaming-like behavior and an announced metric can increase gaming by changing agents' actions while the induced law remains absolutely continuous with respect to `mu_0`. The causal story is unchanged, but the measure-theoretic split collapses.
+
+Postmortem: keep absolute continuity as the formal condition for pure reweighting and as the reason the selection bound applies. Define intervention causally as a change in the response/action kernel at fixed underlying type. Mutual singularity is sufficient evidence of intervention, not necessary.
+
+## External analysis: coordinate-freeness of the selection bound was overclaimed
+
+Tried claim: `||B_H||_2 <= delta ||s||_2` is a coordinate-free selection-channel drift bound.
+
+Failure: the inequality is correct after choosing hidden coordinates and a Euclidean norm, but splitting one hidden variable into several correlated coordinates changes `||s||_2` and the bookkeeping. A rotated or duplicated representation can change the apparent dimensional dependence without changing the underlying hidden phenomenon.
+
+Postmortem: call the result coordinate-explicit. A coordinate-invariant version would need a specified value metric, covariance operator, or other representation-aware norm. This does not weaken the pure-selection lesson; it prevents the norm bookkeeping from being mistaken for an invariant harm measure.
+
+## Iteration 11: response-kernel boundary is not representation-free or marginally identifiable
+
+Tried claim: the response-kernel definition gives an intrinsic, observable boundary between selection and intervention.
+
+Failure: the boundary depends on the declared type space `U`. If `U` is enriched to include the whole policy-contingent response plan, an apparent intervention can be redescribed as selection over richer types. If `U` is too coarse, ordinary type heterogeneity can look like a kernel change. Separately, the marginal induced law `mu_theta` generally cannot identify whether change came from type weights `W_theta` or from fixed-type response kernels `K_theta`.
+
+Postmortem: the repaired claim is relative to a causal type/action representation. This is still useful: applications must say what is fixed type, what is action, and what observations would distinguish reweighting from response. But the framework should not pretend the distinction is recoverable from marginal score distributions alone.
