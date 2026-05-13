@@ -12,6 +12,13 @@ Aiming to answer questions such as:
 - Catch cheating on the test, so you add homework. Catch homework copying, so you add attendance. Does the cheating keep moving to places harder to see? Hard to answer without deciding, before you start, what "harder to see" means — otherwise you're just naming whatever's left over.
 - More things measured means more real signal, but also more places to game. Is there a sweet spot? Is it sometimes empty — no good number of things to measure?
 
+## Stretch goals for the research agenda
+
+- What kind of function specifies a future most humans would call utopian?
+    - Intuitive hypothesis: it needs enough complexity to keep every bad error dimension small.
+
+- Demonstrate that various economic, ML, and other theories describing Goodhart-like phenomena share the same underlying mathematical mechanism.
+
 
 # Repo
 
