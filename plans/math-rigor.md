@@ -12,6 +12,30 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
+## External Review Integration
+
+Gemini's review is useful as an adversarial reader report, but it should not
+turn this pass into caveat inflation. The paper is a scoped theoretical
+framework and response-modeling contract, not a universal predictor for RLHF,
+non-convex training, or every institutional failure mode.
+
+Use the review to sharpen interpretation, claim licensing, and presentation.
+Do not weaken clean toy theorems merely because their assumptions are narrow.
+State theorems under their declared assumptions, then route unmatched cases
+through the contract or open-problem list.
+
+Claude's pushback is the governing stance for this pass:
+
+- Treat missing ML mappings as missing declared response models, not defects in
+  the framework.
+- Keep the separable additive scorecard theorem clean; shared bottlenecks and
+  correlated costs are separate action geometries, not retroactive exceptions
+  to the stated theorem.
+- Make the response-modeling contract more prominent as the paper's most
+  transferable contribution.
+- Avoid adding new notation, simulations, or limitation tables just to answer
+  every external-review concern.
+
 ## Iteration 16: Book Propagation For Core Propositions
 
 Type: `edit`.
@@ -27,6 +51,11 @@ Scope:
 - Replace Section 3.5's convex-cost conjecture with the convex score-deficit
   proposition.
 - Rename `<sec:convex-cost-conjecture>` to `<sec:convex-cost-bound>`.
+- Add short "licenses / does not license" interpretation sentences for each
+  promoted proposition, without diluting the proposition statements
+  themselves.
+- In the selection-bound interpretation, note that very large or infinite
+  `chi^2` divergence makes the bound valid but practically vacuous.
 
 Canonical numbering:
 
@@ -66,9 +95,17 @@ Scope:
 - Restrict Boltzmann covariance-as-velocity claims to the finite-mgf domain
   `B = { beta : E_mu[exp(beta P)] < infinity }`.
 - Document the heavy-tail failure mode.
+- State that the convex score-deficit proposition is a convex action-cost
+  result. Non-convex ML training is out of scope unless a local response model
+  or cost geometry is explicitly declared.
 - Add a formal deferral/open-question block for endogenous
   `V(H_obs) = V_0 exp(-gamma H_obs)` rather than attempting the fixed-point
   analysis in this pass.
+
+Non-goal:
+
+- Do not start a "translate Fenchel duality to non-convexity" research program
+  in this pass.
 
 ## Iteration 19: Welfare-Bound Packaging
 
@@ -81,6 +118,9 @@ Scope:
   functional `ell`.
 - Use the counterexample `w = (1, 1), h = (M, 0)` to show convex affordability
   is not a welfare bound.
+- Mention nonlinear or prevalence-sensitive harm only as something a future
+  declared `ell` could encode. Do not introduce a third welfare notation before
+  the per-agent and population objects from Iteration 17 are wired in.
 - Add this as the "next analogue" to the research notes,
   `research/open_questions.md`, `research/claim_audits.md`, and
   `research/verification_stack.md`.
@@ -105,6 +145,16 @@ Scope:
 Each simulation must name the proposition or open problem it tests and what
 result would narrow or kill it.
 
+Discipline:
+
+- Keep simulations tied to claims already made by the paper.
+- Do not add broad simulations for shared bottlenecks, bounded rationality,
+  exogenous drift, or non-convexity merely because an external review mentioned
+  them.
+- Optional, only if lightweight: add one negative-control shared-bottleneck
+  example showing that `K_M = sum kappa_j` is a separable-cost theorem, not a
+  theorem about every possible action geometry.
+
 ## Iteration 21: Population And Active-Set Simulations
 
 Type: `generate`.
@@ -117,6 +167,9 @@ Scope:
 - Include a non-Gaussian `Q` stress test.
 - If Iteration 17 changes the welfare notation materially, adapt the simulation
   outputs to that notation rather than preserving old wording.
+- Keep the simulation set bounded: active-set and welfare-object checks are the
+  point of this iteration, not a general survey of every alternative failure
+  mechanism.
 
 ## Iteration 22: Worked Contract Application
 
@@ -129,8 +182,14 @@ Scope:
 
 - Add a Chapter 5 worked example.
 - Walk through all eight response-modeling contract fields.
+- Make the contract the main transferable object in the worked example.
+  Checkpoint selection may instantiate the selection channel; finetuning or
+  RLHF requires a declared action/cost/search model before Stackelberg or convex
+  bounds apply.
 - For Propositions 1, 1', 2, 3, and 4, state what each licenses in the
   application and what observation would falsify the mapping.
+- Avoid speculative claims such as "`kappa` is gradient accessibility" except
+  as explicitly non-binding examples of possible future model choices.
 - Update `research/verification_stack.md` Q19 from thought-experiment or
   application mapping to Layer-2 passed only if the primitive map and falsifiers
   are explicit.
@@ -165,6 +224,9 @@ Scope:
 - Audit `book/refs.bib` against all Typst citations.
 - Decide the paper extract scope after seeing which propositions, simulations,
   and application mapping survived unchanged.
+- Add a concise framing paragraph, not a large transfer table: the framework is
+  a contract for declaring response models; exact toy bounds transfer only
+  after matching assumptions are declared.
 - Produce a compact paper-extract outline with these sections:
   - selection results;
   - intervention results;
@@ -184,6 +246,9 @@ Scope:
   repair iteration before continuing.
 - Do not try to close endogenous-`V` math in this pass. Formal deferral is the
   default.
+- Treat external-review concerns as prompts for scope precision. They should
+  not trigger new theorem families unless a current paper claim would otherwise
+  be false or misleading.
 
 ## Test Plan
 
@@ -198,6 +263,10 @@ Scope:
 - For each proposition promoted into the book, confirm there is a matching
   claim-audit or verification-stack entry stating what it does and does not
   license.
+- Confirm the plan and later prose keep the separable additive theorem stated
+  cleanly rather than weakening it into a generic "it depends" claim.
+- Confirm Gemini-derived additions improve scope, interpretation, or
+  presentation rather than adding redundant limitation sections.
 - Verify citation consistency mechanically in Iteration 24.
 
 ## Assumptions
@@ -205,6 +274,8 @@ Scope:
 - No Lean formalization is introduced in this pass.
 - The book is the main reader-facing artifact; research notes remain the audit
   trail.
+- The paper should not apologize for being theoretical. Narrow theorem scope is
+  a design feature when assumptions are explicit.
 - Iteration 15's proposition sketches are accepted as the starting point,
   subject to edit/review tightening rather than full re-derivation.
 - The preferred total length is nine iterations. If the work must compress,

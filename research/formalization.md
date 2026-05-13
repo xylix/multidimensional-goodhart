@@ -44,6 +44,18 @@ Counterexample attempt: `b_H(t)` depends on the selected threshold and ignores w
 
 In the Gaussian scalar-selection toy model, `b_H(t) = sigma_1 lambda(t / sigma_1) r`, so the earlier covariance-ratio vector `r` is a sufficient statistic for all threshold responses in that restricted model.
 
+Elementary trichotomy [confident]: when a new measured coordinate is added in a
+selection model, its baseline dependence with a hidden coordinate is positive,
+negative, or approximately zero. Correspondingly, selecting on that coordinate
+can move the selected population toward the hidden coordinate, away from it, or
+not much at all. This is just correlation / conditional-expectation bookkeeping,
+but it is load-bearing intuition: "more measured dimensions" has no sign until
+the dependence structure and selected functional are declared. Toy example:
+adding a project-quality metric that positively tracks maintenance effort can
+select for maintenance; adding a speed metric that negatively tracks
+maintenance can select against it; adding a decorative metric unrelated to
+maintenance does little in a pure reweighting model.
+
 ## Weighted selection response
 
 Let `mu` be the baseline distribution over states, and let a selection policy be represented by a nonnegative weight function `W_t(s)` with `0 < E_mu[W_t] < infinity`. Define the selected expectation
@@ -179,6 +191,20 @@ Adversarial repair from iteration 6: for weighted additive score `sum w_j a_j` a
 `H_M(d) = d · (sum_{j in M} h_j kappa_j w_j) / (sum_{j in M} kappa_j w_j^2)`.
 
 Thus conservation under re-routing holds iff social harm is proportional to score contribution (`h_j = c w_j`) on the active measured channels. Otherwise changing measured channels or weights can raise or lower harm. Claim [tentative]: the dimensional dependence of gaming harm is governed by aggregation and exchange rates, not by dimension count alone; compensatory metrics conserve fixed-deficit harm only in the equal-harm-per-score case, while conjunctive metrics multiply it. Scope: if channel `j` also contributes `gamma_j in [0,1]` to the true goal then `H = sum_{j in M}(1-gamma_j) t kappa_j/K_M` in the unit-weight case and the regulator *can* shrink harm by steering effort onto high-`gamma` channels. Effective regulator levers under the additive rule are aggregate (shrink `K_M` below `t^2/(2V)`, harden channels, raise `t` vs. real signal, cut `V`) or structural (high-`gamma` / low-`h_j/w_j` proxies; switch aggregation rule), not mere re-routing among equally harmful-per-score channels.
+
+Selection/intervention distinction [confident]: baseline correlation and action
+geometry are different primitives. Correlation asks how a fixed population's
+hidden coordinates move when the policy reweights it by a measured coordinate.
+Action geometry asks what causal moves agents can make, how costly those moves
+are, which measured coordinates they move together, and what hidden harm or
+benefit they produce. The intervention analogue of the selection trichotomy is:
+an added metric opens a cheap harmful action channel, blocks substitution by
+forcing a costly real improvement or extra bar, or is redundant because it
+shares the same bottleneck as existing metrics. Toy example: adding a formatting
+metric to a benchmark can open a cheap exploit; adding an adversarial robustness
+gate can block an exploit by requiring another costly capability; adding a
+second wording of the same test may be redundant if both are gamed by the same
+memorized pattern.
 
 ## Minimum-complexity attractor: repaired as response-geometry attractor
 
