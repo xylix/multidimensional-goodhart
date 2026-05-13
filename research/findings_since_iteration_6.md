@@ -48,7 +48,7 @@ response-shape predictions:
 
 | Response geometry | Licensed prediction | Main guardrail |
 | --- | --- | --- |
-| Quadratic intervention cost | Cost-minimal drift along `C w` | Dense only when `C w` is dense in the pre-specified action basis and no extra constraints bind |
+| Quadratic intervention cost | Cost-minimal drift along `C w` in the unconstrained/interior case | Dense only when `C w` is dense in the pre-specified action basis and no extra constraints bind; for `a >= 0`, require `C w >= 0` or solve on the active face |
 | Fixed activation or linear marginal cost | Low-support or one-channel drift in the uncapped, no-tie case | Caps, convex post-activation costs, detection risk, and ties can force spreading |
 | Low-rank action map `L` | Drift is restricted to `im(L)` | Spectral concentration requires a specified hidden representation and value basis |
 | Simplicity-biased search prior | Failures are biased toward low description length under that prior | The coding language or search prior must be fixed before observing the failure |

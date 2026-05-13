@@ -59,17 +59,18 @@ Claim [tentative]: threshold response is the special case `W_t = 1{P >= t}`. Toy
 
 Counterexample attempt: if the threshold is chosen to select exactly the top 10%, then `t` is endogenous to the distribution. This is still representable as an indicator weight after solving for the quantile, but the parameter is the selected fraction rather than the numeric cutoff.
 
-Claim [tentative]: soft optimization is represented by Boltzmann weights `W_beta = exp(beta P)`, when `E[exp(beta P)]` is finite. Toy example: a bonus scheme where the chance of retention or promotion increases smoothly with measured output acts less like a hard cutoff and more like a continuous tilt toward high-output employees.
+Claim [tentative]: soft optimization is represented by Boltzmann weights `W_beta = exp(beta P)` only on the finite-mgf domain `B = { beta : E_mu[exp(beta P)] < infinity }`. Toy example: a bonus scheme where the chance of retention or promotion increases smoothly with measured output acts less like a hard cutoff and more like a continuous tilt toward high-output employees, provided the tilt can be normalized.
 
-Counterexample attempt: heavy-tailed proxy distributions may have infinite moment-generating functions, so `exp(beta P)` can fail to define a selected distribution. For heavy tails, bounded weights or quantile selection may be safer models.
+Counterexample attempt: heavy-tailed proxy distributions may have infinite moment-generating functions, so `exp(beta P)` can fail to define a selected distribution for positive `beta`. For heavy tails, bounded weights, truncation, or quantile selection may be safer models. This is a modeling boundary, not just a proof nuisance.
 
 ## Covariance as local velocity
 
-For Boltzmann selection, write
+For Boltzmann selection with `beta in B`, write
 
 `E_beta[H] = E[H exp(beta P)] / E[exp(beta P)]`.
 
-Assuming the needed integrability to differentiate under the expectation,
+Assuming the needed integrability to differentiate under the expectation, for
+example at an interior point of `B` where `H P` is tilted-integrable,
 
 `d/d beta E_beta[H]`
 
@@ -77,9 +78,9 @@ Assuming the needed integrability to differentiate under the expectation,
 
 `= Cov_beta(H, P)`.
 
-Claim [tentative]: covariance is the infinitesimal response of hidden coordinates to soft proxy optimization, evaluated under the current selected distribution. Toy example: if early sales incentives weakly correlate with burnout, the initial burnout drift is small; after several rounds select for a different employee subpopulation, the relevant covariance is the covariance inside that reweighted subpopulation.
+Claim [tentative]: covariance is the infinitesimal response of hidden coordinates to soft proxy optimization inside the finite-mgf domain, evaluated under the current selected distribution. Toy example: if early sales incentives weakly correlate with burnout, the initial burnout drift is small; after several rounds select for a different employee subpopulation, the relevant covariance is the covariance inside that reweighted subpopulation.
 
-Counterexample attempt: local velocity does not determine finite movement unless the covariance field along the path is known. A zero initial covariance can still allow nonzero finite drift if covariance becomes nonzero immediately after tilting.
+Counterexample attempt: local velocity does not determine finite movement unless the covariance field along the path is known and the entire path remains inside `B`. A zero initial covariance can still allow nonzero finite drift if covariance becomes nonzero immediately after tilting.
 
 Concrete example: let `P = Z ~ N(0, 1)` and `H = Z^2 - 1`. Under Boltzmann tilting by `exp(beta Z)`, the selected distribution is `Z_beta ~ N(beta, 1)`. Thus
 
@@ -89,7 +90,7 @@ The initial covariance at `beta = 0` is zero, matching iteration 2, but finite p
 
 Claim [tentative]: this example shows that even local covariance must be integrated along the selection path; baseline covariance alone is not enough for finite Goodhart pressure. Toy example: a metric may initially be uncorrelated with conformity, but mild pressure changes the selected population so that further pressure increasingly selects for conformity.
 
-Counterexample attempt: the example again uses a nonlinear hidden coordinate constructed from the proxy. It proves only insufficiency of baseline covariance, not that path integration is tractable in real domains.
+Counterexample attempt: the example again uses a nonlinear hidden coordinate constructed from the proxy. It proves only insufficiency of baseline covariance, not that path integration is tractable in real domains. Heavy-tail cases can fail even earlier because the Boltzmann path itself may not exist.
 
 ## Immediate takeaway
 

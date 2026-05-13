@@ -131,7 +131,7 @@ for this quadratic threshold model. It does not license a direct
 RLHF/neural-training mapping without a declared analogue of the action, cost,
 selection value, and pass condition.
 
-### 6. Proposition sketch: convex intervention budget
+### 6. Proposition sketch: convex action-cost intervention budget
 
 Let the fixed-type action space be finite-dimensional. Let `c: R^n ->
 (-infty, +infty]` be closed, proper, and convex, absorbing feasibility by
@@ -146,6 +146,11 @@ point with `w . a > d` and finite cost,
 `m(d) = sup_{lambda >= 0} [lambda d - c^*(lambda w)]`,
 
 where `c^*(y) = sup_a [y . a - c(a)]`.
+
+Scope: this is a convex action-cost calculation for a declared local response
+model. It does not apply to non-convex ML training, fixed-charge regimes,
+stochastic equilibria, or arbitrary policy feedback unless the application
+first supplies a local convex response geometry.
 
 Proof sketch: write the Lagrangian
 

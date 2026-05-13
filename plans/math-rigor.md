@@ -12,30 +12,6 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
-## Iteration 18: Remaining Math Guardrails
-
-Type: `edit` or `review`.
-
-Scope:
-
-- Add active-face validity conditions for the quadratic intervention result,
-  including the componentwise `C w >= 0` condition.
-- Add the failure example `C = diag(1, 1), w = (1, -1)`.
-- Restrict Boltzmann covariance-as-velocity claims to the finite-mgf domain
-  `B = { beta : E_mu[exp(beta P)] < infinity }`.
-- Document the heavy-tail failure mode.
-- State that the convex score-deficit proposition is a convex action-cost
-  result. Non-convex ML training is out of scope unless a local response model
-  or cost geometry is explicitly declared.
-- Add a formal deferral/open-question block for endogenous
-  `V(H_obs) = V_0 exp(-gamma H_obs)` rather than attempting the fixed-point
-  analysis in this pass.
-
-Non-goal:
-
-- Do not start a "translate Fenchel duality to non-convexity" research program
-  in this pass.
-
 ## Iteration 19: Welfare-Bound Packaging
 
 Type: `generate`.

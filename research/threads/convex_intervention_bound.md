@@ -79,7 +79,10 @@ where `c^*(y) = sup_a [y . a - c(a)]` is the convex conjugate.
 
 Interpretation: the intervention budget is governed by the support function of
 the agent's affordable action geometry in the score direction `w`. The baseline
-law `mu_0` does not supply this object.
+law `mu_0` does not supply this object. This is a convex action-cost result,
+not a general theorem about non-convex ML training or arbitrary adaptive
+optimization; those applications must declare a local response model and cost
+geometry before importing the formula.
 
 ## 5. Recovering previous toy models
 
@@ -175,6 +178,8 @@ It does not license:
 - an intrinsic classification from observed `mu_theta`;
 - a welfare conclusion from proxy movement alone;
 - a claim that convexity makes hidden harm small;
+- direct transfer to non-convex ML/RLHF training without a declared local
+  response model or cost geometry;
 - empirical use without a declared action space, cost model, stakes, and hidden
   harm functional.
 

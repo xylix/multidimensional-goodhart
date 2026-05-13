@@ -104,7 +104,8 @@ Passed or ready:
 - Non-Gaussian threshold examples can verify that covariance can vanish while
   threshold response is nonzero.
 - Weighted/Boltzmann selection can verify that hidden drift is the integral of
-  pathwise covariance, not baseline covariance.
+  pathwise covariance on the finite-mgf domain, not baseline covariance; a
+  heavy-tail case should verify that the Boltzmann path can fail to exist.
 - Quadratic Stackelberg gaming can verify Proposition 2, the intervention band
   `Delta = sqrt(2 kappa V)`, and show why agent cost geometry, not baseline
   variance, controls intervention harm.
@@ -175,16 +176,16 @@ response estimation and for controlled intervention/gaming environments.
 | Question cluster | Current cheapest live layer | Candidate verification | Failure condition |
 | --- | --- | --- | --- |
 | Dimensional dependence and harm functional (`Q1-Q3`) | Simulation | Linear-Gaussian and non-Gaussian threshold models; compare signed drift, normed drift, squared loss, tail risk, regret | Drift tracks dimension count without coupling, or conclusions depend entirely on arbitrary harm units |
-| Selection-response primitive (`Q6-Q9`) | Simulation | Compare covariance, threshold response, and weighted response on Gaussian, heavy-tailed, and nonlinear examples | Baseline covariance predicts finite-pressure hidden drift across examples |
+| Selection-response primitive (`Q6-Q9`) | Simulation | Compare covariance, threshold response, and weighted response on Gaussian, heavy-tailed, and nonlinear examples; explicitly test finite-mgf versus infinite-mgf Boltzmann cases | Baseline covariance predicts finite-pressure hidden drift across examples, or covariance velocity is used outside `B = { beta : E_mu[exp(beta P)] < infinity }` |
 | Pareto selection and identifiability (`Q5`) | Thought experiment -> simulation | Construct two distributions with same observed Pareto frontier but different hidden dimensions; then simulate compression | Pareto selection preserves enough diversity to identify hidden response in the intended regimes |
 | Selection vs. intervention boundary (`Q8`, `Q12`) | Thought experiment -> real-world correspondence | Classify toggle-only, feature-changing, manifold-constrained, and `P`-only manipulation agents | A feature-changing agent can always be represented as harmless reweighting of baseline data |
-| General intervention bound (`Q10`) | Proposition sketch -> simulation | Proposition 2 gives the one-dimensional quadratic wedge, and Proposition 3 gives the convex-dual score-deficit cost; next simulate quadratic, linear, and elastic-net-like costs | Bound depends on baseline divergence rather than cost geometry, or convex affordability is mistaken for a welfare bound without hidden value weights |
+| General intervention bound (`Q10`) | Proposition sketch -> simulation | Proposition 2 gives the one-dimensional quadratic wedge, and Proposition 3 gives the convex action-cost score-deficit cost; next simulate quadratic, linear, and elastic-net-like costs | Bound depends on baseline divergence rather than cost geometry, convex affordability is mistaken for a welfare bound without hidden value weights, or the convex formula is imported into non-convex ML/RLHF without a local response model |
 | Response-modeling contract (`Q19`) | Thought experiment -> application mapping | Apply the contract to one ML-eval case and one institutional scorecard; identify `U`, `W_theta`, `K_theta`, actions, costs, aggregation, hidden harm, and discriminating evidence | The contract cannot distinguish nearby mechanisms, or reduces to a generic checklist with no downstream calculation |
 | Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation | Weighted additive, conjunctive, heterogeneous-population, noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
 | Adaptive hardening (`Q14`) | Simulation | Repeated game where principal hardens the currently most-gamed channel; compare to static commitment | Dynamics cycle, increase attack surface, or lose to static narrow hardening |
 | Measurement frontier (`Q15`) | Thought experiment -> simulation | Construct signal-value vs. attack-surface frontier over measured sets `M` | Frontier is vacuous because all informative metrics are safe or all safe metrics are uninformative only by assumption |
 | Value-weighted susceptibility | Proposition sketch -> real-world correspondence | Propositions 1 and 1' give the coordinate-explicit and scalar/operator selection bounds; test whether declared value weighting changes rankings relative to SVD/PCA on known proxy-failure examples | Value weights are unavailable or arbitrary enough to make the scalar post hoc |
-| Minimum-complexity / recursive attractor (`Q4`, `Q18`, Appendix G) | Thought experiment -> simulation | Predefine complexity measure and hidden axes; compare quadratic, fixed-charge, sparse, capped, and low-rank response geometries | Attractor tracks cost/search geometry rather than complexity, or "complexity" changes under harmless representation changes |
+| Minimum-complexity / recursive attractor (`Q4`, `Q18`, Appendix G) | Thought experiment -> simulation | Predefine complexity measure and hidden axes; compare unconstrained and active-face quadratic, fixed-charge, sparse, capped, and low-rank response geometries | Attractor tracks cost/search geometry rather than complexity, the `C w` formula is used despite binding sign constraints, or "complexity" changes under harmless representation changes |
 
 ## Iteration 7: Q18 verification pass
 
@@ -201,7 +202,7 @@ Survived only barely:
 - A diffuse vector like `(1,...,1)` is high support but short description under a symmetric representation. Complexity claims require a fixed representation or an invariant complexity measure.
 
 Killed:
-- The unconditional Q18 claim. Selection follows baseline tail response and can shift all hidden coordinates diffusely. Quadratic intervention follows `a^* = d C w/(w^T C w)`, which can be dense. Proxy pressure alone does not select minimum complexity.
+- The unconditional Q18 claim. Selection follows baseline tail response and can shift all hidden coordinates diffusely. Unconstrained/interior quadratic intervention follows `a^* = d C w/(w^T C w)`, but sign constraints require active-face solutions. Proxy pressure alone does not select minimum complexity.
 
 Layer 2: real-world correspondence
 

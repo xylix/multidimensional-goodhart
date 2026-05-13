@@ -66,17 +66,17 @@ and the response of a hidden goal vector `H` as
 
 `B_H(t) = E_t[H] - E_mu[H]`.
 
-Claim [tentative]: weighted response is a more general primitive than threshold response, since hard thresholding is recovered by `W_t = 1{P >= t}` and soft optimization is recovered by choices such as `W_beta = exp(beta P)`. Toy example: a grant process might either fund every proposal above a cutoff or fund probabilistically with odds increasing in score; both are selection policies that reweight the applicant distribution.
+Claim [tentative]: weighted response is a more general primitive than threshold response, since hard thresholding is recovered by `W_t = 1{P >= t}` and soft optimization is recovered by choices such as `W_beta = exp(beta P)` on the finite-mgf domain `B = { beta : E_mu[exp(beta P)] < infinity }`. Toy example: a grant process might either fund every proposal above a cutoff or fund probabilistically with odds increasing in score; both are selection policies that reweight the applicant distribution when the normalizing expectation is finite.
 
 Counterexample attempt: not every control process is pure reweighting of a fixed baseline distribution. Interventions can change the state-generating mechanism itself, especially when agents adapt strategically. Weighted response is therefore a selection model, not yet a full causal-control model.
 
-For Boltzmann selection `W_beta = exp(beta P)`, whenever differentiation under the expectation is valid,
+For Boltzmann selection `W_beta = exp(beta P)`, the tilted path exists only for `beta in B = { beta : E_mu[exp(beta P)] < infinity }`. At interior points of this finite-mgf domain where `H P` is integrable under the tilt and differentiation under the expectation is valid,
 
 `d/d beta E_beta[H] = Cov_beta(H, P)`.
 
-Claim [tentative]: covariance is best interpreted as the local velocity of hidden drift under infinitesimal soft optimization, not as a global finite-pressure summary. Toy example: at low bonus pressure, the initial rate at which burnout changes with sales incentives is the current covariance between burnout and sales; after employees adapt or the selected population shifts, the covariance must be recomputed under the new weighted distribution.
+Claim [tentative]: covariance is best interpreted as the local velocity of hidden drift under infinitesimal soft optimization inside the finite-mgf domain, not as a global finite-pressure summary. Toy example: at low bonus pressure, the initial rate at which burnout changes with sales incentives is the current covariance between burnout and sales; after employees adapt or the selected population shifts, the covariance must be recomputed under the new weighted distribution.
 
-Counterexample attempt: if `P` has heavy tails, `E[exp(beta P)]` may be infinite for positive `beta`; the Boltzmann path may not exist. This is not a small technicality, because Goodhart often concerns extreme tails.
+Counterexample attempt: if `P` has heavy tails, `E[exp(beta P)]` may be infinite for positive `beta`; the Boltzmann path and its covariance derivative may not exist at the pressure of interest. This is not a small technicality, because Goodhart often concerns extreme tails. Use bounded, truncated, or quantile selection instead of pretending the Boltzmann formula applies outside `B`.
 
 ## Response channels (selection vs. intervention)
 
@@ -176,8 +176,11 @@ absorbed as `c = +infty` outside `A`), the minimum cost of buying score deficit
 
 under standard convex-duality regularity. Gaming is feasible iff `m(d) <= V`.
 In the one-dimensional quadratic toy this recovers `Delta = sqrt(2 kappa V)`.
-Convexity and affordability bound action movement, not welfare by themselves:
-hidden harm still depends on the declared harm functional `h_u`.
+This is a convex action-cost result, not a theorem about non-convex ML training
+or arbitrary policy feedback. ML/RLHF applications can import it only after
+declaring a local response model and cost geometry. Convexity and affordability
+bound action movement, not welfare by themselves: hidden harm still depends on
+the declared harm functional `h_u`.
 
 ## Multidimensional gaming: aggregation rule controls dimensional scaling
 
@@ -214,9 +217,16 @@ Claim [tentative]: in selection channels, there is no independent optimization o
 
 Counterexample attempt: if the baseline distribution was produced by training or search, the simplicity bias may be real but upstream. Then the selection channel appears to select low-complexity failures, but the mechanism is the candidate generator, not selection itself.
 
-For intervention channels with linear proxy deficit `w . a >= d` and quadratic cost `c(a) = (1/2) a^T C^{-1} a`, the KKT conditions give the cost-minimal action
+For intervention channels with linear proxy deficit `w . a >= d` and quadratic cost `c(a) = (1/2) a^T C^{-1} a`, the KKT conditions give the unconstrained/interior cost-minimal action
 
 `a^* = d C w / (w^T C w)`.
+
+With nonnegative actions `a >= 0`, this formula is valid as an interior solution
+only under the sufficient componentwise condition `C w >= 0`; otherwise solve
+the quadratic problem on the active feasible face. Failure example: with
+`C = diag(1, 1)` and `w = (1, -1)`, the unconstrained direction `(1, -1)` is
+invalid under `a >= 0`, so the constrained optimum sets the second component to
+zero and uses the active face.
 
 Claim [tentative]: intervention pressure selects a response-geometry optimum, not a complexity optimum by default. In the quadratic model, the attractor is minimum-cost; it is low-support, low-rank, or low-description-length only when the cost/search geometry is aligned with that complexity measure. Toy example: if all KPI-padding channels are equally cheap and equally weighted, a quadratic-cost agent spreads distortion across all of them; if one common exploit has a much lower activation cost, the agent repeatedly uses that exploit.
 

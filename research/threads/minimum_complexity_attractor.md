@@ -69,7 +69,7 @@ Let private cost be quadratic,
 
 `c(a) = (1/2) a^T C^{-1} a`,
 
-where `C` is positive definite. The cost-minimal intervention solves
+where `C` is positive definite. The unconstrained cost-minimal intervention solves
 
 `min_a (1/2) a^T C^{-1} a` subject to `w . a >= d`.
 
@@ -85,7 +85,14 @@ hence
 
 `a^* = d C w / (w^T C w)`.
 
-Claim [tentative]: in the quadratic intervention model, proxy pressure attracts the system to the minimum-cost feasible action `a^* = d C w/(w^T C w)`, not to the minimum-complexity feasible action as such. Toy example: if every KPI-padding channel has the same cost and equal score weight, a faculty member trying to add `d` points to an additive score spreads effort evenly across all channels, because that minimizes quadratic effort. The drift is diffuse in support, even though a one-channel padding strategy would be simpler.
+If the action set includes componentwise nonnegativity `a >= 0`, this is an
+interior solution only when `C w >= 0` componentwise. Otherwise the optimizer
+lies on an active feasible face and the same KKT calculation must be re-run
+with the binding sign constraints imposed. Concrete failure example:
+`C = diag(1, 1)` and `w = (1, -1)` give unconstrained direction `(1, -1)`,
+which is invalid under `a >= 0`; the constrained solution uses `a_2 = 0`.
+
+Claim [tentative]: in the unconstrained/interior quadratic intervention model, proxy pressure attracts the system to the minimum-cost feasible action `a^* = d C w/(w^T C w)`, not to the minimum-complexity feasible action as such. With sign constraints or caps, the realized response is the active-face minimum-cost action. Toy example: if every KPI-padding channel has the same cost and equal positive score weight, a faculty member trying to add `d` points to an additive score spreads effort evenly across all channels, because that minimizes quadratic effort. The drift is diffuse in support, even though a one-channel padding strategy would be simpler.
 
 Counterexample attempt: equal spreading across all equal channels may itself have low description length ("do the same thing everywhere"). So the claim should not be "quadratic cost makes high-complexity drift"; it is narrower: quadratic cost does not minimize support size, and no generic complexity conclusion follows without specifying the complexity measure. If complexity means description length in a symmetric basis, the same solution may be simple.
 

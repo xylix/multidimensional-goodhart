@@ -240,3 +240,36 @@ objects remain later work rather than part of this pass.
 Red flags fired: no contradiction exposed. The pass narrowed ambiguous prose:
 conservation remains strong under Proposition 4's hypotheses, but only for
 `H_per`; population-level backfire is a separate entry effect.
+
+## Iteration 18
+
+Question tackled: remaining math guardrails after the proposition and welfare
+passes.
+
+What changed: tightened Boltzmann selection claims to the finite-mgf domain
+`B = { beta : E_mu[exp(beta P)] < infinity }` and made heavy-tail failure an
+explicit modeling boundary. Updated the quadratic response-shape result so
+`a^* = d C w/(w^T C w)` is the unconstrained/interior solution; for
+nonnegative actions, `C w >= 0` is the sufficient interior condition, while
+violations such as `C = diag(1, 1), w = (1, -1)` require active-face KKT.
+Restated Proposition 3 as a convex action-cost score-deficit result, not a
+non-convex ML/RLHF training theorem. Added formal deferral language for
+endogenous stakes such as `V(H_obs) = V_0 exp(-gamma H_obs)`. Updated
+`book/multidimensional-goodhart.typ`, `research/formalization.md`,
+`research/open_questions.md`, `research/claim_audits.md`,
+`research/verification_stack.md`, `research/red_flags.md`,
+`research/threads/selection_response.md`,
+`research/threads/minimum_complexity_attractor.md`,
+`research/threads/convex_intervention_bound.md`,
+`research/threads/core_propositions_and_value_norms.md`,
+`research/reviews/response_shape_predictions.md`,
+`research/findings_since_iteration_6.md`, and `plans/math-rigor.md`.
+
+What's open now: welfare-bound packaging for declared hidden-harm functionals,
+simulation coverage for finite-mgf versus heavy-tail selection and active-face
+quadratic response, stochastic response, and the separate performative model
+needed for endogenous stakes.
+
+Red flags fired: no contradiction exposed. The pass found missing domain
+clauses, not false formulas: each formula survives with its intended scope
+visible.

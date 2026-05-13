@@ -134,3 +134,24 @@ presentation issue. Keep the broader proposition-language watch open: the book
 now has compact "Licenses / Does not license" boundaries, but later edits must
 not let the proposition labels imply that value weights, costs, response
 kernels, or hidden harm are identified from outcome distributions alone.
+
+## Iteration 18: remaining math guardrails
+
+Claim reviewed: covariance as Boltzmann local velocity, quadratic response
+directions, convex score-deficit budgets, and endogenous stakes.
+
+Red-flag scan: each claim was correct only with an implicit domain condition.
+Boltzmann covariance velocity requires the finite-mgf domain
+`B = { beta : E_mu[exp(beta P)] < infinity }` plus differentiability; heavy
+tails can make the path fail to exist. The quadratic `C w` direction is the
+unconstrained/interior solution; under `a >= 0`, `C = diag(1, 1), w = (1, -1)`
+shows the sign failure immediately. Convex Fenchel budgets are convex
+action-cost results, not non-convex ML/RLHF training theorems. Endogenous
+stakes such as `V(H_obs) = V_0 exp(-gamma H_obs)` require a separate
+performative-response model.
+
+Repair: state the domains at the claim sites. Use bounded/truncated/quantile
+selection for heavy-tail regimes, active-face KKT for sign-constrained
+quadratic actions, and response-model declarations before importing convex
+budgets into ML applications. Defer endogenous-stakes fixed-point analysis
+rather than solving it inside the current proposition layer.

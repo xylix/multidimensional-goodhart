@@ -134,7 +134,8 @@ claim enters.
 The promising part is that several pieces already have the right shape. For
 selection, the framework gives response functionals of the baseline
 distribution. Covariance is not promoted into a universal primitive; it is the
-local derivative of hidden drift under infinitesimal Boltzmann selection.
+local derivative of hidden drift under infinitesimal Boltzmann selection only
+on the finite-mgf domain where that path exists and is differentiable.
 Threshold response handles hard cutoffs. Weighted response handles generic
 reweighting. The chi-square selection bound says that, once the hidden
 coordinates and norm are declared, bounded reweighting plus bounded baseline
@@ -294,7 +295,12 @@ is trying to prove.
   trust in a metric decays as gaming is observed, so $V$ falls as the metric
   is used. Open: does the regulator–agent game with endogenous $V$ have a
   performative-stable fixed point, and does that fixed point still carry
-  hidden harm rather than collapsing to zero gaming and zero stakes?
+  hidden harm rather than collapsing to zero gaming and zero stakes? A tempting
+  toy closure is $V(H_"obs") = V_0 exp(-gamma H_"obs")$, but this book does not
+  solve that fixed point. Endogenous $V$ changes the response channel itself
+  and needs a separate performative-response model specifying what $H_"obs"$ is,
+  how agents forecast it, and how the regulator updates the metric. Until then,
+  all Stackelberg and convex-cost calculations use exogenous $V$.
 
 == Open questions
 
@@ -590,7 +596,9 @@ The proved or directly derived results in these chapters are:
 - Covariance is not a universal coupling primitive: with $P = Z$ and
   $H = Z^2 - 1$, baseline covariance vanishes while threshold and finite
   Boltzmann selection still move $H$.
-- Under Boltzmann selection, covariance is the local velocity:
+- Under Boltzmann selection on the finite-mgf domain
+  $cal(B) = { beta : EE_mu[exp(beta P)] < infinity }$, covariance is the local
+  velocity at differentiability points:
   $dif EE_beta[H] slash dif beta = "Cov"_beta(H, P)$.
 - Selection-channel drift satisfies the coordinate-explicit bound
   $norm(B_H(theta))_2 <= delta dot norm(s)_2$, with
@@ -602,8 +610,10 @@ The proved or directly derived results in these chapters are:
   exchange-rate condition $h_j = c w_j$ for conservation of fixed-deficit
   $H_per(M, d)$.
 - In the quadratic response-shape model, an intervention target $w dot a >= d$
-  with cost $(1/2) a^T C^(-1) a$ selects the minimum-cost direction
-  $a^* = d C w slash (w^T C w)$, not a minimum-complexity direction as such.
+  with cost $(1/2) a^T C^(-1) a$ selects the unconstrained/interior
+  minimum-cost direction $a^* = d C w slash (w^T C w)$, not a
+  minimum-complexity direction as such; sign constraints require active-face
+  solutions.
 - In fixed-charge or linear-cost response models, the uncapped no-tie case can
   produce one-channel drift; caps convert this into ordered spillover only when
   activation costs are absent or already paid; positive activation costs add
@@ -745,10 +755,15 @@ $ EE_theta[F] = (EE_mu[F W_theta]) / (EE_mu[W_theta]), quad quad
   B_H(theta) = EE_theta[H] - EE_mu[H]. $
 
 Hard thresholding is the special case $W_t = bb(1){P >= t}$ (recovering
-$b_H(t)$). Soft optimisation is $W_beta = exp(beta P)$ — Boltzmann selection —
-whenever $EE[exp(beta P)]$ is finite. Probabilistic funding with score-increasing
-odds, replicator-style repeated reweighting by performance, top-$q$-fraction
-selection (thresholding at an endogenous quantile): all are weight functions.
+$b_H(t)$). Soft optimisation by Boltzmann weights is available only on the
+finite-mgf domain
+
+$ cal(B) = { beta in RR : EE_mu[exp(beta P)] < infinity }. $
+
+For $beta in cal(B)$, write $W_beta = exp(beta P)$. Probabilistic funding with
+score-increasing odds, replicator-style repeated reweighting by performance,
+top-$q$-fraction selection (thresholding at an endogenous quantile): all are
+weight functions when their normalizing expectations are finite.
 
 #remark[Two caveats on the soft-optimisation case. First, if $P$ is heavy-tailed,
 $EE[exp(beta P)]$ may be infinite for positive $beta$ — the Boltzmann path may
@@ -759,18 +774,21 @@ interventions can change the state-generating mechanism. That is Chapter 3.]
 
 === Covariance as a local velocity
 
-For Boltzmann selection, $EE_beta[H] = EE[H exp(beta P)] / EE[exp(beta P)]$, and
-assuming enough integrability to differentiate under the expectation,
+For Boltzmann selection on the finite-mgf domain $cal(B)$,
+$EE_beta[H] = EE[H exp(beta P)] / EE[exp(beta P)]$. At values of $beta$ where
+the tilted expectation of $H P$ is finite and differentiation through the
+normalizer is valid — in particular at interior points of a finite neighborhood
+inside $cal(B)$ under the usual domination conditions —
 
 $ dif / (dif beta) EE_beta[H] = EE_beta[H P] - EE_beta[H] EE_beta[P] = "Cov"_beta(H, P). $
 
 #claim[Covariance is best read as the *local velocity* of hidden drift under
-infinitesimal soft optimisation, evaluated under the *current* selected
-distribution — not as a global finite-pressure summary. _Toy example:_ at low
-bonus pressure, the rate at which burnout changes with sales incentives is the
-current covariance between burnout and sales; after employees adapt or the
-selected population shifts, the covariance must be recomputed under the new
-weighted distribution.]
+infinitesimal soft optimisation only where the Boltzmann path exists and is
+differentiable, evaluated under the *current* selected distribution — not as a
+global finite-pressure summary. _Toy example:_ at low bonus pressure, the rate
+at which burnout changes with sales incentives is the current covariance
+between burnout and sales; after employees adapt or the selected population
+shifts, the covariance must be recomputed under the new weighted distribution.]
 
 That local velocity does not pin down finite movement. Take again $P = Z ~ cal(N)(0,1)$,
 $H = Z^2 - 1$. Boltzmann tilting by $exp(beta Z)$ gives $Z_beta ~ cal(N)(beta, 1)$,
@@ -781,7 +799,11 @@ $ EE_beta[H] = EE[Z_beta^2 - 1] = beta^2. $
 The covariance at $beta = 0$ is zero — matching @sec:cov-not-enough — yet finite
 pressure gives strictly positive hidden drift for every $beta != 0$. Baseline
 covariance alone is insufficient even for *finite* soft optimisation; one needs
-the covariance field $"Cov"_beta(H, P)$ along the whole tilted path.
+the covariance field $"Cov"_beta(H, P)$ along the whole tilted path, and the
+path itself must remain inside $cal(B)$. Heavy-tailed proxies for which
+$EE[exp(beta P)] = infinity$ at the pressure of interest are not covered by
+the Boltzmann calculation; they require bounded, truncated, or quantile-based
+selection models.
 
 #claim[*The hierarchy of selection primitives.* covariance (infinitesimal
 Boltzmann velocity) $subset$ threshold response $b_H(t)$ (hard cutoffs) $subset$
@@ -1325,8 +1347,10 @@ $m(d) = d^2 slash (2 kappa)$, so stakes $V$ permit deficits
 $d <= sqrt(2 kappa V)$.
 
 Does not license: a welfare bound without a hidden harm functional,
-nonconvex/fixed-charge dynamics, or inference of the cost geometry from the
-baseline distribution.]
+nonconvex/fixed-charge dynamics, non-convex ML/RLHF training dynamics, or
+inference of the cost geometry from the baseline distribution. An ML
+application can import this proposition only after declaring a local action
+space, response model, and convex cost geometry.]
 
 The proof sketch is the standard Fenchel move. Write the Lagrangian
 $c(a) + lambda(d - w dot a)$ with $lambda >= 0$. Minimizing over $a$ gives
@@ -1476,16 +1500,27 @@ $a in RR^k$ to close a linear proxy deficit $w dot a >= d$ under quadratic cost
 
 $ c(a) = (1 slash 2) a^T C^(-1) a, $
 
-with $C$ positive definite. The KKT conditions give an interior binding
+with $C$ positive definite. The KKT conditions give the unconstrained binding
 solution:
 
 $ C^(-1) a = lambda w, quad
   a^* = d C w slash (w^T C w). $
 
+If the feasible action set also requires $a >= 0$, this formula is an interior
+solution only when $C w >= 0$ componentwise (and the nonzero components can meet
+the deficit). If some component of $C w$ is negative, the constrained optimum is
+found by solving the same quadratic problem on the active feasible face, with
+the negative action coordinates fixed at zero or other active bounds imposed.
+For example, with $C = "diag"(1, 1)$ and $w = (1, -1)$, the unconstrained
+direction is proportional to $(1, -1)$, which is invalid under $a >= 0$; the
+active-face solution uses $a_2 = 0$ and buys the deficit through $a_1$.
+
 #claim[*Quadratic response-shape result.* In the unconstrained quadratic model,
-proxy pressure selects the minimum-cost direction proportional to $C w$. This is
-not a minimum-complexity direction by default. It is dense only when $C w$ is
-dense in the pre-specified action basis and no additional constraints bind.
+or on a nonnegative interior face satisfying $C w >= 0$, proxy pressure selects
+the minimum-cost direction proportional to $C w$. This is not a
+minimum-complexity direction by default. It is dense only when $C w$ is dense in
+the pre-specified action basis and no sign, cap, or other active constraints
+bind.
 _Toy example:_ if all KPI-padding channels are smooth substitutes with symmetric
 quadratic effort costs, the cheapest way to add score spreads effort rather than
 using one obvious loophole.]
@@ -1507,9 +1542,9 @@ The safe replacement for "minimum-complexity attractor" is not the empty slogan
     align: horizon,
     [*Response geometry*], [*Licensed prediction*], [*Guardrail*],
     [Quadratic intervention cost],
-    [Cost-minimal drift along $C w$.],
-    [Dense only when $C w$ is dense in the chosen action basis and no constraints
-      bind.],
+    [Cost-minimal drift along $C w$ in the unconstrained/interior case.],
+    [For $a >= 0$, require $C w >= 0$; otherwise solve on the active feasible
+      face. Dense only when that face solution is dense.],
     [Fixed activation or linear marginal cost],
     [Low-support or one-channel drift in the uncapped, no-tie case.],
     [Caps, convex post-activation costs, detection risk, and ties can force

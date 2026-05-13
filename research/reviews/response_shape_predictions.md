@@ -22,10 +22,10 @@ Core concern: Iteration 8 usefully preserved information by replacing the generi
 - Counterexamples and model-breakers:
   1. If `C` is diagonal and `w` is sparse, then `C w` is sparse.
   2. If `C` is rank-deficient or nearly rank-deficient, drift may be confined to a low-dimensional or unstable subspace.
-  3. If feasibility constraints such as `a >= 0`, caps, or sign restrictions bind, the active-face solution is not simply the full unconstrained `C w` direction.
+  3. If feasibility constraints such as `a >= 0`, caps, or sign restrictions bind, the active-face solution is not simply the full unconstrained `C w` direction. For nonnegative actions, `C w >= 0` is a sufficient interior condition; `C = diag(1, 1), w = (1, -1)` fails it.
 - Representation concern: Density is coordinate-dependent. The same vector may be dense in observable channel coordinates and sparse in a rotated eigenbasis.
-- Generalization boundary: The licensed prediction is: unconstrained quadratic costs produce the minimum-cost direction proportional to `C w`; this direction is dense only when `C w` is dense in the pre-specified action basis and no additional constraints bind.
-- Action: narrow the table entry from "quadratic costs predict dense drift" to "quadratic costs predict cost-minimal drift along `C w`; often dense, but only under a dense `C w` and inactive feasibility constraints."
+- Generalization boundary: The licensed prediction is: unconstrained/interior quadratic costs produce the minimum-cost direction proportional to `C w`; this direction is dense only when `C w` is dense in the pre-specified action basis and no additional constraints bind. Otherwise solve the active feasible face.
+- Action: narrow the table entry from "quadratic costs predict dense drift" to "quadratic costs predict cost-minimal drift along `C w` in the unconstrained/interior case; otherwise active-face response."
 
 ## Claim 2: fixed activation or linear costs predict sparse one-channel drift
 
@@ -74,7 +74,7 @@ Core concern: Iteration 8 usefully preserved information by replacing the generi
 
 The mathematical shape claims are conditional:
 
-- quadratic costs give a cost-minimal `C w` direction under the stated convex model;
+- quadratic costs give a cost-minimal `C w` direction under the unconstrained/interior convex model, with active-face repair under sign or cap constraints;
 - linear/fixed-charge costs give low-support or one-channel responses only under the stated lumpy/uncapped model;
 - low-rank affordances restrict drift to `im(L)`;
 - simplicity-biased search predicts low code length only relative to a pre-specified prior or parameterization.
