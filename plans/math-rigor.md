@@ -12,35 +12,6 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
-## Iteration 16: Book Propagation For Core Propositions
-
-Type: `edit`.
-
-Scope:
-
-- Add the Stackelberg wedge proposition sketch to
-  `research/threads/core_propositions_and_value_norms.md`.
-- Promote the selection, Stackelberg, convex-budget, and additive exchange-rate
-  results into numbered proposition-style environments in the book.
-- Replace Section 2.5's coordinate-only selection bound with both
-  coordinate-explicit and value-weighted forms.
-- Replace Section 3.5's convex-cost conjecture with the convex score-deficit
-  proposition.
-- Rename `<sec:convex-cost-conjecture>` to `<sec:convex-cost-bound>`.
-- Add short "licenses / does not license" interpretation sentences for each
-  promoted proposition, without diluting the proposition statements
-  themselves.
-- In the selection-bound interpretation, note that very large or infinite
-  `chi^2` divergence makes the bound valid but practically vacuous.
-
-Canonical numbering:
-
-- Proposition 1: selection drift.
-- Proposition 1': value-weighted/operator selection drift.
-- Proposition 2: Stackelberg wedge.
-- Proposition 3: convex score-deficit budget.
-- Proposition 4: additive exchange-rate iff.
-
 ## Iteration 17: Welfare-Object Discipline
 
 Type: `edit`.

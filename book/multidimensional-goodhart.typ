@@ -25,6 +25,9 @@
   width: 100%, inset: 8pt, radius: 3pt, fill: luma(245),
   stroke: (left: 2pt + luma(160)),
 )[#body]
+#let proposition(num, title, body) = claim[
+  *Proposition #num (#title).* #body
+]
 #let remark(body) = block(width: 100%, inset: (left: 10pt))[
   #text(style: "italic")[Remark.] #body
 ]
@@ -796,8 +799,8 @@ $s_i := "sd"_mu(H_i)$,
 
 $ abs(B_(H_i)(theta)) <= delta dot s_i, quad quad norm(B_H(theta))_2 <= delta dot norm(s)_2. $
 
-#claim[*Proposition 1 (coordinate-explicit selection drift).* Under a pure
-selection channel with likelihood ratio $L_theta = d mu_theta slash d mu$,
+#proposition("1", "coordinate-explicit selection drift")[
+Under a pure selection channel with likelihood ratio $L_theta = d mu_theta slash d mu$,
 finite coordinate variances, and
 $delta = norm(L_theta - 1)_(L^2(mu)) = sqrt(chi^2(mu_theta parallel mu))$, each
 hidden coordinate satisfies
@@ -827,8 +830,8 @@ If $norm(x)_M = sqrt(x^T M x)$ for a positive definite value matrix $M$, this is
 the corresponding covariance-operator bound after the value metric has been
 declared.
 
-#claim[*Proposition 1' (value-weighted/operator selection drift).* Let
-$L = d mu_theta slash d mu$, $L in L^2(mu)$, $EE_mu[L] = 1$, and let $H$ have
+#proposition("1'", "value-weighted/operator selection drift")[
+Let $L = d mu_theta slash d mu$, $L in L^2(mu)$, $EE_mu[L] = 1$, and let $H$ have
 finite second moments. For every declared value vector $v$,
 
 $ abs(EE_(mu_theta)[v dot H] - EE_mu[v dot H])
@@ -995,8 +998,8 @@ selected set ${Q >= t}$; $H equiv 0$):
   disappear, but the same fixed-type action response would remain. The state was
   *transported* along an action channel, not merely reweighted.
 
-#claim[*Proposition 2 (Stackelberg wedge).* In the one-dimensional noiseless
-threshold model, let true quality be $Q$, action be $a >= 0$, score be $Q + a$,
+#proposition("2", "Stackelberg wedge")[
+In the one-dimensional noiseless threshold model, let true quality be $Q$, action be $a >= 0$, score be $Q + a$,
 pass condition be $Q + a >= t$, selection value be $V > 0$, and private action
 cost be $a^2 slash (2 kappa)$ with $kappa > 0$. Then the privately profitable
 gaming band has width
@@ -1080,8 +1083,8 @@ measuring both gives $H = 3 d slash 5$.) Re-routing can raise *or* lower harm,
 depending on the score weights. @fig:exchange-rate-condition records the
 numbers.
 
-#claim[*Proposition 4 (additive exchange-rate iff).* Fix a score deficit $d > 0$.
-For active measured channels $M$, suppose costs are separable quadratic,
+#proposition("4", "additive exchange-rate iff")[
+Fix a score deficit $d > 0$. For active measured channels $M$, suppose costs are separable quadratic,
 $sum_(j in M) a_j^2 slash (2 kappa_j)$ with $kappa_j > 0$, the score is
 $sum_(j in M) w_j a_j$ with $w_j > 0$, and hidden harm is linear,
 $H(a) = sum_(j in M) h_j a_j$. The cost-minimal action satisfying the deficit is
@@ -1270,8 +1273,8 @@ agents can move in state space, the analogous budget has to come from the
 agents' cost geometry. In the quadratic one-dimensional model that budget is
 $Delta = sqrt(2 kappa V)$.
 
-#claim[*Proposition 3 (convex score-deficit budget).* Let the fixed-type action
-space be finite-dimensional. Let $c: RR^n -> (-infinity, +infinity]$ be closed,
+#proposition("3", "convex score-deficit budget")[
+Let the fixed-type action space be finite-dimensional. Let $c: RR^n -> (-infinity, +infinity]$ be closed,
 proper, and convex, absorbing feasibility by setting $c(a) = +infinity$ outside
 the feasible set. Let proxy gain be linear, $p(a) = w dot a$. For a score
 deficit $d$, define
