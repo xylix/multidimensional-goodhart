@@ -29,10 +29,12 @@ Passed:
 - Additive vs. conjunctive scorecards: adding dimensions has opposite effects
   depending on aggregation. This killed dimension-count-only intervention
   claims.
-- Iteration-15 proposition pass: value-weighted pure-selection drift, convex
-  score-deficit budgets, and the additive conservation iff-condition now have
-  explicit hypotheses and proof sketches. This raises Layer-1 rigor without
-  removing the need to declare value weights, action costs, or aggregation
+- Iteration-16 proposition propagation: the five promoted propositions now have
+  explicit hypotheses and reader-facing license boundaries: coordinate-explicit
+  selection drift, value-weighted/operator selection drift, the quadratic
+  Stackelberg wedge, the convex score-deficit budget, and the additive
+  exchange-rate iff-condition. This raises Layer-1 rigor without removing the
+  need to declare value weights, action costs, pass conditions, or aggregation
   rules.
 
 Survived only barely:
@@ -103,8 +105,8 @@ Passed or ready:
   threshold response is nonzero.
 - Weighted/Boltzmann selection can verify that hidden drift is the integral of
   pathwise covariance, not baseline covariance.
-- Quadratic Stackelberg gaming can verify the intervention band
-  `Delta = sqrt(2 kappa V)` and show why agent cost geometry, not baseline
+- Quadratic Stackelberg gaming can verify Proposition 2, the intervention band
+  `Delta = sqrt(2 kappa V)`, and show why agent cost geometry, not baseline
   variance, controls intervention harm.
 - Additive vs. conjunctive multidimensional gaming can verify the aggregation
   rule contrast.
@@ -176,12 +178,12 @@ response estimation and for controlled intervention/gaming environments.
 | Selection-response primitive (`Q6-Q9`) | Simulation | Compare covariance, threshold response, and weighted response on Gaussian, heavy-tailed, and nonlinear examples | Baseline covariance predicts finite-pressure hidden drift across examples |
 | Pareto selection and identifiability (`Q5`) | Thought experiment -> simulation | Construct two distributions with same observed Pareto frontier but different hidden dimensions; then simulate compression | Pareto selection preserves enough diversity to identify hidden response in the intended regimes |
 | Selection vs. intervention boundary (`Q8`, `Q12`) | Thought experiment -> real-world correspondence | Classify toggle-only, feature-changing, manifold-constrained, and `P`-only manipulation agents | A feature-changing agent can always be represented as harmless reweighting of baseline data |
-| General intervention bound (`Q10`) | Proposition sketch -> simulation | Iterations 13 and 15 give the affordable-action envelope and convex-dual score-deficit cost; next simulate quadratic, linear, and elastic-net-like costs | Bound depends on baseline divergence rather than cost geometry, or convex affordability is mistaken for a welfare bound without hidden value weights |
+| General intervention bound (`Q10`) | Proposition sketch -> simulation | Proposition 2 gives the one-dimensional quadratic wedge, and Proposition 3 gives the convex-dual score-deficit cost; next simulate quadratic, linear, and elastic-net-like costs | Bound depends on baseline divergence rather than cost geometry, or convex affordability is mistaken for a welfare bound without hidden value weights |
 | Response-modeling contract (`Q19`) | Thought experiment -> application mapping | Apply the contract to one ML-eval case and one institutional scorecard; identify `U`, `W_theta`, `K_theta`, actions, costs, aggregation, hidden harm, and discriminating evidence | The contract cannot distinguish nearby mechanisms, or reduces to a generic checklist with no downstream calculation |
 | Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation | Weighted additive, conjunctive, heterogeneous-population, noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
 | Adaptive hardening (`Q14`) | Simulation | Repeated game where principal hardens the currently most-gamed channel; compare to static commitment | Dynamics cycle, increase attack surface, or lose to static narrow hardening |
 | Measurement frontier (`Q15`) | Thought experiment -> simulation | Construct signal-value vs. attack-surface frontier over measured sets `M` | Frontier is vacuous because all informative metrics are safe or all safe metrics are uninformative only by assumption |
-| Value-weighted susceptibility | Proposition sketch -> real-world correspondence | Iteration 15 gives the scalar/operator selection bound; test whether declared value weighting changes rankings relative to SVD/PCA on known proxy-failure examples | Value weights are unavailable or arbitrary enough to make the scalar post hoc |
+| Value-weighted susceptibility | Proposition sketch -> real-world correspondence | Propositions 1 and 1' give the coordinate-explicit and scalar/operator selection bounds; test whether declared value weighting changes rankings relative to SVD/PCA on known proxy-failure examples | Value weights are unavailable or arbitrary enough to make the scalar post hoc |
 | Minimum-complexity / recursive attractor (`Q4`, `Q18`, Appendix G) | Thought experiment -> simulation | Predefine complexity measure and hidden axes; compare quadratic, fixed-charge, sparse, capped, and low-rank response geometries | Attractor tracks cost/search geometry rather than complexity, or "complexity" changes under harmless representation changes |
 
 ## Iteration 7: Q18 verification pass

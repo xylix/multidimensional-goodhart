@@ -97,7 +97,41 @@ the raw Euclidean coordinate bound is not. If instead one declares the identity
 metric on the duplicated coordinates, one has changed the value metric: duplicate
 copies now count twice in the hidden norm.
 
-### 5. Proposition sketch: convex intervention budget
+### 5. Proposition sketch: Stackelberg wedge
+
+Consider the one-dimensional threshold toy. An agent has quality `Q`, chooses
+action `a >= 0`, pays private cost `a^2/(2 kappa)` with `kappa > 0`, and gets
+selection value `V > 0` if it passes a noiseless threshold. The measured score
+is `Q + a`, and passing requires
+
+`Q + a >= t`.
+
+An agent with `Q >= t` chooses `a = 0`. An agent with `Q < t` either chooses the
+least action that passes, `a = t - Q`, or does not pass. Gaming is privately
+worthwhile exactly when
+
+`(t - Q)^2/(2 kappa) <= V`,
+
+equivalently when
+
+`t - Q <= Delta := sqrt(2 kappa V)`.
+
+Thus the action response creates a gaming band of width
+
+`Delta = sqrt(2 kappa V)`.
+
+Proof sketch: the noiseless pass condition makes the benefit discontinuous:
+passing yields `V`, failing yields `0`. For `Q < t`, any passing action larger
+than `t - Q` is dominated, so the only candidate passing action costs
+`(t - Q)^2/(2 kappa)`. Comparing this cost to `V` gives the displayed band.
+
+Interpretation: the wedge is imported from action economics--ease of gaming and
+stakes--not from the baseline distribution. It licenses the intervention budget
+for this quadratic threshold model. It does not license a direct
+RLHF/neural-training mapping without a declared analogue of the action, cost,
+selection value, and pass condition.
+
+### 6. Proposition sketch: convex intervention budget
 
 Let the fixed-type action space be finite-dimensional. Let `c: R^n ->
 (-infty, +infty]` be closed, proper, and convex, absorbing feasibility by
@@ -135,7 +169,7 @@ Checks:
 This is an intervention budget, not a welfare theorem. Hidden harm requires a
 separate functional `h(a)` or value norm on action-induced hidden displacement.
 
-### 6. Proposition sketch: additive conservation iff-condition
+### 7. Proposition sketch: additive conservation iff-condition
 
 Consider a fixed score deficit `d > 0`, measured channel set `M`, additive score
 
@@ -171,7 +205,7 @@ Two-channel counterexample: let `kappa_1 = kappa_2 = 1`, `w_1 = w_2 = 1`,
 only channel 2 gives harm `2d`; measuring both gives harm `3d/2`. Additivity
 alone does not conserve harm.
 
-### 7. What remains non-theorem
+### 8. What remains non-theorem
 
 The response-modeling contract is methodological, not a theorem. It says what
 must be declared before a Goodhart claim licenses a calculation: type space,
@@ -186,7 +220,7 @@ The proposition sketches above do not settle population harm, adaptive
 hardening, repeated proxy repair, or strategic dynamics. Those still need
 simulation or domain-specific empirical work.
 
-### 8. Verification checks
+### 9. Verification checks
 
 - Scalar value check: the value-weighted selection bound is exactly
   Cauchy-Schwarz applied to `V_H = v . H`, with variance `v^T Sigma_H v`.
@@ -194,6 +228,8 @@ simulation or domain-specific empirical work.
   coordinate norm but not the variance of a fixed scalar value functional.
 - Euclidean special case: declaring the identity metric on the chosen hidden
   coordinates recovers `||B_H||_2 <= delta ||s||_2`.
+- Stackelberg wedge check: the noiseless quadratic threshold model gives the
+  pass band `t - Q <= sqrt(2 kappa V)` by direct cost-benefit comparison.
 - Convex budget check: the Fenchel formula recovers the single- and
   multichannel quadratic wedges.
 - Conservation check: `h_j = c w_j` gives `H_M(d) = c d`; unequal `h_j / w_j`

@@ -43,7 +43,7 @@
   #v(0.4cm)
   #text(size: 1.2em)[How measurement reshapes the terrain under measurement]
   #v(1cm)
-  #text(size: 1em)[Working draft — Chapter 0 and Chapters 1–5]
+  #text(size: 1em)[Working draft — Intro and Chapters 1–5]
   #v(0.3cm)
   #text(size: 0.95em, style: "italic")[#datetime.today().display()]
 ]
@@ -52,12 +52,12 @@
 #outline(depth: 2, indent: auto)
 
 // =============================================================================
-= Chapter 0 — Working spine
+= Intro: Working spine
 // =============================================================================
 
 == The empirical phenomenon
 
-#text(weight: "bold")[[Carrying example placeholder.]] Start this chapter on one
+#text(weight: "bold")[[Carrying example placeholder.]] Start the intro on one
 concrete optimization case: a score, benchmark, or institutional metric is
 optimized; the visible failure is patched by adding or reshaping measured
 dimensions; and the distortion does not simply disappear. It moves. Sometimes it
@@ -78,12 +78,12 @@ changing the coupling between visible and hidden variables, by recruiting new
 agents into gaming, by moving from one cheap action channel to another, or by
 changing which residuals remain legible to the evaluator.
 
-Abram, I expect your first pushback to be that this sounds like naming the
-residue after the fact. If the story is "there were many dimensions, something
-bad happened in one of them, and now we call it multidimensional Goodhart", then
-I agree it is not a theory. The point of the framework has to be stronger and
-more brittle: before seeing the next failure, it should say which response model
-is being claimed and what shape of distortion that model predicts.
+The obvious objection is that this could become a way of naming the residue
+after the fact. If the story is "there were many dimensions, something bad
+happened in one of them, and now we call it multidimensional Goodhart", then
+that is not a theory. The point of the framework has to be stronger and more
+brittle: before seeing the next failure, it should say which response model is
+being claimed and what shape of distortion that model predicts.
 
 == Why this approach
 
@@ -220,14 +220,14 @@ Threads that are live in the sense that fragments of math exist but are not
 yet promoted into the formal chapters. They shape what the rest of the book
 is trying to prove.
 
-- *Convex intervention bound.* The selection-channel bound governs hidden
+- *Convex intervention budget.* The selection-channel bound governs hidden
   drift through a chi-square / reweighting budget on baseline statistics.
-  The intervention analogue (@sec:convex-cost-conjecture) is conjectured to
-  give stakes $V$ and convex agent cost $c$ a feasible-displacement envelope
-  with support function $c^*(lambda ell)$; the quadratic case recovers the
-  $sqrt(2 kappa V)$ wedge. Missing for a clean proposition: action space,
-  harm functional, stochastic-response variant, participation, and the link
-  between selection value and realised cost. Right shape; not yet a theorem.
+  The intervention analogue (@sec:convex-cost-bound) gives a score-deficit
+  cost after declaring a finite-dimensional action space, linear score gain,
+  convex agent cost, and regularity condition. The quadratic case recovers the
+  $sqrt(2 kappa V)$ wedge. What remains open is not the convex-duality
+  calculation, but the application mapping: stochastic response, participation,
+  hidden harm, and the link between selection value and realised action cost.
 
 - *Evidence standards / domain templates.* Chapter 5 states the
   response-modeling contract abstractly. The in-progress work is per-domain
@@ -601,10 +601,11 @@ The proved or directly derived results in these chapters are:
 
 The additive-versus-conjunctive flip and the noisy Stackelberg refinement are
 illustrative models, not general theorems. The convex-cost intervention analogue
-of the selection bound is stated below as a conjecture with a Fenchel-duality
-sketch. Chapter 4's response-shape taxonomy is a conditional prediction menu,
+of the selection bound is stated below as a score-deficit proposition with a
+Fenchel-duality proof sketch. Chapter 4's response-shape taxonomy is a
+conditional prediction menu,
 not a theorem that residual error generically becomes more complex. The live
-open questions are pulled forward into Chapter 0 as modelling obligations.
+open questions are pulled forward into the intro as modelling obligations.
 
 // =============================================================================
 = Selection channels: when the principal only re-selects
@@ -795,13 +796,54 @@ $s_i := "sd"_mu(H_i)$,
 
 $ abs(B_(H_i)(theta)) <= delta dot s_i, quad quad norm(B_H(theta))_2 <= delta dot norm(s)_2. $
 
-#claim[Under a selection channel, hidden Goodhart drift is controlled by two
-things that *are* visible in the baseline distribution: how hard you reweight
-($delta$) and how variable the hidden coordinates are ($s$). Bounded reweighting
-budget plus bounded hidden variance $=>$ bounded hidden drift — full stop. The
-$sqrt(d)$ growth from Chapter 2's per-dimension model is exactly the
-$norm(s)_2$ term, and that term is the *only* way the number of declared hidden
-coordinates enters.]
+#claim[*Proposition 1 (coordinate-explicit selection drift).* Under a pure
+selection channel with likelihood ratio $L_theta = d mu_theta slash d mu$,
+finite coordinate variances, and
+$delta = norm(L_theta - 1)_(L^2(mu)) = sqrt(chi^2(mu_theta parallel mu))$, each
+hidden coordinate satisfies
+
+$ abs(B_(H_i)(theta)) <= delta s_i, quad
+  norm(B_H(theta))_2 <= delta norm(s)_2. $
+
+Licenses: after the hidden coordinates and Euclidean norm are declared,
+selection-regime drift is bounded by reweighting intensity and baseline hidden
+variability. The $sqrt(d)$ growth from Chapter 2's per-dimension model is the
+$norm(s)_2$ term.
+
+Does not license: a coordinate-free welfare claim, or a value metric inferred
+from the selected law.]
+
+For a declared scalar hidden-value functional $v dot H$, the same proof gives
+
+$ abs(Delta(v dot H)) <= delta sqrt(v^T Sigma_H v), $
+
+where $Sigma_H = "Cov"_mu(H)$. More generally, for any hidden-drift value norm
+$norm(.)_V$,
+
+$ norm(B_H(theta))_V <=
+  delta sup_(norm(v)_(V,*) <= 1) sqrt(v^T Sigma_H v). $
+
+If $norm(x)_M = sqrt(x^T M x)$ for a positive definite value matrix $M$, this is
+the corresponding covariance-operator bound after the value metric has been
+declared.
+
+#claim[*Proposition 1' (value-weighted/operator selection drift).* Let
+$L = d mu_theta slash d mu$, $L in L^2(mu)$, $EE_mu[L] = 1$, and let $H$ have
+finite second moments. For every declared value vector $v$,
+
+$ abs(EE_(mu_theta)[v dot H] - EE_mu[v dot H])
+  <= sqrt(chi^2(mu_theta parallel mu)) sqrt(v^T Sigma_H v). $
+
+The dual-norm/operator form above is the same statement optimized over the
+declared value unit ball.
+
+Licenses: coordinate bookkeeping is repaired once the application supplies a
+scalar value direction or value norm. Splitting a hidden coordinate does not
+change the bound for the same underlying value functional.
+
+Does not license: hidden value weights observable from $mu_theta$, or a useful
+numerical prediction when $chi^2$ is huge or infinite. In that case the
+inequality remains valid where defined, but becomes practically vacuous.]
 
 #remark[The proof is only Cauchy–Schwarz, but the formulation is doing real
 work. It is the clean coordinate-explicit statement of why selection-regime
@@ -953,13 +995,27 @@ selected set ${Q >= t}$; $H equiv 0$):
   disappear, but the same fixed-type action response would remain. The state was
   *transported* along an action channel, not merely reweighted.
 
-#claim[In a Stackelberg gaming model with quadratic gaming cost $a^2 slash (2 kappa)$
-and selection value $V$, the metric's worst-case bias and the induced hidden
-harm both scale with $Delta = sqrt(2 kappa V)$ — the square root of (ease of
-gaming $times$ stakes) — and this regime is invisible to, and unbounded by, the
-baseline distribution. _Toy example:_ doubling the funding tied to a test score
-multiplies the gaming wedge by $sqrt(2)$; halving the cost of test-prep drilling
-does the same.]
+#claim[*Proposition 2 (Stackelberg wedge).* In the one-dimensional noiseless
+threshold model, let true quality be $Q$, action be $a >= 0$, score be $Q + a$,
+pass condition be $Q + a >= t$, selection value be $V > 0$, and private action
+cost be $a^2 slash (2 kappa)$ with $kappa > 0$. Then the privately profitable
+gaming band has width
+
+$ Delta = sqrt(2 kappa V). $
+
+Agents with $Q in [t - Delta, t)$ choose the least passing action
+$a^*(Q) = t - Q$; agents below the band do not game enough to pass, and agents
+above threshold need no action.
+
+Licenses: in this quadratic threshold toy, the intervention budget comes from
+action economics--ease of gaming and stakes--not from the baseline distribution.
+The metric's worst-case bias is at most $Delta$, and hidden action harm scales
+with the same band.
+
+Does not license: a direct RLHF, finetuning, or neural-training mapping without
+declared analogues of $a$, $kappa$, $V$, and the pass condition. _Toy example:_
+doubling the funding tied to a test score multiplies the gaming wedge by
+$sqrt(2)$; halving the cost of test-prep drilling does the same.]
 
 #remark[The quadratic cost is a modelling choice. A cost with a hard cap
 $a <= a_"max"$ bounds gaming at $a_"max"$ regardless of $V$; a cost that is
@@ -1024,15 +1080,36 @@ measuring both gives $H = 3 d slash 5$.) Re-routing can raise *or* lower harm,
 depending on the score weights. @fig:exchange-rate-condition records the
 numbers.
 
-#claim[*Conservation, correctly stated.* For a fixed score deficit $d$, quadratic
-separable costs, and additive score $sum w_j a_j$, per-agent harm is conserved
-under re-routing *if and only if* social harm is proportional to score
-contribution on every available channel — $h_j = c w_j$ on the active measured
-set. Then $H_M (d) = c d$, independent of $M$; otherwise $H_M (d)$ depends on
-$M$ through the cost-weighted average above. _Toy example:_ if every point of
-score inflation is equally socially wasteful no matter which KPI supplies it,
-re-routing conserves harm; if grant-padding produces less waste per score point
-than citation-padding, moving weight toward grant-padding genuinely reduces harm.]
+#claim[*Proposition 4 (additive exchange-rate iff).* Fix a score deficit $d > 0$.
+For active measured channels $M$, suppose costs are separable quadratic,
+$sum_(j in M) a_j^2 slash (2 kappa_j)$ with $kappa_j > 0$, the score is
+$sum_(j in M) w_j a_j$ with $w_j > 0$, and hidden harm is linear,
+$H(a) = sum_(j in M) h_j a_j$. The cost-minimal action satisfying the deficit is
+
+$ a_j^* = d kappa_j w_j slash W_M, quad
+  W_M = sum_(i in M) kappa_i w_i^2, $
+
+and fixed-deficit harm is
+
+$ H_M(d) =
+  d dot (sum_(j in M) h_j kappa_j w_j)
+    slash (sum_(j in M) kappa_j w_j^2). $
+
+Therefore fixed-deficit harm is conserved across active measured sets if and
+only if $h_j = c w_j$ on the channels being compared, in which case
+$H_M(d) = c d$.
+
+Licenses: under separable quadratic costs, additive score, linear harm, and a
+fixed score deficit, conservation is an exchange-rate theorem, not a dimension
+count slogan.
+
+Does not license: population-level conservation, arbitrary costs, arbitrary
+aggregation rules, or conservation when harm-per-score ratios differ. Shared
+bottlenecks and correlated costs are different action geometries, not
+exceptions to this theorem. _Toy example:_ if every point of score inflation is
+equally socially wasteful no matter which KPI supplies it, re-routing conserves
+harm; if grant-padding produces less waste per score point than
+citation-padding, moving weight toward grant-padding genuinely reduces harm.]
 
 #remark[This is the same structure as cost-benefit-weighted strategic
 classification @hardt2016strategic, and as isoquant choice in production theory:
@@ -1185,7 +1262,7 @@ pre-state the comparison the score is meant to support, report uncertainty where
 stochasticity matters, document prompts/configs, and
 separate the measured score from the broader capability or alignment claim.
 
-== A convex-cost intervention bound? <sec:convex-cost-conjecture>
+== A convex-cost intervention bound <sec:convex-cost-bound>
 
 The selection-channel bound says that hidden drift is controlled by a
 chi-square/reweighting budget $delta$. The intervention examples say that, once
@@ -1193,26 +1270,37 @@ agents can move in state space, the analogous budget has to come from the
 agents' cost geometry. In the quadratic one-dimensional model that budget is
 $Delta = sqrt(2 kappa V)$.
 
-#claim[*Conjecture.* Let an agent choose an intervention $a$ at convex cost
-$c(a)$ in order to gain value at most $V$ from selection, and let hidden harm be
-bounded by a linear functional $ell(a)$. Then the intervention analogue of the
-selection budget should be governed by the convex conjugate $c^*(lambda ell)$:
-schematically, stakes $V$ buy a feasible displacement set whose support function
-is controlled by Fenchel duality, not by any divergence from $mu_0$.]
+#claim[*Proposition 3 (convex score-deficit budget).* Let the fixed-type action
+space be finite-dimensional. Let $c: RR^n -> (-infinity, +infinity]$ be closed,
+proper, and convex, absorbing feasibility by setting $c(a) = +infinity$ outside
+the feasible set. Let proxy gain be linear, $p(a) = w dot a$. For a score
+deficit $d$, define
 
-The proof sketch is the standard Fenchel move. For any multiplier $lambda > 0$,
+$ m(d) = inf_a { c(a): w dot a >= d }. $
 
-$ ell(a) = (1 slash lambda) dot lambda ell(a)
-  <= (1 slash lambda) dot (c(a) + c^*(lambda ell)). $
+Under standard convex-duality regularity, for example a finite-cost feasible
+point with $w dot a > d$,
 
-If the agent only takes actions with cost at most the selection value $V$, this
-gives $ell(a) <= (V + c^*(lambda ell)) slash lambda$, then optimises over
-$lambda$. For quadratic cost this recovers a square-root scale, matching the
-$sqrt(2 kappa V)$ wedge above. This is not yet a theorem at the level of the
-selection-channel bound: the exact statement must specify the action space, the
-harm functional, stochastic policies, participation, and how selection value
-constrains realised cost. Chapter 0 names those variants as part of the current
-working spine.
+$ m(d) = sup_(lambda >= 0) [lambda d - c^*(lambda w)], $
+
+where $c^*(y) = sup_a [y dot a - c(a)]$.
+
+Licenses: a score-deficit/private-cost budget after the action space, proxy
+gain, convex cost, and regularity condition have been declared. In the
+single-channel quadratic case $c(a) = a^2 slash (2 kappa)$, this gives
+$m(d) = d^2 slash (2 kappa)$, so stakes $V$ permit deficits
+$d <= sqrt(2 kappa V)$.
+
+Does not license: a welfare bound without a hidden harm functional,
+nonconvex/fixed-charge dynamics, or inference of the cost geometry from the
+baseline distribution.]
+
+The proof sketch is the standard Fenchel move. Write the Lagrangian
+$c(a) + lambda(d - w dot a)$ with $lambda >= 0$. Minimizing over $a$ gives
+$lambda d - c^*(lambda w)$, and strong duality supplies equality under the
+regularity condition. This is the clean convex analogue of the Stackelberg
+wedge: the budget is imported from declared action costs, not from
+$mu_0$.
 
 == What we have, and what is open <sec:openq>
 
@@ -1301,7 +1389,7 @@ recursive-Goodhart hypothesis, explicitly not a conclusion of the formal
 results. Appendix F visualises the Chapter 4 response-shape repair. The
 research inventory — both the work-in-progress threads and the parked
 open questions that earlier drafts kept as separate appendices — now lives
-in Chapter 0 §§1.5–1.6.
+in the intro §§1.5–1.6.
 
 // =============================================================================
 = Response shape: when hidden residuals concentrate

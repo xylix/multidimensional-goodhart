@@ -115,3 +115,22 @@ Claim reviewed: promoting the selection bound, convex intervention budget, and a
 Red-flag scan: proposition language can make conditional bookkeeping look like stronger theorem work than it is. The main danger is that readers infer (i) hidden value weights are supplied by the selected distribution, (ii) the operator selection bound is representation-free without a declared value metric, or (iii) convex action budgets and additive conservation automatically imply welfare conclusions.
 
 Repair: keep the new thread's results as "Proposition sketch" claims with hypotheses visible. State that the scalar/operator selection bound fixes coordinate duplication only after declaring the value functional or norm; convex budgets require action/cost geometry; additive conservation is an iff-condition only in the separable quadratic, fixed-deficit model; and the response-modeling contract remains methodological, not a theorem.
+
+## Iteration 16: book propagation narrowed the coordinate-bound issue
+
+Claim reviewed: the book's reader-facing propositions for the selection bound,
+Stackelberg wedge, convex score-deficit budget, and additive exchange-rate
+condition.
+
+Red-flag scan: the old coordinate-explicit selection bound is no longer being
+presented as coordinate-free. The book now separates Proposition 1
+(`|B_{H_i}| <= delta s_i`, `||B_H||_2 <= delta ||s||_2`) from Proposition 1'
+(`|Delta(v . H)| <= delta sqrt(v^T Sigma_H v)`) and says the operator form
+requires a declared value metric. It also says huge or infinite chi-square makes
+the bound mathematically valid but practically vacuous.
+
+Repair: close the specific coordinate-free-selection-bound worry as a live
+presentation issue. Keep the broader proposition-language watch open: the book
+now has compact "Licenses / Does not license" boundaries, but later edits must
+not let the proposition labels imply that value weights, costs, response
+kernels, or hidden harm are identified from outcome distributions alone.

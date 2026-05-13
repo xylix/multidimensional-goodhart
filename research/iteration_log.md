@@ -185,3 +185,31 @@ to answer external-review caveats.
 Red flags fired: no new mathematical red flag. The main presentation risk is
 caveat inflation: making a scoped theoretical paper read apologetic rather than
 precise.
+
+## Iteration 16
+
+Question tackled: book propagation for the core proposition sketches without
+weakening their assumptions.
+
+What changed: added the Stackelberg wedge proposition sketch to
+`research/threads/core_propositions_and_value_norms.md`, then promoted five
+reader-facing propositions in `book/multidimensional-goodhart.typ`:
+coordinate-explicit selection drift, value-weighted/operator selection drift,
+the one-dimensional quadratic Stackelberg wedge, the convex score-deficit
+budget, and the additive exchange-rate iff-condition. The convex-cost section
+is now `<sec:convex-cost-bound>` rather than a conjecture, with the Fenchel dual
+formula stated under finite-dimensional closed proper convex cost and standard
+regularity. Each promoted block includes compact license and non-license
+boundaries. Updated `claim_audits.md`, `verification_stack.md`, and
+`red_flags.md` so the audit trail matches the book.
+
+What's open now: welfare-object notation, active-face repairs, stochastic
+Stackelberg response, population harm, adaptive hardening, and simulations
+remain later work. The convex proposition is a private-cost score-deficit
+budget, not a welfare theorem. The Stackelberg wedge remains a quadratic
+threshold toy, not a direct neural-training model.
+
+Red flags fired: the coordinate-free selection-bound issue is narrowed because
+the book now separates coordinate-explicit and value-weighted/operator forms.
+The proposition-language watch remains open: later prose must keep hypotheses,
+license boundaries, and methodological claims distinct.
