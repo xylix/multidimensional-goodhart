@@ -3,7 +3,7 @@
 ## Purpose
 
 This note records the follow-through plan for closing the math-rigor debt after
-Iteration 15. The work is organized as nine research iterations. Each iteration
+Iteration 15. The work is organized as ten research iterations. Each iteration
 should end by updating the relevant research notes, appending to
 `research/iteration_log.md`, and making a commit unless the user says otherwise.
 
@@ -147,7 +147,33 @@ Scope:
   point of this iteration, not a general survey of every alternative failure
   mechanism.
 
-## Iteration 22: Worked Contract Application
+## Iteration 22: ML Formal Analogue Survey
+
+Type: `theorem-mapping`.
+
+Recommended domain: ML benchmarks used for checkpoint selection, finetuning,
+RLHF, leaderboard comparison, or repeated adaptive evaluation.
+
+Scope:
+
+- Identify formal ML theorems with similar geometry, inputs, and outputs to the
+  n-dimensional Goodhart model.
+- Prioritize checkpoint selection, adaptive benchmark use, leaderboard
+  overfitting, hyperparameter search, reward misspecification, and performative
+  prediction.
+- For each candidate theorem family, record inputs, outputs,
+  optimization/search assumptions, and whether it maps to selection,
+  action/cost/search, response-kernel, proxy/target, aggregation, or evidence
+  primitives.
+- Build a mapping table that separates established theorem content from
+  non-binding analogies.
+- Do not import claims into Chapter 5 unless the primitive map and falsifiers
+  are explicit.
+- Mark speculative correspondences, including any interpretation of `kappa` as
+  gradient accessibility or benchmark accessibility, as candidate future model
+  choices rather than claims of the current theory.
+
+## Iteration 23: Worked Contract Application
 
 Type: `application-mapping`.
 
@@ -170,7 +196,7 @@ Scope:
   application mapping to Layer-2 passed only if the primitive map and falsifiers
   are explicit.
 
-## Iteration 23: Research-Note Consolidation
+## Iteration 24: Research-Note Consolidation
 
 Type: `review`.
 
@@ -185,8 +211,10 @@ Scope:
   distinguishes proposition sketches, conjectures, and methodological claims.
 - Mark Layer-3 simulations as passed, failed, or narrowed according to
   Iterations 20-21.
+- Record whether the Iteration 22 theorem-mapping pass produced explicit
+  primitive maps and falsifiers suitable for the worked application.
 
-## Iteration 24: Final Polish And Paper-Extract Scope
+## Iteration 25: Final Polish And Paper-Extract Scope
 
 Type: `edit`.
 
@@ -243,7 +271,7 @@ Scope:
   cleanly rather than weakening it into a generic "it depends" claim.
 - Confirm Gemini-derived additions improve scope, interpretation, or
   presentation rather than adding redundant limitation sections.
-- Verify citation consistency mechanically in Iteration 24.
+- Verify citation consistency mechanically in Iteration 25.
 
 ## Assumptions
 
@@ -254,5 +282,5 @@ Scope:
   a design feature when assumptions are explicit.
 - Iteration 15's proposition sketches are accepted as the starting point,
   subject to edit/review tightening rather than full re-derivation.
-- The preferred total length is nine iterations. If the work must compress,
-  merge Iterations 20-21 and defer Iteration 24's paper-extract scope.
+- The preferred total length is ten iterations. If the work must compress,
+  merge Iterations 20-21 and defer Iteration 25's paper-extract scope.
