@@ -91,7 +91,14 @@ I do not think the right claim is "more dimensions means more Goodhart". That
 failed almost immediately. In a pure selection model, if hidden coordinates are
 independent of the selected proxy, thresholding does not move them. Even when
 they move, the dimension count enters through a coupling or variance budget, not
-by itself. I also do not think the right claim is "Goodhart pressure makes
+by itself. The elementary intuition is worth keeping visible: an added measured
+coordinate can be positively associated with a hidden value coordinate,
+negatively associated with it, or approximately unrelated to it; under selection
+these three cases can respectively move the selected population toward that
+hidden value, away from it, or not much at all. This is obvious as a matter of
+correlation and conditional expectation, but it is one of the main reasons
+dimension count alone cannot carry the theory. I also do not think the right
+claim is "Goodhart pressure makes
 residual error more complex". Selection channels do not optimize residuals at
 all; they reweight a baseline. Intervention channels optimize according to cost,
 search, caps, fixed charges, and aggregation. Complexity only becomes predictive
@@ -149,6 +156,12 @@ fixed-deficit harm appears only under an exchange-rate condition: hidden harm
 must be proportional to score contribution on the active channels. This is the
 kind of claim I want from the paper: not "more metrics are bad", but "given this
 aggregation rule and these exchange rates, here is the distortion geometry".
+Notice the parallel with the selection case, but also the difference. For
+selection, the basic question is how the added metric depends on hidden
+coordinates in the baseline distribution. For intervention, the basic question
+is action geometry: which score-improving moves the metric opens, blocks, or
+makes redundant, and how those moves affect hidden value. The two can be related
+empirically, but they are not the same mathematical primitive.
 
 The live work-in-progress questions (collected as a bulleted inventory below)
 belong here in the spine rather than as a separate shopping list. A general
