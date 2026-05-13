@@ -12,24 +12,6 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
-## Iteration 19: Welfare-Bound Packaging
-
-Type: `generate`.
-
-Scope:
-
-- State the open problem precisely:
-  `sup { ell(a) : c(a) <= V, w . a >= d }` for a declared hidden-harm
-  functional `ell`.
-- Use the counterexample `w = (1, 1), h = (M, 0)` to show convex affordability
-  is not a welfare bound.
-- Mention nonlinear or prevalence-sensitive harm only as something a future
-  declared `ell` could encode. Do not introduce a third welfare notation before
-  the per-agent and population objects from Iteration 17 are wired in.
-- Add this as the "next analogue" to the research notes,
-  `research/open_questions.md`, `research/claim_audits.md`, and
-  `research/verification_stack.md`.
-
 ## Iteration 20: Selection And Intervention Simulations
 
 Type: `generate`.

@@ -182,6 +182,21 @@ declaring a local response model and cost geometry. Convexity and affordability
 bound action movement, not welfare by themselves: hidden harm still depends on
 the declared harm functional `h_u`.
 
+Iteration 19 welfare-bound analogue: after the score-deficit cost `m(d)` is
+declared, welfare analysis needs a hidden-harm functional. For fixed
+type/action geometry, write it as `ell(a)`. The corresponding open problem is
+
+`W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }`.
+
+This is distinct from the cost-minimizing realized harm `ell(a^*(d))`. The
+former is a worst-case declared-harm bound over affordable score-clearing
+actions; the latter is the harm of a particular behavioral rule. The functional
+`ell` may later encode linear value weights, nonlinear harm, or
+prevalence-sensitive aggregation, but convex affordability alone supplies none
+of those value weights. Counterexample: with `w = (1, 1)`, `ell(a) = h . a`,
+`h = (M, 0)`, and equal quadratic costs, the cost-minimal response to deficit
+`d` is `(d/2, d/2)`, giving harm `Md/2`, arbitrarily large as `M` grows.
+
 ## Multidimensional gaming: aggregation rule controls dimensional scaling
 
 Intervention regime, `k` gameable proxy channels, channel `j` costs `a_j^2/(2 kappa_j)` per unit and produces hidden harm `H_j = a_j`; regulator measures set `M`, selection (worth `V`) at bar `t`. Keep two welfare objects separate: fixed-deficit per-agent harm `H_per(M, d)` and population harm `H_pop(M; F_Q, V)` after heterogeneous agents decide whether gaming is worthwhile. Then (see `threads/intervention_response.md`):

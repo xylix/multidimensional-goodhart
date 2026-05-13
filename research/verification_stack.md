@@ -36,6 +36,11 @@ Passed:
   exchange-rate iff-condition. This raises Layer-1 rigor without removing the
   need to declare value weights, action costs, pass conditions, or aggregation
   rules.
+- Convex affordability versus welfare bounds: with `w = (1, 1)`, linear hidden
+  harm `h = (M, 0)`, and equal quadratic costs, the cost-minimal score-clearing
+  action for deficit `d` is `(d/2, d/2)` and has harm `Md/2`. This kills any
+  claim that private-cost affordability or `m(d)` bounds welfare without
+  declared hidden value weights.
 
 Survived only barely:
 - "Conservation Goodhart" survives only as an exchange-rate statement:
@@ -111,6 +116,10 @@ Passed or ready:
   variance, controls intervention harm.
 - Additive vs. conjunctive multidimensional gaming can verify the aggregation
   rule contrast.
+- Convex-cost versus welfare-bound examples can compare `m(d)`,
+  cost-minimizing realized harm `ell(a^*(d))`, and
+  `W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }` under the same action
+  geometry while varying the declared harm functional.
 
 Survived only barely:
 - Adaptive hardening dynamics needs simulation before theorem work. The cheap
@@ -179,7 +188,7 @@ response estimation and for controlled intervention/gaming environments.
 | Selection-response primitive (`Q6-Q9`) | Simulation | Compare covariance, threshold response, and weighted response on Gaussian, heavy-tailed, and nonlinear examples; explicitly test finite-mgf versus infinite-mgf Boltzmann cases | Baseline covariance predicts finite-pressure hidden drift across examples, or covariance velocity is used outside `B = { beta : E_mu[exp(beta P)] < infinity }` |
 | Pareto selection and identifiability (`Q5`) | Thought experiment -> simulation | Construct two distributions with same observed Pareto frontier but different hidden dimensions; then simulate compression | Pareto selection preserves enough diversity to identify hidden response in the intended regimes |
 | Selection vs. intervention boundary (`Q8`, `Q12`) | Thought experiment -> real-world correspondence | Classify toggle-only, feature-changing, manifold-constrained, and `P`-only manipulation agents | A feature-changing agent can always be represented as harmless reweighting of baseline data |
-| General intervention bound (`Q10`) | Proposition sketch -> simulation | Proposition 2 gives the one-dimensional quadratic wedge, and Proposition 3 gives the convex action-cost score-deficit cost; next simulate quadratic, linear, and elastic-net-like costs | Bound depends on baseline divergence rather than cost geometry, convex affordability is mistaken for a welfare bound without hidden value weights, or the convex formula is imported into non-convex ML/RLHF without a local response model |
+| General intervention bound (`Q10`) | Proposition sketch -> simulation | Proposition 2 gives the one-dimensional quadratic wedge, Proposition 3 gives the convex action-cost score-deficit cost, and Iteration 19 packages the declared-`ell` welfare-bound problem `W_ell(d,V)`; next simulate quadratic, linear, elastic-net-like, and convex-cost versus welfare-bound examples | Bound depends on baseline divergence rather than cost geometry, convex affordability is mistaken for a welfare bound without hidden value weights, `ell(a^*(d))` is conflated with `W_ell(d,V)`, or the convex formula is imported into non-convex ML/RLHF without a local response model |
 | Response-modeling contract (`Q19`) | Thought experiment -> application mapping | Apply the contract to one ML-eval case and one institutional scorecard; identify `U`, `W_theta`, `K_theta`, actions, costs, aggregation, hidden harm, and discriminating evidence | The contract cannot distinguish nearby mechanisms, or reduces to a generic checklist with no downstream calculation |
 | Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation | Weighted additive, conjunctive, heterogeneous-population, noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
 | Adaptive hardening (`Q14`) | Simulation | Repeated game where principal hardens the currently most-gamed channel; compare to static commitment | Dynamics cycle, increase attack surface, or lose to static narrow hardening |

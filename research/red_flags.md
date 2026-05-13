@@ -155,3 +155,21 @@ selection for heavy-tail regimes, active-face KKT for sign-constrained
 quadratic actions, and response-model declarations before importing convex
 budgets into ML applications. Defer endogenous-stakes fixed-point analysis
 rather than solving it inside the current proposition layer.
+
+## Iteration 19: convex affordability is not welfare
+
+Claim reviewed: convex score-deficit affordability `m(d) <= V` might be read as
+a welfare bound.
+
+Red-flag scan: the notation was becoming tidy enough to invite overclaiming.
+The cost problem says whether score movement is privately affordable; it does
+not supply value weights for hidden harm. The failure is immediate with
+`w = (1, 1)`, linear harm `h = (M, 0)`, and equal quadratic costs: the
+cost-minimal response to deficit `d` is `(d/2, d/2)`, giving hidden harm
+`Md/2`, arbitrarily large as `M` grows.
+
+Repair: package the next intervention analogue as the declared-functional
+problem `W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }`, and keep it
+distinct from realized cost-minimizing harm `ell(a^*(d))`. Future nonlinear or
+prevalence-sensitive welfare claims must enter through the declared `ell` and
+its aggregation into `H_per` or `H_pop`, not through convex private cost alone.

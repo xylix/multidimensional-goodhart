@@ -273,3 +273,29 @@ needed for endogenous stakes.
 Red flags fired: no contradiction exposed. The pass found missing domain
 clauses, not false formulas: each formula survives with its intended scope
 visible.
+
+## Iteration 19
+
+Question tackled: welfare-bound packaging after the convex score-deficit
+budget.
+
+What changed: extended `research/threads/convex_intervention_bound.md` with the
+declared-functional problem
+`W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }`. The new section separates
+this worst-case welfare-bound object from the realized harm of a
+cost-minimizing response `ell(a^*(d))`. It uses the required counterexample
+`w = (1, 1)`, `h = (M, 0)`, and equal quadratic costs: the cost-minimal action
+for deficit `d` is `(d/2, d/2)`, so hidden harm is `Md/2`, unbounded as the
+declared value weight `M` grows. Propagated the distinction through
+`research/formalization.md`, `research/open_questions.md`,
+`research/claim_audits.md`, `research/verification_stack.md`, and
+`research/red_flags.md`.
+
+What's open now: nonlinear, prevalence-sensitive, stochastic, and endogenous
+welfare models remain later work. The current pass only packages the fixed
+action-geometry problem for a declared hidden-harm functional `ell`, with later
+aggregation into `H_per` or `H_pop` still to be specified.
+
+Red flags fired: overclaim risk. Convex affordability, `m(d)`, and finite
+private cost budgets do not bound welfare in value units without declared
+hidden value weights.

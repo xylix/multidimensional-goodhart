@@ -160,7 +160,40 @@ private cost geometry, hidden harm can be made arbitrarily large by increasing
 the value weight `M`. A private-cost budget is not a welfare bound unless value
 weights are part of the model.
 
-## 7. What this licenses
+## 7. Iteration 19: welfare-bound packaging
+
+For a fixed type/action geometry, welfare analysis needs one more declared
+object. Let `ell(a)` be the hidden-harm functional attached to the action. The
+welfare-bound problem for deficit `d` and private value budget `V` is
+
+`W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }`.
+
+This is the worst declared hidden harm among affordable actions that can clear
+the proxy deficit. It is not the same object as the realized harm of a
+cost-minimizing response,
+
+`ell(a^*(d))`, where `a^*(d) in argmin { c(a): w . a >= d }`.
+
+The two coincide only under extra behavioral or alignment assumptions. The
+private-cost calculation `m(d)` answers whether score movement is affordable.
+The welfare-bound calculation `W_ell(d,V)` answers how bad affordable
+score-clearing movement can be after the evaluator has declared the value
+weights in `ell`.
+
+In later models `ell` may be linear, nonlinear, or prevalence-sensitive, but
+this iteration only packages the declared-functional problem. It does not add a
+third population welfare notation beyond `H_per` and `H_pop`; `ell` is the
+fixed-action harm functional whose aggregation can be specified later.
+
+The required failure example is already visible in the linear case. Let
+`w = (1, 1)`, linear hidden harm `ell(a) = h . a` with `h = (M, 0)`, and equal
+quadratic costs. The cost-minimal action for deficit `d` is
+`a^*(d) = (d/2, d/2)`, so realized hidden harm is `ell(a^*(d)) = Md/2`.
+For fixed deficit and fixed private-cost geometry, this can be arbitrarily
+large as the value weight `M` grows. Thus private-cost affordability does not
+bound welfare without declared value weights.
+
+## 8. What this licenses
 
 The convex-cost intervention bound licenses:
 
@@ -183,7 +216,7 @@ It does not license:
 - empirical use without a declared action space, cost model, stakes, and hidden
   harm functional.
 
-## 8. Verification-stack pass
+## 9. Verification-stack pass
 
 Layer 1: thought experiments
 - Passed: single-channel quadratic recovers `Delta = sqrt(2 kappa V)`.
