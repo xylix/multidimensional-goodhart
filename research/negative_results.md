@@ -111,3 +111,11 @@ Tried claim: once the framework writes `mu_theta` using `W_theta(u)` and `K_thet
 Failure: the decomposition is not unique without type-level evidence or structural assumptions. With `U = {0, 1}`, `S = {0, 1}`, and `nu` uniform, any target marginal `Pr_theta(S = 1) = q` can be represented as pure selection if `K_0(S = 1 | u) = u` and `W_theta` reweights type `1`; the same marginal can be represented as intervention by keeping `W_theta = 1` and setting `K_theta(S = 1 | u) = q` for both types. Richer or coarser choices of `U` change the classification again.
 
 Postmortem: the response-kernel boundary is a causal modeling discipline, not an estimator from marginals. Applications need a declared type/action representation plus evidence such as repeated observations of the same type, randomized policy exposure, action traces, or defended structural constraints.
+
+## Iteration 13: convex affordability is not a welfare bound
+
+Tried claim: a convex cost budget for intervention gives a general bound on hidden Goodhart harm.
+
+Failure: the budget bounds affordable action movement only after declaring action coordinates and cost. Hidden harm is a separate functional. With `w = (1, 1)`, equal quadratic costs, and hidden harm `h = (M, 0)`, the cost-minimal action for score deficit `d` is `(d/2, d/2)`, so hidden harm is `Md/2`. For fixed private cost geometry and fixed proxy deficit, value-weighted harm can be made arbitrarily large by increasing `M`.
+
+Postmortem: the convex-cost intervention bound is useful but conditional. It replaces baseline divergence with an affordable-action set and a score-deficit cost `m(d)`, but welfare claims require a declared hidden harm functional and value weights.

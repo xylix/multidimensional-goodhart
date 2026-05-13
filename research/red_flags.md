@@ -99,3 +99,11 @@ Trigger: scheduled every-third-iteration adversarial pass.
 Review result: the boundary survives, but only as a representation-relative causal distinction. It correctly classifies participation-only response as selection and epsilon-baseline gaming as intervention despite absolute continuity. It also correctly allows proxy-only manipulation to be intervention without hidden harm. The main failure modes are still load-bearing: a too-rich `U` can encode future response plans as type, a too-coarse `U` can make stable heterogeneity look like kernel change, and the same marginal `mu_theta` can come from changed `W_theta` or changed `K_theta`.
 
 Repair: keep the compact definition unchanged, but present it as a modeling discipline rather than an observational classifier. Applications must declare the type/action representation and state what evidence distinguishes reweighting from fixed-type response.
+
+## Iteration 13: convex intervention bound watch item
+
+Claim reviewed: intervention channels admit a cost-geometry analogue of the selection bound.
+
+Red-flag scan: the Fenchel-duality formula is formally tidy and could be overread as a general Goodhart theorem. It is not. It applies after declaring an action space, cost, feasible set, proxy-gain direction, stakes, and hidden harm functional. It also handles smooth convex response better than fixed charges, endogenous stakes, stochastic equilibria, or empirical cost estimation.
+
+Repair: present the result as a conditional modeling primitive. It licenses "if these are the action costs, here is the gaming budget," not "observed distributions imply this intervention bound" or "convexity makes hidden harm small."
