@@ -306,6 +306,97 @@ def appendix_g_recursive_goodhart_cartoon() -> None:
     save(fig, "appendix-g-recursive-goodhart-cartoon.pdf")
 
 
+def appendix_h_response_geometry_taxonomy() -> None:
+    fig, axes = plt.subplots(1, 3, figsize=(9.2, 3.2), sharex=True, sharey=True)
+
+    # Panel A: quadratic cost spreads effort along Cw.
+    w = np.array([1.0, 1.0])
+    c = np.array([[1.0, 0.62], [0.62, 1.35]])
+    d = 1.0
+    a_star = d * (c @ w) / (w @ c @ w)
+    x = np.linspace(0, 1.2, 220)
+    y = np.linspace(0, 1.2, 220)
+    xx, yy = np.meshgrid(x, y)
+    inv_c = np.linalg.inv(c)
+    cost = 0.5 * (inv_c[0, 0] * xx**2 + 2 * inv_c[0, 1] * xx * yy + inv_c[1, 1] * yy**2)
+    axes[0].contour(xx, yy, cost, levels=[0.06, 0.11, 0.18, 0.27, 0.40], colors="0.65", linewidths=0.8)
+    axes[0].plot(x, d - x, color="0.1", linewidth=2.0)
+    axes[0].scatter([a_star[0]], [a_star[1]], c="0.05", s=64)
+    axes[0].annotate("a* ∝ Cw", xy=a_star, xytext=(0.56, 0.86), arrowprops={"arrowstyle": "->"}, fontsize=9)
+    axes[0].set_title("A. quadratic cost:\nminimum-cost direction", fontsize=10)
+
+    # Panel B: uncapped linear/fixed-charge cost selects one route.
+    r = np.array([1.0, 1.65])
+    axes[1].plot(x, d - x, color="0.1", linewidth=2.0)
+    axes[1].scatter([1.0], [0.0], c="0.05", s=70, marker="s")
+    axes[1].scatter([0.0], [1.0], c="0.62", s=55, marker="s")
+    axes[1].annotate("cheapest route\nwins", xy=(1.0, 0.0), xytext=(0.49, 0.30), arrowprops={"arrowstyle": "->"}, fontsize=9)
+    axes[1].text(0.09, 0.91, f"r1={r[0]:.2f}\nr2={r[1]:.2f}", fontsize=9, bbox={"boxstyle": "round,pad=0.25", "facecolor": "white", "edgecolor": "0.85"})
+    axes[1].set_title("B. linear / fixed charge:\none-channel drift", fontsize=10)
+
+    # Panel C: capped linear response spills over after the first route saturates.
+    u1 = 0.55
+    axes[2].plot(x, d - x, color="0.1", linewidth=2.0)
+    axes[2].axvline(u1, color="0.35", linestyle="--", linewidth=1.2)
+    axes[2].scatter([u1], [d - u1], c="0.05", s=70)
+    axes[2].annotate("cap binds;\nspill into route 2", xy=(u1, d - u1), xytext=(0.66, 0.78), arrowprops={"arrowstyle": "->"}, fontsize=9)
+    axes[2].text(u1 + 0.02, 0.07, "cap on route 1", rotation=90, fontsize=8, color="0.35")
+    axes[2].set_title("C. capped route:\nlumpy spillover", fontsize=10)
+
+    for ax in axes:
+        ax.set_xlim(0, 1.15)
+        ax.set_ylim(0, 1.15)
+        ax.set_aspect("equal", adjustable="box")
+        ax.set_xlabel("action a1")
+    axes[0].set_ylabel("action a2")
+    fig.tight_layout()
+    save(fig, "appendix-h-response-geometry.pdf")
+
+
+def appendix_h_fixed_charge_caps() -> None:
+    d = np.linspace(0.05, 9.0, 360)
+    # Channel A: cheap to start, expensive, small cap.
+    # Channel B: higher setup cost, cheaper marginal, larger cap.
+    f_a, r_a, u_a = 0.0, 3.0, 4.0
+    f_b, r_b, u_b = 5.0, 1.0, 10.0
+
+    cost_a = np.where(d <= u_a, f_a + r_a * d, np.inf)
+    cost_b = np.where(d <= u_b, f_b + r_b * d, np.inf)
+    cost_ab = f_a + f_b + r_a * np.minimum(d, u_a) + r_b * np.maximum(d - u_a, 0)
+    choices = np.argmin(np.vstack([cost_a, cost_b, cost_ab]), axis=0)
+
+    fig, axes = plt.subplots(1, 2, figsize=(8.0, 3.35), sharex=True)
+
+    axes[0].plot(d, cost_a, color="0.15", linewidth=2.0, label="A only")
+    axes[0].plot(d, cost_b, color="0.45", linewidth=2.0, linestyle="--", label="B only")
+    axes[0].plot(d, cost_ab, color="0.65", linewidth=1.8, linestyle=":", label="fill A then B")
+    axes[0].set_ylim(0, 18)
+    axes[0].set_ylabel("cost")
+    axes[0].set_title("A. candidate active sets", fontsize=10)
+    axes[0].legend(frameon=False, fontsize=8, loc="upper left")
+
+    a_use = np.zeros_like(d)
+    b_use = np.zeros_like(d)
+    a_use[choices == 0] = d[choices == 0]
+    b_use[choices == 1] = d[choices == 1]
+    a_use[choices == 2] = np.minimum(d[choices == 2], u_a)
+    b_use[choices == 2] = np.maximum(d[choices == 2] - u_a, 0)
+    axes[1].stackplot(d, a_use, b_use, colors=["0.18", "0.62"], labels=["channel A", "channel B"], alpha=0.92)
+    axes[1].axvline(2.5, color="white", linewidth=1.2)
+    axes[1].text(0.63, 0.62, "A wins\nsmall d", transform=axes[1].transAxes, fontsize=9)
+    axes[1].text(0.38, 0.18, "B wins after\nentry threshold", transform=axes[1].transAxes, fontsize=9)
+    axes[1].set_ylim(0, 9.2)
+    axes[1].set_ylabel("chosen allocation")
+    axes[1].set_title("B. support can switch, not just fill", fontsize=10)
+    axes[1].legend(frameon=False, fontsize=8, loc="upper left")
+
+    for ax in axes:
+        ax.set_xlabel("score deficit d")
+        ax.set_xlim(0, 9.0)
+    fig.tight_layout()
+    save(fig, "appendix-h-fixed-charge-caps.pdf")
+
+
 def main() -> None:
     setup()
     appendix_c_selection_thresholds()
@@ -315,6 +406,8 @@ def main() -> None:
     appendix_e_additive_vs_conjunctive()
     appendix_f_exchange_rate_condition()
     appendix_g_recursive_goodhart_cartoon()
+    appendix_h_response_geometry_taxonomy()
+    appendix_h_fixed_charge_caps()
 
 
 if __name__ == "__main__":

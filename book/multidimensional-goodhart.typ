@@ -1,4 +1,4 @@
-// Multidimensional Goodhart — draft of Chapters 1–3
+// Multidimensional Goodhart — draft of Chapters 1–4
 // Compile with:  typst compile multidimensional-goodhart.typ
 //
 // Source material: research/formalization.md, research/threads/*.md,
@@ -43,7 +43,7 @@
   #v(0.4cm)
   #text(size: 1.2em)[How controlling for a proxy reshapes, rather than removes, its error]
   #v(1cm)
-  #text(size: 1em)[Working draft — Chapters 1–3]
+  #text(size: 1em)[Working draft — Chapters 1–4]
   #v(0.3cm)
   #text(size: 0.95em, style: "italic")[#datetime.today().display()]
 ]
@@ -81,8 +81,9 @@ The answer depends on the channel. In a *selection* regime, the policy reweights
 a fixed baseline distribution; hidden drift is governed by the baseline response
 of hidden coordinates to the selected proxy, and dimensionality matters only
 through coupling and variance structure. In an *intervention* regime, agents
-respond; probability mass moves to states the baseline did not contain, and the
-drift is governed by cost geometry, stakes, and available gaming channels. A
+respond; the response kernel changes at a fixed underlying type, so mass can
+move to states the old baseline assigned little or no probability. The drift is
+governed by cost geometry, stakes, and available gaming channels. A
 broader recursive-Goodhart hypothesis is that repeated proxy refinement often
 pushes the remaining error into dimensions that are less legible to the
 evaluator. This book treats that as a hypothesis suggested by the framework, not
@@ -98,7 +99,7 @@ harder-to-elicit dimensions as the proxy stack is patched — is an empirical
 conjecture. The job of these first chapters is to make all three layers
 statable without pretending they have the same epistemic status.
 
-#remark[*Licensed claims.* These chapters license three narrow uses. First, when
+#remark[*Licensed claims.* These chapters license four narrow uses. First, when
 pressure only reweights a fixed baseline distribution, the right quantities are
 selection-response functionals of that baseline: covariance locally, threshold
 response in the tails, and a chi-square drift budget for bounded selection.
@@ -109,9 +110,12 @@ channels with compensatory additive scores and separable quadratic gaming
 costs, adding an independently gameable measured dimension increases aggregate
 gaming capacity $K_M$, lowers the minimum cost of clearing a fixed score gap,
 and weakly expands the population of agents for whom gaming pays. These claims
-are meant for designing scorecards, benchmarks, and evaluation suites; they do
-not prove the recursive-Goodhart hypothesis or generalize automatically to
-non-convex training dynamics.]
+are meant for designing scorecards, benchmarks, and evaluation suites. Fourth,
+proxy pressure does not generically select a minimum-complexity residual; a
+response-shape prediction needs a named response geometry, constraint set, and
+complexity or shape measure. These claims do not prove the recursive-Goodhart
+hypothesis, do not say that "more metrics is worse" as a rule, and do not
+generalize automatically to RLHF or other non-convex training dynamics.]
 
 The starting point is the variant taxonomy of Manheim and Garrabrant
 @manheim2018categorizing — regressional, extremal, causal, and adversarial
@@ -268,7 +272,7 @@ The proved or directly derived results in these chapters are:
   Boltzmann selection still move $H$.
 - Under Boltzmann selection, covariance is the local velocity:
   $dif EE_beta[H] slash dif beta = "Cov"_beta(H, P)$.
-- Selection-channel drift satisfies the coordinate-free bound
+- Selection-channel drift satisfies the coordinate-explicit bound
   $norm(B_H(theta))_2 <= delta dot norm(s)_2$, with
   $delta^2 = chi^2(mu_theta parallel mu_0)$.
 - In the quadratic Stackelberg gaming model, the gaming wedge is
@@ -276,11 +280,20 @@ The proved or directly derived results in these chapters are:
 - In the additive multidimensional gaming model, quadratic costs give the
   water-filling allocation, and the weighted additive case gives the
   exchange-rate condition $h_j = c w_j$ for conservation of fixed-deficit harm.
+- In the quadratic response-shape model, an intervention target $w dot a >= d$
+  with cost $(1/2) a^T C^(-1) a$ selects the minimum-cost direction
+  $a^* = d C w slash (w^T C w)$, not a minimum-complexity direction as such.
+- In fixed-charge or linear-cost response models, the uncapped no-tie case can
+  produce one-channel drift; caps convert this into ordered spillover only when
+  activation costs are absent or already paid; positive activation costs add
+  thresholded regime switches.
 
 The additive-versus-conjunctive flip and the noisy Stackelberg refinement are
 illustrative models, not general theorems. The convex-cost intervention analogue
 of the selection bound is stated below as a conjecture with a Fenchel-duality
-sketch. The remaining items in Appendix A are open.
+sketch. Chapter 4's response-shape taxonomy is a conditional prediction menu,
+not a theorem that residual error generically becomes more complex. The
+remaining items in Appendix A are open.
 
 // =============================================================================
 = Selection channels: when the principal only re-selects
@@ -344,10 +357,10 @@ per-dimension coupling model, threshold selection induces hidden drift whose
 *dimensional* scaling only after a substantive assumption about how $norm(r)_2$
 grows with $d$.]
 
-This is the same lesson that the selection-channel drift bound will express
-coordinate-free: dimension enters through the hidden variability and coupling
-budget, not through a bare count of unmeasured coordinates. Appendix C visualises
-both parts of the claim.
+This is the same lesson that the selection-channel drift bound will express in a
+declared hidden coordinate system: dimension enters through the hidden
+variability and coupling budget, not through a bare count of unmeasured
+coordinates. Appendix C visualises both parts of the claim.
 
 #remark[Two shortcuts fail. If hidden dimensions are independent of the proxy,
 thresholding leaves them unchanged. And the signed aggregate hidden error is the
@@ -476,17 +489,21 @@ things that *are* visible in the baseline distribution: how hard you reweight
 ($delta$) and how variable the hidden coordinates are ($s$). Bounded reweighting
 budget plus bounded hidden variance $=>$ bounded hidden drift — full stop. The
 $sqrt(d)$ growth from Chapter 2's per-dimension model is exactly the
-$norm(s)_2$ term, and that term is the *only* way the number of dimensions
-enters.]
+$norm(s)_2$ term, and that term is the *only* way the number of declared hidden
+coordinates enters.]
 
 #remark[The proof is only Cauchy–Schwarz, but the formulation is doing real
-work. It is the clean coordinate-free statement of why selection-regime Goodhart
-is tame: if a policy only reweights a baseline distribution, then hidden drift
-is bounded by a reweighting budget and baseline hidden variability, both
-$mu$-functionals. The caveats are still important: this is a worst-case envelope,
-not a prediction, and it can be vacuous under extreme selection when $delta$ is
-large. The rest of the book is about what breaks when the policy is not a
-reweighting and no such baseline-only budget exists.]
+work. It is the clean coordinate-explicit statement of why selection-regime
+Goodhart is tame after the hidden coordinates and norm have been chosen: if a
+policy only reweights a baseline distribution, then hidden drift is bounded by a
+reweighting budget and baseline hidden variability, both $mu$-functionals. It is
+not invariant to arbitrary relabellings of the hidden space. Splitting one
+hidden variable into ten correlated coordinates changes the bookkeeping unless
+the norm is replaced by a declared covariance or value-weighted operator norm.
+The caveats are still important: this is a worst-case envelope, not a
+prediction, and it can be vacuous under extreme selection when $delta$ is large.
+The rest of the book is about what breaks when the policy is not a reweighting
+and no such baseline-only budget exists.]
 
 // =============================================================================
 = Intervention channels: when agents respond
@@ -497,12 +514,19 @@ reweighting and no such baseline-only budget exists.]
 A selection policy can only move probability mass that already exists toward
 high-$P$ regions: the selected law $mu_theta = L_theta mu$ is absolutely
 continuous with respect to $mu$, so any event with baseline probability zero
-keeps probability zero. Causal and adversarial Goodhart violate exactly this.
-Announcing a metric changes how agents behave; probability mass appears in parts
-of state space the baseline never visited. Teaching to the test, metric-specific
-optimisation, outright fabrication — none of these are reweightings of last
-year's population. They *transport* mass to new places. Appendix D draws this
-reweighting-versus-transport distinction.
+keeps probability zero. That measure-theoretic criterion is a useful sufficient
+formalism for pure selection, but it is not the causal boundary by itself. If
+the baseline already assigns tiny probability to test-specific drilling or
+fabrication, an announced metric can induce much more of the same behaviour
+while the new law remains absolutely continuous. The causal distinction is that
+the policy changes the response kernel at a fixed underlying type: agents can
+move their measured and hidden features, not merely be reweighted.
+
+Teaching to the test, metric-specific optimisation, outright fabrication — none
+of these are ordinary reweightings of last year's population, even when an
+$epsilon$ amount of similar behaviour existed before. They transport mass along
+available action channels. Appendix D draws the reweighting-versus-transport
+distinction.
 
 #claim[*The sharp boundary.* The selection/intervention distinction is
 substantive exactly when agents can *move in state space* — change their
@@ -525,13 +549,16 @@ $ cal(R) : Theta -> cal(P)(S), quad theta |-> mu_theta, quad mu_(theta_0) = mu_0
 for some null policy $theta_0$. Hidden drift along the channel is
 $B_H(theta) = EE_(mu_theta)[H] - EE_(mu_0)[H]$, exactly as before.
 
-#claim[*Definition.* $cal(R)$ is a *selection channel* if $mu_theta << mu_0$ for
-all $theta$ — then $L_theta := dif mu_theta slash dif mu_0$ exists and
-$mu_theta$ is $mu_0$ reweighted by $L_theta$. Otherwise $cal(R)$ is an
-*intervention channel*: $mu_theta$ may be mutually singular with $mu_0$.]
+#claim[*Definition.* $cal(R)$ is a *pure selection channel* if $mu_theta << mu_0$
+for all $theta$ and the policy only reweights fixed states or fixed types — then
+$L_theta := dif mu_theta slash dif mu_0$ exists and $mu_theta$ is $mu_0$
+reweighted by $L_theta$. An *intervention channel* changes the response kernel:
+at fixed type, agents can choose actions that change $(P, H)$ or the
+state-generating mechanism. Mutual singularity with $mu_0$ is decisive evidence
+of intervention, but not required for the causal distinction.]
 
 The entire apparatus of Chapter 2 — covariance, threshold response, weighted
-response — is the selection-channel case, with $L_theta = W_theta / EE_(mu_0)[W_theta]$.
+response — is the pure-selection case, with $L_theta = W_theta / EE_(mu_0)[W_theta]$.
 In Manheim and Garrabrant's taxonomy @manheim2018categorizing, *causal* Goodhart
 is an intervention channel in which the policy structurally breaks
 $P approx phi(G)$, and *adversarial* Goodhart is an intervention channel in
@@ -539,12 +566,14 @@ which $theta$ is chosen worst-case for the principal. The ML instances of this
 regime are *strategic classification* @hardt2016strategic — agents manipulate
 features in response to a published classifier — and *performative prediction*
 @perdomo2020performative — the act of deploying a predictor changes the
-distribution it is predicting. The drift bound of Chapter 2 has no analogue here: there is no
-$L_theta$, so nothing plays the role of $delta$. Any bound on intervention drift
-must be *imported from the agent side* — a feasibility set or cost function
-describing what re-arrangements of mass agents can afford. The rest of the
-chapter computes such a bound in toy models and reads off the controlling
-quantity.
+distribution it is predicting. The drift bound of Chapter 2 has no
+baseline-only analogue here: even when an intervention law is technically
+absolutely continuous because the baseline had $epsilon$ mass on the action
+image, the relevant likelihood ratio reflects the induced response, not a
+passive selection rule. Any useful bound on intervention drift must be
+*imported from the agent side* — a feasibility set or cost function describing
+what re-arrangements of mass agents can afford. The rest of the chapter
+computes such a bound in toy models and reads off the controlling quantity.
 
 == A linear–Gaussian Stackelberg gaming model
 
@@ -597,11 +626,13 @@ selected set ${Q >= t}$; $H equiv 0$):
   contrast: intervention drift is bounded by the agents' cost–benefit ratio, not
   by any reweighting budget.
 
-+ *Why this is not a selection channel.* $mu_0$ lives on ${H = 0}$; the
-  post-intervention law puts positive mass on ${H > 0}$ (the gamers — a set of
-  types of positive measure). The two laws are mutually singular in the
-  $(Q, H)$-marginal: there is no $L_theta$. The state was *transported*, not
-  reweighted.
++ *Why this is not a selection channel.* In the clean version, $mu_0$ lives on
+  ${H = 0}$; the post-intervention law puts positive mass on ${H > 0}$ (the
+  gamers — a set of types of positive measure). The two laws are mutually
+  singular in the $(Q, H)$-marginal: there is no $L_theta$. If the baseline
+  instead had a small amount of pre-existing gaming variation, singularity could
+  disappear, but the same fixed-type action response would remain. The state was
+  *transported* along an action channel, not merely reweighted.
 
 #claim[In a Stackelberg gaming model with quadratic gaming cost $a^2 slash (2 kappa)$
 and selection value $V$, the metric's worst-case bias and the induced hidden
@@ -811,17 +842,28 @@ when it either measures real capability cheaply enough to displace gaming, or
 raises the cost of gaming more than it raises the menu of compensatory
 substitutes. Under an additive leaderboard, a low-cost gameable task is an
 extra route to the same aggregate score. Under a conjunctive leaderboard, every
-task becomes a gate: fewer systems pass, but any system gaming its way through
-must clear more bars.]
+task becomes a gate: substitution is blocked, but false negatives rise and any
+system gaming its way through must clear more bars.]
 
 This makes the usual "more metrics means less Goodhart" heuristic conditional.
 For an additive benchmark, the design question is whether a proposed task adds
-real signal or mostly adds independent $kappa_j$. For a conjunctive benchmark,
-the design question is whether the extra bar screens out benchmark-specific
-optimisation or merely filters out genuinely capable systems with one narrow
-deficit. Either way, eval results should be treated as experiments rather than
-leaderboard decorations: pre-state the comparison the score is meant to support,
-report uncertainty where stochasticity matters, document prompts/configs, and
+real signal or mostly adds independent $kappa_j$; cost-correlated tasks,
+shared bottlenecks, hard caps, and dynamic reweighting all break the clean
+additive-capacity calculation. For a conjunctive benchmark, the design question
+is whether the extra bar screens out benchmark-specific optimisation or merely
+filters out genuinely capable systems with one narrow deficit.
+
+The practical checklist is correspondingly split. For a fixed candidate pool:
+audit baseline tail response, hidden-score covariances, and the selection depth.
+For finetuning or repeated submissions: audit the cheapest score-increasing
+maneuvers, their hidden harms, the prize for passing, and whether the proposed
+new task is an independent route or a real bottleneck. For additive leaderboards:
+ask whether the new component adds signal or compensatory gaming capacity. For
+conjunctive gates: ask whether the added gate blocks substitution enough to
+justify the extra per-gamer burden and false-negative risk. Either way, eval
+results should be treated as experiments rather than leaderboard decorations:
+pre-state the comparison the score is meant to support, report uncertainty where
+stochasticity matters, document prompts/configs, and
 separate the measured score from the broader capability or alignment claim.
 
 == A convex-cost intervention bound? <sec:convex-cost-conjecture>
@@ -882,6 +924,11 @@ would have to measure to make it precise: the baseline response curve, the
 coupling norm, the cost geometry, the aggregation rule, the gaming capacity, and
 the score-to-harm exchange rates.
 
+Chapter 4 sharpens that last sentence. The recursive hypothesis is tempting to
+summarise as "residual error becomes more complex". That is not licensed. The
+right next object is a *response-shape prediction*: once a response channel and
+its constraints are specified, what shape of hidden residual should it produce?
+
 #figure(
   table(
     columns: (1.15fr, 1.35fr, 1.15fr),
@@ -895,15 +942,31 @@ the score-to-harm exchange rates.
     [Does not cover non-substitutable, capped, correlated, or dynamically
       reweighted channels.],
     [Selection and intervention are different Goodhart channels.],
-    [Selection is reweighting of $mu_0$; intervention can move mass outside
-      baseline support, so baseline-only drift bounds no longer apply.],
-    [Does not by itself model arbitrary causal mechanisms or training
-      dynamics.],
+    [Pure selection reweights fixed states or types. Intervention changes the
+      response kernel at fixed type; singularity with $mu_0$ is sufficient but
+      not necessary evidence.],
+    [Absolute continuity alone does not settle causal status when the baseline
+      already contains $epsilon$ mass on the induced behaviour.],
+    [$Delta = sqrt(2 kappa V)$ describes neural training.],
+    [Only in the one-dimensional quadratic Stackelberg toy. It says that a
+      future ML mapping must identify a real analogue of $kappa$ and $V$.],
+    [No mapping to RLHF, finetuning, or reward-model optimisation is licensed
+      without that primitive map.],
     [Recursive Goodhart is plausible.],
     [The framework identifies mechanisms by which patched proxies can leave
       residual error in hidden dimensions.],
     [Not a theorem; it requires empirical estimates of legibility, coupling,
       and gaming cost.],
+    [Goodhart drift becomes more complex.],
+    [Only after a complexity measure and response mechanism are fixed. The
+      current results separate support, rank, description length, cost, and
+      search accessibility.],
+    [No monotone complexity law follows from Chapters 1--4.],
+    [Minimum-complexity attractors explain recursive Goodhart.],
+    [Only conditionally: fixed-charge costs can yield sparse drift, low-rank
+      affordances restrict drift to an image, and search priors can favour low
+      description length.],
+    [Quadratic costs and selection channels both block the generic theorem.],
   ),
   caption: [Claim audit: what these chapters license, and where the license
     stops.],
@@ -914,9 +977,186 @@ The appendices serve two different roles. Appendix A lists the questions
 yet at the level of polish the chapters above aim for. Appendix B lists
 questions that *surfaced during this work and are deliberately parked* — worth
 recording so they are not rediscovered from scratch, but not on the critical
-path. Appendices C--F are visual aids for the formal chapters. Appendix G is a
-speculative cartoon of the recursive hypothesis, explicitly not a conclusion of
-the formal results.
+path. Appendices C--F are visual aids for the first three formal chapters.
+Appendix G is a speculative cartoon of the recursive hypothesis, explicitly not
+a conclusion of the formal results. Appendix H visualises the Chapter 4
+response-shape repair.
+
+// =============================================================================
+= Response shape: when hidden residuals concentrate
+// =============================================================================
+
+== The repaired recursive question
+
+The previous chapters leave a natural question. If a principal patches a visible
+failure, does the remaining error drift toward the "simplest" or
+"minimum-complexity" way to pass the proxy? This would make the recursive
+Goodhart picture much sharper: the system would not merely leak error into
+arbitrary hidden directions; it would find the easiest hidden route the
+principal failed to specify.
+
+That claim is too strong as stated. "Complexity" is not one object. It can mean
+support size, rank, description length, entropy, KL from a reference
+distribution, private cost, or search accessibility. These agree in some toy
+cases and disagree in others. So the live question is not whether Goodhart
+generically selects minimum complexity. It is:
+
+#quote(block: true)[Given a response channel, its constraints, and a pre-specified
+shape measure, what hidden residual shape should proxy pressure select?]
+
+This chapter gives the first answer. Selection channels follow baseline tails.
+Intervention channels follow cost or search geometry. A minimum-complexity
+attractor appears only when that geometry is aligned with the chosen complexity
+functional.
+
+== Why the generic attractor fails
+
+In a selection channel, there is no optimisation over hidden residuals at all.
+The policy reweights a fixed baseline, and the hidden drift is still
+
+$ B_H(theta) = EE_theta[H] - EE_mu[H]. $
+
+Thus any simplicity bias in selected hidden residuals must already live in the
+baseline candidate distribution. A direct counterexample is diffuse: let
+$P = Z$ and let $H_i = Z + xi_i$ for $i = 1, dots, d$, with independent mean-zero
+noise $xi_i$. Thresholding on $P >= t$ shifts every hidden coordinate by the
+same amount. In the substantive coordinate system $H_1, dots, H_d$, the response
+has full support, not minimum support.
+
+#remark[The vector $(1, dots, 1)$ may still have a short description in a
+symmetric representation. That is exactly the point: support-size complexity and
+description-length complexity are different claims.]
+
+Intervention channels give a second obstruction. Suppose an agent chooses
+$a in RR^k$ to close a linear proxy deficit $w dot a >= d$ under quadratic cost
+
+$ c(a) = (1 slash 2) a^T C^(-1) a, $
+
+with $C$ positive definite. The KKT conditions give an interior binding
+solution:
+
+$ C^(-1) a = lambda w, quad
+  a^* = d C w slash (w^T C w). $
+
+#claim[*Quadratic response-shape result.* In the unconstrained quadratic model,
+proxy pressure selects the minimum-cost direction proportional to $C w$. This is
+not a minimum-complexity direction by default. It is dense only when $C w$ is
+dense in the pre-specified action basis and no additional constraints bind.
+_Toy example:_ if all KPI-padding channels are smooth substitutes with symmetric
+quadratic effort costs, the cheapest way to add score spreads effort rather than
+using one obvious loophole.]
+
+The result is useful precisely because it blocks a rhetorical shortcut.
+Quadratic cost can generate diffuse drift; fixed-charge cost can generate sparse
+drift; search priors can generate low-description-length drift. The response
+process decides the shape.
+
+== A conditional response-shape taxonomy
+
+The safe replacement for "minimum-complexity attractor" is not the empty slogan
+"geometry matters". It is a table of conditional predictions:
+
+#figure(
+  table(
+    columns: (1.05fr, 1.35fr, 1.45fr),
+    inset: 6pt,
+    align: horizon,
+    [*Response geometry*], [*Licensed prediction*], [*Guardrail*],
+    [Quadratic intervention cost],
+    [Cost-minimal drift along $C w$.],
+    [Dense only when $C w$ is dense in the chosen action basis and no constraints
+      bind.],
+    [Fixed activation or linear marginal cost],
+    [Low-support or one-channel drift in the uncapped, no-tie case.],
+    [Caps, convex post-activation costs, detection risk, and ties can force
+      spreading.],
+    [Low-rank action map $L$],
+    [Hidden drift is restricted to $"im"(L)$.],
+    [Spectral concentration requires a specified hidden representation and value
+      basis.],
+    [Simplicity-biased search prior],
+    [Failures are biased toward low description length under that prior.],
+    [The coding language or search prior must be fixed before observing the
+      failure.],
+  ),
+  caption: [Response-shape predictions. The framework licenses conditional
+    geometry-to-shape claims, not a representation-invariant law of increasing
+    complexity.],
+) <fig:response-shape-taxonomy>
+
+#claim[*Response-shape claim.* Proxy pressure does not determine hidden drift by
+itself. A prediction needs a response process, a constraint set, and a
+pre-specified residual shape measure. Once those are fixed, the model can
+predict dense, sparse, low-rank, low-description-length, or goal-improving
+responses. Without them, "complexity increase" is only a post-hoc label.]
+
+== Fixed charges, caps, and lumpy spillover
+
+The fixed-charge row is the most concrete sparse-attractor toy. Let channels
+$j = 1, dots, k$ have action $a_j$, score weight $w_j > 0$, marginal cost
+$q_j > 0$, fixed activation cost $F_j >= 0$, and cap $u_j in (0, infinity]$.
+For a score deficit $d > 0$, the agent solves
+
+$ min sum_j F_j bb(1){a_j > 0} + sum_j q_j a_j $
+
+subject to
+
+$ sum_j w_j a_j >= d, quad 0 <= a_j <= u_j. $
+
+Write the effective marginal cost per score unit as $r_j = q_j slash w_j$.
+The problem is infeasible iff $d > sum_j w_j u_j$.
+
+First, if all caps are infinite, the cost of using only channel $j$ is
+$F_j + r_j d$. If the minimiser is unique, the optimum is one-channel:
+
+$ j^*(d) in arg min_j (F_j + r_j d), quad
+  a_(j^*) = d slash w_(j^*), quad a_i = 0 " for " i != j^*. $
+
+The active channel can change as pressure rises. Low fixed cost can win for
+small deficits; low marginal cost can win for large deficits.
+
+Second, if $F_j = 0$ or activation costs are already paid, finite caps convert
+one-channel drift into ordered spillover. Sort channels so
+$r_1 < r_2 < dots < r_k$ and define cumulative score capacities
+$S_m = sum_(j <= m) w_j u_j$. If $S_(m - 1) < d <= S_m$, then channels
+$1, dots, m - 1$ are full, channel $m$ is partially used, and later channels are
+unused:
+
+$ a_j = u_j " for " j < m, quad
+  a_m = (d - S_(m - 1)) slash w_m, quad
+  a_j = 0 " for " j > m. $
+
+Third, positive fixed costs plus caps break universal sorted filling. The exact
+object is a finite active-set comparison: for each paid set $M$, pay
+$sum_(j in M) F_j$ and fill within $M$ by increasing $r_j$; then choose the
+cheapest feasible candidate. A high-marginal, low-fixed-cost channel can win at
+small $d$, while a low-marginal, high-fixed-cost channel wins later. The
+optimizer may skip the small-deficit channel instead of filling it first.
+
+#claim[*Capped fixed-charge shape.* Uncapped linear or fixed-charge costs can
+produce one-channel drift. Caps convert this into lumpy spillover only in the
+no-activation or already-activated linear case. Positive activation costs add
+entry thresholds and channel switching. _Toy example:_ once a visible benchmark
+exploit saturates or becomes detectable, additional pressure can spill into the
+next available exploit, but the path is a sequence of thresholded regimes rather
+than smooth diffusion.]
+
+== What this licenses for recursive Goodhart
+
+The recursive hypothesis remains live, but it is now better scoped. Repeated
+proxy repair may move residual error into dimensions that are less legible, less
+represented, lower-rank, cheaper to exploit, or easier to find. The framework
+does not say this must happen. It says what would make each version testable:
+pre-specified hidden axes, a response model, and a shape measure fixed before
+observing the failure.
+
+#claim[*Recursive-Goodhart license after the response-shape pass.* The chapters
+license mechanism-level plausibility and conditional predictions: selection
+follows baseline tail response; intervention follows cost/search geometry; fixed
+charges and caps produce lumpy support paths; low-rank affordances restrict the
+image of drift; search priors can bias toward low description length. They do
+not license a theorem that residual error generically becomes more complex over
+time.]
 
 // =============================================================================
 = Appendix A — Currently in progress
@@ -938,10 +1178,12 @@ Fenchel sketch; the exact theorem is still open.]
 
 #wip[*The exact selection-class condition.* Agents who can only toggle their own
 inclusion stay inside the selection class; agents who can move $(P, H)$ at fixed
-type do not. Is "cannot change $(P, H)$ at fixed type" the precise boundary, or
-are there genuine intermediate cases — e.g. agents can move $P$ but $H$ is
-pinned, or agents can move within a sub-manifold? A clean classification theorem
-is wanted.]
+type do not. The absolute-continuity test is too brittle as a causal boundary:
+if the baseline contains $epsilon$ mass on gaming-like behaviour, the induced
+post-policy law may still satisfy $mu_theta << mu_0$ even though the policy
+changed the response kernel. The wanted theorem should classify response
+kernels at fixed type, including intermediate cases where agents can move $P$
+but not $H$, or can move only within a sub-manifold.]
 
 #wip[*Adaptive hardening dynamics.* A principal that each period hardens
 whichever measured channel is currently most-gamed (lowers its $kappa_j$) drives
@@ -963,6 +1205,22 @@ modular ($H = t abs(M)$). Weighted aggregation and population entry may be
 genuinely sub- or super-modular — which would say something about whether greedy
 principal policies (add/remove one channel at a time) are sane. Not yet
 computed.]
+
+#wip[*Response-shape comparisons after Chapter 4.* Chapter 4 narrows Q18 to
+conditional response-shape predictions. The next step is to compare capped
+fixed-charge response against active-face quadratic response under the same
+hidden coordinates; specify a low-rank affordance model with a fixed value
+basis; and build a search-prior toy where description length is fixed before the
+failure is observed. These are simulation/theorem tasks, not claims already
+licensed by the chapter.]
+
+#wip[*A worked recursive toy.* Appendix G is still a cartoon until paired with a
+time-indexed proxy-repair example. The useful target is not another slogan but a
+pre-specified response-shape change across rounds: for example, a principal
+closes the currently visible low-cost channel, agents move to the next cheapest
+hidden channel under capped fixed-charge costs, and a pre-declared legibility or
+support-size statistic changes in the predicted direction. Without that
+pre-specified statistic, the recursive thesis should remain illustrative.]
 
 #wip[*Per-agent vs. population welfare.* For heterogeneous quality $Q$, aggregate
 gaming harm is $EE[(t - Q) bb(1){0 < t - Q <= sqrt(2 K_M V)}]$ in the
@@ -990,7 +1248,7 @@ trust state variable; the fixed-point analysis is not done.]
 // =============================================================================
 
 These surfaced during the work and are recorded for later. They are not blocking
-anything in Chapters 1–3, and most need a substantial new piece of machinery.
+anything in Chapters 1–4, and most need a substantial new piece of machinery.
 
 #openq[*Spectral / basis decomposition of the error.* Three decompositions, each
 carrying different information, should be kept distinct: (i) the SVD of $phi$ —
@@ -1051,9 +1309,13 @@ intervention channels transport mass rather than reweight it, and adding
 measured dimensions changes gaming through aggregation and cost geometry.
 Appendix G is different: it sketches a broader recursive-Goodhart hypothesis
 motivated by the framework but not proved by it. The formal chapters do not show
-that residual error generically becomes more dimensional under repeated proxy
-refinement; they show which quantities would have to be measured for such a
-claim to become precise.
+that residual error generically becomes more dimensional or more complex under
+repeated proxy refinement; Chapter 4 instead gives conditional response-shape
+predictions, and shows which quantities would have to be measured for such a
+claim to become precise. Appendix H illustrates those Chapter 4 predictions:
+quadratic cost can spread response, fixed-charge/linear cost can concentrate it,
+and caps plus activation costs can create lumpy spillover rather than a universal
+complexity increase.
 
 // =============================================================================
 = Appendix C — Selection drift is coupling-dependent, not dimension-dependent
@@ -1176,7 +1438,7 @@ $ H_M(d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). 
 = Appendix G — A speculative recursive-Goodhart cartoon
 // =============================================================================
 
-This appendix is not a theorem of Chapters 1--3. It is a cartoon of a broader
+This appendix is not a theorem of Chapters 1--4. It is a cartoon of a broader
 empirical hypothesis suggested by the framework. The axes labelled $h_1$ through
 $h_5$ are deliberately not proxy dimensions. They stand for outcome-relevant
 properties of the policy or model that the proxy stack does not fully capture:
@@ -1194,6 +1456,12 @@ with the monitored axes, moved idiosyncratically with no relation to legibility
 or cost, or if the cheapest route to high score became genuinely goal-improving
 rather than merely less visible.
 
+Chapter 4 supplies the guardrail for reading this cartoon. A recursive pattern
+should not be inferred from "complexity" after the fact. The hidden axes, the
+response geometry, and the relevant shape measure — support, rank, description
+length, cost, or search accessibility — must be specified before the patching
+sequence is used as evidence.
+
 #figure(
   image("figures/appendix-g-recursive-goodhart-cartoon.pdf", width: 83%),
   caption: [
@@ -1209,5 +1477,42 @@ rather than merely less visible.
     hypothesis needs pre-specified hidden dimensions before it can be tested.
   ],
 ) <fig:recursive-goodhart-cartoon>
+
+// =============================================================================
+= Appendix H — Response-shape predictions are conditional
+// =============================================================================
+
+Chapter 4 replaces the generic minimum-complexity attractor story with a
+conditional response-shape story. The relevant visual distinction is between the
+shape of the feasible target set and the geometry that selects one feasible
+response. Quadratic costs select a smooth minimum-cost direction; linear or
+fixed-charge costs can select one route; caps force spillover only after a route
+saturates.
+
+#figure(
+  image("figures/appendix-h-response-geometry.pdf", width: 100%),
+  caption: [
+    Response geometry selects the residual shape. A quadratic cost can spread
+    effort along $C w$; a linear or fixed-charge model can concentrate effort on
+    the cheapest route; a cap converts that concentration into spillover. None
+    of these is a generic law of increasing complexity.
+  ],
+) <fig:response-geometry>
+
+Positive activation costs make the capped story less smooth. The optimizer may
+use a cheap-to-start channel for small deficits, then switch to a different
+channel with lower marginal cost once the deficit is large enough to justify the
+entry cost. Thus the robust prediction is lumpy regime change, not universal
+sorted filling.
+
+#figure(
+  image("figures/appendix-h-fixed-charge-caps.pdf", width: 88%),
+  caption: [
+    Fixed charges plus caps produce active-set switches. In this example, a
+    high-marginal, zero-fixed-cost channel wins at small deficits, but a
+    low-marginal, positive-fixed-cost channel wins later. The optimizer can skip
+    the small-deficit route instead of filling it first.
+  ],
+) <fig:fixed-charge-caps>
 
 #bibliography("refs.bib", title: "References", style: "association-for-computing-machinery")
