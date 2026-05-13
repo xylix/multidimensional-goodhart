@@ -1,6 +1,6 @@
 # Multidimensional Goodhart — book draft
 
-Working draft of Chapters 1–3 (plus catalogue and visual appendices) of a longer
+Working draft of Chapters 1–5 (plus catalogue and visual appendices) of a longer
 treatment of multidimensional Goodhart. This is an *expository* rewrite of the
 research-journal material in `../research/`; the iteration history lives there,
 not here.
@@ -46,10 +46,15 @@ uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
   scaling vs. bounded correlation budget, the `Z²−1` zero-covariance
   counterexample, threshold response `b_H(t)`, weighted response `B_H(θ)`,
   covariance as local Boltzmann velocity, the `‖B_H‖ ≤ δ·‖s‖` drift bound.
-- **Ch. 3** — Intervention channels: response channels, the
-  selection/intervention dichotomy, the linear–Gaussian Stackelberg gaming toy
+- **Ch. 3** — Intervention channels: type-relative response kernels, the
+  selection/intervention distinction, the linear–Gaussian Stackelberg gaming toy
   (`Δ = √(2κV)`), multidimensional gaming (additive water-filling vs.
   conjunctive `H = t|M|`, the `h_j = c w_j` exchange-rate condition).
+- **Ch. 4** — Response shape: why generic minimum-complexity attraction fails,
+  and which conditional shape predictions follow from quadratic costs, fixed
+  charges, caps, low-rank affordances, and search priors.
+- **Ch. 5** — Response modeling: the contract a Goodhart claim must declare
+  before making selection/intervention, shape, welfare, or evidence claims.
 - **Appendix A** — Currently in progress: live research questions feeding the
   chapters.
 - **Appendix B** — Future open questions, parked for now.

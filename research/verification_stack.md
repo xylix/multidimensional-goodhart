@@ -39,6 +39,9 @@ Survived only barely:
   hidden dimensions and costs/legibility. Without that, it is too elastic.
 - The response-kernel boundary survives only relative to a declared type/action
   representation. It is not identifiable from marginal `mu_theta` alone.
+- The response-modeling contract survives only if it names a calculation or
+  falsifier. Otherwise "geometry matters" becomes too broad to discipline any
+  case.
 
 Killed:
 - Unconditional dimensional scaling.
@@ -168,7 +171,8 @@ response estimation and for controlled intervention/gaming environments.
 | Selection-response primitive (`Q6-Q9`) | Simulation | Compare covariance, threshold response, and weighted response on Gaussian, heavy-tailed, and nonlinear examples | Baseline covariance predicts finite-pressure hidden drift across examples |
 | Pareto selection and identifiability (`Q5`) | Thought experiment -> simulation | Construct two distributions with same observed Pareto frontier but different hidden dimensions; then simulate compression | Pareto selection preserves enough diversity to identify hidden response in the intended regimes |
 | Selection vs. intervention boundary (`Q8`, `Q12`) | Thought experiment -> real-world correspondence | Classify toggle-only, feature-changing, manifold-constrained, and `P`-only manipulation agents | A feature-changing agent can always be represented as harmless reweighting of baseline data |
-| General intervention bound (`Q10`) | Simulation/theorem sketch | Replace quadratic costs with convex costs; check whether Fenchel conjugates give the right gaming budget | Bound depends on baseline divergence rather than cost geometry, or fails for simple convex costs |
+| General intervention bound (`Q10`) | Theorem sketch -> simulation | Iteration 13 gives the affordable-action envelope and convex-dual score-deficit cost; next simulate quadratic, linear, and elastic-net-like costs | Bound depends on baseline divergence rather than cost geometry, or convex affordability is mistaken for a welfare bound without hidden value weights |
+| Response-modeling contract (`Q19`) | Thought experiment -> application mapping | Apply the contract to one ML-eval case and one institutional scorecard; identify `U`, `W_theta`, `K_theta`, actions, costs, aggregation, hidden harm, and discriminating evidence | The contract cannot distinguish nearby mechanisms, or reduces to a generic checklist with no downstream calculation |
 | Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation | Weighted additive, conjunctive, heterogeneous-population, noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
 | Adaptive hardening (`Q14`) | Simulation | Repeated game where principal hardens the currently most-gamed channel; compare to static commitment | Dynamics cycle, increase attack surface, or lose to static narrow hardening |
 | Measurement frontier (`Q15`) | Thought experiment -> simulation | Construct signal-value vs. attack-surface frontier over measured sets `M` | Frontier is vacuous because all informative metrics are safe or all safe metrics are uninformative only by assumption |

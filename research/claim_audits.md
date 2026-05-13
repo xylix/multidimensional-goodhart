@@ -28,6 +28,23 @@
 | The distinction is causal and representation-relative. | The boundary is meaningful after declaring the type/action representation and why it is substantively fixed rather than an ex post response encoding. | Identifiability from marginal `mu_theta` alone, invariance under arbitrary redefinition of `U`, or a unique decomposition into `W_theta` and `K_theta`. | Force application mappings to state what is fixed type, what is action, and what observations distinguish reweighting from response. |
 | Marginal distribution shifts can classify the channel. | Marginals can sometimes falsify a declared pure-selection model, for example if they put mass outside the baseline joint support. | General identification. The same `mu_theta` can arise from changed weights or changed kernels. | Treat observed distributions as evidence to combine with repeated-type data, experiments, action traces, or structural assumptions. |
 
+## Convex intervention bound audit (Iteration 13)
+
+| Claim one might use | What is licensed | What is not licensed | Intended use |
+| --- | --- | --- | --- |
+| Intervention drift has a bound analogous to the selection bound. | Conditional on a declared action space, cost `c_u`, stakes `V`, and hidden displacement `h_u`, fixed-type hidden movement is bounded by the affordable action set `B_u(V) = {a: c_u(a) <= V}`. | A baseline-only bound, or a bound identifiable from `mu_theta` without an action/cost model. | Explain what extra structure replaces baseline reweighting in intervention channels. |
+| Convex duality gives a general gaming budget. | For linear proxy gain and closed proper convex cost, the cost of buying score deficit `d` is `m(d) = sup_{lambda >= 0} [lambda d - c^*(lambda w)]` under standard regularity. | Applicability to nonconvex fixed charges, unknown costs, stochastic equilibrium, or arbitrary policy feedback. | Recover quadratic wedges and compare smooth vs. nonsmooth response geometries. |
+| Convex costs make intervention harm small. | Convex costs can bound feasible action magnitude under finite stakes. | A welfare bound without declared hidden harm/value weights. Affordable proxy movement can still be high-harm if `h_u` is large or misaligned with `w`. | Keep proxy feasibility, private cost, and hidden welfare separate. |
+
+## Response-modeling contract audit (Iteration 14)
+
+| Claim one might use | What is licensed | What is not licensed | Intended use |
+| --- | --- | --- | --- |
+| A Goodhart claim must declare a response model. | Claims about shape, harm, and evidence should state type space, policy exposure, response channel, action/cost geometry, proxy/target relation, aggregation, and evidence standard. | A new universal theorem about all Goodhart pressure. | Prevent underspecified claims and route applications to the right mathematical object. |
+| Selection/intervention is representation-relative. | The distinction is meaningful after declaring which attributes are fixed type and which are action/response. | Identification from marginal `mu_theta` alone or invariance to arbitrary enrichment/coarsening of `U`. | Force applications to defend `U` and name observations that distinguish reweighting from fixed-type behavior change. |
+| Response modeling replaces Goodhart slogans. | Different contracts license different calculations: selection curves, reweighting bounds, intervention budgets, aggregation exchange rates, or shape predictions. | The empty statement that "everything depends on assumptions." A useful contract must name a downstream calculation or falsifier. | Make the framework methodological rather than slogan-driven. |
+| Proxy-only manipulation is intervention. | It can be intervention for proxy validity when `K_theta` changes at fixed type. | A hidden-welfare harm claim. Harm requires a separately declared `H`, value weight, or welfare model. | Keep proxy validity, action response, and welfare harm distinct. |
+
 ## Response-shape prediction audit (Iteration 9)
 
 | Shape prediction | What is licensed | What is not licensed | Intended use |

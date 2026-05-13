@@ -1,4 +1,4 @@
-// Multidimensional Goodhart — draft of Chapters 1–4
+// Multidimensional Goodhart — draft of Chapters 1–5
 // Compile with:  typst compile multidimensional-goodhart.typ
 //
 // Source material: research/formalization.md, research/threads/*.md,
@@ -43,7 +43,7 @@
   #v(0.4cm)
   #text(size: 1.2em)[How measurement reshapes the terrain under measurement]
   #v(1cm)
-  #text(size: 1em)[Working draft — Chapters 1–4]
+  #text(size: 1em)[Working draft — Chapters 1–5]
   #v(0.3cm)
   #text(size: 0.95em, style: "italic")[#datetime.today().display()]
 ]
@@ -91,7 +91,8 @@ as a theorem of the framework.
 
 So there are three layers to keep separate. First, the formal chapters prove or
 derive toy results about selection response, baseline drift bounds,
-intervention channels, and multidimensional gaming. Second, those models imply
+intervention channels, multidimensional gaming, and response-modeling
+contracts. Second, those models imply
 conditional design lessons: additive scorecards, conjunctive scorecards, and
 different harm-per-score exchange rates behave differently. Third, the
 recursive story — that residual error may migrate into less-monitored or
@@ -113,7 +114,9 @@ and weakly expands the population of agents for whom gaming pays. These claims
 are meant for designing scorecards, benchmarks, and evaluation suites. Fourth,
 proxy pressure does not generically select a minimum-complexity residual; a
 response-shape prediction needs a named response geometry, constraint set, and
-complexity or shape measure. These claims do not prove the recursive-Goodhart
+complexity or shape measure. Fifth, a Goodhart claim is incomplete until it
+declares the response model: type, action, cost, aggregation, hidden welfare,
+and evidence standard. These claims do not prove the recursive-Goodhart
 hypothesis, do not say that "more metrics is worse" as a rule, and do not
 generalize automatically to RLHF or other non-convex training dynamics.]
 
@@ -549,13 +552,21 @@ $ cal(R) : Theta -> cal(P)(S), quad theta |-> mu_theta, quad mu_(theta_0) = mu_0
 for some null policy $theta_0$. Hidden drift along the channel is
 $B_H(theta) = EE_(mu_theta)[H] - EE_(mu_0)[H]$, exactly as before.
 
-#claim[*Definition.* $cal(R)$ is a *pure selection channel* if $mu_theta << mu_0$
-for all $theta$ and the policy only reweights fixed states or fixed types — then
-$L_theta := dif mu_theta slash dif mu_0$ exists and $mu_theta$ is $mu_0$
-reweighted by $L_theta$. An *intervention channel* changes the response kernel:
-at fixed type, agents can choose actions that change $(P, H)$ or the
-state-generating mechanism. Mutual singularity with $mu_0$ is decisive evidence
-of intervention, but not required for the causal distinction.]
+#claim[*Definition.* Declare a type space $U$ with baseline type law $nu$, a
+baseline kernel $K_0(d s mid(|) u)$, optional participation weights
+$W_theta(u)$, and policy-indexed response kernels $K_theta(d s mid(|) u)$. The
+induced law is
+
+$ mu_theta(A) =
+  (integral W_theta(u) K_theta(A mid(|) u) nu(d u))
+  slash
+  (integral W_theta(u) nu(d u)). $
+
+The channel is *pure selection relative to $(U, K_0)$* if $K_theta = K_0$ for
+$nu$-almost every type and all policy dependence enters through $W_theta$. It is
+an *intervention relative to $(U, K_0)$* if $K_theta != K_0$ on a positive-mass
+set of types. Mutual singularity with $mu_0$ is decisive evidence of
+intervention, but not required for the causal distinction.]
 
 The entire apparatus of Chapter 2 — covariance, threshold response, weighted
 response — is the pure-selection case, with $L_theta = W_theta / EE_(mu_0)[W_theta]$.
@@ -896,15 +907,16 @@ constrains realised cost. Appendix A keeps those variants open.
 
 == What we have, and what is open <sec:openq>
 
-The two-chapter arc gives a clean dichotomy. *Selection channels* — the policy
+Chapters 2 and 3 give a clean dichotomy. *Selection channels* — the policy
 reweights a fixed baseline — contain all of regressional and extremal Goodhart;
 hidden drift is bounded, $norm(B_H(theta))_2 <= delta dot norm(s)_2$, with
 every term a baseline functional, and the number of dimensions enters only
-through $norm(s)_2$. *Intervention channels* — the policy transports mass to
-where the baseline had none — contain causal and adversarial Goodhart; there is
-no baseline bound, and the controlling quantity (e.g. $Delta = sqrt(2 kappa V)$
-in quadratic Stackelberg gaming) is exogenous to $mu_0$, set by the responding
-agents' cost geometry. In the multidimensional intervention regime, "fight
+through $norm(s)_2$. *Intervention channels* — the policy changes fixed-type
+behavior through a response kernel — contain causal and adversarial Goodhart;
+there is no baseline-only bound, and the controlling quantity (e.g.
+$Delta = sqrt(2 kappa V)$ in quadratic Stackelberg gaming) is exogenous to
+$mu_0$, set by the responding agents' cost geometry. In the multidimensional
+intervention regime, "fight
 Goodhart by measuring more dimensions" has a precise predicted failure mode:
 under a compensatory rule it conserves fixed-deficit per-agent harm only when
 channels are equally harmful per score unit, and it lowers the cheapest gaming
@@ -1159,6 +1171,165 @@ not license a theorem that residual error generically becomes more complex over
 time.]
 
 // =============================================================================
+= Response modeling: what a Goodhart claim must declare
+// =============================================================================
+
+== Proxy pressure is not a complete model
+
+The preceding chapters narrow the project in a useful way. The original
+temptation was to look for a characteristic shape of Goodhart pressure: error
+spreads, concentrates, becomes more complex, or migrates into unmeasured
+dimensions. Each of those can happen in a model. None is forced by proxy
+pressure alone.
+
+In Chapter 2, pressure only reweights a fixed baseline, so hidden drift follows
+the baseline response curve. In Chapter 3, pressure changes fixed-type behavior,
+so the relevant object is an action or cost geometry. In Chapter 4, hidden
+residual shape depends on the response process: quadratic costs, fixed charges,
+caps, low-rank affordances, and search priors make different predictions.
+
+So the next object is methodological. A Goodhart claim should not merely say
+that a proxy was optimized and then an outcome changed. It should declare the
+response model that connects proxy pressure to target-relevant distortion.
+
+#claim[*Response-modeling contract.* A Goodhart claim is incomplete unless it
+declares the response model: what is fixed type, what can respond, what movement
+is feasible, what it costs, how proxy components are aggregated, what hidden
+target or welfare quantity is protected, and what evidence would distinguish
+the proposed response channel from nearby alternatives.]
+
+This is not a retreat into "everything depends on assumptions." It is the
+condition under which the earlier results become usable. Once the response
+model is declared, the claim can point to a selection response curve, a
+reweighting bound, a convex intervention budget, a fixed-charge active-set
+comparison, an aggregation exchange-rate calculation, or a response-shape
+prediction. Without that declaration, "Goodhart happened" is usually too
+underspecified to be evidence for any particular mechanism.
+
+== The contract
+
+The minimum contract has eight fields.
+
++ *Type representation.* Declare the type space $U$ and baseline law $nu$.
+  Explain why these features are treated as fixed for this comparison rather
+  than as future responses to the policy.
++ *State and baseline behavior.* Declare the observed state space $S$ and the
+  baseline kernel $K_0(d s mid(|) u)$.
++ *Policy exposure.* State what policy, score, threshold, prize, or feedback
+  variable $theta$ creates pressure, and which actors observe it.
++ *Response channel.* State whether $theta$ changes participation weights
+  $W_theta(u)$, fixed-type response kernels $K_theta(d s mid(|) u)$, or both.
++ *Action geometry.* If behavior changes at fixed type, declare the action
+  space, feasible movements, costs, caps, fixed charges, search prior, or other
+  geometry that makes some moves available and others unavailable.
++ *Proxy and target.* State the proxy, the intended target relation
+  $P approx phi(G)$, and the hidden welfare or harm quantity whose distortion
+  matters.
++ *Aggregation rule.* If the proxy is multidimensional, state whether components
+  are combined additively, by weights, conjunctively, by a Pareto rule, or by
+  some other rule.
++ *Evidence standard.* State what observation would distinguish reweighting of
+  fixed types from fixed-type behavior change, and what observation would
+  falsify the proposed action or cost geometry.
+
+Each field blocks a common overclaim. Without $U$, selection and intervention
+can be redescribed after the fact. Without the action geometry, intervention
+has no budget. Without the aggregation rule, measured dimension count has no
+sign. Without a hidden harm functional, proxy movement is not yet welfare harm.
+Without an evidence standard, the model cannot be wrong.
+
+== Selection, intervention, and evidence
+
+The selection/intervention split is useful precisely because it says which
+evidence matters. Under pure selection, policy changes only the weights on fixed
+type-conditional behavior. The right evidence is the baseline joint
+distribution, the weighting rule, the selection depth, and the hidden response
+curve such as $EE[H mid(|) P >= t] - EE[H]$. The Chapter 2 drift bound is
+available because the post-policy law is a reweighting of the baseline joint law
+on types and states.
+
+Under intervention, the policy changes $K_theta(d s mid(|) u)$ at fixed type.
+Marginal distribution shifts alone usually cannot identify this. Stronger
+evidence comes from repeated observations of the same type before and after
+policy exposure, randomized or staggered exposure, action traces, exogenous
+variation in costs or stakes, or a structural model that makes the response
+geometry explicit.
+
+The distinction is representation-relative. A type space rich enough to include
+the whole future response plan can make behavior change look like selection over
+types. A type space too coarse can make ordinary heterogeneity look like
+intervention. That is not a defect to hide. It is the empirical commitment the
+model must declare.
+
+#claim[*Evidence claim.* Outcome distributions can support or falsify a declared
+response model, but they do not by themselves identify the model. A credible
+Goodhart application must say what is fixed type, what is response, and what
+observation would separate reweighting from fixed-type behavior change.]
+
+Toy examples show the difference. If a grant agency raises a score cutoff for a
+fixed applicant pool and applicants do not revise their proposals, the model is
+pure selection. If applicants rewrite proposals after the scoring formula is
+announced, the same marginal score improvement may be an intervention. If a
+hospital ranking induces the same hospital to change coding, repeated-hospital
+data support a fixed-type kernel change. If only hospitals already good at
+coding enter the ranked population, a selection model may be adequate. A single
+post-policy cross-section rarely decides.
+
+== What the contract licenses
+
+The contract turns the framework into a menu of conditional claims rather than
+a universal theorem.
+
+- If the response is pure selection, use baseline response curves and
+  reweighting bounds.
+- If the response is smooth costly action, use an affordable-action set or a
+  convex score-deficit cost.
+- If the response has fixed charges or caps, expect threshold regimes,
+  spillover, and active-set switches.
+- If the proxy is multidimensional, analyze the aggregation rule and
+  harm-per-score exchange rates.
+- If the claim is about residual shape, pre-specify the response geometry and
+  the shape measure before observing the failure.
+
+This is why the project becomes less like a theorem saying "Goodhart has this
+shape" and more like a response-modeling framework. The gain is not maximal
+generality. The gain is that a reader can ask, for any application: what
+mechanism is being claimed, what calculation follows from it, and what evidence
+would make the claim weaker?
+
+== Application discipline
+
+The contract is especially important for ML and institutional examples because
+outcome distributions invite overinterpretation. A benchmark score rise could
+mean selection among fixed model checkpoints, finetuning that changes behavior,
+contamination, prompt adaptation, tool-use strategy, or reporting changes. A
+school score rise could mean selecting different students, changing teaching,
+changing attendance, changing reporting, or real learning. These are different
+response models.
+
+For an empirical or ML application, the minimum mapping should say:
+
+- what plays the role of type;
+- what plays the role of action or response;
+- what cost, search, or feasibility geometry predicts the response;
+- which proxy components are aggregated and how;
+- which hidden outcome or welfare variable is at stake;
+- what data would distinguish the proposed mechanism from selection,
+  confounding, reporting change, or real improvement.
+
+That mapping does not need to be perfect before the framework can be useful. It
+does need to be explicit enough that the claim can fail. The main error this
+chapter is meant to prevent is treating "the metric improved and the target did
+not" as enough to infer the response channel, the welfare mechanism, and the
+next fix.
+
+#claim[*Book-level conclusion.* Goodhart behavior is not determined by proxy
+pressure alone. It is determined by the response channel: selection over fixed
+types or intervention through fixed-type action and response kernels, with
+shape governed by costs, caps, aggregation, affordances, search geometry, and
+the declared hidden welfare model.]
+
+// =============================================================================
 = Appendix A — Currently in progress
 // =============================================================================
 
@@ -1171,19 +1342,19 @@ treatment would require.
 selection-channel bound is $norm(B_H) <= delta dot norm(s)$ (Chapter 2). Is
 there an intervention analogue that factors through the agents' cost geometry —
 a "gaming budget" — rather than through any divergence from $mu_0$? The
-quadratic case gives $Delta = sqrt(2 kappa V)$. Conjecture: a version holds for
-general convex gaming costs, with the bound governed by the convex conjugate of
-the cost. Section @sec:convex-cost-conjecture states the conjecture and the
-Fenchel sketch; the exact theorem is still open.]
+quadratic case gives $Delta = sqrt(2 kappa V)$. The current partial answer is an
+affordable-action envelope plus a convex-dual score-deficit cost. Section
+@sec:convex-cost-conjecture states the Fenchel sketch; stochastic response,
+endogenous stakes, and empirical cost estimation remain open.]
 
-#wip[*The exact selection-class condition.* Agents who can only toggle their own
-inclusion stay inside the selection class; agents who can move $(P, H)$ at fixed
-type do not. The absolute-continuity test is too brittle as a causal boundary:
-if the baseline contains $epsilon$ mass on gaming-like behaviour, the induced
-post-policy law may still satisfy $mu_theta << mu_0$ even though the policy
-changed the response kernel. The wanted theorem should classify response
-kernels at fixed type, including intermediate cases where agents can move $P$
-but not $H$, or can move only within a sub-manifold.]
+#wip[*Application evidence standards for response channels.* Agents who can only
+toggle their own inclusion stay inside the selection class; agents who can move
+$(P, H)$ at fixed type do not. The absolute-continuity test is too brittle as a
+causal boundary: if the baseline contains $epsilon$ mass on gaming-like
+behaviour, the induced post-policy law may still satisfy $mu_theta << mu_0$ even
+though the policy changed the response kernel. The next task is not just a
+definition; it is a set of application templates saying what evidence supports
+the declared type space, response kernel, and action geometry.]
 
 #wip[*Adaptive hardening dynamics.* A principal that each period hardens
 whichever measured channel is currently most-gamed (lowers its $kappa_j$) drives
@@ -1248,7 +1419,7 @@ trust state variable; the fixed-point analysis is not done.]
 // =============================================================================
 
 These surfaced during the work and are recorded for later. They are not blocking
-anything in Chapters 1–4, and most need a substantial new piece of machinery.
+anything in Chapters 1–5, and most need a substantial new piece of machinery.
 
 #openq[*Spectral / basis decomposition of the error.* Three decompositions, each
 carrying different information, should be kept distinct: (i) the SVD of $phi$ —

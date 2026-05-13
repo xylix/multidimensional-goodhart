@@ -48,6 +48,8 @@ Any one of these triggers a `needs-adversarial-review` tag in `red_flags.md`.
 
 Then do the work. Then update notes.
 
+After each completed research iteration, make a git commit with a concise summary unless the user asks not to commit.
+
 ## File layout
 
 - `research/formalization.md` — current notation, definitions, principal claims (with confidence tags)

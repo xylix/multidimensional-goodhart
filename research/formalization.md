@@ -90,7 +90,60 @@ Claim [tentative]: all of the above (covariance, threshold response `b_H(t)`, we
 
 Counterexample attempt: an agent model that only lets agents toggle their own inclusion (participate or not) has `K_theta = K_0` and changes only `W_theta`, so it is selection. Conversely, the old absolute-continuity boundary is too brittle: if baseline behavior already has `epsilon` probability on gaming-like actions, an announced metric can increase those actions while preserving `mu_theta << mu_0`. The selection/intervention distinction is substantive exactly when agents can move in state space (change `(P, H)` at fixed type), not merely choose inclusion. Representation caveat: this is relative to the declared type space `U`; if `U` is allowed to include the whole future policy-contingent response plan, the distinction can be trivialized.
 
-Drift bound, selection channel: by Cauchy-Schwarz in `L^2(mu_0)`, `||B_H(theta)||_2 <= delta · ||s||_2` where `delta = ||L_theta - 1||_{L^2(mu_0)}` (`delta^2 = chi^2(mu_theta || mu_0)`) and `s_i = sd_{mu_0}(H_i)`. Every term is a `mu_0`-functional; bounded reweighting + bounded hidden variance ⇒ bounded hidden drift. This is coordinate-explicit, not invariant to arbitrary hidden-coordinate relabeling; a basis-invariant version would need a declared covariance, value-weighted norm, or operator formulation. Claim [tentative]: no baseline-only analogue holds for intervention channels; even when `L_theta` exists, it describes the induced distribution after response rather than the cost geometry that made the response available. Any useful intervention bound must be imported from an agent cost/feasibility model. In the linear-Gaussian Stackelberg gaming toy (quadratic gaming cost `a^2/(2kappa)`, selection value `V`; see `threads/intervention_response.md`), the proxy's worst-case bias and the induced hidden harm both scale with `Delta = sqrt(2 kappa V)` — exogenous to `mu_0`.
+## Response-modeling contract
+
+Iteration 14 repair: a Goodhart claim is incomplete unless it declares the
+response model. The minimum contract is:
+
+- fixed type space `U`, baseline type law `nu`, and the reason `U` is treated as
+  fixed rather than as future response;
+- observed state space `S` and baseline kernel `K_0(ds | u)`;
+- policy exposure `theta` and who can observe/respond to it;
+- selection weights `W_theta(u)` and/or response kernel `K_theta(ds | u)`;
+- action space, feasible movement, costs, caps, fixed charges, or search prior
+  for any fixed-type behavior change;
+- proxy, target, residual relation `P approx phi(G)`, and hidden welfare/harm
+  functional;
+- aggregation rule for multidimensional proxies;
+- evidence standard distinguishing type reweighting from fixed-type response and
+  testing the proposed action geometry.
+
+Claim [tentative]: proxy pressure alone does not determine Goodhart behavior.
+The response contract determines which result applies: baseline response curves
+and reweighting bounds for selection; action/cost/search bounds for
+intervention; aggregation/exchange-rate calculations for multidimensional
+gaming; and pre-specified shape measures for response-shape predictions.
+
+Counterexample attempt: if the contract only says "geometry matters," it is
+vacuous. A useful contract must name the downstream calculation or observation
+it licenses. For example, a school test-score claim should say whether the
+policy selects schools, changes the same schools' teaching kernel, changes only
+reporting, or changes participation; what costs/caps govern those moves; and
+what evidence would distinguish these stories.
+
+Drift bound, selection channel: by Cauchy-Schwarz in `L^2(mu_0)`, `||B_H(theta)||_2 <= delta · ||s||_2` where `delta = ||L_theta - 1||_{L^2(mu_0)}` (`delta^2 = chi^2(mu_theta || mu_0)`) and `s_i = sd_{mu_0}(H_i)`. Every term is a `mu_0`-functional; bounded reweighting + bounded hidden variance ⇒ bounded hidden drift. This is coordinate-explicit, not invariant to arbitrary hidden-coordinate relabeling; a basis-invariant version would need a declared covariance, value-weighted norm, or operator formulation.
+
+Iteration 13 repair: no baseline-only analogue holds for intervention channels;
+even when `L_theta` exists, it describes the induced distribution after response
+rather than the cost geometry that made the response available. A conditional
+intervention bound must be imported from an action/cost model. For type `u`,
+action `a in A(u)`, cost `c_u(a)`, hidden displacement `h_u(a)`, and stakes
+`V`, the affordable set is `B_u(V) = {a: c_u(a) <= V}` and any best response
+with upside at most `V` satisfies
+
+`||h_u(a^*)|| <= sup_{a in B_u(V)} ||h_u(a)||`.
+
+For linear proxy gain `w . a` and closed proper convex cost `c` (feasibility
+absorbed as `c = +infty` outside `A`), the minimum cost of buying score deficit
+`d` is
+
+`m(d) = inf{c(a): w . a >= d}
+      = sup_{lambda >= 0} [lambda d - c^*(lambda w)]`
+
+under standard convex-duality regularity. Gaming is feasible iff `m(d) <= V`.
+In the one-dimensional quadratic toy this recovers `Delta = sqrt(2 kappa V)`.
+Convexity and affordability bound action movement, not welfare by themselves:
+hidden harm still depends on the declared harm functional `h_u`.
 
 ## Multidimensional gaming: aggregation rule controls dimensional scaling
 

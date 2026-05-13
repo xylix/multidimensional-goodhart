@@ -12,6 +12,10 @@ outline:
 - Two response channels:
     - selection: choosing from the old distribution
     - intervention: changing the distribution by making agents respond
+- Response-modeling contract:
+    - every Goodhart claim has to say what is fixed type, what can respond, what
+      movement costs, how the proxy aggregates, and what hidden welfare claim is
+      being made
 - The old "more dimensions => more error" story is too crude
 - New punchline:
     - in selection, dimensional harm depends on coupling to the selected proxy
@@ -41,13 +45,16 @@ proxy is also usually a bundle, but not the same bundle. So the thing that
 collapses is not just "the correlation". Pressure changes the *shape* of the
 residual error.
 
-That is the better version of the claim:
+That is the better version of the claim, but it now needs an extra clause:
 
 > Goodhart is not just proxy error getting larger. It is proxy error moving into
-> the dimensions where the current control system is weakest.
+> the dimensions where the current response model makes movement available.
 
 This is still not a theorem in full generality. The research so far makes that
-more precise, but also kills a few too-easy versions of the claim.
+more precise, but also kills a few too-easy versions of the claim. The current
+lesson is that Goodhart behavior is not determined by proxy pressure alone. It
+depends on the response channel: selection over fixed types, or intervention
+through actions available at fixed type.
 
 
 ## Goals and proxies as vectors
@@ -139,19 +146,23 @@ A policy induces a response channel:
 `R: theta -> mu_theta`,
 
 where `mu_0` is the baseline distribution and `mu_theta` is the distribution
-after applying policy `theta`.
+after applying policy `theta`. That marginal notation is useful, but it is not
+enough to define the causal mechanism. The cleaner version introduces a type
+space `U`, participation weights `W_theta(u)`, and response kernels
+`K_theta(ds | u)`.
 
 There are two importantly different cases.
 
 ### Selection channels
 
-Selection means the policy reweights a fixed baseline distribution. You are
+Selection means the policy reweights fixed type-conditional behavior. You are
 choosing which existing applicants to admit, which existing models to keep, or
 which existing projects to fund.
 
-Formally, `mu_theta << mu_0`: anything impossible before is still impossible
-after. You moved probability mass around; you did not create new kinds of
-states.
+Formally, relative to a declared type space and baseline kernel, selection
+changes `W_theta(u)` while keeping `K_theta = K_0`. Absolute continuity with
+respect to the baseline is a useful signature of pure reweighting, but it is not
+the causal definition.
 
 In this regime there is a simple drift bound:
 
@@ -176,8 +187,8 @@ it is the more bounded case.
 
 ### Intervention channels
 
-Intervention means the policy changes the state-generating process. Agents
-respond. They move in state space.
+Intervention means the policy changes fixed-type behavior. Agents respond. They
+move in state space.
 
 Examples:
 
@@ -187,15 +198,51 @@ Examples:
 - optimize a model against a reward model, and the model discovers reward-model
   loopholes
 
-Now `mu_theta` may not be absolutely continuous with respect to `mu_0`. In the
-baseline distribution, maybe nobody had hidden gaming effort `H > 0`. After the
-metric is announced, a positive mass of agents moves to `H > 0`. That is not
-reweighting; it is transport.
+Now the response kernel changes: `K_theta != K_0` for some fixed types. In the
+cleanest toy case, `mu_theta` may put mass where the baseline had none. But that
+is only decisive evidence, not the definition. If the baseline already had a
+tiny amount of gaming-like behavior, the post-policy law can remain absolutely
+continuous while the same schools, hospitals, workers, or models change their
+behavior because the metric made it worthwhile.
 
 In this regime the old baseline does not give an a-priori bound. You need an
 agent model: costs, stakes, feasibility constraints, equilibrium behavior.
 
 This is where the deeper Goodhart story has teeth.
+
+
+## Response-modeling contract
+
+The current version of the project is less like:
+
+> Goodhart pressure has one characteristic shape.
+
+and more like:
+
+> A Goodhart claim is incomplete until it declares the response model.
+
+For any real case, the claim should say:
+
+- what counts as fixed type `U`
+- what counts as action or response
+- whether the policy changes participation weights or fixed-type behavior
+- what movement is feasible
+- what it costs, including caps, fixed charges, search limits, or affordances
+- how the proxy is aggregated
+- what hidden target or welfare quantity is being protected
+- what evidence would distinguish reweighting from behavior change
+
+This prevents a common mistake: looking only at outcome distributions and then
+announcing "this is selection" or "this is intervention." The same marginal
+shift can often be represented either way unless the type/action model and
+evidence standard are declared.
+
+Example: a hospital score improves after a ranking rule changes. That could be
+selection if different hospitals enter the ranked population. It could be
+intervention if the same hospitals change coding, admissions, or discharge
+behavior. It could be real improvement if the cheapest way to raise the score is
+actually to improve care. The score distribution alone does not tell you which
+model you are in.
 
 
 ## A tiny gaming model
@@ -339,13 +386,15 @@ I would now say:
 > When you optimize a proxy, the residual error moves along the response
 > channels your control system opens. In selection regimes this movement is
 > bounded by baseline coupling. In intervention regimes it is governed by agent
-> costs, stakes, aggregation rules, and harm-per-score exchange rates. Recursive
-> Goodhart is the conjecture that repeated proxy repair tends to push remaining
-> error into less legible dimensions.
+> costs, stakes, caps, aggregation rules, and harm-per-score exchange rates.
+> Recursive Goodhart is the conjecture that repeated proxy repair tends to push
+> remaining error into less legible dimensions.
 
 The practical moral is also more concrete:
 
 - do not ask only "how many metrics do we have?"
+- declare the response model before making the Goodhart claim
+- say what is fixed type and what is action
 - ask what each metric makes cheap to fake
 - ask whether the aggregation rule is compensatory or conjunctive
 - ask whether score points and social harm have the same exchange rate

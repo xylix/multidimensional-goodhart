@@ -131,3 +131,23 @@ What changed: created `research/reviews/response_kernel_boundary.md` and updated
 What's open now: applications need explicit evidence plans. Marginal `mu_theta` data alone generally cannot identify whether a change came from type reweighting or fixed-type response; credible use needs repeated-type observations, randomized policy exposure, action traces, or structural assumptions. No change was needed to the compact definition in `formalization.md`.
 
 Red flags fired: scheduled adversarial pass. The stronger claim "the boundary is identifiable from distributions alone" was logged as dead; the surviving claim is a causal type/action representation license, not an intrinsic observed-law classifier.
+
+## Iteration 13
+
+Question tackled: Q10 — an intervention-channel analogue of the selection bound for general convex gaming costs.
+
+What changed: created `research/threads/convex_intervention_bound.md` and updated `formalization.md`, `open_questions.md`, `claim_audits.md`, `negative_results.md`, and `red_flags.md`. The new thread defines fixed-type actions `a in A(u)`, costs `c_u(a)`, proxy gain `p_u(a)`, hidden displacement `h_u(a)`, stakes `V`, and the affordable set `B_u(V) = {a: c_u(a) <= V}`. The intervention envelope is `||h_u(a^*)|| <= sup_{a in B_u(V)} ||h_u(a)||`. For linear proxy gain and convex cost, the score-deficit cost is `m(d) = sup_{lambda >= 0} [lambda d - c^*(lambda w)]`, with gaming feasible iff `m(d) <= V`.
+
+What's open now: extend the deterministic convex bound to stochastic response and endogenous `V`; connect it to fixed-charge/nonconvex regime switches without flattening Iteration 10's lumpy response story; and decide what evidence could identify `c_u`, `V`, and `h_u` in applications.
+
+Red flags fired: no scheduled adversarial pass, but a watch item was logged. The convex formula is useful only as a conditional cost-geometry primitive. Convex affordability is not a welfare bound unless hidden harm/value weights are declared.
+
+## Iteration 14
+
+Question tackled: what methodological object should replace broad "Goodhart pressure has a characteristic shape" claims after the response-kernel and response-geometry repairs?
+
+What changed: created `research/threads/response_modeling_contract.md` and updated `formalization.md`, `open_questions.md`, `claim_audits.md`, and `verification_stack.md`. The new object is a response-modeling contract: a Goodhart claim must declare type space `U`, baseline kernel `K_0`, policy exposure `theta`, selection weights `W_theta` and/or response kernels `K_theta`, action/cost/search geometry, proxy/target relation, aggregation rule, hidden welfare/harm model, and evidence standard.
+
+What's open now: write domain-specific application templates and use the contract to guide the next book chapter. The danger is turning "response modeling" into the empty statement that assumptions matter; the repair is to require each contract to name the calculation or falsifier it licenses.
+
+Red flags fired: no scheduled adversarial pass. A scope guard was added in the thread and audit: the contract does not license a new universal theorem, identification from marginal distributions alone, or welfare conclusions from proxy movement without a hidden harm model.
