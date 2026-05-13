@@ -41,7 +41,7 @@
   #v(2cm)
   #text(size: 2.1em, weight: "bold")[Multidimensional Goodhart]
   #v(0.4cm)
-  #text(size: 1.2em)[How controlling for a proxy reshapes, rather than removes, its error]
+  #text(size: 1.2em)[How measurement reshapes the terrain under measurement]
   #v(1cm)
   #text(size: 1em)[Working draft — Chapters 1–4]
   #v(0.3cm)
