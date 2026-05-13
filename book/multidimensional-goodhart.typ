@@ -150,8 +150,9 @@ must be proportional to score contribution on the active channels. This is the
 kind of claim I want from the paper: not "more metrics are bad", but "given this
 aggregation rule and these exchange rates, here is the distortion geometry".
 
-The live Appendix-A questions belong here rather than as a separate shopping
-list. A general convex intervention bound is promising if it stays conditional
+The live work-in-progress questions (collected as a bulleted inventory below)
+belong here in the spine rather than as a separate shopping list. A general
+convex intervention bound is promising if it stays conditional
 on action geometry, stochastic response, stakes, and hidden harm. Application
 evidence standards are promising if they force each case to declare type,
 response kernel, action traces, and falsifiers. Adaptive hardening is promising
@@ -199,6 +200,148 @@ multidimensional Goodhart make proxy-induced distortion modelable, by predicting
 the shape of distortion from the declared response channel, aggregation rule,
 and action geometry, in regimes where scalar Goodhart can only say that
 optimization pressure broke the proxy?
+
+== Work in progress
+
+Threads that are live in the sense that fragments of math exist but are not
+yet promoted into the formal chapters. They shape what the rest of the book
+is trying to prove.
+
+- *Convex intervention bound.* The selection-channel bound governs hidden
+  drift through a chi-square / reweighting budget on baseline statistics.
+  The intervention analogue (@sec:convex-cost-conjecture) is conjectured to
+  give stakes $V$ and convex agent cost $c$ a feasible-displacement envelope
+  with support function $c^*(lambda ell)$; the quadratic case recovers the
+  $sqrt(2 kappa V)$ wedge. Missing for a clean proposition: action space,
+  harm functional, stochastic-response variant, participation, and the link
+  between selection value and realised cost. Right shape; not yet a theorem.
+
+- *Evidence standards / domain templates.* Chapter 5 states the
+  response-modeling contract abstractly. The in-progress work is per-domain
+  instantiation — ML evaluations, RLHF and finetuning, institutional
+  scorecards, scientific metrics — each naming concrete referents for
+  $kappa$, $V$, type space $U$, response kernel $K_theta$, action/cost
+  geometry, aggregation rule, and hidden welfare model. The template must
+  force a declaration of falsifiers and action traces, not degenerate into a
+  generic checklist.
+
+- *Adaptive hardening.* A regulator that each period lowers $kappa_j$ on
+  whichever measured channel is currently most-gamed drives aggregate gaming
+  capacity $K_M$ downward. Open: does this policy converge to no-gaming
+  ($K_M < t^2 slash (2V)$), and at what rate? Does it dominate the
+  alternative of committing from the start to a narrow hard-to-game measured
+  set $M$?
+
+- *Measurement frontier.* The dual of hardening. More measured channels
+  recover more real signal about $G$ but enlarge the gaming attack surface
+  $K_M$. Characterise the frontier between "informative enough" and "small
+  enough attack surface" — including whether the frontier is sometimes
+  empty (no good choice exists).
+
+- *Response-shape simulation comparison.* The Chapter 4 conditional menu —
+  quadratic costs spread drift along $C w$; fixed activation or linear costs
+  concentrate drift in the uncapped no-tie case; caps and convex
+  post-activation costs spread it again, sometimes lumpily; low-rank action
+  maps restrict drift to $"im"(L)$ — has not been simulated head-to-head
+  under a fixed hidden coordinate system and a pre-specified shape measure
+  (support size, rank, KL from a max-entropy prior, description length under
+  a fixed coding). This is the cheapest next test of the menu before any row
+  is upgraded.
+
+- *Recursive toy model.* Appendix E draws a cartoon; the formal chapters do
+  not prove that successive proxy patches push residual error into
+  less-legible dimensions. Needed: a two- or three-round refinement model
+  with declared hidden dimensions, a declared response geometry, and a
+  legibility measure fixed *before* the patching sequence is used as
+  evidence. Without that, the recursive hypothesis is not yet testable.
+
+- *Per-agent versus population welfare.* The unit-weight additive model
+  gives aggregate harm $EE[(t - Q) bb(1){0 < t - Q <= sqrt(2 K_M V)}]$ for
+  heterogeneous quality $Q$. Open: which aggregate is the right welfare
+  object under noise, nonlinear costs, and endogenous $V$? The conservation
+  results currently fold together per-agent fixed-deficit harm and
+  population entry effects that need to be separated.
+
+- *ML mappings for $kappa$.* In the toy Stackelberg model $kappa$ is scalar
+  ease of gaming. In RLHF, finetuning, and benchmark-driven optimisation,
+  candidate referents include gradient accessibility, pretraining density,
+  benchmark contamination, reward-model feature simplicity, and optimizer
+  search efficiency. These are not interchangeable. Open: which carry the
+  load of $kappa$, jointly or separately, and which (if any) are measurable
+  from training-time signals rather than only post-hoc.
+
+- *Endogenous stakes.* Selection value $V$ is treated as exogenous, but
+  trust in a metric decays as gaming is observed, so $V$ falls as the metric
+  is used. Open: does the regulator–agent game with endogenous $V$ have a
+  performative-stable fixed point, and does that fixed point still carry
+  hidden harm rather than collapsing to zero gaming and zero stakes?
+
+== Open questions
+
+A separate class of questions surfaced during this work and is deliberately
+*not* on the critical path. Each needs a substantial new piece of machinery;
+none of them blocks Chapters 1–5. They are recorded here so they are not
+rediscovered from scratch.
+
+- *Spectral / basis decomposition of the error.* Three decompositions
+  carrying different information should be kept distinct: the SVD of $phi$
+  (right singular vectors are the $G$-directions $phi$ distinguishes; small
+  singular values mark structural blind spots in the *dimension gap*); the
+  eigendecomposition of $"Cov"(epsilon)$ (principal directions of
+  measurement noise, the *observation gap*); and the selection-induced shift
+  of $G$ before vs after restricting to the selected set — the most
+  diagnostic of actual Goodhart and the least obvious to compute. Bad-case
+  corner: a $G$-direction where $phi$ has small singular value,
+  $"Cov"(epsilon)$ has mass, and the selection shift is large. Each
+  decomposition is easy individually; open whether the joint object is
+  useful without first declaring a value-weighting on $G$-space.
+
+- *Value-weighted Goodhart susceptibility.* PCA/SVD is value-neutral;
+  Goodhart is value-laden. A huge principal component orthogonal to the
+  value structure of $G$ is harmless; a tiny one aligned with a load-bearing
+  $G$-coordinate can dominate. Proposed scalar per $G$-direction: (value
+  importance) $times$ ($1 slash$ singular value of $phi$) $times$ (noise
+  variance) $times$ (selection shift), under a value-weighted inner product
+  on $G$-space. Open: whether reasonable proxies for value importance (the
+  principal's true utility gradient or a proxy for it) recover useful
+  structure, and whether the value-weighted version closes the geometric
+  blind spot of PCA-based detection against value-aware adversaries who
+  route $epsilon$ into low-variance components of historical observation.
+
+- *Pareto selection rather than scalarisation.* Chapter 2 fixes a weighted
+  score and then a threshold. Pareto-frontier selection is a different
+  operator: it preserves diversity across measured dimensions in a way
+  scalar thresholding destroys. Open: when does selecting the
+  Pareto-undominated set compress the selected distribution enough to break
+  identifiability of the *unmeasured* dimensions, and when does it not?
+  Chapter 2's selection-channel response theory does not transport to it
+  for free.
+
+- *$phi$-as-partial-observation alternative.* The chapters fix
+  $phi : RR^m -> RR^k$ as the principal's intended correspondence and read
+  $ker phi$ as the dimension gap. An alternative represents the proxy as a
+  partial observation of $G$ plus independent artifacts; this changes what
+  "$ker phi$" means and may interact better with partial-hypothesis
+  formalisms in the style of infra-Bayesianism. Worth a side-by-side
+  comparison once a live thread settles; doing it prematurely risks
+  rebuilding the same machinery in a different alphabet.
+
+- *Incomputable noise / over-dimensional agents.* If a human writes a proxy
+  intended to align a system whose objectives have *more* dimensions than
+  the human's, the proxy contains error in directions the human's $G$ has
+  no coordinate for — error that cannot be scored, only suffered. Open:
+  whether partial hypotheses (infra-Bayesian style) recover any handle on
+  this, and whether there is any reason to expect a more capable system to
+  have *fewer* goal dimensions than its principal rather than more.
+  Recorded because the multidimensional framing makes the question
+  articulable; parked because none of the current tools answers it.
+
+The shared property of the five parked questions is that each requires new
+machinery — a value-weighted norm on $G$-space, a Pareto-selection response
+operator, a partial-observation rephrasing of $phi$, a partial-hypothesis
+formalism, or a precise sense in which the agent has more goal dimensions
+than the principal. They are blocked on the right object to define, not on
+effort.
 
 // =============================================================================
 = Goodhart's law, multidimensionally
@@ -404,10 +547,10 @@ had none; causal and adversarial Goodhart live here; no baseline bound exists,
 and any bound must be imported from a model of what the responding agents can
 afford to do). Chapters 2 and 3 are those two halves.
 
-The appendices are organised the same way. Appendices C--F are visual aids for
+The appendices are organised the same way. Appendices A--D are visual aids for
 claims made in the formal chapters: selection response, dimensional coupling,
 selection versus intervention, additive versus conjunctive gaming, and the
-exchange-rate condition for conservation. Appendix G is deliberately different:
+exchange-rate condition for conservation. Appendix E is deliberately different:
 it is a speculative cartoon of the recursive-Goodhart intuition. Its purpose is
 to say what the framework might help test, not to smuggle an additional theorem
 into the paper.
@@ -512,7 +655,7 @@ grows with $d$.]
 This is the same lesson that the selection-channel drift bound will express in a
 declared hidden coordinate system: dimension enters through the hidden
 variability and coupling budget, not through a bare count of unmeasured
-coordinates. Appendix C visualises both parts of the claim.
+coordinates. Appendix A visualises both parts of the claim.
 
 #remark[Two shortcuts fail. If hidden dimensions are independent of the proxy,
 thresholding leaves them unchanged. And the signed aggregate hidden error is the
@@ -677,7 +820,7 @@ move their measured and hidden features, not merely be reweighted.
 Teaching to the test, metric-specific optimisation, outright fabrication — none
 of these are ordinary reweightings of last year's population, even when an
 $epsilon$ amount of similar behaviour existed before. They transport mass along
-available action channels. Appendix D draws the reweighting-versus-transport
+available action channels. Appendix B draws the reweighting-versus-transport
 distinction.
 
 #claim[*The sharp boundary.* The selection/intervention distinction is
@@ -844,7 +987,7 @@ fighting scalar Goodhart, *adds proxy dimensions*. When agents game, does adding
 a measured dimension redistribute harm, conserve it, shrink it, or grow it? The
 answer depends critically — and instructively — on how the metric *aggregates*
 its dimensions, so the aggregation rule must be a visible parameter, not a hidden
-default. Appendices E and F give the geometric picture for the additive,
+default. Appendices C and D give the geometric picture for the additive,
 conjunctive, and exchange-rate cases.
 
 === The exchange-rate condition
@@ -1134,14 +1277,15 @@ its constraints are specified, what shape of hidden residual should it produce?
     stops.],
 ) <fig:claim-audit>
 
-The appendices serve two different roles. Appendix A has been folded into
-Chapter 0: those in-progress questions now function as the paper's working
-spine. Appendix B lists questions that *surfaced during this work and are
-deliberately parked* — worth recording so they are not rediscovered from
-scratch, but not on the critical path. Appendices C--F are visual aids for the
-first three formal chapters. Appendix G is a speculative cartoon of the
-recursive hypothesis, explicitly not a conclusion of the formal results.
-Appendix H visualises the Chapter 4 response-shape repair.
+The remaining appendices are visual. Appendices A--D illustrate the formal
+chapters: selection response curves, dimensional coupling, selection versus
+intervention, additive versus conjunctive gaming, and the exchange-rate
+condition for conservation. Appendix E is a speculative cartoon of the
+recursive-Goodhart hypothesis, explicitly not a conclusion of the formal
+results. Appendix F visualises the Chapter 4 response-shape repair. The
+research inventory — both the work-in-progress threads and the parked
+open questions that earlier drafts kept as separate appendices — now lives
+in Chapter 0 §§1.5–1.6.
 
 // =============================================================================
 = Response shape: when hidden residuals concentrate
@@ -1479,92 +1623,26 @@ shape governed by costs, caps, aggregation, affordances, search geometry, and
 the declared hidden welfare model.]
 
 // =============================================================================
-= Appendix A — Currently in progress
-// =============================================================================
-
-The live research questions that used to sit here have been folded into
-Chapter 0. They now serve as the working spine for the paper rather than as a
-separate appendix inventory: convex intervention bounds, evidence standards,
-adaptive hardening, the measurement frontier, response-shape comparisons,
-recursive toy models, per-agent versus population welfare, ML mappings for
-$kappa$, and endogenous stakes.
-
-// =============================================================================
-= Appendix B — Future open questions (not currently pursued)
-// =============================================================================
-
-These surfaced during the work and are recorded for later. They are not blocking
-anything in Chapters 1–5, and most need a substantial new piece of machinery.
-
-#openq[*Spectral / basis decomposition of the error.* Three decompositions, each
-carrying different information, should be kept distinct: (i) the SVD of $phi$ —
-right singular vectors are the $G$-directions $phi$ distinguishes; small singular
-values mark structural blind spots, decomposing the *dimension gap*; (ii) the
-eigendecomposition of $"Cov"(epsilon)$ — principal directions of measurement
-noise, decomposing the *observation gap*; (iii) the selection-induced shift of
-$G$ — compare the law of $G(s)$ before and after restricting to the selected set,
-the most diagnostic of actual Goodhart and the least obvious to compute. The
-bad-case corner is the *conjunction*: a $G$-direction where $phi$ has a small
-singular value (low signal), $"Cov"(epsilon)$ has mass (high noise), and the
-selection shift is large.]
-
-#openq[*Value-weighted Goodhart susceptibility.* PCA/SVD is value-neutral;
-Goodhart is value-laden. A huge principal component orthogonal to the value
-structure of $G$ is harmless; a tiny one aligned with a load-bearing
-$G$-dimension can dominate harm. Proposed scalar per $G$-direction: (value
-importance) $times$ ($1 slash$ singular value of $phi$) $times$ (noise variance)
-$times$ (selection shift), under a value-weighted inner product on $G$-space.
-*Open:* whether the value-weighting requirement makes this a non-starter in
-practice, or whether reasonable proxies for value importance (the principal's
-true utility gradient, or a proxy for it) recover useful structure. *Also open:*
-a strategic system can shape $epsilon$ to lie in low-variance components of the
-historical observation while remaining maximally goal-harmful, so PCA-based
-detection is geometrically blind to value-aware adversaries — does the
-value-weighted version close that hole?]
-
-#openq[*Pareto selection rather than scalarisation.* Chapter 2 scalarises (a
-weighted score, then a threshold). Pareto-frontier selection preserves diversity
-across measured dimensions in a way scalar thresholding destroys. When does
-selecting the Pareto-undominated set compress the selected distribution enough to
-break identifiability of the *unmeasured* dimensions — and when does it not? This
-is a different selection operator and needs its own response theory.]
-
-#openq[*The $phi$-as-partial-observation alternative.* The chapters fix
-$phi : RR^m -> RR^k$ as the principal's intended correspondence. An alternative
-is to represent the proxy as a partial observation of $G$ plus independent
-artifacts, which changes what "$ker phi$" means and may interact better with
-partial-hypothesis formalisms. Worth a comparison; not done.]
-
-#openq[*Incomputable noise and agents more complex than their principals.* If a
-human writes a proxy intended to align a system whose objectives have *more*
-dimensions than the human's, the proxy contains error in directions the human's
-$G$ has no coordinate for — error that cannot be scored, only suffered. Can
-partial hypotheses (in the style of infra-Bayesianism) recover any handle on
-this? And: is there any reason to expect a more capable system to have *fewer*
-goal dimensions than a human, rather than more? Both are wide open and somewhat
-speculative.]
-
-// =============================================================================
 = Visual appendices
 // =============================================================================
 
-The following appendices are visual rather than foundational. Appendices C--F
-illustrate claims made in the formal chapters: selection drift depends on
-baseline response curves, dimensional scaling requires coupling assumptions,
+The appendices are visual rather than foundational. Appendices A--D illustrate
+claims made in the formal chapters: selection drift depends on baseline
+response curves, dimensional scaling requires coupling assumptions,
 intervention channels transport mass rather than reweight it, and adding
 measured dimensions changes gaming through aggregation and cost geometry.
-Appendix G is different: it sketches a broader recursive-Goodhart hypothesis
-motivated by the framework but not proved by it. The formal chapters do not show
-that residual error generically becomes more dimensional or more complex under
-repeated proxy refinement; Chapter 4 instead gives conditional response-shape
-predictions, and shows which quantities would have to be measured for such a
-claim to become precise. Appendix H illustrates those Chapter 4 predictions:
-quadratic cost can spread response, fixed-charge/linear cost can concentrate it,
-and caps plus activation costs can create lumpy spillover rather than a universal
-complexity increase.
+Appendix E is different: it sketches a broader recursive-Goodhart hypothesis
+motivated by the framework but not proved by it. The formal chapters do not
+show that residual error generically becomes more dimensional or more complex
+under repeated proxy refinement; Chapter 4 instead gives conditional
+response-shape predictions, and shows which quantities would have to be
+measured for such a claim to become precise. Appendix F illustrates those
+Chapter 4 predictions: quadratic cost can spread response, fixed-charge or
+linear cost can concentrate it, and caps plus activation costs can create
+lumpy spillover rather than a universal complexity increase.
 
 // =============================================================================
-= Appendix C — Selection drift is coupling-dependent, not dimension-dependent
+= Appendix A — Selection drift is coupling-dependent, not dimension-dependent
 // =============================================================================
 
 The selection results in Chapter 2 are deliberately conditional. A proxy
@@ -1600,7 +1678,7 @@ adds coupling to the selected proxy.
 ) <fig:dimensional-scaling>
 
 // =============================================================================
-= Appendix D — Selection versus intervention as reweighting versus transport
+= Appendix B — Selection versus intervention as reweighting versus transport
 // =============================================================================
 
 #figure(
@@ -1624,7 +1702,7 @@ baseline hidden variance. Indeed, the baseline hidden variance is zero in this
 toy model.
 
 // =============================================================================
-= Appendix E — Adding measured dimensions can expand the attack surface
+= Appendix C — Adding measured dimensions can expand the attack surface
 // =============================================================================
 
 Under additive aggregation, the agent can substitute between measured gaming
@@ -1660,7 +1738,7 @@ dimensions. It is determined by the aggregation rule.
 ) <fig:additive-vs-conjunctive>
 
 // =============================================================================
-= Appendix F — Exchange-rate condition for conservation
+= Appendix D — Exchange-rate condition for conservation
 // =============================================================================
 
 The narrow conservation result in the additive model assumes that a point of
@@ -1681,7 +1759,7 @@ $ H_M(d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). 
 ) <fig:exchange-rate-condition>
 
 // =============================================================================
-= Appendix G — A speculative recursive-Goodhart cartoon
+= Appendix E — A speculative recursive-Goodhart cartoon
 // =============================================================================
 
 This appendix is not a theorem of Chapters 1--4. It is a cartoon of a broader
@@ -1725,7 +1803,7 @@ sequence is used as evidence.
 ) <fig:recursive-goodhart-cartoon>
 
 // =============================================================================
-= Appendix H — Response-shape predictions are conditional
+= Appendix F — Response-shape predictions are conditional
 // =============================================================================
 
 Chapter 4 replaces the generic minimum-complexity attractor story with a
