@@ -284,4 +284,4 @@ When triggered, before continuing forward work, do an adversarial pass on the mo
 
 Do not try to complete the framework in one pass. Build it up.
 
-Temporary: for now we are executing planned iterations from plans/math-rigor.md. These are review / adversarial steps, and we are performing approximately 10 of those in a row before getting back to generating.
+Temporary: for now we are executing planned iterations from plans/math-rigor.md. These are review / adversarial steps, and we are performing approximately 10 of those in a row before getting back to generating. Remove each iteration plan in the commit that includes the work of that iteration.
