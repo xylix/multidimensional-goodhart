@@ -120,6 +120,15 @@ Passed or ready:
   cost-minimizing realized harm `ell(a^*(d))`, and
   `W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }` under the same action
   geometry while varying the declared harm functional.
+- Iteration 20 executable checks passed in
+  `research/simulations/iteration20_selection_intervention.py`: linear-Gaussian
+  threshold drift matched the Gaussian prediction; zero-covariance nonlinear
+  threshold response was nonzero; Boltzmann normal tilting matched `beta^2`
+  while Pareto exponential normalizers grew under truncation; declared value
+  vectors changed scalar selection drift; the single-channel wedge flipped at
+  `Delta = sqrt(2 kappa V)`; multichannel quadratic water-filling matched
+  `m(d)`; noisy Stackelberg response produced a smooth interior action; and
+  `ell(a^*(d))` differed from `W_ell(d,V)`.
 
 Survived only barely:
 - Adaptive hardening dynamics needs simulation before theorem work. The cheap
@@ -188,7 +197,7 @@ response estimation and for controlled intervention/gaming environments.
 | Selection-response primitive (`Q6-Q9`) | Simulation | Compare covariance, threshold response, and weighted response on Gaussian, heavy-tailed, and nonlinear examples; explicitly test finite-mgf versus infinite-mgf Boltzmann cases | Baseline covariance predicts finite-pressure hidden drift across examples, or covariance velocity is used outside `B = { beta : E_mu[exp(beta P)] < infinity }` |
 | Pareto selection and identifiability (`Q5`) | Thought experiment -> simulation | Construct two distributions with same observed Pareto frontier but different hidden dimensions; then simulate compression | Pareto selection preserves enough diversity to identify hidden response in the intended regimes |
 | Selection vs. intervention boundary (`Q8`, `Q12`) | Thought experiment -> real-world correspondence | Classify toggle-only, feature-changing, manifold-constrained, and `P`-only manipulation agents | A feature-changing agent can always be represented as harmless reweighting of baseline data |
-| General intervention bound (`Q10`) | Proposition sketch -> simulation | Proposition 2 gives the one-dimensional quadratic wedge, Proposition 3 gives the convex action-cost score-deficit cost, and Iteration 19 packages the declared-`ell` welfare-bound problem `W_ell(d,V)`; next simulate quadratic, linear, elastic-net-like, and convex-cost versus welfare-bound examples | Bound depends on baseline divergence rather than cost geometry, convex affordability is mistaken for a welfare bound without hidden value weights, `ell(a^*(d))` is conflated with `W_ell(d,V)`, or the convex formula is imported into non-convex ML/RLHF without a local response model |
+| General intervention bound (`Q10`) | Simulation passed for core toys; further simulation for broader variants | Iteration 20 verified the quadratic wedge, multichannel quadratic water-filling, noisy Stackelberg response, and convex-cost versus welfare-bound separation; later variants can add linear and elastic-net-like costs | Bound depends on baseline divergence rather than cost geometry, convex affordability is mistaken for a welfare bound without hidden value weights, `ell(a^*(d))` is conflated with `W_ell(d,V)`, or the convex formula is imported into non-convex ML/RLHF without a local response model |
 | Response-modeling contract (`Q19`) | Thought experiment -> application mapping | Apply the contract to one ML-eval case and one institutional scorecard; identify `U`, `W_theta`, `K_theta`, actions, costs, aggregation, hidden harm, and discriminating evidence | The contract cannot distinguish nearby mechanisms, or reduces to a generic checklist with no downstream calculation |
 | Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation | Weighted additive, conjunctive, heterogeneous-population, noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
 | Adaptive hardening (`Q14`) | Simulation | Repeated game where principal hardens the currently most-gamed channel; compare to static commitment | Dynamics cycle, increase attack surface, or lose to static narrow hardening |

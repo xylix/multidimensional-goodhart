@@ -299,3 +299,35 @@ aggregation into `H_per` or `H_pop` still to be specified.
 Red flags fired: overclaim risk. Convex affordability, `m(d)`, and finite
 private cost budgets do not bound welfare in value units without declared
 hidden value weights.
+
+## Iteration 20
+
+Question tackled: executable simulation checks for the core selection and
+intervention claims.
+
+What changed: added `research/simulations/` with a Makefile and
+`iteration20_selection_intervention.py`, run via
+`uv run --with numpy --with scipy`. The script contains eight named checks:
+linear-Gaussian threshold drift, zero-covariance nonlinear threshold response,
+Boltzmann finite-mgf versus heavy-tail behavior, value-weighted selection with
+two declared `v` choices, the single-channel Stackelberg wedge, multichannel
+quadratic water-filling, noisy Stackelberg numerical response, and
+convex-cost versus welfare-bound separation. Each check prints the proposition
+or open problem it tests and the condition that would narrow or kill the claim.
+Updated `research/verification_stack.md` so Layer 3 records these checks as
+passed for the intended toy regimes.
+
+What the run showed: the deterministic run passed all eight checks. The
+selection examples supported the current distinction between covariance,
+threshold response, weighted response, and declared value weights. The
+intervention examples supported the quadratic wedge, the separable quadratic
+allocation formula, and the claim that `ell(a^*(d))` and `W_ell(d,V)` are
+different objects.
+
+What's open now: linear and elastic-net-like convex costs remain useful
+additional variants, as do Iteration 21's population and active-set simulations.
+The noisy Stackelberg check is only a numerical toy; it does not close the
+stochastic-response theory.
+
+Red flags fired: no contradiction exposed. Simulation passed for the scoped toy
+models, not for broad empirical or non-convex claims.

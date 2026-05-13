@@ -12,36 +12,6 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
-## Iteration 20: Selection And Intervention Simulations
-
-Type: `generate`.
-
-Scope:
-
-- Add an executable simulation layer, likely under a new lightweight simulation
-  directory.
-- Cover linear-Gaussian threshold drift.
-- Cover zero-covariance nonlinear threshold response.
-- Cover Boltzmann finite-mgf versus heavy-tail behavior.
-- Cover value-weighted selection with two `v` choices.
-- Cover a single-channel Stackelberg wedge.
-- Cover multichannel water-filling.
-- Cover noisy Stackelberg numerical response.
-- Cover convex-cost versus welfare-bound examples.
-
-Each simulation must name the proposition or open problem it tests and what
-result would narrow or kill it.
-
-Discipline:
-
-- Keep simulations tied to claims already made by the paper.
-- Do not add broad simulations for shared bottlenecks, bounded rationality,
-  exogenous drift, or non-convexity merely because an external review mentioned
-  them.
-- Optional, only if lightweight: add one negative-control shared-bottleneck
-  example showing that `K_M = sum kappa_j` is a separable-cost theorem, not a
-  theorem about every possible action geometry.
-
 ## Iteration 21: Population And Active-Set Simulations
 
 Type: `generate`.
@@ -193,5 +163,6 @@ Scope:
   a design feature when assumptions are explicit.
 - Iteration 15's proposition sketches are accepted as the starting point,
   subject to edit/review tightening rather than full re-derivation.
-- The preferred total length is ten iterations. If the work must compress,
-  merge Iterations 20-21 and defer Iteration 25's paper-extract scope.
+- The preferred total length is ten iterations. If the remaining work must
+  compress, merge adjacent simulation/review passes and defer Iteration 25's
+  paper-extract scope.
