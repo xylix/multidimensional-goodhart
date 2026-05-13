@@ -43,13 +43,162 @@
   #v(0.4cm)
   #text(size: 1.2em)[How measurement reshapes the terrain under measurement]
   #v(1cm)
-  #text(size: 1em)[Working draft — Chapters 1–5]
+  #text(size: 1em)[Working draft — Chapter 0 and Chapters 1–5]
   #v(0.3cm)
   #text(size: 0.95em, style: "italic")[#datetime.today().display()]
 ]
 #v(2cm)
 
 #outline(depth: 2, indent: auto)
+
+// =============================================================================
+= Chapter 0 — Working spine
+// =============================================================================
+
+== The empirical phenomenon
+
+#text(weight: "bold")[[Carrying example placeholder.]] Start this chapter on one
+concrete optimization case: a score, benchmark, or institutional metric is
+optimized; the visible failure is patched by adding or reshaping measured
+dimensions; and the distortion does not simply disappear. It moves. Sometimes it
+is selected out of an existing tail. Sometimes agents change behavior at fixed
+type. Sometimes an added metric blocks an exploit; sometimes it opens a new
+substitutable route; sometimes it merely changes which hidden harm is bought per
+unit of score. The case should be carried all the way through the chapter, but I
+am leaving it as a placeholder here because the current point is the spine.
+
+The empirical phenomenon I want this paper to help science model is not just
+"the proxy stops working". Scalar Goodhart already says that. The phenomenon is:
+optimization pressure reshapes the residual error landscape. Once a measure is
+used for control, the error between the proxy and the target gets a structure:
+direction, support, curvature, tail behavior, exchange rates, and response
+dynamics. If the system is multidimensional, that structure is the interesting
+object. The proxy can fail by drifting along hidden goal coordinates, by
+changing the coupling between visible and hidden variables, by recruiting new
+agents into gaming, by moving from one cheap action channel to another, or by
+changing which residuals remain legible to the evaluator.
+
+Abram, I expect your first pushback to be that this sounds like naming the
+residue after the fact. If the story is "there were many dimensions, something
+bad happened in one of them, and now we call it multidimensional Goodhart", then
+I agree it is not a theory. The point of the framework has to be stronger and
+more brittle: before seeing the next failure, it should say which response model
+is being claimed and what shape of distortion that model predicts.
+
+== Why this approach
+
+I do not think the right claim is "more dimensions means more Goodhart". That
+failed almost immediately. In a pure selection model, if hidden coordinates are
+independent of the selected proxy, thresholding does not move them. Even when
+they move, the dimension count enters through a coupling or variance budget, not
+by itself. I also do not think the right claim is "Goodhart pressure makes
+residual error more complex". Selection channels do not optimize residuals at
+all; they reweight a baseline. Intervention channels optimize according to cost,
+search, caps, fixed charges, and aggregation. Complexity only becomes predictive
+after the response geometry and the complexity measure are named in advance.
+
+The specific approach here is to make proxy-induced distortion modelable. That
+requires more objects than scalar Goodhart usually keeps visible. A model has to
+say whether pressure only reweights fixed states or changes behavior at fixed
+type. It has to say what the hidden coordinates are, how proxy components are
+aggregated, what actions are feasible, what they cost, what hidden harm
+functional is being protected, and what evidence would distinguish the proposed
+response channel from nearby alternatives. Without those declarations, "the
+metric broke" is too underspecified to imply a prediction.
+
+This is why the selection/intervention split matters. In a selection channel,
+the policy changes weights over a fixed baseline distribution. Then the natural
+tools are statistical: covariance as local velocity, threshold response curves,
+weighted selection response, and reweighting bounds. In an intervention channel,
+the policy changes the response kernel at fixed type. Then the natural tools are
+geometric and economic: action spaces, cost functions, caps, fixed charges,
+stakes, feasible sets, and support functions. The same observed score movement
+can be selection in one declared type space and intervention in another, so the
+type/action representation is not a nuisance caveat. It is where the empirical
+claim enters.
+
+== What looks promising
+
+The promising part is that several pieces already have the right shape. For
+selection, the framework gives response functionals of the baseline
+distribution. Covariance is not promoted into a universal primitive; it is the
+local derivative of hidden drift under infinitesimal Boltzmann selection.
+Threshold response handles hard cutoffs. Weighted response handles generic
+reweighting. The chi-square selection bound says that, once the hidden
+coordinates and norm are declared, bounded reweighting plus bounded baseline
+hidden variance implies bounded hidden drift. That is not a grand theorem, but
+it is exactly the kind of baseline-only statement selection deserves.
+
+For intervention, the promising part is that the controlling quantities are not
+baseline statistics. In the quadratic Stackelberg toy, the gaming wedge is
+$sqrt(2 kappa V)$: ease of gaming times stakes, not a property of last year's
+joint distribution. In the convex sketch, the analogue is an affordable-action
+envelope or score-deficit cost derived from the agents' cost geometry. In
+fixed-charge and capped models, pressure creates active-set switches and lumpy
+spillover. These are not the same prediction, which is the point. Once the
+response geometry is declared, different mathematical tools predict different
+distortion shapes.
+
+The multidimensional scorecard results are also promising because they explain
+why proxy repair can have signs that scalar Goodhart cannot express. Under an
+additive compensatory score, adding an independently gameable dimension can
+lower the cheapest cost of clearing a score deficit and recruit more agents into
+gaming. Under a conjunctive score, the same added dimension can block
+substitution but raise per-gamer burden and false-negative risk. Conservation of
+fixed-deficit harm appears only under an exchange-rate condition: hidden harm
+must be proportional to score contribution on the active channels. This is the
+kind of claim I want from the paper: not "more metrics are bad", but "given this
+aggregation rule and these exchange rates, here is the distortion geometry".
+
+The live Appendix-A questions belong here rather than as a separate shopping
+list. A general convex intervention bound is promising if it stays conditional
+on action geometry, stochastic response, stakes, and hidden harm. Application
+evidence standards are promising if they force each case to declare type,
+response kernel, action traces, and falsifiers. Adaptive hardening is promising
+as a dynamic question: hardening the currently exploited channel lowers
+$kappa_j$, but whether that converges faster than choosing a narrow hard metric
+from the start is open. The measurement frontier is promising because it names
+the regulator's real tradeoff: measure enough dimensions to recover signal while
+not adding so much independent gaming capacity that the attack surface wins.
+
+== What does not look promising
+
+Several tempting framings should be rejected by name.
+
+Unconditional dimensional scaling does not work. More hidden coordinates do not
+automatically imply more Goodhart; the claim needs a coupling model and a harm
+functional.
+
+Baseline covariance as a universal primitive does not work. With nonlinear tail
+dependence, hidden drift can be zero-covariance and still move under threshold
+or finite soft selection.
+
+Absolute continuity as the causal intervention boundary does not work. If the
+baseline has even epsilon mass on gaming-like behavior, an announced metric can
+change fixed-type behavior while the post-policy law remains absolutely
+continuous. The boundary has to be response-kernel change relative to a declared
+type representation.
+
+Generic minimum-complexity attraction does not work. Quadratic costs select
+minimum-cost directions, which can be dense. Selection follows baseline tails.
+Fixed charges, low-rank affordances, or search priors can produce sparse or
+low-description-length failures only when those mechanisms are specified first.
+
+Strong additive conservation does not work. Re-routing conserves fixed-deficit
+per-agent harm only when harm-per-score exchange rates match. Change weights,
+harm coefficients, or the participating population, and the conclusion changes.
+
+The scalar-$kappa$ mapping to neural training does not work yet. In the toy
+model, $kappa$ is ease of gaming. In RLHF or benchmark-driven finetuning, the
+analogue might be gradient accessibility, pretraining density, benchmark
+contamination, reward-model feature simplicity, or optimizer search efficiency.
+Those are not interchangeable.
+
+So the rest of the paper answers a narrower and better question: does
+multidimensional Goodhart make proxy-induced distortion modelable, by predicting
+the shape of distortion from the declared response channel, aggregation rule,
+and action geometry, in regimes where scalar Goodhart can only say that
+optimization pressure broke the proxy?
 
 // =============================================================================
 = Goodhart's law, multidimensionally
@@ -295,8 +444,8 @@ The additive-versus-conjunctive flip and the noisy Stackelberg refinement are
 illustrative models, not general theorems. The convex-cost intervention analogue
 of the selection bound is stated below as a conjecture with a Fenchel-duality
 sketch. Chapter 4's response-shape taxonomy is a conditional prediction menu,
-not a theorem that residual error generically becomes more complex. The
-remaining items in Appendix A are open.
+not a theorem that residual error generically becomes more complex. The live
+open questions are pulled forward into Chapter 0 as modelling obligations.
 
 // =============================================================================
 = Selection channels: when the principal only re-selects
@@ -903,7 +1052,8 @@ $lambda$. For quadratic cost this recovers a square-root scale, matching the
 $sqrt(2 kappa V)$ wedge above. This is not yet a theorem at the level of the
 selection-channel bound: the exact statement must specify the action space, the
 harm functional, stochastic policies, participation, and how selection value
-constrains realised cost. Appendix A keeps those variants open.
+constrains realised cost. Chapter 0 names those variants as part of the current
+working spine.
 
 == What we have, and what is open <sec:openq>
 
@@ -984,15 +1134,14 @@ its constraints are specified, what shape of hidden residual should it produce?
     stops.],
 ) <fig:claim-audit>
 
-The appendices serve two different roles. Appendix A lists the questions
-*currently being worked on* — they have partial answers in toy models, but not
-yet at the level of polish the chapters above aim for. Appendix B lists
-questions that *surfaced during this work and are deliberately parked* — worth
-recording so they are not rediscovered from scratch, but not on the critical
-path. Appendices C--F are visual aids for the first three formal chapters.
-Appendix G is a speculative cartoon of the recursive hypothesis, explicitly not
-a conclusion of the formal results. Appendix H visualises the Chapter 4
-response-shape repair.
+The appendices serve two different roles. Appendix A has been folded into
+Chapter 0: those in-progress questions now function as the paper's working
+spine. Appendix B lists questions that *surfaced during this work and are
+deliberately parked* — worth recording so they are not rediscovered from
+scratch, but not on the critical path. Appendices C--F are visual aids for the
+first three formal chapters. Appendix G is a speculative cartoon of the
+recursive hypothesis, explicitly not a conclusion of the formal results.
+Appendix H visualises the Chapter 4 response-shape repair.
 
 // =============================================================================
 = Response shape: when hidden residuals concentrate
@@ -1333,86 +1482,12 @@ the declared hidden welfare model.]
 = Appendix A — Currently in progress
 // =============================================================================
 
-These are the live research questions feeding the chapters above. Each has a
-toy-model partial answer in the working notes; what is missing is generality,
-the right level of abstraction, or an adversarial pass that the chapter
-treatment would require.
-
-#wip[*An intervention bound for general convex gaming costs.* The
-selection-channel bound is $norm(B_H) <= delta dot norm(s)$ (Chapter 2). Is
-there an intervention analogue that factors through the agents' cost geometry —
-a "gaming budget" — rather than through any divergence from $mu_0$? The
-quadratic case gives $Delta = sqrt(2 kappa V)$. The current partial answer is an
-affordable-action envelope plus a convex-dual score-deficit cost. Section
-@sec:convex-cost-conjecture states the Fenchel sketch; stochastic response,
-endogenous stakes, and empirical cost estimation remain open.]
-
-#wip[*Application evidence standards for response channels.* Agents who can only
-toggle their own inclusion stay inside the selection class; agents who can move
-$(P, H)$ at fixed type do not. The absolute-continuity test is too brittle as a
-causal boundary: if the baseline contains $epsilon$ mass on gaming-like
-behaviour, the induced post-policy law may still satisfy $mu_theta << mu_0$ even
-though the policy changed the response kernel. The next task is not just a
-definition; it is a set of application templates saying what evidence supports
-the declared type space, response kernel, and action geometry.]
-
-#wip[*Adaptive hardening dynamics.* A principal that each period hardens
-whichever measured channel is currently most-gamed (lowers its $kappa_j$) drives
-$K_M$ down over time. Does this converge to no-gaming ($K_M < t^2 slash (2 V)$),
-and how fast? Is "harden the active channel" optimal among principal policies,
-or does committing to a narrow, hard-to-game $M$ from the start dominate?
-Currently only a heuristic argument that attrition eventually wins.]
-
-#wip[*The measurement frontier.* The principal must measure enough channels to
-recover real signal about $G$, but every gameable channel measured enlarges the
-attack surface $K_M$. Characterise the frontier between "informative enough" and
-"small enough attack surface". Is it ever empty — i.e. are there goal/proxy
-geometries where no admissible measured set is both informative and safe?]
-
-#wip[*Sub- vs. super-modularity of $H(M)$.* In the measured set $M$ the
-unit-weight equal-harm additive case is modular-trivial ($H = t$ on the gaming
-region, with a discontinuity at the $K_M = K_"min"$ boundary) and conjunctive is
-modular ($H = t abs(M)$). Weighted aggregation and population entry may be
-genuinely sub- or super-modular — which would say something about whether greedy
-principal policies (add/remove one channel at a time) are sane. Not yet
-computed.]
-
-#wip[*Response-shape comparisons after Chapter 4.* Chapter 4 narrows Q18 to
-conditional response-shape predictions. The next step is to compare capped
-fixed-charge response against active-face quadratic response under the same
-hidden coordinates; specify a low-rank affordance model with a fixed value
-basis; and build a search-prior toy where description length is fixed before the
-failure is observed. These are simulation/theorem tasks, not claims already
-licensed by the chapter.]
-
-#wip[*A worked recursive toy.* Appendix G is still a cartoon until paired with a
-time-indexed proxy-repair example. The useful target is not another slogan but a
-pre-specified response-shape change across rounds: for example, a principal
-closes the currently visible low-cost channel, agents move to the next cheapest
-hidden channel under capped fixed-charge costs, and a pre-declared legibility or
-support-size statistic changes in the predicted direction. Without that
-pre-specified statistic, the recursive thesis should remain illustrative.]
-
-#wip[*Per-agent vs. population welfare.* For heterogeneous quality $Q$, aggregate
-gaming harm is $EE[(t - Q) bb(1){0 < t - Q <= sqrt(2 K_M V)}]$ in the
-unit-weight additive model. How does this change under proxy noise, nonlinear
-costs, and endogenous $V$ — and which aggregate (per-gamer, population total,
-population mean, tail) is the right welfare object for the framework? The
-chapters above currently slide between these; the book version should not.]
-
-#wip[*Mapping $kappa$ to neural training.* In the Stackelberg toy model,
-$kappa$ is a scalar ease-of-gaming parameter. For RLHF or benchmark-driven
-finetuning, the analogue might be gradient accessibility, pretraining density,
-benchmark contamination, reward-model feature simplicity, or optimiser search
-efficiency. These are not interchangeable. A useful ML version of the theory
-has to say which one predicts reward hacking under a specified training setup,
-and what observation would distinguish it from the others.]
-
-#wip[*Endogenous stakes / performative fixed points.* Make $V$ endogenous:
-selection is valuable only if the metric is trusted, and trust decays as gaming
-is observed. Does the principal–agent game have a performative-stable fixed
-point, and does hidden harm persist at it? Sketched as a Stackelberg toy with a
-trust state variable; the fixed-point analysis is not done.]
+The live research questions that used to sit here have been folded into
+Chapter 0. They now serve as the working spine for the paper rather than as a
+separate appendix inventory: convex intervention bounds, evidence standards,
+adaptive hardening, the measurement frontier, response-shape comparisons,
+recursive toy models, per-agent versus population welfare, ML mappings for
+$kappa$, and endogenous stakes.
 
 // =============================================================================
 = Appendix B — Future open questions (not currently pursued)
