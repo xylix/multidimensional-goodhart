@@ -18,6 +18,8 @@
 | The selection bound is coordinate-free. | `||B_H||_2 <= delta ||s||_2` is valid after declaring hidden coordinates and the Euclidean norm. | Invariance to splitting, rotating, or duplicating hidden coordinates. | Relabel as coordinate-explicit unless rewritten with a value-weighted covariance/operator norm. |
 | `Delta = sqrt(2 kappa V)` explains neural training. | It is the signature of the one-dimensional quadratic Stackelberg toy. | Any direct RLHF, finetuning, or reward-model claim without identifying what `kappa` and `V` correspond to. | Use as a contrast class: ML mappings must specify gradient accessibility, pretraining density, contamination, feature simplicity, or search efficiency. |
 | More metrics are worse. | In separable additive scorecards, an independently gameable measured dimension lowers the minimum gaming cost and can recruit more gamers. | A general sign claim under correlated costs, caps, bottlenecks, dynamic reweighting, conjunctive gates, or high-real-signal tasks. | Benchmark-design checklist, not slogan. |
+| The framework fails if it does not predict RLHF directly. | The framework provides a response-modeling contract and conditional toy calculations. | Treating absent ML action/cost/search primitives as a refutation of the framework. | Say ML applications must declare a response model before importing any bound. |
+| Narrow assumptions are a weakness of the additive theorem. | Under separable quadratic independent channels and additive aggregation, the capacity calculation is clean. | A theorem about shared bottlenecks, correlated costs, bounded rationality, or nonconvex training. | Keep the theorem unweakened; route other action geometries to open extensions. |
 
 ## Response-kernel boundary audit (Iteration 11)
 

@@ -405,7 +405,7 @@ harder-to-elicit dimensions as the proxy stack is patched — is an empirical
 conjecture. The job of these first chapters is to make all three layers
 statable without pretending they have the same epistemic status.
 
-#remark[*Licensed claims.* These chapters license four narrow uses. First, when
+#remark[*Licensed claims.* These chapters license five narrow uses. First, when
 pressure only reweights a fixed baseline distribution, the right quantities are
 selection-response functionals of that baseline: covariance locally, threshold
 response in the tails, and a chi-square drift budget for bounded selection.
@@ -423,7 +423,8 @@ complexity or shape measure. Fifth, a Goodhart claim is incomplete until it
 declares the response model: type, action, cost, aggregation, hidden welfare,
 and evidence standard. These claims do not prove the recursive-Goodhart
 hypothesis, do not say that "more metrics is worse" as a rule, and do not
-generalize automatically to RLHF or other non-convex training dynamics.]
+apply to RLHF or other non-convex training dynamics until the application has
+declared a response model that matches their assumptions.]
 
 The starting point is the variant taxonomy of Manheim and Garrabrant
 @manheim2018categorizing — regressional, extremal, causal, and adversarial
@@ -495,7 +496,9 @@ density from pretraining, benchmark contamination, reward-model feature
 simplicity, or optimiser search efficiency. The framework below therefore does
 not claim that quadratic Stackelberg gaming describes RLHF. It says what an ML
 version would have to estimate: baseline response curves for selection; cost
-geometry, stakes, and available gaming channels for intervention.]
+geometry, stakes, and available gaming channels for intervention. If those
+objects have not been declared, the application is underspecified; that is not
+evidence for or against the framework's toy bounds.]
 
 == Setup: goals, proxies, and two kinds of gap
 
@@ -1511,6 +1514,14 @@ reweighting bound, a convex intervention budget, a fixed-charge active-set
 comparison, an aggregation exchange-rate calculation, or a response-shape
 prediction. Without that declaration, "Goodhart happened" is usually too
 underspecified to be evidence for any particular mechanism.
+
+This is also the transfer rule for applications. A domain such as RLHF,
+benchmark-driven finetuning, hospital rankings, or institutional scorecards
+does not inherit the algebraic bounds by analogy. It inherits the obligation to
+declare the type space, response channel, action/search geometry, aggregation,
+hidden harm, and falsifiers. If those objects match one of the toy regimes, the
+corresponding calculation becomes available; if they do not, the contract says
+which new model is missing.
 
 == The contract
 

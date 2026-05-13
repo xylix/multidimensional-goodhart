@@ -161,3 +161,27 @@ What changed: created `research/threads/core_propositions_and_value_norms.md`. T
 What's open now: value weights, type spaces, costs, and response kernels remain modeling commitments or empirical targets; they are not identified from `mu_theta` alone. Simulations are still needed for population harm, stochastic response, adaptive hardening, and repeated proxy-repair dynamics.
 
 Red flags fired: proposition language watch item. The pass raises Layer-1 rigor but should not be read as a new universal theorem or as making the selection bound representation-free without a declared hidden value metric.
+
+## External review integration pass
+
+Question tackled: how should the Gemini external review and Claude pushback
+change the rigor-improvement pass before Iteration 16?
+
+What changed: updated the book's licensed-claims framing so the response-modeling
+contract is the transfer rule for applications: exact toy bounds apply only
+after the application declares matching type, response-channel, action/search,
+aggregation, hidden-harm, and falsifier objects. Sharpened the ML paragraph to
+say that missing `kappa`, `V`, or cost/search analogues make an ML application
+underspecified, not evidence for or against the framework. Updated
+`claim_audits.md` to distinguish framework/taxonomy use from direct RLHF
+prediction and to keep the separable additive theorem clean rather than
+weakening it into a generic "it depends" claim.
+
+What's open now: Iteration 16 should still promote the propositions cleanly and
+add compact "licenses / does not license" interpretation sentences. Do not add
+new theorem families, broad simulation suites, or prevalence-harm notation just
+to answer external-review caveats.
+
+Red flags fired: no new mathematical red flag. The main presentation risk is
+caveat inflation: making a scoped theoretical paper read apologetic rather than
+precise.

@@ -12,30 +12,6 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
-## External Review Integration
-
-Gemini's review is useful as an adversarial reader report, but it should not
-turn this pass into caveat inflation. The paper is a scoped theoretical
-framework and response-modeling contract, not a universal predictor for RLHF,
-non-convex training, or every institutional failure mode.
-
-Use the review to sharpen interpretation, claim licensing, and presentation.
-Do not weaken clean toy theorems merely because their assumptions are narrow.
-State theorems under their declared assumptions, then route unmatched cases
-through the contract or open-problem list.
-
-Claude's pushback is the governing stance for this pass:
-
-- Treat missing ML mappings as missing declared response models, not defects in
-  the framework.
-- Keep the separable additive scorecard theorem clean; shared bottlenecks and
-  correlated costs are separate action geometries, not retroactive exceptions
-  to the stated theorem.
-- Make the response-modeling contract more prominent as the paper's most
-  transferable contribution.
-- Avoid adding new notation, simulations, or limitation tables just to answer
-  every external-review concern.
-
 ## Iteration 16: Book Propagation For Core Propositions
 
 Type: `edit`.
