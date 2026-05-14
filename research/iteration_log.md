@@ -833,3 +833,45 @@ evidence decision rather than a generic warning.
 Red flags fired: no new red flag was opened. The live risk remains post-hoc
 flexibility; the review handles it by making missing or post-hoc primitives a
 contract-failure condition for reuse.
+
+## Iteration 31 (scientific metrics application)
+
+Question tackled: Can the reviewed response-modeling application template
+travel to a second non-ML domain without merely restating the existing
+responsible-metrics warning that publication counts, citations, grants, venue
+prestige, impact factors, and rankings can distort science?
+
+What changed: added `research/applications/scientific_metrics.md`, a filled
+application contract for a composite research evaluation scorecard
+`score = w_p publications + w_c citations + w_g grants + w_v venue/prestige`.
+The application explicitly marks DORA, the Leiden Manifesto,
+Campbell/Goodhart, and indicator-use-effects work as background rather than
+novelty. It declares `U`, `W_theta`, `K_theta`, `P`, `H`, qualitative
+`kappa`, `h`, `gamma`, `w`, and `V`, discriminator observations, a conditional
+quadratic diagnostic, a contract-failure section, and a Layer-1/Layer-2 local
+verification pass. Updated Q19, claim audits, and the verification stack to
+record the new novelty boundary. Removed the completed Iteration 31 roadmap
+section from `plans/next-steps.md`, leaving Iteration 32 active.
+
+What the application showed: the framework does not add novelty to the broad
+claim that scientific metrics are gameable. The surviving contribution is
+narrower: before increasing the weight of fast scalar metrics such as
+short-window citations or publication counts, declare signal adequacy `gamma`
+and audit for topic herding, salami slicing, citation clubs, field-composition
+shifts, delayed-value suppression, proxy repair, and genuine quality
+improvement. The contract separates selection over applicants, fields,
+institutions, funded populations, or career stages from fixed-researcher/lab
+behavior change, and separates harmful proxy manufacture from harmless
+metadata/discoverability repair and real research-quality improvement.
+
+What's open now: Iteration 32 should review the hospital and scientific-
+metrics applications side by side to decide whether the template is reusable,
+needs narrowing, or only works by flexible redescription. The scientific-
+metrics application does not license research-value estimation, policy
+optimality, a general anti-metric rule, or empirical use of the quadratic
+diagnostic without declared primitives and panel/project-level evidence.
+
+Red flags fired: novelty risk. The repair is explicit: the broad responsible-
+metrics warning is treated as known background, and the only claimed framework
+addition is a discriminator/evidence contract with concrete failure
+conditions.

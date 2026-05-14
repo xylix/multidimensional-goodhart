@@ -1,9 +1,8 @@
-# Next steps: Iterations 31-34
+# Next steps: Iterations 32-34
 
 This is the active roadmap after the hospital application review. It deliberately alternates
 application work and review before any book promotion:
 
-- Iteration 31: second non-ML application in scientific metrics.
 - Iteration 32: review the two-application template generalization.
 - Iteration 33: promotion-readiness review for book integration.
 - Iteration 34: book edit incorporating only reviewed findings.
@@ -13,54 +12,6 @@ audit, or evidence-collection decision. A template that merely classifies a
 case after the fact is not enough.
 
 After finishing an iteration, delete the iteration step from this document.
-
-## Iteration 31: scientific metrics application
-
-Iteration type: `application-mapping`.
-
-### Purpose
-
-Apply the reviewed template to a second non-ML scorecard setting: scientific
-metrics. Use publications, citations, grants, venue prestige, or composite
-research scorecards to test whether the template travels beyond hospitals.
-
-### Work
-
-1. Fill the reviewed template for a scientific-metrics case.
-2. Declare the type space, baseline behavior, exposure mechanism, response
-   channel, action/search geometry, proxy/target relation, aggregation rule,
-   hidden value model, and qualitative `kappa`, `h`, `gamma`, `w`, and `V`
-   primitives.
-3. Name discriminator observations distinguishing selection over researchers,
-   fixed-type changes in research behavior, proxy-only artifact production,
-   and real research-quality improvement.
-4. State one recommendation that differs from the hospital case. Examples
-   include a different aggregation rule, audit target, evidence requirement,
-   or response-channel warning.
-5. Record any primitives that do not transfer cleanly from the hospital
-   template.
-
-### Output
-
-A filled scientific-metrics application artifact using the reviewed template,
-with at least one recommendation that differs from the hospital case.
-
-### Success condition
-
-The scientific-metrics application uses the same reviewed template but produces
-at least one domain-specific recommendation that differs from the hospital
-case for a principled reason.
-
-### Failure condition
-
-The template works only by hand-tuning domain-specific fields, produces the
-same recommendation regardless of domain, or cannot name observations that
-distinguish selection from fixed-type response.
-
-### Scope limits
-
-Stay non-ML. Do not use the MMLU worked application as the second case, since
-it already covers the ML benchmark contract. Do not edit the book.
 
 ## Iteration 32: review template generalization
 
