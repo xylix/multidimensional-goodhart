@@ -129,14 +129,22 @@ Passed or ready:
   `Delta = sqrt(2 kappa V)`; multichannel quadratic water-filling matched
   `m(d)`; noisy Stackelberg response produced a smooth interior action; and
   `ell(a^*(d))` differed from `W_ell(d,V)`.
+- Iteration 21 executable checks passed in
+  `research/simulations/iteration21_population_active_sets.py`: capped
+  fixed-charge response produced lumpy support switches and skipped a cheap
+  small channel before its cap; the quadratic `C w` direction failed under
+  `a >= 0` when it had a negative component and was repaired by an active-face
+  solution; `H_per(d)` stayed fixed-deficit while `H_pop(M; F_Q,V)` increased
+  as the profitable gaming band expanded under both normal and skewed
+  non-Gaussian `Q`. Plot artifacts are in `research/simulations/outputs/`.
 
 Survived only barely:
 - Adaptive hardening dynamics needs simulation before theorem work. The cheap
   toy simulation should show whether hardening the most-gamed channel converges,
   cycles, or is dominated by committing to a narrow hard-to-game metric.
-- Population-vs-per-agent welfare needs simulation with heterogeneous quality
-  `Q`, noise, and endogenous `V`; otherwise the framework will keep sliding
-  between welfare objects.
+- Population-vs-per-agent welfare is now checked for deterministic entry with
+  heterogeneous normal and skewed `Q`; noise and endogenous `V` still need
+  separate models.
 
 Killed if simulation shows:
 - Dimensional drift grows without coupling assumptions in the selection model.
@@ -199,11 +207,11 @@ response estimation and for controlled intervention/gaming environments.
 | Selection vs. intervention boundary (`Q8`, `Q12`) | Thought experiment -> real-world correspondence | Classify toggle-only, feature-changing, manifold-constrained, and `P`-only manipulation agents | A feature-changing agent can always be represented as harmless reweighting of baseline data |
 | General intervention bound (`Q10`) | Simulation passed for core toys; further simulation for broader variants | Iteration 20 verified the quadratic wedge, multichannel quadratic water-filling, noisy Stackelberg response, and convex-cost versus welfare-bound separation; later variants can add linear and elastic-net-like costs | Bound depends on baseline divergence rather than cost geometry, convex affordability is mistaken for a welfare bound without hidden value weights, `ell(a^*(d))` is conflated with `W_ell(d,V)`, or the convex formula is imported into non-convex ML/RLHF without a local response model |
 | Response-modeling contract (`Q19`) | Thought experiment -> application mapping | Apply the contract to one ML-eval case and one institutional scorecard; identify `U`, `W_theta`, `K_theta`, actions, costs, aggregation, hidden harm, and discriminating evidence | The contract cannot distinguish nearby mechanisms, or reduces to a generic checklist with no downstream calculation |
-| Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation | Weighted additive, conjunctive, heterogeneous-population, noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
+| Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation passed for core welfare-object split; further variants remain | Iteration 21 verified that fixed-deficit `H_per(d)` and population `H_pop(M; F_Q,V)` separate under normal and skewed `Q`; remaining variants include weighted additive, conjunctive, and noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
 | Adaptive hardening (`Q14`) | Simulation | Repeated game where principal hardens the currently most-gamed channel; compare to static commitment | Dynamics cycle, increase attack surface, or lose to static narrow hardening |
 | Measurement frontier (`Q15`) | Thought experiment -> simulation | Construct signal-value vs. attack-surface frontier over measured sets `M` | Frontier is vacuous because all informative metrics are safe or all safe metrics are uninformative only by assumption |
 | Value-weighted susceptibility | Proposition sketch -> real-world correspondence | Propositions 1 and 1' give the coordinate-explicit and scalar/operator selection bounds; test whether declared value weighting changes rankings relative to SVD/PCA on known proxy-failure examples | Value weights are unavailable or arbitrary enough to make the scalar post hoc |
-| Minimum-complexity / recursive attractor (`Q4`, `Q18`, Appendix G) | Thought experiment -> simulation | Predefine complexity measure and hidden axes; compare unconstrained and active-face quadratic, fixed-charge, sparse, capped, and low-rank response geometries | Attractor tracks cost/search geometry rather than complexity, the `C w` formula is used despite binding sign constraints, or "complexity" changes under harmless representation changes |
+| Minimum-complexity / recursive attractor (`Q4`, `Q18`, Appendix G) | Simulation passed for active-set guardrails; broader attractor tests remain | Iteration 21 compared capped fixed-charge active-set switches against active-face quadratic repair; remaining variants include sparse, low-rank, and search-prior geometries under a predeclared complexity measure | Attractor tracks cost/search geometry rather than complexity, the `C w` formula is used despite binding sign constraints, or "complexity" changes under harmless representation changes |
 
 ## Iteration 7: Q18 verification pass
 

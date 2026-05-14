@@ -331,3 +331,34 @@ stochastic-response theory.
 
 Red flags fired: no contradiction exposed. Simulation passed for the scoped toy
 models, not for broad empirical or non-convex claims.
+
+## Iteration 21
+
+Question tackled: population/per-agent welfare separation and active-set
+response-shape simulations.
+
+What changed: added `research/simulations/iteration21_population_active_sets.py`
+and updated the simulation Makefile so `make run` executes both Iteration 20
+and Iteration 21. The new script compares capped fixed-charge active-set paths
+against active-face quadratic response, plots `H_per(d)` separately from
+`H_pop(M; F_Q,V)`, and includes a skewed non-Gaussian `Q` stress test. The
+script writes `research/simulations/outputs/iteration21_active_sets.png` and
+`research/simulations/outputs/iteration21_welfare_objects.png`.
+
+What the run showed: capped fixed-charge response produced lumpy support
+switches and skipped channel 1 before its cap because channel 2's lower
+marginal cost justified its fixed charge. The quadratic full-space `C w`
+solution failed under `a >= 0` when `C w` had a negative component and was
+repaired by the active-face solution. In the equal-harm additive model,
+`H_per(d)` coincided across measured-set capacities where gaming was feasible,
+while population harm increased with the profitable deficit band for both
+normal and skewed `Q`.
+
+What's open now: noisy-threshold population welfare, endogenous `V`,
+conjunctive metrics, and broader active-set families remain later variants. The
+Iteration 21 checks support the notation discipline around `H_per` and
+`H_pop`; they are still toy simulations, not empirical evidence.
+
+Red flags fired: no contradiction exposed. The main correction during the pass
+was semantic: `H_pop` must be computed as the population expectation
+`E[d 1{0 < d <= Delta_K}]`, not as the conditional mean among gamers.

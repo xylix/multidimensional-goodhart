@@ -12,22 +12,6 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
-## Iteration 21: Population And Active-Set Simulations
-
-Type: `generate`.
-
-Scope:
-
-- Compare capped fixed-charge active-set paths against active-face quadratic
-  response using the repaired Iteration 18 validity conditions.
-- Plot `H_per(d)` and `H_pop(M; F_Q, V)` separately.
-- Include a non-Gaussian `Q` stress test.
-- If Iteration 17 changes the welfare notation materially, adapt the simulation
-  outputs to that notation rather than preserving old wording.
-- Keep the simulation set bounded: active-set and welfare-object checks are the
-  point of this iteration, not a general survey of every alternative failure
-  mechanism.
-
 ## Iteration 22: ML Formal Analogue Survey
 
 Type: `theorem-mapping`.
