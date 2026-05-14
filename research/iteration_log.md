@@ -401,7 +401,7 @@ toy checks, not general theorems.
 Question tackled: ML formal analogue survey for the response-modeling
 framework.
 
-What changed: added `research/threads/ml_formal_analogue_survey.md`. The new
+What changed: added `research/threads/lit_review/ml_formal_analogue_survey.md` (relocated post-Iteration 25 from `research/threads/`). The new
 thread maps existing ML theorem families to framework primitives: model
 selection and hyperparameter search as selection over fixed candidates;
 adaptive holdout and leaderboard work as repeated-selection/evidence-standard
