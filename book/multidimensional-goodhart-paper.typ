@@ -35,7 +35,9 @@
   universal complexity law, but response-dependent error geometry: selection
   over a fixed baseline, intervention through fixed-type response, and
   multidimensional aggregation generate different distortion shapes. The useful
-  transfer rule is therefore a response-modeling contract.
+  transfer rule is therefore a response-modeling contract, checked against a
+  literature map that treats external Goodhart, ML, and incentive results as
+  primitive-specific analogues rather than generic support.
 ]
 
 = Introduction: the original hypothesis
@@ -88,6 +90,39 @@ by the response channel.
   error is governed by the declared response channel, action/search geometry,
   aggregation rule, and hidden value model.
 ]
+
+= Relation to existing formulations
+
+The literature review changes how the contribution should be stated. Goodhart's
+monetary-policy warning, Campbell's social-indicator warning, and Strathern's
+target/measure slogan are genealogy and motivation, not theorem statements
+@goodhart1975 @campbell1979 @strathern1997. Manheim and Garrabrant's taxonomy
+separates regressional, extremal, causal, and adversarial variants
+@manheim2018categorizing, but a taxonomy does not by itself supply a response
+channel, cost model, aggregation rule, or welfare functional.
+
+The scalar mathematical anchor is El-Mhamdi and Hoang's top-$alpha$ selection
+analysis under a target/discrepancy split @el-mhamdi2024goodhart. Their
+theorems give sharp tail-conditioned asymptotics under independence and named
+tail families. The selection bound below is different: it is a looser
+chi-square envelope for arbitrary baseline dependence and declared hidden
+coordinates. Majka and El-Mhamdi's independence-free scalar formalization is the
+closest external neighbor to that independence stance, but it remains scalar
+and discrepancy-structured @majka2025goodhart. Smith and Winkler's optimizer's
+curse is a precursor selection-bias inequality, not an intervention or welfare
+model @smith2006optimizerscurse.
+
+The late-stage formal-analogue map gives the same discipline for ML and
+economics results. Lucas's critique and performative prediction support the
+idea that policy can change the data-generating response channel
+@lucas1976critique @perdomo2020performative. Strategic classification gives an
+action-cost analogue of fixed-type response @hardt2016strategic.
+Holmstrom--Milgrom multitask incentives are the closest economics-side
+precedent for measured-task substitution and aggregation geometry
+@holmstrom1991multitask. Skalse et al.'s reward-hacking result is a
+proxy/target primitive, not a welfare or action-geometry theorem
+@skalse2022rewardgaming. None of these sources is used below as generic
+authority; each maps to a primitive and carries a non-transfer boundary.
 
 = Selection channels
 
