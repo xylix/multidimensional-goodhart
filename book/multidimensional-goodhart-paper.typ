@@ -1,7 +1,7 @@
 // Compact paper extract from multidimensional-goodhart.typ
 // Compile with:  typst compile multidimensional-goodhart-paper.typ
 
-#set document(title: "Multidimensional Goodhart: Response Channels and Residual Shape", author: "Kerkko 'Xylix' Pelttari")
+#set document(title: "Multidimensional Goodhart: Response Channels and Residual Shape", author: "Xylix Pelttari")
 #set page(numbering: "1", margin: (x: 1.05in, y: 1in))
 #set par(justify: true, leading: 0.58em)
 #set text(size: 10.5pt, font: "New Computer Modern")

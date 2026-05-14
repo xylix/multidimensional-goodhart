@@ -6,7 +6,7 @@
 // rewrite of the research-journal content; the journal's iteration history
 // is preserved in remarks/footnotes rather than in the main text.
 
-#set document(title: "Multidimensional Goodhart", author: "Kerkko 'Xylix' Pelttari")
+#set document(title: "Multidimensional Goodhart", author: "Xylix Pelttari")
 #set page(numbering: "1", margin: (x: 1.4in, y: 1.2in))
 #set par(justify: true, leading: 0.62em)
 #set text(size: 11pt, font: "New Computer Modern")
