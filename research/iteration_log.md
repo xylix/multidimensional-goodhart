@@ -763,3 +763,40 @@ conditions and evidence for the frontier primitives.
 Red flags fired: promotion risk. The repair is to keep Iteration 27 out of
 book/paper prose except as a clearly labeled toy example until theorem
 hypotheses or an application contract with estimable primitives are available.
+
+## Iteration 29 (hospital scorecard application template)
+
+Question tackled: Q19 for a non-ML institutional scorecard. Can the
+response-modeling contract change a concrete hospital readmission scorecard
+audit or design decision rather than merely classify the story after the fact?
+
+What changed: added `research/applications/application_template.md` as a
+reusable response-modeling application template and
+`research/applications/hospital_scorecard.md` as the filled readmission /
+institutional scorecard application. The hospital application declares type,
+baseline behavior, policy exposure, `W_theta` versus `K_theta`, action/search
+geometry, proxy/target relation, aggregation, hidden harm, qualitative
+`kappa`, `h`, `gamma`, `w`, and `V`, a conditional licensed calculation,
+discriminator observations, contract-failure conditions, and a local
+Layer-1/Layer-2 verification pass. Updated Q19, the verification stack, and
+claim audits to record the new application boundary.
+
+What the application showed: the same readmission score improvement can be
+pure selection over hospitals, harmful fixed-type intervention, harmless
+proxy-only repair, real follow-up improvement, or a mixture. The contract
+changes the decision by recommending audits of repeated fixed-hospital action
+traces ranked by score-per-cost and hidden harm before crediting score gains
+as patient-welfare gains. The quadratic calculation
+`m(d) = d^2 / (2 sum_j kappa_j w_j^2)` and
+`a_j^*(d) = d kappa_j w_j / sum_i kappa_i w_i^2` is licensed only as a
+diagnostic under declared primitives, not as an empirical estimate.
+
+What's open now: Iteration 30 should review whether the hospital application
+actually constrains the template, whether the qualitative frontier primitives
+can be assigned before deployment, and whether the evidence standard is
+observable enough to support reuse for scientific metrics.
+
+Red flags fired: no theorem, empirical welfare claim, or policy-optimality
+claim was introduced. The live risk is post-hoc flexibility in `U`, `h`,
+`gamma`, `kappa`, and `V`; the repair is to make the next iteration a skeptical
+review before reusing or promoting the template.
