@@ -1,10 +1,10 @@
-# Next steps after Iteration 36
+# Next steps
 
-This is the active roadmap after the Iteration 36 response-dynamics boundary.
-Iterations 37-42 are a staged repair sequence: test empirical auditability,
-review policy readiness, consolidate the roadmap, and only then decide whether
-any book or paper integration is licensed. Iteration 36 is retained below as
-completed context for the sequence and is not itself part of the active work.
+This is the active roadmap. Iterations 38-42 are the remaining staged repair
+sequence: review policy readiness, consolidate the roadmap, and only then
+decide whether any book or paper integration is licensed. Iteration 36 is
+retained below as completed context for the sequence and is not itself part of
+the active work.
 
 Do not edit book or paper files before the policy-readiness gate. The
 application-template promotion gate is closed: Chapter 6 now includes the
@@ -48,33 +48,8 @@ Completed artifacts:
    `iteration_log.md`, and this roadmap.
 
 License only: these dynamics can break or alter the static capacity story
-under declared update rules. Do not claim a general performative fixed-point
-theorem.
-
-## Iteration 37: empirical auditability of application primitives
-
-Iteration type: `empirical-design`.
-
-### Purpose
-
-Ask whether hospitals or scientific institutions can estimate, bound, defend,
-or mark unavailable the audit dimensions before scorecard deployment.
-
-### Work
-
-1. Add `research/applications/empirical_auditability.md`.
-2. For hospital and scientific-metrics applications, specify what evidence
-   could predeclare or bound response ease, hidden harm/value, signal adequacy,
-   effective weights, and stakes.
-3. Mark primitives unavailable when the evidence is not realistically
-   observable, and state the design/audit consequence.
-4. Update tracking docs only after the audit note is written.
-
-### Success condition
-
-An empirical audit note that changes deployment, monitoring, or evidence
-collection without claiming patient-welfare or research-value estimation from
-score movement alone.
+under declared update rules. Do not claim a general performative-stability
+result.
 
 ## Iteration 38: policy-readiness review
 
@@ -82,15 +57,15 @@ Iteration type: `policy-review`.
 
 ### Purpose
 
-Review Iterations 35-37 and decide whether policy prose is blocked or narrowly
-licensed.
+Review the theorem-boundary, dynamics, and empirical-audit passes and decide
+whether policy prose is blocked or narrowly licensed.
 
 ### Work
 
 1. Add `research/reviews/policy_readiness_review.md`.
-2. Review Iterations 35-37 and identify theorem-level, dynamic-toy, and
+2. Review the prior repair sequence and identify theorem-level, dynamic-toy, and
    empirical-audit licenses.
-3. Exclude policy optimality unless theorem, dynamics, and empirical-audit
+3. Exclude optimal-policy claims unless theorem, dynamics, and empirical-audit
    licenses jointly support it.
 4. If anything is licensed, phrase it as concrete audit/design/evidence
    decisions, not generic advice.
@@ -184,7 +159,7 @@ open questions.
 
 1. Run repo-wide claim-audit searches for forbidden overpromotions. Use
    scoped patterns to avoid false positives on notes that legitimately discuss
-   boundaries: `policy optimal\b`, `\bconverges to\b`, `\bcycling\b`,
+   boundaries: `optimal-policy\b`, `\blimits to\b`, `persistent cycle`,
    `endogenous V`, and a `\btheorem\b` check limited to `book/` and `paper/`
    prose. Run a separate `\bstochastic\b` check limited to `book/` and
    `paper/` prose; do not flag matches in `research/` notes.

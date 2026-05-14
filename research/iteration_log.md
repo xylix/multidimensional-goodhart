@@ -538,7 +538,7 @@ too much unless it forces calculations, falsifiers, or application decisions.
 What's open now: future application templates should include a "contract
 failure" field, and the next generate iteration should preferably build a small
 adaptive-hardening or measurement-frontier toy with explicit regimes where
-reactive hardening converges, cycles, or loses to static commitment. Framework
+reactive hardening stops, switches routes, or loses to static commitment. Framework
 level failure conditions should be promoted into `verification_stack.md` before
 the contract is used as the main publication-facing thesis.
 
@@ -746,9 +746,9 @@ Lakatos/Tao/Hossenfelder/Feynman review of the six Iteration 27 checks. Updated
 plan.
 
 What the review showed: Iteration 27 survives as reviewed Layer-3 toy evidence
-only. Reactive hardening convergence is a capacity-threshold result inside the
+only. Reactive hardening stopping is a capacity-threshold result inside the
 finite-channel separable quadratic model with fixed `V`; route switching is
-not a cycling theorem; static commitment dominance requires predeclared signal
+not a persistent-cycle theorem; static commitment dominance requires predeclared signal
 adequacy; and measurement-frontier claims require declared or estimable
 `kappa`, `h`, `gamma`, `w`, and `V`. Harmless renormalizations preserve the
 qualitative story only when score, harm, signal, threshold, and hardening units
@@ -787,10 +787,10 @@ versus invisible.
 
 What's open now: stochastic filtering, repair-budget design, endogenous-stakes
 fixed points, agent forecasts, strategic regulator updates, changing measured
-sets, changing deficits, and policy optimality remain unlicensed.
+sets, changing deficits, and optimal policy design remain unlicensed.
 
-Red flags fired: this is a dynamic boundary toy, not a convergence theorem,
-cycling theorem, performative fixed-point theorem, empirical claim, or policy
+Red flags fired: this is a dynamic boundary toy, not a general limiting theorem,
+persistent-cycle theorem, performative-stability result, empirical claim, or policy
 recommendation.
 
 ## Iteration 35 (adaptive-hardening theorem boundary)
@@ -822,8 +822,8 @@ an added floor/weight condition prevents that behavior.
 
 What's open now: stochastic/noisy observation, endogenous `V`, changing
 deficits, changing measured sets, shared bottlenecks, nonseparable or
-nonconvex response geometry, convergence rates outside the multiplicative
-rule, empirical frontier estimation, and policy optimality remain separate
+nonconvex response geometry, rates outside the multiplicative
+rule, empirical frontier estimation, and optimal policy design remain separate
 workstreams.
 
 Red flags fired: the theorem is a boundary, not a promotion to general
@@ -864,7 +864,7 @@ actually constrains the template, whether the qualitative frontier primitives
 can be assigned before deployment, and whether the evidence standard is
 observable enough to support reuse for scientific metrics.
 
-Red flags fired: no theorem, empirical welfare claim, or policy-optimality
+Red flags fired: no theorem, empirical welfare claim, or optimal-policy
 claim was introduced. The live risk is post-hoc flexibility in `U`, `h`,
 `gamma`, `kappa`, and `V`; the repair is to make the next iteration a skeptical
 review before reusing or promoting the template.
@@ -935,8 +935,8 @@ metadata/discoverability repair and real research-quality improvement.
 What's open now: Iteration 32 should review the hospital and scientific-
 metrics applications side by side to decide whether the template is reusable,
 needs narrowing, or only works by flexible redescription. The scientific-
-metrics application does not license research-value estimation, policy
-optimality, a general anti-metric rule, or empirical use of the quadratic
+metrics application does not license research-value inference, optimal policy
+design, a general anti-metric rule, or empirical use of the quadratic
 diagnostic without declared primitives and panel/project-level evidence.
 
 Red flags fired: novelty risk. The repair is explicit: the broad responsible-
@@ -969,11 +969,11 @@ aggregate score movement, and include contract-failure conditions that could
 actually fire. The scientific-metrics case is the harder transfer because
 hidden research value, `h`, and `gamma` are more delayed, field-specific, and
 contested than patient-welfare traces. That narrows the licensed output to a
-design/evidence contract, not research-value estimation.
+design/evidence contract, not research-value inference.
 
 What's open now: Iteration 33 should decide which reviewed findings from
 Iterations 27-32 are safe to promote into book prose, with the Iteration 32
-verdict treated as a review result rather than a theorem or policy-optimality
+verdict treated as a review result rather than a theorem or optimal-policy
 claim.
 
 Red flags fired: flexible-redescription risk. The repair is to reject reuse
@@ -1001,10 +1001,10 @@ the narrowed template boundary, compact hospital and scientific application
 mappings, and the requirement that applications change an audit/design/evidence
 decision. Footnote only the quadratic diagnostic and the Iteration 27 adaptive-
 hardening / measurement-frontier toy as conditional toy evidence. Exclude new
-theorem claims, adaptive-hardening convergence beyond the reviewed toy, route
-switching as cycling, static narrow commitment as a general policy rule,
-endogenous `V`, empirical welfare or research-value estimation, policy
-optimality, universal anti-metric claims, and full application prose dumps.
+theorem claims, adaptive-hardening stopping behavior beyond the reviewed toy, route
+switching as persistent cycles, static narrow commitment as a general policy rule,
+endogenous `V`, empirical welfare or research-value inference, optimal policy
+design, universal anti-metric claims, and full application prose dumps.
 
 What's open now: Iteration 34 should edit
 `book/multidimensional-goodhart.typ`, Chapter 6, around `Response modeling:
@@ -1020,7 +1020,7 @@ license boundary.
 
 Question tackled: Can the Iteration 33 promotion-ready application material be
 integrated into Chapter 6 without importing excluded theorem, empirical,
-endogenous-stakes, or policy-optimality claims?
+endogenous-stakes, or optimal-policy claims?
 
 What changed: edited `book/multidimensional-goodhart.typ` in Chapter 6 around
 `Application discipline`. The book now states the narrowed reusable application
@@ -1042,7 +1042,7 @@ shorthand for declared primitives.
 
 Verification: targeted prose checks confirmed the new application discipline,
 hospital and scientific examples, frontier primitive mentions, and no new
-`policy optimal` wording in the edited book. `make pdf` from `book/` passed.
+`optimal-policy` wording in the edited book. `make pdf` from `book/` passed.
 
 What's open now: later repair iterations should separately address adaptive-
 hardening convergence beyond the finite-channel toy, stochastic observation and
@@ -1053,3 +1053,41 @@ theorem/empirical pieces exist.
 Red flags fired: promotion risk. The repair is that Chapter 6 presents the
 material as a response-modeling application contract and leaves excluded
 claims in the roadmap rather than book prose.
+
+## Iteration 37 (empirical auditability of application primitives)
+
+Question tackled: Can the hospital and scientific-metrics scorecard primitives
+used by the application template be predeclared, bounded, defended, or marked
+unavailable before deployment?
+
+What changed: added
+`research/applications/empirical_auditability.md`, an empirical-design note
+covering response ease, hidden harm/value, signal adequacy, effective
+weights/thresholds/gates/overrides, and stakes for hospital and scientific
+scorecards. The note treats `kappa`, `h`, `gamma`, `w`, and `V` only as
+conditional shorthand for declared audit objects. Updated Q19 in
+`open_questions.md`, the Q19 row in `verification_stack.md`,
+`claim_audits.md`, and `plans/next-steps.md`. Removed the consumed temporary
+planning file `plans/iteration37-empirical-auditability.md`.
+
+What the note showed: empirical auditability is partial. Hospital scorecards
+can sometimes use repeated-hospital panels, chart audits, process traces,
+patient outcomes, score-rule documentation, and threshold exposure to
+predeclare or bound primitives. Scientific-metrics scorecards can sometimes
+use same-researcher or same-lab panels, field-normalized baselines,
+project-level audits, delayed-use evidence, citation-network diagnostics,
+committee-rule documentation, and override logs. When evidence is missing, the
+primitive should be marked unavailable with a consequence: pilot first, lower
+score leverage, collect action traces, add hidden-target monitoring, document
+effective rules, or fall back to qualitative review.
+
+What's open now: primitive estimation remains separate from this design note.
+The note does not license hidden-target estimates, broad metric advice,
+optimal-policy conclusions, or diagnostic calculations when primitives are
+missing. Iteration 38 should review whether Iterations 35-37 jointly support
+any narrow policy-readiness claim or instead block policy prose.
+
+Red flags fired: no book or paper claim, simulation, hidden-target estimate,
+or optimal-policy claim was introduced. The live risk is treating unavailable
+primitives as harmless caveats; the repair is to require an explicit
+deployment, monitoring, or evidence-collection consequence.
