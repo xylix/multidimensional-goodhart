@@ -184,37 +184,26 @@ Stage 5b gate: book builds; late chapter or appendix is internally
 consistent with `formal_analogue_lit_map.md`; falsifier discipline holds
 for every promoted row.
 
-## Stage 6 — Return to new research (Iteration 27)
+## Stage 6 — Close lit-review integration
 
-Goal: avoid letting the lit-review work bloat the project; resume
-research on the strongest open thread.
+Goal: avoid letting the lit-review work bloat the project, and leave a clean
+handoff once Stages 4, 5a, and 5b are complete.
 
-**Iteration 27: Adaptive Hardening Toy Simulation** (Codex's suggestion).
+This stage does **not** reserve an iteration number. Use whatever iteration
+number naturally follows the Stage 4 and Stage 5 execution work.
 
-Build a regulator-agent model:
+Sub-tasks:
 
-- Regulator chooses or hardens measured set M_t over rounds t.
-- Agents game the cheapest active route each round.
-- Compare policies: harden most-gamed dimension; add another dimension;
-  remove gameable dimension; static narrow metric; conjunctive gate.
+- Confirm the Chapter 2 and late formal-analogue chapter/appendix work is
+  complete and build-verified.
+- Record any remaining citation or source-verification leftovers as open
+  follow-ups, not as blockers to returning to research.
+- Point future research to `plans/adaptive-hardening.md`, which records the
+  adaptive-hardening / measurement-frontier simulation idea without assigning
+  it a fixed iteration number.
 
-Output question: does the dynamic converge, cycle, or expand the attack
-surface?
-
-Implementation notes:
-
-- File at `research/simulations/iteration27_adaptive_hardening.py`,
-  following the iteration 20/21 simulation pattern (deterministic seeds,
-  scripted figures, clear pass/fail criteria).
-- Update `research/iteration_log.md`, `research/verification_stack.md`,
-  and `research/open_questions.md` (likely close one of the adaptive-
-  hardening questions, or split it).
-- Book integration deferred — this is a research-note iteration, not a
-  book-edit iteration. Book changes only if a result strongly supports a
-  current proposition or surfaces a contradiction.
-
-Stage 6 gate: simulation runs deterministically; outputs match the
-iteration 20/21 file pattern; iteration log entry written.
+Stage 6 gate: lit-review integration is closed; no adaptive-hardening
+simulation has been started as part of this plan.
 
 ## Critical files
 
@@ -232,8 +221,8 @@ iteration 20/21 file pattern; iteration log entry written.
 - `book/multidimensional-goodhart-paper.typ` — possibly updated in
   Stage 5a.
 - `book/refs.bib` — new entries in Stages 5a and 5b.
-- `research/simulations/iteration27_adaptive_hardening.py` — created in
-  Stage 6.
+- `plans/adaptive-hardening.md` — future research plan referenced at
+  Stage 6 handoff; not executed by this lit-review plan.
 
 ## Reuse
 
@@ -245,7 +234,6 @@ iteration 20/21 file pattern; iteration log entry written.
 - Existing book voice for falsifier discipline at
   `book/multidimensional-goodhart.typ` ~line 1721 (the contract) and
   ~line 1812 (application discipline).
-- Iteration 20/21 simulation files for Stage 6 pattern.
 
 ## Verification
 
@@ -266,5 +254,5 @@ After Stage 5b:
   Stage 3 table.
 
 After Stage 6:
-- Simulation runs deterministically with declared seeds.
-- Iteration log entry exists.
+- Lit-review integration has a closure/handoff note.
+- No iteration number is reserved for adaptive hardening.
