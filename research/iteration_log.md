@@ -947,3 +947,41 @@ unchanged unless a tiny consistency fix is unavoidable.
 Red flags fired: promotion risk. The repair is the promotion map: every book
 edit must be traceable to an included or footnoted row and must preserve the
 license boundary.
+
+## Iteration 34 (book integration edit)
+
+Question tackled: Can the Iteration 33 promotion-ready application material be
+integrated into Chapter 6 without importing excluded theorem, empirical,
+endogenous-stakes, or policy-optimality claims?
+
+What changed: edited `book/multidimensional-goodhart.typ` in Chapter 6 around
+`Application discipline`. The book now states the narrowed reusable application
+boundary: predeclare `U` and the type/action boundary; identify `W_theta`,
+`K_theta`, or both; declare proxy, hidden target, aggregation, hidden
+harm/value, evidence standard, discriminator observations, and contract-failure
+conditions; and require a changed audit, design, or evidence decision. The new
+prose uses plain-language audit dimensions: ease or cheapness of response,
+hidden harm/value, signal adequacy, effective score weights/thresholds/gates/
+overrides, and stakes. It includes compact hospital scorecard and scientific
+metrics mappings without pasting full application notes. Updated Q19,
+`verification_stack.md`, and `plans/next-steps.md`.
+
+What the edit showed: the promoted result is application discipline, not a new
+theorem. Institutional scorecard applications do not inherit algebra from toy
+models by analogy. They must answer practical audit questions first; only then
+do toy symbols such as `kappa`, `h`, `gamma`, `w`, and `V` become possible
+shorthand for declared primitives.
+
+Verification: targeted prose checks confirmed the new application discipline,
+hospital and scientific examples, frontier primitive mentions, and no new
+`policy optimal` wording in the edited book. `make pdf` from `book/` passed.
+
+What's open now: later repair iterations should separately address adaptive-
+hardening convergence beyond the finite-channel toy, stochastic observation and
+endogenous-stakes dynamics, empirical auditability of hospital and scientific
+scorecard primitives before deployment, and policy review only after those
+theorem/empirical pieces exist.
+
+Red flags fired: promotion risk. The repair is that Chapter 6 presents the
+material as a response-modeling application contract and leaves excluded
+claims in the roadmap rather than book prose.

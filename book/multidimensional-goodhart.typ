@@ -1907,15 +1907,63 @@ school score rise could mean selecting different students, changing teaching,
 changing attendance, changing reporting, or real learning. These are different
 response models.
 
-For an empirical or ML application, the minimum mapping should say:
+For an empirical, ML, or institutional-scorecard application, the minimum
+mapping should say:
 
-- what plays the role of type;
-- what plays the role of action or response;
-- what cost, search, or feasibility geometry predicts the response;
-- which proxy components are aggregated and how;
-- which hidden outcome or welfare variable is at stake;
+- what plays the role of type, and where the boundary lies between fixed type
+  and later response;
+- whether the score changes the composition of who is selected, the behavior of
+  the same actors, or both;
+- what responses are easy, cheap, repeated, hard to observe, or already built
+  into the workflow;
+- which proxy components are aggregated and how they are effectively weighted,
+  including thresholds, gates, overrides, and informal committee rules;
+- which hidden outcome, harm, value, or capability is at stake;
+- how much signal each metric component has for that hidden target;
+- what stakes make adaptation, gaming, or proxy repair worth doing;
 - what data would distinguish the proposed mechanism from selection,
-  confounding, reporting change, or real improvement.
+  confounding, reporting change, proxy-only repair, or real improvement.
+
+This gives a narrower boundary for reusable applications. The application must
+predeclare $U$ and the type/action boundary; identify whether pressure changes
+$W_theta$, $K_theta$, or both; declare the proxy, hidden target, aggregation
+rule, hidden harm or value quantity, and evidence standard; name discriminator
+observations stronger than aggregate score movement; include contract-failure
+conditions that could actually fire; and change an audit, design, or
+evidence-collection decision. A template that only says, after the fact, which
+metric was gamed has not yet done enough.
+
+The symbols from the toy chapters can be useful shorthand only after these
+plain-language audit questions are answered. Ease or cheapness of response is
+what $kappa$ abbreviates in the quadratic toys. Hidden harm or hidden value is
+what $h$, $gamma$, and the declared target model try to represent. Effective
+score weights are the practical content of $w$. Stakes are what $V$ records. If
+an application cannot estimate, bound, defend, or mark one of these quantities
+as unavailable before interpreting the score movement, the corresponding toy
+calculation is unavailable too. The toy models show what calculations become
+possible when the audit dimensions are made precise; they do not make the
+dimensions true by notation.
+
+Institutional scorecards show the point. In a hospital readmission scorecard, a
+lower measured readmission rate could reflect changed patient mix, better
+follow-up care, altered discharge decisions, coding changes, or avoidance of
+patients who are costly to manage. The application contract asks which of these
+responses the same hospital can cheaply move, which patient-welfare trace would
+show hidden harm or value, how readmissions are combined with other quality
+components, and which repeated-hospital or patient-level observations would
+separate welfare improvement from score-only movement. Its practical output is
+an audit plan: inspect the response channels with high score leverage, low
+friction, and plausible hidden harm before crediting the score gain as patient
+welfare.
+
+Scientific metrics are the harder case because long-run research value is
+delayed and contested. A rise in publications, citations, grant income, venue
+prestige, or rankings could come from selecting different researchers or
+fields, changing fixed researchers' project choices, repairing a noisy proxy,
+manufacturing citation or publication artifacts, or genuinely improving
+research quality. The contract does not claim to estimate research value from
+the score. It asks for field-appropriate evidence that separates those
+mechanisms before the institution raises the leverage of a fast scalar metric.
 
 That mapping does not need to be perfect before the framework can be useful. It
 does need to be explicit enough that the claim can fail. The main error this
