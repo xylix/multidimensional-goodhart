@@ -690,3 +690,44 @@ adaptive-hardening simulation or theorem work was started in this cleanup.
 Red flags fired: none. This was archive and documentation cleanup only; no
 book prose, theorem family, simulation, or adaptive-hardening work was
 introduced.
+
+## Iteration 27 (adaptive hardening / measurement frontier simulation)
+
+Question tackled: Q14/Q15 in the intervention regime: what happens when a
+regulator repeatedly hardens, removes, or adds measured channels in a finite
+scorecard where each measured channel also expands an attack surface?
+
+What changed: added
+`research/simulations/iteration27_adaptive_hardening.py`, a deterministic
+NumPy-only Layer-3 toy pass. The simulation uses finite channels with
+`kappa_j`, `h_j`, `gamma_j`, and `w_j`; additive score gain
+`sum_{j in M} w_j a_j`; quadratic private cost
+`sum a_j^2/(2 kappa_j)`; capacity `S(M)=sum kappa_j w_j^2`; feasibility
+`d^2/(2S(M)) <= V`; and best response
+`a_j = d kappa_j w_j / S(M)`. It reports harm, real benefit, and net harm
+separately and uses a deterministic deficit grid for population harm. Updated
+the simulations Makefile so `make run` executes Iterations 20, 21, and 27, and
+updated the simulation README.
+
+What the simulation showed: the toy regimes classify rather than prove. Reactive
+hardening can converge to no-gaming by driving `S(M)` below `d^2/(2V)`, and a
+near-symmetric scorecard switches routes across four channels before stopping.
+Adding declared-signal dimensions can expand attack surface and raise
+deterministic `H_pop`. A predeclared narrow, hard-to-game metric can have lower
+cumulative net harm than reactive broad measurement when signal adequacy is
+already met. The frontier is not one-sided: adding a high-signal, low-harm,
+low-kappa metric can improve benefit while keeping fixed-deficit gaming
+infeasible. The conjunctive comparison preserves the earlier contrast:
+per-gamer burden rises while the feasible entry band shrinks.
+
+What's open now: the adaptive-hardening and measurement-frontier questions are
+narrowed to classified finite-channel toy regimes, not closed. Empirical
+estimation of `kappa`, `h`, `gamma`, and `V`; stochastic/noisy scorecards;
+endogenous stakes; richer regulator objectives; and theorem-level convergence
+conditions remain open.
+
+Red flags fired: no book or paper prose was edited, and no empirical or theorem
+claim was promoted. The main risk is overreading the policy examples: the pass
+licenses "these deterministic regimes exist under the declared contract," not a
+general claim that hardening, adding metrics, or static commitment is uniformly
+best.

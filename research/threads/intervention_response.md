@@ -243,3 +243,87 @@ Claim [tentative]: the correct additive conservation theorem is narrow but real.
 Claim [tentative]: iteration 5's "adding a dimension backfires" survives the adversarial pass, but its object changes. In the unit-weight equal-harm model, adding a channel keeps `H_per(M, d) = d` while lowering gaming cost from `d^2/(2K_M)`; with heterogeneous `Q`, this weakly increases `H_pop(M; F_Q, V)` by enlarging the set of agents for whom gaming is privately worthwhile. Toy example: a school accountability score with extra independently drillable subtests makes the same score gain cheaper; more schools enter the gaming margin.
 
 Claim [tentative]: "re-routing does not reduce harm" should no longer be stated without qualifiers. The defensible version is: re-routing among equally harmful-per-score channels does not reduce `H_per(M, d)`; re-routing across channels with different `h_j/w_j`, changing weights, or changing the participating population can reduce, increase, or conserve the relevant welfare object. This is a better framework result than the original slogan because it identifies the exact exchange-rate condition under which conservation Goodhart is substantive rather than an artifact of unit weights.
+
+## Iteration 27: adaptive hardening and measurement-frontier toy pass
+
+This pass implements the repeated-regulator version of the intervention
+scorecard as a deterministic Layer-3 simulation, not as a theorem and not as an
+empirical claim. The executable artifact is
+`research/simulations/iteration27_adaptive_hardening.py`.
+
+### Model contract
+
+Finite channels `j = 1..k` carry four declared primitives:
+
+- `kappa_j`: ease of gaming / attack-surface capacity;
+- `h_j`: hidden harm per unit action;
+- `gamma_j`: real benefit per unit action;
+- `w_j`: measured score weight.
+
+For a measured set `M`, additive score gain is `sum_{j in M} w_j a_j` and
+private cost is `sum_j a_j^2/(2 kappa_j)`. Define
+
+`S(M) = sum_{j in M} kappa_j w_j^2`.
+
+For fixed score deficit `d`, the cost-minimizing response is
+
+`a_j = d kappa_j w_j / S(M)` for `j in M`,
+
+with minimum private cost
+
+`m(d) = d^2/(2S(M))`.
+
+Gaming is feasible exactly when `m(d) <= V`. The simulation reports hidden harm
+`sum h_j a_j`, real benefit `sum gamma_j a_j`, and net harm
+`harm - real_benefit` separately. Population harm is a deterministic-grid
+object:
+
+`H_pop(M) = mean(H_per(M,d) 1{0 < d and d^2/(2S(M)) <= V})`.
+
+### Regimes classified
+
+Reactive hardening can converge in this finite model: keep `M` fixed, harden
+the currently largest-action measured channel by multiplying its `kappa_j`
+downward, and stop once `S(M) < d^2/(2V)`. In the tested regime this took four
+rounds.
+
+Route switching occurs before convergence in a near-symmetric measured set. As
+the regulator hardens the current largest-action channel, the most attractive
+route moves across channels before aggregate `S(M)` falls below the no-gaming
+threshold.
+
+Adding dimensions can backfire at population level. A policy that adds the
+unmeasured channel with the best declared signal per attack-surface increment
+can still increase `S(M)` and deterministic `H_pop`, because it cheapens the
+score deficit and expands the feasible gaming band.
+
+Static narrow commitment can dominate reactive broad measurement when the
+narrow set already meets a declared signal adequacy floor. In the tested
+regime, the narrow hard-to-game metric has lower cumulative net harm than a
+broad scorecard that reacts by hardening the currently most-gamed channel.
+
+Metric addition is not always bad. Adding a high-`gamma`, low-`h`, low-`kappa`
+metric can improve signal/benefit while keeping fixed-deficit gaming infeasible
+or lowering net harm. This is the positive side of the measurement frontier:
+good proxy additions are possible when their real-signal and attack-surface
+primitives are favorable.
+
+Conjunctive gates keep the earlier aggregation contrast. Requiring every
+measured channel to clear its own deficit raises fixed-deficit per-gamer
+required action and harm, while shrinking the feasible entry band relative to
+additive aggregation.
+
+### What this licenses
+
+The pass licenses a finite-channel classification: under the declared
+quadratic-cost/additive-score contract, reactive hardening, route switching,
+attack-surface expansion, static commitment dominance, beneficial metric
+addition, and conjunctive gate contrast are all explicit deterministic regimes.
+
+It does not license a general policy theorem. The primitives `kappa`, `h`,
+`gamma`, `w`, and `V` are declared, not estimated. There is no stochastic
+observation model, no endogenous trust/stakes loop, no proof of optimality for
+the regulator, and no claim that the book or paper should absorb this as a
+main theorem. The right next use is as a guardrail for Q14/Q15: any future
+adaptive-hardening claim must say which of these regimes it is in and what
+would make that regime fail.

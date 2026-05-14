@@ -151,11 +151,21 @@ Passed for scoped toy regimes:
   is a sigma-sweep finite diagnostic rather than a monotonicity claim; and a
   conjunctive-aggregation population check verifies the per-gamer harm versus
   entry-band tradeoff.
+- Iteration 27 executable checks passed in
+  `research/simulations/iteration27_adaptive_hardening.py`: finite-channel
+  adaptive hardening reached no-gaming by pushing `S(M) < d^2/(2V)`;
+  near-symmetric channels produced route switching across several active
+  channels before stopping; adding declared-signal dimensions expanded attack
+  surface and deterministic `H_pop`; static narrow commitment dominated broad
+  reactive measurement in cumulative net harm when signal adequacy was already
+  met; a high-signal, low-harm, low-kappa metric improved the measurement
+  frontier without opening fixed-deficit gaming; and conjunctive aggregation
+  raised per-gamer burden while shrinking feasible entry.
 
 Still open or narrowed:
-- Adaptive hardening dynamics needs simulation before theorem work. The cheap
-  toy simulation should show whether hardening the most-gamed channel converges,
-  cycles, or is dominated by committing to a narrow hard-to-game metric.
+- Adaptive hardening and measurement frontier now have a Layer-3 toy pass, but
+  theorem-level convergence, empirical estimation, stochastic scorecards,
+  endogenous stakes, and regulator policy optimality remain open.
 - Population-vs-per-agent welfare is now checked for deterministic entry with
   heterogeneous normal and skewed `Q`; noise and endogenous `V` still need
   separate models.
@@ -171,14 +181,17 @@ Killed if simulation shows:
 - Adaptive hardening always helps even when it expands the attack surface or
   lowers effective gaming cost; that would weaken the current regulator-policy
   story.
+- Iteration 27's finite scorecard classifications disappear under small
+  parameter perturbations or require hidden assumptions not declared in
+  `kappa`, `h`, `gamma`, `w`, aggregation, and `V`.
 - A proposed minimum-complexity attractor vanishes under simple alternative
   complexity measures. Then the attractor claim is not well-posed yet.
 
-Verdict at this layer: Iterations 20, 21, and 21.1 passed Layer 3 for their
-intended toy regimes. Adaptive dynamics, noisy population welfare, endogenous
-stakes, broader attractors, and empirical implementation should not move forward
-as passed claims before small simulations or domain evidence kill or sharpen
-them.
+Verdict at this layer: Iterations 20, 21, 21.1, and 27 passed Layer 3 for their
+intended toy regimes. Noisy population welfare, endogenous stakes, theorem-level
+adaptive dynamics, broader attractors, and empirical implementation should not
+move forward as passed claims before small simulations, proof conditions, or
+domain evidence kill or sharpen them.
 
 ## Layer 4: implementation
 
@@ -227,8 +240,8 @@ response estimation and for controlled intervention/gaming environments.
 | Response-modeling contract (`Q19`) | Layer-2 passed for MMLU worked application | Iterations 22-23 produced primitive maps and falsifiers for ML analogues and then applied the contract to MMLU: fixed-checkpoint selection uses `W_theta`, while finetuning/search/contamination/reward-proxy optimization require a declared `K_theta`, action/search geometry, aggregation rule, proxy/target relation, and evidence standard | The MMLU contract cannot distinguish fixed-checkpoint selection from finetuning, contamination, prompt search, or reward/proxy optimization; or it licenses `kappa`, Stackelberg, convex-cost, RLHF, or welfare claims without explicit primitives and falsifiers |
 | Literature primitive transfer | Layer-2 book integration closed | Iterations 26.1-26.4 produced the 13-row formal-analogue lit map, recorded the chapter decision, integrated Chapter 2 plus the late formal-analogue chapter, and closed the lit-review workstream. Each promoted source maps to a primitive and carries a "does not license" / falsifier boundary. | A cited external theorem is used as generic support without naming its primitive, assumptions, and non-transfer condition; or the book presents El-Mhamdi--Hoang, Skalse RL, Lucas, Holmstrom--Milgrom, or benchmark hygiene results as subsumed rather than mapped. |
 | Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation passed for core welfare-object split and conjunctive contrast; further variants remain | Iterations 21-21.1 verified that fixed-deficit `H_per(d)` and population `H_pop(M; F_Q,V)` separate under normal and skewed `Q`, and that conjunctive aggregation raises fixed-deficit per-gamer harm while shrinking entry under equal costs; remaining variants include weighted additive and noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
-| Adaptive hardening (`Q14`) | Simulation | Repeated game where principal hardens the currently most-gamed channel; compare to static commitment | Dynamics cycle, increase attack surface, or lose to static narrow hardening |
-| Measurement frontier (`Q15`) | Thought experiment -> simulation | Construct signal-value vs. attack-surface frontier over measured sets `M` | Frontier is vacuous because all informative metrics are safe or all safe metrics are uninformative only by assumption |
+| Adaptive hardening (`Q14`) | Layer-3 toy simulation passed; theorem/empirical work open | Iteration 27 classified finite-channel regimes: reactive hardening can converge to no-gaming, near-symmetric routes can switch before convergence, and static narrow commitment can beat broad reactive measurement when signal adequacy is already met | The classifications vanish under small parameter perturbations; hardening fails to lower `S(M)` below `d^2/(2V)` in the declared model; or the result is presented as policy optimality without stochastic, endogenous-stakes, or empirical estimation work |
+| Measurement frontier (`Q15`) | Layer-3 toy simulation passed; empirical frontier work open | Iteration 27 constructed explicit `kappa`/`h`/`gamma`/`w` measured-set frontiers: adding gameable dimensions can raise `S(M)` and `H_pop`, while a high-signal/low-harm/low-kappa metric can improve benefit without opening fixed-deficit gaming | Frontier is vacuous because all informative metrics are safe or all safe metrics are uninformative only by assumption; signal, harm, and attack-surface primitives are not separately declared; or a toy addition result is generalized to all metric additions |
 | Value-weighted susceptibility | Proposition sketch -> real-world correspondence | Propositions 1 and 1' give the coordinate-explicit and scalar/operator selection bounds; test whether declared value weighting changes rankings relative to SVD/PCA on known proxy-failure examples | Value weights are unavailable or arbitrary enough to make the scalar post hoc |
 | Minimum-complexity / recursive attractor (`Q4`, `Q18`, Appendix G) | Simulation passed for active-set guardrails; broader attractor tests remain | Iteration 21 compared capped fixed-charge active-set switches against active-face quadratic repair; remaining variants include sparse, low-rank, and search-prior geometries under a predeclared complexity measure | Attractor tracks cost/search geometry rather than complexity, the `C w` formula is used despite binding sign constraints, or "complexity" changes under harmless representation changes |
 
