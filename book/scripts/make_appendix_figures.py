@@ -147,11 +147,13 @@ def selection_vs_intervention() -> None:
     p0 = q
     h0 = np.zeros_like(q)
     pass_score = 0.95
-    active = (q > -0.82) & (q < 0.82)
+    active = (q > -0.82) & (q < pass_score)
     a = np.clip(pass_score - q, 0, 1.35) * active
     p1 = p0 + a
     h1 = h0 + a
-    axes[1].scatter(p0, h0, s=14, c="0.72", edgecolors="none")
+    no_response = ~active
+    axes[1].scatter(p0[no_response], h0[no_response], s=11, c="0.82", edgecolors="none")
+    axes[1].scatter(p0[active], h0[active], s=13, c="0.58", edgecolors="none")
     for x0, y0, x1, y1 in zip(p0[active], h0[active], p1[active], h1[active]):
         axes[1].annotate(
             "",
@@ -163,8 +165,9 @@ def selection_vs_intervention() -> None:
     axes[1].axhline(0, color="0.65", lw=0.6)
     axes[1].axvline(pass_score, color="0.35", lw=0.7, ls=(0, (3, 2)))
     axes[1].text(-2.82, 2.28, "intervention", fontsize=10)
-    axes[1].text(-2.82, 1.90, "fixed types move;\nnew states are generated", fontsize=8.2, color="0.25")
-    axes[1].text(-2.1, -0.24, "baseline", fontsize=7.5, color="0.45")
+    axes[1].text(-2.82, 1.90, "gaming band responds;\nothers stay put", fontsize=8.2, color="0.25")
+    axes[1].text(-2.1, -0.24, "too costly", fontsize=7.5, color="0.50")
+    axes[1].text(1.45, -0.33, "already pass", fontsize=7.5, color="0.50")
     axes[1].text(pass_score + 0.08, 1.18, "after response:\njust pass", fontsize=7.5, color="0.05")
     axes[1].text(pass_score + 0.05, 0.15, "passing score", fontsize=7.2, color="0.35", rotation=90)
 
