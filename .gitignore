@@ -1,2 +1,5 @@
 book/figures/
+book/appendix*.pdf
+book/*appendix*.pdf
 research/simulations/outputs/*.png
+research/simulations/outputs/*.pdf
