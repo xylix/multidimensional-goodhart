@@ -203,3 +203,25 @@ problem `W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }`, and keep it
 distinct from realized cost-minimizing harm `ell(a^*(d))`. Future nonlinear or
 prevalence-sensitive welfare claims must enter through the declared `ell` and
 its aggregation into `H_per` or `H_pop`, not through convex private cost alone.
+
+## Iteration 28: adaptive-hardening review boundary
+
+Claim reviewed: Iteration 27's finite-channel adaptive-hardening and
+measurement-frontier simulation.
+
+Red-flag scan: the simulation is useful enough to tempt promotion. The risky
+overreadings are: reactive hardening generally converges; adding metrics
+generally backfires; static narrow commitment generally dominates; and the
+frontier primitives `kappa`, `h`, `gamma`, `w`, and `V` are available in real
+domains just because they are declared in the toy.
+
+Review result: the checks survive only as Layer-3 finite-scorecard existence
+and contrast results. The convergence check depends on separable quadratic
+capacity `S(M)` and monotone lowering of `kappa`; route switching is not a
+cycling theorem; static commitment requires predeclared signal adequacy; and
+metric addition has both harmful and beneficial regimes.
+
+Repair: keep Iteration 27 as a reviewed toy boundary, not book/paper promotion.
+Future application templates must state how the frontier primitives would be
+estimated or bounded and what would falsify the chosen response contract before
+using the toy for policy advice.

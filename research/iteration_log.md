@@ -731,3 +731,35 @@ claim was promoted. The main risk is overreading the policy examples: the pass
 licenses "these deterministic regimes exist under the declared contract," not a
 general claim that hardening, adding metrics, or static commitment is uniformly
 best.
+
+## Iteration 28 (review adaptive hardening before promotion)
+
+Question tackled: What exactly does Iteration 27 license before theorem work,
+book/paper promotion, or another research branch?
+
+What changed: added
+`research/reviews/adaptive_hardening_iteration27_review.md`, a
+Lakatos/Tao/Hossenfelder/Feynman review of the six Iteration 27 checks. Updated
+`claim_audits.md`, `red_flags.md`, `verification_stack.md`, and
+`open_questions.md` to record the narrowed license boundary. Added
+`plans/iteration29-application-template-hardening.md` as the next-iteration
+plan.
+
+What the review showed: Iteration 27 survives as reviewed Layer-3 toy evidence
+only. Reactive hardening convergence is a capacity-threshold result inside the
+finite-channel separable quadratic model with fixed `V`; route switching is
+not a cycling theorem; static commitment dominance requires predeclared signal
+adequacy; and measurement-frontier claims require declared or estimable
+`kappa`, `h`, `gamma`, `w`, and `V`. Harmless renormalizations preserve the
+qualitative story only when score, harm, signal, threshold, and hardening units
+are transformed consistently.
+
+What's open now: theorem-level adaptive dynamics, stochastic observation,
+endogenous stakes, and empirical frontier estimation remain open. The next
+iteration should test whether the response-modeling contract changes a real
+application decision by requiring an application template with contract failure
+conditions and evidence for the frontier primitives.
+
+Red flags fired: promotion risk. The repair is to keep Iteration 27 out of
+book/paper prose except as a clearly labeled toy example until theorem
+hypotheses or an application contract with estimable primitives are available.
