@@ -15,9 +15,10 @@ not here.
 - `multidimensional-goodhart.pdf` — compiled output (regenerated, not
   hand-edited).
 - `multidimensional-goodhart-paper.pdf` — compiled mini-draft output.
-- `scripts/make_appendix_figures.py` — deterministic figure generator for
-  Appendices C–G.
-- `figures/` — generated appendix figure PDFs.
+- `FIGURE_AUDIT.md` — current figure inclusion audit and removal rationale.
+- `scripts/make_appendix_figures.py` — deterministic matplotlib generator for
+  the retained comparison figures.
+- `figures/` — generated figure PDFs plus `RATIONALES.md`.
 
 ## Build
 
@@ -42,7 +43,7 @@ typst compile multidimensional-goodhart-paper.typ
 ```
 
 Needs [Typst](https://typst.app) ≥ 0.14. `refs.bib` is picked up automatically.
-To regenerate appendix figures first:
+To regenerate figures first:
 
 ```sh
 uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
@@ -73,8 +74,8 @@ uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
 - **Appendix A** — Currently in progress: live research questions feeding the
   chapters.
 - **Appendix B** — Future open questions, parked for now.
-- **Appendices C–F** — Visual aids for the formal claims: selection response,
-  coupling-dependent dimensional scaling, selection versus intervention,
-  additive/conjunctive gaming, and the exchange-rate condition.
-- **Appendix G** — Speculative recursive-Goodhart cartoon; illustrative, not an
-  empirical measurement or theorem.
+- **Visual appendices** — Four retained comparison figures: threshold response
+  versus covariance, selection versus intervention, fixed-deficit versus
+  population harm, and response-shape active-set regimes. Removed candidates and
+  design rationales are documented in `FIGURE_AUDIT.md` and
+  `figures/RATIONALES.md`.

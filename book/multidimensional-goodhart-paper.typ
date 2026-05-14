@@ -171,6 +171,15 @@ The wedge is controlled by ease of gaming and stakes, not by baseline
 covariance. It is a toy signature of quadratic threshold gaming, not a law of
 neural training or RLHF.
 
+#figure(
+  image("figures/appendix-b-selection-vs-intervention.pdf", width: 92%),
+  caption: [
+    Selection reweights fixed support; intervention transports fixed types into
+    new states. The distinction is why the selection-channel drift bound has no
+    baseline-only analogue for intervention channels.
+  ],
+) <fig:paper-selection-vs-intervention>
+
 For a more general local intervention budget, declare an action $a$, convex
 cost $c(a)$, linear score gain $w dot a$, and score deficit $d$. The score-deficit
 cost is
@@ -202,6 +211,15 @@ $h_j = c w_j$ on the channels being compared. In the unit-weight equal-harm
 case, re-routing conserves fixed-deficit per-gamer harm, but increasing the
 aggregate gaming capacity can expand entry and raise population harm
 $H_pop(M, F_Q, V)$.
+
+#figure(
+  image("figures/appendix-c-welfare-objects.pdf", width: 92%),
+  caption: [
+    In the unit-weight equal-harm additive model, feasible fixed-deficit
+    $H_per(d)$ curves coincide, while $H_pop$ grows as gaming capacity expands
+    the profitable deficit band.
+  ],
+) <fig:paper-welfare-objects>
 
 A conjunctive scorecard flips the per-gamer comparison. If passing requires
 $a_j >= t$ for every $j in M$, then

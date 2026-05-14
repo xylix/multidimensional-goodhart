@@ -861,7 +861,7 @@ displacement caused by selection at pressure level $t$, with no linearity
 assumption. In the Gaussian scalar model it reduces to what we already have:
 $b_H(t) = sigma_1 lambda(t / sigma_1) r$, so $r$ is a sufficient statistic for
 *all* threshold responses in that restricted model — but only there. See
-@fig:selection-thresholds for the corresponding three-case picture.
+@fig:threshold-response for the corresponding three-case picture.
 
 #remark[$b_H(t)$ is a *threshold-selection* primitive, not the final one. It
 says nothing about smoother optimisation policies — funding everyone above a
@@ -1242,8 +1242,8 @@ This is *not* invariant in $M$. (Two equally easy channels, $kappa_1 = kappa_2 =
 equal physical harm $h_1 = h_2 = 1$: measuring only channel 1 with $w_1 = 2$
 gives $H = d slash 2$; measuring only channel 2 with $w_2 = 1$ gives $H = d$;
 measuring both gives $H = 3 d slash 5$.) Re-routing can raise *or* lower harm,
-depending on the score weights. @fig:exchange-rate-condition records the
-numbers.
+depending on the score weights. The conservation result is an exchange-rate
+condition, not a dimension-count result.
 
 #proposition("4", "additive exchange-rate iff")[
 Fix a score deficit $d > 0$. For active measured channels $M$, suppose costs are separable quadratic,
@@ -1311,9 +1311,8 @@ is $H_per(M, t) = sum_(j in M) a_j = lambda K_M = t$ — *independent of $M$*.
 Thus the earlier slogan $H = t$ is only the fixed-deficit pure-gaming object
 $H_per(M, t)$, not a population welfare claim. What $M$ controls is (i)
 *whether* $K_M$ clears $K_"min"$, and (ii) *how* the fixed harm $t$ is split
-across the measured channels — proportional to $kappa_j$.
-@fig:additive-substitution shows the same water-filling geometry in effort
-space.
+across the measured channels — proportional to $kappa_j$. @fig:welfare-objects
+shows the same separation between fixed-deficit and population harm.
 
 #claim[*Conservation under re-routing (narrow form).* With a unit-weight
 additive metric and gaming that is equally wasteful per unit of score, the
@@ -1381,7 +1380,8 @@ harmful per score unit; conjunctive/$min$ metrics *multiply* per-gamer harm
 backfire for $H_pop$ by cheapening the cheapest gaming path and expanding the
 gaming population. The selection-regime $sqrt(d)$-type scaling from Chapter 3
 and these intervention-regime flat/linear behaviours are *different phenomena*
-and should not be conflated. See @fig:additive-vs-conjunctive.]
+and should not be conflated. See @fig:welfare-objects for the welfare-object
+separation in the additive case.]
 
 #remark[Scope, made explicit. The additive claims assume linear score
 aggregation and quadratic separable gaming costs. The unit-weight conservation
@@ -1521,6 +1521,7 @@ right next object is a *response-shape prediction*: once a response channel and
 its constraints are specified, what shape of hidden residual should it produce?
 
 #figure(
+  kind: table,
   table(
     columns: (1.15fr, 1.35fr, 1.15fr),
     inset: 6pt,
@@ -1562,17 +1563,16 @@ its constraints are specified, what shape of hidden residual should it produce?
   ),
   caption: [Claim audit: what these chapters license, and where the license
     stops.],
-) <fig:claim-audit>
+) <tab:claim-audit>
 
-The remaining appendices are visual. Appendices A--D illustrate the formal
-chapters: selection response curves, dimensional coupling, selection versus
-intervention, additive versus conjunctive gaming, and the exchange-rate
-condition for conservation. Appendix E is a speculative cartoon of the
-recursive-Goodhart hypothesis, explicitly not a conclusion of the formal
-results. Appendix F visualises the Chapter 5 response-shape repair. The
-research inventory — both the work-in-progress threads and the parked
-open questions that earlier drafts kept as separate appendices — now lives
-in the intro §§1.5–1.6.
+The remaining appendices are visual. They keep only figures that carry a
+comparison: threshold response versus covariance, selection versus
+intervention, fixed-deficit versus population harm, and response-shape
+active-set regimes. The speculative recursive-Goodhart cartoon is gone; that
+hypothesis remains prose until it has pre-specified hidden axes and data. The
+research inventory — both the work-in-progress threads and the parked open
+questions that earlier drafts kept as separate appendices — now lives in the
+intro §§1.5–1.6.
 
 // =============================================================================
 = Response shape: when hidden residuals concentrate
@@ -1660,6 +1660,7 @@ The safe replacement for "minimum-complexity attractor" is not the empty slogan
 "geometry matters". It is a table of conditional predictions:
 
 #figure(
+  kind: table,
   table(
     columns: (1.05fr, 1.35fr, 1.45fr),
     inset: 6pt,
@@ -1685,7 +1686,7 @@ The safe replacement for "minimum-complexity attractor" is not the empty slogan
   caption: [Response-shape predictions. The framework licenses conditional
     geometry-to-shape claims, not a representation-invariant law of increasing
     complexity.],
-) <fig:response-shape-taxonomy>
+) <tab:response-shape-taxonomy>
 
 #claim[*Response-shape claim.* Proxy pressure does not determine hidden drift by
 itself. A prediction needs a response process, a constraint set, and a
@@ -2161,18 +2162,13 @@ it should not cite this chapter as support for a Goodhart claim.
 
 The appendices are visual rather than foundational. Appendices A--D illustrate
 claims made in the formal chapters: selection drift depends on baseline
-response curves, dimensional scaling requires coupling assumptions,
-intervention channels transport mass rather than reweight it, and adding
-measured dimensions changes gaming through aggregation and cost geometry.
-Appendix E is different: it sketches a broader recursive-Goodhart hypothesis
-motivated by the framework but not proved by it. The formal chapters do not
-show that residual error generically becomes more dimensional or more complex
-under repeated proxy refinement; Chapter 5 instead gives conditional
-response-shape predictions, and shows which quantities would have to be
-measured for such a claim to become precise. Appendix F illustrates those
-Chapter 5 predictions: quadratic cost can spread response, fixed-charge or
-linear cost can concentrate it, and caps plus activation costs can create
-lumpy spillover rather than a universal complexity increase.
+response curves, intervention channels transport mass rather than reweight it,
+adding measured dimensions separates fixed-deficit harm from population harm,
+and response-shape predictions depend on active constraints. The formal chapters
+do not show that residual error generically becomes more dimensional or more
+complex under repeated proxy refinement; Chapter 5 instead gives conditional
+response-shape predictions and shows which quantities would have to be measured
+for such a claim to become precise.
 
 // =============================================================================
 = Appendix A — Selection drift is coupling-dependent, not dimension-dependent
@@ -2186,7 +2182,7 @@ local linear summary and can miss the tail response that selection actually
 uses.
 
 #figure(
-  image("figures/appendix-c-selection-thresholds.pdf", width: 100%),
+  image("figures/appendix-a-threshold-response.pdf", width: 100%),
   caption: [
     Selection only moves hidden dimensions through the baseline response curve.
     In the Gaussian-linear case, covariance summarizes this response. Outside
@@ -2194,28 +2190,18 @@ uses.
     right primitive is not baseline covariance but the selection response
     $EE[H mid(|) P >= t] - EE[H]$.
   ],
-) <fig:selection-thresholds>
+) <fig:threshold-response>
 
 The same point controls dimension. More hidden dimensions do not automatically
 create more drift. Dimensional growth appears only when adding dimensions also
 adds coupling to the selected proxy.
-
-#figure(
-  image("figures/appendix-c-dimensional-scaling.pdf", width: 72%),
-  caption: [
-    More hidden dimensions do not automatically imply more Goodhart drift.
-    Dimensional scaling appears only when adding dimensions also adds coupling
-    to the selected proxy. If total coupling is conserved, hidden drift need not
-    grow with dimension.
-  ],
-) <fig:dimensional-scaling>
 
 // =============================================================================
 = Appendix B — Selection versus intervention as reweighting versus transport
 // =============================================================================
 
 #figure(
-  image("figures/appendix-d-selection-vs-intervention.pdf", width: 88%),
+  image("figures/appendix-b-selection-vs-intervention.pdf", width: 92%),
   caption: [
     Selection reweights; intervention transports. A selection policy can only
     increase the weight of states already present in the baseline distribution.
@@ -2235,7 +2221,7 @@ baseline hidden variance. Indeed, the baseline hidden variance is zero in this
 toy model.
 
 // =============================================================================
-= Appendix C — Adding measured dimensions can expand the attack surface
+= Appendix C — Fixed-deficit harm versus population harm
 // =============================================================================
 
 Under additive aggregation, the agent can substitute between measured gaming
@@ -2244,36 +2230,24 @@ score threshold $t$ is $a_j = t kappa_j slash K_M$, where
 $K_M = sum_(j in M) kappa_j$. The minimum cost is $t^2 slash (2 K_M)$, so gaming
 occurs iff $K_M >= t^2 slash (2 V)$. Adding a gameable measured dimension weakly
 increases $K_M$ and weakly lowers the cost of reaching the same score deficit.
-It leaves $H_per(M, d) = d$ in the unit-weight equal-harm case, but can increase
-$H_pop (M, F_Q, V)$ by admitting more agents into the gaming band.
+It leaves $H_per(M, d) = d$ in the unit-weight equal-harm case where gaming is
+feasible, but can increase $H_pop (M, F_Q, V)$ by admitting more agents into the
+gaming band.
 
 #figure(
-  image("figures/appendix-e-additive-substitution.pdf", width: 68%),
+  image("figures/appendix-c-welfare-objects.pdf", width: 92%),
   caption: [
-    Under additive aggregation, adding a gameable measured dimension can lower
-    the cost of reaching the score threshold. $H_per(M, d)$ may be conserved
-    under equal harm-per-score assumptions, but the population of agents for
-    whom gaming is worthwhile expands as aggregate gaming capacity increases.
+    Fixed-deficit and population harm are different objects. In the
+    unit-weight equal-harm additive model, feasible $H_per(d)$ curves coincide:
+    the same score deficit causes the same per-gamer harm. As aggregate gaming
+    capacity $K$ grows, the profitable deficit band expands and population harm
+    $H_pop$ rises for both the normal and skewed quality distributions used in
+    the Iteration 21 stress check.
   ],
-) <fig:additive-substitution>
+) <fig:welfare-objects>
 
 The sign of a "more metrics" result is therefore not determined by the number of
 dimensions. It is determined by the aggregation rule.
-
-#figure(
-  image("figures/appendix-e-additive-vs-conjunctive.pdf", width: 82%),
-  caption: [
-    Aggregation rule controls dimensional effects. Additive scorecards permit
-    substitution across dimensions; conjunctive scorecards require clearing
-    every measured dimension. Thus adding metrics can either create cheaper
-    routes to the same score or raise the cost of passing, depending on how the
-    metric aggregates.
-  ],
-) <fig:additive-vs-conjunctive>
-
-// =============================================================================
-= Appendix D — Exchange-rate condition for conservation
-// =============================================================================
 
 The narrow conservation result in the additive model assumes that a point of
 score inflation is equally socially harmful no matter which channel supplies it.
@@ -2282,63 +2256,8 @@ $sum h_j a_j$, the fixed-deficit per-agent harm is
 
 $ H_per(M, d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j^2). $
 
-#figure(
-  image("figures/appendix-f-exchange-rate-condition.pdf", width: 78%),
-  caption: [
-    Re-routing conserves harm only when social harm uses the same exchange rates
-    as the score. If $h_j = c w_j$ on the active measured set, then every unit
-    of score inflation is equally socially harmful and $H_per(M, d)$ is
-    conserved. Otherwise, moving weight across channels can raise or lower
-    fixed-deficit harm.
-  ],
-) <fig:exchange-rate-condition>
-
 // =============================================================================
-= Appendix E — A speculative recursive-Goodhart cartoon
-// =============================================================================
-
-This appendix is not a theorem of Chapters 1--5. It is a cartoon of a broader
-empirical hypothesis suggested by the framework. The axes labelled $h_1$ through
-$h_5$ are deliberately not proxy dimensions. They stand for outcome-relevant
-properties of the policy or model that the proxy stack does not fully capture:
-long-horizon effects, strategic pressure, rare-context behaviour, objective
-stability, institutional fit, or whatever the domain-specific hidden variables
-turn out to be. The cartoon assigns them synthetic, mixed movements because the
-framework alone does not say whether their correlations with the monitored proxy
-dimensions are positive, negative, or close to zero.
-
-The hypothesis would earn support if successive proxy patches predictably
-reduced visible residuals while increasing residuals on pre-specified hidden
-dimensions that were less legible, less represented in training/evaluation, or
-cheaper to exploit. It would lose support if hidden residuals improved along
-with the monitored axes, moved idiosyncratically with no relation to legibility
-or cost, or if the cheapest route to high score became genuinely goal-improving
-rather than merely less visible.
-
-Chapter 5 supplies the guardrail for reading this cartoon. A recursive pattern
-should not be inferred from "complexity" after the fact. The hidden axes, the
-response geometry, and the relevant shape measure — support, rank, description
-length, cost, or search accessibility — must be specified before the patching
-sequence is used as evidence.
-
-#figure(
-  image("figures/appendix-g-recursive-goodhart-cartoon.pdf", width: 83%),
-  caption: [
-    Speculative recursive-Goodhart cartoon. As more proxy dimensions are
-    explicitly constrained, the cheapest route to high score changes. The
-    monitored axes can improve while unproxied hidden dimensions $h_1, dots, h_5$
-    move differently, depending on their empirical correlations with the proxy
-    stack and on the available gaming channels. In favorable cases, hidden
-    outcome quality improves too. In unfavorable cases, residual error moves
-    into dimensions that are less legible to the evaluator, less represented in
-    the training signal, or cheaper for the model to exploit. The plotted values
-    are synthetic and illustrative; they are not empirical measurements, and the
-    hypothesis needs pre-specified hidden dimensions before it can be tested.
-  ],
-) <fig:recursive-goodhart-cartoon>
-
-// =============================================================================
-= Appendix F — Response-shape predictions are conditional
+= Appendix D — Response-shape predictions are conditional
 // =============================================================================
 
 Chapter 5 replaces the generic minimum-complexity attractor story with a
@@ -2349,12 +2268,12 @@ fixed-charge costs can select one route; caps force spillover only after a route
 saturates.
 
 #figure(
-  image("figures/appendix-h-response-geometry.pdf", width: 100%),
+  image("figures/appendix-d-response-geometry.pdf", width: 100%),
   caption: [
     Response geometry selects the residual shape. A quadratic cost can spread
     effort along $C w$; a linear or fixed-charge model can concentrate effort on
-    the cheapest route; a cap converts that concentration into spillover. None
-    of these is a generic law of increasing complexity.
+    the cheapest route; positive fixed costs plus caps can switch active sets.
+    None of these is a generic law of increasing complexity.
   ],
 ) <fig:response-geometry>
 
@@ -2363,15 +2282,5 @@ use a cheap-to-start channel for small deficits, then switch to a different
 channel with lower marginal cost once the deficit is large enough to justify the
 entry cost. Thus the robust prediction is lumpy regime change, not universal
 sorted filling.
-
-#figure(
-  image("figures/appendix-h-fixed-charge-caps.pdf", width: 88%),
-  caption: [
-    Fixed charges plus caps produce active-set switches. In this example, a
-    high-marginal, zero-fixed-cost channel wins at small deficits, but a
-    low-marginal, positive-fixed-cost channel wins later. The optimizer can skip
-    the small-deficit route instead of filling it first.
-  ],
-) <fig:fixed-charge-caps>
 
 #bibliography("refs.bib", title: "References", style: "association-for-computing-machinery")
