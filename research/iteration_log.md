@@ -362,3 +362,36 @@ Iteration 21 checks support the notation discipline around `H_per` and
 Red flags fired: no contradiction exposed. The main correction during the pass
 was semantic: `H_pop` must be computed as the population expectation
 `E[d 1{0 < d <= Delta_K}]`, not as the conditional mean among gamers.
+
+## Iteration 21.1
+
+Question tackled: simulation-code hardening after review of the Iteration
+20-21 checks.
+
+What changed: repaired the two simulation scripts without changing any math
+claims. Both scripts now check that every returned `Check` is well formed
+instead of using a tautological string-length finiteness assertion. Iteration
+20 now uses non-axis-aligned value vectors for the scalar/operator selection
+bound; strengthens the Pareto Boltzmann diagnostic with tilted-mean growth;
+runs a sigma sweep for noisy Stackelberg response without asserting a general
+monotonicity theorem; and solves the `W_ell(d,V)` problem numerically with
+SLSQP before comparing to the closed form. Iteration 21 now writes outputs
+relative to the script directory, solves the active-face quadratic examples
+with SLSQP under nonnegativity constraints, and adds a conjunctive aggregation
+population check.
+
+What the run showed: `make run` passed deterministically. The solver-backed
+checks matched the closed-form welfare-bound and active-face quadratic
+solutions. The sigma sweep showed a finite noisy-response diagnostic rather
+than a monotone law. The conjunctive check showed fixed-deficit per-gamer harm
+scaling as `m d` while the equal-cost entry band shrinks with the number of
+required measured dimensions.
+
+What's open now: this pass closes the obvious simulation-code review issues
+and one cheap conjunctive coverage gap. Noisy-threshold population welfare,
+endogenous `V`, adaptive hardening, and broader active-set families remain
+future model work.
+
+Red flags fired: no contradiction exposed. The only conceptual guardrail is
+that the noisy sigma sweep and heavy-tail truncation diagnostics remain finite
+toy checks, not general theorems.

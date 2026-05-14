@@ -11,10 +11,10 @@ condition that would narrow or kill the claim.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from math import exp, isfinite, sqrt
+from math import sqrt
 
 import numpy as np
-from scipy.optimize import minimize_scalar
+from scipy.optimize import minimize, minimize_scalar
 from scipy.special import logsumexp
 from scipy.stats import norm
 
@@ -33,6 +33,14 @@ class Check:
 
 def fmt_vec(x: np.ndarray) -> str:
     return "[" + ", ".join(f"{v:.4f}" for v in x) + "]"
+
+
+def assert_checks_well_formed(checks: list[Check]) -> None:
+    for check in checks:
+        assert check.name.strip()
+        assert check.tests.strip()
+        assert check.result.strip()
+        assert check.kill_condition.strip()
 
 
 def linear_gaussian_threshold(rng: np.random.Generator) -> Check:
@@ -91,18 +99,25 @@ def boltzmann_finite_mgf_and_heavy_tail(rng: np.random.Generator) -> Check:
     # Deterministic Pareto quantile grid, avoiding random max noise. For a
     # finite mgf proxy this sequence should stabilize; for Pareto it grows.
     log_growth = []
+    tilted_expectations = []
     for n in quantile_sizes:
         u = (np.arange(1, int(n) + 1) - 0.5) / n
         pareto_quantiles = (1.0 - u) ** (-1.0 / alpha)
-        log_growth.append(logsumexp(beta_heavy * pareto_quantiles) - np.log(n))
+        log_weights = beta_heavy * pareto_quantiles
+        log_normalizer = logsumexp(log_weights)
+        log_growth.append(log_normalizer - np.log(n))
+        tilted_expectations.append(float(np.sum(np.exp(log_weights - log_normalizer) * pareto_quantiles)))
     log_growth = np.array(log_growth)
-    assert log_growth[-1] > log_growth[0] + np.log(2)
+    tilted_expectations = np.array(tilted_expectations)
+    assert np.all(np.diff(log_growth) > 1.0)
+    assert np.all(np.diff(tilted_expectations) > 0.0)
+    assert tilted_expectations[-1] > 5.0 * tilted_expectations[0]
     return Check(
         name="boltzmann_finite_mgf_and_heavy_tail",
         tests="Weighted-response Q6-Q9: Boltzmann covariance velocity is usable on the finite-mgf domain only.",
         result=(
             f"normal tilt E_beta[Z^2-1]={tilted:.4f} vs beta^2={expected:.4f}; "
-            f"Pareto log truncated normalizers grow {fmt_vec(log_growth)}"
+            f"Pareto log normalizers {fmt_vec(log_growth)}; tilted means {fmt_vec(tilted_expectations)}"
         ),
         kill_condition="Would fail if the heavy-tail proxy produced stable exponential normalizers under increasing truncation.",
     )
@@ -112,16 +127,21 @@ def value_weighted_selection(rng: np.random.Generator) -> Check:
     p = rng.normal(size=N)
     h = np.column_stack([0.7 * p + rng.normal(scale=0.7, size=N), -0.4 * p + rng.normal(scale=0.9, size=N)])
     selected_drift = h[p >= 1.0].mean(axis=0) - h.mean(axis=0)
-    v_quality = np.array([1.0, 0.0])
-    v_burnout = np.array([0.0, 1.0])
-    scalar_1 = float(v_quality @ selected_drift)
-    scalar_2 = float(v_burnout @ selected_drift)
-    assert scalar_1 > 0.9
-    assert scalar_2 < -0.45
+    v_a = np.array([0.6, 0.8])
+    v_b = np.array([-0.8, 0.6])
+    scalar_a = float(v_a @ selected_drift)
+    scalar_b = float(v_b @ selected_drift)
+    reconstructed = scalar_a * v_a + scalar_b * v_b
+    assert abs(np.linalg.norm(v_a) - 1.0) < 1e-12
+    assert abs(np.linalg.norm(v_b) - 1.0) < 1e-12
+    assert abs(float(v_a @ v_b)) < 1e-12
+    assert np.allclose(reconstructed, selected_drift)
+    assert scalar_a > 0.1
+    assert scalar_b < -1.0
     return Check(
         name="value_weighted_selection",
         tests="Proposition 1': scalar value drift depends on declared value vector v, not on H coordinates alone.",
-        result=f"B_H={fmt_vec(selected_drift)}, v1.B_H={scalar_1:.4f}, v2.B_H={scalar_2:.4f}",
+        result=f"B_H={fmt_vec(selected_drift)}, v_a.B_H={scalar_a:.4f}, v_b.B_H={scalar_b:.4f}",
         kill_condition="Would fail if changing the declared value vector left the scalar welfare reading invariant.",
     )
 
@@ -164,24 +184,37 @@ def multichannel_water_filling() -> Check:
 def noisy_stackelberg_response() -> Check:
     q = 0.0
     t = 1.0
-    sigma = 0.45
+    sigmas = np.array([0.05, 0.15, 0.45, 1.0])
     kappa = 1.2
     value = 2.0
+    deterministic_pass_action = t - q
+    deterministic_delta = sqrt(2 * kappa * value)
 
-    def utility(a: float) -> float:
+    def utility(a: float, sigma: float) -> float:
         pass_prob = norm.cdf((q + a - t) / sigma)
         return value * pass_prob - a * a / (2 * kappa)
 
-    opt = minimize_scalar(lambda a: -utility(a), bounds=(0.0, 3.0), method="bounded")
-    a_star = float(opt.x)
-    deterministic_delta = sqrt(2 * kappa * value)
-    assert opt.success
-    assert 0.0 < a_star < deterministic_delta
-    assert utility(a_star) > utility(0.0)
+    actions = []
+    utility_gains = []
+    for sigma in sigmas:
+        opt = minimize_scalar(lambda a: -utility(a, sigma), bounds=(0.0, 3.0), method="bounded")
+        a_star = float(opt.x)
+        assert opt.success
+        assert 0.0 < a_star < deterministic_delta
+        assert utility(a_star, sigma) > utility(0.0, sigma)
+        actions.append(a_star)
+        utility_gains.append(utility(a_star, sigma) - utility(0.0, sigma))
+    actions = np.array(actions)
+    utility_gains = np.array(utility_gains)
+    assert abs(actions[0] - deterministic_pass_action) < 0.15
+    assert np.ptp(actions) > 0.25
     return Check(
         name="noisy_stackelberg_response",
         tests="Open stochastic-response extension: smoothing the pass condition changes realized action but still uses declared cost/stakes/noise.",
-        result=f"a*_noisy={a_star:.4f}, deterministic Delta={deterministic_delta:.4f}, utility gain={utility(a_star)-utility(0.0):.4f}",
+        result=(
+            f"sigmas={fmt_vec(sigmas)}, a*={fmt_vec(actions)}, "
+            f"gains={fmt_vec(utility_gains)}, deterministic pass action={deterministic_pass_action:.4f}, Delta={deterministic_delta:.4f}"
+        ),
         kill_condition="Would narrow the toy if noisy best response ignored the declared cost/stakes/noise geometry.",
     )
 
@@ -194,14 +227,27 @@ def convex_cost_vs_welfare_bound() -> Check:
     realized_harm = m_weight * a_cost_min[0]
 
     # Maximize ell(a)=M a_1 over ||a||^2/2 <= V and a_1+a_2 >= d.
-    # Since ell is increasing in a_1, choose a_1 as large as the ball allows:
-    welfare_bound = m_weight * sqrt(2 * value)
+    w = np.array([1.0, 1.0])
+    closed_form = m_weight * sqrt(2 * value)
+    opt = minimize(
+        lambda a: -m_weight * a[0],
+        x0=np.array([sqrt(2 * value), 0.0]),
+        method="SLSQP",
+        constraints=[
+            {"type": "ineq", "fun": lambda a: value - 0.5 * float(a @ a)},
+            {"type": "ineq", "fun": lambda a: float(w @ a) - d},
+        ],
+        options={"ftol": 1e-12, "maxiter": 200},
+    )
+    assert opt.success
+    welfare_bound = -float(opt.fun)
+    assert abs(welfare_bound - closed_form) < 1e-6
     assert realized_harm == m_weight * d / 2
     assert welfare_bound > realized_harm
     return Check(
         name="convex_cost_vs_welfare_bound",
         tests="Iteration 19/Q10: m(d), ell(a*(d)), and W_ell(d,V) are different objects.",
-        result=f"ell(a*(d))={realized_harm:.4f}; W_ell(d,V)={welfare_bound:.4f}; value weight M={m_weight:.1f}",
+        result=f"ell(a*(d))={realized_harm:.4f}; solver W_ell(d,V)={welfare_bound:.4f}; closed form={closed_form:.4f}",
         kill_condition="Would fail if convex affordability alone bounded welfare independently of the declared ell weights.",
     )
 
@@ -229,7 +275,7 @@ def main() -> None:
         print(f"   result: {check.result}")
         print(f"   kill/narrow condition: {check.kill_condition}")
 
-    assert all(check.result and isfinite(float(len(check.result))) for check in checks)
+    assert_checks_well_formed(checks)
     print(f"\nPASS: {len(checks)} simulation checks completed.")
 
 

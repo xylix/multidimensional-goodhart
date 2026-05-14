@@ -14,16 +14,16 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from itertools import combinations
-from math import isfinite
 from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
+from scipy.optimize import minimize
 
 
 SEED = 20260513
 N = 400_000
-OUT_DIR = Path("outputs")
+OUT_DIR = Path(__file__).parent / "outputs"
 
 
 @dataclass
@@ -36,6 +36,14 @@ class Check:
 
 def fmt_vec(x: np.ndarray) -> str:
     return "[" + ", ".join(f"{v:.4f}" for v in x) + "]"
+
+
+def assert_checks_well_formed(checks: list[Check]) -> None:
+    for check in checks:
+        assert check.name.strip()
+        assert check.tests.strip()
+        assert check.result.strip()
+        assert check.kill_condition.strip()
 
 
 def powerset_indices(n: int):
@@ -148,22 +156,38 @@ def capped_fixed_charge_active_sets() -> Check:
 def active_face_quadratic_response() -> Check:
     d = 1.7
     c = np.eye(2)
+
+    def solve_nonnegative_quadratic(w: np.ndarray) -> np.ndarray:
+        opt = minimize(
+            lambda a: 0.5 * float(a @ a),
+            x0=np.full_like(w, d / len(w)),
+            method="SLSQP",
+            bounds=[(0.0, None)] * len(w),
+            constraints=[{"type": "eq", "fun": lambda a: float(w @ a) - d}],
+            options={"ftol": 1e-12, "maxiter": 200},
+        )
+        assert opt.success
+        return np.asarray(opt.x)
+
     w_bad = np.array([1.0, -1.0])
     unconstrained = d * c @ w_bad / float(w_bad @ c @ w_bad)
-    active_face = np.array([d, 0.0])
+    active_face = solve_nonnegative_quadratic(w_bad)
+    expected_active_face = np.array([d, 0.0])
     assert unconstrained[1] < 0.0
     assert np.all(active_face >= 0.0)
     assert abs(float(w_bad @ active_face) - d) < 1e-12
-    assert 0.5 * float(active_face @ active_face) < 0.5 * float((np.array([d, 0.2]) @ np.array([d, 0.2])))
+    assert np.allclose(active_face, expected_active_face, atol=1e-8)
 
     w_good = np.array([1.0, 2.0])
     interior = d * c @ w_good / float(w_good @ c @ w_good)
+    solved_interior = solve_nonnegative_quadratic(w_good)
     assert np.all(interior >= 0.0)
     assert abs(float(w_good @ interior) - d) < 1e-12
+    assert np.allclose(solved_interior, interior, atol=1e-8)
     return Check(
         name="active_face_quadratic_response",
         tests="Iteration 18/Q18: the quadratic Cw formula is interior only when sign constraints do not bind.",
-        result=f"invalid unconstrained action {fmt_vec(unconstrained)} repaired to active-face {fmt_vec(active_face)}; valid interior example {fmt_vec(interior)}",
+        result=f"invalid unconstrained action {fmt_vec(unconstrained)} solved to active-face {fmt_vec(active_face)}; valid interior solve {fmt_vec(solved_interior)}",
         kill_condition="Would fail if the full-space Cw direction were valid despite a negative action component under a >= 0.",
     )
 
@@ -236,12 +260,46 @@ def population_harm_objects(rng: np.random.Generator) -> Check:
     )
 
 
+def conjunctive_aggregation_population(rng: np.random.Generator) -> Check:
+    value = 0.7
+    kappa = 1.0
+    threshold = 1.0
+    measured_counts = np.array([1, 2, 3])
+    fixed_deficit = 0.4
+    per_gamer_harm = measured_counts * fixed_deficit
+    entry_cutoffs = np.sqrt(2 * kappa * value / measured_counts)
+    q_normal = rng.normal(loc=0.0, scale=1.0, size=N)
+    d_normal = threshold - q_normal
+    h_pop = []
+    gamer_rates = []
+    for m, cutoff in zip(measured_counts, entry_cutoffs):
+        mask = (d_normal > 0.0) & (d_normal <= cutoff)
+        h_pop.append(np.mean(np.where(mask, m * d_normal, 0.0)))
+        gamer_rates.append(float(np.mean(mask)))
+    h_pop = np.array(h_pop)
+    gamer_rates = np.array(gamer_rates)
+
+    assert np.allclose(per_gamer_harm, np.array([0.4, 0.8, 1.2]))
+    assert np.all(np.diff(entry_cutoffs) < 0.0)
+    assert np.all(np.diff(gamer_rates) < 0.0)
+    return Check(
+        name="conjunctive_aggregation_population",
+        tests="Iteration 5/Q13-Q17: conjunctive aggregation multiplies fixed-deficit per-gamer harm while shrinking entry under equal costs.",
+        result=(
+            f"m={measured_counts.tolist()}, fixed-deficit harms={fmt_vec(per_gamer_harm)}, "
+            f"entry cutoffs={fmt_vec(entry_cutoffs)}, gamer rates={fmt_vec(gamer_rates)}, H_pop={fmt_vec(h_pop)}"
+        ),
+        kill_condition="Would fail if a conjunctive metric did not raise fixed-deficit per-gamer harm or did not shrink the equal-cost entry band.",
+    )
+
+
 def run_all() -> list[Check]:
     rng = np.random.default_rng(SEED)
     return [
         capped_fixed_charge_active_sets(),
         active_face_quadratic_response(),
         population_harm_objects(rng),
+        conjunctive_aggregation_population(rng),
     ]
 
 
@@ -256,7 +314,7 @@ def main() -> None:
     print(f"\nArtifacts:")
     print(f"   {OUT_DIR / 'iteration21_active_sets.png'}")
     print(f"   {OUT_DIR / 'iteration21_welfare_objects.png'}")
-    assert all(check.result and isfinite(float(len(check.result))) for check in checks)
+    assert_checks_well_formed(checks)
     print(f"\nPASS: {len(checks)} simulation checks completed.")
 
 
