@@ -422,3 +422,35 @@ Red flags fired: no contradiction exposed. The main guardrail is unchanged:
 do not identify `kappa` with gradient accessibility, benchmark contamination,
 model size, or reward-model feature simplicity unless a worked application
 declares that response geometry and its falsifiers.
+
+## Iteration 23
+
+Question tackled: worked ML benchmark application for the response-modeling
+contract.
+
+What changed: added a Chapter 5 worked contract for MMLU benchmark pressure.
+The example treats MMLU as a named benchmark anchor, not as proof of the
+theory. It walks through the eight contract fields: type, baseline behavior,
+exposure, channel, action geometry, proxy/target, aggregation, and evidence.
+The key split is fixed-checkpoint selection via `W_theta` versus finetuning,
+prompt search, contamination, synthetic-data filtering, or reward/proxy
+optimization via `K_theta`. The book now states that action geometry is absent
+unless the application declares finetuning data, benchmark access, search
+budget, reward loop, compute, KL penalty, or comparable costs.
+
+What the propositions license: Propositions 1 and 1' license only
+fixed-candidate checkpoint-selection claims with declared hidden value weights.
+Proposition 2 licenses an MMLU-related Stackelberg wedge only after declaring a
+one-dimensional threshold, stakes `V`, and cost parameter `kappa`; MMLU alone
+does not supply them. Proposition 3 requires a declared local convex
+action/search geometry. Proposition 4 requires additive benchmark components
+with declared costs and hidden-harm exchange rates.
+
+What's open now: empirical claims about a particular lab, release, or training
+run still need source-specific evidence: same-checkpoint before/after behavior,
+private or regenerated tests, contamination probes, action traces, and transfer
+to non-MMLU tasks.
+
+Red flags fired: no contradiction exposed. The guardrail is now book-facing:
+do not treat MMLU itself as licensing Stackelberg, convex-cost, RLHF,
+`kappa`, or welfare bounds without declared response geometry and falsifiers.

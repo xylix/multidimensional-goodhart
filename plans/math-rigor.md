@@ -12,29 +12,6 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
-## Iteration 23: Worked Contract Application
-
-Type: `application-mapping`.
-
-Recommended domain: an ML benchmark used for both checkpoint selection and
-finetuning.
-
-Scope:
-
-- Add a Chapter 5 worked example.
-- Walk through all eight response-modeling contract fields.
-- Make the contract the main transferable object in the worked example.
-  Checkpoint selection may instantiate the selection channel; finetuning or
-  RLHF requires a declared action/cost/search model before Stackelberg or convex
-  bounds apply.
-- For Propositions 1, 1', 2, 3, and 4, state what each licenses in the
-  application and what observation would falsify the mapping.
-- Avoid speculative claims such as "`kappa` is gradient accessibility" except
-  as explicitly non-binding examples of possible future model choices.
-- Update `research/verification_stack.md` Q19 from thought-experiment or
-  application mapping to Layer-2 passed only if the primitive map and falsifiers
-  are explicit.
-
 ## Iteration 24: Research-Note Consolidation
 
 Type: `review`.

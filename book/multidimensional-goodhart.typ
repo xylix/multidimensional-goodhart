@@ -1835,6 +1835,62 @@ chapter is meant to prevent is treating "the metric improved and the target did
 not" as enough to infer the response channel, the welfare mechanism, and the
 next fix.
 
+== Worked contract: MMLU benchmark pressure
+
+MMLU is a useful worked example precisely because it is not one mechanism.
+Hendrycks et al. introduce it as a broad multitask accuracy benchmark across
+many subject areas @hendrycks2021mmlu. Once the score becomes visible, the same
+reported improvement can come from several response channels: choosing among
+fixed checkpoints, repeatedly testing and adapting, finetuning on benchmark-like
+data, data contamination, prompt search, or optimizing a proxy reward whose
+improvements happen to transfer to the benchmark. Model-selection overfitting
+@cawley2010overfitting, adaptive holdout reuse @dwork2015generalization, and
+reward-model overoptimization @gao2023rewardmodeloveroptimization are therefore
+nearby warnings, not automatic explanations.
+
+The contract for an MMLU claim has eight fields:
+
+- *Type.* The object is either fixed model checkpoints or model-development
+  pipelines. A claim about selecting the best checkpoint is a selection claim.
+  A claim about training, search, contamination, or reward optimization is a
+  response-kernel claim.
+- *Baseline behavior.* The baseline is pre-exposure answer behavior on
+  benchmark-like questions: accuracy by subject, error type, calibration, and
+  transfer to related but unpublished tasks.
+- *Exposure.* The exposure can be the public MMLU score, reporting and
+  leaderboard/status pressure, or an internal score used for model selection.
+  These exposures need not induce the same response.
+- *Channel.* Fixed-checkpoint selection changes weights over candidates
+  through $W_theta$. Finetuning, prompt search, contamination, synthetic data
+  filtering, and reward/proxy optimization change the behavior-generating
+  process through $K_theta$.
+- *Action geometry.* No action geometry is implied by the benchmark alone. It
+  must be declared: available finetuning data, benchmark access, prompt-search
+  budget, contamination path, reward-model loop, compute, KL penalty, or other
+  search costs.
+- *Proxy and target.* The proxy is MMLU accuracy, usually aggregated across
+  subjects. The target might be broad multitask understanding, robustness on
+  regenerated private tests, or a declared hidden capability vector. Without
+  that declaration, "better MMLU" is not yet a welfare or capability claim.
+- *Aggregation.* The subject/task average is a score aggregation rule. It is
+  not automatically a welfare rule, and it does not say which subjects are
+  substitutable for which hidden capabilities.
+- *Evidence.* Relevant evidence includes same-checkpoint before/after behavior,
+  private or regenerated tests, contamination probes, traces of prompt or
+  training search, transfer to non-MMLU tasks, and failures that move when the
+  benchmark format changes.
+
+What do the propositions license here? Propositions 1 and 1' apply only to
+fixed-candidate checkpoint selection with declared hidden value weights. They
+do not describe finetuning or contamination. Proposition 2 applies only after a
+one-dimensional pass threshold, stakes $V$, and cost parameter $kappa$ have
+been declared; MMLU alone supplies none of these. Proposition 3 applies only
+after a local convex action/search geometry has been specified. Proposition 4
+applies only if benchmark components are modeled as additive channels with
+declared costs and hidden-harm exchange rates. Thus MMLU can instantiate the
+framework, but it does not by itself license Stackelberg, convex-cost, RLHF, or
+welfare bounds.
+
 #claim[*Book-level conclusion.* Goodhart behavior is not determined by proxy
 pressure alone. It is determined by the response channel: selection over fixed
 types or intervention through fixed-type action and response kernels, with
