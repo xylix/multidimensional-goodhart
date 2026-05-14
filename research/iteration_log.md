@@ -395,3 +395,30 @@ future model work.
 Red flags fired: no contradiction exposed. The only conceptual guardrail is
 that the noisy sigma sweep and heavy-tail truncation diagnostics remain finite
 toy checks, not general theorems.
+
+## Iteration 22
+
+Question tackled: ML formal analogue survey for the response-modeling
+framework.
+
+What changed: added `research/threads/ml_formal_analogue_survey.md`. The new
+thread maps existing ML theorem families to framework primitives: model
+selection and hyperparameter search as selection over fixed candidates;
+adaptive holdout and leaderboard work as repeated-selection/evidence-standard
+primitives; strategic classification as the closest action-cost intervention
+analogue; performative prediction as response-kernel/distribution-shift
+formalism; reward gaming as proxy/target separation; and reward misspecification
+or reward-model overoptimization as empirical/search-geometry anchors. Each row
+separates established theorem content from non-binding analogy and names a
+falsifier for a future worked application.
+
+What's open now: Iteration 23 should use the survey to build one worked ML
+benchmark contract. The best candidate is a benchmark used both for checkpoint
+selection and for finetuning/RLHF-style optimization, because it contains a
+clean selection channel and a separate intervention/search channel. Bibliography
+expansion and book integration remain later polish/application work.
+
+Red flags fired: no contradiction exposed. The main guardrail is unchanged:
+do not identify `kappa` with gradient accessibility, benchmark contamination,
+model size, or reward-model feature simplicity unless a worked application
+declares that response geometry and its falsifiers.

@@ -12,32 +12,6 @@ Iterations 16-18 are the high-mutation zone: if a proposition boundary,
 notation choice, or proof condition changes, revise the next one or two
 iterations locally rather than forcing the original wording through.
 
-## Iteration 22: ML Formal Analogue Survey
-
-Type: `theorem-mapping`.
-
-Recommended domain: ML benchmarks used for checkpoint selection, finetuning,
-RLHF, leaderboard comparison, or repeated adaptive evaluation.
-
-Scope:
-
-- Identify formal ML theorems with similar geometry, inputs, and outputs to the
-  n-dimensional Goodhart model.
-- Prioritize checkpoint selection, adaptive benchmark use, leaderboard
-  overfitting, hyperparameter search, reward misspecification, and performative
-  prediction.
-- For each candidate theorem family, record inputs, outputs,
-  optimization/search assumptions, and whether it maps to selection,
-  action/cost/search, response-kernel, proxy/target, aggregation, or evidence
-  primitives.
-- Build a mapping table that separates established theorem content from
-  non-binding analogies.
-- Do not import claims into Chapter 5 unless the primitive map and falsifiers
-  are explicit.
-- Mark speculative correspondences, including any interpretation of `kappa` as
-  gradient accessibility or benchmark accessibility, as candidate future model
-  choices rather than claims of the current theory.
-
 ## Iteration 23: Worked Contract Application
 
 Type: `application-mapping`.

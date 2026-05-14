@@ -83,6 +83,11 @@ Passed:
   types; intervention changes action/output at fixed type.
 - Reward gaming and reward misspecification work match the intervention/gaming
   framing in ML (`skalse2022rewardgaming`, `pan2022rewardmisspecification`).
+- Iteration 22 ML theorem-mapping pass matched separate theorem families to
+  separate primitives: adaptive holdout/leaderboards to selection and evidence
+  standards, strategic classification to action-cost intervention,
+  performative prediction to response-kernel distribution shift, and reward
+  gaming/overoptimization to proxy-target and search-geometry primitives.
 
 Survived only barely:
 - The minimum-complexity attractor story has suggestive cousins in simplicity
@@ -214,7 +219,7 @@ response estimation and for controlled intervention/gaming environments.
 | Pareto selection and identifiability (`Q5`) | Thought experiment -> simulation | Construct two distributions with same observed Pareto frontier but different hidden dimensions; then simulate compression | Pareto selection preserves enough diversity to identify hidden response in the intended regimes |
 | Selection vs. intervention boundary (`Q8`, `Q12`) | Thought experiment -> real-world correspondence | Classify toggle-only, feature-changing, manifold-constrained, and `P`-only manipulation agents | A feature-changing agent can always be represented as harmless reweighting of baseline data |
 | General intervention bound (`Q10`) | Simulation passed for core toys; further simulation for broader variants | Iterations 20-21.1 verified the quadratic wedge, multichannel quadratic water-filling, sigma-sweep noisy Stackelberg response, and solver-checked convex-cost versus welfare-bound separation; later variants can add linear and elastic-net-like costs | Bound depends on baseline divergence rather than cost geometry, convex affordability is mistaken for a welfare bound without hidden value weights, `ell(a^*(d))` is conflated with `W_ell(d,V)`, or the convex formula is imported into non-convex ML/RLHF without a local response model |
-| Response-modeling contract (`Q19`) | Thought experiment -> application mapping | Apply the contract to one ML-eval case and one institutional scorecard; identify `U`, `W_theta`, `K_theta`, actions, costs, aggregation, hidden harm, and discriminating evidence | The contract cannot distinguish nearby mechanisms, or reduces to a generic checklist with no downstream calculation |
+| Response-modeling contract (`Q19`) | Theorem mapping passed for ML; worked application next | Iteration 22 produced primitive maps and falsifiers for adaptive benchmarks, strategic classification, performative prediction, and reward-gaming/overoptimization; Iteration 23 should apply the contract to one ML benchmark used for both checkpoint selection and finetuning/RLHF-style optimization | The contract cannot distinguish nearby mechanisms, or reduces to a generic checklist with no downstream calculation |
 | Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation passed for core welfare-object split and conjunctive contrast; further variants remain | Iterations 21-21.1 verified that fixed-deficit `H_per(d)` and population `H_pop(M; F_Q,V)` separate under normal and skewed `Q`, and that conjunctive aggregation raises fixed-deficit per-gamer harm while shrinking entry under equal costs; remaining variants include weighted additive and noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
 | Adaptive hardening (`Q14`) | Simulation | Repeated game where principal hardens the currently most-gamed channel; compare to static commitment | Dynamics cycle, increase attack surface, or lose to static narrow hardening |
 | Measurement frontier (`Q15`) | Thought experiment -> simulation | Construct signal-value vs. attack-surface frontier over measured sets `M` | Frontier is vacuous because all informative metrics are safe or all safe metrics are uninformative only by assumption |
