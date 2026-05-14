@@ -109,6 +109,31 @@ all; they reweight a baseline. Intervention channels optimize according to cost,
 search, caps, fixed charges, and aggregation. Complexity only becomes predictive
 after the response geometry and the complexity measure are named in advance.
 
+The narrower motivation is that scalar Goodhart is often doing two different
+compressions at once. First, it compresses the target into a single number.
+Second, it compresses the residual error into a single loss, usually without
+declaring the metric that says which directions of error are comparable. That is
+not wrong when the scalar value functional is genuinely part of the model: a
+declared $v dot H$, utility function, or loss norm is exactly what Chapter 2's
+operator bound asks for. But if the scalar is only a reporting convenience, it
+can make incomparable errors look interchangeable. A proxy can improve in the
+reported scalar while moving along a hidden direction that the scalarization has
+priced at zero, or while trading a small loss on a high-value coordinate for a
+large gain on a low-value coordinate because the weights were inherited from the
+dashboard rather than from the goal.
+
+The opposite repair, running scalar Goodhart separately on each coordinate, also
+loses the object of interest. Coordinate-wise analyses can tell us whether each
+proxy component becomes noisy, biased, or gameable on its own. They do not by
+themselves say how the error vector moves: whether gaming substitutes across
+dimensions, whether a closed channel spills pressure into another, whether a
+conjunctive gate changes the active constraint set, or whether a Pareto rule
+preserves diversity that a weighted sum would collapse. Those are geometric
+questions about the response channel and aggregation rule. The multidimensional
+framework is motivated by this gap: not by the claim that scalar models are
+false, but by the claim that scalar models silently choose, or omit, the metric
+that makes the residual shape intelligible.
+
 The specific approach here is to make proxy-induced distortion modelable. That
 requires more objects than scalar Goodhart usually keeps visible. A model has to
 say whether pressure only reweights fixed states or changes behavior at fixed
@@ -394,6 +419,18 @@ multidimensional too, usually with a different (and smaller) set of dimensions.
 Once that is taken seriously, "the regularity collapses" is replaced by a more
 precise and more useful question: *how does pressure on a proxy reshape the
 distribution of its residual error?*
+
+This is not a rejection of scalar analysis. Sometimes the principal really has a
+declared scalar objective, or the application has a defensible value-weighted
+loss. Then scalar Goodhart is the right projection. The problem appears when the
+scalar is introduced only because the dashboard, benchmark, or theorem wants one
+number. A vector residual has length and direction only after a norm or value
+metric is chosen. Without that choice, saying that "proxy error increased" is
+ambiguous; with the wrong choice, the model can hide exactly the direction in
+which optimisation caused damage. Treating each coordinate as a separate scalar
+problem avoids one compression but loses the cross-coordinate geometry:
+substitution, cancellation, bottlenecks, active constraints, and tail dependence.
+Those cross-terms are where many proxy repairs succeed or fail.
 
 The answer depends on the channel. In a *selection* regime, the policy reweights
 a fixed baseline distribution; hidden drift is governed by the baseline response
