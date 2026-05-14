@@ -167,11 +167,30 @@ Passed for scoped toy regimes:
   relies on separable quadratic capacity and fixed `V`; static commitment
   requires predeclared signal adequacy; and frontier claims require separately
   declared or estimated `kappa`, `h`, `gamma`, `w`, and `V`.
+- Iteration 35 promoted only the finite-channel deterministic hardening
+  capacity fact to theorem-boundary status in
+  `research/threads/adaptive_hardening_theorem_boundary.md`: with fixed `M`,
+  fixed `d`, fixed `V`, fixed weights, additive score gain, separable
+  quadratic costs, deterministic observation, and monotone lowering of
+  `kappa_j`, gaming is feasible exactly when
+  `S_t(M) >= d^2/(2V)`. A progress-aware largest-action multiplicative rule
+  terminates under finite positive-weight channels when floor capacity is
+  below the threshold; the literal rule can stall on already-floored channels
+  without an added progress/floor condition.
+- Iteration 36 adds seeded dynamic boundary checks in
+  `research/simulations/iteration36_response_dynamics.py`: noisy observation
+  of best-response actions can harden the wrong channel and miss the static
+  no-gaming threshold within a fixed repair budget; and the declared recurrence
+  `V_{t+1}=(1-lambda)V_t+lambda V0 exp(-rho H_obs_t)` produces different
+  stakes paths depending on what harm is observable.
 
 Still open or narrowed:
-- Adaptive hardening and measurement frontier now have a Layer-3 toy pass, but
-  theorem-level convergence, empirical estimation, stochastic scorecards,
-  endogenous stakes, and regulator policy optimality remain open.
+- Adaptive hardening now has a narrow theorem-boundary pass only for the
+  deterministic finite-channel capacity result plus a tiny stochastic/
+  endogenous-stakes boundary toy. Empirical estimation, stochastic filtering
+  and repair-budget design, endogenous-stakes fixed points, changing measured
+  sets, shared bottlenecks, nonconvex geometry, and regulator policy optimality
+  remain open.
 - Population-vs-per-agent welfare is now checked for deterministic entry with
   heterogeneous normal and skewed `Q`; noise and endogenous `V` still need
   separate models.
@@ -193,11 +212,12 @@ Killed if simulation shows:
 - A proposed minimum-complexity attractor vanishes under simple alternative
   complexity measures. Then the attractor claim is not well-posed yet.
 
-Verdict at this layer: Iterations 20, 21, 21.1, and 27 passed Layer 3 for their
-intended toy regimes. Noisy population welfare, endogenous stakes, theorem-level
-adaptive dynamics, broader attractors, and empirical implementation should not
-move forward as passed claims before small simulations, proof conditions, or
-domain evidence kill or sharpen them.
+Verdict at this layer: Iterations 20, 21, 21.1, 27, and 36 passed Layer 3 for
+their intended toy regimes. Iteration 35 separately proves the narrow
+deterministic adaptive-hardening capacity boundary. Noisy population welfare,
+endogenous-stakes fixed points, broader adaptive dynamics, broader attractors,
+and empirical implementation should not move forward as passed claims before
+small simulations, proof conditions, or domain evidence kill or sharpen them.
 
 ## Layer 4: implementation
 
@@ -246,7 +266,7 @@ response estimation and for controlled intervention/gaming environments.
 | Response-modeling contract (`Q19`) | Layer-2 passed for MMLU, hospital scorecard, and scientific-metrics worked applications; book integration closed in Iteration 34 | Iterations 22-23 produced primitive maps and falsifiers for ML analogues and then applied the contract to MMLU: fixed-checkpoint selection uses `W_theta`, while finetuning/search/contamination/reward-proxy optimization require a declared `K_theta`, action/search geometry, aggregation rule, proxy/target relation, and evidence standard. Iterations 29-30 added and reviewed a reusable application template and a hospital readmission scorecard application that changes the audit decision: inspect repeated fixed-hospital action traces by score-per-cost and hidden harm before crediting score gains as welfare gains. Iteration 31 added a scientific-metrics application with a novelty boundary: responsible-metrics work already supplies the broad Goodhart/Campbell warning, while the framework only claims a discriminator/evidence contract for selection, fixed-researcher response, proxy artifact repair, harmful proxy manufacture, and genuine quality improvement before increasing leverage on fast scalar metrics. Iteration 32 compares the hospital and scientific applications side by side and keeps the template only under transfer conditions: predeclare `U` and the type/action boundary, identify `W_theta`, `K_theta`, or both, declare proxy, hidden target, aggregation, and hidden harm/value before interpreting score movement, mark `kappa`, `h`, `gamma`, `w`, and `V` unavailable when evidence is weak, name discriminator observations stronger than aggregate score movement, and include contract-failure conditions that could actually fire. Iteration 33 turns this into a promotion map. Iteration 34 integrates the promoted application discipline into Chapter 6: applications must use plain-language audit dimensions for response ease, hidden harm/value, signal adequacy, effective score weights/thresholds/gates/overrides, and stakes; the reusable boundary requires discriminator observations, real failure conditions, and a changed audit/design/evidence decision. | The MMLU contract cannot distinguish fixed-checkpoint selection from finetuning, contamination, prompt search, or reward/proxy optimization; the hospital contract cannot distinguish population reweighting from fixed-hospital action change, harmful gaming from proxy-only repair, or real follow-up improvement from score-only movement; the scientific-metrics contract cannot distinguish applicant/field/institution composition shifts from fixed-researcher behavior, proxy repair from harmful proxy manufacture, or metric movement from long-run research value; the cross-domain template collapses into flexible redescription if primitives are assigned after metric movement, repeated-unit or composition observations are unavailable, harmful gaming, harmless proxy repair, and real improvement cannot be distinguished, the effective aggregation rule differs from the declared rule, or any application licenses `kappa`, Stackelberg, convex-cost, RLHF, welfare, research-value, or policy-optimality claims without explicit primitives and falsifiers; later work remains separate for adaptive-hardening convergence, stochastic/endogenous-stakes dynamics, empirical auditability, and policy review |
 | Literature primitive transfer | Layer-2 book integration closed | Iterations 26.1-26.4 produced the 13-row formal-analogue lit map, recorded the chapter decision, integrated Chapter 2 plus the late formal-analogue chapter, and closed the lit-review workstream. Each promoted source maps to a primitive and carries a "does not license" / falsifier boundary. | A cited external theorem is used as generic support without naming its primitive, assumptions, and non-transfer condition; or the book presents El-Mhamdi--Hoang, Skalse RL, Lucas, Holmstrom--Milgrom, or benchmark hygiene results as subsumed rather than mapped. |
 | Multidimensional gaming and conservation (`Q13`, `Q16`, `Q17`) | Simulation passed for core welfare-object split and conjunctive contrast; further variants remain | Iterations 21-21.1 verified that fixed-deficit `H_per(d)` and population `H_pop(M; F_Q,V)` separate under normal and skewed `Q`, and that conjunctive aggregation raises fixed-deficit per-gamer harm while shrinking entry under equal costs; remaining variants include weighted additive and noisy-threshold models | Harm sign is determined by dimension count alone; exchange rates and population entry do not matter |
-| Adaptive hardening (`Q14`) | Layer-3 toy simulation reviewed; theorem/empirical work open | Iterations 27-28 classified and reviewed finite-channel regimes: reactive hardening can converge to no-gaming, near-symmetric routes can switch before convergence, and static narrow commitment can beat broad reactive measurement when signal adequacy is predeclared. The reviewed license is capacity-threshold toy evidence under separable quadratic costs and fixed `V`. | The classifications vanish under small parameter perturbations; hardening fails to lower `S(M)` below `d^2/(2V)` in the declared model; route switching is presented as cycling; signal adequacy is chosen after the result; or the result is presented as policy optimality without stochastic, endogenous-stakes, or empirical estimation work |
+| Adaptive hardening (`Q14`) | Narrow theorem-boundary pass for deterministic finite-channel capacity; tiny dynamic boundary toy; empirical and broader dynamics work open | Iterations 27-28 classified and reviewed finite-channel regimes. Iteration 35 proves the exact capacity boundary: under fixed `M`, fixed `d`, fixed `V`, fixed weights, additive score gain, separable quadratic costs, deterministic observation, and monotone lowering of `kappa_j`, gaming is feasible iff `S_t(M) >= d^2/(2V)` and stops exactly when `S_t(M) < d^2/(2V)`. A progress-aware largest-action multiplicative rule terminates with finite positive-weight channels if floor capacity is below threshold; the literal rule can stall on already-floored channels without an added progress/floor condition. Iteration 36 shows that noisy observation can miss the threshold within a fixed repair budget and that endogenous-stakes paths depend on observed harm under a declared recurrence. | The result is used for arbitrary hardening policies, floors with `S_floor(M) >= d^2/(2V)`, literal largest-action rules that can repeatedly select already-floored channels, changing measured sets, stochastic observation without an observation-error and repair-budget model, endogenous `V` without observed-harm and forecast rules, changing `d`, shared bottlenecks, nonconvex/nonseparable response geometry, cycling claims, fixed-point claims, or policy optimality |
 | Measurement frontier (`Q15`) | Layer-3 toy simulation reviewed; empirical frontier work open | Iterations 27-28 constructed and reviewed explicit `kappa`/`h`/`gamma`/`w` measured-set frontiers: adding gameable dimensions can raise `S(M)` and `H_pop`, while a high-signal/low-harm/low-kappa metric can improve benefit without opening fixed-deficit gaming. The reviewed license is a toy classification, not a sign theorem. | Frontier is vacuous because all informative metrics are safe or all safe metrics are uninformative only by assumption; signal, harm, attack-surface, and stakes primitives cannot be estimated or bounded before deployment; signal adequacy is chosen after seeing the result; or a toy addition result is generalized to all metric additions |
 | Value-weighted susceptibility | Proposition sketch -> real-world correspondence | Propositions 1 and 1' give the coordinate-explicit and scalar/operator selection bounds; test whether declared value weighting changes rankings relative to SVD/PCA on known proxy-failure examples | Value weights are unavailable or arbitrary enough to make the scalar post hoc |
 | Minimum-complexity / recursive attractor (`Q4`, `Q18`, Appendix G) | Simulation passed for active-set guardrails; broader attractor tests remain | Iteration 21 compared capped fixed-charge active-set switches against active-face quadratic repair; remaining variants include sparse, low-rank, and search-prior geometries under a predeclared complexity measure | Attractor tracks cost/search geometry rather than complexity, the `C w` formula is used despite binding sign constraints, or "complexity" changes under harmless representation changes |

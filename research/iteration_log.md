@@ -764,6 +764,74 @@ Red flags fired: promotion risk. The repair is to keep Iteration 27 out of
 book/paper prose except as a clearly labeled toy example until theorem
 hypotheses or an application contract with estimable primitives are available.
 
+## Iteration 36 (response dynamics beyond the static toy)
+
+Question tackled: What is the smallest falsifiable dynamic repair after the
+Iteration 35 deterministic theorem boundary, without claiming a general
+performative or adaptive-policy theorem?
+
+What changed: added `research/threads/response_dynamics_boundary.md` and
+`research/simulations/iteration36_response_dynamics.py`; added
+`make iteration36` and included it in `make run` from `research/simulations/`.
+Updated `open_questions.md`, `verification_stack.md`, and `claim_audits.md`.
+No book or paper files were edited.
+
+What the toy showed: first, with seeded Gaussian observation error on current
+best-response actions, a largest-observed-action hardening rule can harden a
+low-capacity channel and fail to cross `S(M) < d^2/(2V)` within a fixed repair
+budget, even though an oracle update would cross the threshold. Second, under
+the declared recurrence
+`V_{t+1}=(1-lambda)V_t+lambda V0 exp(-rho H_obs_t)`, the same static score
+capacity produces different stakes paths when generated harm is observable
+versus invisible.
+
+What's open now: stochastic filtering, repair-budget design, endogenous-stakes
+fixed points, agent forecasts, strategic regulator updates, changing measured
+sets, changing deficits, and policy optimality remain unlicensed.
+
+Red flags fired: this is a dynamic boundary toy, not a convergence theorem,
+cycling theorem, performative fixed-point theorem, empirical claim, or policy
+recommendation.
+
+## Iteration 35 (adaptive-hardening theorem boundary)
+
+Question tackled: Does the Iteration 27 adaptive-hardening simulation license
+any theorem beyond the deterministic finite-channel additive quadratic
+contract?
+
+What changed: added
+`research/threads/adaptive_hardening_theorem_boundary.md`, a proof-boundary
+note for Q14. Updated `open_questions.md`, `verification_stack.md`, and
+`claim_audits.md` to promote only the narrow deterministic capacity result and
+to leave stochastic observation, endogenous stakes, changing measured sets,
+shared bottlenecks, nonconvex geometry, empirical estimation, and policy
+optimality open. No book or paper files were edited.
+
+What the proof showed: under fixed measured set `M`, fixed deficit `d`, fixed
+stakes `V`, fixed weights, additive score gain, separable quadratic costs, and
+deterministic observation, monotone lowering of `kappa_j` makes
+`S_t(M)=sum_j kappa_{j,t} w_j^2` nonincreasing. Gaming is feasible exactly
+when `S_t(M) >= d^2/(2V)` and stops exactly when `S_t(M) < d^2/(2V)`.
+Monotonicity alone is not convergence: the hardening policy or floors must
+force capacity below threshold. For the Iteration 27 largest-action
+multiplicative rule, finite positive-weight channels and floor capacity below
+threshold imply finite termination if the rule is progress-aware, meaning it
+does not repeatedly select channels whose `kappa_j` is already at its floor.
+The literal largest-action rule can stall on an already-floored channel unless
+an added floor/weight condition prevents that behavior.
+
+What's open now: stochastic/noisy observation, endogenous `V`, changing
+deficits, changing measured sets, shared bottlenecks, nonseparable or
+nonconvex response geometry, convergence rates outside the multiplicative
+rule, empirical frontier estimation, and policy optimality remain separate
+workstreams.
+
+Red flags fired: the theorem is a boundary, not a promotion to general
+adaptive-dynamics advice. Positive floors with
+`S_floor(M) >= d^2/(2V)` can leave gaming feasible forever, and arbitrary or
+literal largest-action hardening policies can fail by repeatedly hardening
+irrelevant or already floored channels.
+
 ## Iteration 29 (hospital scorecard application template)
 
 Question tackled: Q19 for a non-ML institutional scorecard. Can the
