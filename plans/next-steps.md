@@ -14,6 +14,8 @@ The controlling constraint is that application claims should change a design,
 audit, or evidence-collection decision. A template that merely classifies a
 case after the fact is not enough.
 
+After finishing an iteration, delete the iteration step from this document.
+
 ## Iteration 29: hospital scorecard application template
 
 Iteration type: `application-mapping`.
@@ -61,6 +63,70 @@ application.
 
 A filled hospital/institutional scorecard application artifact plus any
 minimal tracking-file updates needed to record the license boundary.
+
+### Execution plan
+
+1. Re-read the application contract sources:
+   - `AGENT.md`, especially the `application-mapping` requirements;
+   - `research/threads/response_modeling_contract.md`;
+   - `research/open_questions.md` question 19;
+   - `research/verification_stack.md` entries for the response-modeling
+     contract and Iteration 27/28 boundary;
+   - `plans/could-do/example_draft.md`.
+2. Create `research/applications/` if it does not already exist.
+3. Create a reusable template artifact, preferably
+   `research/applications/application_template.md`, with the required fields
+   from this roadmap. Keep it domain-neutral enough for Iteration 31 to reuse,
+   but require concrete entries for the licensed calculation, changed
+   decision, discriminator observation, and contract-failure condition.
+4. Create `research/applications/hospital_scorecard.md` by filling the
+   template for the readmission / institutional scorecard case.
+5. In the hospital artifact, make the contract choose among at least these
+   nearby explanations:
+   - pure selection over hospitals through `W_theta`;
+   - harmful fixed-type intervention through `K_theta`;
+   - harmless proxy-only intervention;
+   - real quality improvement;
+   - mixtures that prevent a single clean classification.
+6. Declare the qualitative frontier primitives before making any
+   recommendation:
+   - `kappa`: relative ease of moving coding, discharge timing, follow-up,
+     and patient-selection channels;
+   - `h`: hidden patient-welfare exchange rates for each action channel;
+   - `gamma`: signal adequacy or information value of adding/hardening a
+     scorecard component;
+   - `w`: scorecard weights or threshold contributions;
+   - `V`: private value of clearing the ranking, penalty, reputation, or
+     funding threshold.
+7. Name the licensed calculation. The default candidate is the additive
+   score-deficit calculation from the draft:
+   `m(d) = d^2 / (2 sum_j kappa_j w_j^2)`, with action allocation
+   `a_j^*(d) = d kappa_j w_j / sum_i kappa_i w_i^2`. Use it only as a
+   conditional diagnostic, not as an empirical estimate.
+8. Name the changed design or audit decision. The plan should force a concrete
+   recommendation such as auditing action traces by score-per-cost and hidden
+   harm, adding a component only when `gamma` exceeds the added attack-surface
+   risk, or changing aggregation when substitution across harmful channels is
+   the predicted response.
+9. Run a local verification-stack pass at layers 1-2 inside the hospital
+   artifact or a short companion section:
+   - Layer 1: construct counter-scenarios where the template would misclassify
+     selection as intervention, or harmful gaming as real improvement.
+   - Layer 2: ask what observable hospital data would be needed before the
+     recommendation is licensed.
+10. Decide whether tracking files need updates:
+    - update `research/iteration_log.md` at the end of the iteration;
+    - update `research/claim_audits.md`, `research/verification_stack.md`,
+      `research/open_questions.md`, or `research/red_flags.md` only if the
+      hospital application sharpens a framework boundary or exposes an
+      overclaim.
+11. Remove the Iteration 29 section from this roadmap only after the iteration
+    is complete, in line with the lifecycle note above.
+12. Run verification:
+    - `rg -n "contract-failure|discriminator|kappa|gamma|licensed calculation|changed .*decision" research/applications`;
+    - `git diff --check`;
+    - `git status --short`.
+13. Commit the completed iteration.
 
 ### Success condition
 
