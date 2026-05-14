@@ -518,3 +518,29 @@ implementation, and non-convex ML/RLHF mappings remain open or narrowed.
 
 Red flags fired: none. No new theorem family, simulation, or ML mapping was
 added; the pass clarified claim boundaries and build artifacts.
+
+## Iteration 26
+
+Question tackled: direction-level review under a Lakatos / Tao / Hossenfelder /
+Feynman lens.
+
+What changed: added
+`research/reviews/lakatos_tao_hossenfelder_feynman_direction_review.md`. The
+review finds that the project has mostly handled the Lakatos and Feynman tests:
+major claims have been sharpened through counterexamples rather than protected
+by definition, and the audit trail volunteers many failure modes. The Tao test
+is passed for the static toy models but remains open for adaptive hardening,
+measurement-frontier, endogenous-stakes, and recursive-attractor work. The main
+Hossenfelder-style risk is no longer elegant overclaiming; it is
+taxonomy-led survivability, where the response-modeling contract can classify
+too much unless it forces calculations, falsifiers, or application decisions.
+
+What's open now: future application templates should include a "contract
+failure" field, and the next generate iteration should preferably build a small
+adaptive-hardening or measurement-frontier toy with explicit regimes where
+reactive hardening converges, cycles, or loses to static commitment. Framework
+level failure conditions should be promoted into `verification_stack.md` before
+the contract is used as the main publication-facing thesis.
+
+Red flags fired: no new formula-level contradiction. Directional watch item:
+the response-modeling contract must not become a way to postpone falsification.
