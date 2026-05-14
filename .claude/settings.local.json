@@ -3,7 +3,10 @@
     "allow": [
       "Bash(git add *)",
       "Bash(git commit *)",
-      "Bash(make run *)"
+      "Bash(make run *)",
+      "WebFetch(domain:arxiv.org)",
+      "Bash(git mv *)",
+      "WebFetch(domain:en.wikipedia.org)"
     ]
   }
 }
