@@ -69,7 +69,7 @@ Commit at end of each iteration with a one-line summary.
 
 Goodhart's law: "When a measure becomes a target, it ceases to be a good measure." Manheim & Garrabrant 2018 give a scalar formalization (G: S → R, M = G + noise, selection pressure on M) and four flavors: regressional, extremal, causal, adversarial.
 
-We're developing a vector version. The motivating claim ("deep Goodhart"): as a regulator adds proxy dimensions to fight scalar Goodhart, error redistributes — magnitude shrinks, informational complexity grows. This should yield testable structure, not just rhetoric.
+We're developing a vector version. The original motivating claim ("deep Goodhart") was that as a regulator adds proxy dimensions to fight scalar Goodhart, error redistributes: magnitude shrinks while informational complexity grows. Treat that as a conjectural prompt, not the current thesis. The surviving project is a response-modeling framework: Goodhart claims must declare the response channel, aggregation rule, hidden value/harm functional, and evidence standard before importing any toy bound.
 
 ## Current formalization (starting point — refine as warranted)
 
@@ -82,36 +82,30 @@ We're developing a vector version. The motivating claim ("deep Goodhart"): as a 
   - R^m: measured directions (ker φ)^⊥, unmeasured directions ker φ.
   - R^k: signal im(φ), artifact im(φ)^⊥.
 - Selection: A = {s : w · P(s) ≥ c} (scalarized) or Pareto frontier on P.
+- Response model: type space U, baseline type law ν, participation weights W_θ(u), and response kernels K_θ(ds | u). Pure selection changes W_θ while keeping K_θ = K_0; intervention changes K_θ at fixed type.
 
 Keep two failure-mode gaps distinct throughout:
 
 1. **Dimension gap**: ker φ ≠ 0 — directions of G that P can't see at any noise level.
 2. **Observation gap**: ε ≠ 0 — noisy measurement within measured directions.
 
-## Open questions to develop
+## Current project state
 
-1. **Dimensional dependence.** Does P(Goodhart-style harm) scale with dim(ker φ) under plausible correlation assumptions between measured and unmeasured G-dimensions?
-2. **Conservation Goodhart.** Near a binding constraint h(G) ≤ B, does balloon-squeezing intensity scale with cos(∠(φ* ∇P, ∇h))? Toy linear-Gaussian case should be derivable.
-3. **Conservation of weirdness.** As control effort t grows, does ‖ε‖ decrease while H(ε) increases? Is ‖ε‖ · exp(H(ε)) approximately preserved in some regime?
-4. **Discovery problem.** Selection compresses the visited distribution and breaks identifiability of φ from observation. Is this fundamentally experimental design rather than inference? Does adversarial mimicry correspond to a Fisher-information-minimizing policy?
-5. **Absorption dynamics.** Low-impedance dims absorb error from elsewhere. Can absorbers be detected from cross-correlations? What happens when control closes the absorption path?
-6. **Dimension-coupled stability.** Conditions under which controlling dim i destabilizes a previously-stable dim j (because j was absorbing perturbations through coupling to i).
+- The strongest result is the **selection/intervention split**. Selection channels are baseline reweighting problems; intervention channels require action, cost, search, or response-kernel geometry.
+- Broad claims have mostly died or narrowed. Dimension count alone does not determine harm; covariance is not a finite-pressure primitive; adding metrics has no sign without aggregation and exchange rates; minimum-complexity attraction is not generic.
+- The useful mathematical objects are conditional: threshold/weighted selection response, chi-square/value-weighted selection drift bounds, the quadratic Stackelberg wedge, convex score-deficit budgets, additive exchange-rate conditions, and response-shape predictions under declared cost/search geometry.
+- The most useful methodological object is the **response-modeling contract**. A claim should declare type representation, baseline behavior, policy exposure, response channel, action/search geometry, proxy/target map, aggregation rule, hidden harm/value model, and falsifier.
+- Simulations in `research/simulations/` are Layer-3 checks for scoped toy regimes only. Do not treat them as empirical evidence or as validation of non-convex ML/RLHF dynamics.
 
-## Plausible attack vectors
+## Next-stage priorities
 
-- Toy linear-Gaussian model. G, ε jointly Gaussian; φ linear; threshold selection. Closed-form for measured-vs-unmeasured error under increasing pressure. Bridge to bias–variance.
-- Coupling tensor C_ij = ∂G_i / ∂(action on dim j). Structural typology of C → typology of failure modes.
-- Information-theoretic: I(G; P) and H(G | P) under selection. Directly relevant to conservation-of-weirdness.
-- Lagrangian/feasibility-constraint geometry. Project gradient onto tangent of binding constraint, characterize when coupling appears.
-- Game-theoretic: regulator-vs-system as Stackelberg with info asymmetry over φ.
+Prefer one of these before opening new speculative threads:
 
-## Approaches not yet seriously considered
+1. **Adaptive hardening / measurement frontier.** Simulate regulators that harden or select measured dimensions over time. Test convergence, cycling, and whether static narrow metrics dominate reactive patching.
+2. **Application templates.** Build response-modeling contracts for domains such as institutional scorecards, ML eval suites, and scientific metrics. Each template must name falsifiers and non-transfer conditions.
+3. **Paper/figure consolidation.** If the goal is human-facing output, fix proposition numbering, regenerate or replace weak figures, and make the paper extract self-contained before adding more theory.
 
-- Differential geometry of P-level sets in S. Geometry of upper level set in G-coordinates determines induced selection on G; possibly cleaner than scalarization framing.
-- Algorithmic information theory: residual complexity as Kolmogorov complexity. Could give a non-stochastic statement of "informational complexity."
-- Robust control / H∞ machinery.
-- Multi-armed bandit with hidden structure for the discovery problem.
-- Optimal transport between G-distribution before and after selection.
+Avoid spending another iteration rescuing the original recursive/minimum-complexity slogan unless the response geometry, complexity functional, and failure condition are fixed before the analysis.
 
 ## Outward pointers (for orientation, not deep dives)
 
@@ -250,14 +244,6 @@ Each iteration:
 5. Append a short `iteration_log.md` entry: question tackled, what changed, what's open now, what red flags fired.
 6. Stop. Output a one-paragraph summary for human review.
 
-### First iteration priorities
-
-The human wants concrete mathematical content from iteration 1, not just file scaffolding:
-
-- Do create the file structure.
-- But also produce, in iteration 1, either (a) a sharpened set of definitions building on the current formalization with at least one definitional question surfaced and a proposed resolution, or (b) a worked toy example for one of open questions 1–3 with at least a sketched derivation.
-- Don't spend iteration 1 entirely on meta-organization. The human will be reading whatever comes out — give them mathematical content to react to.
-
 ### Adversarial sub-protocol
 
 Triggered:
@@ -283,5 +269,3 @@ When triggered, before continuing forward work, do an adversarial pass on the mo
 ---
 
 Do not try to complete the framework in one pass. Build it up.
-
-Temporary: for now we are executing planned iterations from plans/math-rigor.md. These are review / adversarial steps, and we are performing approximately 10 of those in a row before getting back to generating. Remove each iteration plan in the commit that includes the work of that iteration.
