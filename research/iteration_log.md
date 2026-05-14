@@ -485,3 +485,36 @@ Red flags fired: no contradiction exposed. The coordinate-free selection-bound
 worry is closed as a live book-presentation problem because the book declares
 coordinates/value metrics. The broader proposition-language watch remains open
 only as a maintenance guardrail for future prose.
+
+## Iteration 25
+
+Question tackled: final book-polish pass and a compact paper extract of the
+survived Chapters 1-5 argument.
+
+What changed: replaced the book intro's carrying-example placeholder with a
+licensed-claims enumeration: selection bounds, intervention toy bounds,
+aggregation/exchange-rate results, response-shape guardrails, and the
+response-modeling contract. The intro summary now names both selection-bound
+forms: Proposition 1 as coordinate-explicit Euclidean drift and Proposition 1'
+as declared value/operator drift. Tightened the Chapter 2 to Chapter 3 handoff
+so selection analysis stops at reweighting and intervention analysis begins
+with declared response kernels, actions, costs, stakes, and aggregation
+geometry. Added `book/multidimensional-goodhart-paper.typ`, a compileable
+paper-style mini-draft sharing `refs.bib`, and added `make paper` plus README
+build instructions.
+
+What the pass showed: no serious contradiction was found. The existing
+response-kernel language already stated the key Iteration 11 repair: mutual
+singularity is decisive evidence against baseline-only selection, but the
+causal definition is `K_theta != K_0` at fixed type, and absolute continuity
+does not rule out intervention. The existing application-transfer paragraph
+already used the response-modeling contract as the transfer rule; the paper
+extract makes the same rule explicit for MMLU and states that Iterations
+20-21.1 are Layer-3 toy checks, not empirical proof.
+
+What's open now: the mini-draft is a first extract, not a publication-final
+paper. Welfare-bound packaging, endogenous `V`, adaptive hardening, empirical
+implementation, and non-convex ML/RLHF mappings remain open or narrowed.
+
+Red flags fired: none. No new theorem family, simulation, or ML mapping was
+added; the pass clarified claim boundaries and build artifacts.

@@ -8,10 +8,13 @@ not here.
 ## Files
 
 - `multidimensional-goodhart.typ` — the source.
+- `multidimensional-goodhart-paper.typ` — compact paper-style extract from
+  Chapters 1–5.
 - `refs.bib` — bibliography (hand-written; double-check page numbers/venues
   before anything goes out).
 - `multidimensional-goodhart.pdf` — compiled output (regenerated, not
   hand-edited).
+- `multidimensional-goodhart-paper.pdf` — compiled mini-draft output.
 - `scripts/make_appendix_figures.py` — deterministic figure generator for
   Appendices C–G.
 - `figures/` — generated appendix figure PDFs.
@@ -24,10 +27,18 @@ With `make`:
 make all
 ```
 
+To build only the book or only the paper extract:
+
+```sh
+make pdf
+make paper
+```
+
 Or directly:
 
 ```sh
 typst compile multidimensional-goodhart.typ
+typst compile multidimensional-goodhart-paper.typ
 ```
 
 Needs [Typst](https://typst.app) ≥ 0.14. `refs.bib` is picked up automatically.
@@ -55,6 +66,10 @@ uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
   charges, caps, low-rank affordances, and search priors.
 - **Ch. 5** — Response modeling: the contract a Goodhart claim must declare
   before making selection/intervention, shape, welfare, or evidence claims.
+- **Paper extract** — A compact draft of the survived argument from Chapters
+  1–5: residual error shape, selection and intervention channels,
+  multidimensional scorecards, the response-modeling contract, MMLU discipline,
+  and open problems.
 - **Appendix A** — Currently in progress: live research questions feeding the
   chapters.
 - **Appendix B** — Future open questions, parked for now.

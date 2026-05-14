@@ -62,16 +62,6 @@
 
 == The empirical phenomenon
 
-#text(weight: "bold")[[Carrying example placeholder.]] Start the intro on one
-concrete optimization case: a score, benchmark, or institutional metric is
-optimized; the visible failure is patched by adding or reshaping measured
-dimensions; and the distortion does not simply disappear. It moves. Sometimes it
-is selected out of an existing tail. Sometimes agents change behavior at fixed
-type. Sometimes an added metric blocks an exploit; sometimes it opens a new
-substitutable route; sometimes it merely changes which hidden harm is bought per
-unit of score. The case should be carried all the way through the chapter, but I
-am leaving it as a placeholder here because the current point is the spine.
-
 The empirical phenomenon I want this paper to help science model is not just
 "the proxy stops working". Scalar Goodhart already says that. The phenomenon is:
 optimization pressure reshapes the residual error landscape. Once a measure is
@@ -82,6 +72,23 @@ object. The proxy can fail by drifting along hidden goal coordinates, by
 changing the coupling between visible and hidden variables, by recruiting new
 agents into gaming, by moving from one cheap action channel to another, or by
 changing which residuals remain legible to the evaluator.
+
+The licensed claims in this draft are deliberately narrower than that
+phenomenon. In a pure selection channel, hidden drift is a baseline-response
+object and admits two Cauchy--Schwarz bounds: a coordinate-explicit Euclidean
+bound after hidden coordinates are declared, and a declared value/operator bound
+after the value metric is declared. In a toy intervention channel, quadratic
+Stackelberg gaming gives a wedge of width $sqrt(2 kappa V)$, while the convex
+score-deficit proposition gives a private-cost budget only after action geometry
+is declared. In multidimensional scorecards, additive and conjunctive
+aggregation have different signs, and additive fixed-deficit conservation holds
+only under the harm-per-score exchange-rate condition. In response-shape
+claims, quadratic costs, fixed charges, caps, low-rank affordances, and search
+priors are guardrails on different models, not evidence for a generic
+complexity attractor. For applications, the transfer rule is the
+response-modeling contract: declare type, response channel, action/search
+geometry, aggregation, hidden harm, and falsifiers before importing any
+calculation.
 
 The obvious objection is that this could become a way of naming the residue
 after the fact. If the story is "there were many dimensions, something bad
@@ -601,10 +608,11 @@ a threshold. This isolates the two classical "easy" Goodhart effects,
 harder ones. It is the right
 first probe precisely because it is the regime where, as Chapter 2 shows, hidden
 harm turns out to be *bounded by quantities visible in the pre-selection
-distribution*. Chapter 3 then asks what changes when the principal's policy does
-not merely re-select from a fixed population but changes the population itself —
-when agents *respond* — and shows that this is where the "deep Goodhart" story
-has teeth, and where the bound from Chapter 2 has no analogue.
+distribution*. That selection analysis stops at reweighting: it does not say
+what fixed agents can do after a metric is announced. Chapter 3 therefore starts
+again from declared response kernels, actions, costs, stakes, and aggregation
+geometry. It shows where the Chapter 2 baseline-only bound no longer has an
+analogue, and what must replace it.
 
 A reader who wants the punchline before the construction: there is a clean
 dichotomy between *selection channels* (the policy reweights a fixed baseline
@@ -640,6 +648,9 @@ The proved or directly derived results in these chapters are:
 - Selection-channel drift satisfies the coordinate-explicit bound
   $norm(B_H(theta))_2 <= delta dot norm(s)_2$, with
   $delta^2 = chi^2(mu_theta parallel mu_0)$.
+- The same selection argument gives the declared value/operator bound
+  $abs(Delta(v dot H)) <= delta sqrt(v^T Sigma_H v)$, and its dual-norm form
+  after a value metric is declared.
 - In the quadratic Stackelberg gaming model, the gaming wedge is
   $Delta = sqrt(2 kappa V)$.
 - In the additive multidimensional gaming model, quadratic costs give the
