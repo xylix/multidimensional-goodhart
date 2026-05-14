@@ -27,21 +27,48 @@
 
 #block(inset: 8pt, fill: luma(248), radius: 3pt)[
   #text(weight: "bold")[Abstract.] Goodhart's law is often summarized as
-  proxy failure under optimization. This paper extract argues for a more
-  structured object: under pressure, residual error has shape. Selection over a
-  fixed baseline, intervention through fixed-type response, and multidimensional
-  aggregation generate different distortion geometries. The useful transfer
-  rule is therefore a response-modeling contract, not a universal theorem about
-  dimensions or complexity.
+  proxy failure under optimization. The motivating hypothesis here was more
+  specific: in multidimensional proxy systems, optimizing a set of measured
+  dimensions should make the remaining error directions more structured and
+  perhaps more complicated. Working through selection, intervention, and
+  aggregation models narrows that hypothesis. The surviving object is not a
+  universal complexity law, but response-dependent error geometry: selection
+  over a fixed baseline, intervention through fixed-type response, and
+  multidimensional aggregation generate different distortion shapes. The useful
+  transfer rule is therefore a response-modeling contract.
 ]
 
-= Introduction: residual error has shape
+= Introduction: the original hypothesis
 
 The familiar slogan is that when a measure becomes a target, it ceases to be a
-good measure @goodhart1975 @strathern1997. The multidimensional version should
-not merely say that more proxy dimensions create more failure. The stronger and
-more brittle claim is that residual error has a response-dependent shape:
-direction, support, curvature, tail behavior, exchange rates, and dynamics.
+good measure @goodhart1975 @strathern1997. The original research hypothesis
+behind this paper was a multidimensional mathematical version of that slogan:
+when a proxy system optimizes some set of measured dimensions, the error in the
+remaining unmeasured or undermeasured dimensions should not merely grow. It
+should acquire structure. As successive proxy dimensions are modelled, measured,
+or optimized away, residual error should migrate into the other dimensions in a
+more complicated geometric pattern.
+
+In informal terms, the expectation was recursive Goodhart with geometry. A
+scalar proxy leaves a residual. Adding dimensions constrains some visible
+failure modes. But optimization pressure may then move into the residual degrees
+of freedom that the expanded proxy still does not control. If this is right, a
+multidimensional model should reveal how error becomes redistributed,
+concentrated, rerouted, or made less legible as the measured coordinate set
+changes.
+
+That broad hypothesis is too elastic as stated. More dimensions do not by
+themselves imply more failure. Selection over a fixed baseline is not the same
+mechanism as agents changing behavior at fixed type. A compensatory scorecard
+does not have the same geometry as a conjunctive one. And "more complicated"
+is not a prediction until the response process and the complexity or shape
+measure are fixed in advance.
+
+The narrower result of the modelling work is therefore this: residual error has
+a response-dependent geometry. The core object is not bare dimension count, but
+the channel that connects optimization pressure to movement in state space.
+Selection, intervention, and aggregation each impose different mathematical
+constraints on the shape of residual error.
 
 Write the target-relevant state as $G(s) in RR^m$, the proxy as
 $P(s) in RR^k$, the intended proxy relation as $phi : RR^m -> RR^k$, and the
@@ -51,10 +78,11 @@ after the score is used for control. The framework below separates those cases
 by the response channel.
 
 #claim[
-  The licensed thesis is not "more dimensions means more Goodhart" and not
-  "optimization makes error generically more complex." It is: a Goodhart claim
-  should declare the response model that connects proxy pressure to
-  target-relevant distortion.
+  The original hypothesis was that multidimensional Goodhart pressure would
+  make off-proxy error more complicated as measured dimensions are optimized.
+  The licensed result is sharper and more conditional: the shape of residual
+  error is governed by the declared response channel, action/search geometry,
+  aggregation rule, and hidden value model.
 ]
 
 = Selection channels
