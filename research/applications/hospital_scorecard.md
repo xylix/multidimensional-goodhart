@@ -16,6 +16,39 @@ readmission score improves. The same observation is compatible with hospitals
 leaving the comparison pool, coding changes, delayed readmissions, better
 follow-up care, patient avoidance, or a mixture.
 
+## Scientific discipline analogy
+
+The core warning is the same as several ordinary science rules of thumb. Decide
+what would count as evidence before seeing the result; separate prediction from
+after-the-fact explanation; make the claim falsifiable; do not move the
+goalposts; distinguish correlation from mechanism; check alternative
+explanations; and measure the target rather than only the proxy.
+
+For this application, a better readmission score is only the starting
+observation. It is not yet evidence that patients are healthier. The score could
+improve because care improved, because reporting changed, because sicker
+patients were avoided, because service lines or comparison groups changed, or
+because measurement errors were repaired. The response-modeling contract is
+useful only if it names in advance what would distinguish those possibilities.
+
+In the notation below, this means declaring the type/action boundary and the
+frontier primitives before they are used to interpret the outcome:
+
+- `U`: what counts as baseline hospital type rather than post-scorecard action;
+- `kappa`: which response channels are easy or accessible;
+- `h`: which response channels help or hurt hidden patient welfare;
+- `gamma`: whether the score component has enough signal to justify its
+  attack surface;
+- `w`: how much each component contributes to the score or threshold;
+- `V`: how much private value the hospital gets from clearing the relevant
+  penalty, funding, reputation, or ranking threshold.
+
+If these are declared or audited before and during policy exposure, the
+application can change an evidence-collection decision: look for the action
+traces and hidden outcomes that distinguish selection, harmless proxy repair,
+harmful gaming, and real improvement. If they are filled in only after the
+score moves, the application becomes a post-hoc classification exercise.
+
 ## 1. Type space
 
 Let hospital type be
