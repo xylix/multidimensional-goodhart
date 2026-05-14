@@ -1,7 +1,13 @@
 # Next steps after Iteration 36
 
 This is the active roadmap after the Iteration 36 response-dynamics boundary.
-The application-template promotion gate is closed: Chapter 6 now includes the
+Iterations 37-42 are a staged repair sequence: test empirical auditability,
+review policy readiness, consolidate the roadmap, and only then decide whether
+any book or paper integration is licensed. Iteration 36 is retained below as
+completed context for the sequence and is not itself part of the active work.
+
+Do not edit book or paper files before the policy-readiness gate. The
+application-template promotion gate is closed: Chapter 6 now includes the
 reviewed application discipline, narrowed reusable-template boundary, and
 compact hospital/scientific scorecard mappings. The adaptive-hardening theorem
 boundary is closed only for the narrow finite-channel deterministic capacity
@@ -13,7 +19,37 @@ The remaining work should repair reviewed-but-excluded gaps separately. Do not
 promote these into theorem, empirical, or policy claims until the relevant
 iteration has its own verification pass.
 
-After finishing an iteration, delete the iteration step from this document.
+After finishing an iteration, delete the completed iteration step from this
+document while preserving the later roadmap unless it is superseded.
+
+## Completed context: Iteration 36 response dynamics beyond the static toy
+
+Iteration type: `modeling`.
+
+Iteration 36 chose a hybrid approach: a short approach-boundary note plus a
+tiny executable toy. A proof-only pass was premature because the update rules
+were not fixed; review-only would not close the model gap; a small simulation
+gave the first falsifiable closure while keeping claims narrow.
+
+Completed artifacts:
+
+1. Added `research/threads/response_dynamics_boundary.md`, comparing
+   proof-note, review-only, and tiny-simulation approaches and recording why
+   the executable toy was the chosen first pass.
+2. Added `research/simulations/iteration36_response_dynamics.py` plus the
+   `make iteration36` target.
+3. Toy 1: stochastic observation of current best-response actions, where noisy
+   largest-channel selection can harden the wrong channel and fail to cross
+   `S(M) < d^2/(2V)` within a fixed repair budget.
+4. Toy 2: endogenous stakes closure, using the declared recurrence
+   `V_{t+1} = (1-lambda) V_t + lambda V0 exp(-rho H_obs_t)`, showing that
+   trust/stakes dynamics depend on what harm is observable.
+5. Updated `open_questions.md`, `verification_stack.md`, `claim_audits.md`,
+   `iteration_log.md`, and this roadmap.
+
+License only: these dynamics can break or alter the static capacity story
+under declared update rules. Do not claim a general performative fixed-point
+theorem.
 
 ## Iteration 37: empirical auditability of application primitives
 
@@ -26,39 +62,168 @@ or mark unavailable the audit dimensions before scorecard deployment.
 
 ### Work
 
-1. For hospital scorecards, specify feasible predeployment evidence for response
-   ease, hidden patient harm/value, signal adequacy, effective weights, and
-   stakes.
-2. For scientific metrics, specify what evidence could separate selection,
-   fixed-researcher response, proxy repair, harmful proxy manufacture, and real
-   research-quality improvement.
-3. Record which primitives cannot be estimated from available data and what
-   design decision follows from that unavailability.
+1. Add `research/applications/empirical_auditability.md`.
+2. For hospital and scientific-metrics applications, specify what evidence
+   could predeclare or bound response ease, hidden harm/value, signal adequacy,
+   effective weights, and stakes.
+3. Mark primitives unavailable when the evidence is not realistically
+   observable, and state the design/audit consequence.
+4. Update tracking docs only after the audit note is written.
 
 ### Success condition
 
-An empirical audit template that changes deployment, monitoring, or evidence
+An empirical audit note that changes deployment, monitoring, or evidence
 collection without claiming patient-welfare or research-value estimation from
 score movement alone.
 
-## Iteration 38: policy only after theorem and empirical repairs
+## Iteration 38: policy-readiness review
 
 Iteration type: `policy-review`.
 
 ### Purpose
 
-Consider policy implications only after the theorem/dynamics/empirical pieces
-above exist.
+Review Iterations 35-37 and decide whether policy prose is blocked or narrowly
+licensed.
 
 ### Work
 
-1. Review which prior iterations produced theorem-level, dynamic, or empirical
-   licenses.
-2. Exclude policy optimality unless those licenses are strong enough.
-3. If policy prose is permitted, keep it tied to concrete design, audit, and
-   evidence decisions.
+1. Add `research/reviews/policy_readiness_review.md`.
+2. Review Iterations 35-37 and identify theorem-level, dynamic-toy, and
+   empirical-audit licenses.
+3. Exclude policy optimality unless theorem, dynamics, and empirical-audit
+   licenses jointly support it.
+4. If anything is licensed, phrase it as concrete audit/design/evidence
+   decisions, not generic advice.
 
 ### Success condition
 
 A policy-readiness review that either blocks policy claims or states the narrow
-conditions under which they are licensed.
+conditions under which concrete design, audit, or evidence decisions are
+licensed.
+
+## Iteration 39: roadmap consolidation
+
+Iteration type: `roadmap`.
+
+### Purpose
+
+Reconcile the project map after the Iterations 36-38 repair sequence. This
+pass is bookkeeping on research/roadmap docs only; Iteration 42 is a separate
+post-prose-edit consistency check across book/paper prose, and the two should
+not be merged.
+
+### Work
+
+1. Reconcile `plans/next-steps.md`, `research/open_questions.md`,
+   `research/verification_stack.md`, and `research/claim_audits.md`.
+2. Close or rename roadmap items that are now theorem-boundary, dynamic-toy,
+   empirical-design, or policy-blocked.
+3. Produce a compact "what is now live" map for the project.
+
+### Success condition
+
+The roadmap and tracking docs agree on live questions, closed questions,
+blocked claims, and licensed next actions.
+
+## Iteration 40: integration-readiness review
+
+Iteration type: `integration-review`.
+
+### Purpose
+
+Decide whether any results from Iterations 35-39 should enter book or paper
+prose.
+
+### Work
+
+1. Use the same include/footnote/exclude format as the prior
+   promotion-readiness review.
+2. Default to no integration unless a result changes the main argument and
+   has a clearly stated boundary on what is excluded from the claim.
+3. Do not edit book or paper prose during this review.
+
+### Success condition
+
+A review note that explicitly permits, footnotes, or excludes each candidate
+book/paper integration.
+
+## Iteration 41: scoped book/paper integration, only if licensed
+
+Iteration type: `integration`.
+
+### Purpose
+
+Make a narrow prose edit only if Iteration 40 permits it.
+
+### Work
+
+1. If licensed, add at most a narrow footnote or appendix paragraph on the
+   adaptive-hardening theorem boundary.
+2. If licensed, add one short note that stochastic/endogenous dynamics remain
+   model-dependent.
+3. Do not add broad policy advice.
+4. If Iteration 40 licenses nothing, record that outcome in the integration
+   review note and skip directly to Iteration 42 without touching prose.
+
+### Success condition
+
+Any book/paper edit is traceable to the Iteration 40 integration-readiness
+review and does not broaden the licensed claim. If no edit was licensed, the
+review note explicitly records the no-edit closure.
+
+## Iteration 42: final consistency pass
+
+Iteration type: `consistency`.
+
+### Purpose
+
+Verify that book/paper prose, research notes, and roadmap agree on licenses and
+open questions.
+
+### Work
+
+1. Run repo-wide claim-audit searches for forbidden overpromotions. Use
+   scoped patterns to avoid false positives on notes that legitimately discuss
+   boundaries: `policy optimal\b`, `\bconverges to\b`, `\bcycling\b`,
+   `endogenous V`, and a `\btheorem\b` check limited to `book/` and `paper/`
+   prose. Run a separate `\bstochastic\b` check limited to `book/` and
+   `paper/` prose; do not flag matches in `research/` notes.
+2. Check book/paper prose, research notes, and roadmap against the Iterations
+   35-41 licenses.
+3. Fix only consistency and overpromotion problems; do not add new substantive
+   claims.
+
+### Success condition
+
+No tracked prose overpromotes theorem, dynamics, empirical, integration, or
+policy licenses beyond the review notes.
+
+## Test plan
+
+For Iteration 36, run `make iteration36` and `make run` from
+`research/simulations/`; require deterministic seeded output and explicit
+kill/narrow conditions.
+
+For prose iterations, run targeted `rg` checks for the iteration's boundary
+terms and excluded claims.
+
+For every iteration, run `git diff --check` and `git status --short`.
+
+Do not add new simulations after Iteration 36 unless a later note needs a
+minimal counterexample.
+
+## Public interfaces
+
+No public APIs, schemas, package interfaces, or book/paper claims change
+through Iteration 38. The only executable interface change is the Iteration 36
+simulation Makefile target.
+
+## Assumptions
+
+- The project should continue in research-iteration mode, not book-polish mode.
+- Iteration 36 was hybrid: approach comparison plus tiny executable dynamic
+  toy.
+- Iterations 37-38 should remain prose/review artifacts unless they uncover a
+  need for a small counterexample.
+- Book and paper edits are deferred until Iteration 40 explicitly licenses
+  them.
