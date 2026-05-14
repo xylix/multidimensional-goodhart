@@ -544,3 +544,53 @@ the contract is used as the main publication-facing thesis.
 
 Red flags fired: no new formula-level contradiction. Directional watch item:
 the response-modeling contract must not become a way to postpone falsification.
+
+## Iteration 26.1 (lit-review Stage 3 supplement)
+
+Iteration type: `application-mapping`.
+
+Question tackled: build the canonical primitive-map artifact consolidating
+the Codex ML survey and the Gemini scalar-anchor + genealogy material, per
+Stage 3 of `plans/lit-review.md`. Pre-stage decision: Chapter 2 scalar
+anchor is El-Mhamdi & Hoang 2024.
+
+What changed: added
+`research/reviews/formal_analogue_lit_map.md` with 13 primitive-map rows
+(El-Mhamdi 2024 anchor; Majka-El-Mhamdi 2025 independence-free extension;
+Skalse 2023 RL Goodhart; Skalse 2022 unhackability; Hardt et al.;
+Perdomo et al.; Dwork et al.; Cawley-Talbot; Blum-Hardt / Roelofs /
+Recht leaderboard; Pan / Gao reward overoptimization; Lucas 1976;
+Holmström-Milgrom 1991; Smith-Winkler 2006). Each row carries primary
+citation, framework primitive, what it licenses, what it does not
+license, falsifier / non-transfer condition, and confidence tag. Added a
+new "Formal-analogue lit-map audit" row block in `claim_audits.md`
+covering the five most load-bearing claims from the lit map (envelope
+vs sharp framing for El-Mhamdi; Skalse 2023 RL restriction;
+Holmström-Milgrom precedent boundary; Skalse 2022 proxy/target;
+Majka-El-Mhamdi independence gap).
+
+What the assumption-clash audit showed [tentative]: the book's
+Proposition 1/1' does not assume El-Mhamdi-style independence. El-Mhamdi's
+scalar setup embeds into the book's framework (S = R², product μ,
+P = G + ξ, H = G, threshold selection), and Proposition 1's chi-square
+envelope applies; El-Mhamdi gives the sharper asymptotic value of ρ_α
+under independence + named tails. So Chapter 2 §2.3 should frame the
+two as parallel formalisms with overlapping scope, not as nested
+generalization. Both halves go in the prose.
+
+What's open now: Stage 4 of `plans/lit-review.md` (chapter-vs-appendix
+decision) should record 13 promotion-ready rows and confirm the late
+formal-analogue chapter stays a real chapter. Stage 5a (Chapter 2 book
+integration) is now unblocked. Open identification: "DG19" cited by
+El-Mhamdi 2024 — pull bibliography at Stage 5a drafting. Open follow-up
+on whether Majka-El-Mhamdi 2025's independence-free results admit a
+multidim generalization the book could prove.
+
+Red flags fired: scheduled adversarial pass (post-Iteration 26) attacked
+the "envelope vs sharp" framing for El-Mhamdi as a special case of the
+book. Survived with refinement: "special case" is better phrased as
+"valid embedding within the book's framework." Two red-flag patterns
+(short argument; argument proves significantly more) fire weakly but
+are accounted for in the framing — the Cauchy-Schwarz proof is genuinely
+short, and the envelope is genuinely more general but at the cost of
+sharpness. No claim downgrade required.
