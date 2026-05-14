@@ -875,3 +875,75 @@ Red flags fired: novelty risk. The repair is explicit: the broad responsible-
 metrics warning is treated as known background, and the only claimed framework
 addition is a discriminator/evidence contract with concrete failure
 conditions.
+
+## Iteration 32 (review application template generalization)
+
+Question tackled: Do the hospital scorecard and scientific-metrics
+applications show genuine reuse of the response-modeling application template,
+or did the template only work by flexible redescription after each score moved?
+
+What changed: added
+`research/reviews/application_template_generalization_review.md`, a side-by-
+side skeptical review of `research/applications/application_template.md`,
+`research/applications/hospital_scorecard.md`, and
+`research/applications/scientific_metrics.md`. The review compares stable
+fields across domains, domain-specific traces, the frontier primitives
+`kappa`, `h`, `gamma`, `w`, and `V`, the quadratic diagnostic, and concrete
+flexible-redescription failure modes. Updated Q19, `claim_audits.md`,
+`verification_stack.md`, and `plans/next-steps.md`.
+
+What the review showed: the verdict is reusable with narrowing. The stable
+template is the response contract: predeclare `U` and the type/action
+boundary, identify whether the mechanism changes `W_theta`, `K_theta`, or
+both, declare proxy, hidden target, aggregation, and hidden harm/value before
+interpreting score movement, name discriminator observations stronger than
+aggregate score movement, and include contract-failure conditions that could
+actually fire. The scientific-metrics case is the harder transfer because
+hidden research value, `h`, and `gamma` are more delayed, field-specific, and
+contested than patient-welfare traces. That narrows the licensed output to a
+design/evidence contract, not research-value estimation.
+
+What's open now: Iteration 33 should decide which reviewed findings from
+Iterations 27-32 are safe to promote into book prose, with the Iteration 32
+verdict treated as a review result rather than a theorem or policy-optimality
+claim.
+
+Red flags fired: flexible-redescription risk. The repair is to reject reuse
+when primitives are assigned only after metric movement, repeated-unit or
+composition observations are unavailable, harmful gaming, harmless proxy
+repair, and real improvement cannot be distinguished, the declared aggregation
+rule differs from the effective rule, or the application only repeats that
+metrics can be gamed without changing a design, audit, or evidence decision.
+
+## Iteration 33 (promotion-readiness review)
+
+Question tackled: Which reviewed findings from Iterations 27-32 are safe to
+promote into book prose, and which must remain footnoted or excluded?
+
+What changed: added
+`research/reviews/application_promotion_readiness_review.md`, a promotion map
+with `include`, `footnote`, and `exclude` decisions for the adaptive-hardening
+toy, hospital application, scientific-metrics application, and application-
+template generalization review. Updated Q19, `claim_audits.md`,
+`verification_stack.md`, and `plans/next-steps.md`; removed the completed
+Iteration 33 roadmap section, leaving Iteration 34 active.
+
+What the review showed: promote the response-modeling application discipline,
+the narrowed template boundary, compact hospital and scientific application
+mappings, and the requirement that applications change an audit/design/evidence
+decision. Footnote only the quadratic diagnostic and the Iteration 27 adaptive-
+hardening / measurement-frontier toy as conditional toy evidence. Exclude new
+theorem claims, adaptive-hardening convergence beyond the reviewed toy, route
+switching as cycling, static narrow commitment as a general policy rule,
+endogenous `V`, empirical welfare or research-value estimation, policy
+optimality, universal anti-metric claims, and full application prose dumps.
+
+What's open now: Iteration 34 should edit
+`book/multidimensional-goodhart.typ`, Chapter 6, around `Response modeling:
+what a Goodhart claim must declare`, especially `Application discipline` and
+the worked-contract area. Leave `book/multidimensional-goodhart-paper.typ`
+unchanged unless a tiny consistency fix is unavoidable.
+
+Red flags fired: promotion risk. The repair is the promotion map: every book
+edit must be traceable to an included or footnoted row and must preserve the
+license boundary.

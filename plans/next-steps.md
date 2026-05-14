@@ -1,10 +1,9 @@
-# Next steps: Iterations 32-34
+# Next steps: Iteration 34
 
-This is the active roadmap after the hospital application review. It deliberately alternates
-application work and review before any book promotion:
+This is the active roadmap after the application-template generalization
+review and Iteration 33 promotion-readiness review. The promotion gate is now
+complete:
 
-- Iteration 32: review the two-application template generalization.
-- Iteration 33: promotion-readiness review for book integration.
 - Iteration 34: book edit incorporating only reviewed findings.
 
 The controlling constraint is that application claims should change a design,
@@ -12,100 +11,6 @@ audit, or evidence-collection decision. A template that merely classifies a
 case after the fact is not enough.
 
 After finishing an iteration, delete the iteration step from this document.
-
-## Iteration 32: review template generalization
-
-Iteration type: `review`.
-
-### Purpose
-
-Compare the hospital and scientific-metrics applications and decide whether
-the application template is reusable or only appeared to work through
-domain-specific hand tuning.
-
-### Work
-
-1. Review both applications side by side.
-2. Identify fields that remained stable across domains and fields that needed
-   domain-specific reinterpretation.
-3. Check whether the qualitative frontier primitives have defensible meanings
-   in both settings.
-4. Test whether each application has contract-failure conditions that could
-   actually fire.
-5. Decide whether the template is reusable, needs narrowing into separate
-   templates, or should be treated as an illustrative checklist only.
-
-### Output
-
-A side-by-side review artifact with a reuse verdict and a revised template
-boundary.
-
-### Success condition
-
-The review produces a clear reuse verdict and a revised template boundary:
-which fields are required, which are optional, and which transfer conditions
-must be met before the template changes a recommendation.
-
-### Failure condition
-
-The review cannot distinguish genuine reuse from flexible redescription, or
-the two applications share labels but not operational primitives.
-
-### Scope limits
-
-Do not promote the applications to book prose yet. The output should be a
-review artifact and any necessary updates to research tracking files.
-
-## Iteration 33: promotion-readiness review
-
-Iteration type: `promotion-review`.
-
-### Purpose
-
-Decide exactly what from Iterations 27-32 is safe to promote into the book.
-This is a gate between research notes and reader-facing prose.
-
-### Work
-
-1. Review Iterations 27-32 as a bundle:
-   - Iteration 27 adaptive-hardening / measurement-frontier toy;
-   - Iteration 28 adaptive-hardening review;
-   - Iteration 29 hospital application;
-   - hospital application review;
-   - Iteration 31 scientific-metrics application;
-   - Iteration 32 template-generalization review.
-2. Produce a promotion map with `include`, `exclude`, or `footnote` decisions
-   for each candidate claim, example, calculation, and recommendation.
-3. State the license boundary for every included or footnoted item: theorem,
-   toy-model implication, application mapping, review conclusion, or
-   conjecture.
-4. Identify the target book location, likely the response-modeling /
-   application chapter.
-5. Explicitly exclude theorem expansion, endogenous-stakes claims, and
-   policy-optimality claims unless already reviewed and licensed in the prior
-   iterations.
-
-### Output
-
-A promotion map for Iterations 27-32, with `include`, `exclude`, or `footnote`
-decisions and license boundaries for each candidate item.
-
-### Success condition
-
-The promotion map tells Iteration 34 exactly what may be edited into the book,
-what must remain in research notes, and what can appear only as a footnote or
-clearly labeled toy/application example.
-
-### Failure condition
-
-The review cannot separate reviewed findings from tempting but unlicensed
-claims, or it leaves Iteration 34 free to choose promotion boundaries during
-the edit.
-
-### Scope limits
-
-Do not edit the book in this iteration. Do not add new applications or new
-mathematical claims. This is a promotion gate.
 
 ## Iteration 34: book integration edit
 
