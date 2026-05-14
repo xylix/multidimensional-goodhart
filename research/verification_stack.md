@@ -108,7 +108,7 @@ remain speculative.
 
 ## Layer 3: simulation
 
-Passed or ready:
+Passed for scoped toy regimes:
 - Linear-Gaussian threshold selection can verify that hidden drift depends on
   the response/coupling vector, not hidden dimension alone.
 - Non-Gaussian threshold examples can verify that covariance can vanish while
@@ -118,7 +118,8 @@ Passed or ready:
   heavy-tail case should verify that the Boltzmann path can fail to exist.
 - Quadratic Stackelberg gaming can verify Proposition 2, the intervention band
   `Delta = sqrt(2 kappa V)`, and show why agent cost geometry, not baseline
-  variance, controls intervention harm.
+  variance, controls intervention harm. This is the quadratic Stackelberg toy
+  signature, not a universal intervention or ML training law.
 - Additive vs. conjunctive multidimensional gaming can verify the aggregation
   rule contrast.
 - Convex-cost versus welfare-bound examples can compare `m(d)`,
@@ -151,13 +152,16 @@ Passed or ready:
   conjunctive-aggregation population check verifies the per-gamer harm versus
   entry-band tradeoff.
 
-Survived only barely:
+Still open or narrowed:
 - Adaptive hardening dynamics needs simulation before theorem work. The cheap
   toy simulation should show whether hardening the most-gamed channel converges,
   cycles, or is dominated by committing to a narrow hard-to-game metric.
 - Population-vs-per-agent welfare is now checked for deterministic entry with
   heterogeneous normal and skewed `Q`; noise and endogenous `V` still need
   separate models.
+- Broader response-shape and recursive-attractor claims remain guardrailed by
+  active-set toy checks only; they are not passed as general complexity or
+  empirical implementation claims.
 
 Killed if simulation shows:
 - Dimensional drift grows without coupling assumptions in the selection model.
@@ -170,10 +174,11 @@ Killed if simulation shows:
 - A proposed minimum-complexity attractor vanishes under simple alternative
   complexity measures. Then the attractor claim is not well-posed yet.
 
-Verdict at this layer: selection response, intervention bands, and aggregation
-effects are at simulation/toy-model verification. Adaptive dynamics,
-population welfare, and attractors should not move to implementation before
-small simulations kill or sharpen them.
+Verdict at this layer: Iterations 20, 21, and 21.1 passed Layer 3 for their
+intended toy regimes. Adaptive dynamics, noisy population welfare, endogenous
+stakes, broader attractors, and empirical implementation should not move forward
+as passed claims before small simulations or domain evidence kill or sharpen
+them.
 
 ## Layer 4: implementation
 

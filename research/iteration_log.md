@@ -454,3 +454,34 @@ to non-MMLU tasks.
 Red flags fired: no contradiction exposed. The guardrail is now book-facing:
 do not treat MMLU itself as licensing Stackelberg, convex-cost, RLHF,
 `kappa`, or welfare bounds without declared response geometry and falsifiers.
+
+## Iteration 24
+
+Question tackled: consistency consolidation across the research notes and book
+after Iterations 20-23.
+
+What changed: updated the audit trail so `claim_audits.md`, `red_flags.md`,
+`verification_stack.md`, and `open_questions.md` agree on the proposition
+boundaries, Layer-3 simulation status, and Q19/MMLU application status. The
+book already had the needed reader-facing guardrails, so no book or PDF rebuild
+was needed.
+
+What the pass showed: Proposition 1 is the coordinate-explicit Euclidean
+selection bound, while Proposition 1' is the declared value/operator selection
+bound. Proposition 2's `sqrt(2 kappa V)` remains only the quadratic
+Stackelberg toy signature. Proposition 3 requires declared action/search
+geometry and is not a welfare bound. Proposition 4 is an iff-condition for
+fixed-deficit `H_per`, not a population or arbitrary-cost conservation claim.
+Q19/MMLU is recorded as a successful Layer-2 application because the contract
+distinguishes fixed-checkpoint `W_theta` selection from `K_theta`
+finetuning/search/contamination/reward-proxy mechanisms.
+
+What's open now: adaptive hardening, noisy population welfare, endogenous `V`,
+broader attractor claims, empirical implementation, and non-convex ML/RLHF
+training dynamics remain open or narrowed. Iterations 20, 21, and 21.1 count as
+Layer-3 passes only for their intended toy regimes.
+
+Red flags fired: no contradiction exposed. The coordinate-free selection-bound
+worry is closed as a live book-presentation problem because the book declares
+coordinates/value metrics. The broader proposition-language watch remains open
+only as a maintenance guardrail for future prose.

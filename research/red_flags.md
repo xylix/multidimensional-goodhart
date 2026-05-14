@@ -135,6 +135,36 @@ now has compact "Licenses / Does not license" boundaries, but later edits must
 not let the proposition labels imply that value weights, costs, response
 kernels, or hidden harm are identified from outcome distributions alone.
 
+## Iteration 24: consistency consolidation after Iterations 20-23
+
+Claim reviewed: the research notes and book now agree on the proposition
+boundaries, simulation status, and MMLU worked application.
+
+Red-flag scan: the coordinate-free selection-bound worry is closed as a live
+book-presentation problem. The book declares coordinates for Proposition 1 and
+a value direction or value norm for Proposition 1'. The remaining
+proposition-language issue is only a maintenance guardrail: future prose must
+not make the proposition labels sound like distribution-only identification of
+value metrics, action costs, response kernels, or hidden welfare.
+
+Simulation status: Iterations 20, 21, and 21.1 are Layer-3 passes for their
+intended toy regimes only: selection response, the quadratic Stackelberg
+wedge, multichannel quadratic water-filling, noisy finite diagnostics,
+active-face repair, welfare-object separation, and conjunctive-entry contrast.
+They do not close adaptive hardening, noisy population welfare, endogenous
+`V`, broad attractor claims, empirical implementation, or non-convex ML/RLHF
+training dynamics.
+
+MMLU status: Q19 has a successful Layer-2 worked application. The contract
+distinguishes fixed-checkpoint selection through `W_theta` from finetuning,
+prompt search, contamination, synthetic-data filtering, or reward/proxy
+optimization through `K_theta`, and requires action/search geometry plus
+falsifiers before importing `kappa`, Stackelberg, convex-cost, RLHF, or welfare
+claims.
+
+Repair: no new contradiction exposed. Keep the proposition-language watch item
+open as maintenance only; no repair iteration is needed before Iteration 25.
+
 ## Iteration 18: remaining math guardrails
 
 Claim reviewed: covariance as Boltzmann local velocity, quadratic response
