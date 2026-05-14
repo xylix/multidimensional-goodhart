@@ -62,7 +62,11 @@ themselves imply more failure. Selection over a fixed baseline is not the same
 mechanism as agents changing behavior at fixed type. A compensatory scorecard
 does not have the same geometry as a conjunctive one. And "more complicated"
 is not a prediction until the response process and the complexity or shape
-measure are fixed in advance.
+measure are fixed in advance. Scalar tail-conditioned Goodhart already has
+sharp external treatments, notably El-Mhamdi and Hoang's top-$alpha$
+selection analysis under target/discrepancy assumptions
+@el-mhamdi2024goodhart; the contribution here is a multidimensional
+response-modeling envelope and transfer rule.
 
 The narrower result of the modelling work is therefore this: residual error has
 a response-dependent geometry. The core object is not bare dimension count, but

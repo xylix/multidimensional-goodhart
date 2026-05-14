@@ -594,3 +594,99 @@ book. Survived with refinement: "special case" is better phrased as
 are accounted for in the framing — the Cauchy-Schwarz proof is genuinely
 short, and the envelope is genuinely more general but at the cost of
 sharpness. No claim downgrade required.
+
+## Iteration 26.2 (lit-review Stage 4 decision)
+
+Question tackled: decide whether the Stage 3 formal-analogue material is
+large enough to remain a chapter or should be downgraded to an appendix.
+
+What changed: independently audited the 13 rows in
+`research/reviews/formal_analogue_lit_map.md` against the promotion
+criteria: primary citation, named framework primitive, concrete "does not
+license" boundary, and concrete falsifier / non-transfer condition. All 13
+rows pass. Updated `plans/could-do/formal-analogue.md` to record the
+decision that the late formal-analogue material remains a real chapter, not
+an appendix. Updated `plans/lit-review.md` to point at the moved
+`plans/could-do/formal-analogue.md` path.
+
+What's open now: Stage 5a (Chapter 2 book integration) and Stage 5b (late
+formal-analogue chapter execution) are unblocked. Stage 6 remains the
+lit-review closure / handoff stage; adaptive hardening remains recorded in
+`plans/adaptive-hardening.md` without an assigned iteration number.
+
+Red flags fired: none. No new claims, theorem families, source mappings, or
+book prose were introduced; this was a review and recording pass only.
+
+## Iteration 26.3 (lit-review Stage 5 book integration)
+
+Question tackled: integrate the verified literature review into the reader-
+facing book without reopening the math-rigor work.
+
+What changed: added the Chapter 2 literature-scope chapter to
+`book/multidimensional-goodhart.typ`, covering genealogy, the
+Manheim--Garrabrant taxonomy boundary, El-Mhamdi--Hoang as the scalar anchor,
+Majka--El-Mhamdi as the independence-free scalar neighbor, and Smith--Winkler
+as a selection precursor. Added the late "Formal analogues across fields"
+chapter after the response-modeling contract, including the 13-row primitive
+map and prose sections for ML and economics analogues. Updated the paper
+extract with a one-line El-Mhamdi--Hoang anchor citation. Added bibliography
+entries for the new Chapter 2 and late-chapter citations. Renumbered later
+chapter references so the new literature chapter is Chapter 2, selection is
+Chapter 3, intervention is Chapter 4, response shape is Chapter 5, and the
+contract is Chapter 6.
+
+What the pass showed: the literature integration did not require changing the
+formal propositions. The new prose keeps the Stage 3 boundary discipline:
+external sources map to primitives and stop at named falsifiers / non-transfer
+conditions. The formal-analogue material remains a real chapter, not an
+appendix.
+
+What's open now: Stage 6 closure / handoff remains. Adaptive hardening remains
+future work in `plans/adaptive-hardening.md` and was not started here.
+
+Red flags fired: no new theorem-family claim was introduced. The risk is
+bibliographic and expository rather than mathematical: the new chapters must
+continue to distinguish sharp scalar external results from the book's looser
+multidimensional response-modeling envelope.
+
+## Iteration 26.4 (lit-review Stage 6 closure)
+
+Question tackled: close the lit-review integration plan as an active workstream
+after the Stage 5 book integration.
+
+What changed: replaced `plans/lit-review.md` with a compact closure note that
+points to the surviving artifacts: the formal-analogue lit map,
+`plans/could-do/formal-analogue.md`, the integrated book chapters, the paper
+extract, bibliography, verification-stack row, and iteration-log entries.
+Updated the verification-stack "Literature primitive transfer" status from book
+integration passed to book integration closed.
+
+What the pass showed: Chapter 2 and the late formal-analogue chapter remain
+book-integrated and build-verified, and the paper extract still carries the
+scalar-anchor citation. The lit-review integration is closed; future source
+or citation refinements are non-blocking follow-ups rather than active gates.
+
+What's open now: adaptive hardening remains future work in
+`plans/adaptive-hardening.md` with no assigned iteration number. No adaptive
+hardening simulation was started as part of this closure.
+
+Red flags fired: none. This was documentation and verification only; no book
+prose, theorem family, simulation, or adaptive-hardening work was introduced.
+
+## Iteration 26.5 (lit-review archive cleanup)
+
+Question tackled: make the closed lit-review plan's archive status explicit
+before starting any adaptive-hardening work.
+
+What changed: moved the closed lit-review plan from `plans/lit-review.md` to
+`plans/archived/lit-review.md`, documented the plans-directory lifecycle in
+`plans/README.md`, and retargeted active plan-directory navigation references
+that would otherwise point readers to the removed root plan.
+
+What's open now: adaptive hardening remains future work in
+`plans/adaptive-hardening.md` with no assigned iteration number. No
+adaptive-hardening simulation or theorem work was started in this cleanup.
+
+Red flags fired: none. This was archive and documentation cleanup only; no
+book prose, theorem family, simulation, or adaptive-hardening work was
+introduced.

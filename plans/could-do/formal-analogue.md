@@ -27,6 +27,8 @@ primitives (selection, action/cost/search, response-kernel, proxy/target,
 aggregation, evidence standard) and the response-modeling contract are on the
 page.
 
+Status: drafted into `book/multidimensional-goodhart.typ` in Iteration 26.3.
+
 ## Target length
 
 Six to ten pages of body text, plus one mapping table. Tighter than a survey,
@@ -125,8 +127,8 @@ Anchor theorem statements (verbatim, from
 - Conclusion: α ~ √((β-1)/(β-3))·ε, and
   ρ_α → max{-√((β-3)/(2(β-2))), -1/(β-2)} as ε → 0.
 
-Open issue carried to Stage 3 of `plans/lit-review.md`: El-Mhamdi assumes
-G ⊥ ξ. Does Chapter 3's selection-channel proposition assume
+Open issue carried to Stage 3 of `plans/archived/lit-review.md`: El-Mhamdi
+assumes G ⊥ ξ. Does Chapter 3's selection-channel proposition assume
 independence? If yes, the book inherits the assumption and cites
 Majka–El-Mhamdi 2025 as the independence-free extension. If no, the
 book's contribution is partial independent rediscovery of the
@@ -134,12 +136,12 @@ independence-free case and should be flagged in §2.3 accordingly.
 
 ## Promotion decision (chapter versus appendix)
 
-Decided at Stage 4 of `plans/lit-review.md` based on Stage 3 row count.
-Default: chapter, on the argument that the book's thesis includes the
-claim that the framework clarifies cross-field work. Downgrade to
-appendix only if fewer than three theorem families produce clean
-primitive maps with falsifiers, in which case the comparative-mapping
-contribution is too thin to carry a chapter.
+Stage 4 of `plans/archived/lit-review.md` independently audited the Stage 3
+table in `research/reviews/formal_analogue_lit_map.md` against the four
+promotion criteria: primary citation, named framework primitive, concrete
+"does not license" boundary, and concrete falsifier / non-transfer condition.
+Result: **13 rows** pass. The late formal-analogue material therefore remains
+a real chapter, not an appendix.
 
 ## Open questions for the chapter
 

@@ -1,4 +1,4 @@
-// Multidimensional Goodhart — draft of Chapters 1–5
+// Multidimensional Goodhart — draft of Chapters 1–7
 // Compile with:  typst compile multidimensional-goodhart.typ
 //
 // Source material: research/formalization.md, research/threads/*.md,
@@ -48,7 +48,7 @@
   #v(0.4cm)
   #text(size: 1.2em)[How measurement reshapes the terrain under measurement]
   #v(1cm)
-  #text(size: 1em)[Working draft — Intro and Chapters 1–5]
+  #text(size: 1em)[Working draft — Intro and Chapters 1–7]
   #v(0.3cm)
   #text(size: 0.95em, style: "italic")[#datetime.today().display()]
 ]
@@ -121,7 +121,7 @@ compressions at once. First, it compresses the target into a single number.
 Second, it compresses the residual error into a single loss, usually without
 declaring the metric that says which directions of error are comparable. That is
 not wrong when the scalar value functional is genuinely part of the model: a
-declared $v dot H$, utility function, or loss norm is exactly what Chapter 2's
+declared $v dot H$, utility function, or loss norm is exactly what Chapter 3's
 operator bound asks for. But if the scalar is only a reporting convenience, it
 can make incomparable errors look interchangeable. A proxy can improve in the
 reported scalar while moving along a hidden direction that the scalarization has
@@ -269,7 +269,7 @@ is trying to prove.
   calculation, but the application mapping: stochastic response, participation,
   hidden harm, and the link between selection value and realised action cost.
 
-- *Evidence standards / domain templates.* Chapter 5 states the
+- *Evidence standards / domain templates.* Chapter 6 states the
   response-modeling contract abstractly. The in-progress work is per-domain
   instantiation — ML evaluations, RLHF and finetuning, institutional
   scorecards, scientific metrics — each naming concrete referents for
@@ -291,7 +291,7 @@ is trying to prove.
   enough attack surface" — including whether the frontier is sometimes
   empty (no good choice exists).
 
-- *Response-shape simulation comparison.* The Chapter 4 conditional menu —
+- *Response-shape simulation comparison.* The Chapter 5 conditional menu —
   quadratic costs spread drift along $C w$; fixed activation or linear costs
   concentrate drift in the uncapped no-tie case; caps and convex
   post-activation costs spread it again, sometimes lumpily; low-rank action
@@ -338,7 +338,7 @@ is trying to prove.
 
 A separate class of questions surfaced during this work and is deliberately
 *not* on the critical path. Each needs a substantial new piece of machinery;
-none of them blocks Chapters 1–5. They are recorded here so they are not
+none of them blocks Chapters 1–7. They are recorded here so they are not
 rediscovered from scratch.
 
 - *Spectral / basis decomposition of the error.* Three decompositions
@@ -366,13 +366,13 @@ rediscovered from scratch.
   blind spot of PCA-based detection against value-aware adversaries who
   route $epsilon$ into low-variance components of historical observation.
 
-- *Pareto selection rather than scalarisation.* Chapter 2 fixes a weighted
+- *Pareto selection rather than scalarisation.* Chapter 3 fixes a weighted
   score and then a threshold. Pareto-frontier selection is a different
   operator: it preserves diversity across measured dimensions in a way
   scalar thresholding destroys. Open: when does selecting the
   Pareto-undominated set compress the selected distribution enough to break
   identifiability of the *unmeasured* dimensions, and when does it not?
-  Chapter 2's selection-channel response theory does not transport to it
+  Chapter 3's selection-channel response theory does not transport to it
   for free.
 
 - *$phi$-as-partial-observation alternative.* The chapters fix
@@ -402,23 +402,114 @@ than the principal. They are blocked on the right object to define, not on
 effort.
 
 // =============================================================================
+= Existing Goodhart formulations and their scope
+// =============================================================================
+
+== Genealogy and formal status
+
+The phrase "Goodhart's law" now points to several related claims that should
+not be treated as one theorem. Goodhart's original monetary-policy warning was
+about observed statistical regularities collapsing when used for control
+@goodhart1975. Campbell's social-science version emphasized that quantitative
+social indicators are corrupted by decision pressure @campbell1979. Strathern's
+later formulation compressed the point into the familiar target/measure slogan
+@strathern1997. These are useful genealogy, but in this book they are not used
+as theorem statements.
+
+The formal-status ancestor is Lucas's policy-evaluation critique @lucas1976critique.
+Its relevant content is not "metrics are bad"; it is that a reduced-form
+relation estimated under one policy regime need not be invariant when the
+policy changes, because decision rules can change with the regime. In the
+language used below, Lucas is a response-kernel warning: a policy parameter can
+change the joint distribution of observables, so a calculation that holds the
+old distribution fixed is not licensed unless the response channel has been
+declared. This is one reason the book separates pure selection from
+fixed-type intervention.
+
+== Taxonomy is not a theorem
+
+Manheim and Garrabrant's taxonomy @manheim2018categorizing is the cleanest
+local vocabulary for the variants: regressional, extremal, causal, and
+adversarial Goodhart. The categories are not mutually exclusive; a single
+application can have regressional selection, extremal tails, and strategic
+response at once. The taxonomy is useful because it names distinct mathematical
+phenomena that a model should not collapse into one slogan. Regressional and
+extremal components can often be modeled as selection against a fixed baseline;
+causal and adversarial components require a response process. But the taxonomy
+by itself supplies no bound, cost geometry, welfare functional, or falsifier.
+The response-modeling contract in Chapter 6 is where a concrete Goodhart claim
+has to say which components are present and what observation would make that
+classification fail.
+
+== Scalar anchor: tail-conditioned selection
+
+The scalar mathematical anchor for this book is El-Mhamdi and Hoang's
+tail-conditioned analysis @el-mhamdi2024goodhart. Their setup has a goal $G$, a
+proxy $nu = G + xi$, independence $G perp xi$, and selection of the top
+$alpha$ values of $nu$. Two theorem families are the reference point here.
+
+First, in the bounded-goal / exponential-discrepancy case, with
+$G$ uniform on $[0, 1]$, $xi$ exponential, and noise-to-signal ratio
+$epsilon = "Var"(xi) slash "Var"(G)$, sufficiently strong top-$alpha$
+selection yields $rho_alpha = 0$ and
+
+$ EE_alpha[G] = (1 slash lambda) dot (lambda e^lambda - e^lambda + 1) slash
+  (e^lambda - 1) = 1 - epsilon sqrt(12) + O(epsilon^2). $
+
+Second, in the power-law case, with $G$ having tail exponent $gamma > 3$ and
+$xi$ tail exponent $beta > 3$, $beta != 4$, the critical selection pressure
+scales as
+
+$ alpha ~ sqrt((beta - 1) slash (beta - 3)) dot epsilon, $
+
+and the selected correlation tends to the explicit negative limit
+
+$ rho_alpha -> max{-sqrt((beta - 3) slash (2(beta - 2))), -1 slash (beta - 2)}. $
+
+This is the right anchor because it is a sharp scalar result about selection
+on a proxy with a target/discrepancy split. It also shows exactly where this
+book is doing something different. Chapter 3's selection propositions do not
+try to recover El-Mhamdi and Hoang's tail rates. They give a looser envelope:
+after hidden coordinates and a value norm are declared, pure reweighting obeys
+a Cauchy--Schwarz drift bound in terms of
+$sqrt(chi^2(mu_theta parallel mu))$ and baseline hidden variance. El-Mhamdi and
+Hoang are sharper under independence and named tail families; the book's
+selection bound covers arbitrary dependence and arbitrary baseline
+distributions but can become uninformative at extreme selection depths.
+
+Majka and El-Mhamdi's independence-free extension @majka2025goodhart is the
+closest outside work to the book's independence stance. It keeps the scalar
+target/discrepancy paradigm but removes $G perp xi$, showing that light-tailed
+goal plus light-tailed discrepancy keeps the qualitative effect, while a
+heavy-tailed discrepancy changes the rate. That result is still scalar and
+tail-structured; it is not a vector theorem. It belongs here as a sharp
+external neighbor, not as a replacement for the multidimensional envelope.
+
+Smith and Winkler's optimizer's curse @smith2006optimizerscurse is a useful
+precursor inequality: optimizing over noisy estimates biases the chosen
+estimate upward relative to the chosen option's true value. It supports the
+selection-bias intuition, but it is not a Goodhart theorem for response
+channels, multidimensional targets, or welfare harm.
+
+== What this chapter does not generalize
+
+This chapter does not turn Strathern, Campbell, or the Manheim--Garrabrant
+taxonomy into formal assumptions. It uses them to locate the problem. The
+formal anchor is narrower: scalar proxy selection with declared target and
+discrepancy variables. The next chapter generalizes only the selection-channel
+part of that story. It does not generalize every Goodhart slogan, does not
+claim that the taxonomy is complete, and does not license causal or
+adversarial claims without a response model.
+
+// =============================================================================
 = Goodhart's law, multidimensionally
 // =============================================================================
 
 == The shape of the problem
 
-Goodhart's law is usually quoted in one of two forms. The popular slogan,
-which is actually Strathern's compression @strathern1997:
-
-#quote(block: true)[When a measure becomes a target, it ceases to be a good measure.]
-
-and Goodhart's own statement @goodhart1975:
-
-#quote(block: true)[Any observed statistical regularity will tend to collapse once pressure
-is placed upon it for control purposes.]
-
-Both are stated about a *scalar* measure: a single number that was correlated
-with something we cared about, until we started optimising it. The thesis of
+The previous chapter fixed the scope of the inherited Goodhart literature: the
+scalar slogans are genealogy, and the scalar mathematical anchor is a sharp
+selection result under declared target/discrepancy assumptions. The thesis of
 this book is that the scalar framing hides most of the structure. Real goals —
 the goals of a person, a team, a company, a state, or a trained model — are
 *multidimensional*, and the proxies we use to steer toward them are
@@ -485,24 +576,9 @@ hypothesis, do not say that "more metrics is worse" as a rule, and do not
 apply to RLHF or other non-convex training dynamics until the application has
 declared a response model that matches their assumptions.]
 
-The starting point is the variant taxonomy of Manheim and Garrabrant
-@manheim2018categorizing — regressional, extremal, causal, and adversarial
-Goodhart — and Wentworth's geometric reconstruction of the regressional case
-@wentworth2018constructing, plus Wentworth's later warning that experiments and
-metrics often measure a different latent quantity than their designers think
-they do @wentworth2022notmeasuring. The economic ancestor is the multitask
-principal-agent line: Holmstrom and Milgrom's canonical model of measurable and
-unmeasurable tasks @holmstrom1991multitask, Baker's performance-measurement
-model @baker1992incentive, and Prendergast's survey of incentive provision
-@prendergast1999provision. In AI safety, the closest formal neighbours are
-reward gaming and misspecification models @skalse2022rewardgaming
-@pan2022rewardmisspecification and the partial-objective model of misaligned AI
-@zhuang2020consequences. The contribution here is to put these literatures in
-one frame: the Goodhart taxonomy supplies the failure modes, strategic
-classification and performative prediction supply adaptive distribution shift,
-principal-agent theory supplies substitution toward measured tasks, and the
-selection/intervention split makes the vector structure of both regimes
-explicit.
+The contribution here is to make the vector structure explicit. The Goodhart
+taxonomy supplies failure-mode vocabulary; the formal chapters below supply
+response channels, drift bounds, cost geometry, and aggregation conditions.
 
 == A worked intuition: the hierarchy of proxies
 
@@ -577,7 +653,7 @@ This little decomposition already separates two distinct Goodhart channels:
   invisible to the proxy. No amount of measuring $P$ accurately tells you
   anything about movement along $ker phi$.
 - An *observation gap*: $epsilon != 0$, so even the directions the proxy is
-  meant to track are corrupted — by noise, by lag, or (Chapter 3) by deliberate
+  meant to track are corrupted — by noise, by lag, or (Chapter 4) by deliberate
   manipulation.
 
 #claim[*Toy example.* Let product quality be $G = ("reliability", "delight")$ and
@@ -600,18 +676,18 @@ distinguish three subspaces:
 
 == A first specialisation, and a roadmap
 
-Throughout Chapter 2 we work the simplest non-trivial case: $G(s) = X in RR^m$
+Throughout Chapter 3 we work the simplest non-trivial case: $G(s) = X in RR^m$
 with $X$ Gaussian, a single scalar proxy that is one coordinate (or one linear
 combination) of $X$ plus noise, and *selection* — keep the states scoring above
 a threshold. This isolates the two classical "easy" Goodhart effects,
 *regressional* and *extremal* Goodhart @manheim2018categorizing, from the
 harder ones. It is the right
-first probe precisely because it is the regime where, as Chapter 2 shows, hidden
+first probe precisely because it is the regime where, as Chapter 3 shows, hidden
 harm turns out to be *bounded by quantities visible in the pre-selection
 distribution*. That selection analysis stops at reweighting: it does not say
-what fixed agents can do after a metric is announced. Chapter 3 therefore starts
+what fixed agents can do after a metric is announced. Chapter 4 therefore starts
 again from declared response kernels, actions, costs, stakes, and aggregation
-geometry. It shows where the Chapter 2 baseline-only bound no longer has an
+geometry. It shows where the Chapter 3 baseline-only bound no longer has an
 analogue, and what must replace it.
 
 A reader who wants the punchline before the construction: there is a clean
@@ -621,7 +697,7 @@ drift $<= delta dot norm(s)$ with every term a baseline functional) and
 *intervention channels* (the policy moves probability mass to where the baseline
 had none; causal and adversarial Goodhart live here; no baseline bound exists,
 and any bound must be imported from a model of what the responding agents can
-afford to do). Chapters 2 and 3 are those two halves.
+afford to do). Chapters 3 and 4 are those two halves.
 
 The appendices are organised the same way. Appendices A--D are visual aids for
 claims made in the formal chapters: selection response, dimensional coupling,
@@ -670,7 +746,7 @@ The proved or directly derived results in these chapters are:
 The additive-versus-conjunctive flip and the noisy Stackelberg refinement are
 illustrative models, not general theorems. The convex-cost intervention analogue
 of the selection bound is stated below as a score-deficit proposition with a
-Fenchel-duality proof sketch. Chapter 4's response-shape taxonomy is a
+Fenchel-duality proof sketch. Chapter 5's response-shape taxonomy is a
 conditional prediction menu,
 not a theorem that residual error generically becomes more complex. The live
 open questions are pulled forward into the intro as modelling obligations.
@@ -717,7 +793,7 @@ ratios $r$ are a complete summary of hidden mean drift at every threshold.]
 == Does the harm scale with the number of hidden dimensions?
 
 The motivating intuition wants "more hidden dimensions $=>$ more Goodhart". The
-honest version is weaker, and Chapter 2's final bound gives the clean statement.
+honest version is weaker, and Chapter 3's final bound gives the clean statement.
 This Gaussian calculation is only the first view.
 
 If every hidden dimension has the *same* covariance ratio $rho_j = rho$, then
@@ -818,7 +894,7 @@ $EE[exp(beta P)]$ may be infinite for positive $beta$ — the Boltzmann path may
 not exist. This is not a technicality; Goodhart is often precisely about extreme
 tails. For heavy tails, bounded weights or quantile selection are safer models.
 Second, not every control process is a reweighting of a fixed baseline at all —
-interventions can change the state-generating mechanism. That is Chapter 3.]
+interventions can change the state-generating mechanism. That is Chapter 4.]
 
 === Covariance as a local velocity
 
@@ -858,7 +934,7 @@ Boltzmann velocity) $subset$ threshold response $b_H(t)$ (hard cutoffs) $subset$
 weighted response $B_H(theta)$ (generic non-causal selection). All three are
 functionals of the baseline $mu$ alone. Causal and adversarial Goodhart need a
 further layer in which $mu$ itself changes with the principal's policy — the
-subject of Chapter 3.]
+subject of Chapter 4.]
 
 == The selection-channel drift bound
 
@@ -887,7 +963,7 @@ $ abs(B_(H_i)(theta)) <= delta s_i, quad
 
 Licenses: after the hidden coordinates and Euclidean norm are declared,
 selection-regime drift is bounded by reweighting intensity and baseline hidden
-variability. The $sqrt(d)$ growth from Chapter 2's per-dimension model is the
+variability. The $sqrt(d)$ growth from Chapter 3's per-dimension model is the
 $norm(s)_2$ term.
 
 Does not license: a coordinate-free welfare claim, or a value metric inferred
@@ -998,7 +1074,7 @@ an *intervention relative to $(U, K_0)$* if $K_theta != K_0$ on a positive-mass
 set of types. Mutual singularity with $mu_0$ is decisive evidence of
 intervention, but not required for the causal distinction.]
 
-The entire apparatus of Chapter 2 — covariance, threshold response, weighted
+The entire apparatus of Chapter 3 — covariance, threshold response, weighted
 response — is the pure-selection case, with $L_theta = W_theta / EE_(mu_0)[W_theta]$.
 In Manheim and Garrabrant's taxonomy @manheim2018categorizing, *causal* Goodhart
 is an intervention channel in which the policy structurally breaks
@@ -1007,7 +1083,7 @@ which $theta$ is chosen worst-case for the principal. The ML instances of this
 regime are *strategic classification* @hardt2016strategic — agents manipulate
 features in response to a published classifier — and *performative prediction*
 @perdomo2020performative — the act of deploying a predictor changes the
-distribution it is predicting. The drift bound of Chapter 2 has no
+distribution it is predicting. The drift bound of Chapter 3 has no
 baseline-only analogue here: even when an intervention law is technically
 absolutely continuous because the baseline had $epsilon$ mass on the action
 image, the relevant likelihood ratio reflects the induced response, not a
@@ -1058,7 +1134,7 @@ selected set ${Q >= t}$; $H equiv 0$):
 + *Hidden harm appears at order $Delta$.* $EE[H mid(|) "selected"]
   = EE[(t - Q) bb(1){t - Delta <= Q < t}] slash Pr(Q >= t - Delta) > 0$, monotone
   increasing in $Delta = sqrt(2 kappa V)$. In the selection regime $H$ is
-  *identically zero* in this model — consistent with Chapter 2's bound, since
+  *identically zero* in this model — consistent with Chapter 3's bound, since
   $s_H = 0 => B_H = 0$. The harm is created entirely by the intervention.
 
 + *The controlling quantity is not a $mu_0$-functional.* $Delta$ depends on
@@ -1303,7 +1379,7 @@ harmful per score unit; conjunctive/$min$ metrics *multiply* per-gamer harm
 ($H_per^"conj"(M, t) = t abs(M)$). Real scorecards are usually compensatory
 (weighted sums of KPIs), which is the regime where "just add another metric" can
 backfire for $H_pop$ by cheapening the cheapest gaming path and expanding the
-gaming population. The selection-regime $sqrt(d)$-type scaling from Chapter 2
+gaming population. The selection-regime $sqrt(d)$-type scaling from Chapter 3
 and these intervention-regime flat/linear behaviours are *different phenomena*
 and should not be conflated. See @fig:additive-vs-conjunctive.]
 
@@ -1409,7 +1485,7 @@ $mu_0$.
 
 == What we have, and what is open <sec:openq>
 
-Chapters 2 and 3 give a clean dichotomy. *Selection channels* — the policy
+Chapters 3 and 4 give a clean dichotomy. *Selection channels* — the policy
 reweights a fixed baseline — contain all of regressional and extremal Goodhart;
 hidden drift is bounded, $norm(B_H(theta))_2 <= delta dot norm(s)_2$, with
 every term a baseline functional, and the number of dimensions enters only
@@ -1439,7 +1515,7 @@ would have to measure to make it precise: the baseline response curve, the
 coupling norm, the cost geometry, the aggregation rule, the gaming capacity, and
 the score-to-harm exchange rates.
 
-Chapter 4 sharpens that last sentence. The recursive hypothesis is tempting to
+Chapter 5 sharpens that last sentence. The recursive hypothesis is tempting to
 summarise as "residual error becomes more complex". That is not licensed. The
 right next object is a *response-shape prediction*: once a response channel and
 its constraints are specified, what shape of hidden residual should it produce?
@@ -1477,7 +1553,7 @@ its constraints are specified, what shape of hidden residual should it produce?
     [Only after a complexity measure and response mechanism are fixed. The
       current results separate support, rank, description length, cost, and
       search accessibility.],
-    [No monotone complexity law follows from Chapters 1--4.],
+    [No monotone complexity law follows from Chapters 1--5.],
     [Minimum-complexity attractors explain recursive Goodhart.],
     [Only conditionally: fixed-charge costs can yield sparse drift, low-rank
       affordances restrict drift to an image, and search priors can favour low
@@ -1493,7 +1569,7 @@ chapters: selection response curves, dimensional coupling, selection versus
 intervention, additive versus conjunctive gaming, and the exchange-rate
 condition for conservation. Appendix E is a speculative cartoon of the
 recursive-Goodhart hypothesis, explicitly not a conclusion of the formal
-results. Appendix F visualises the Chapter 4 response-shape repair. The
+results. Appendix F visualises the Chapter 5 response-shape repair. The
 research inventory — both the work-in-progress threads and the parked
 open questions that earlier drafts kept as separate appendices — now lives
 in the intro §§1.5–1.6.
@@ -1697,9 +1773,9 @@ spreads, concentrates, becomes more complex, or migrates into unmeasured
 dimensions. Each of those can happen in a model. None is forced by proxy
 pressure alone.
 
-In Chapter 2, pressure only reweights a fixed baseline, so hidden drift follows
-the baseline response curve. In Chapter 3, pressure changes fixed-type behavior,
-so the relevant object is an action or cost geometry. In Chapter 4, hidden
+In Chapter 3, pressure only reweights a fixed baseline, so hidden drift follows
+the baseline response curve. In Chapter 4, pressure changes fixed-type behavior,
+so the relevant object is an action or cost geometry. In Chapter 5, hidden
 residual shape depends on the response process: quadratic costs, fixed charges,
 caps, low-rank affordances, and search priors make different predictions.
 
@@ -1767,7 +1843,7 @@ The selection/intervention split is useful precisely because it says which
 evidence matters. Under pure selection, policy changes only the weights on fixed
 type-conditional behavior. The right evidence is the baseline joint
 distribution, the weighting rule, the selection depth, and the hidden response
-curve such as $EE[H mid(|) P >= t] - EE[H]$. The Chapter 2 drift bound is
+curve such as $EE[H mid(|) P >= t] - EE[H]$. The Chapter 3 drift bound is
 available because the post-policy law is a reweighting of the baseline joint law
 on types and states.
 
@@ -1909,6 +1985,177 @@ shape governed by costs, caps, aggregation, affordances, search geometry, and
 the declared hidden welfare model.]
 
 // =============================================================================
+= Formal analogues across fields
+// =============================================================================
+
+== Why this chapter exists
+
+The framework above is not a survey of Goodhart-like effects. It is a contract
+for declaring response models. The question in this chapter is narrower: which
+existing formal results instantiate one of the framework primitives, and where
+does each result stop? A source enters only if it names a primitive and carries
+a falsifier. Analogy without a non-transfer condition stays out of the chapter.
+
+== Primitive map
+
+#text(size: 8pt)[
+#table(
+  columns: (1.05fr, 0.9fr, 1.3fr, 1.45fr),
+  inset: 4pt,
+  align: horizon,
+  [*Source*], [*Primitive*], [*What it licenses*], [*Boundary / falsifier*],
+  [El-Mhamdi--Hoang @el-mhamdi2024goodhart],
+  [selection + proxy/target],
+  [Sharp scalar top-$alpha$ asymptotics under independence and named tails.],
+  [Does not license vector, dependent, non-tail, or intervention claims; fails
+    without a clean $G + xi$ decomposition or threshold/top-$alpha$ selection.],
+  [Majka--El-Mhamdi @majka2025goodhart],
+  [selection + proxy/target],
+  [Independence-free scalar extension for target/discrepancy Goodhart.],
+  [Does not license vector targets or cases with no natural discrepancy
+    decomposition; fails when $nu = G + xi$ is not the operative proxy model.],
+  [Skalse et al. RL Goodhart @skalse2023goodhart],
+  [response kernel + action/cost],
+  [RL-specific stopping criterion in occupancy-measure geometry.],
+  [Does not license non-MDP, nonlinear-reward, non-concave, or coordinate-free
+    claims; fails outside linear occupancy-measure rewards.],
+  [Skalse et al. reward hacking @skalse2022rewardgaming],
+  [proxy/target separation],
+  [Definitions of reward hacking and unhackability for proxy and true rewards.],
+  [Does not license welfare or response geometry; unrestricted stochastic
+    policy classes make non-trivial unhackability vacuous.],
+  [Hardt et al. strategic classification @hardt2016strategic],
+  [response kernel + action/cost],
+  [Classifier first, then costly feature response: a Stackelberg analogue.],
+  [Does not license hidden welfare or quadratic costs by default; fails if
+    agents only select participation or observed changes are real improvements.],
+  [Perdomo et al. performative prediction @perdomo2020performative],
+  [response kernel],
+  [Deployment-induced distribution shift and performative stability.],
+  [Does not license welfare or type/action identification; fails if the shift is
+    exogenous or deployment does not change the data-generating distribution.],
+  [Dwork et al. reusable holdout @dwork2015generalization],
+  [evidence standard],
+  [Validity discipline for adaptive queries and repeated benchmark use.],
+  [Does not identify hidden welfare or agent costs; fails for leakage or direct
+    feedback mechanisms better modeled as intervention.],
+  [Cawley--Talbot @cawley2010overfitting],
+  [selection],
+  [Model-selection over a fixed candidate set with noisy validation proxy.],
+  [Does not license finetuning or contamination claims; fails when candidates
+    are generated adaptively from leaderboard feedback.],
+  [Blum--Hardt, Roelofs et al., Recht et al. @blum2015ladder @roelofs2019testset @recht2019imagenet],
+  [evidence standard],
+  [Public/private and regenerated-test-set checks for benchmark claims.],
+  [Does not prove leaderboards are safe; fails if transfer loss is from
+    difficulty shift rather than adaptive overfitting.],
+  [Pan et al. and Gao et al. @pan2022rewardmisspecification @gao2023rewardmodeloveroptimization],
+  [search geometry],
+  [Empirical thresholds for reward misspecification and overoptimization.],
+  [Does not identify $kappa$ with model size, gradient access, or $V$ with a
+    benchmark prize; fails if gold reward does not decline under proxy search.],
+  [Lucas @lucas1976critique],
+  [response kernel],
+  [Policy-regime changes can invalidate reduced-form correlations.],
+  [Does not license a quantitative bound or welfare model; fails when decision
+    rules are stable across the policy change.],
+  [Holmstrom--Milgrom @holmstrom1991multitask],
+  [aggregation + action/cost],
+  [Measured-signal incentives can distort multidimensional effort allocation.],
+  [Does not license coordinate-free welfare or non-LEN contracts; fails when
+    effort is not multidimensional or all relevant signals are observable.],
+  [Smith--Winkler @smith2006optimizerscurse],
+  [selection],
+  [Finite-sample bias of choosing the maximum noisy estimate.],
+  [Does not license multidimensional or response-channel claims; fails without
+    finite noisy estimates and max selection.],
+)
+]
+
+== Machine-learning analogues
+
+The ML rows split cleanly by primitive. Strategic classification is the closest
+published neighbor to the simple Stackelberg model: a decision rule is chosen,
+then agents alter features at a declared cost @hardt2016strategic. The mapping
+is structural, not literal. The book's $Delta = sqrt(2 kappa V)$ result assumes
+a one-dimensional quadratic cost; Hardt et al. work with their own cost classes
+and learnability conditions. The common primitive is costly fixed-type response
+after a policy is announced.
+
+Performative prediction gives the response-kernel version: deploying a
+predictor changes the future data distribution @perdomo2020performative. That
+licenses the idea that $K_theta$ can change under policy exposure, not a hidden
+welfare theorem. Reward hacking and reward misspecification sit beside it.
+Skalse et al. define the proxy/target separation sharply @skalse2022rewardgaming;
+Pan et al. and Gao et al. show empirical overoptimization regimes
+@pan2022rewardmisspecification @gao2023rewardmodeloveroptimization. None of
+these identifies the book's $kappa$, $V$, or convex cost geometry for neural
+training. They say what an ML application must declare before importing those
+symbols.
+
+Benchmark work supplies evidence standards rather than welfare bounds. Cawley
+and Talbot describe selection bias in model choice @cawley2010overfitting.
+Dwork et al. give reusable-holdout tools for adaptive analysis
+@dwork2015generalization. Blum and Hardt's Ladder, plus regenerated-test-set
+work by Roelofs et al. and Recht et al., give ways to separate adaptive
+leaderboard overfitting from other explanations @blum2015ladder
+@roelofs2019testset @recht2019imagenet. These are selection-channel tools. If
+the model was finetuned, contaminated, or reward-optimized in response to the
+benchmark, the primitive has changed.
+
+Skalse et al.'s RL Goodhart paper is stronger but narrower
+@skalse2023goodhart. Its optimal-stopping theorem depends on finite MDPs,
+occupancy polytopes, linear rewards, concavity, and an angle bound in projected
+reward space. It is valuable precisely because it declares its geometry. It
+does not support a generic stopping rule for institutional scorecards, RLHF, or
+arbitrary optimization pressure.
+
+== Economics analogues
+
+Lucas is the formal genealogy item for response kernels @lucas1976critique. A
+reduced-form relation can fail under a new policy because agents' decision
+rules change with the regime. In this framework that is a $K_theta$ warning:
+holding the old joint distribution fixed is a selection-style calculation, and
+it fails if the policy changes fixed-type behavior. The result does not give a
+Goodhart harm bound. It gives a reason the contract must distinguish stable
+structure from policy-dependent behavior.
+
+Holmstrom and Milgrom are the main economics analogue for multidimensional
+aggregation @holmstrom1991multitask. The principal sees measured signals tied
+to an agent's effort vector; rewarding the measured dimensions can pull effort
+away from unmeasured dimensions, making low-powered incentives attractive in
+the LEN benchmark. That is the same primitive as the book's additive scorecard
+analysis: aggregation weights and action costs jointly determine substitution
+across dimensions. The boundary matters. Their result is not coordinate-free
+welfare and does not cover arbitrary nonlinear contracts by default.
+
+Smith and Winkler's optimizer's curse is a small but useful selection precursor
+@smith2006optimizerscurse. It says that choosing the best noisy estimate creates
+postdecision disappointment in expectation. That is close to model-selection
+overfitting and far from intervention. It enters as selection intuition, not as
+a response model.
+
+== What this chapter does not license
+
+This chapter does not claim that the framework subsumes the listed theorem
+families. It maps primitives. The selection envelope in Chapter 3 is not
+El-Mhamdi and Hoang's tail rate; the Stackelberg toy in Chapter 4 is not
+strategic classification in full generality; the response-kernel contract in
+Chapter 6 is not the Lucas critique; and the additive scorecard model is not
+Holmstrom--Milgrom contract theory.
+
+It also does not license ML transfers by vocabulary. $kappa$ is not gradient
+accessibility, model size, benchmark contamination, feature simplicity, or
+optimizer search efficiency unless an application declares that model and a
+falsifier. $V$ is not automatically a leaderboard prize, a deployment benefit,
+or a training objective. $V$ and $kappa$ are placeholders for primitives that a
+domain model must earn.
+
+The useful output is the negative one: every promoted source carries a stopping
+point. If an application cannot name a primitive and a non-transfer condition,
+it should not cite this chapter as support for a Goodhart claim.
+
+// =============================================================================
 = Visual appendices
 // =============================================================================
 
@@ -1920,10 +2167,10 @@ measured dimensions changes gaming through aggregation and cost geometry.
 Appendix E is different: it sketches a broader recursive-Goodhart hypothesis
 motivated by the framework but not proved by it. The formal chapters do not
 show that residual error generically becomes more dimensional or more complex
-under repeated proxy refinement; Chapter 4 instead gives conditional
+under repeated proxy refinement; Chapter 5 instead gives conditional
 response-shape predictions, and shows which quantities would have to be
 measured for such a claim to become precise. Appendix F illustrates those
-Chapter 4 predictions: quadratic cost can spread response, fixed-charge or
+Chapter 5 predictions: quadratic cost can spread response, fixed-charge or
 linear cost can concentrate it, and caps plus activation costs can create
 lumpy spillover rather than a universal complexity increase.
 
@@ -1931,7 +2178,7 @@ lumpy spillover rather than a universal complexity increase.
 = Appendix A — Selection drift is coupling-dependent, not dimension-dependent
 // =============================================================================
 
-The selection results in Chapter 2 are deliberately conditional. A proxy
+The selection results in Chapter 3 are deliberately conditional. A proxy
 threshold moves hidden coordinates through the baseline response curve
 $b_H(t) = EE[H mid(|) P >= t] - EE[H]$. In the Gaussian-linear model,
 covariance ratios summarize this curve. Outside that model, covariance is only a
@@ -1978,7 +2225,7 @@ adds coupling to the selected proxy.
   ],
 ) <fig:selection-vs-intervention>
 
-The Stackelberg toy model in Chapter 3 is the smallest algebraic version of the
+The Stackelberg toy model in Chapter 4 is the smallest algebraic version of the
 right panel. At baseline, $H = 0$. After the metric is announced, an agent can
 pay cost $a^2 slash (2 kappa)$ to raise the proxy by $a$, and selection is worth
 $V$. In the noiseless threshold case, the gaming band has width
@@ -2050,7 +2297,7 @@ $ H_per(M, d) = d dot (sum_(j in M) h_j kappa_j w_j) / (sum_(j in M) kappa_j w_j
 = Appendix E — A speculative recursive-Goodhart cartoon
 // =============================================================================
 
-This appendix is not a theorem of Chapters 1--4. It is a cartoon of a broader
+This appendix is not a theorem of Chapters 1--5. It is a cartoon of a broader
 empirical hypothesis suggested by the framework. The axes labelled $h_1$ through
 $h_5$ are deliberately not proxy dimensions. They stand for outcome-relevant
 properties of the policy or model that the proxy stack does not fully capture:
@@ -2068,7 +2315,7 @@ with the monitored axes, moved idiosyncratically with no relation to legibility
 or cost, or if the cheapest route to high score became genuinely goal-improving
 rather than merely less visible.
 
-Chapter 4 supplies the guardrail for reading this cartoon. A recursive pattern
+Chapter 5 supplies the guardrail for reading this cartoon. A recursive pattern
 should not be inferred from "complexity" after the fact. The hidden axes, the
 response geometry, and the relevant shape measure — support, rank, description
 length, cost, or search accessibility — must be specified before the patching
@@ -2094,7 +2341,7 @@ sequence is used as evidence.
 = Appendix F — Response-shape predictions are conditional
 // =============================================================================
 
-Chapter 4 replaces the generic minimum-complexity attractor story with a
+Chapter 5 replaces the generic minimum-complexity attractor story with a
 conditional response-shape story. The relevant visual distinction is between the
 shape of the feasible target set and the geometry that selects one feasible
 response. Quadratic costs select a smooth minimum-cost direction; linear or
