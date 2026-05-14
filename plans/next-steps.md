@@ -1,9 +1,8 @@
-# Next steps: Iterations 30-34
+# Next steps: Iterations 31-34
 
-This is the active roadmap after Iteration 29. It deliberately alternates
+This is the active roadmap after the hospital application review. It deliberately alternates
 application work and review before any book promotion:
 
-- Iteration 30: review the hospital/institutional application.
 - Iteration 31: second non-ML application in scientific metrics.
 - Iteration 32: review the two-application template generalization.
 - Iteration 33: promotion-readiness review for book integration.
@@ -14,53 +13,6 @@ audit, or evidence-collection decision. A template that merely classifies a
 case after the fact is not enough.
 
 After finishing an iteration, delete the iteration step from this document.
-
-## Iteration 30: review hospital application
-
-Iteration type: `review`.
-
-### Purpose
-
-Audit Iteration 29 before treating the template as reusable. The review should
-ask whether the hospital case actually constrains the framework or merely
-retrofits the framework to an intuitively familiar metric failure.
-
-### Work
-
-1. Review the hospital/institutional application using the standard review
-   template from `AGENT.md`.
-2. Check for post-hoc flexibility in type space, hidden value weights,
-   action-cost assumptions, signal adequacy, and the qualitative assignments
-   of `kappa`, `h`, `gamma`, `w`, and `V`.
-3. Check whether the evidence standard is observable before or during policy
-   exposure, rather than invented after the score movement is known.
-4. Decide whether the template changes an actual design, audit, or evidence
-   decision, and name the changed decision precisely.
-5. Log any overclaim or framework-boundary problem in `red_flags.md`,
-   `claim_audits.md`, `verification_stack.md`, or `open_questions.md` as
-   appropriate.
-
-### Output
-
-A skeptical review artifact for the hospital application, including a verdict
-on whether the template changes an actual design, audit, or evidence decision.
-
-### Success condition
-
-The review either licenses a narrowed hospital application with explicit
-failure conditions or rejects it in a way that improves the template before
-reuse.
-
-### Failure condition
-
-The review cannot tell what would falsify the hospital mapping, finds that the
-evidence standards are generic, or finds that no design/audit decision changes
-relative to a broad warning that metrics can be gamed.
-
-### Scope limits
-
-Do not generalize to scientific metrics yet, and do not promote the hospital
-case to book prose. The output is a skeptical license review, not an edit pass.
 
 ## Iteration 31: scientific metrics application
 
@@ -168,7 +120,7 @@ This is a gate between research notes and reader-facing prose.
    - Iteration 27 adaptive-hardening / measurement-frontier toy;
    - Iteration 28 adaptive-hardening review;
    - Iteration 29 hospital application;
-   - Iteration 30 hospital review;
+   - hospital application review;
    - Iteration 31 scientific-metrics application;
    - Iteration 32 template-generalization review.
 2. Produce a promotion map with `include`, `exclude`, or `footnote` decisions

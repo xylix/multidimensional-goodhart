@@ -800,3 +800,36 @@ Red flags fired: no theorem, empirical welfare claim, or policy-optimality
 claim was introduced. The live risk is post-hoc flexibility in `U`, `h`,
 `gamma`, `kappa`, and `V`; the repair is to make the next iteration a skeptical
 review before reusing or promoting the template.
+
+## Iteration 30 (review hospital scorecard application)
+
+Question tackled: Does the Iteration 29 hospital scorecard application
+genuinely constrain the response-modeling template before reuse, or does it
+only classify a familiar Goodhart story after the fact?
+
+What changed: added
+`research/reviews/hospital_scorecard_application_review.md`, a skeptical
+review of the hospital application, template, Q19, claim audits, and
+verification-stack boundary. Updated Q19, `claim_audits.md`,
+`verification_stack.md`, and `plans/next-steps.md` to record the reviewed reuse
+license and remove the completed Iteration 30 roadmap step.
+
+What the review showed: the hospital application survives as "yes with
+narrowing." It changes a concrete audit/evidence decision: do not credit
+readmission score gains as patient-welfare gains until the channel,
+composition changes, repeated fixed-hospital action traces, hidden outcomes,
+and frontier primitives `kappa`, `h`, `gamma`, `w`, and `V` have been declared
+or audited. The `W_theta` versus `K_theta` distinction is operational only with
+repeated-unit or exposure-variation evidence. The quadratic formula remains a
+conditional diagnostic, not an empirical estimate or welfare theorem.
+
+What's open now: Iteration 31 may reuse the template for scientific metrics
+only if it preserves the reviewed constraints: predeclare the type/action
+boundary, separate selection from fixed-type response using observations
+stronger than aggregate metric movement, predeclare or mark unavailable the
+frontier primitives, and produce a domain-specific changed audit/design/
+evidence decision rather than a generic warning.
+
+Red flags fired: no new red flag was opened. The live risk remains post-hoc
+flexibility; the review handles it by making missing or post-hoc primitives a
+contract-failure condition for reuse.
