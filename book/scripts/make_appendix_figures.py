@@ -146,8 +146,9 @@ def selection_vs_intervention() -> None:
     q = np.linspace(-2.25, 1.55, 36)
     p0 = q
     h0 = np.zeros_like(q)
+    pass_score = 0.95
     active = (q > -0.82) & (q < 0.82)
-    a = np.clip(0.95 - q, 0, 1.35) * active
+    a = np.clip(pass_score - q, 0, 1.35) * active
     p1 = p0 + a
     h1 = h0 + a
     axes[1].scatter(p0, h0, s=14, c="0.72", edgecolors="none")
@@ -160,15 +161,18 @@ def selection_vs_intervention() -> None:
         )
     axes[1].scatter(p1[active], h1[active], s=16, c="0.08", edgecolors="none")
     axes[1].axhline(0, color="0.65", lw=0.6)
+    axes[1].axvline(pass_score, color="0.35", lw=0.7, ls=(0, (3, 2)))
     axes[1].text(-2.82, 2.28, "intervention", fontsize=10)
     axes[1].text(-2.82, 1.90, "fixed types move;\nnew states are generated", fontsize=8.2, color="0.25")
     axes[1].text(-2.1, -0.24, "baseline", fontsize=7.5, color="0.45")
-    axes[1].text(1.0, 1.18, "after response", fontsize=7.5, color="0.05")
+    axes[1].text(pass_score + 0.08, 1.18, "after response:\njust pass", fontsize=7.5, color="0.05")
+    axes[1].text(pass_score + 0.05, 0.15, "passing score", fontsize=7.2, color="0.35", rotation=90)
 
     for ax in axes:
         ax.set_xlabel("proxy P")
         draw_range_frame(ax, (-3.0, 3.0), (-0.45, 2.45))
     axes[0].set_ylabel("hidden harm H")
+    axes[1].set_ylabel("hidden harm H")
     save(fig, "appendix-b-selection-vs-intervention.pdf")
 
 
