@@ -1,10 +1,25 @@
-# Prose iteration — On Writing Well pass on `book/multidimensional-goodhart.typ`
+# Prose pass — On Writing Well review of `book/multidimensional-goodhart.typ`
 
-Findings from a Zinsser-style review of the current draft. Ordered by impact:
-structural moves first, then concrete line work. Each item is independently
-applicable; ordering inside a section is by how much it changes the piece.
+Findings from a Zinsser-style review of the draft. Runs **after**
+`spine-refactor.md` lands, because the spine refactor rewrites several
+sections this pass would otherwise re-touch.
 
-## 1. Structural
+Absorption status:
+- §1.1 (open on its own claim, not negation): partly absorbed — spine Part I
+  §1 reframes the opener, but the action of pulling the residual-error line
+  forward and cutting "help science model" still applies to whatever Part I §1
+  becomes.
+- §1.2 (demote §§1.5 and §1.6 meta-commentary): absorbed — spine Part VI
+  moves these to the open agenda. Do not re-do this work.
+- §1.3 (retitle Ch.7 opener): absorbed — Ch.7 is replaced by Part III in the
+  spine.
+- §1.4 (bulletize Licensed-claims remark): still applies — the enumeration
+  re-lands somewhere in Part II §5-9 after spine.
+- All §2.x line-level work: still applies post-spine.
+- §3 (lines to preserve): still applies; protect these through spine and
+  prose passes.
+
+## 1. Structural items the spine pass does not cover
 
 ### 1.1 Open the book on its own claim, not on a negation
 
@@ -18,50 +33,23 @@ The real opening is sentence three. Sentence one also has an ambiguous parse
 ("help science model" reads as either "help [science] [to] model" or "help
 [science-model]"), and frames the book by what it isn't.
 
-Action:
-- Rewrite the first paragraph to begin "Optimization pressure reshapes the
-  residual error landscape."
+Action (still applies after spine §1):
+- Open Part I §1 with "Optimization pressure reshapes the residual error
+  landscape."
 - Fold the "not just 'the proxy stops working'" point in only if it earns its
   keep after the rewrite. Most likely cut it.
 - The strong line that should be reached on page 1 (currently at line 518):
   *"how does pressure on a proxy reshape the distribution of its residual
   error?"* Pull this forward.
 
-### 1.2 Demote §§1.5 ("Work in progress") and §1.6 ("Open questions")
-
-Roughly two-thirds of Chapter 1 is meta-commentary inherited from the research
-journal: what would be promising, what is parked, what is open. This is
-load-bearing for the author's credibility but it postpones the book for the
-reader. The actual best move of the book — the selection/intervention
-dichotomy with their controlling quantities — currently sits at lines
-1486–1507 of Chapter 4.
-
-Action:
-- Move §§1.5 and §1.6 into a back appendix titled "Threads not pursued" or
-  similar, or collapse them into a single short paragraph in the intro.
-- Restructure the intro so that by the end of §1.3 the reader has: the
-  phenomenon, the selection/intervention split, the response-modeling
-  contract.
-
-### 1.3 Retitle and rewrite Chapter 7's opener
-
-`== Why this chapter exists` is throat-clearing as a section title, and the
-section then opens with what the chapter is *not* ("not a survey of
-Goodhart-like effects").
-
-Action:
-- Retitle to a content-bearing heading: e.g. "Primitive map" or "Which
-  results instantiate which primitive".
-- Drop the meta opener; lead with the rule: "A source enters this chapter
-  only if it names a primitive and carries a falsifier."
-
-### 1.4 Reformat the "Licensed claims" remark in Chapter 2
+### 1.4 Reformat the "Licensed claims" remark
 
 A 200-word single-block remark enumerating five propositions. Useful
 inventory, painful prose.
 
 Action: Convert to five bullets, one sentence each. The information is
-already enumerated; let the typography show it.
+already enumerated; let the typography show it. Locate after spine moves it
+out of Ch.2 into the corresponding Part II section.
 
 ## 2. Line-level — recurring tics to fix in a pass
 
@@ -165,19 +153,22 @@ These are working and should not be edited away in the pass:
 - ML caveats throughout — the refusal to map $\kappa$ onto RLHF mechanisms
   is the book's most distinctive move.
 
-## 4. Suggested execution order
+## 4. Execution order within this pass
 
-1. Structural moves (§1.1–1.3 of this plan). These reshape the reader's
-   first 10 pages and make the line-level edits worth doing.
-2. The "Licensed claims" bulletization (§1.4) — cheap, high readability win.
-3. Full grep pass for the four tics in §2.1–2.4.
+1. §1.1 opener rewrite (after spine has set the new Part I §1 frame).
+2. §1.4 Licensed-claims bulletization.
+3. Full grep pass for the four tics in §2.1–§2.4.
 4. The overloaded-sentence pass (§2.5).
-5. Read the result aloud from the top; flag any new performed-tone lines that
+5. Apologetic-preamble pass (§2.6).
+6. Read the result aloud from the top; flag any new performed-tone lines that
    appeared during the rewrite.
 
-## 5. Out of scope for this iteration
+## 5. Out of scope
 
-- Figures (tracked in `polish.md`).
-- Backporting to `multidimensional-goodhart-paper.typ` (tracked in
-  `polish.md`).
-- Any substantive math, scope, or claim changes.
+- Figures and `refs.bib` audit (tracked in `polish.md`).
+- The deprecated `multidimensional-goodhart-paper.typ` — archived by
+  `spine-refactor.md`; no prose work on it.
+- Abstract prose — handled inside `spine-refactor.md` as part of the 2–4
+  page rescope, not here.
+- Any substantive math, scope, or claim changes (handled by `consolidation.md`
+  and `spine-refactor.md`).

@@ -22,8 +22,9 @@ The intended outcome is a recommended new spine for the long-form book (and, by 
 ### Decisions confirmed with user
 
 - **Scope: reorganize + add the three new sections.** Killed-claims gallery (Part I §3), discipline contributes-vs-omits table (Part III §12), concrete falsifier section (Part V §18). Source material for all three already exists in `research/`; the additions are synthesis, not new research.
-- **Artifact scope: all three artifacts in lockstep.** Re-spine the book, then propagate the same Part I → Part III ordering into `multidimensional-goodhart-paper.typ` and `multidimensional-goodhart-abstract.typ`. The paper already orders the contract earlier than the book, so alignment is a small edit.
-- **Q18 placement: Part VI open agenda as the signature conjecture.** Part II §9 carries only the licensed conditional cost-geometry taxonomy; the unconditional minimum-complexity attractor stays explicitly open in Part VI §19. Matches the Iteration-7 repair history.
+- **Artifact scope: two artifacts, in lockstep on framing.** Re-spine the book as the long-form deliverable. Re-spine `multidimensional-goodhart-abstract.typ` to a 2–4 page form that carries project motivation, core findings, and minimal literature relation — no deep context (deep context lives in the book). The medium-length `multidimensional-goodhart-paper.typ` is being deprecated and should be archived as part of this pass, not re-spined.
+- **Abstract content boundary.** The abstract is the standalone discussion starter. It must include: the project's motivating phenomenon, the response-modeling contract in one paragraph, the closed theorems as named results with hypothesis sketches, the killed-claims list in compressed form, the falsifier, and one paragraph relating to the closest prior literature. It must not include: full proofs, application contracts, the cross-disciplinary attribution table, the open agenda beyond Q18 as the signature conjecture.
+- **Q18 placement: Part VI open agenda as the signature conjecture.** Part II §9 carries only the licensed conditional cost-geometry taxonomy; the unconditional minimum-complexity attractor stays explicitly open in Part VI §19. Matches the Iteration-7 repair history. The abstract names Q18 as the signature open problem in one sentence.
 
 ## Recommended new spine (six parts, ~21 sections)
 
@@ -93,11 +94,11 @@ The names below are working headers — the point is the order and the framing, 
 
 ## Critical files
 
-Re-spining touches the three written deliverables and one new synthesis file. No research-content rewrites are required to execute the spine; this is reorganization plus three additions.
+Re-spining touches two written deliverables and one new synthesis file, and archives the deprecated paper. No research-content rewrites are required to execute the spine; this is reorganization plus three additions plus one removal.
 
 - `book/multidimensional-goodhart.typ` (2337 lines) — primary re-spine target.
-- `book/multidimensional-goodhart-paper.typ` (~334 lines) — paper already orders the contract earlier; minor alignment.
-- `book/multidimensional-goodhart-abstract.typ` (185 lines) — abstract already lists channel separation / selection bounds / exchange rate / hardening / contract as five contributions; reorder them to match new spine emphasis (contract → selection → exchange rate → hardening → response shape conjectural).
+- `book/multidimensional-goodhart-abstract.typ` (185 lines) — re-spine into a 2–4 page standalone discussion starter as scoped above. The current artifact lists channel separation / selection bounds / exchange rate / hardening / contract as five contributions; reorder around the new spine (contract → selection → exchange rate → hardening → response shape conjectural) and trim everything that is not motivation, core findings, killed claims, falsifier, or minimal literature relation.
+- `book/multidimensional-goodhart-paper.typ` (~334 lines) — **deprecate.** Archive to `book/archive/` (or equivalent) rather than re-spine. Git history preserves it. Update any cross-references in `README.md`, `AGENT.md`, and Makefile targets so the paper artifact is no longer built.
 - `research/reviews/formal_analogue_lit_map.md` — source rows for the new Part III §12 table. No new research needed; only synthesis.
 - `research/negative_results.md` — source for Part I §3 killed-claims gallery.
 - `research/applications/{mmlu,hospital_scorecard,scientific_metrics,empirical_auditability}.md` — sources for Part IV; promotion to book sections is mostly cut-and-tighten.
@@ -108,7 +109,8 @@ This plan is structural, not computational; verification is editorial and consis
 
 - **Cross-reference audit.** After re-spine, every closed result in `research/claim_audits.md` should map to exactly one Part II section; every killed claim in `research/negative_results.md` should appear in Part I §3 or be explicitly handled in Part V.
 - **Contract-first sanity check.** Read each Part II calculation alone and confirm it cites the contract primitives from Part I §4 before stating the result. If any Part II section can be read without those primitives, the section is doing slogan transfer.
-- **Build artifacts.** `cd book && make` should compile both `multidimensional-goodhart.typ` and `multidimensional-goodhart-paper.typ` without errors and produce PDFs whose tables of contents match the new spine.
-- **Spine-divergence check.** Diff the new TOC against `book/multidimensional-goodhart-paper.typ` and `book/multidimensional-goodhart-abstract.typ` headers; the three artifacts should now share the same first-three-parts ordering (licensing problem → licensed calculations → cross-disciplinary table), with the book extending further into cases / refusals / open agenda.
+- **Build artifacts.** `cd book && make` should compile `multidimensional-goodhart.typ` and `multidimensional-goodhart-abstract.typ` without errors and produce PDFs whose tables of contents match the new spine. The deprecated `multidimensional-goodhart-paper.typ` should no longer be built by default; if it remains in the source tree before archiving, exclude it from default targets.
+- **Spine-divergence check.** Diff the new book TOC against `book/multidimensional-goodhart-abstract.typ`'s section headers; the abstract should carry motivation + the core findings from Parts I–II + Q18 as the signature conjecture, in that order, with the book extending further into cross-disciplinary attribution / cases / refusals / open agenda.
+- **Paper-archive check.** Confirm `multidimensional-goodhart-paper.typ` has been moved out of the active build set, Makefile targets do not reference it, and orientation files (`README.md`, `AGENT.md`) no longer point to it as a current artifact.
 - **Negative-space test.** Confirm Part V §17–18 contains at least one concrete falsifier and one concrete anti-application; if it's all hedging, the section isn't doing the work the abstract claims for it.
 - **No-overpromotion gate.** Iteration 38's policy gate (audit/design/evidence only) should be visible in Part IV and Part V; if any application section reads as policy advice, it has slipped past the gate.
