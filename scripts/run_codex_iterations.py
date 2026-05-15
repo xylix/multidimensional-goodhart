@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Run roadmap iterations as separate Codex exec sessions.
 
-The controller intentionally gives each iteration a fresh Codex process and
-requires a commit/checkpoint before continuing. This keeps review gates in
-`plans/next-steps.md` from being blurred by one long agent context.
+The controller intentionally gives each iteration a fresh Codex process, then
+uses a small commit-only Codex process as the checkpoint before continuing.
+This keeps review gates in `plans/next-steps.md` from being blurred by one
+long agent context.
 """
 
 from __future__ import annotations
@@ -149,11 +150,13 @@ Required behavior:
   from plans/next-steps.md while preserving later roadmap content.
 - Run the iteration-specific checks from plans/next-steps.md when applicable,
   plus `git diff --check` and `git status --short`.
-- Make one concise git commit for the completed iteration.
-- Stop without committing if the success condition is not met.
+- Do not make a git commit. The outer controller will run a separate
+  commit-only pass after this iteration finishes.
+- Stop without removing the roadmap section if the success condition is not
+  met.
 
-Final response should state the commit hash, the files changed, and the checks
-run. If blocked, state the blocker and leave the roadmap section in place.
+Final response should state the files changed and the checks run. If blocked,
+state the blocker and leave the roadmap section in place.
 """
 
 
@@ -169,7 +172,6 @@ def codex_command(args: argparse.Namespace, last_message: Path) -> list[str]:
         str(ROOT),
         "--sandbox",
         args.sandbox,
-        "--ephemeral",
         "--output-last-message",
         str(last_message),
     ]
@@ -181,6 +183,58 @@ def codex_command(args: argparse.Namespace, last_message: Path) -> list[str]:
         command.extend(shlex.split(extra))
     command.append("-")
     return command
+
+
+def make_commit_prompt(iteration: Iteration) -> str:
+    default_subject = f"Complete iteration {iteration.number}: {iteration.title}"
+    return f"""Commit the completed work for Iteration {iteration.number}: {iteration.title}.
+
+This is a commit-only follow-up after a separate Codex run completed the
+iteration work. Do not perform substantive research, prose, roadmap, or code
+changes now.
+
+Required behavior:
+- Inspect `git status --short` and the current diff.
+- If there are no uncommitted changes and HEAD already contains an iteration
+  commit, report that and stop.
+- If the current changes look like completed Iteration {iteration.number} work,
+  stage and commit all of them.
+- Use a concise commit message whose subject starts from this iteration name,
+  for example: `{default_subject}`. Add a short body only if it helps summarize
+  the specific work.
+- Run `git diff --check` before committing.
+- After committing, report the commit hash and `git status --short`.
+- If the diff is unrelated to Iteration {iteration.number}, the roadmap section
+  was not removed, or checks fail, do not commit; report the blocker.
+"""
+
+
+def run_commit_step(
+    iteration: Iteration,
+    args: argparse.Namespace,
+    run_dir: Path,
+) -> None:
+    status = git_status()
+    if not status:
+        return
+
+    prompt = make_commit_prompt(iteration)
+    (run_dir / "commit-prompt.md").write_text(prompt, encoding="utf-8")
+    command = codex_command(args, run_dir / "commit-last-message.md")
+
+    print(f"    committing Iteration {iteration.number} changes")
+    result = run(
+        command,
+        input_text=prompt,
+        stdout_path=run_dir / "commit-stdout.log",
+        stderr_path=run_dir / "commit-stderr.log",
+        check=False,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"Commit pass failed for Iteration {iteration.number} with exit "
+            f"{result.returncode}; see {run_dir.relative_to(ROOT)}"
+        )
 
 
 def verify_iteration(
@@ -232,6 +286,7 @@ def run_one_iteration(iteration: Iteration, args: argparse.Namespace) -> str:
             f"{result.returncode}; see {run_dir.relative_to(ROOT)}"
         )
 
+    run_commit_step(iteration, args, run_dir)
     commit = verify_iteration(
         iteration,
         before_head,
