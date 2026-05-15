@@ -47,14 +47,17 @@
 
 = Part I — The Licensing Problem
 
-== 1. The slogan and what it gets wrong
+== 1. The warning and what it does not identify
 
-Goodhart's law is often used as if proxy movement were already evidence about
-hidden value. That is the mistake this book tries to remove. The empirical
-phenomenon is real: once a measure is used for control, the residual error
-between proxy and target can acquire direction, support, active constraints,
-exchange rates, tail behavior, and response dynamics. But none of those shapes
-is identified by the slogan "the proxy became a target."
+Goodhart's law is usually introduced through the compressed formulation "When a
+measure becomes a target, it ceases to be a good measure" @strathern1997. The
+original macroeconomic warning is sharper about policy use: "Any observed
+statistical regularity will tend to collapse once pressure is placed upon it for
+control purposes" @goodhart1975. Both formulations describe a real empirical
+phenomenon: once a measure is used for control, the residual error between proxy
+and target can acquire direction, support, active constraints, exchange rates,
+tail behavior, and response dynamics. But none of those shapes is identified by
+the claim that the proxy became a target.
 
 The same observed score improvement can come from several mechanisms. A fixed
 pool can be re-ranked so better-scoring units enter the selected set. Continuing

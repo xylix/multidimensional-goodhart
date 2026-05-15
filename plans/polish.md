@@ -41,3 +41,7 @@ Before declaring era 1 closed:
   after a build.
 - The deprecated `book/multidimensional-goodhart-paper.typ` is archived per
   `spine-refactor.md` and not part of any default Makefile target.
+
+## Consistency pass
+- Check that the book matches the latest research files
+- Check that the abstract succesfully is a denser version of the 'book'.
