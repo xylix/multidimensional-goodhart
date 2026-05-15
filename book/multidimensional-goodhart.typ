@@ -1,4 +1,4 @@
-// Multidimensional Goodhart — six-part book spine
+// Multidimensional Goodhart — seven-part book spine
 // Compile with: typst compile multidimensional-goodhart.typ
 //
 // Source authority: research/project_state_after_iteration43.md and
@@ -37,7 +37,7 @@
   #v(0.35cm)
   #text(size: 1.18em)[Response Channels, Scorecards, and Residual Shape]
   #v(0.9cm)
-  #text(size: 1em)[Iteration 47 draft — six-part spine]
+  #text(size: 1em)[Iteration 47 draft — seven-part spine]
 ]
 #v(1.7cm)
 
@@ -81,17 +81,24 @@ map cannot see, represented by directions such as $ker phi$. The *observation
 gap* is residual measurement artifact inside the measured domain, represented
 by $epsilon$. A scalar score may hide both gaps at once.
 
-Two response channels matter as much as the geometry. A pure selection channel
-changes participation or selection weights $W_theta(u)$ over a type space
-$U$ while leaving the response kernel fixed. An intervention channel changes
-the fixed-type kernel $K_theta(d s | u)$. With baseline type law $nu$,
+Two response channels matter as much as the geometry. Here $u in U$ is a
+declared fixed type: the agent, unit, hospital, model checkpoint, or institution
+as represented before the policy response being studied. It contains the
+attributes treated as fixed for the comparison; choices made because of the
+policy are not part of $u$. The baseline type law is $nu$. A response kernel
+$K_theta(d s | u)$ is the conditional law of the observed state $s in S$ for a
+unit of type $u$ after policy exposure $theta$. A participation or selection
+weight $W_theta(u) >= 0$ changes how much type $u$ appears in the realized
+population. With these objects,
 
 $ mu_theta(A) =
   (integral W_theta(u) K_theta(A | u) nu(d u)) /
   (integral W_theta(u) nu(d u)). $
 
-Selection and intervention can produce similar marginal score movement. They
-do not license the same mathematics.
+Pure selection means $K_theta = K_0$ for $nu$-almost every type and policy
+dependence enters only through $W_theta$. Intervention means $K_theta$ changes
+on a positive-$nu$ set of fixed types. Selection and intervention can produce
+similar marginal score movement, so they do not license the same mathematics.
 
 #figure(
   image("figures/part-i-dimension-observation-gap.pdf", width: 90%),
@@ -141,17 +148,23 @@ A Goodhart claim must declare the primitives that make it a claim rather than a
 retrospective label:
 
 #boxnote[Contract.][
-- #contract-row[Type representation:][what counts as fixed type $u$, and what
-  belongs to post-exposure behavior.]
-- #contract-row[Baseline behavior:][the baseline type law $nu$ and response
-  kernel $K_0$.]
+- #contract-row[Type representation:][the measurable type space $U$, interpreted
+  as the population description: what one element $u in U$ represents, which
+  attributes of that unit are fixed for the comparison, and which variables are
+  instead actions, noise, outcomes, or later states.]
+- #contract-row[Baseline behavior:][the baseline type law $nu$ and baseline
+  response kernel $K_0(d s | u)$: the conditional distribution of observed
+  states before the policy response being modeled.]
 - #contract-row[Policy exposure:][the rule, threshold, ranking, scorecard, or
-  incentive indexed by $theta$.]
-- #contract-row[Response channel:][selection weights $W_theta$, response
-  kernels $K_theta$, or an explicit mixture.]
+  incentive indexed by $theta$, and who can observe or respond to it.]
+- #contract-row[Response channel:][whether $theta$ changes only selection
+  weights $W_theta(u)$ at fixed $K_0$, changes the fixed-type response kernel
+  $K_theta(d s | u)$, or uses an explicit mixture. Pure selection is
+  $K_theta = K_0$ $nu$-almost surely; intervention is kernel change on a
+  positive-$nu$ set of types.]
 - #contract-row[Action/search geometry:][available actions, costs, caps,
-  fixed charges, search process, and stakes $V$ when an intervention bound is
-  imported.]
+  fixed charges, search process, stakes $V$, and how those actions move the
+  state distribution when an intervention bound is imported.]
 - #contract-row[Proxy/target relation:][the maps $P$, $G$, $phi$, residual
   $epsilon$, and the relevant dimension and observation gaps.]
 - #contract-row[Aggregation:][additive, conjunctive, threshold, Pareto,
@@ -162,6 +175,20 @@ retrospective label:
   distinguish the claimed channel from nearby alternatives and observations
   that would make the import fail.]
 ]
+
+The type representation is part of the empirical claim, not notation to hide
+inside the model. If $U$ is too rich, it can encode each unit's whole
+policy-contingent response plan and make every intervention look like selection.
+If $U$ is too coarse, stable heterogeneity can look like a kernel change. The
+contract therefore has to defend why the chosen $u$ is fixed for the comparison
+and why omitted variation belongs in $K_theta$, $W_theta$, or the action model.
+
+The kernel language should be read conditionally. $K_theta(B | u)$ is the
+probability that a fixed type $u$ produces an observed state in event $B subset
+S$ after exposure $theta$. A change in $W_theta$ changes which fixed types are
+represented; a change in $K_theta$ changes what a fixed type does or produces.
+The induced marginal law $mu_theta$ usually cannot distinguish those stories by
+itself.
 
 The contract is demanding by design. It prevents the framework from inferring
 welfare, hidden target movement, or a response channel from marginal score
@@ -472,9 +499,88 @@ institution cannot declare the target, aggregation, action traces, and hidden
 value model before interpreting a score rise, the framework returns "no
 licensed hidden-value claim."
 
-= Part V — What the Framework Refuses to Do
+= Part V — Practical Implications
 
-== 17. Anti-applications
+== 17. What to do before crediting score movement
+
+Wentworth's practical warning is that experiments often measure something other
+than what the experimenter thinks they are measuring: an unexpected confounder,
+a secondary channel, a sampling artifact, or an operational detail that happens
+to track the named quantity @wentworth2022notmeasuring. The proposed repair is
+not to stare harder at the headline metric. It is to measure many auxiliary
+traces so the unexpected channel has somewhere to show up.
+
+This book agrees with the first half and adds a second step. Auxiliary traces
+are necessary for discovery, but they are not sufficient for interpretation.
+They must feed a declared response contract. The combined rule is: collect the
+firehose for discovery, then use the contract for claim licensing. Without the
+firehose, the analyst misses the confounder. Without the contract, the analyst
+has many traces and still no disciplined statement of which score movement
+counts as selection, fixed-type response, proxy repair, harmful gaming, real
+improvement, or a mixture.
+
+The practical workflow is therefore not to ask first, "did the score improve?"
+Ask instead: what changed, who changed, by what channel, at what cost, with
+what hidden target evidence, and what observation would make this interpretation
+fail? A score rise is an observation to be explained, not a conclusion to be
+credited.
+
+#table(
+  columns: (1.1fr, 2.7fr),
+  inset: 5pt,
+  align: horizon,
+  table.header[*Audit field*][*Entry before crediting score movement*],
+  [Observed score movement],
+  [Magnitude, timing, affected units, score components, and whether the
+   movement is marginal, thresholded, ranked, or aggregate.],
+  [Candidate mechanisms],
+  [Selection, fixed-type response, proxy repair, harmful gaming, real
+   improvement, or an explicit mixture.],
+  [Required discriminator traces],
+  [Repeated-type evidence, exposure timing, action logs, search or query
+   budget, component-level score changes, participation changes, and
+   off-score outcomes that separate nearby mechanisms.],
+  [Hidden value/harm evidence],
+  [Declared target coordinates, value weights, harm rates, residual measures,
+   or domain outcomes; if absent, mark the hidden-value claim unlicensed.],
+  [Missing primitives and operational consequence],
+  [The undeclared type space, baseline law, response channel, action cost,
+   aggregation rule, or hidden value model, plus the resulting consequence:
+   collect traces, lower leverage, pilot, or withhold the claim.],
+  [Licensed claim],
+  [The narrow statement supported by the declared contract: for example,
+   pure-selection drift envelope, private affordability under a cost model,
+   exchange-rate diagnostic, or no hidden-value conclusion.],
+  [Blocked claim],
+  [The stronger statement not supported: welfare improvement, target
+   improvement, policy optimality, channel identification, or generic
+   anti-metric advice.],
+  [Contract-failure condition],
+  [A concrete observation that would defeat the interpretation, such as
+   action traces inconsistent with the named channel, hidden outcomes moving
+   opposite the claimed target, or theorem conditions failing.],
+)
+
+This sheet is intentionally smaller than the full application template. Its job
+is to slow down the common interpretive jump. If the observed movement is a
+readmission decline, a benchmark rise, a citation increase, or a ranking gain,
+the first audit question is the same: what response channel could have produced
+this movement? The second is which traces would discriminate that channel from
+its nearest rivals. The third is which hidden value or harm evidence is present,
+and which claim remains blocked if it is absent.
+
+The conclusion can be positive, but it has to be narrow. "The score improved
+and auxiliary outcomes moved in the declared target direction under stable
+exposure" is a different claim from "the policy improved welfare." "The action
+logs fit a low-cost proxy-repair story" is a different claim from "the metric is
+safe." "The selection envelope bounds hidden coordinate drift under the stated
+law" is a different claim from "selection is harmless." Practical use of the
+framework is mostly this discipline of replacing a large conclusion with the
+smaller one the evidence actually licenses.
+
+= Part VI — What the Framework Refuses to Do
+
+== 18. Anti-applications
 
 The framework is least useful when its primitives cannot be stably declared.
 Concrete anti-applications include:
@@ -491,7 +597,7 @@ In these cases, the contract returns "no verdict." That is not a hedge; it is
 the framework refusing to convert score movement into causal mechanism or
 welfare language without the primitives that would make the claim testable.
 
-== 18. Falsifiers
+== 19. Falsifiers
 
 The contract itself is falsifiable as a modeling discipline. A concrete
 falsifier would be a domain where the primitives are declared in advance,
@@ -518,9 +624,9 @@ If those failures survived audit, the framework would not merely need prose
 repair; the licensed theorem import would be wrong or the contract fields would
 not track the response mechanism they were supposed to track.
 
-= Part VI — Open Agenda
+= Part VII — Open Agenda
 
-== 19. The residual-shape conjecture
+== 20. The residual-shape conjecture
 
 The signature open problem is Q18: when does repeated proxy repair drive hidden
 failure toward a predictable residual shape, such as a low-complexity attractor?
@@ -533,7 +639,7 @@ as progress to prove a sparse, low-rank, or low-description-length attractor
 inside one of those contracts. It would not count to observe a simple-looking
 failure after the fact and relabel it as the attractor.
 
-== 20. Composition, identification, and information
+== 21. Composition, identification, and information
 
 Three structural gaps remain.
 
@@ -551,7 +657,7 @@ information-theoretic restatement could travel further if it preserves the
 distinction between coordinate-explicit drift, declared value metrics, and
 finite-pressure path behavior.
 
-== 21. Toolkit gap
+== 22. Toolkit gap
 
 A practitioner should not have to re-derive the contract every time. The missing
 toolkit has three parts: a primitive-elicitation protocol, worked exchange-rate

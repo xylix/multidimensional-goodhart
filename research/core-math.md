@@ -4,7 +4,7 @@ Status: canonical bare theorem document after Iteration 43. This file states
 objects, hypotheses, dependencies, non-transfer clauses, and book pointers. It
 does not duplicate proof prose from the book.
 
-Book pointers refer to the six-part spine in:
+Book pointers refer to the seven-part spine in:
 `book/multidimensional-goodhart.typ`.
 
 ## Stable definitions

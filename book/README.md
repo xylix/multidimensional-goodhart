@@ -1,6 +1,6 @@
 # Multidimensional Goodhart — book draft
 
-Working draft of the six-part long-form treatment of multidimensional
+Working draft of the seven-part long-form treatment of multidimensional
 Goodhart. This is an *expository* rewrite of the consolidated research material
 in `../research/`; the iteration history lives there, not here.
 
@@ -62,8 +62,10 @@ uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
   analogues, contributes-vs-omits table, and reduction-not-unification framing.
 - **Part IV** — Cases as stress tests: MMLU, hospital readmissions, and
   scientific metrics.
-- **Part V** — Refusals: anti-applications and concrete falsifiers.
-- **Part VI** — Open agenda: Q18 residual-shape conjecture, composition and
+- **Part V** — Practical implications: a one-page audit sheet for interpreting
+  score movement before crediting it.
+- **Part VI** — Refusals: anti-applications and concrete falsifiers.
+- **Part VII** — Open agenda: Q18 residual-shape conjecture, composition and
   identification gaps, and the practitioner toolkit gap.
 - **Technical abstract** — A standalone 2–4 page discussion starter with
   motivation, contract, closed theorem set, killed claims, falsifier, minimal
