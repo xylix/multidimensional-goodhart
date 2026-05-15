@@ -43,9 +43,9 @@
 
 #outline(depth: 2, indent: auto)
 
-= Part I — The Licensing Problem
+= The Licensing Problem
 
-== 1. The warning and what it does not identify
+== The warning and what it does not identify
 
 Goodhart's law is usually introduced through the compressed formulation "When a
 measure becomes a target, it ceases to be a good measure" @strathern1997. The
@@ -69,7 +69,7 @@ This book treats "multidimensional Goodhart" as a response-modeling framework,
 not as a single universal theorem. The framework asks what proxy pressure
 changes and which primitives are declared before importing a bound.
 
-== 2. What "multidimensional" actually adds
+== What "multidimensional" actually adds
 
 Let $S$ be a state space. A target map $G: S -> RR^m$ records target-relevant
 state and a proxy map $P: S -> RR^k$ records measured features. The intended
@@ -105,7 +105,7 @@ similar marginal score movement, so they do not license the same mathematics.
   caption: [Dimension and observation gaps are different contract fields. The schematic licenses the split in vocabulary, not a quantitative conclusion.]
 ) <fig:dimension-observation-gap>
 
-== 3. What we tried and what failed
+== What we tried and what failed
 
 The negative results are not housekeeping; they are the reason the framework
 has its current shape.
@@ -142,12 +142,16 @@ These failures block a single "n-dimensional Goodhart law." What survives is a
 set of conditional calculations plus a discipline for saying when each
 calculation applies.
 
-== 4. The response-modeling contract
+== The response-modeling contract
 
 A Goodhart claim must declare the primitives that make it a claim rather than a
 retrospective label:
 
 #boxnote[Contract.][
+- #contract-row[Claimed output:][the object the application wants to compute or
+  classify: scalar score drift, hidden drift vector, induced distribution,
+  selection/intervention label, intervention feasibility bound, welfare
+  comparison, or response-shape prediction.]
 - #contract-row[Type representation:][the measurable type space $U$, interpreted
   as the population description: what one element $u in U$ represents, which
   attributes of that unit are fixed for the comparison, and which variables are
@@ -176,6 +180,15 @@ retrospective label:
   that would make the import fail.]
 ]
 
+The first row is load-bearing. The contract is not a single formula with one
+fixed output. It is an adequacy test for a proposed output. A scalar hidden
+drift claim needs less information than a full response kernel. A distribution
+over $k$ discrete states has $k - 1$ degrees of freedom. A hidden drift vector
+in $RR^m$ needs $m$ value-relevant coordinates. A response-kernel claim can be
+infinite-dimensional unless the model restricts it. A selection/intervention
+label has a small output alphabet, but it is causal: it cannot usually be read
+from the marginal score path.
+
 The type representation is part of the empirical claim, not notation to hide
 inside the model. If $U$ is too rich, it can encode each unit's whole
 policy-contingent response plan and make every intervention look like selection.
@@ -190,13 +203,41 @@ represented; a change in $K_theta$ changes what a fixed type does or produces.
 The induced marginal law $mu_theta$ usually cannot distinguish those stories by
 itself.
 
+After the output is named, the contract should pass a small information
+accounting check:
+
+#boxnote[Contract adequacy.][
+1. State the output object and its degrees of freedom or identifying data.
+2. List the raw primitives the claim uses: type law, kernels, weights, proxy and
+   target maps, aggregation, action costs, stakes, hidden value, and evidence.
+3. Subtract constraints, such as probability normalization, declared equality
+   $K_theta = K_0$, additive aggregation, convex cost, or fixed deficit.
+4. Subtract redundancies, such as the arbitrary scale of $W_theta$ or coordinate
+   rescalings that leave the represented situation unchanged.
+5. Check units: costs must be comparable to stakes, proxy gains to score
+   deficits, and hidden harm rates to the declared value units.
+6. Check rank or relevance: independent changes in the declared inputs should
+   affect the claimed output, unless the redundancy has been stated.
+7. Check invariance: the conclusion should not depend on arbitrary naming,
+   coordinate splitting, units, or post-hoc enrichment/coarsening of $U$.
+]
+
+In shorthand, a contract is adequate only if
+$ "true input information" =
+  "raw variables" - "constraints" - "redundancies" $
+is enough to identify the claimed output up to the intended invariances. If two
+meaningfully different response stories still satisfy the same declared inputs,
+the contract has not licensed that output. It may still license a weaker output:
+for example, an aggregate score path may license a monitoring trigger while not
+licensing a welfare verdict or a selection/intervention classification.
+
 The contract is demanding by design. It prevents the framework from inferring
 welfare, hidden target movement, or a response channel from marginal score
 movement alone.
 
-= Part II — Licensed Calculations
+= Licensed Calculations
 
-== 5. Selection channel
+== Selection channel
 
 This section covers T1 and T2 in `research/core-math.md`.
 
@@ -238,7 +279,7 @@ zero-covariance example $H = Z^2 - 1$ survives as a warning.
   caption: [T1/T2 give a declared hidden-space envelope. Boltzmann-style pressure paths are trajectories inside that declared geometry, not replacements for the finite-pressure bound.]
 ) <fig:t1-t2-drift-envelope>
 
-== 6. Intervention channel
+== Intervention channel
 
 This section covers T3 and T4 in `research/core-math.md`.
 
@@ -279,7 +320,7 @@ requires a hidden harm functional.
   caption: [T4 locates the private cost-minimizing action for a score deficit. T5 then requires hidden harm exchange rates before that action can be interpreted as welfare movement.]
 ) <fig:t4-t5-cost-ellipse>
 
-== 7. Multidimensional scorecards — the keeper
+== Multidimensional scorecards — the keeper
 
 This section covers T5 in `research/core-math.md`.
 
@@ -316,7 +357,7 @@ can make harm grow with the number of components.
   caption: [The gaming band separates fixed-deficit per-gamer harm $H_"per"$ from population harm $H_"pop"$. More capacity widens entry without by itself changing the per-gamer exchange-rate formula.]
 ) <fig:population-gaming-band>
 
-== 8. Adaptive hardening — narrow but real
+== Adaptive hardening — narrow but real
 
 This section covers T6 in `research/core-math.md`.
 
@@ -342,7 +383,7 @@ comparison, or policy optimality. The immediate anti-transfer is noisy
 observation: once the update rule can chase noise, the deterministic threshold
 is no longer a stopping theorem.
 
-== 9. Response shape, conditionally
+== Response shape, conditionally
 
 The project did not prove a generic residual-shape law. What survives is a
 conditional taxonomy:
@@ -359,9 +400,9 @@ conditional taxonomy:
 These are not theorem transfers between domains. They are ways to turn a
 response-shape conjecture into a declared model with falsifiers.
 
-= Part III — Across Disciplines: Primitive Attribution
+= Across Disciplines: Primitive Attribution
 
-== 10. Genealogy
+== Genealogy
 
 Goodhart, Campbell, Strathern, and Manheim--Garrabrant are genealogy, not proof
 sources for the calculations above. Goodhart's original macroeconomic warning
@@ -375,7 +416,7 @@ genealogy to ask which primitives are present: selection, response kernel,
 action cost, proxy/target separation, aggregation, hidden value, and evidence
 standard.
 
-== 11. Formal analogues, primitive by primitive
+== Formal analogues, primitive by primitive
 
 The closest formal analogues supply some primitives and omit others.
 El-Mhamdi--Hoang and Majka--El-Mhamdi are scalar tail-conditioned selection
@@ -392,7 +433,7 @@ standards @cawley2010overfitting @dwork2015generalization @blum2015ladder
 provide empirical response-geometry candidates, not plug-in parameters
 @pan2022rewardmisspecification @gao2023rewardmodeloveroptimization.
 
-== 12. What each discipline contributes vs. omits
+== What each discipline contributes vs. omits
 
 #table(
   columns: (1.25fr, 1.35fr, 1.35fr, 1.35fr),
@@ -429,7 +470,7 @@ provide empirical response-geometry candidates, not plug-in parameters
   [Hypothesis generators for response geometry; no automatic theorem transfer.],
 )
 
-== 13. Reduction, not unification
+== Reduction, not unification
 
 No single equation unifies these literatures. The framework's claim is narrower:
 each formalism fills different fields of the response-modeling contract. The
@@ -438,9 +479,9 @@ source about adaptive holdouts does not identify hidden welfare. A source about
 costly feature change does not identify value weights. A source about multitask
 contracts does not make "more metrics" good or bad in a new application.
 
-= Part IV — Cases as Stress Tests
+= Cases as Stress Tests
 
-== 14. MMLU
+== MMLU
 
 MMLU is useful because it is not a single mechanism @hendrycks2021mmlu. A public
 benchmark score can induce fixed-checkpoint model selection, repeated adaptive
@@ -462,7 +503,7 @@ benchmark access, training data lineage, prompt/search budget, repeated-query
 history, transfer to non-MMLU tasks, and failure modes that move when the
 benchmark format changes.
 
-== 15. Hospital readmissions
+== Hospital readmissions
 
 For a readmission scorecard, score improvement is compatible with hospitals
 leaving the comparison pool, coding changes, observation-status changes,
@@ -481,7 +522,7 @@ aggregate readmission movement is insufficient to credit patient-welfare
 improvement. It cannot rank hospital policies without the clinical and value
 model the contract explicitly requires.
 
-== 16. Scientific metrics
+== Scientific metrics
 
 Publication counts, citations, grants, venue prestige, and rankings are already
 covered by responsible-metrics warnings such as DORA and the Leiden Manifesto.
@@ -499,9 +540,9 @@ institution cannot declare the target, aggregation, action traces, and hidden
 value model before interpreting a score rise, the framework returns "no
 licensed hidden-value claim."
 
-= Part V — Practical Implications
+= Practical Implications
 
-== 17. What to do before crediting score movement
+== What to do before crediting score movement
 
 Wentworth's practical warning is that experiments often measure something other
 than what the experimenter thinks they are measuring: an unexpected confounder,
@@ -578,9 +619,9 @@ law" is a different claim from "selection is harmless." Practical use of the
 framework is mostly this discipline of replacing a large conclusion with the
 smaller one the evidence actually licenses.
 
-= Part VI — What the Framework Refuses to Do
+= What the Framework Refuses to Do
 
-== 18. Anti-applications
+== Anti-applications
 
 The framework is least useful when its primitives cannot be stably declared.
 Concrete anti-applications include:
@@ -597,7 +638,7 @@ In these cases, the contract returns "no verdict." That is not a hedge; it is
 the framework refusing to convert score movement into causal mechanism or
 welfare language without the primitives that would make the claim testable.
 
-== 19. Falsifiers
+== Falsifiers
 
 The contract itself is falsifiable as a modeling discipline. A concrete
 falsifier would be a domain where the primitives are declared in advance,
@@ -624,9 +665,9 @@ If those failures survived audit, the framework would not merely need prose
 repair; the licensed theorem import would be wrong or the contract fields would
 not track the response mechanism they were supposed to track.
 
-= Part VII — Open Agenda
+= Open Agenda
 
-== 20. The residual-shape conjecture
+== The residual-shape conjecture
 
 The signature open problem is Q18: when does repeated proxy repair drive hidden
 failure toward a predictable residual shape, such as a low-complexity attractor?
@@ -639,7 +680,7 @@ as progress to prove a sparse, low-rank, or low-description-length attractor
 inside one of those contracts. It would not count to observe a simple-looking
 failure after the fact and relabel it as the attractor.
 
-== 21. Composition, identification, and information
+== Composition, identification, and information
 
 Three structural gaps remain.
 
@@ -657,7 +698,7 @@ information-theoretic restatement could travel further if it preserves the
 distinction between coordinate-explicit drift, declared value metrics, and
 finite-pressure path behavior.
 
-== 22. Toolkit gap
+== Toolkit gap
 
 A practitioner should not have to re-derive the contract every time. The missing
 toolkit has three parts: a primitive-elicitation protocol, worked exchange-rate
