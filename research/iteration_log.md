@@ -1122,3 +1122,33 @@ Red flags fired: policy overpromotion risk. The repair is explicit blocking:
 Iteration 35 is a theorem-boundary note, Iteration 36 is a dynamic-toy
 boundary, and Iteration 37 is an empirical-design boundary. None of them
 licenses broad regulator advice or hidden-target credit from score movement.
+
+## Iteration 40 (integration-readiness review)
+
+Question tackled: Should any results from Iterations 35-39 enter book or paper
+prose?
+
+What changed: added
+`research/reviews/integration_readiness_review.md`, an include/footnote/exclude
+gate for candidate book and paper integrations. Updated the current license map
+in `research/claim_audits.md` and removed the completed Iteration 40 section
+from `plans/next-steps.md` while preserving Iterations 41-42.
+
+What the review concluded: no new main-text argument is licensed. Iteration 41
+may add only a narrow deterministic finite-channel adaptive-hardening boundary
+note and one short model-dependence note for stochastic observation and
+endogenous stakes, if the existing book or paper prose needs them. Scorecard
+auditability, policy-readiness, measurement-frontier, empirical-estimation, and
+broad policy material remain excluded from new book/paper integration.
+
+What's open now: Iteration 41 can make only the licensed scoped prose edit, or
+record that no prose edit is needed. Iteration 42 remains the final consistency
+pass. Primitive estimation, stochastic filtering and repair budgets,
+endogenous-stakes fixed points, changing measured sets or deficits, shared
+bottlenecks, nonconvex response geometry, and real-domain frontier
+characterization remain research questions rather than draft claims.
+
+Red flags fired: integration overpromotion risk. The repair is the explicit
+footnote/exclude gate: the deterministic capacity result may correct stale
+open-question wording, but it cannot become a general adaptive-hardening,
+policy, stochastic, endogenous-stakes, empirical, or welfare claim.

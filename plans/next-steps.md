@@ -1,14 +1,15 @@
 # Next steps
 
-This is the active roadmap. Iterations 40-42 are the remaining staged repair
-sequence after the Iteration 39 roadmap consolidation: decide whether any book
-or paper integration is licensed, make only licensed prose edits, and then run
-the final consistency pass. Iteration 36 is retained below as completed context
-for the sequence and is not itself part of the active work.
+This is the active roadmap. Iterations 41-42 are the remaining staged repair
+sequence after the Iteration 40 integration-readiness review: make only
+licensed prose edits, and then run the final consistency pass. Iteration 36 is
+retained below as completed context for the sequence and is not itself part of
+the active work.
 
-Do not edit book or paper files before the Iteration 40 integration-readiness
-gate. The application-template promotion gate is closed: Chapter 6 now includes
-the reviewed application discipline, narrowed reusable-template boundary, and
+Do not edit book or paper files except within the narrow Iteration 41 license
+from `research/reviews/integration_readiness_review.md`. The
+application-template promotion gate is closed: Chapter 6 now includes the
+reviewed application discipline, narrowed reusable-template boundary, and
 compact hospital/scientific scorecard mappings. The adaptive-hardening theorem
 boundary is closed only for the narrow finite-channel deterministic capacity
 result; stochastic observation and endogenous stakes have only a tiny dynamic
@@ -19,7 +20,7 @@ The remaining work should repair reviewed-but-excluded gaps separately. Do not
 promote these into theorem, empirical, or policy claims until the relevant
 iteration has its own verification pass.
 
-Current live map after Iteration 39:
+Current live map after Iteration 40:
 
 - Theorem-boundary closed: adaptive hardening only inside the deterministic
   finite-channel capacity contract from Iteration 35. This licenses the exact
@@ -43,9 +44,10 @@ Current live map after Iteration 39:
   deficits, shared bottlenecks and nonconvex response geometry, frontier
   characterization in real domains, and the broader recursive/complexity
   attractor question under predeclared response geometry.
-- Licensed next action: Iteration 40 must be an integration-readiness review.
-  It may permit, footnote, or exclude candidate book/paper integrations; it
-  must not edit book or paper prose.
+- Licensed next action: Iteration 41 may make only the narrow prose edits
+  permitted by `research/reviews/integration_readiness_review.md`: at most a
+  deterministic finite-channel adaptive-hardening boundary note and a short
+  model-dependence note for stochastic observation/endogenous stakes.
 
 After finishing an iteration, delete the completed iteration step from this
 document while preserving the later roadmap unless it is superseded.
@@ -78,28 +80,6 @@ Completed artifacts:
 License only: these dynamics can break or alter the static capacity story
 under declared update rules. Do not claim a general performative-stability
 result.
-
-## Iteration 40: integration-readiness review
-
-Iteration type: `integration-review`.
-
-### Purpose
-
-Decide whether any results from Iterations 35-39 should enter book or paper
-prose.
-
-### Work
-
-1. Use the same include/footnote/exclude format as the prior
-   promotion-readiness review.
-2. Default to no integration unless a result changes the main argument and
-   has a clearly stated boundary on what is excluded from the claim.
-3. Do not edit book or paper prose during this review.
-
-### Success condition
-
-A review note that explicitly permits, footnotes, or excludes each candidate
-book/paper integration.
 
 ## Iteration 41: scoped book/paper integration, only if licensed
 
