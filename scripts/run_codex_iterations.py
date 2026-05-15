@@ -197,6 +197,9 @@ Required behavior:
 - Inspect `git status --short` and the current diff.
 - If there are no uncommitted changes and HEAD already contains an iteration
   commit, report that and stop.
+- Before staging, check whether `.git/index.lock` exists.
+- If `.git/index.lock` exists, do not remove it. Abort and report that Git is
+  already locked.
 - If the current changes look like completed Iteration {iteration.number} work,
   stage and commit all of them.
 - Use a concise commit message whose subject starts from this iteration name,
@@ -205,8 +208,15 @@ Required behavior:
 - Run `git diff --check` before committing.
 - After committing, report the commit hash and `git status --short`.
 - If the diff is unrelated to Iteration {iteration.number}, the roadmap section
-  was not removed, or checks fail, do not commit; report the blocker.
+  was not removed, checks fail, Git is locked, or Git reports an error such as
+  `Operation not permitted`, do not commit; report the exact blocker.
 """
+
+
+def read_text_if_exists(path: Path) -> str:
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8").strip()
 
 
 def run_commit_step(
@@ -241,11 +251,16 @@ def verify_iteration(
     iteration: Iteration,
     before_head: str,
     *,
+    run_dir: Path,
     allow_dirty_after: bool,
 ) -> str:
     after_head = git_output("rev-parse", "HEAD")
     if before_head == after_head:
-        raise RuntimeError(f"Iteration {iteration.number} did not create a commit")
+        final_message = read_text_if_exists(run_dir / "commit-last-message.md")
+        detail = f"\n\nCommit agent final message:\n{final_message}" if final_message else ""
+        raise RuntimeError(
+            f"Iteration {iteration.number} did not create a commit{detail}"
+        )
     if roadmap_contains(iteration.number):
         raise RuntimeError(
             f"Iteration {iteration.number} still appears in {ROADMAP}; "
@@ -290,6 +305,7 @@ def run_one_iteration(iteration: Iteration, args: argparse.Namespace) -> str:
     commit = verify_iteration(
         iteration,
         before_head,
+        run_dir=run_dir,
         allow_dirty_after=args.allow_dirty_after,
     )
     print(f"    committed: {commit[:12]}")
