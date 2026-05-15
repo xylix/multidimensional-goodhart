@@ -1,1204 +1,147 @@
 # Iteration log
 
-## Iteration 1
+Compact era summary after Iteration 43. The full audit trail is preserved in
+`research/iteration_log_full_1_43.md`.
 
-Question tackled: dimensional dependence of hidden Goodhart harm under threshold selection.
+## Iteration 44: consolidation
 
-What changed: created the research file structure and added a first linear-Gaussian toy model. The main calculation shows that, for `X ~ N(0, Sigma)` and selection on `X_1 >= t`, hidden mean drift is `sigma_1 lambda(t / sigma_1) r`, where `r` is the vector of covariance ratios between hidden coordinates and the selected proxy.
+Question tackled: what survived Iterations 1-43, which files are authoritative,
+which questions are closed/open/parked, and what theorem set should the spine
+refactor treat as canonical?
 
-What's open now: dimensional scaling requires assumptions about how `||r||_2` grows with the number of hidden dimensions. The correct harm functional remains unsettled.
+What changed: created the project-state registry, split closed/open/parked
+questions, produced `research/core-math.md`, moved the full log to
+`research/iteration_log_full_1_43.md`, replaced this file with an era summary,
+and wrote the next-mode memo.
 
-Red flags fired: one `[confident]` claim triggered adversarial review. It survived only with explicit restriction to the Gaussian toy model.
+What's open now: era 1 should continue with spine refactor, prose pass, and
+polish. Open research questions remain active only when they name a missing
+primitive, cheapest verification layer, and failure condition.
 
-Commit: `d210cff` (`Add first dimensional Goodhart iteration`).
+Red flags fired: no new math claim. The consolidation risk was stale authority;
+the repair is to make the registry and `core-math.md` the default source list.
 
-## Iteration 2
+## Iterations 1-6: dimensional selection and intervention split
 
-Question tackled: the red-flagged dependence on Gaussian covariance from iteration 1.
+Main question: does hidden Goodhart harm scale with unmeasured dimension?
 
-What changed: added a nonlinear counterexample showing that `Cov(H, P) = 0` can coexist with nonzero threshold drift. Added threshold response notation `b_H(t) = E[H | P >= t] - E[H]` to the formalization.
+Result: no dimension-only law survived. Threshold selection depends on
+baseline response/coupling; intervention depends on action geometry. The early
+work introduced threshold response, weighted selection response, the
+selection/intervention contrast, the quadratic Stackelberg wedge, and the
+additive/conjunctive aggregation split.
 
-What's open now: `b_H(t)` handles hard-threshold selection but not soft optimization, repeated selection, or adversarial adaptation. We still need assumptions under which covariance is an acceptable approximation.
+Killed or narrowed: unconditional dimensional scaling, signed aggregate hidden
+error, covariance as a finite-pressure primitive, generic "more metrics"
+signs, and broad additive conservation.
 
-Red flags fired: one `[confident]` negative claim triggered adversarial review and was logged as clear but narrow.
+Live carry-forward: declare harm/value functionals, aggregation rules, and
+response channels before making dimensional claims.
 
-Commit: `5e62ebe` (`Refine dimensional dependence coupling`).
-
-## Iteration 3
-
-Question tackled: what selection-response operator should replace threshold response for soft optimization.
-
-What changed: added weighted selection response notation to `formalization.md` and created `research/threads/selection_response.md`. The main derivation shows that under Boltzmann selection `W_beta = exp(beta P)`, `d E_beta[H] / d beta = Cov_beta(H, P)`, so covariance is a local velocity along a selection path rather than a finite-pressure summary.
-
-What's open now: weighted response still assumes a fixed baseline distribution. Causal and adversarial Goodhart need a model where the distribution `mu` changes with the regulator's policy.
-
-Red flags fired: the scheduled iteration-3 adversarial pass downgraded the scope of threshold response and motivated the weighted-response generalization.
-
-Commit: `f6186d8` (`Add weighted selection response iteration`).
-
-## Iteration 4
-
-Question tackled: open question 8 — how the framework should represent policies that change the baseline distribution `mu`, not merely reweight it (causal/adversarial Goodhart).
-
-What changed: introduced the **response channel** `R: Theta -> P(S)` as the top-level object, split into selection channels (`mu_theta << mu_0`; contains all of iterations 1-3) and intervention channels (`mu_theta` can be singular w.r.t. `mu_0`). Proved an elementary drift bound for selection channels (`||B_H|| <= delta · ||s||`, all baseline functionals) and argued no baseline analogue exists for intervention channels. Built a linear-Gaussian Stackelberg gaming toy model: agents pay quadratic cost `a^2/(2kappa)` to inflate the proxy, selection worth `V`; equilibrium gaming wedge `Delta = sqrt(2 kappa V)` sets both the proxy's worst-case bias and the induced hidden harm, and is exogenous to `mu_0`. Created `research/threads/intervention_response.md`; updated `formalization.md`, `open_questions.md` (added Q10-13), `red_flags.md`.
-
-What's open now: a general intervention-channel bound for convex (non-quadratic) gaming costs (Q10); endogenous-stakes / performative fixed point (Q11); exact agent-model condition for staying inside the selection class (Q12); multidimensional gaming reconnecting to the dimensional thread (Q13).
-
-Red flags fired: none triggered the adversarial sub-protocol (no `[confident]` claims; iteration 4 is not a multiple of 3). Logged one watch item in `red_flags.md`: the selection-channel bound is elementary — don't over-sell the inequality; the contrast is the content. Next scheduled adversarial pass: iteration 6.
-
-Commit: `406c75c` (`Add intervention-vs-selection response iteration`).
-
-## Iteration 5
-
-Question tackled: open question 13 — multidimensional gaming. Does adding a measured proxy dimension redistribute, conserve, shrink, or grow gaming harm in the intervention regime? Rejoins the dimensional thread.
-
-What changed: built a multidimensional Stackelberg gaming toy — `k` channels, channel `j` costs `a_j^2/(2 kappa_j)` and yields harm `H_j = a_j`, regulator measures set `M` and aggregates. **Additive/compensatory metric**: cost-minimal allocation is water-filling `a_j = t kappa_j / K_M` (`K_M = sum_{j in M} kappa_j`); gaming occurs iff `K_M >= t^2/(2V)`; total harm `H = t`, invariant to `M` — closing a gamed channel only re-routes the fixed total; expanding `M` raises `K_M`, lowers the cheapest gaming cost, recruits more gamers (backfire). **Conjunctive metric**: `H = t|M|`, linear in measured dimensions. So dimensional dependence of gaming harm is governed by the aggregation rule, not dimension count. Scope: assumes equally-wasteful gaming; with goal-aligned channels (`gamma_j > 0`) the regulator *can* shrink harm by steering effort onto high-`gamma` channels. Added Iteration-5 sections to `threads/intervention_response.md` and a cross-ref in `threads/dimensional_dependence.md`; updated `formalization.md`, `open_questions.md` (Q14-16), `negative_results.md` (two entries: re-routing doesn't reduce harm; "more dims" has no sign without fixing aggregation), `red_flags.md` (watch item).
-
-What's open now: adaptive-hardening dynamics and convergence (Q14); the regulator's measurement frontier between informativeness and attack-surface size (Q15); sub/supermodularity of `H(M)` for mixed aggregation (Q16); unequal-weight additive metrics interpolating the additive/conjunctive extremes.
-
-Red flags fired: none triggered the adversarial sub-protocol (all claims `[tentative]`; iteration 5 not a multiple of 3). Logged a watch item; iteration 6 is a scheduled adversarial-pass iteration and should attack the conservation-under-re-routing claim.
-
-Commit: `40ed0b9` (`Add multidimensional gaming iteration`).
-
-## Iteration 6
-
-Question tackled: scheduled adversarial pass on iteration 5's conservation-under-re-routing claim.
-
-What changed: attacked the additive conservation result as a skeptical referee. The original Lagrange solution is still correct, but the headline was too broad. Re-solved the additive quadratic model with score weights `w_j` and harm rates `h_j`: for fixed score deficit `d`, harm is `H_M(d) = d (sum h_j kappa_j w_j)/(sum kappa_j w_j^2)`, so conservation under re-routing holds iff channels are equally harmful per score unit (`h_j = c w_j`). Also separated per-agent fixed-deficit harm from aggregate population harm: with heterogeneous quality, adding a gameable channel raises `K_M`, expands the profitable gaming band, and increases aggregate harm whenever there is population mass in that band. Updated `threads/intervention_response.md`, `formalization.md`, `open_questions.md` (Q17), `negative_results.md`, and `red_flags.md`.
-
-What's open now: population-vs-per-agent welfare object for gaming harm (Q17); general convex-cost version of the exchange-rate condition (Q10); adaptive hardening dynamics (Q14); sub/supermodularity with weighted aggregation (Q16).
-
-Red flags fired: scheduled adversarial pass did fire and found a real overstatement. Claim repaired and downgraded in scope; no `[confident]` claims added.
-
-Commit: `0e2b166` (`Run adversarial pass on conservation claim`).
-
-## Iteration 7
-
-Question tackled: Q18 — whether proxy optimization pressure induces a minimum-complexity hidden-drift attractor.
-
-What changed: added `research/threads/minimum_complexity_attractor.md` as a `generate` iteration. The main result is negative/repairing: selection channels follow baseline tail response, not a complexity optimum; intervention channels follow cost/search geometry. In a quadratic intervention model with target `w . a >= d` and cost `(1/2) a^T C^{-1} a`, the KKT solution is `a^* = d C w/(w^T C w)`, which can be dense. Sparse minimum-complexity behavior appears in fixed-charge or linear-cost models, where the cheapest single route can dominate. Updated `formalization.md`, `open_questions.md`, `negative_results.md`, `red_flags.md`, and `verification_stack.md`.
-
-What's open now: choose a pre-specified complexity functional (support, rank/spectral concentration, description length, KL from max-entropy prior) and test which response geometries align with it; separate private cost, search accessibility, and semantic simplicity; decide whether Appendix G should get a later review/edit iteration before any stronger draft claim.
-
-Red flags fired: yes. The broad Q18 claim was rhetorically convenient and equivocated between cheap, simple, sparse, low-rank, and low-description-length. Logged as `needs-adversarial-review`; repaired to a conditional response-geometry attractor claim.
-
-## Iteration 8
-
-Question tackled: review of recursive Goodhart / Q18 claim license after Iteration 7.
-
-What changed: created `research/reviews/recursive_goodhart_q18.md` and `research/claim_audits.md`. The review found that the PDF already handles Appendix G cautiously, but the generic repair "response-geometry attractor" is too low-information unless paired with specific response-shape predictions. The audit now distinguishes dense quadratic-cost drift, sparse fixed-charge/linear-cost drift, low-rank affordance drift, and low-description-length search-prior drift.
-
-What's open now: a future generate/simulation iteration should pick one pre-specified complexity or shape measure and compare response geometries under that measure. A later edit iteration could tighten `draft.md`'s "complexity" language if that draft is still active.
-
-Red flags fired: yes, but as a repair to an existing red flag rather than a new theorem. Logged that "response-geometry attractor" is safe but too broad unless it preserves geometry-to-shape predictions.
-
-## Iteration 9
-
-Question tackled: scheduled adversarial review of the Iteration 8 response-shape predictions for repaired Q18.
-
-What changed: created `research/reviews/response_shape_predictions.md` and updated `claim_audits.md`, `red_flags.md`, and `negative_results.md`. The review preserved the geometry-to-shape table but narrowed each row: quadratic models predict cost-minimal drift along `C w`, dense only when `C w` is dense and constraints do not bind; fixed-charge/linear models predict one-channel drift only in the uncapped, no-tie, linear marginal case; low-rank action maps restrict drift to a low-dimensional image rather than giving a basis-invariant spectral claim; simplicity-biased search requires a pre-specified coding/search prior.
-
-What's open now: a future generate or simulation iteration should choose one row of the narrowed table and test it under explicit coordinates, constraints, and value basis. The most useful next candidates are capped fixed-charge models, active-face quadratic models, or a pre-specified search-prior toy.
-
-Red flags fired: yes. The sharper Iteration 8 table risked becoming a new overclaim. The repair keeps the informative predictions while attaching model clauses and representation caveats.
-
-## Iteration 10
-
-Question tackled: capped fixed-charge response shapes as a concrete Q18 geometry-to-shape prediction.
-
-What changed: created `research/threads/capped_fixed_charge_response.md` and updated `claim_audits.md`, `negative_results.md`, and `open_questions.md`. The new thread separates the uncapped one-channel result from capped linear spillover and the full fixed-charge-plus-caps model. In the no-activation/already-activated capped linear case, channels fill by increasing effective marginal cost `q_j/w_j` until caps bind. With positive fixed costs, sorted filling is no longer universal; active sets can switch as `d` crosses fixed-cost and cap thresholds.
-
-What's open now: compare the capped fixed-charge support path against active-face quadratic response under the same hidden coordinate system; add convex marginal costs, detection penalties, or risk diversification to see when lumpy spillover becomes smoother spreading.
-
-Red flags fired: no new scheduled adversarial pass. A narrower negative result was logged: capped fixed-charge response should not be summarized as universal sorted marginal-cost filling.
-
-## Iteration 11
-
-Question tackled: open questions 8 and 12 — repair the selection/intervention boundary after the absolute-continuity criterion proved too brittle.
-
-What changed: created `research/threads/response_kernel_boundary.md` as a `generate` iteration. The new formal object is a type space `U`, baseline type law `nu`, participation weights `W_theta(u)`, and response kernels `K_theta(ds | u)`, with induced law `mu_theta(A) = int W_theta(u) K_theta(A | u) nu(du) / int W_theta(u) nu(du)`. Pure selection is now defined relative to `(U, K_0)` by `K_theta = K_0` and policy dependence only through `W_theta`; intervention is `K_theta != K_0` on a positive-mass set of types. This preserves weighted selection while handling epsilon-baseline gaming, where `mu_theta << mu_0` can still hold even though the policy changes fixed-type behavior. Updated `formalization.md`, `open_questions.md`, `claim_audits.md`, `negative_results.md`, `red_flags.md`, and `verification_stack.md`.
-
-What's open now: the boundary is representation-relative and not identifiable from marginal `mu_theta` alone. Applications must declare what counts as fixed type, what counts as manipulable action, and what evidence distinguishes reweighting from response. This sets up later work on convex intervention bounds and ML mappings of `kappa`.
-
-Red flags fired: a representation caveat was logged. The response-kernel repair is useful, but not an intrinsic observed-law classification; too rich a type space can absorb interventions into type, while too coarse a type space can make heterogeneity look like kernel change.
-
-## Iteration 12
-
-Question tackled: scheduled adversarial review of Iteration 11's response-kernel boundary.
-
-What changed: created `research/reviews/response_kernel_boundary.md` and updated `claim_audits.md`, `negative_results.md`, and `red_flags.md`. The review stress-tested whether "selection changes only `W_theta`; intervention changes `K_theta` at fixed type" is useful or just hides ambiguity in the type space. It found the boundary useful but strictly representation-relative: participation-only response remains pure selection; epsilon-baseline gaming remains intervention despite absolute continuity; proxy-only manipulation is intervention for proxy validity but not necessarily hidden harm; and representation changes can flip the classification unless `U` is declared as part of the causal model.
-
-What's open now: applications need explicit evidence plans. Marginal `mu_theta` data alone generally cannot identify whether a change came from type reweighting or fixed-type response; credible use needs repeated-type observations, randomized policy exposure, action traces, or structural assumptions. No change was needed to the compact definition in `formalization.md`.
-
-Red flags fired: scheduled adversarial pass. The stronger claim "the boundary is identifiable from distributions alone" was logged as dead; the surviving claim is a causal type/action representation license, not an intrinsic observed-law classifier.
-
-## Iteration 13
-
-Question tackled: Q10 — an intervention-channel analogue of the selection bound for general convex gaming costs.
-
-What changed: created `research/threads/convex_intervention_bound.md` and updated `formalization.md`, `open_questions.md`, `claim_audits.md`, `negative_results.md`, and `red_flags.md`. The new thread defines fixed-type actions `a in A(u)`, costs `c_u(a)`, proxy gain `p_u(a)`, hidden displacement `h_u(a)`, stakes `V`, and the affordable set `B_u(V) = {a: c_u(a) <= V}`. The intervention envelope is `||h_u(a^*)|| <= sup_{a in B_u(V)} ||h_u(a)||`. For linear proxy gain and convex cost, the score-deficit cost is `m(d) = sup_{lambda >= 0} [lambda d - c^*(lambda w)]`, with gaming feasible iff `m(d) <= V`.
-
-What's open now: extend the deterministic convex bound to stochastic response and endogenous `V`; connect it to fixed-charge/nonconvex regime switches without flattening Iteration 10's lumpy response story; and decide what evidence could identify `c_u`, `V`, and `h_u` in applications.
-
-Red flags fired: no scheduled adversarial pass, but a watch item was logged. The convex formula is useful only as a conditional cost-geometry primitive. Convex affordability is not a welfare bound unless hidden harm/value weights are declared.
-
-## Iteration 14
-
-Question tackled: what methodological object should replace broad "Goodhart pressure has a characteristic shape" claims after the response-kernel and response-geometry repairs?
-
-What changed: created `research/threads/response_modeling_contract.md` and updated `formalization.md`, `open_questions.md`, `claim_audits.md`, and `verification_stack.md`. The new object is a response-modeling contract: a Goodhart claim must declare type space `U`, baseline kernel `K_0`, policy exposure `theta`, selection weights `W_theta` and/or response kernels `K_theta`, action/cost/search geometry, proxy/target relation, aggregation rule, hidden welfare/harm model, and evidence standard.
-
-What's open now: write domain-specific application templates and use the contract to guide the next book chapter. The danger is turning "response modeling" into the empty statement that assumptions matter; the repair is to require each contract to name the calculation or falsifier it licenses.
-
-Red flags fired: no scheduled adversarial pass. A scope guard was added in the thread and audit: the contract does not license a new universal theorem, identification from marginal distributions alone, or welfare conclusions from proxy movement without a hidden harm model.
-
-## Iteration 15
-
-Question tackled: math-quality consolidation of the core response-modeling claims, especially the coordinate bookkeeping gap in the selection bound.
-
-What changed: created `research/threads/core_propositions_and_value_norms.md`. The new thread promotes three calculations into proposition sketches: the pure-selection drift bound with `L = d mu_theta / d mu_0`, finite second moments, and `chi^2(mu_theta || mu_0) < infinity`; the convex intervention score-deficit budget `m(d) = sup_{lambda >= 0} [lambda d - c^*(lambda w)]` under finite-dimensional convex regularity; and the additive conservation iff-condition for quadratic separable costs, weighted additive score, linear harm, and fixed deficit. It also replaces the coordinate-only selection bound with a scalar/operator value version: for `V_H = v . (H - E H)`, `|Delta V_H| <= delta sqrt(v^T Sigma_H v)`, with the old Euclidean bound recovered only after declaring identity as the hidden value metric.
-
-What's open now: value weights, type spaces, costs, and response kernels remain modeling commitments or empirical targets; they are not identified from `mu_theta` alone. Simulations are still needed for population harm, stochastic response, adaptive hardening, and repeated proxy-repair dynamics.
-
-Red flags fired: proposition language watch item. The pass raises Layer-1 rigor but should not be read as a new universal theorem or as making the selection bound representation-free without a declared hidden value metric.
-
-## External review integration pass
-
-Question tackled: how should the Gemini external review and Claude pushback
-change the rigor-improvement pass before Iteration 16?
-
-What changed: updated the book's licensed-claims framing so the response-modeling
-contract is the transfer rule for applications: exact toy bounds apply only
-after the application declares matching type, response-channel, action/search,
-aggregation, hidden-harm, and falsifier objects. Sharpened the ML paragraph to
-say that missing `kappa`, `V`, or cost/search analogues make an ML application
-underspecified, not evidence for or against the framework. Updated
-`claim_audits.md` to distinguish framework/taxonomy use from direct RLHF
-prediction and to keep the separable additive theorem clean rather than
-weakening it into a generic "it depends" claim.
-
-What's open now: Iteration 16 should still promote the propositions cleanly and
-add compact "licenses / does not license" interpretation sentences. Do not add
-new theorem families, broad simulation suites, or prevalence-harm notation just
-to answer external-review caveats.
-
-Red flags fired: no new mathematical red flag. The main presentation risk is
-caveat inflation: making a scoped theoretical paper read apologetic rather than
-precise.
-
-## Iteration 16
-
-Question tackled: book propagation for the core proposition sketches without
-weakening their assumptions.
-
-What changed: added the Stackelberg wedge proposition sketch to
-`research/threads/core_propositions_and_value_norms.md`, then promoted five
-reader-facing propositions in `book/multidimensional-goodhart.typ`:
-coordinate-explicit selection drift, value-weighted/operator selection drift,
-the one-dimensional quadratic Stackelberg wedge, the convex score-deficit
-budget, and the additive exchange-rate iff-condition. The convex-cost section
-is now `<sec:convex-cost-bound>` rather than a conjecture, with the Fenchel dual
-formula stated under finite-dimensional closed proper convex cost and standard
-regularity. Each promoted block includes compact license and non-license
-boundaries. Updated `claim_audits.md`, `verification_stack.md`, and
-`red_flags.md` so the audit trail matches the book.
-
-What's open now: welfare-object notation, active-face repairs, stochastic
-Stackelberg response, population harm, adaptive hardening, and simulations
-remain later work. The convex proposition is a private-cost score-deficit
-budget, not a welfare theorem. The Stackelberg wedge remains a quadratic
-threshold toy, not a direct neural-training model.
-
-Red flags fired: the coordinate-free selection-bound issue is narrowed because
-the book now separates coordinate-explicit and value-weighted/operator forms.
-The proposition-language watch remains open: later prose must keep hypotheses,
-license boundaries, and methodological claims distinct.
-
-## Iteration 17
-
-Question tackled: welfare-object discipline for intervention gaming claims,
-especially conservation, backfire, and dimensional gaming.
-
-What changed: introduced the notation `H_per(M, d)` for fixed-deficit
-per-agent harm and `H_pop(M; F_Q, V)` for population harm after heterogeneous
-agents decide whether gaming is worthwhile. Updated the book's Chapter 3
-multidimensional-gaming section so Proposition 4 is explicitly a conservation
-result for `H_per`, while "adding a gameable measured dimension backfires" is
-an `H_pop` claim driven by expansion of the gaming band. The unit-weight
-equal-harm case now states `H_per(M, d) = d`, with the old `H = t` slogan
-limited to the fixed-deficit pure-gaming case. The conjunctive section now
-separates per-gamer harm `t|M|` from population harm, whose sign depends on
-entry. Propagated the same distinction through
-`research/threads/intervention_response.md`, `research/claim_audits.md`,
-`research/formalization.md`, and `research/open_questions.md`.
-
-What's open now: the right population welfare object under noise, nonlinear
-costs, endogenous stakes, and stochastic response remains unresolved. Broader
-welfare-bound packaging, prevalence-sensitive notation, and nonlinear welfare
-objects remain later work rather than part of this pass.
-
-Red flags fired: no contradiction exposed. The pass narrowed ambiguous prose:
-conservation remains strong under Proposition 4's hypotheses, but only for
-`H_per`; population-level backfire is a separate entry effect.
-
-## Iteration 18
-
-Question tackled: remaining math guardrails after the proposition and welfare
-passes.
-
-What changed: tightened Boltzmann selection claims to the finite-mgf domain
-`B = { beta : E_mu[exp(beta P)] < infinity }` and made heavy-tail failure an
-explicit modeling boundary. Updated the quadratic response-shape result so
-`a^* = d C w/(w^T C w)` is the unconstrained/interior solution; for
-nonnegative actions, `C w >= 0` is the sufficient interior condition, while
-violations such as `C = diag(1, 1), w = (1, -1)` require active-face KKT.
-Restated Proposition 3 as a convex action-cost score-deficit result, not a
-non-convex ML/RLHF training theorem. Added formal deferral language for
-endogenous stakes such as `V(H_obs) = V_0 exp(-gamma H_obs)`. Updated
-`book/multidimensional-goodhart.typ`, `research/formalization.md`,
-`research/open_questions.md`, `research/claim_audits.md`,
-`research/verification_stack.md`, `research/red_flags.md`,
+Canonical files: `research/formalization.md`,
 `research/threads/selection_response.md`,
-`research/threads/minimum_complexity_attractor.md`,
-`research/threads/convex_intervention_bound.md`,
+`research/threads/intervention_response.md`,
+`research/negative_results.md`.
+
+## Iterations 7-15: response geometry and core proposition sketches
+
+Main question: can the recursive/minimum-complexity idea be repaired, and what
+mathematical primitives survive review?
+
+Result: the generic minimum-complexity attractor failed. The replacement is a
+conditional response-geometry taxonomy: quadratic, fixed-charge, capped,
+low-rank, and search-prior regimes predict different shapes only after their
+coordinates and constraints are declared. The response-kernel boundary and
+response-modeling contract became the methodological spine. The first core
+proposition sketches were stated: coordinate-explicit and value-weighted
+selection bounds, the Stackelberg wedge, convex score-deficit budget, and
+additive exchange-rate condition.
+
+Killed or narrowed: absolute continuity as the causal intervention boundary,
+selection/intervention identifiability from marginals, convex affordability as
+welfare bound, and value-metric-free selection invariance.
+
+Live carry-forward: applications must defend `U`, channel, action geometry,
+aggregation, value/harm, and evidence standard.
+
+Canonical files: `research/threads/response_kernel_boundary.md`,
+`research/threads/response_modeling_contract.md`,
 `research/threads/core_propositions_and_value_norms.md`,
-`research/reviews/response_shape_predictions.md`,
-`research/findings_since_iteration_6.md`, and `plans/math-rigor.md`.
-
-What's open now: welfare-bound packaging for declared hidden-harm functionals,
-simulation coverage for finite-mgf versus heavy-tail selection and active-face
-quadratic response, stochastic response, and the separate performative model
-needed for endogenous stakes.
-
-Red flags fired: no contradiction exposed. The pass found missing domain
-clauses, not false formulas: each formula survives with its intended scope
-visible.
-
-## Iteration 19
-
-Question tackled: welfare-bound packaging after the convex score-deficit
-budget.
-
-What changed: extended `research/threads/convex_intervention_bound.md` with the
-declared-functional problem
-`W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }`. The new section separates
-this worst-case welfare-bound object from the realized harm of a
-cost-minimizing response `ell(a^*(d))`. It uses the required counterexample
-`w = (1, 1)`, `h = (M, 0)`, and equal quadratic costs: the cost-minimal action
-for deficit `d` is `(d/2, d/2)`, so hidden harm is `Md/2`, unbounded as the
-declared value weight `M` grows. Propagated the distinction through
-`research/formalization.md`, `research/open_questions.md`,
-`research/claim_audits.md`, `research/verification_stack.md`, and
-`research/red_flags.md`.
-
-What's open now: nonlinear, prevalence-sensitive, stochastic, and endogenous
-welfare models remain later work. The current pass only packages the fixed
-action-geometry problem for a declared hidden-harm functional `ell`, with later
-aggregation into `H_per` or `H_pop` still to be specified.
-
-Red flags fired: overclaim risk. Convex affordability, `m(d)`, and finite
-private cost budgets do not bound welfare in value units without declared
-hidden value weights.
-
-## Iteration 20
-
-Question tackled: executable simulation checks for the core selection and
-intervention claims.
-
-What changed: added `research/simulations/` with a Makefile and
-`iteration20_selection_intervention.py`, run via
-`uv run --with numpy --with scipy`. The script contains eight named checks:
-linear-Gaussian threshold drift, zero-covariance nonlinear threshold response,
-Boltzmann finite-mgf versus heavy-tail behavior, value-weighted selection with
-two declared `v` choices, the single-channel Stackelberg wedge, multichannel
-quadratic water-filling, noisy Stackelberg numerical response, and
-convex-cost versus welfare-bound separation. Each check prints the proposition
-or open problem it tests and the condition that would narrow or kill the claim.
-Updated `research/verification_stack.md` so Layer 3 records these checks as
-passed for the intended toy regimes.
-
-What the run showed: the deterministic run passed all eight checks. The
-selection examples supported the current distinction between covariance,
-threshold response, weighted response, and declared value weights. The
-intervention examples supported the quadratic wedge, the separable quadratic
-allocation formula, and the claim that `ell(a^*(d))` and `W_ell(d,V)` are
-different objects.
-
-What's open now: linear and elastic-net-like convex costs remain useful
-additional variants, as do Iteration 21's population and active-set simulations.
-The noisy Stackelberg check is only a numerical toy; it does not close the
-stochastic-response theory.
-
-Red flags fired: no contradiction exposed. Simulation passed for the scoped toy
-models, not for broad empirical or non-convex claims.
-
-## Iteration 21
-
-Question tackled: population/per-agent welfare separation and active-set
-response-shape simulations.
-
-What changed: added `research/simulations/iteration21_population_active_sets.py`
-and updated the simulation Makefile so `make run` executes both Iteration 20
-and Iteration 21. The new script compares capped fixed-charge active-set paths
-against active-face quadratic response, plots `H_per(d)` separately from
-`H_pop(M; F_Q,V)`, and includes a skewed non-Gaussian `Q` stress test. The
-script writes `research/simulations/outputs/iteration21_active_sets.png` and
-`research/simulations/outputs/iteration21_welfare_objects.png`.
-
-What the run showed: capped fixed-charge response produced lumpy support
-switches and skipped channel 1 before its cap because channel 2's lower
-marginal cost justified its fixed charge. The quadratic full-space `C w`
-solution failed under `a >= 0` when `C w` had a negative component and was
-repaired by the active-face solution. In the equal-harm additive model,
-`H_per(d)` coincided across measured-set capacities where gaming was feasible,
-while population harm increased with the profitable deficit band for both
-normal and skewed `Q`.
-
-What's open now: noisy-threshold population welfare, endogenous `V`,
-conjunctive metrics, and broader active-set families remain later variants. The
-Iteration 21 checks support the notation discipline around `H_per` and
-`H_pop`; they are still toy simulations, not empirical evidence.
-
-Red flags fired: no contradiction exposed. The main correction during the pass
-was semantic: `H_pop` must be computed as the population expectation
-`E[d 1{0 < d <= Delta_K}]`, not as the conditional mean among gamers.
-
-## Iteration 21.1
-
-Question tackled: simulation-code hardening after review of the Iteration
-20-21 checks.
-
-What changed: repaired the two simulation scripts without changing any math
-claims. Both scripts now check that every returned `Check` is well formed
-instead of using a tautological string-length finiteness assertion. Iteration
-20 now uses non-axis-aligned value vectors for the scalar/operator selection
-bound; strengthens the Pareto Boltzmann diagnostic with tilted-mean growth;
-runs a sigma sweep for noisy Stackelberg response without asserting a general
-monotonicity theorem; and solves the `W_ell(d,V)` problem numerically with
-SLSQP before comparing to the closed form. Iteration 21 now writes outputs
-relative to the script directory, solves the active-face quadratic examples
-with SLSQP under nonnegativity constraints, and adds a conjunctive aggregation
-population check.
-
-What the run showed: `make run` passed deterministically. The solver-backed
-checks matched the closed-form welfare-bound and active-face quadratic
-solutions. The sigma sweep showed a finite noisy-response diagnostic rather
-than a monotone law. The conjunctive check showed fixed-deficit per-gamer harm
-scaling as `m d` while the equal-cost entry band shrinks with the number of
-required measured dimensions.
-
-What's open now: this pass closes the obvious simulation-code review issues
-and one cheap conjunctive coverage gap. Noisy-threshold population welfare,
-endogenous `V`, adaptive hardening, and broader active-set families remain
-future model work.
-
-Red flags fired: no contradiction exposed. The only conceptual guardrail is
-that the noisy sigma sweep and heavy-tail truncation diagnostics remain finite
-toy checks, not general theorems.
-
-## Iteration 22
-
-Question tackled: ML formal analogue survey for the response-modeling
-framework.
-
-What changed: added `research/threads/lit_review/ml_formal_analogue_survey.md` (relocated post-Iteration 25 from `research/threads/`). The new
-thread maps existing ML theorem families to framework primitives: model
-selection and hyperparameter search as selection over fixed candidates;
-adaptive holdout and leaderboard work as repeated-selection/evidence-standard
-primitives; strategic classification as the closest action-cost intervention
-analogue; performative prediction as response-kernel/distribution-shift
-formalism; reward gaming as proxy/target separation; and reward misspecification
-or reward-model overoptimization as empirical/search-geometry anchors. Each row
-separates established theorem content from non-binding analogy and names a
-falsifier for a future worked application.
-
-What's open now: Iteration 23 should use the survey to build one worked ML
-benchmark contract. The best candidate is a benchmark used both for checkpoint
-selection and for finetuning/RLHF-style optimization, because it contains a
-clean selection channel and a separate intervention/search channel. Bibliography
-expansion and book integration remain later polish/application work.
-
-Red flags fired: no contradiction exposed. The main guardrail is unchanged:
-do not identify `kappa` with gradient accessibility, benchmark contamination,
-model size, or reward-model feature simplicity unless a worked application
-declares that response geometry and its falsifiers.
-
-## Iteration 23
-
-Question tackled: worked ML benchmark application for the response-modeling
-contract.
-
-What changed: added a Chapter 5 worked contract for MMLU benchmark pressure.
-The example treats MMLU as a named benchmark anchor, not as proof of the
-theory. It walks through the eight contract fields: type, baseline behavior,
-exposure, channel, action geometry, proxy/target, aggregation, and evidence.
-The key split is fixed-checkpoint selection via `W_theta` versus finetuning,
-prompt search, contamination, synthetic-data filtering, or reward/proxy
-optimization via `K_theta`. The book now states that action geometry is absent
-unless the application declares finetuning data, benchmark access, search
-budget, reward loop, compute, KL penalty, or comparable costs.
-
-What the propositions license: Propositions 1 and 1' license only
-fixed-candidate checkpoint-selection claims with declared hidden value weights.
-Proposition 2 licenses an MMLU-related Stackelberg wedge only after declaring a
-one-dimensional threshold, stakes `V`, and cost parameter `kappa`; MMLU alone
-does not supply them. Proposition 3 requires a declared local convex
-action/search geometry. Proposition 4 requires additive benchmark components
-with declared costs and hidden-harm exchange rates.
-
-What's open now: empirical claims about a particular lab, release, or training
-run still need source-specific evidence: same-checkpoint before/after behavior,
-private or regenerated tests, contamination probes, action traces, and transfer
-to non-MMLU tasks.
-
-Red flags fired: no contradiction exposed. The guardrail is now book-facing:
-do not treat MMLU itself as licensing Stackelberg, convex-cost, RLHF,
-`kappa`, or welfare bounds without declared response geometry and falsifiers.
-
-## Iteration 24
-
-Question tackled: consistency consolidation across the research notes and book
-after Iterations 20-23.
-
-What changed: updated the audit trail so `claim_audits.md`, `red_flags.md`,
-`verification_stack.md`, and `open_questions.md` agree on the proposition
-boundaries, Layer-3 simulation status, and Q19/MMLU application status. The
-book already had the needed reader-facing guardrails, so no book or PDF rebuild
-was needed.
-
-What the pass showed: Proposition 1 is the coordinate-explicit Euclidean
-selection bound, while Proposition 1' is the declared value/operator selection
-bound. Proposition 2's `sqrt(2 kappa V)` remains only the quadratic
-Stackelberg toy signature. Proposition 3 requires declared action/search
-geometry and is not a welfare bound. Proposition 4 is an iff-condition for
-fixed-deficit `H_per`, not a population or arbitrary-cost conservation claim.
-Q19/MMLU is recorded as a successful Layer-2 application because the contract
-distinguishes fixed-checkpoint `W_theta` selection from `K_theta`
-finetuning/search/contamination/reward-proxy mechanisms.
-
-What's open now: adaptive hardening, noisy population welfare, endogenous `V`,
-broader attractor claims, empirical implementation, and non-convex ML/RLHF
-training dynamics remain open or narrowed. Iterations 20, 21, and 21.1 count as
-Layer-3 passes only for their intended toy regimes.
-
-Red flags fired: no contradiction exposed. The coordinate-free selection-bound
-worry is closed as a live book-presentation problem because the book declares
-coordinates/value metrics. The broader proposition-language watch remains open
-only as a maintenance guardrail for future prose.
-
-## Iteration 25
-
-Question tackled: final book-polish pass and a compact paper extract of the
-survived Chapters 1-5 argument.
-
-What changed: replaced the book intro's carrying-example placeholder with a
-licensed-claims enumeration: selection bounds, intervention toy bounds,
-aggregation/exchange-rate results, response-shape guardrails, and the
-response-modeling contract. The intro summary now names both selection-bound
-forms: Proposition 1 as coordinate-explicit Euclidean drift and Proposition 1'
-as declared value/operator drift. Tightened the Chapter 2 to Chapter 3 handoff
-so selection analysis stops at reweighting and intervention analysis begins
-with declared response kernels, actions, costs, stakes, and aggregation
-geometry. Added `book/multidimensional-goodhart-paper.typ`, a compileable
-paper-style mini-draft sharing `refs.bib`, and added `make paper` plus README
-build instructions.
-
-What the pass showed: no serious contradiction was found. The existing
-response-kernel language already stated the key Iteration 11 repair: mutual
-singularity is decisive evidence against baseline-only selection, but the
-causal definition is `K_theta != K_0` at fixed type, and absolute continuity
-does not rule out intervention. The existing application-transfer paragraph
-already used the response-modeling contract as the transfer rule; the paper
-extract makes the same rule explicit for MMLU and states that Iterations
-20-21.1 are Layer-3 toy checks, not empirical proof.
-
-What's open now: the mini-draft is a first extract, not a publication-final
-paper. Welfare-bound packaging, endogenous `V`, adaptive hardening, empirical
-implementation, and non-convex ML/RLHF mappings remain open or narrowed.
-
-Red flags fired: none. No new theorem family, simulation, or ML mapping was
-added; the pass clarified claim boundaries and build artifacts.
-
-## Iteration 26
-
-Question tackled: direction-level review under a Lakatos / Tao / Hossenfelder /
-Feynman lens.
-
-What changed: added
-`research/reviews/lakatos_tao_hossenfelder_feynman_direction_review.md`. The
-review finds that the project has mostly handled the Lakatos and Feynman tests:
-major claims have been sharpened through counterexamples rather than protected
-by definition, and the audit trail volunteers many failure modes. The Tao test
-is passed for the static toy models but remains open for adaptive hardening,
-measurement-frontier, endogenous-stakes, and recursive-attractor work. The main
-Hossenfelder-style risk is no longer elegant overclaiming; it is
-taxonomy-led survivability, where the response-modeling contract can classify
-too much unless it forces calculations, falsifiers, or application decisions.
-
-What's open now: future application templates should include a "contract
-failure" field, and the next generate iteration should preferably build a small
-adaptive-hardening or measurement-frontier toy with explicit regimes where
-reactive hardening stops, switches routes, or loses to static commitment. Framework
-level failure conditions should be promoted into `verification_stack.md` before
-the contract is used as the main publication-facing thesis.
-
-Red flags fired: no new formula-level contradiction. Directional watch item:
-the response-modeling contract must not become a way to postpone falsification.
-
-## Iteration 26.1 (lit-review Stage 3 supplement)
-
-Iteration type: `application-mapping`.
-
-Question tackled: build the canonical primitive-map artifact consolidating
-the Codex ML survey and the Gemini scalar-anchor + genealogy material, per
-Stage 3 of `plans/lit-review.md`. Pre-stage decision: Chapter 2 scalar
-anchor is El-Mhamdi & Hoang 2024.
-
-What changed: added
-`research/reviews/formal_analogue_lit_map.md` with 13 primitive-map rows
-(El-Mhamdi 2024 anchor; Majka-El-Mhamdi 2025 independence-free extension;
-Skalse 2023 RL Goodhart; Skalse 2022 unhackability; Hardt et al.;
-Perdomo et al.; Dwork et al.; Cawley-Talbot; Blum-Hardt / Roelofs /
-Recht leaderboard; Pan / Gao reward overoptimization; Lucas 1976;
-Holmström-Milgrom 1991; Smith-Winkler 2006). Each row carries primary
-citation, framework primitive, what it licenses, what it does not
-license, falsifier / non-transfer condition, and confidence tag. Added a
-new "Formal-analogue lit-map audit" row block in `claim_audits.md`
-covering the five most load-bearing claims from the lit map (envelope
-vs sharp framing for El-Mhamdi; Skalse 2023 RL restriction;
-Holmström-Milgrom precedent boundary; Skalse 2022 proxy/target;
-Majka-El-Mhamdi independence gap).
-
-What the assumption-clash audit showed [tentative]: the book's
-Proposition 1/1' does not assume El-Mhamdi-style independence. El-Mhamdi's
-scalar setup embeds into the book's framework (S = R², product μ,
-P = G + ξ, H = G, threshold selection), and Proposition 1's chi-square
-envelope applies; El-Mhamdi gives the sharper asymptotic value of ρ_α
-under independence + named tails. So Chapter 2 §2.3 should frame the
-two as parallel formalisms with overlapping scope, not as nested
-generalization. Both halves go in the prose.
-
-What's open now: Stage 4 of `plans/lit-review.md` (chapter-vs-appendix
-decision) should record 13 promotion-ready rows and confirm the late
-formal-analogue chapter stays a real chapter. Stage 5a (Chapter 2 book
-integration) is now unblocked. Open identification: "DG19" cited by
-El-Mhamdi 2024 — pull bibliography at Stage 5a drafting. Open follow-up
-on whether Majka-El-Mhamdi 2025's independence-free results admit a
-multidim generalization the book could prove.
-
-Red flags fired: scheduled adversarial pass (post-Iteration 26) attacked
-the "envelope vs sharp" framing for El-Mhamdi as a special case of the
-book. Survived with refinement: "special case" is better phrased as
-"valid embedding within the book's framework." Two red-flag patterns
-(short argument; argument proves significantly more) fire weakly but
-are accounted for in the framing — the Cauchy-Schwarz proof is genuinely
-short, and the envelope is genuinely more general but at the cost of
-sharpness. No claim downgrade required.
-
-## Iteration 26.2 (lit-review Stage 4 decision)
-
-Question tackled: decide whether the Stage 3 formal-analogue material is
-large enough to remain a chapter or should be downgraded to an appendix.
-
-What changed: independently audited the 13 rows in
-`research/reviews/formal_analogue_lit_map.md` against the promotion
-criteria: primary citation, named framework primitive, concrete "does not
-license" boundary, and concrete falsifier / non-transfer condition. All 13
-rows pass. Updated `plans/could-do/formal-analogue.md` to record the
-decision that the late formal-analogue material remains a real chapter, not
-an appendix. Updated `plans/lit-review.md` to point at the moved
-`plans/could-do/formal-analogue.md` path.
-
-What's open now: Stage 5a (Chapter 2 book integration) and Stage 5b (late
-formal-analogue chapter execution) are unblocked. Stage 6 remains the
-lit-review closure / handoff stage; adaptive hardening remains recorded in
-`plans/adaptive-hardening.md` without an assigned iteration number.
-
-Red flags fired: none. No new claims, theorem families, source mappings, or
-book prose were introduced; this was a review and recording pass only.
-
-## Iteration 26.3 (lit-review Stage 5 book integration)
-
-Question tackled: integrate the verified literature review into the reader-
-facing book without reopening the math-rigor work.
-
-What changed: added the Chapter 2 literature-scope chapter to
-`book/multidimensional-goodhart.typ`, covering genealogy, the
-Manheim--Garrabrant taxonomy boundary, El-Mhamdi--Hoang as the scalar anchor,
-Majka--El-Mhamdi as the independence-free scalar neighbor, and Smith--Winkler
-as a selection precursor. Added the late "Formal analogues across fields"
-chapter after the response-modeling contract, including the 13-row primitive
-map and prose sections for ML and economics analogues. Updated the paper
-extract with a one-line El-Mhamdi--Hoang anchor citation. Added bibliography
-entries for the new Chapter 2 and late-chapter citations. Renumbered later
-chapter references so the new literature chapter is Chapter 2, selection is
-Chapter 3, intervention is Chapter 4, response shape is Chapter 5, and the
-contract is Chapter 6.
-
-What the pass showed: the literature integration did not require changing the
-formal propositions. The new prose keeps the Stage 3 boundary discipline:
-external sources map to primitives and stop at named falsifiers / non-transfer
-conditions. The formal-analogue material remains a real chapter, not an
-appendix.
-
-What's open now: Stage 6 closure / handoff remains. Adaptive hardening remains
-future work in `plans/adaptive-hardening.md` and was not started here.
-
-Red flags fired: no new theorem-family claim was introduced. The risk is
-bibliographic and expository rather than mathematical: the new chapters must
-continue to distinguish sharp scalar external results from the book's looser
-multidimensional response-modeling envelope.
-
-## Iteration 26.4 (lit-review Stage 6 closure)
-
-Question tackled: close the lit-review integration plan as an active workstream
-after the Stage 5 book integration.
-
-What changed: replaced `plans/lit-review.md` with a compact closure note that
-points to the surviving artifacts: the formal-analogue lit map,
-`plans/could-do/formal-analogue.md`, the integrated book chapters, the paper
-extract, bibliography, verification-stack row, and iteration-log entries.
-Updated the verification-stack "Literature primitive transfer" status from book
-integration passed to book integration closed.
-
-What the pass showed: Chapter 2 and the late formal-analogue chapter remain
-book-integrated and build-verified, and the paper extract still carries the
-scalar-anchor citation. The lit-review integration is closed; future source
-or citation refinements are non-blocking follow-ups rather than active gates.
-
-What's open now: adaptive hardening remains future work in
-`plans/adaptive-hardening.md` with no assigned iteration number. No adaptive
-hardening simulation was started as part of this closure.
-
-Red flags fired: none. This was documentation and verification only; no book
-prose, theorem family, simulation, or adaptive-hardening work was introduced.
-
-## Iteration 26.5 (lit-review archive cleanup)
-
-Question tackled: make the closed lit-review plan's archive status explicit
-before starting any adaptive-hardening work.
-
-What changed: moved the closed lit-review plan from `plans/lit-review.md` to
-`plans/archived/lit-review.md`, documented the plans-directory lifecycle in
-`plans/README.md`, and retargeted active plan-directory navigation references
-that would otherwise point readers to the removed root plan.
-
-What's open now: adaptive hardening remains future work in
-`plans/adaptive-hardening.md` with no assigned iteration number. No
-adaptive-hardening simulation or theorem work was started in this cleanup.
-
-Red flags fired: none. This was archive and documentation cleanup only; no
-book prose, theorem family, simulation, or adaptive-hardening work was
-introduced.
-
-## Iteration 27 (adaptive hardening / measurement frontier simulation)
-
-Question tackled: Q14/Q15 in the intervention regime: what happens when a
-regulator repeatedly hardens, removes, or adds measured channels in a finite
-scorecard where each measured channel also expands an attack surface?
-
-What changed: added
-`research/simulations/iteration27_adaptive_hardening.py`, a deterministic
-NumPy-only Layer-3 toy pass. The simulation uses finite channels with
-`kappa_j`, `h_j`, `gamma_j`, and `w_j`; additive score gain
-`sum_{j in M} w_j a_j`; quadratic private cost
-`sum a_j^2/(2 kappa_j)`; capacity `S(M)=sum kappa_j w_j^2`; feasibility
-`d^2/(2S(M)) <= V`; and best response
-`a_j = d kappa_j w_j / S(M)`. It reports harm, real benefit, and net harm
-separately and uses a deterministic deficit grid for population harm. Updated
-the simulations Makefile so `make run` executes Iterations 20, 21, and 27, and
-updated the simulation README.
-
-What the simulation showed: the toy regimes classify rather than prove. Reactive
-hardening can converge to no-gaming by driving `S(M)` below `d^2/(2V)`, and a
-near-symmetric scorecard switches routes across four channels before stopping.
-Adding declared-signal dimensions can expand attack surface and raise
-deterministic `H_pop`. A predeclared narrow, hard-to-game metric can have lower
-cumulative net harm than reactive broad measurement when signal adequacy is
-already met. The frontier is not one-sided: adding a high-signal, low-harm,
-low-kappa metric can improve benefit while keeping fixed-deficit gaming
-infeasible. The conjunctive comparison preserves the earlier contrast:
-per-gamer burden rises while the feasible entry band shrinks.
-
-What's open now: the adaptive-hardening and measurement-frontier questions are
-narrowed to classified finite-channel toy regimes, not closed. Empirical
-estimation of `kappa`, `h`, `gamma`, and `V`; stochastic/noisy scorecards;
-endogenous stakes; richer regulator objectives; and theorem-level convergence
-conditions remain open.
-
-Red flags fired: no book or paper prose was edited, and no empirical or theorem
-claim was promoted. The main risk is overreading the policy examples: the pass
-licenses "these deterministic regimes exist under the declared contract," not a
-general claim that hardening, adding metrics, or static commitment is uniformly
-best.
-
-## Iteration 28 (review adaptive hardening before promotion)
-
-Question tackled: What exactly does Iteration 27 license before theorem work,
-book/paper promotion, or another research branch?
-
-What changed: added
-`research/reviews/adaptive_hardening_iteration27_review.md`, a
-Lakatos/Tao/Hossenfelder/Feynman review of the six Iteration 27 checks. Updated
-`claim_audits.md`, `red_flags.md`, `verification_stack.md`, and
-`open_questions.md` to record the narrowed license boundary. Added
-`plans/iteration29-application-template-hardening.md` as the next-iteration
-plan.
-
-What the review showed: Iteration 27 survives as reviewed Layer-3 toy evidence
-only. Reactive hardening stopping is a capacity-threshold result inside the
-finite-channel separable quadratic model with fixed `V`; route switching is
-not a persistent-cycle theorem; static commitment dominance requires predeclared signal
-adequacy; and measurement-frontier claims require declared or estimable
-`kappa`, `h`, `gamma`, `w`, and `V`. Harmless renormalizations preserve the
-qualitative story only when score, harm, signal, threshold, and hardening units
-are transformed consistently.
-
-What's open now: theorem-level adaptive dynamics, stochastic observation,
-endogenous stakes, and empirical frontier estimation remain open. The next
-iteration should test whether the response-modeling contract changes a real
-application decision by requiring an application template with contract failure
-conditions and evidence for the frontier primitives.
-
-Red flags fired: promotion risk. The repair is to keep Iteration 27 out of
-book/paper prose except as a clearly labeled toy example until theorem
-hypotheses or an application contract with estimable primitives are available.
-
-## Iteration 36 (response dynamics beyond the static toy)
-
-Question tackled: What is the smallest falsifiable dynamic repair after the
-Iteration 35 deterministic theorem boundary, without claiming a general
-performative or adaptive-policy theorem?
-
-What changed: added `research/threads/response_dynamics_boundary.md` and
-`research/simulations/iteration36_response_dynamics.py`; added
-`make iteration36` and included it in `make run` from `research/simulations/`.
-Updated `open_questions.md`, `verification_stack.md`, and `claim_audits.md`.
-No book or paper files were edited.
-
-What the toy showed: first, with seeded Gaussian observation error on current
-best-response actions, a largest-observed-action hardening rule can harden a
-low-capacity channel and fail to cross `S(M) < d^2/(2V)` within a fixed repair
-budget, even though an oracle update would cross the threshold. Second, under
-the declared recurrence
-`V_{t+1}=(1-lambda)V_t+lambda V0 exp(-rho H_obs_t)`, the same static score
-capacity produces different stakes paths when generated harm is observable
-versus invisible.
-
-What's open now: stochastic filtering, repair-budget design, endogenous-stakes
-fixed points, agent forecasts, strategic regulator updates, changing measured
-sets, changing deficits, and optimal policy design remain unlicensed.
-
-Red flags fired: this is a dynamic boundary toy, not a general limiting theorem,
-persistent-cycle theorem, performative-stability result, empirical claim, or policy
-recommendation.
-
-## Iteration 35 (adaptive-hardening theorem boundary)
-
-Question tackled: Does the Iteration 27 adaptive-hardening simulation license
-any theorem beyond the deterministic finite-channel additive quadratic
-contract?
-
-What changed: added
-`research/threads/adaptive_hardening_theorem_boundary.md`, a proof-boundary
-note for Q14. Updated `open_questions.md`, `verification_stack.md`, and
-`claim_audits.md` to promote only the narrow deterministic capacity result and
-to leave stochastic observation, endogenous stakes, changing measured sets,
-shared bottlenecks, nonconvex geometry, empirical estimation, and policy
-optimality open. No book or paper files were edited.
-
-What the proof showed: under fixed measured set `M`, fixed deficit `d`, fixed
-stakes `V`, fixed weights, additive score gain, separable quadratic costs, and
-deterministic observation, monotone lowering of `kappa_j` makes
-`S_t(M)=sum_j kappa_{j,t} w_j^2` nonincreasing. Gaming is feasible exactly
-when `S_t(M) >= d^2/(2V)` and stops exactly when `S_t(M) < d^2/(2V)`.
-Monotonicity alone is not convergence: the hardening policy or floors must
-force capacity below threshold. For the Iteration 27 largest-action
-multiplicative rule, finite positive-weight channels and floor capacity below
-threshold imply finite termination if the rule is progress-aware, meaning it
-does not repeatedly select channels whose `kappa_j` is already at its floor.
-The literal largest-action rule can stall on an already-floored channel unless
-an added floor/weight condition prevents that behavior.
-
-What's open now: stochastic/noisy observation, endogenous `V`, changing
-deficits, changing measured sets, shared bottlenecks, nonseparable or
-nonconvex response geometry, rates outside the multiplicative
-rule, empirical frontier estimation, and optimal policy design remain separate
-workstreams.
-
-Red flags fired: the theorem is a boundary, not a promotion to general
-adaptive-dynamics advice. Positive floors with
-`S_floor(M) >= d^2/(2V)` can leave gaming feasible forever, and arbitrary or
-literal largest-action hardening policies can fail by repeatedly hardening
-irrelevant or already floored channels.
-
-## Iteration 29 (hospital scorecard application template)
-
-Question tackled: Q19 for a non-ML institutional scorecard. Can the
-response-modeling contract change a concrete hospital readmission scorecard
-audit or design decision rather than merely classify the story after the fact?
-
-What changed: added `research/applications/application_template.md` as a
-reusable response-modeling application template and
-`research/applications/hospital_scorecard.md` as the filled readmission /
-institutional scorecard application. The hospital application declares type,
-baseline behavior, policy exposure, `W_theta` versus `K_theta`, action/search
-geometry, proxy/target relation, aggregation, hidden harm, qualitative
-`kappa`, `h`, `gamma`, `w`, and `V`, a conditional licensed calculation,
-discriminator observations, contract-failure conditions, and a local
-Layer-1/Layer-2 verification pass. Updated Q19, the verification stack, and
-claim audits to record the new application boundary.
-
-What the application showed: the same readmission score improvement can be
-pure selection over hospitals, harmful fixed-type intervention, harmless
-proxy-only repair, real follow-up improvement, or a mixture. The contract
-changes the decision by recommending audits of repeated fixed-hospital action
-traces ranked by score-per-cost and hidden harm before crediting score gains
-as patient-welfare gains. The quadratic calculation
-`m(d) = d^2 / (2 sum_j kappa_j w_j^2)` and
-`a_j^*(d) = d kappa_j w_j / sum_i kappa_i w_i^2` is licensed only as a
-diagnostic under declared primitives, not as an empirical estimate.
-
-What's open now: Iteration 30 should review whether the hospital application
-actually constrains the template, whether the qualitative frontier primitives
-can be assigned before deployment, and whether the evidence standard is
-observable enough to support reuse for scientific metrics.
-
-Red flags fired: no theorem, empirical welfare claim, or optimal-policy
-claim was introduced. The live risk is post-hoc flexibility in `U`, `h`,
-`gamma`, `kappa`, and `V`; the repair is to make the next iteration a skeptical
-review before reusing or promoting the template.
-
-## Iteration 30 (review hospital scorecard application)
-
-Question tackled: Does the Iteration 29 hospital scorecard application
-genuinely constrain the response-modeling template before reuse, or does it
-only classify a familiar Goodhart story after the fact?
-
-What changed: added
-`research/reviews/hospital_scorecard_application_review.md`, a skeptical
-review of the hospital application, template, Q19, claim audits, and
-verification-stack boundary. Updated Q19, `claim_audits.md`,
-`verification_stack.md`, and `plans/next-steps.md` to record the reviewed reuse
-license and remove the completed Iteration 30 roadmap step.
-
-What the review showed: the hospital application survives as "yes with
-narrowing." It changes a concrete audit/evidence decision: do not credit
-readmission score gains as patient-welfare gains until the channel,
-composition changes, repeated fixed-hospital action traces, hidden outcomes,
-and frontier primitives `kappa`, `h`, `gamma`, `w`, and `V` have been declared
-or audited. The `W_theta` versus `K_theta` distinction is operational only with
-repeated-unit or exposure-variation evidence. The quadratic formula remains a
-conditional diagnostic, not an empirical estimate or welfare theorem.
-
-What's open now: Iteration 31 may reuse the template for scientific metrics
-only if it preserves the reviewed constraints: predeclare the type/action
-boundary, separate selection from fixed-type response using observations
-stronger than aggregate metric movement, predeclare or mark unavailable the
-frontier primitives, and produce a domain-specific changed audit/design/
-evidence decision rather than a generic warning.
-
-Red flags fired: no new red flag was opened. The live risk remains post-hoc
-flexibility; the review handles it by making missing or post-hoc primitives a
-contract-failure condition for reuse.
-
-## Iteration 31 (scientific metrics application)
-
-Question tackled: Can the reviewed response-modeling application template
-travel to a second non-ML domain without merely restating the existing
-responsible-metrics warning that publication counts, citations, grants, venue
-prestige, impact factors, and rankings can distort science?
-
-What changed: added `research/applications/scientific_metrics.md`, a filled
-application contract for a composite research evaluation scorecard
-`score = w_p publications + w_c citations + w_g grants + w_v venue/prestige`.
-The application explicitly marks DORA, the Leiden Manifesto,
-Campbell/Goodhart, and indicator-use-effects work as background rather than
-novelty. It declares `U`, `W_theta`, `K_theta`, `P`, `H`, qualitative
-`kappa`, `h`, `gamma`, `w`, and `V`, discriminator observations, a conditional
-quadratic diagnostic, a contract-failure section, and a Layer-1/Layer-2 local
-verification pass. Updated Q19, claim audits, and the verification stack to
-record the new novelty boundary. Removed the completed Iteration 31 roadmap
-section from `plans/next-steps.md`, leaving Iteration 32 active.
-
-What the application showed: the framework does not add novelty to the broad
-claim that scientific metrics are gameable. The surviving contribution is
-narrower: before increasing the weight of fast scalar metrics such as
-short-window citations or publication counts, declare signal adequacy `gamma`
-and audit for topic herding, salami slicing, citation clubs, field-composition
-shifts, delayed-value suppression, proxy repair, and genuine quality
-improvement. The contract separates selection over applicants, fields,
-institutions, funded populations, or career stages from fixed-researcher/lab
-behavior change, and separates harmful proxy manufacture from harmless
-metadata/discoverability repair and real research-quality improvement.
-
-What's open now: Iteration 32 should review the hospital and scientific-
-metrics applications side by side to decide whether the template is reusable,
-needs narrowing, or only works by flexible redescription. The scientific-
-metrics application does not license research-value inference, optimal policy
-design, a general anti-metric rule, or empirical use of the quadratic
-diagnostic without declared primitives and panel/project-level evidence.
-
-Red flags fired: novelty risk. The repair is explicit: the broad responsible-
-metrics warning is treated as known background, and the only claimed framework
-addition is a discriminator/evidence contract with concrete failure
-conditions.
-
-## Iteration 32 (review application template generalization)
-
-Question tackled: Do the hospital scorecard and scientific-metrics
-applications show genuine reuse of the response-modeling application template,
-or did the template only work by flexible redescription after each score moved?
-
-What changed: added
-`research/reviews/application_template_generalization_review.md`, a side-by-
-side skeptical review of `research/applications/application_template.md`,
-`research/applications/hospital_scorecard.md`, and
-`research/applications/scientific_metrics.md`. The review compares stable
-fields across domains, domain-specific traces, the frontier primitives
-`kappa`, `h`, `gamma`, `w`, and `V`, the quadratic diagnostic, and concrete
-flexible-redescription failure modes. Updated Q19, `claim_audits.md`,
-`verification_stack.md`, and `plans/next-steps.md`.
-
-What the review showed: the verdict is reusable with narrowing. The stable
-template is the response contract: predeclare `U` and the type/action
-boundary, identify whether the mechanism changes `W_theta`, `K_theta`, or
-both, declare proxy, hidden target, aggregation, and hidden harm/value before
-interpreting score movement, name discriminator observations stronger than
-aggregate score movement, and include contract-failure conditions that could
-actually fire. The scientific-metrics case is the harder transfer because
-hidden research value, `h`, and `gamma` are more delayed, field-specific, and
-contested than patient-welfare traces. That narrows the licensed output to a
-design/evidence contract, not research-value inference.
-
-What's open now: Iteration 33 should decide which reviewed findings from
-Iterations 27-32 are safe to promote into book prose, with the Iteration 32
-verdict treated as a review result rather than a theorem or optimal-policy
-claim.
-
-Red flags fired: flexible-redescription risk. The repair is to reject reuse
-when primitives are assigned only after metric movement, repeated-unit or
-composition observations are unavailable, harmful gaming, harmless proxy
-repair, and real improvement cannot be distinguished, the declared aggregation
-rule differs from the effective rule, or the application only repeats that
-metrics can be gamed without changing a design, audit, or evidence decision.
-
-## Iteration 33 (promotion-readiness review)
-
-Question tackled: Which reviewed findings from Iterations 27-32 are safe to
-promote into book prose, and which must remain footnoted or excluded?
-
-What changed: added
-`research/reviews/application_promotion_readiness_review.md`, a promotion map
-with `include`, `footnote`, and `exclude` decisions for the adaptive-hardening
-toy, hospital application, scientific-metrics application, and application-
-template generalization review. Updated Q19, `claim_audits.md`,
-`verification_stack.md`, and `plans/next-steps.md`; removed the completed
-Iteration 33 roadmap section, leaving Iteration 34 active.
-
-What the review showed: promote the response-modeling application discipline,
-the narrowed template boundary, compact hospital and scientific application
-mappings, and the requirement that applications change an audit/design/evidence
-decision. Footnote only the quadratic diagnostic and the Iteration 27 adaptive-
-hardening / measurement-frontier toy as conditional toy evidence. Exclude new
-theorem claims, adaptive-hardening stopping behavior beyond the reviewed toy, route
-switching as persistent cycles, static narrow commitment as a general policy rule,
-endogenous `V`, empirical welfare or research-value inference, optimal policy
-design, universal anti-metric claims, and full application prose dumps.
-
-What's open now: Iteration 34 should edit
-`book/multidimensional-goodhart.typ`, Chapter 6, around `Response modeling:
-what a Goodhart claim must declare`, especially `Application discipline` and
-the worked-contract area. Leave `book/multidimensional-goodhart-paper.typ`
-unchanged unless a tiny consistency fix is unavoidable.
-
-Red flags fired: promotion risk. The repair is the promotion map: every book
-edit must be traceable to an included or footnoted row and must preserve the
-license boundary.
-
-## Iteration 34 (book integration edit)
-
-Question tackled: Can the Iteration 33 promotion-ready application material be
-integrated into Chapter 6 without importing excluded theorem, empirical,
-endogenous-stakes, or optimal-policy claims?
-
-What changed: edited `book/multidimensional-goodhart.typ` in Chapter 6 around
-`Application discipline`. The book now states the narrowed reusable application
-boundary: predeclare `U` and the type/action boundary; identify `W_theta`,
-`K_theta`, or both; declare proxy, hidden target, aggregation, hidden
-harm/value, evidence standard, discriminator observations, and contract-failure
-conditions; and require a changed audit, design, or evidence decision. The new
-prose uses plain-language audit dimensions: ease or cheapness of response,
-hidden harm/value, signal adequacy, effective score weights/thresholds/gates/
-overrides, and stakes. It includes compact hospital scorecard and scientific
-metrics mappings without pasting full application notes. Updated Q19,
-`verification_stack.md`, and `plans/next-steps.md`.
-
-What the edit showed: the promoted result is application discipline, not a new
-theorem. Institutional scorecard applications do not inherit algebra from toy
-models by analogy. They must answer practical audit questions first; only then
-do toy symbols such as `kappa`, `h`, `gamma`, `w`, and `V` become possible
-shorthand for declared primitives.
-
-Verification: targeted prose checks confirmed the new application discipline,
-hospital and scientific examples, frontier primitive mentions, and no new
-`optimal-policy` wording in the edited book. `make pdf` from `book/` passed.
-
-What's open now: later repair iterations should separately address adaptive-
-hardening convergence beyond the finite-channel toy, stochastic observation and
-endogenous-stakes dynamics, empirical auditability of hospital and scientific
-scorecard primitives before deployment, and policy review only after those
-theorem/empirical pieces exist.
-
-Red flags fired: promotion risk. The repair is that Chapter 6 presents the
-material as a response-modeling application contract and leaves excluded
-claims in the roadmap rather than book prose.
-
-## Iteration 37 (empirical auditability of application primitives)
-
-Question tackled: Can the hospital and scientific-metrics scorecard primitives
-used by the application template be predeclared, bounded, defended, or marked
-unavailable before deployment?
-
-What changed: added
-`research/applications/empirical_auditability.md`, an empirical-design note
-covering response ease, hidden harm/value, signal adequacy, effective
-weights/thresholds/gates/overrides, and stakes for hospital and scientific
-scorecards. The note treats `kappa`, `h`, `gamma`, `w`, and `V` only as
-conditional shorthand for declared audit objects. Updated Q19 in
-`open_questions.md`, the Q19 row in `verification_stack.md`,
-`claim_audits.md`, and `plans/next-steps.md`. Removed the consumed temporary
-planning file `plans/iteration37-empirical-auditability.md`.
-
-What the note showed: empirical auditability is partial. Hospital scorecards
-can sometimes use repeated-hospital panels, chart audits, process traces,
-patient outcomes, score-rule documentation, and threshold exposure to
-predeclare or bound primitives. Scientific-metrics scorecards can sometimes
-use same-researcher or same-lab panels, field-normalized baselines,
-project-level audits, delayed-use evidence, citation-network diagnostics,
-committee-rule documentation, and override logs. When evidence is missing, the
-primitive should be marked unavailable with a consequence: pilot first, lower
-score leverage, collect action traces, add hidden-target monitoring, document
-effective rules, or fall back to qualitative review.
-
-What's open now: primitive estimation remains separate from this design note.
-The note does not license hidden-target estimates, broad metric advice,
-optimal-policy conclusions, or diagnostic calculations when primitives are
-missing. Iteration 38 should review whether Iterations 35-37 jointly support
-any narrow policy-readiness claim or instead block policy prose.
-
-Red flags fired: no book or paper claim, simulation, hidden-target estimate,
-or optimal-policy claim was introduced. The live risk is treating unavailable
-primitives as harmless caveats; the repair is to require an explicit
-deployment, monitoring, or evidence-collection consequence.
-
-## Iteration 38 (policy-readiness review)
-
-Question tackled: Do the Iterations 35-37 repairs jointly support any
-policy-facing prose, or should policy claims remain blocked?
-
-What changed: added
-`research/reviews/policy_readiness_review.md`, a policy-readiness gate covering
-the Iteration 35 deterministic finite-channel theorem boundary, the Iteration
-36 dynamic toys, and the Iteration 37 empirical-auditability note. Updated Q14,
-Q15, and Q19 in `open_questions.md`; recorded Iteration 38 as a policy gate in
-`verification_stack.md`; added a policy-readiness audit block in
-`claim_audits.md`; and removed the active Iteration 38 section from
+`research/threads/convex_intervention_bound.md`,
+`research/claim_audits.md`.
+
+## Iterations 16-26: book propagation and literature rigor repairs
+
+Main question: which proposition sketches and literature analogues are safe to
+promote into manuscript prose?
+
+Result: the book received the five core proposition blocks with hypotheses and
+license boundaries. Simulation checks exercised selection/intervention toys,
+population versus per-agent welfare, active-set response, and conditional
+response shapes. The literature pass mapped external results to primitives
+rather than claiming unification.
+
+Killed or narrowed: proposition language that outruns hypotheses, direct ML or
+RLHF transfer without local response geometry, and citations used as generic
+support without primitive attribution.
+
+Live carry-forward: keep formal analogues as mapped neighbors; do not treat
+them as subsumed by the framework.
+
+Canonical files: `book/multidimensional-goodhart.typ`,
+`research/reviews/formal_analogue_lit_map.md`,
+`research/simulations/README.md`,
+`research/verification_stack.md`.
+
+## Iterations 27-34: application discipline and promotion gates
+
+Main question: can adaptive-hardening and institutional-scorecard material
+support applications without becoming policy or welfare overclaims?
+
+Result: the adaptive-hardening toy, hospital scorecard application, scientific
+metrics application, and application template were generated and reviewed. The
+reviewed promotion was application discipline: predeclare the response
+contract, name discriminator observations, include failure conditions, and
+change an audit/design/evidence decision before interpreting score movement.
+Chapter 6 integrated only the narrowed discipline and compact mappings.
+
+Killed or narrowed: route switching as persistent cycles, static narrow
+commitment as general policy, empirical welfare/research-value inference,
+optimal policy design, and full application prose dumps.
+
+Live carry-forward: primitive estimation and real-domain frontier
+characterization remain open; policy language remains gated.
+
+Canonical files: `research/applications/application_template.md`,
+`research/applications/hospital_scorecard.md`,
+`research/applications/scientific_metrics.md`,
+`research/reviews/application_response_modeling_reviews.md`.
+
+## Iterations 35-43: adaptive-hardening boundary and manuscript freshness
+
+Main question: what exactly survived the adaptive-hardening repair sequence,
+and do manuscripts still match the license map?
+
+Result: Iteration 35 promoted only the deterministic finite-channel capacity
+boundary: fixed-deficit gaming is feasible iff `S_t(M) >= d^2/(2V)` and stops
+exactly when capacity falls below threshold, with a progress-aware termination
+condition. Iteration 36 kept stochastic observation and endogenous stakes as
+dynamic-toy boundaries. Iteration 37 added empirical-auditability discipline.
+Iteration 38 blocked broad policy prose except narrow audit/design/evidence
+actions. Iterations 40-42 closed manuscript integration for the staged repair
+sequence. Iteration 43 added the short manuscript abstract and strengthened
+paper/abstract framing.
+
+Killed or narrowed: stochastic filtering, endogenous-stakes fixed points,
+changing measured sets/deficits, shared bottlenecks, nonconvex geometry,
+persistent cycles, hidden-target estimates, and policy optimization remain
+unlicensed.
+
+Live carry-forward: era 1 now needs consolidation, book/abstract spine repair,
+line-level prose, and polish rather than new research.
+
+Canonical files: `research/threads/adaptive_hardening_theorem_boundary.md`,
+`research/applications/empirical_auditability.md`,
+`research/reviews/policy_readiness_review.md`,
+`research/reviews/scoped_manuscript_review_iteration43.md`,
 `plans/next-steps.md`.
-
-What the review concluded: broad policy prose is blocked. The only licensed
-output is narrow audit/design/evidence language inside a declared application
-contract: document effective score rules, audit repeated-unit action traces,
-monitor hidden-target traces where available, lower leverage or pilot when
-primitives are unavailable, and avoid importing toy diagnostics when primitives
-are missing.
-
-What's open now: policy optimization, primitive estimation, hidden-target
-estimation, stochastic filtering and repair-budget design, endogenous-stakes
-modeling, and book/paper integration remain open. Iteration 40 is still the
-first gate that can license book or paper integration.
-
-Red flags fired: policy overpromotion risk. The repair is explicit blocking:
-Iteration 35 is a theorem-boundary note, Iteration 36 is a dynamic-toy
-boundary, and Iteration 37 is an empirical-design boundary. None of them
-licenses broad regulator advice or hidden-target credit from score movement.
-
-## Iteration 40 (integration-readiness review)
-
-Question tackled: Should any results from Iterations 35-39 enter book or paper
-prose?
-
-What changed: added
-`research/reviews/integration_readiness_review.md`, an include/footnote/exclude
-gate for candidate book and paper integrations. Updated the current license map
-in `research/claim_audits.md` and removed the completed Iteration 40 section
-from `plans/next-steps.md` while preserving Iterations 41-42.
-
-What the review concluded: no new main-text argument is licensed. Iteration 41
-may add only a narrow deterministic finite-channel adaptive-hardening boundary
-note and one short model-dependence note for stochastic observation and
-endogenous stakes, if the existing book or paper prose needs them. Scorecard
-auditability, policy-readiness, measurement-frontier, empirical-estimation, and
-broad policy material remain excluded from new book/paper integration.
-
-What's open now: Iteration 41 can make only the licensed scoped prose edit, or
-record that no prose edit is needed. Iteration 42 was scheduled as the final
-consistency pass. Primitive estimation, stochastic filtering and repair budgets,
-endogenous-stakes fixed points, changing measured sets or deficits, shared
-bottlenecks, nonconvex response geometry, and real-domain frontier
-characterization remain research questions rather than draft claims.
-
-Red flags fired: integration overpromotion risk. The repair is the explicit
-footnote/exclude gate: the deterministic capacity result may correct stale
-open-question wording, but it cannot become a general adaptive-hardening,
-policy, stochastic, endogenous-stakes, empirical, or welfare claim.
-
-## Iteration 41 (scoped book/paper integration)
-
-Question tackled: Should the licensed Iteration 40 boundary correction change
-book or paper prose?
-
-What changed: made only the scoped prose repairs. In the book's work-in-progress
-adaptive-hardening bullet, the deterministic finite-channel case no longer
-appears simply open: under fixed `M`, fixed deficit `d`, fixed stakes `V`,
-fixed weights, additive score gain, separable quadratic costs, deterministic
-observation, and monotone progress, fixed-deficit gaming stops exactly when
-`S_t(M) < d^2/(2V)`. In the paper's open-problems list, added only a short
-parenthetical boundary that stochastic and endogenous variants still need
-explicit dynamic models.
-
-What's open now: stochastic observation, endogenous `V`, changing measured sets
-or deficits, shared bottlenecks, nonconvex geometry, empirical estimation, and
-policy optimization remain unlicensed. No theorem, empirical, scorecard,
-measurement-frontier, hospital, scientific-metrics, or policy prose was added.
-
-Red flags fired: integration overpromotion risk remained the live constraint.
-The repair stays inside the Iteration 40 footnote/parenthetical license.
-
-## Iteration 42 (final consistency pass)
-
-Question tackled: Do the book/paper prose, research notes, and roadmap still
-agree on the Iterations 35-41 licenses after the scoped integration repair?
-
-What changed: updated tracking language only. `research/claim_audits.md` now
-marks the current license map as Iteration 42 and treats Iteration 41 as
-closed. `research/open_questions.md` and `research/verification_stack.md`
-replace stale post-Iteration-39 framing with the current closure status while
-preserving the live research questions. `plans/next-steps.md` removes the
-completed Iteration 42 work section and records that the staged repair sequence
-is complete.
-
-Audit result: the targeted searches found no book or paper overpromotion
-requiring prose edits. Remaining `optimal-policy`, `persistent cycle`,
-`endogenous V`, `theorem`, and `stochastic` hits are boundary, exclusion, or
-audit language. No new theorem, empirical, scorecard, measurement-frontier, or
-policy claim was introduced.
-
-What's open now: primitive estimation, stochastic filtering and repair-budget
-design, endogenous-stakes fixed points, changing measured sets or deficits,
-shared bottlenecks, nonconvex response geometry, real-domain frontier
-characterization, and predeclared response-geometry attractor tests remain
-research questions rather than draft claims.
-
-Red flags fired: staleness risk in tracking documents. The repair is
-documentation cleanup only; book and paper prose were left unchanged.

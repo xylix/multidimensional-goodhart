@@ -1,62 +1,103 @@
 # Open questions
 
-## Current map after Iteration 42
+This file now tracks only active questions with a missing primitive, cheapest
+verification layer, and failure condition. Historical questions and closed
+boundaries are split into `closed_questions.md`; vague or deferred questions
+are split into `parked_questions.md`.
 
-The Iterations 35-42 repair sequence split the adaptive-hardening/application
-work into closed boundaries, a completed scoped integration repair, and live
-research questions:
+## O1. Primitive estimation for applications
 
-- **Theorem-boundary closed:** Q14 has a narrow deterministic finite-channel
-  result. Under fixed measured set `M`, fixed deficit `d`, fixed stakes `V`,
-  fixed weights, additive score gain, separable quadratic costs, deterministic
-  observation, and monotone lowering of `kappa_j`, gaming is feasible exactly
-  when `S_t(M) >= d^2/(2V)` and stops exactly when
-  `S_t(M) < d^2/(2V)`. Progress-aware multiplicative hardening terminates only
-  with positive-weight finite channels, a progress condition, and floor capacity
-  below threshold.
-- **Dynamic-toy boundary closed:** Q11/Q14 have only the Iteration 36 toy
-  boundary for stochastic observation and endogenous stakes. Declared update
-  rules can alter transfer from the static capacity story, but no fixed-point,
-  filtering, persistent-cycle, or performative-stability claim is live.
-- **Empirical-design boundary closed:** Q19 has an empirical-auditability
-  discipline from Iteration 37. Primitives may be predeclared, bounded,
-  defended, or marked unavailable with design consequences; this is not a
-  hidden-target estimate or empirical welfare/research-value inference.
-- **Policy gate blocked except narrow audit/design/evidence actions:** Q14,
-  Q15, and Q19 inherit Iteration 38's block on broad policy prose. Licensed
-  actions are documenting effective rules, auditing repeated-unit action
-  traces, monitoring hidden-target traces where available, lowering leverage or
-  piloting when primitives are unavailable, and withholding toy diagnostics
-  when primitives are missing.
-- **Integration repair closed:** Iterations 40-41 licensed and completed only
-  a narrow book/paper correction for the deterministic finite-channel
-  adaptive-hardening boundary and a short stochastic/endogenous
-  model-dependence note. Iteration 42 found no further book or paper prose
-  overpromotion requiring edits.
+Question: when can application primitives such as response ease `kappa`, hidden
+harm/value `h`, signal value `gamma`, effective weights `w`, stakes `V`, hidden
+targets, and action traces be predeclared, bounded, or defended before score
+movement is interpreted?
 
-Live work is therefore not "prove adaptive hardening works" or "write policy
-advice." The licensed live questions are primitive estimation, stochastic
-filtering and repair-budget design, endogenous-stakes fixed points, changing
-measured sets or deficits, shared bottlenecks/nonconvex geometry, real-domain
-measurement-frontier characterization, and predeclared response-geometry tests
-for the broader recursive/complexity-attractor question.
+Cheapest layer: real-world correspondence before simulation.
 
-1. What substantive assumptions justify `||r||_2` growing with `dim(ker phi)` rather than remaining bounded by a fixed correlation budget?
-2. Which harm functional is best for dimensional Goodhart: signed drift, normed drift, squared loss, tail probability, or regret relative to a Pareto set?
-3. How does adding proxy dimensions change `ker phi` and the residual `epsilon` simultaneously in a linear-Gaussian model?
-4. Can the "conservation of weirdness" claim be made precise as a tradeoff between residual norm and entropy under fixed regulator effort? (See Q18 for the directional/attractor strengthening — that the residual doesn't just trade magnitude for complexity but concentrates on the *minimum*-complexity goal-achieving path.)
-5. In Pareto selection rather than scalarized selection, when does the selected distribution compress enough to break identifiability of unmeasured dimensions?
-6. What selection-response operator should replace `b_H(t)` for soft optimization, repeated selection, or adversarial adaptation?
-7. Which weak dependence assumptions, if any, make covariance ratios adequate approximations to threshold response curves?
-8. How should the framework represent policies that change the baseline distribution `mu`, rather than merely reweighting it? Iteration 11 partial answer: introduce type space `U`, participation weights `W_theta(u)`, and response kernels `K_theta(ds | u)`. Pure selection changes `W_theta` while keeping `K_theta = K_0`; intervention changes `K_theta` on a positive-mass set of types. Remaining issue: choose defensible type spaces in applications.
-9. For repeated Boltzmann selection, when does integrating `Cov_beta(H, P)` along the finite-mgf domain `B = { beta : E_mu[exp(beta P)] < infinity }` yield closed-form or bounded hidden drift? Heavy-tail cases where the path leaves `B` need bounded, truncated, or quantile selection models rather than covariance-as-velocity claims.
-10. For an intervention channel, what is the analogue of the selection-channel bound `||B_H|| <= delta · ||s||`? Iteration 13 partial answer: score movement factors through the agents' cost geometry, not through any divergence from `mu_0`. For type `u`, affordable actions are `B_u(V) = {a: c_u(a) <= V}`, giving fixed-type envelope `||h_u(a^*)|| <= sup_{a in B_u(V)} ||h_u(a)||`. For linear proxy gain and convex action cost, the score-deficit cost is `m(d) = sup_{lambda >= 0} [lambda d - c^*(lambda w)]`, and gaming is feasible iff `m(d) <= V`. Iteration 19 welfare-bound analogue: after declaring a hidden-harm functional `ell`, the fixed-action problem is `W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }`, distinct from the cost-minimizing realized harm `ell(a^*(d))`. Convex affordability is therefore not a welfare bound by itself; with `w = (1, 1)`, `h = (M, 0)`, and equal quadratic costs, `a^*(d) = (d/2, d/2)` has harm `Md/2`, arbitrarily large as `M` grows. This is not a non-convex ML/RLHF training theorem unless a local response model, convex cost geometry, and hidden value weights are declared. Remaining issues: stochastic response, endogenous `V`, nonconvex fixed charges, nonlinear or prevalence-sensitive `ell`, and empirical estimation of `c_u` and hidden harm.
-11. Stackelberg gaming toy with endogenous `V` (selection is valuable only if the metric is trusted; trust decays as gaming is observed): does the regulator-agent game have a performative-stable fixed point, and does it still carry hidden harm at the fixed point? Iteration 36 adds only a tiny declared recurrence, `V_{t+1}=(1-lambda)V_t+lambda V0 exp(-rho H_obs_t)`, showing that stakes paths depend on what harm is observable under the update rule. This is not a fixed-point result; remaining work must specify observation, forecasting, strategic response, and regulator updates before making performative-stability claims.
-12. Which agent models keep an intervention channel inside the selection class (only-toggle-inclusion is one)? Iteration 11 partial answer: participation-only response is pure selection because only `W_theta` changes; proxy-only manipulation and submanifold-limited movement are interventions because `K_theta` changes, even when hidden harm is zero or movement is constrained. Remaining issue: representation relativity and empirical identifiability from marginal `mu_theta`.
-13. Multidimensional gaming: with proxy vector `P in R^k` and per-component gaming costs, does balloon-squeezing reappear — gaming one component cheaply displaces effort/harm into the component the regulator next starts measuring? This is where the intervention thread should rejoin the dimensional thread. [Iteration 5: yes in the unit-weight equal-harm-per-score additive model — fixed-deficit per-agent harm `H_per(M, d)` is conserved and re-routes when a channel is closed; conjunctive metrics instead give per-gamer harm `t|M|`. Iteration 6 repair: weighted additive metrics conserve `H_per` iff `h_j/w_j` is constant; population harm `H_pop(M; F_Q, V)` can increase as `K_M` recruits more gamers.]
-14. Adaptive-hardening dynamics: Iteration 35 closes the narrow theorem boundary for the Iteration 27 deterministic toy. With finite measured `M`, additive score gain, separable quadratic costs, fixed deficit `d`, fixed stakes `V`, fixed weights, deterministic observation, and monotone lowering of `kappa_j`, capacity `S_t(M)=sum_j kappa_{j,t} w_j^2` is nonincreasing and gaming is feasible exactly when `S_t(M) >= d^2/(2V)`. Hardening stops fixed-deficit gaming exactly when `S_t(M) < d^2/(2V)`. A progress-aware largest-action multiplicative rule terminates in finite time under finite channels, positive weights, `0 < alpha < 1`, and floor capacity below the threshold; the literal largest-action rule can stall on already-floored channels without an added progress/floor condition. Iteration 36 adds a seeded dynamic toy showing that noisy observation of current best-response actions can harden the wrong channel and miss the static capacity threshold within a fixed repair budget, while endogenous stakes depend on declared observed harm. Iteration 38 reviews policy readiness and licenses only narrow audit/design/evidence consequences, not broad policy prose. Route switching is finite pre-limit behavior under deterministic progress, not a persistent cycle. Remaining issues: changing `d`, changing measured sets, shared bottlenecks or nonconvex action geometry, stochastic filtering and repair-budget design, endogenous-stakes fixed points, rates outside this rule, and policy optimization beyond the capacity threshold.
-15. Regulator's measurement frontier: Iterations 27-28 narrow the question to an explicit signal-vs-attack-surface contract with `kappa_j`, `h_j`, `gamma_j`, `w_j`, and `V`. Adding gameable signal dimensions can raise `S(M)` and deterministic `H_pop`, so frontier expansion can backfire; but adding a high-`gamma`, low-`h`, low-`kappa` metric can improve benefit while keeping fixed-deficit gaming infeasible or lowering net harm. Iteration 38 blocks frontier-to-policy prose except for narrow consequences such as documenting the effective rule, lowering leverage, piloting, monitoring hidden targets, or marking toy diagnostics unavailable when primitives are missing. Remaining issue: characterize the frontier for real domains where signal value, harm, gaming ease, and stakes must be estimated or bounded before deployment rather than declared after the fact.
-16. Is gaming harm sub- or super-modular in the measured set `M`? Unit-weight equal-harm additive case gave fixed-deficit `H_per(M, t) = t` (modular-trivial) on the gaming region and a discontinuity at the `K_M = K_min` boundary; conjunctive gave per-gamer harm `t|M|` (modular). Weighted `H_per`, population entry through `H_pop`, and mixed aggregation may be genuinely sub/supermodular, which would say something about greedy regulator policies.
-17. Population vs. per-agent gaming harm: for heterogeneous quality `Q`, `H_pop(M; F_Q, V) = E[H_per(M, t-Q) 1{0 < t-Q <= sqrt(2K_M V)}]` in the unit-weight additive model, reducing to `E[(t-Q) 1{0 < t-Q <= sqrt(2K_M V)}]`. How does this change under noise, nonlinear costs, endogenous `V`, and a declared harm functional `ell`? The welfare-bound version should first solve or bound `W_ell(d,V) = sup { ell(a): c(a) <= V, w . a >= d }` at fixed action geometry, then specify how those per-action harms aggregate into `H_per` or `H_pop`; it should not infer welfare from convex private cost alone.
-18. Minimum-complexity attractor / response-geometry attractor (core-agenda question; iteration 7 repair): as optimization pressure on a proxy increases, when, if ever, does the induced shift in `ker phi` converge to the *lowest-complexity* configuration consistent with hitting the target? Iteration 7 killed the unconditional version: selection follows baseline tail response, and intervention follows cost/search geometry. The surviving question is conditional: which response geometries make the selected action low-complexity under a pre-specified functional (support size, rank/spectral concentration, description length, KL from max-entropy prior)? Unconstrained/interior quadratic cost gives `a^* = d C w/(w^T C w)` and can be diffuse, but with nonnegative actions the full-space formula requires `C w >= 0`; otherwise solve on the active face (e.g. `C = diag(1, 1), w = (1, -1)`). Fixed activation/linear costs can produce sparse one-channel attractors. Iteration 10 refines the fixed-charge row: caps turn one-channel drift into ordered spillover only in the no-activation/already-activated linear case, while positive fixed costs create entry thresholds and active-set switches. Split subquestions: (a) which attractor functional is selected — private cost, complexity, entropy, KL, rank, or description length; (b) how do support-size paths differ across uncapped linear, capped linear, fixed-charge, convex, and detection/risk-penalized geometries; (c) which mechanisms align private cost/search accessibility with semantic simplicity; (d) when is the low-complexity attractor helpful versus harmful relative to the principal's true goal; (e) how should this relate to empirical simplicity-bias precedents in ML and evolution without overclaiming analogy?
-19. Response-modeling contracts for applications: Iteration 14 reframes the project as a response-modeling framework. For each real application, what is the declared type space `U`, response channel (`W_theta` vs. `K_theta`), action/cost/search geometry, proxy/target relation, aggregation rule, hidden welfare model, and evidence standard? Iteration 23 gives one successful Layer-2 worked application for MMLU: fixed-checkpoint benchmark selection changes `W_theta`, while finetuning, prompt search, contamination, synthetic-data filtering, and reward/proxy optimization require a declared `K_theta`, action/search geometry, and falsifiers. Iterations 29-30 add and review a hospital readmission scorecard application: score improvement is not licensed as welfare improvement until the channel, action traces, hidden-harm exchange rates, and frontier primitives `kappa`, `h`, `gamma`, `w`, and `V` are declared or audited. Iteration 31 adds a scientific-metrics application with an explicit novelty boundary: responsible-metrics work already covers the broad warning that publications, citations, journal impact factor, grants, and rankings can distort science. The framework contribution is only the narrower discriminator/evidence contract separating selection, fixed-researcher response, proxy artifact repair, harmful proxy manufacture, and genuine research-quality improvement before increasing the leverage of fast scalar metrics. Iteration 32 reviews the hospital and scientific-metrics applications side by side and concludes that the application template is reusable with narrowing: reuse requires predeclaring `U` and the type/action boundary, identifying whether the mechanism changes `W_theta`, `K_theta`, or both, declaring proxy, hidden target, aggregation, and hidden value/harm before score movement is interpreted, marking `kappa`, `h`, `gamma`, `w`, and `V` unavailable when evidence is weak, naming discriminator observations stronger than aggregate score movement, and including contract-failure conditions that could actually fire. Iteration 33 completes the promotion-readiness review: promote the response-modeling application discipline, the narrowed template boundary, and compact hospital/scientific application mappings; footnote only the quadratic diagnostic and Iteration 27 adaptive-hardening toy as conditional toy evidence; exclude theorem expansion, optimal policy design, empirical welfare or research-value inference, endogenous `V`, generic anti-metric advice, and full application prose dumps. Iteration 34 completes the scoped book integration in `book/multidimensional-goodhart.typ`. Iteration 37 partially models empirical auditability for the hospital and scientific-metrics primitives: response ease, hidden harm/value, signal adequacy, effective leverage, and stakes can sometimes be predeclared, bounded, defended, or marked unavailable with design consequences, but estimation and policy-repair claims remain open. Iteration 38 reviews policy readiness and permits only concrete audit/design/evidence decisions: document effective rules, audit repeated-unit action traces, monitor hidden-target traces where available, lower leverage or pilot when primitives are unavailable, and avoid toy diagnostics when primitives are missing.
+Failure condition: primitives are assigned only after metric movement, or an
+unavailable primitive carries no deployment, monitoring, or evidence-collection
+consequence.
+
+Target files: `research/applications/empirical_auditability.md`;
+domain-specific application notes.
+
+## O2. Stochastic observation and repair budgets
+
+Question: what observation model, filtering rule, repair budget, and stopping
+criterion replace deterministic best-response observation in adaptive
+hardening?
+
+Cheapest layer: simulation after the observation-error model and repair budget
+are declared.
+
+Failure condition: simple noise makes the rule harden irrelevant channels,
+miss `S(M) < d^2/(2V)` within budget, or depend entirely on post-hoc filtering
+choices.
+
+Target files: `research/threads/response_dynamics_boundary.md`;
+`research/simulations/iteration36_response_dynamics.py`.
+
+## O3. Endogenous-stakes fixed points
+
+Question: can a declared trust/stakes recurrence plus strategic response rule
+produce a stable fixed point, and what hidden harm remains there?
+
+Cheapest layer: thought experiment, then simulation.
+
+Failure condition: different plausible observed-harm variables or forecasting
+rules produce incompatible stakes paths from the same static capacity state.
+
+Target files: `research/threads/response_dynamics_boundary.md`.
+
+## O4. Changing measured sets, deficits, stakes, or weights
+
+Question: what replaces the scalar capacity invariant when `M`, `d`, `V`, or
+weights change over time?
+
+Cheapest layer: thought experiment.
+
+Failure condition: adding a measured channel or changing the deficit can
+increase attack capacity while existing channels harden, so monotone capacity
+no longer controls feasibility.
+
+Target files: new thread only after the update rule is fixed.
+
+## O5. Shared bottlenecks and nonconvex response geometry
+
+Question: how do caps, fixed charges, shared resources, correlated costs,
+search discontinuities, or nonconvex feasible sets change the convex
+score-deficit budget?
+
+Cheapest layer: simulation or finite active-set calculation.
+
+Failure condition: active-set switches, fixed charges, or bottlenecks reverse
+the convex prediction, or no local convex approximation is defensible.
+
+Target files: `research/threads/capped_fixed_charge_response.md`;
+`research/threads/convex_intervention_bound.md`.
+
+## O6. Real-domain measurement frontier
+
+Question: can real domains characterize the frontier among signal value, hidden
+harm, gaming ease, effective aggregation, and stakes before deployment?
+
+Cheapest layer: real-world correspondence.
+
+Failure condition: signal adequacy, harm, attack surface, or stakes cannot be
+estimated or bounded before deployment, or they are chosen after observing the
+score movement.
+
+Target files: application notes; no policy prose without a separate review.
+
+## O7. Value-weighted susceptibility
+
+Question: can applications declare value functionals or value norms strongly
+enough for the value-weighted/operator selection bound to rank hidden-risk
+directions non-post-hoc?
+
+Cheapest layer: real-world correspondence.
+
+Failure condition: value weights are unavailable, arbitrary, or chosen after
+observing the selected distribution.
+
+Target files: `research/claim_audits.md`; future application notes.

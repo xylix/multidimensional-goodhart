@@ -89,19 +89,22 @@ Keep two failure-mode gaps distinct throughout:
 
 ## Current project state
 
+- The post-Iteration-43 source registry is `research/project_state_after_iteration43.md`. Read it before treating older thread files as current authority.
 - The strongest result is the **selection/intervention split**. Selection channels are baseline reweighting problems; intervention channels require action, cost, search, or response-kernel geometry.
 - Broad claims have mostly died or narrowed. Dimension count alone does not determine harm; covariance is not a finite-pressure primitive; adding metrics has no sign without aggregation and exchange rates; minimum-complexity attraction is not generic.
-- The useful mathematical objects are conditional: threshold/weighted selection response, chi-square/value-weighted selection drift bounds, the quadratic Stackelberg wedge, convex score-deficit budgets, additive exchange-rate conditions, and response-shape predictions under declared cost/search geometry.
+- The canonical theorem set is in `research/core-math.md`: coordinate-explicit selection bound, value-weighted/operator selection bound, quadratic Stackelberg wedge, convex score-deficit budget, additive exchange-rate iff-condition, and deterministic adaptive-hardening capacity boundary.
 - The most useful methodological object is the **response-modeling contract**. A claim should declare type representation, baseline behavior, policy exposure, response channel, action/search geometry, proxy/target map, aggregation rule, hidden harm/value model, and falsifier.
+- The current question split is `research/closed_questions.md`, `research/open_questions.md`, and `research/parked_questions.md`.
 - Simulations in `research/simulations/` are Layer-3 checks for scoped toy regimes only. Do not treat them as empirical evidence or as validation of non-convex ML/RLHF dynamics.
 
 ## Next-stage priorities
 
-Prefer one of these before opening new speculative threads:
+Era 1 is in finishing mode. Prefer the active roadmap before opening new
+speculative threads:
 
-1. **Adaptive hardening / measurement frontier.** Simulate regulators that harden or select measured dimensions over time. Test convergence, cycling, and whether static narrow metrics dominate reactive patching.
-2. **Application templates.** Build response-modeling contracts for domains such as institutional scorecards, ML eval suites, and scientific metrics. Each template must name falsifiers and non-transfer conditions.
-3. **Paper/figure consolidation.** If the goal is human-facing output, fix proposition numbering, regenerate or replace weak figures, and make the paper extract self-contained before adding more theory.
+1. **Spine refactor.** Reorganize the book and abstract around the consolidated theorem set, killed claims, and response-modeling contract.
+2. **Prose pass.** Improve line-level prose after structure is stable.
+3. **Polish.** Audit proposition numbering, references, figures, build outputs, and `core-math.md` pointers.
 
 Avoid spending another iteration rescuing the original recursive/minimum-complexity slogan unless the response geometry, complexity functional, and failure condition are fixed before the analysis.
 

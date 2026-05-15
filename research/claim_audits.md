@@ -1,6 +1,20 @@
 # Claim audits
 
-## Current license map (Iteration 42)
+## Current license map (Iteration 44 consolidation)
+
+Canonical source registry: `research/project_state_after_iteration43.md`.
+Canonical theorem document: `research/core-math.md`.
+Question split: `research/closed_questions.md`, `research/open_questions.md`,
+and `research/parked_questions.md`.
+
+| Status | Closed or live item | What is licensed | What is not licensed | Next action |
+| --- | --- | --- | --- | --- |
+| Canonical theorem set | Core math after Iteration 43 | Coordinate-explicit selection drift, value-weighted/operator selection drift, quadratic Stackelberg wedge, convex score-deficit budget, additive exchange-rate iff-condition, and deterministic adaptive-hardening capacity boundary under the hypotheses stated in `core-math.md`. | Any theorem transfer without the declared response channel, value/harm model, action geometry, aggregation rule, and non-transfer clauses. | Use `core-math.md` as the theorem source for era-1 manuscript work. |
+| Project-state registry | Consolidated source map | Classifies canonical, historical, archive-candidate, and delete-candidate files; separates closed, open, and parked questions. | Treating older open-question or thread text as current authority when it conflicts with the registry. | Start future reviews from the registry. |
+| Active open work | Consolidated `open_questions.md` | Primitive estimation, stochastic filtering/repair budgets, endogenous-stakes fixed points, changing measured sets/deficits/stakes/weights, shared bottlenecks/nonconvex response geometry, real-domain frontiers, and value-weighted susceptibility. | Presenting any open cluster as already theorem, empirical result, or policy guidance. | Require missing primitive, cheapest verification layer, and failure condition before promotion. |
+| Parked work | Consolidated `parked_questions.md` | Recursive/minimum-complexity revival only after a predeclared complexity functional and response mechanism; Lean only after era 1 closes. | Open-ended rescue iterations, post-hoc complexity labels, or starting Lean before book/abstract/core-math pointers stabilize. | Keep parked unless a future plan deliberately activates it. |
+
+## Previous license map (Iteration 42)
 
 | Status | Closed or live item | What is licensed | What is not licensed | Next action |
 | --- | --- | --- | --- | --- |

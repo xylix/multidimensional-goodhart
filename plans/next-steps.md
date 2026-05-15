@@ -116,22 +116,6 @@ artifact changes if it succeeds.
 
 Run these in order. Reasoning for the ordering follows each entry.
 
-## Iteration 44: `consolidation.md` — project-state consolidation and `core-math.md`
-
-Inventory what survived 1–43, classify files canonical/archive/delete, split
-open/closed/parked questions, compact the iteration log, produce
-`research/core-math.md` as a default deliverable (bare statements with book
-pointers, no proof duplication), and end with a short next-mode memo
-confirming the era-1 finishing order below.
-
-**Why first.** Until this pass runs, the downstream manuscript work has the
-wrong source list. The spine refactor cites `formal_analogue_lit_map.md` and
-`negative_results.md` as authoritative inputs and assumes the open-question
-split is current — both depend on this pass. `core-math.md` is produced here
-because the spine refactor will use it as the canonical statement of which
-theorems land in Part II; producing it after the spine would reverse the
-authority direction.
-
 ## Iteration 45: `spine-refactor.md` — book and abstract structural reorganization
 
 Re-spine the long-form book into six parts (~21 sections) around what holds:

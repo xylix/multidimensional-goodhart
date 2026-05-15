@@ -256,7 +256,7 @@ response estimation and for controlled intervention/gaming environments.
 
 ## Current question map
 
-Current consolidation status after Iteration 42:
+Current consolidation status after Iteration 44:
 
 - Closed as theorem-boundary: deterministic finite-channel adaptive hardening
   inside the Iteration 35 contract only.
@@ -271,10 +271,19 @@ Current consolidation status after Iteration 42:
   narrow deterministic finite-channel adaptive-hardening boundary correction
   and the short stochastic/endogenous model-dependence note for book/paper
   prose. Iteration 42 found no further book or paper prose edits needed.
+- Iteration 43 added the manuscript abstract and strengthened compact framing
+  without changing theorem licenses.
+- Iteration 44 split the question map. Closed boundaries live in
+  `research/closed_questions.md`; active questions live in
+  `research/open_questions.md`; recursive/complexity-attractor revival and
+  Lean live in `research/parked_questions.md`.
 - Still live: primitive estimation, stochastic filtering and repair budgets,
-  endogenous-stakes fixed points, changing `M`/`d`/`V`, shared bottlenecks,
-  nonconvex response geometry, real-domain frontier characterization, and
-  response-geometry tests for recursive/complexity-attractor claims.
+  endogenous-stakes fixed points, changing `M`/`d`/`V`/weights, shared
+  bottlenecks, nonconvex response geometry, real-domain frontier
+  characterization, and value-weighted susceptibility.
+- Parked: response-geometry tests for recursive/complexity-attractor claims
+  until a complexity functional, response mechanism, representation, and
+  failure condition are fixed before inspection.
 
 | Question cluster | Current cheapest live layer | Candidate verification | Failure condition |
 | --- | --- | --- | --- |
