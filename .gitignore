@@ -3,3 +3,5 @@ book/appendix*.pdf
 book/*appendix*.pdf
 research/simulations/outputs/*.png
 research/simulations/outputs/*.pdf
+.codex-runs/
+__pycache__/
