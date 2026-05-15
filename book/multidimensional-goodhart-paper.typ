@@ -32,12 +32,14 @@
   dimensions should make the remaining error directions more structured and
   perhaps more complicated. Working through selection, intervention, and
   aggregation models narrows that hypothesis. The surviving object is not a
-  universal complexity law, but response-dependent error geometry: selection
-  over a fixed baseline, intervention through fixed-type response, and
-  multidimensional aggregation generate different distortion shapes. The useful
-  transfer rule is therefore a response-modeling contract, checked against a
-  literature map that treats external Goodhart, ML, and incentive results as
-  primitive-specific analogues rather than generic support.
+  universal complexity law, but response-dependent error geometry. Pure
+  selection gives baseline response curves and chi-square/value drift bounds;
+  intervention replaces baseline statistics with action, cost, search, and
+  stakes primitives; additive and conjunctive scorecards produce different
+  exchange-rate and entry effects. The useful transfer rule is therefore a
+  response-modeling contract, checked against a literature map that treats
+  external Goodhart, ML, and incentive results as primitive-specific analogues
+  rather than generic support.
 ]
 
 = Introduction: the original hypothesis
@@ -74,7 +76,11 @@ The narrower result of the modelling work is therefore this: residual error has
 a response-dependent geometry. The core object is not bare dimension count, but
 the channel that connects optimization pressure to movement in state space.
 Selection, intervention, and aggregation each impose different mathematical
-constraints on the shape of residual error.
+constraints on the shape of residual error. The most reusable pieces are the
+response-channel split, the selection and value-drift bounds, the separation
+between action-cost budgets and hidden welfare, the scorecard exchange-rate
+condition, and the response-modeling contract that says which primitive must be
+declared before a calculation transfers.
 
 Write the target-relevant state as $G(s) in RR^m$, the proxy as
 $P(s) in RR^k$, the intended proxy relation as $phi : RR^m -> RR^k$, and the
@@ -88,7 +94,9 @@ by the response channel.
   make off-proxy error more complicated as measured dimensions are optimized.
   The licensed result is sharper and more conditional: the shape of residual
   error is governed by the declared response channel, action/search geometry,
-  aggregation rule, and hidden value model.
+  aggregation rule, and hidden value model. The framework does not imply that
+  more metrics are generically harmful or helpful; it asks which response routes
+  the measurement system opens, closes, weights, or makes cheap.
 ]
 
 = Relation to existing formulations
@@ -293,17 +301,22 @@ welfare functional.
 
 = Open problems
 
-Several problems remain deliberately open.
+Several problems remain deliberately open, while one formerly open adaptive
+hardening subcase is now only a boundary note.
 
 - *Welfare-bound packaging.* Convex private affordability and realized
   cost-minimizing harm are distinct from worst-case welfare bounds for a
   declared hidden-harm functional.
 - *Endogenous value and stakes.* $V$ may depend on observed gaming, trust,
-  institutional response, or future proxy repair.
-- *Adaptive hardening.* Hardening the currently exploited channel may converge,
-  cycle, or expand the attack surface; apart from the narrow deterministic
-  capacity boundary, stochastic and endogenous variants need explicit dynamic
-  models.
+  institutional response, or future proxy repair. The exogenous-$V$ Stackelberg
+  and convex-cost calculations do not solve that dynamic problem.
+- *Adaptive hardening.* In the finite-channel deterministic additive-score
+  toy with fixed $M$, fixed deficit $d$, fixed stakes $V$, fixed weights,
+  separable quadratic costs, deterministic observation, and monotone progress,
+  fixed-deficit gaming stops exactly when
+  $S_t(M) = sum_j kappa_(j,t) w_j^2 < d^2 slash (2V)$. Changing measured sets
+  or deficits, stochastic observation, endogenous stakes, shared bottlenecks,
+  nonconvex geometry, and policy optimization remain separate problems.
 - *Empirical implementation.* Applications need repeated-type observations,
   randomized or staggered exposure, action traces, cost variation, or
   pre-registered hidden outcomes.

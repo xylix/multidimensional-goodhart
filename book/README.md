@@ -10,11 +10,14 @@ not here.
 - `multidimensional-goodhart.typ` — the source.
 - `multidimensional-goodhart-paper.typ` — compact paper-style extract from
   Chapters 1–5.
+- `multidimensional-goodhart-abstract.typ` — two-page technical extended
+  abstract for readers who need the current framework and boundaries quickly.
 - `refs.bib` — bibliography (hand-written; double-check page numbers/venues
   before anything goes out).
 - `multidimensional-goodhart.pdf` — compiled output (regenerated, not
   hand-edited).
 - `multidimensional-goodhart-paper.pdf` — compiled mini-draft output.
+- `multidimensional-goodhart-abstract.pdf` — compiled extended abstract output.
 - `FIGURE_AUDIT.md` — current figure inclusion audit and removal rationale.
 - `scripts/make_appendix_figures.py` — deterministic matplotlib generator for
   the retained comparison figures.
@@ -28,11 +31,12 @@ With `make`:
 make all
 ```
 
-To build only the book or only the paper extract:
+To build only the book, paper extract, or short abstract:
 
 ```sh
 make pdf
 make paper
+make abstract
 ```
 
 Or directly:
@@ -40,6 +44,7 @@ Or directly:
 ```sh
 typst compile multidimensional-goodhart.typ
 typst compile multidimensional-goodhart-paper.typ
+typst compile multidimensional-goodhart-abstract.typ
 ```
 
 Needs [Typst](https://typst.app) ≥ 0.14. `refs.bib` is picked up automatically.
@@ -71,6 +76,9 @@ uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
   1–5: residual error shape, selection and intervention channels,
   multidimensional scorecards, the response-modeling contract, MMLU discipline,
   and open problems.
+- **Technical abstract** — A standalone two-page extended abstract that states
+  the motivation, current findings, transfer rule, and live boundaries without
+  replacing the paper.
 - **Appendix A** — Currently in progress: live research questions feeding the
   chapters.
 - **Appendix B** — Future open questions, parked for now.
