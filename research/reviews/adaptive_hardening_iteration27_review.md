@@ -1,5 +1,11 @@
 # Review iteration: adaptive hardening and measurement frontier
 
+Status after consolidation: historically relevant but partially superseded.
+Use this file for the Iteration 27 Layer-3 toy classification and measurement
+frontier vocabulary. For current license boundaries, use the Iteration 35
+theorem-boundary note, the Iteration 36 dynamics boundary, and the current
+license map in `research/claim_audits.md`.
+
 Iteration type: `review`
 
 Review target:

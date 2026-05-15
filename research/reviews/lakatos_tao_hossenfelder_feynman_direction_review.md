@@ -1,5 +1,12 @@
 # Direction review: Lakatos / Tao / Hossenfelder / Feynman lens
 
+Status after consolidation: historical direction memo for the post-Iteration-25
+state. Its central warning remains relevant, but several action items were
+completed or narrowed later: the application template gained contract-failure
+fields, adaptive hardening received a narrow theorem-boundary pass, dynamic
+variants were bounded separately, and broad policy/integration claims were
+blocked by later gates.
+
 Iteration type: `review`
 
 Review target: current research direction after Iteration 25, especially the

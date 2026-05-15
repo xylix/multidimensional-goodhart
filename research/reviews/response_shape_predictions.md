@@ -1,5 +1,9 @@
 # Review iteration: response-shape predictions
 
+Status after consolidation: durable technical boundary review. Use it for
+geometry-to-shape license boundaries, not as evidence for a generic
+minimum-complexity or recursive-attractor theorem.
+
 Iteration type: `review`
 
 ## Review target

@@ -1,5 +1,10 @@
 # Review iteration: response-kernel boundary
 
+Status after consolidation: durable technical boundary review. Use it for the
+selection versus fixed-type response distinction and its representation-relative
+non-identifiability cautions. Current application use is governed by
+`research/applications/application_template.md`.
+
 Iteration type: `review`
 
 ## Review target

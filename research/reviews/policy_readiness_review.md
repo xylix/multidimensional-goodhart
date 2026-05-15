@@ -1,5 +1,9 @@
 # Policy-readiness review
 
+Status after consolidation: current policy boundary unless superseded by a
+later policy gate. It blocks broad policy prose and licenses only narrow
+audit/design/evidence actions inside declared response-modeling contracts.
+
 Iteration type: `policy-review`
 
 ## Status and question

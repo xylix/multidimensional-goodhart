@@ -1,5 +1,9 @@
 # Scoped manuscript review after Iteration 42
 
+Status after consolidation: current manuscript freshness gate unless superseded
+by a later manuscript review. It should be read together with the Iteration 42
+license map in `research/claim_audits.md`.
+
 Iteration type: `scoped-manuscript-review`
 
 ## Question

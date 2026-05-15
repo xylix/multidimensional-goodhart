@@ -1,5 +1,10 @@
 # Review iteration: recursive Goodhart and Q18 claim license
 
+Status after consolidation: durable but speculative boundary review. Use it to
+block generic recursive/minimum-complexity claims and to require predeclared
+response geometry, shape or complexity measure, and failure condition. Current
+live questions remain in `research/open_questions.md`.
+
 Iteration type: `review`
 
 ## Review target

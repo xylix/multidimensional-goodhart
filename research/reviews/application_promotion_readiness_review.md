@@ -1,5 +1,12 @@
 # Application promotion-readiness review
 
+Status after consolidation: historical promotion gate for Iteration 34. Use it
+to understand why application discipline was promotable and why theorem,
+empirical, policy, and broad adaptive-hardening claims were excluded. Do not
+use it as the latest book/paper integration authority; later gates are
+`integration_readiness_review.md`, the Iteration 42 license map, and
+`scoped_manuscript_review_iteration43.md`.
+
 Iteration type: `promotion-review`
 
 ## Question

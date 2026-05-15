@@ -1,5 +1,10 @@
 # Formal analogue lit map
 
+Status after consolidation: mostly time-independent as a literature-to-primitive
+map. Treat book line references, stage numbers, and promotion-to-book notes as
+historical unless rechecked against the current manuscript sources and current
+license map.
+
 Iteration type: `application-mapping`.
 
 ## Purpose

@@ -1,5 +1,10 @@
 # Integration-readiness review
 
+Status after consolidation: historical integration gate for Iteration 41. It
+records the narrow edit license for Iterations 35-39. The latest manuscript
+freshness judgment is `scoped_manuscript_review_iteration43.md`, and the live
+license map is `research/claim_audits.md`.
+
 Iteration type: `integration-review`
 
 ## Question

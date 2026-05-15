@@ -1,5 +1,10 @@
 # Review iteration: hospital scorecard application
 
+Status after consolidation: historical application review. Use it for the
+hospital scorecard audit logic, not as a current promotion or policy gate. Read
+it through the later application-generalization, application-promotion,
+empirical-auditability, and policy-readiness boundaries before reusing claims.
+
 Iteration type: review
 
 Review targets:

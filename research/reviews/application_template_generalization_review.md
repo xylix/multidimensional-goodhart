@@ -1,5 +1,10 @@
 # Application template generalization review
 
+Status after consolidation: still relevant as a methodological review, but the
+live operational template is `research/applications/application_template.md`.
+Use later promotion, empirical-auditability, and policy-readiness gates before
+turning this review into book, paper, empirical, or policy claims.
+
 Iteration type: `review`
 
 ## Question

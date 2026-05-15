@@ -1,5 +1,9 @@
 # Iteration-log learning pass
 
+Status after consolidation: durable meta-diagnostic, not a current
+theorem/application/policy gate. Use it for the mistake taxonomy and
+stale-phrase scan discipline; use the current license map for live claims.
+
 Question: what mistakes did we make because we were not yet applying the
 response-modeling paradigm, and what information would we have received earlier
 if we had used it?
