@@ -280,10 +280,13 @@ is trying to prove.
 
 - *Adaptive hardening.* A regulator that each period lowers $kappa_j$ on
   whichever measured channel is currently most-gamed drives aggregate gaming
-  capacity $K_M$ downward. Open: does this policy converge to no-gaming
-  ($K_M < t^2 slash (2V)$), and at what rate? Does it dominate the
-  alternative of committing from the start to a narrow hard-to-game measured
-  set $M$?
+  capacity $K_M$ downward. In the fixed-$M$, fixed-deficit $d$, fixed-$V$,
+  fixed-weight, additive-score, separable-quadratic, deterministic-observation
+  contract, monotone progress closes the deterministic boundary exactly:
+  fixed-deficit gaming stops when $S_t(M) < d^2 slash (2V)$. Open: how do
+  stochastic observation, endogenous stakes, changing measured sets or
+  deficits, shared bottlenecks, nonconvex geometry, and policy comparison alter
+  that boundary?
 
 - *Measurement frontier.* The dual of hardening. More measured channels
   recover more real signal about $G$ but enlarge the gaming attack surface

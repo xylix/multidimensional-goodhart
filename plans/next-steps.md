@@ -1,8 +1,8 @@
 # Next steps
 
-This is the active roadmap. Iterations 41-42 are the remaining staged repair
-sequence after the Iteration 40 integration-readiness review: make only
-licensed prose edits, and then run the final consistency pass. Iteration 36 is
+This is the active roadmap. Iteration 42 is the remaining staged repair
+step after the Iteration 41 scoped integration edit: run the final consistency
+pass. Iteration 36 is
 retained below as completed context for the sequence and is not itself part of
 the active work.
 
@@ -44,10 +44,10 @@ Current live map after Iteration 40:
   deficits, shared bottlenecks and nonconvex response geometry, frontier
   characterization in real domains, and the broader recursive/complexity
   attractor question under predeclared response geometry.
-- Licensed next action: Iteration 41 may make only the narrow prose edits
-  permitted by `research/reviews/integration_readiness_review.md`: at most a
-  deterministic finite-channel adaptive-hardening boundary note and a short
-  model-dependence note for stochastic observation/endogenous stakes.
+- Iteration 41 closure: book and paper prose received only the licensed
+  deterministic finite-channel adaptive-hardening boundary correction and the
+  short stochastic/endogenous model-dependence note. No broader theorem,
+  empirical, scorecard, measurement-frontier, or policy prose was added.
 
 After finishing an iteration, delete the completed iteration step from this
 document while preserving the later roadmap unless it is superseded.
@@ -80,30 +80,6 @@ Completed artifacts:
 License only: these dynamics can break or alter the static capacity story
 under declared update rules. Do not claim a general performative-stability
 result.
-
-## Iteration 41: scoped book/paper integration, only if licensed
-
-Iteration type: `integration`.
-
-### Purpose
-
-Make a narrow prose edit only if Iteration 40 permits it.
-
-### Work
-
-1. If licensed, add at most a narrow footnote or appendix paragraph on the
-   adaptive-hardening theorem boundary.
-2. If licensed, add one short note that stochastic/endogenous dynamics remain
-   model-dependent.
-3. Do not add broad policy advice.
-4. If Iteration 40 licenses nothing, record that outcome in the integration
-   review note and skip directly to Iteration 42 without touching prose.
-
-### Success condition
-
-Any book/paper edit is traceable to the Iteration 40 integration-readiness
-review and does not broaden the licensed claim. If no edit was licensed, the
-review note explicitly records the no-edit closure.
 
 ## Iteration 42: final consistency pass
 

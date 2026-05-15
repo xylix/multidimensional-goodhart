@@ -301,7 +301,9 @@ Several problems remain deliberately open.
 - *Endogenous value and stakes.* $V$ may depend on observed gaming, trust,
   institutional response, or future proxy repair.
 - *Adaptive hardening.* Hardening the currently exploited channel may converge,
-  cycle, or expand the attack surface; it needs dynamic models.
+  cycle, or expand the attack surface; apart from the narrow deterministic
+  capacity boundary, stochastic and endogenous variants need explicit dynamic
+  models.
 - *Empirical implementation.* Applications need repeated-type observations,
   randomized or staggered exposure, action traces, cost variation, or
   pre-registered hidden outcomes.

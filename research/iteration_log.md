@@ -1152,3 +1152,25 @@ Red flags fired: integration overpromotion risk. The repair is the explicit
 footnote/exclude gate: the deterministic capacity result may correct stale
 open-question wording, but it cannot become a general adaptive-hardening,
 policy, stochastic, endogenous-stakes, empirical, or welfare claim.
+
+## Iteration 41 (scoped book/paper integration)
+
+Question tackled: Should the licensed Iteration 40 boundary correction change
+book or paper prose?
+
+What changed: made only the scoped prose repairs. In the book's work-in-progress
+adaptive-hardening bullet, the deterministic finite-channel case no longer
+appears simply open: under fixed `M`, fixed deficit `d`, fixed stakes `V`,
+fixed weights, additive score gain, separable quadratic costs, deterministic
+observation, and monotone progress, fixed-deficit gaming stops exactly when
+`S_t(M) < d^2/(2V)`. In the paper's open-problems list, added only a short
+parenthetical boundary that stochastic and endogenous variants still need
+explicit dynamic models.
+
+What's open now: stochastic observation, endogenous `V`, changing measured sets
+or deficits, shared bottlenecks, nonconvex geometry, empirical estimation, and
+policy optimization remain unlicensed. No theorem, empirical, scorecard,
+measurement-frontier, hospital, scientific-metrics, or policy prose was added.
+
+Red flags fired: integration overpromotion risk remained the live constraint.
+The repair stays inside the Iteration 40 footnote/parenthetical license.
