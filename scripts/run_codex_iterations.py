@@ -20,7 +20,7 @@ import sys
 import threading
 from dataclasses import dataclass
 from pathlib import Path
-from typing import BinaryIO, Sequence, TextIO
+from typing import BinaryIO, Optional, Sequence, TextIO
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -70,7 +70,7 @@ def run(
     )
 
     if check and result.returncode != 0:
-        command = " ".join(args)
+        command = shlex.join(args)
         raise RuntimeError(f"command failed ({result.returncode}): {command}")
     return result
 
@@ -80,12 +80,13 @@ def tee_stream(
     *,
     console: TextIO | None,
     log_file: TextIO | None,
-    chunks: list[str],
+    chunks: Optional[list[str]],
 ) -> None:
     decoder = codecs.getincrementaldecoder("utf-8")("replace")
 
     def write_text(text: str) -> None:
-        chunks.append(text)
+        if chunks is not None:
+            chunks.append(text)
         if console:
             console.write(text)
             console.flush()
@@ -117,8 +118,8 @@ def run_with_tee(
 ) -> subprocess.CompletedProcess[str]:
     stdout_file = stdout_path.open("w", encoding="utf-8") if stdout_path else None
     stderr_file = stderr_path.open("w", encoding="utf-8") if stderr_path else None
-    stdout_chunks: list[str] = []
-    stderr_chunks: list[str] = []
+    stdout_chunks: Optional[list[str]] = None if stdout_path else []
+    stderr_chunks: Optional[list[str]] = None if stderr_path else []
 
     try:
         process = subprocess.Popen(
@@ -173,11 +174,11 @@ def run_with_tee(
     result = subprocess.CompletedProcess(
         args=args,
         returncode=returncode,
-        stdout=None if stdout_path else "".join(stdout_chunks),
-        stderr=None if stderr_path else "".join(stderr_chunks),
+        stdout=None if stdout_chunks is None else "".join(stdout_chunks),
+        stderr=None if stderr_chunks is None else "".join(stderr_chunks),
     )
     if check and returncode != 0:
-        command = " ".join(args)
+        command = shlex.join(args)
         raise RuntimeError(f"command failed ({returncode}): {command}")
     return result
 
@@ -427,6 +428,65 @@ def run_one_iteration(iteration: Iteration, args: argparse.Namespace) -> str:
     return commit
 
 
+def dry_run(args: argparse.Namespace) -> None:
+    iterations = read_iterations()
+    if args.start_at is not None:
+        start_index = next(
+            (
+                index
+                for index, iteration in enumerate(iterations)
+                if iteration.number == args.start_at
+            ),
+            None,
+        )
+        if start_index is None:
+            raise RuntimeError(f"Iteration {args.start_at} not found in {ROADMAP}")
+        iterations = iterations[start_index:]
+
+    for iteration in iterations[: args.max_iterations]:
+        if (
+            args.stop_before_conditional_integration
+            and is_conditional_integration(iteration)
+        ):
+            print(
+                "Would stop before conditional integration iteration "
+                f"{iteration.number}: {iteration.title}"
+            )
+            break
+        print(f"Would run Iteration {iteration.number}: {iteration.title}")
+
+
+def run_iterations(args: argparse.Namespace) -> list[tuple[int, str]]:
+    completed: list[tuple[int, str]] = []
+    start_at = args.start_at
+    for _ in range(args.max_iterations):
+        iteration = select_iteration(start_at)
+        start_at = None
+        if iteration is None:
+            print("No active iterations remain.")
+            break
+        if (
+            args.stop_before_conditional_integration
+            and is_conditional_integration(iteration)
+        ):
+            print(
+                "Stopping before conditional integration iteration "
+                f"{iteration.number}: {iteration.title}"
+            )
+            break
+        commit = run_one_iteration(iteration, args)
+        completed.append((iteration.number, commit))
+    return completed
+
+
+def print_completed(completed: Sequence[tuple[int, str]]) -> None:
+    if not completed:
+        return
+    print("\nCompleted iterations:")
+    for number, commit in completed:
+        print(f"- Iteration {number}: {commit[:12]}")
+
+
 def main(argv: Sequence[str]) -> int:
     parser = argparse.ArgumentParser(
         description="Run active next-step iterations as separate Codex sessions."
@@ -504,58 +564,10 @@ def main(argv: Sequence[str]) -> int:
         require_clean_tree(args.allow_dirty or args.dry_run)
 
         if args.dry_run:
-            iterations = read_iterations()
-            if args.start_at is not None:
-                start_index = next(
-                    (
-                        index
-                        for index, iteration in enumerate(iterations)
-                        if iteration.number == args.start_at
-                    ),
-                    None,
-                )
-                if start_index is None:
-                    raise RuntimeError(
-                        f"Iteration {args.start_at} not found in {ROADMAP}"
-                    )
-                iterations = iterations[start_index:]
-            for iteration in iterations[: args.max_iterations]:
-                if (
-                    args.stop_before_conditional_integration
-                    and is_conditional_integration(iteration)
-                ):
-                    print(
-                        "Would stop before conditional integration iteration "
-                        f"{iteration.number}: {iteration.title}"
-                    )
-                    break
-                print(f"Would run Iteration {iteration.number}: {iteration.title}")
+            dry_run(args)
             return 0
 
-        completed: list[tuple[int, str]] = []
-        start_at = args.start_at
-        for _ in range(args.max_iterations):
-            iteration = select_iteration(start_at)
-            start_at = None
-            if iteration is None:
-                print("No active iterations remain.")
-                break
-            if (
-                args.stop_before_conditional_integration
-                and is_conditional_integration(iteration)
-            ):
-                print(
-                    "Stopping before conditional integration iteration "
-                    f"{iteration.number}: {iteration.title}"
-                )
-                break
-            commit = run_one_iteration(iteration, args)
-            completed.append((iteration.number, commit))
-
-        if completed:
-            print("\nCompleted iterations:")
-            for number, commit in completed:
-                print(f"- Iteration {number}: {commit[:12]}")
+        print_completed(run_iterations(args))
         return 0
     except Exception as exc:  # noqa: BLE001 - CLI should print a concise error.
         print(f"error: {exc}", file=sys.stderr)
