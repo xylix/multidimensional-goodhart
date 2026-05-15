@@ -4,32 +4,29 @@ Note: Ask user before implementing these — they are most efficient to do
 before actually publishing or sending a draft over, rather than during
 research iteration loops.
 
-## Proposition and reference hygiene
+## Proposition and reference hygiene — completed in Iteration 47
 
-- Check proposition numbering order after the spine refactor lands.
-- Audit `book/refs.bib`: every Typst citation in the book and abstract must
+- Checked theorem numbering against the T1–T6 spine after the refactor landed.
+- Audited `book/refs.bib`: every Typst citation in the book and abstract must
   resolve; no orphan bib entries. (The deprecated paper artifact is excluded
   from this audit.)
-- Cross-check `research/claim_audits.md` against the renumbered propositions
+- Cross-checked `research/claim_audits.md` against the renumbered theorems
   so every claim audit row points at the current proposition number.
-- Cross-check `research/core-math.md` book pointers: every theorem statement
+- Cross-checked `research/core-math.md` book pointers: every theorem statement
   there must reference the book section that proves it; no proof prose
   duplicated across the two files.
 
-## Figures and appendices
+## Figures and appendices — completed in Iteration 47
 
-- Re-do (remove, refactor, re-implement, or re-generate) figures. The
-  figures as of 2026-05-13T13:44 are not doing what they are supposed to
-  achieve.
-- Eventually include selected simulation output PNGs, especially the
-  Iteration 21 active-set and welfare-object plots, as appendix figures in
-  the book after the figure pass decides which generated artifacts are worth
-  preserving.
-- Eventually decide which generated appendix PDFs should be regenerated,
-  referenced, or replaced during the final figure/appendix pass; keep draft
-  appendix PDFs out of git until that decision is made.
+- Rebuilt the generated figure set around four promoted manuscript figures:
+  dimension/observation gap, T1/T2 drift envelope, T4/T5 cost ellipse, and
+  population gaming band.
+- Decided not to include raw simulation PNGs in the book; they remain
+  verification artifacts.
+- Superseded the old generated appendix PDFs and updated `book/FIGURE_AUDIT.md`
+  plus `book/figures/RATIONALES.md`.
 
-## Reproducible-build green-light
+## Reproducible-build green-light — completed in Iteration 47
 
 Before declaring era 1 closed:
 
@@ -42,6 +39,7 @@ Before declaring era 1 closed:
 - The deprecated `book/multidimensional-goodhart-paper.typ` is archived per
   `spine-refactor.md` and not part of any default Makefile target.
 
-## Consistency pass
-- Check that the book matches the latest research files
-- Check that the abstract succesfully is a denser version of the 'book'.
+## Consistency pass — completed in Iteration 47
+
+- Checked that the book matches the latest research theorem files.
+- Checked that the abstract is a denser version of the book.

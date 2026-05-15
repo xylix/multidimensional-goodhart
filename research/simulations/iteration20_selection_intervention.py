@@ -61,7 +61,7 @@ def linear_gaussian_threshold(rng: np.random.Generator) -> Check:
     assert err < 0.015
     return Check(
         name="linear_gaussian_threshold",
-        tests="Layer-3 check for Q1-Q3 and Proposition 1: hidden drift follows declared coupling, not dimension count.",
+        tests="Layer-3 check for Q1-Q3 and T1: hidden drift follows declared coupling, not dimension count.",
         result=f"selected drift {fmt_vec(selected)} matches Gaussian prediction {fmt_vec(expected)}; max error {err:.4f}",
         kill_condition="Would fail if an uncoupled hidden coordinate acquired systematic threshold drift.",
     )
@@ -140,7 +140,7 @@ def value_weighted_selection(rng: np.random.Generator) -> Check:
     assert scalar_b < -1.0
     return Check(
         name="value_weighted_selection",
-        tests="Proposition 1': scalar value drift depends on declared value vector v, not on H coordinates alone.",
+        tests="T2: scalar value drift depends on declared value vector v, not on H coordinates alone.",
         result=f"B_H={fmt_vec(selected_drift)}, v_a.B_H={scalar_a:.4f}, v_b.B_H={scalar_b:.4f}",
         kill_condition="Would fail if changing the declared value vector left the scalar welfare reading invariant.",
     )
@@ -156,7 +156,7 @@ def single_channel_stackelberg_wedge() -> Check:
     assert feasible.tolist() == [True, False]
     return Check(
         name="single_channel_stackelberg_wedge",
-        tests="Proposition 2: the quadratic Stackelberg gaming band has width Delta=sqrt(2 kappa V).",
+        tests="T3: the quadratic Stackelberg gaming band has width Delta=sqrt(2 kappa V).",
         result=f"Delta={delta:.4f}; costs around boundary={fmt_vec(costs)}; feasible={feasible.tolist()}",
         kill_condition="Would fail if feasibility did not flip at the quadratic wedge boundary.",
     )
@@ -175,7 +175,7 @@ def multichannel_water_filling() -> Check:
     assert abs(cost - m_d) < 1e-10
     return Check(
         name="multichannel_water_filling",
-        tests="Proposition 3 special case: separable quadratic costs allocate action as a_j=d kappa_j w_j/sum kappa_i w_i^2.",
+        tests="T4 special case: separable quadratic costs allocate action as a_j=d kappa_j w_j/sum kappa_i w_i^2.",
         result=f"a*={fmt_vec(a_star)}, score={score:.4f}, cost={cost:.4f}, m(d)={m_d:.4f}",
         kill_condition="Would fail if the quadratic allocation missed the target or exceeded the dual cost formula.",
     )

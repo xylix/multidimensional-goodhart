@@ -42,6 +42,29 @@ Red flags fired: no new theorem, policy, welfare, ML-transfer, or empirical
 claim was added. The pass preserved the response-modeling contract, theorem
 license boundaries, ML caveats, and hospital-readmissions evidence discipline.
 
+## Iteration 47: publication polish and reproducible build
+
+Question tackled: can the book, abstract, references, figures, active theorem
+audit files, and generated outputs be made internally consistent enough to
+close era 1 without adding new claims?
+
+What changed: removed dynamic title-page date output, added literature
+citations and a bibliography to the abstract, pruned unused active
+`refs.bib` entries, moved current-facing proposition language to T1–T6,
+promoted four generated manuscript figures, superseded the old appendix
+figure set, and updated figure rationales, plan files, and the figure audit.
+
+What's open now: era 1 has no planned research or polish work remaining in
+the active plan. Remaining caveats are the framework's own boundaries:
+no empirical welfare estimates, no broad policy advice, no ML-transfer claim
+without declared primitives, and no stochastic/adaptive theorem beyond the
+closed deterministic contract.
+
+Red flags fired: no new theorem, welfare, empirical, ML-transfer, or policy
+claim was introduced. The promoted figures are toy/structural illustrations
+with explicit non-license boundaries, and raw simulation PNGs remain source
+checks rather than book figures.
+
 ## Iterations 1-6: dimensional selection and intervention split
 
 Main question: does hidden Goodhart harm scale with unmeasured dimension?

@@ -18,7 +18,7 @@ in `../research/`; the iteration history lives there, not here.
 - `multidimensional-goodhart-abstract.pdf` — compiled extended abstract output.
 - `FIGURE_AUDIT.md` — current figure inclusion audit and removal rationale.
 - `scripts/make_appendix_figures.py` — deterministic matplotlib generator for
-  the retained comparison figures.
+  the retained manuscript figures.
 - `figures/` — generated figure PDFs plus `RATIONALES.md`.
 
 ## Build
@@ -43,8 +43,9 @@ typst compile multidimensional-goodhart.typ
 typst compile multidimensional-goodhart-abstract.typ
 ```
 
-Needs [Typst](https://typst.app) ≥ 0.14. `refs.bib` is picked up automatically.
-To regenerate figures first:
+Use the Makefile for tracked PDFs because it pins Typst's creation timestamp.
+Needs [Typst](https://typst.app) ≥ 0.14. `refs.bib` is picked up
+automatically. To regenerate figures first:
 
 ```sh
 uv run --with matplotlib --with numpy scripts/make_appendix_figures.py

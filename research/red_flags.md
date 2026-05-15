@@ -108,13 +108,13 @@ Red-flag scan: the Fenchel-duality formula is formally tidy and could be overrea
 
 Repair: present the result as a conditional modeling primitive. It licenses "if these are the action costs, here is the gaming budget," not "observed distributions imply this intervention bound" or "convexity makes hidden harm small."
 
-## Iteration 15: proposition language watch item
+## Iteration 15: theorem-label language watch item
 
-Claim reviewed: promoting the selection bound, convex intervention budget, and additive conservation calculation into proposition sketches.
+Claim reviewed: promoting the selection bound, convex intervention budget, and additive conservation calculation into named theorem sketches.
 
-Red-flag scan: proposition language can make conditional bookkeeping look like stronger theorem work than it is. The main danger is that readers infer (i) hidden value weights are supplied by the selected distribution, (ii) the operator selection bound is representation-free without a declared value metric, or (iii) convex action budgets and additive conservation automatically imply welfare conclusions.
+Red-flag scan: theorem language can make conditional bookkeeping look stronger than it is. The main danger is that readers infer (i) hidden value weights are supplied by the selected distribution, (ii) the operator selection bound is representation-free without a declared value metric, or (iii) convex action budgets and additive conservation automatically imply welfare conclusions.
 
-Repair: keep the new thread's results as "Proposition sketch" claims with hypotheses visible. State that the scalar/operator selection bound fixes coordinate duplication only after declaring the value functional or norm; convex budgets require action/cost geometry; additive conservation is an iff-condition only in the separable quadratic, fixed-deficit model; and the response-modeling contract remains methodological, not a theorem.
+Repair: keep the T1–T6 results with hypotheses visible. State that the scalar/operator selection bound fixes coordinate duplication only after declaring the value functional or norm; convex budgets require action/cost geometry; additive conservation is an iff-condition only in the separable quadratic, fixed-deficit model; and the response-modeling contract remains methodological, not a theorem.
 
 ## Iteration 16: book propagation narrowed the coordinate-bound issue
 
@@ -123,8 +123,8 @@ Stackelberg wedge, convex score-deficit budget, and additive exchange-rate
 condition.
 
 Red-flag scan: the old coordinate-explicit selection bound is no longer being
-presented as coordinate-free. The book now separates Proposition 1
-(`|B_{H_i}| <= delta s_i`, `||B_H||_2 <= delta ||s||_2`) from Proposition 1'
+presented as coordinate-free. The book now separates T1
+(`|B_{H_i}| <= delta s_i`, `||B_H||_2 <= delta ||s||_2`) from T2
 (`|Delta(v . H)| <= delta sqrt(v^T Sigma_H v)`) and says the operator form
 requires a declared value metric. It also says huge or infinite chi-square makes
 the bound mathematically valid but practically vacuous.
@@ -141,8 +141,8 @@ Claim reviewed: the research notes and book now agree on the proposition
 boundaries, simulation status, and MMLU worked application.
 
 Red-flag scan: the coordinate-free selection-bound worry is closed as a live
-book-presentation problem. The book declares coordinates for Proposition 1 and
-a value direction or value norm for Proposition 1'. The remaining
+book-presentation problem. The book declares coordinates for T1 and
+a value direction or value norm for T2. The remaining
 proposition-language issue is only a maintenance guardrail: future prose must
 not make the proposition labels sound like distribution-only identification of
 value metrics, action costs, response kernels, or hidden welfare.

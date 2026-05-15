@@ -35,13 +35,14 @@
 
 == Motivation
 
-Scalar Goodhart warnings compress two questions. First, the target is reduced
-to a proxy. Second, the residual between proxy and target is often treated as an
-unnamed loss. In multidimensional settings the residual is the object of
-interest: it has direction, support, exchange rates, active constraints, and
-evidence requirements. The question is therefore not whether proxy pressure can
-break a measure, but which response model makes a proposed calculation about
-hidden movement legal.
+Scalar Goodhart warnings compress two questions @goodhart1975 @campbell1979
+@strathern1997. First, the target is reduced to a proxy. Second, the residual
+between proxy and target is often treated as an unnamed loss. In
+multidimensional settings the residual is the object of interest: it has
+direction, support, exchange rates, active constraints, and evidence
+requirements. The question is therefore not whether proxy pressure can break a
+measure, but which response model makes a proposed calculation about hidden
+movement legal.
 
 Write $G: S -> RR^m$ for target-relevant state, $P: S -> RR^k$ for proxy
 features, $phi$ for the intended proxy relation, and
@@ -125,13 +126,19 @@ applications where score movement is the only evidence.
 == Literature Relation and Open Problem
 
 Goodhart, Campbell, Strathern, and Manheim--Garrabrant provide the genealogy
-and taxonomy. Lucas, strategic classification, performative prediction,
-multitask incentives, reward hacking, adaptive holdout work, and scalar
-tail-conditioned Goodhart provide formal analogues, but each supplies only
-some primitives. The framework's claim is reduction rather than unification:
-name the primitive a source contributes, and name what it omits.
+and taxonomy @goodhart1975 @campbell1979 @strathern1997
+@manheim2018categorizing. Lucas, strategic classification, performative
+prediction, multitask incentives, reward hacking, adaptive holdout work, and
+scalar tail-conditioned Goodhart provide formal analogues @lucas1976critique
+@hardt2016strategic @perdomo2020performative @holmstrom1991multitask
+@skalse2022rewardgaming @dwork2015generalization @el-mhamdi2024goodhart
+@majka2025goodhart, but each supplies only some primitives. The framework's
+claim is reduction rather than unification: name the primitive a source
+contributes, and name what it omits.
 
 The signature open problem is Q18, the residual-shape conjecture: under what
 declared response geometry, update rule, and predeclared complexity functional
 does repeated proxy repair drive hidden failure toward a predictable residual
 shape? The current answer is negative without those declarations.
+
+#bibliography("refs.bib", title: "References", style: "association-for-computing-machinery")

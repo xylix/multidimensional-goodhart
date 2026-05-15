@@ -37,9 +37,7 @@
   #v(0.35cm)
   #text(size: 1.18em)[Response Channels, Scorecards, and Residual Shape]
   #v(0.9cm)
-  #text(size: 1em)[Working draft — six-part spine]
-  #v(0.3cm)
-  #text(size: 0.95em, style: "italic")[#datetime.today().display()]
+  #text(size: 1em)[Iteration 47 draft — six-part spine]
 ]
 #v(1.7cm)
 
@@ -94,6 +92,11 @@ $ mu_theta(A) =
 
 Selection and intervention can produce similar marginal score movement. They
 do not license the same mathematics.
+
+#figure(
+  image("figures/part-i-dimension-observation-gap.pdf", width: 90%),
+  caption: [Dimension and observation gaps are different contract fields. The schematic licenses the split in vocabulary, not a quantitative conclusion.]
+) <fig:dimension-observation-gap>
 
 == 3. What we tried and what failed
 
@@ -203,6 +206,11 @@ tilt, the derivative at zero pressure is a covariance. At finite pressure, the
 path response, tail shape, and moment-generating domain matter. That is why the
 zero-covariance example $H = Z^2 - 1$ survives as a warning.
 
+#figure(
+  image("figures/part-ii-t1-t2-drift-envelope.pdf", width: 78%),
+  caption: [T1/T2 give a declared hidden-space envelope. Boltzmann-style pressure paths are trajectories inside that declared geometry, not replacements for the finite-pressure bound.]
+) <fig:t1-t2-drift-envelope>
+
 == 6. Intervention channel
 
 This section covers T3 and T4 in `research/core-math.md`.
@@ -239,6 +247,11 @@ but hidden harm vector $(M, 0)$, cost minimization splits effort while hidden
 harm grows with $M$. The budget licenses private affordability; welfare
 requires a hidden harm functional.
 
+#figure(
+  image("figures/part-ii-t4-t5-cost-ellipse.pdf", width: 88%),
+  caption: [T4 locates the private cost-minimizing action for a score deficit. T5 then requires hidden harm exchange rates before that action can be interpreted as welfare movement.]
+) <fig:t4-t5-cost-ellipse>
+
 == 7. Multidimensional scorecards — the keeper
 
 This section covers T5 in `research/core-math.md`.
@@ -270,6 +283,11 @@ lowering the private cost of reaching the score can recruit more units into
 gaming even when each fixed-deficit gamer has conserved harm. Conjunctive
 aggregation is separate too; requiring every measured component to clear a bar
 can make harm grow with the number of components.
+
+#figure(
+  image("figures/part-ii-population-gaming-band.pdf", width: 88%),
+  caption: [The gaming band separates fixed-deficit per-gamer harm $H_"per"$ from population harm $H_"pop"$. More capacity widens entry without by itself changing the per-gamer exchange-rate formula.]
+) <fig:population-gaming-band>
 
 == 8. Adaptive hardening — narrow but real
 
@@ -407,10 +425,9 @@ selection problem: candidate checkpoints are types, the score is a proxy, and
 the hidden target is performance away from the benchmark. Finetuning, prompt
 search, contamination, or reward optimization is intervention/search only after
 an action/search geometry is declared. MMLU alone supplies neither $kappa$ nor
-stakes $V$, and it does not supply hidden welfare. Proposition 3 applies only
-after a cost model and score deficit are declared. Proposition 4 applies only
-after benchmark components are modeled as additive channels with harm exchange
-rates.
+stakes $V$, and it does not supply hidden welfare. T3/T4 apply only after a
+cost model and score deficit are declared. T5 applies only after benchmark
+components are modeled as additive channels with harm exchange rates.
 
 The stress test is whether the evidence can distinguish fixed-candidate
 selection from post-exposure adaptation. Necessary observations include

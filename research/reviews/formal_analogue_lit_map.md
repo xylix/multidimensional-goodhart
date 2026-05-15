@@ -22,9 +22,9 @@ aggregation rule, evidence standard.
 
 ## Assumption-clash audit (highlighted finding)
 
-Claim [tentative]: the book's Proposition 1 (coordinate-explicit selection
-drift, `book/multidimensional-goodhart.typ` ~line 879) and Proposition 1'
-(value-weighted form, ~line 910) do **not** assume El-Mhamdi-style
+Claim [tentative]: the book's T1 (coordinate-explicit selection
+drift, Part II, Section 5) and T2 (value-weighted form, Part II, Section 5)
+do **not** assume El-Mhamdi-style
 independence between target and discrepancy.
 
 Reasoning. El-Mhamdi & Hoang 2024 work with a goal $G$, a proxy
@@ -50,7 +50,7 @@ distributions and independence.
 
 So the right framing for Chapter 2 §2.3 is: **El-Mhamdi's Theorems 1 and 4
 are sharper asymptotic statements under independence and specific tail
-families; the book's Proposition 1/1' is a more general envelope that
+families; the book's T1/T2 is a more general envelope that
 covers the dependent and arbitrary-distribution case but does not recover
 El-Mhamdi's exact rate**. They are parallel formalisms with overlapping
 scope, not nested generalizations.
@@ -58,15 +58,15 @@ scope, not nested generalizations.
 Adversarial check on this claim:
 
 - Counterexample attempt: maybe the book secretly assumes independence
-  somewhere. Checked Proposition 1 proof at ~line 866–878 of the book and
-  the weighted-response derivation in `research/threads/selection_response.md`.
+  somewhere. Checked the T1/T2 selection section of the book and the
+  weighted-response derivation in `research/threads/selection_response.md`.
   The proof is Cauchy-Schwarz on $L_\theta - 1$ in $L^2(\mu)$. No
   independence appears. Cleared.
-- Definitional move: maybe Proposition 1 is vacuous in the El-Mhamdi
+- Definitional move: maybe T1 is vacuous in the El-Mhamdi
   regime because $\chi^2(\mu_\theta \| \mu)$ blows up. Yes, this is exactly
   the regime where the bound becomes uninformative — but it does not
   *fail*, it becomes a true but uninformative inequality. The book's
-  remark at ~line 935 already flags this. So the comparison "envelope vs
+  selection-channel caveat already flags this. So the comparison "envelope vs
   sharp" is honest, not vacuous. Cleared.
 - Rhetorically convenient: the framing makes the book look general and
   El-Mhamdi look specific, which is rhetorically convenient. Counter: the
@@ -82,8 +82,8 @@ independence assumption. This is an independence-free *sharp* asymptotic
 statement, not an envelope. Where does it sit relative to the book? It is
 still distribution-specific (tail families) and selection-specific, so it
 remains a special case of the book's reweighting setup but a stronger
-result than Proposition 1 inside that special case. Worth citing in §2.3
-as the closest external work to Proposition 1's level of generality.
+result than T1 inside that special case. Worth citing in §2.3
+as the closest external work to T2s level of generality.
 
 ## Mapping table
 
@@ -94,7 +94,7 @@ forward without re-derivation. Confidence tag per row.
 
 | Source / theorem | Citation | Framework primitive | What it licenses | Does not license | Falsifier / non-transfer | Confidence |
 | --- | --- | --- | --- | --- | --- | --- |
-| El-Mhamdi & Hoang Thm 1, 4 (scalar tail-conditioned Goodhart) | arXiv:2410.09638 | selection + proxy/target (with declared discrepancy) | The scalar limiting asymptote that Proposition 1/1' bounds as an envelope: under independence and exponential/power-law tails, $\rho_\alpha$ and $\mathbb{E}_\alpha[G]$ are determined by tail parameters. | The multidim or coordinate-free case; the dependent case; non-tail-named distributions; intervention channels. | The target / discrepancy decomposition fails (no $G \perp \xi$); or the operative selection is not threshold/top-$\alpha$; or the tails are heavier than power-law $\beta > 3$. | [tentative] |
+| El-Mhamdi & Hoang Thm 1, 4 (scalar tail-conditioned Goodhart) | arXiv:2410.09638 | selection + proxy/target (with declared discrepancy) | The scalar limiting asymptote that T1/T2 bounds as an envelope: under independence and exponential/power-law tails, $\rho_\alpha$ and $\mathbb{E}_\alpha[G]$ are determined by tail parameters. | The multidim or coordinate-free case; the dependent case; non-tail-named distributions; intervention channels. | The target / discrepancy decomposition fails (no $G \perp \xi$); or the operative selection is not threshold/top-$\alpha$; or the tails are heavier than power-law $\beta > 3$. | [tentative] |
 | Majka & El-Mhamdi 2025 (independence-free) | arXiv:2505.23445 | selection + proxy/target (without independence) | Extends El-Mhamdi to dependent $G, \xi$: light-tailed regime is unchanged; light-tailed goal + heavy-tailed discrepancy gives rate inversely proportional to discrepancy heavy-tailedness. | Vector targets; non-scalar settings; cases where there is no clean discrepancy decomposition at all. | Same as El-Mhamdi minus the independence falsifier; add: the proxy is not of the form $\nu = G + \xi$ in any natural way. | [tentative] |
 | Skalse et al. 2023 (Goodhart in RL, optimal-stopping Thm 1) | arXiv:2310.09144 | response kernel + action/cost (RL-specific occupancy form) | An RL-side early-stopping rule: under angle bound $\theta$ between proxy reward $R_1$ and true reward $R_0$ in projected occupancy space, halt when marginal proxy gain per occupancy step drops below $\sin(\theta) \|M_\tau R_1\|$. | Non-MDP settings; non-linear-in-occupancy rewards; non-concave optimization; the general framework's coordinate-free formulation. | The problem is not an MDP, or rewards are not linear in occupancy measure, or optimization is non-concave. | [tentative] |
 | Skalse et al. 2022 (reward hacking / unhackability) | arXiv:2209.13085 | proxy/target separation | Definitional clarity for proxy/target distinction. Main result: for all stochastic policies, two rewards can only be unhackable if one is constant. Non-trivial unhackable pairs exist for deterministic / finite policy sets. | A welfare model; a response geometry; multidim aggregation. | A "true reward" is not separately specified; or the policy class is unrestricted stochastic (then the main result is vacuous for any non-trivial pair). | [tentative] |
@@ -112,7 +112,7 @@ forward without re-derivation. Confidence tag per row.
 
 ### Primitive-map summary
 
-- **Selection**: El-Mhamdi (anchor, special case of book Proposition 1/1');
+- **Selection**: El-Mhamdi (anchor, special case of book T1/T2);
   Majka-El-Mhamdi (independence-free); Cawley-Talbot (ML model
   selection); Smith-Winkler (finite-sample precursor).
 - **Response kernel ($K_\theta$ change)**: Skalse 2023 (RL-specific);
@@ -150,7 +150,7 @@ What primitives have no clean external analogue in this set?
 For each primitive map, what observation would distinguish the mapping
 from a nearby alternative?
 
-- *El-Mhamdi vs book Proposition 1/1'*: in the El-Mhamdi regime
+- *El-Mhamdi vs book T1/T2*: in the El-Mhamdi regime
   (independence, named tail family), the asymptotic value of $\rho_\alpha$
   matches El-Mhamdi's prediction within constants; the book's
   $\delta \cdot s_i$ envelope is loose by a known factor. In the
@@ -225,8 +225,8 @@ chapter decision in `plans/formal-analogue.md`.
    experiment in Stage 5a §2.3 drafting; not a current claim.
 3. Whether Holmström & Milgrom's LEN-benchmark linear-contracts result
    is best presented in the book as an econ analogue or as a cited
-   antecedent for the additive-exchange-rate result (book Chapter 4
-   ~line 1201). Likely the latter; decide in Stage 5b prose drafting.
+   antecedent for the additive-exchange-rate result (Part II, Section 7).
+   Likely the latter; decide in Stage 5b prose drafting.
 4. Smith & Winkler 2006 placement (Chapter 2 §2.3 mention vs late chapter
    row vs cut). Lean: one-line mention in §2.3 as historical precursor;
    do not promote to late-chapter row unless it earns a primitive map
@@ -239,23 +239,23 @@ consolidation. Iterations 25 (paper extract) and this Stage 3 lit-review
 supplement come after, so an adversarial pass is due.
 
 Target claim for attack: the assumption-clash audit conclusion — "the
-book's Proposition 1/1' is a strictly more general envelope and
+book's T1/T2 is a strictly more general envelope and
 El-Mhamdi's theorems are special cases under independence + named
 tails."
 
 Skeptical reading:
 
 1. Counterexample attempt. Is there a regime where El-Mhamdi's
-   conclusion strictly contradicts Proposition 1's bound, not just
+   conclusion strictly contradicts T2s bound, not just
    refines it? El-Mhamdi's Theorem 4 gives $\rho_\alpha \to$ a negative
-   limit — this is an asymptotic *value*, not a *bound*. Proposition 1
+   limit — this is an asymptotic *value*, not a *bound*. T1
    gives a bound on $|B_{H}|$. They are not the same quantity. Comparison
    requires translation: in the El-Mhamdi embedding, $|B_G(\alpha)| =
-   |\mathbb{E}_\alpha[G] - \mathbb{E}_\mu[G]|$, and Proposition 1 bounds
+   |\mathbb{E}_\alpha[G] - \mathbb{E}_\mu[G]|$, and T1 bounds
    this by $\delta \cdot s_G$. El-Mhamdi gives the actual asymptotic
    value. If the actual value exceeds the bound, the audit is wrong.
    Check: in the El-Mhamdi $\alpha \to 0$ limit, $\delta \to \infty$
-   because $\chi^2 \to \infty$ for extreme selection. So Proposition 1's
+   because $\chi^2 \to \infty$ for extreme selection. So T2s
    bound is vacuously satisfied. Cleared, but worth noting: the audit's
    "envelope vs sharp" framing is fair but in the extreme-selection
    limit the envelope is uninformative, so the "sharper" framing for

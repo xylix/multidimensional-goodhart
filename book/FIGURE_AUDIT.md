@@ -1,23 +1,18 @@
 # Figure Audit
 
-This reset applies a high inclusion bar: a visual survives only if it reveals a
-quantitative or structural comparison more clearly than prose, equations, or a
-table. The paper uses at most the selection/intervention and welfare-object
-figures. The book appendix keeps four support figures.
+Iteration 47 resets the visual set to four promoted manuscript figures. A
+figure survives only if it clarifies a theorem, contract field, or distinction
+better than prose. Raw simulation PNGs remain verification artifacts, not book
+figures.
 
-| Prior figure | Claim served | Source | Verdict | Action |
+| Figure | Claim served | Source | Verdict | Boundary |
 | --- | --- | --- | --- | --- |
-| `appendix-c-selection-thresholds.pdf` | Threshold response can differ from covariance. | Synthetic baseline distributions matching Chapter 3 toy cases. | Keep, redesign. | Rebuilt as `appendix-a-threshold-response.pdf` with direct labels, no boxed annotations, and minimal reference lines. |
-| `appendix-c-dimensional-scaling.pdf` | Dimensional drift needs coupling growth. | Analytic curves only. | Drop as image. | The claim remains in prose/equations; the old plot added little beyond the formula. |
-| `appendix-d-selection-vs-intervention.pdf` | Selection reweights fixed support; intervention transports state. | Chapter 3/4 mechanism distinction. | Keep, redesign. | Rebuilt as `appendix-b-selection-vs-intervention.pdf` with marker area for weight and arrows for transport. |
-| `appendix-e-additive-substitution.pdf` | Additive channels lower cost by substitution. | Quadratic water-filling model. | Merge. | Replaced by the welfare-object comparison, which shows the more important `H_per`/`H_pop` distinction. |
-| `appendix-e-additive-vs-conjunctive.pdf` | Aggregation rule controls sign. | Additive and conjunctive toy models. | Drop as image. | The contrast remains in text; the binary region plot was mostly schematic. |
-| `appendix-f-exchange-rate-condition.pdf` | Conservation requires matching score/harm exchange rates. | Proposition 4 toy numbers. | Reclassify as table/prose. | The visual was a table and no longer counts as a figure. |
-| `appendix-g-recursive-goodhart-cartoon.pdf` | Recursive Goodhart as a speculative hypothesis. | Synthetic radar values. | Drop. | Removed because it is illustrative speculation without empirical or pre-specified data. |
-| `appendix-h-response-geometry.pdf` | Response shape depends on cost/constraints. | Chapter 5 quadratic, linear, and capped models. | Keep, redesign/merge. | Rebuilt as `appendix-d-response-geometry.pdf`, including the active-set path. |
-| `appendix-h-fixed-charge-caps.pdf` | Fixed charges plus caps produce active-set switches. | Iteration 21 active-set solver. | Merge. | Folded into the response-geometry figure as the quantitative regime-switch panel. |
+| `part-i-dimension-observation-gap.pdf` | Dimension gap versus observation gap. | `plans/could-do/visualization-ideas.md` candidate 4. | Promote. | Structural vocabulary only; no quantitative claim. |
+| `part-ii-t1-t2-drift-envelope.pdf` | T1/T2 selection-drift envelope plus finite-pressure paths. | Candidate 1, generated with a seeded toy distribution. | Promote. | Applies only after hidden coordinates/value metric and pure selection are declared. |
+| `part-ii-t4-t5-cost-ellipse.pdf` | T4 private score-deficit budget versus T5 hidden-harm exchange rates. | Candidate 2, convex action-space schematic. | Promote. | Private affordability is not welfare without declared `h`. |
+| `part-ii-population-gaming-band.pdf` | `H_per` versus `H_pop` and the population entry band. | Candidate 3, seeded quality-CDF toy. | Promote. | Toy CDF only; no empirical population-harm estimate. |
 
-The two Typst objects formerly labelled `fig:claim-audit` and
-`fig:response-shape-taxonomy` are tables, not visual figures. They remain
-numbered as tables because they summarize licensing boundaries rather than
-encode data.
+The previous generated appendix figures are superseded and should not reappear
+as promoted book figures: threshold response, static selection-vs-intervention,
+welfare objects, and response geometry. Their useful claims now live in prose,
+tables, or the promoted figure set above.

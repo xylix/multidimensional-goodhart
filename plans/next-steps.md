@@ -7,16 +7,16 @@ the reasoning for that order. Individual plans live in sibling files.
 
 The staged repair sequence (Iterations 35–42) is closed. Iteration 43 added
 the manuscript abstract and strengthened its framing. The math spine is stable
-under stated conditions: selection δ-reweighting bound (Props 1/1'), additive
-conservation iff `h_j = c w_j` (Prop 4), convex score-deficit budget `m(d)`
-(Prop 3), deterministic finite-channel adaptive-hardening capacity
-(Iteration 35), and the response-modeling contract as the methodological
-spine. Six claims are explicitly killed; the conditional toys and
-applications are scoped.
+under stated conditions: selection δ-reweighting bounds (T1/T2), quadratic
+Stackelberg wedge (T3), convex score-deficit budget `m(d)` (T4), additive
+conservation iff `h_j = c w_j` (T5), deterministic finite-channel
+adaptive-hardening capacity (T6), and the response-modeling contract as the
+methodological spine. Six claims are explicitly killed; the conditional toys
+and applications are scoped.
 
-The remaining era-1 work is not new research. Iteration 46 completed the
-book-only prose pass. The next active step is Iteration 47: figures,
-references, appendices, and build polish.
+The remaining era-1 work is not new research. Iteration 47 completed the
+figures, references, appendices, and reproducible-build polish pass. Era 1 is
+ready for closure decision after reviewing the committed outputs.
 
 ## Era-1 deliverables
 
@@ -125,14 +125,14 @@ meta-commentary). The remaining work is line-level and applies to the
 re-spined book. Running this before spine would waste effort on text that
 gets moved or rewritten.
 
-## Iteration 47: `polish.md` — next: figures, references, appendices, build green-light
+## Iteration 47: `polish.md` — completed figures, references, appendices, build green-light
 
-Proposition numbering audit; `refs.bib` audit against book and abstract;
-figure regeneration or removal; decisions about generated appendix PDFs and
-simulation PNGs; cross-check `core-math.md` book pointers; reproducible-build
-green-light (`make` builds book and abstract from clean checkout, all
-simulation targets run deterministically, `git status --short` clean after
-build).
+Completed. The pass moved current-facing proposition language to T1–T6,
+audited `refs.bib` against the book and abstract, added a compact bibliography
+to the abstract, promoted four high-value generated figures, superseded the old
+appendix figure set, removed dynamic title-page date output, checked
+`core-math.md` pointers, and green-lit the reproducible build and simulation
+stack.
 
 **Why last.** Everything upstream changes proposition numbering, figure
 references, and prose. Doing figures before spine wastes the figure pass;
