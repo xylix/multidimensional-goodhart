@@ -144,40 +144,93 @@ calculation applies.
 
 == The response-modeling contract
 
-A Goodhart claim must declare the primitives that make it a claim rather than a
-retrospective label:
+The contract below is not a theorem about what proxy pressure will do. It is a
+methodological definition: the minimum declaration needed before a proposed
+Goodhart calculation can be evaluated. Its source is the negative result from
+the previous section. Marginal score movement does not identify hidden welfare,
+the type weights $W_theta$, the response kernels $K_theta$, the action costs, or
+the aggregation rule.
+
+Start with a school score. The district announces that funding will depend on a
+test-score metric. Next year the average score rises. That one fact is
+compatible with several different stories:
+
+- stronger schools entered the funded pool;
+- the same schools taught the underlying material better;
+- the same schools drilled the test format while learning did not improve;
+- low-scoring students were excluded from the tested population;
+- reporting errors were repaired with little hidden harm.
+
+Those stories can have the same score path and require different mathematics.
+Selection bounds apply to reweighting a fixed population. Intervention bounds
+need actions, costs, and stakes. Welfare claims need a hidden value or harm
+model. The response-modeling contract is the rule that says which story is being
+claimed before any calculation is imported.
+
+The contract has three plain-language jobs:
+
+1. State what the claim wants to conclude.
+2. State what response story would make that conclusion meaningful.
+3. State what evidence would distinguish that story from nearby alternatives.
+
+Here is the notation used to do that compactly. A type space $U$ is the model's
+description of the units before the policy response. In the school example,
+$u in U$ might be one school with baseline traits such as size, neighborhood,
+student mix, prior resources, and administrative capacity. The baseline type
+law $nu$ says how common those school types are. The observed state $s in S$
+contains what the evaluation later sees, such as test scores, curriculum,
+student participation, and hidden learning outcomes when they are measured.
+
+The response kernel $K_theta(d s | u)$ is the conditional law of the observed
+state for a fixed type $u$ after policy exposure $theta$. It is where the model
+puts what the same school does after seeing the funding rule. The selection
+weight $W_theta(u) >= 0$ is where the model puts changes in which fixed types
+appear in the realized population. With these objects,
+
+$ mu_theta(A) =
+  (integral W_theta(u) K_theta(A | u) nu(d u)) /
+  (integral W_theta(u) nu(d u)). $
+
+Pure selection means $K_theta = K_0$ for $nu$-almost every type and policy
+dependence enters only through $W_theta$. Intervention means $K_theta$ changes
+on a positive-$nu$ set of fixed types. Mixtures are allowed, but they must be
+named.
+
+A Goodhart claim must therefore declare the primitives that make it a claim
+rather than a retrospective label:
 
 #boxnote[Contract.][
-- #contract-row[Claimed output:][the object the application wants to compute or
-  classify: scalar score drift, hidden drift vector, induced distribution,
-  selection/intervention label, intervention feasibility bound, welfare
-  comparison, or response-shape prediction.]
-- #contract-row[Type representation:][the measurable type space $U$, interpreted
-  as the population description: what one element $u in U$ represents, which
-  attributes of that unit are fixed for the comparison, and which variables are
-  instead actions, noise, outcomes, or later states.]
-- #contract-row[Baseline behavior:][the baseline type law $nu$ and baseline
-  response kernel $K_0(d s | u)$: the conditional distribution of observed
-  states before the policy response being modeled.]
-- #contract-row[Policy exposure:][the rule, threshold, ranking, scorecard, or
-  incentive indexed by $theta$, and who can observe or respond to it.]
-- #contract-row[Response channel:][whether $theta$ changes only selection
-  weights $W_theta(u)$ at fixed $K_0$, changes the fixed-type response kernel
-  $K_theta(d s | u)$, or uses an explicit mixture. Pure selection is
-  $K_theta = K_0$ $nu$-almost surely; intervention is kernel change on a
-  positive-$nu$ set of types.]
-- #contract-row[Action/search geometry:][available actions, costs, caps,
-  fixed charges, search process, stakes $V$, and how those actions move the
-  state distribution when an intervention bound is imported.]
-- #contract-row[Proxy/target relation:][the maps $P$, $G$, $phi$, residual
-  $epsilon$, and the relevant dimension and observation gaps.]
-- #contract-row[Aggregation:][additive, conjunctive, threshold, Pareto,
-  lexicographic, or institution-specific rule.]
-- #contract-row[Hidden value or harm:][coordinates, scalar value vector, norm,
-  or harm rates $h_j$.]
-- #contract-row[Evidence standard and falsifier:][observations that would
-  distinguish the claimed channel from nearby alternatives and observations
-  that would make the import fail.]
+- #contract-row[Claimed output:][What are you trying to conclude: score drift,
+  hidden drift, a distribution, a selection/intervention label, an intervention
+  feasibility bound, a welfare comparison, or a response-shape prediction?]
+- #contract-row[Type representation:][What is one fixed unit $u in U$? For a
+  school score, is $u$ a school before the funding rule, a student, a classroom,
+  or a district? Which attributes are fixed, and which are later choices?]
+- #contract-row[Baseline behavior:][What does a fixed type produce before the
+  policy response? Declare $nu$ and $K_0(d s | u)$: the baseline distribution of
+  observed states conditional on type.]
+- #contract-row[Policy exposure:][What creates pressure, and who sees it:
+  threshold, ranking, scorecard, prize, penalty, benchmark, or feedback signal
+  indexed by $theta$?]
+- #contract-row[Response channel:][Does $theta$ only reweight fixed types through
+  $W_theta(u)$, change fixed-type behavior through $K_theta(d s | u)$, or both?
+  Selection changes who is represented; intervention changes what a fixed unit
+  does or produces.]
+- #contract-row[Action/search geometry:][If fixed-type behavior changes, what
+  actions are available, what do they cost, what caps or fixed charges exist,
+  what search process is used, and what stakes $V$ make response worthwhile?]
+- #contract-row[Proxy/target relation:][What proxy $P$ is optimized, what target
+  $G$ or hidden quantity $H$ is protected, what relation $P approx phi(G)$ is
+  intended, and where are the dimension and observation gaps?]
+- #contract-row[Aggregation:][If there are multiple proxy components, how are
+  they combined: additive weights, thresholds, conjunctive gates, Pareto rules,
+  lexicographic rules, or an institution-specific formula?]
+- #contract-row[Hidden value or harm:][What makes a response good or bad beyond
+  the proxy: hidden coordinates, scalar value vector, norm, loss, or harm rates
+  $h_j$?]
+- #contract-row[Evidence standard and falsifier:][What observations would
+  distinguish the claimed story from nearby alternatives, and what observation
+  would make this contract the wrong one?]
 ]
 
 The first row is load-bearing. The contract is not a single formula with one
@@ -190,17 +243,12 @@ label has a small output alphabet, but it is causal: it cannot usually be read
 from the marginal score path.
 
 The type representation is part of the empirical claim, not notation to hide
-inside the model. If $U$ is too rich, it can encode each unit's whole
-policy-contingent response plan and make every intervention look like selection.
-If $U$ is too coarse, stable heterogeneity can look like a kernel change. The
-contract therefore has to defend why the chosen $u$ is fixed for the comparison
-and why omitted variation belongs in $K_theta$, $W_theta$, or the action model.
-
-The kernel language should be read conditionally. $K_theta(B | u)$ is the
-probability that a fixed type $u$ produces an observed state in event $B subset
-S$ after exposure $theta$. A change in $W_theta$ changes which fixed types are
-represented; a change in $K_theta$ changes what a fixed type does or produces.
-The induced marginal law $mu_theta$ usually cannot distinguish those stories by
+inside the model. If $U$ includes each school's whole future response plan, it
+can make every intervention look like selection over richer types. If $U$ is too
+coarse, stable heterogeneity can look like a kernel change. The contract
+therefore has to defend why the chosen $u$ is fixed for the comparison and why
+omitted variation belongs in $K_theta$, $W_theta$, or the action model. The
+induced marginal law $mu_theta$ usually cannot distinguish those choices by
 itself.
 
 After the output is named, the contract should pass a small information
