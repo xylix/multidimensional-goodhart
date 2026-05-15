@@ -21,6 +21,27 @@ primitive, cheapest verification layer, and failure condition.
 Red flags fired: no new math claim. The consolidation risk was stale authority;
 the repair is to make the registry and `core-math.md` the default source list.
 
+## Iteration 46: book prose pass
+
+Question tackled: can the re-spined book be tightened at the line level without
+expanding the licensed claims, weakening caveats, or disturbing the recent
+Goodhart-opening repair?
+
+What changed: edited only `book/multidimensional-goodhart.typ` for a
+Zinsser-style prose pass. The pass cut performed phrasing, removed low-value
+`intentionally` language, rewrote the remaining object-style nominalizations,
+and tightened several overloaded explanatory sentences. The Goodhart opening
+continues to quote both the popular formulation and Goodhart's original
+formulation, and the uncertain proxy-movement evidentiary claim remains absent.
+
+What's open now: Iteration 47 should do the final polish pass: proposition
+numbering, references, figures, appendices, build hygiene, and consistency
+checks against `core-math.md`.
+
+Red flags fired: no new theorem, policy, welfare, ML-transfer, or empirical
+claim was added. The pass preserved the response-modeling contract, theorem
+license boundaries, ML caveats, and hospital-readmissions evidence discipline.
+
 ## Iterations 1-6: dimensional selection and intervention split
 
 Main question: does hidden Goodhart harm scale with unmeasured dimension?

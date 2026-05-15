@@ -67,9 +67,9 @@ the target itself improved. The aggregate score path does not distinguish those
 stories. A calculation is licensed only after the response model says what is
 fixed, what changes, and what hidden value or harm is being measured.
 
-This book therefore treats "multidimensional Goodhart" as a response-modeling
-framework, not as a single universal theorem. The framework asks what proxy
-pressure changes and which primitives are declared before importing a bound.
+This book treats "multidimensional Goodhart" as a response-modeling framework,
+not as a single universal theorem. The framework asks what proxy pressure
+changes and which primitives are declared before importing a bound.
 
 == 2. What "multidimensional" actually adds
 
@@ -160,9 +160,9 @@ retrospective label:
   that would make the import fail.]
 ]
 
-The contract is intentionally demanding. It prevents the framework from
-inferring welfare, hidden target movement, or a response channel from marginal
-score movement alone.
+The contract is demanding by design. It prevents the framework from inferring
+welfare, hidden target movement, or a response channel from marginal score
+movement alone.
 
 = Part II — Licensed Calculations
 
@@ -170,7 +170,7 @@ score movement alone.
 
 This section covers T1 and T2 in `research/core-math.md`.
 
-Before the theorem applies, the contract must supply a baseline law, a pure
+Before the theorem can be used, the contract must supply a baseline law, a pure
 selection channel, hidden coordinates or a value metric, and enough integrable
 moments. Pure selection means $K_theta = K_0$ and the policy changes only the
 weights. In the induced marginal law, write
@@ -199,18 +199,18 @@ weights, or the welfare object. They do not apply to fixed-type response
 changes.
 
 Covariance belongs here only as a local velocity. Along a valid exponential
-tilt, the derivative at zero pressure is a covariance. At finite pressure the
-path response, tail shape, and moment-generating domain matter. This is why the
+tilt, the derivative at zero pressure is a covariance. At finite pressure, the
+path response, tail shape, and moment-generating domain matter. That is why the
 zero-covariance example $H = Z^2 - 1$ survives as a warning.
 
 == 6. Intervention channel
 
 This section covers T3 and T4 in `research/core-math.md`.
 
-Before an intervention calculation applies, the contract must supply a
+Before an intervention calculation can be used, the contract must supply a
 fixed-type action model: actions $a$, private cost $c(a)$, proxy gain $w dot a$,
-score deficit $d$, and stakes $V$. The calculation is about affordability of
-proxy movement under that model.
+score deficit $d$, and stakes $V$. The calculation measures the affordability
+of proxy movement under that model.
 
 #theorem[3][Quadratic Stackelberg wedge][
 In the one-dimensional noiseless threshold toy with quality $Q$, action
@@ -233,10 +233,10 @@ Gaming under stakes $V$ is feasible exactly when $m(d) <= V$ in this declared
 private-cost model.
 ]
 
-The cost-minimal action and the hidden-welfare action are different objects.
-For example, if two proxy channels have equal private cost and equal score
-weight but hidden harm vector $(M, 0)$, cost minimization splits effort while
-hidden harm grows with $M$. The budget licenses private affordability; welfare
+Cost minimization and hidden-welfare assessment answer different questions. For
+example, if two proxy channels have equal private cost and equal score weight
+but hidden harm vector $(M, 0)$, cost minimization splits effort while hidden
+harm grows with $M$. The budget licenses private affordability; welfare
 requires a hidden harm functional.
 
 == 7. Multidimensional scorecards — the keeper
@@ -265,19 +265,19 @@ only re-routed harm: the hidden harm per score unit has to be declared or
 estimated. Holmstrom--Milgrom multitasking is the closest economics precedent,
 but the contract here makes the hidden-harm exchange rate explicit.
 
-The result is fixed-deficit and per-agent. Population entry is a separate
-object: lowering the private cost of reaching the score can recruit more units
-into gaming even when each fixed-deficit gamer has conserved harm. Conjunctive
-aggregation is also a separate object; requiring every measured component to
-clear a bar can make harm grow with the number of components.
+The result is fixed-deficit and per-agent. Population entry is separate:
+lowering the private cost of reaching the score can recruit more units into
+gaming even when each fixed-deficit gamer has conserved harm. Conjunctive
+aggregation is separate too; requiring every measured component to clear a bar
+can make harm grow with the number of components.
 
 == 8. Adaptive hardening — narrow but real
 
 This section covers T6 in `research/core-math.md`.
 
-The hardening result is intentionally narrow. The contract is fixed finite
-measured set $M$, fixed deficit $d$, fixed stakes $V$, fixed weights, additive
-proxy gain, separable quadratic costs, deterministic observation, and monotone
+The hardening result is narrow by design. The contract is fixed finite measured
+set $M$, fixed deficit $d$, fixed stakes $V$, fixed weights, additive proxy
+gain, separable quadratic costs, deterministic observation, and monotone
 hardening of capacities $kappa_(j,t)$.
 
 #theorem[6][Deterministic adaptive-hardening capacity boundary][
@@ -322,17 +322,17 @@ Goodhart, Campbell, Strathern, and Manheim--Garrabrant are genealogy, not proof
 sources for the calculations above. Goodhart's original macroeconomic warning
 concerns policy-contaminated regularities @goodhart1975. Campbell's warning
 concerns social indicators under decision pressure @campbell1979. Strathern's
-formulation gives the aphorism @strathern1997. Manheim and Garrabrant provide
-a useful cause taxonomy @manheim2018categorizing.
+formulation supplies the familiar compressed warning @strathern1997. Manheim
+and Garrabrant provide a useful cause taxonomy @manheim2018categorizing.
 
-This book does not try to replace that genealogy with a grander taxonomy. It
-uses the genealogy to ask which primitives are present: selection, response
-kernel, action cost, proxy/target separation, aggregation, hidden value, and
-evidence standard.
+This book does not replace that genealogy with a grander taxonomy. It uses the
+genealogy to ask which primitives are present: selection, response kernel,
+action cost, proxy/target separation, aggregation, hidden value, and evidence
+standard.
 
 == 11. Formal analogues, primitive by primitive
 
-The closest formal analogues each supply some primitives and omit others.
+The closest formal analogues supply some primitives and omit others.
 El-Mhamdi--Hoang and Majka--El-Mhamdi are scalar tail-conditioned selection
 anchors @el-mhamdi2024goodhart @majka2025goodhart. Hardt et al. strategic
 classification supplies costly feature-change intervention @hardt2016strategic.
@@ -386,28 +386,27 @@ provide empirical response-geometry candidates, not plug-in parameters
 
 == 13. Reduction, not unification
 
-There is no single equation that unifies these literatures. The framework's
-claim is narrower: each formalism instantiates different fields of the
-response-modeling contract. The value of the contract is that it says which
-primitive is being borrowed and which transfer fails. A source about adaptive
-holdouts does not identify hidden welfare. A source about costly feature change
-does not identify value weights. A source about multitask contracts does not
-make "more metrics" good or bad in a new application.
+No single equation unifies these literatures. The framework's claim is narrower:
+each formalism fills different fields of the response-modeling contract. The
+contract says which primitive is being borrowed and which transfer fails. A
+source about adaptive holdouts does not identify hidden welfare. A source about
+costly feature change does not identify value weights. A source about multitask
+contracts does not make "more metrics" good or bad in a new application.
 
 = Part IV — Cases as Stress Tests
 
 == 14. MMLU
 
-MMLU is useful because it is not one mechanism @hendrycks2021mmlu. A public
+MMLU is useful because it is not a single mechanism @hendrycks2021mmlu. A public
 benchmark score can induce fixed-checkpoint model selection, repeated adaptive
 testing, prompt search, finetuning on benchmark-like data, contamination,
 reward-model overoptimization, or genuine capability transfer.
 
-The contract separates them. Fixed-checkpoint comparison is a selection
-problem: candidate checkpoints are types, the score is a proxy, and the hidden
-target is performance away from the benchmark. Finetuning, prompt search,
-contamination, or reward optimization is intervention/search only after an
-action/search geometry is declared. MMLU alone supplies neither $kappa$ nor
+The contract separates these mechanisms. Fixed-checkpoint comparison is a
+selection problem: candidate checkpoints are types, the score is a proxy, and
+the hidden target is performance away from the benchmark. Finetuning, prompt
+search, contamination, or reward optimization is intervention/search only after
+an action/search geometry is declared. MMLU alone supplies neither $kappa$ nor
 stakes $V$, and it does not supply hidden welfare. Proposition 3 applies only
 after a cost model and score deficit are declared. Proposition 4 applies only
 after benchmark components are modeled as additive channels with harm exchange
@@ -484,7 +483,7 @@ nearby mechanisms, and the licensed calculation systematically predicts the
 wrong response shape or direction while a simpler score-only rule predicts it
 correctly.
 
-Examples:
+Examples include:
 
 - In a pure-selection setting with measured $L$ and hidden coordinates, hidden
   drift repeatedly exceeds the $delta s_i$ envelope under the stated moment and
@@ -538,10 +537,10 @@ finite-pressure path behavior.
 == 21. Toolkit gap
 
 A practitioner should not have to re-derive the contract every time. The missing
-toolkit has three parts: a primitive-elicitation protocol, worked
-exchange-rate audits in real scorecards, and small identification examples that
-show what observations distinguish selection, intervention, proxy repair, and
-real improvement.
+toolkit has three parts: a primitive-elicitation protocol, worked exchange-rate
+audits in real scorecards, and small identification examples that show what
+observations distinguish selection, intervention, proxy repair, and real
+improvement.
 
 Until those tools exist, the framework is best read as a claim-license
 discipline and a theorem inventory. It tells a reader what would have to be

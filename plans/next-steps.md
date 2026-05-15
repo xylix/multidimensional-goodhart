@@ -14,9 +14,9 @@ conservation iff `h_j = c w_j` (Prop 4), convex score-deficit budget `m(d)`
 spine. Six claims are explicitly killed; the conditional toys and
 applications are scoped.
 
-The remaining era-1 work is not new research. It is making what survived
-legible: bring the re-spined manuscripts up to publication prose quality and
-finish figures, references, and build polish.
+The remaining era-1 work is not new research. Iteration 46 completed the
+book-only prose pass. The next active step is Iteration 47: figures,
+references, appendices, and build polish.
 
 ## Era-1 deliverables
 
@@ -113,11 +113,11 @@ artifact changes if it succeeds.
 
 Run these in order. Reasoning for the ordering follows each entry.
 
-## Iteration 46: `prose-pass.md` — Zinsser-style line-level pass
+## Iteration 46: `prose-pass.md` — completed book-only prose pass
 
-Tics to grep out (`deliberately`, throat-clearing list intros, "I do not
-think the right claim is X" pattern, nominalizations, overloaded sentences,
-apologetic preambles). Lines to preserve through both passes are listed.
+Completed. The pass edited only `book/multidimensional-goodhart.typ`, preserved
+the Goodhart-opening repair, kept the license/caveat scaffolding, and
+regenerated only the book PDF.
 
 **Why third.** Several structural items in the original prose-iteration plan
 are absorbed by spine-refactor (intro reorganization, Ch.7 retitle, demoting
@@ -125,7 +125,7 @@ meta-commentary). The remaining work is line-level and applies to the
 re-spined book. Running this before spine would waste effort on text that
 gets moved or rewritten.
 
-## Iteration 47: `polish.md` — figures, references, appendices, build green-light
+## Iteration 47: `polish.md` — next: figures, references, appendices, build green-light
 
 Proposition numbering audit; `refs.bib` audit against book and abstract;
 figure regeneration or removal; decisions about generated appendix PDFs and
