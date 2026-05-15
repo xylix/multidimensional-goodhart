@@ -1142,8 +1142,8 @@ auditability, policy-readiness, measurement-frontier, empirical-estimation, and
 broad policy material remain excluded from new book/paper integration.
 
 What's open now: Iteration 41 can make only the licensed scoped prose edit, or
-record that no prose edit is needed. Iteration 42 remains the final consistency
-pass. Primitive estimation, stochastic filtering and repair budgets,
+record that no prose edit is needed. Iteration 42 was scheduled as the final
+consistency pass. Primitive estimation, stochastic filtering and repair budgets,
 endogenous-stakes fixed points, changing measured sets or deficits, shared
 bottlenecks, nonconvex response geometry, and real-domain frontier
 characterization remain research questions rather than draft claims.
@@ -1174,3 +1174,31 @@ measurement-frontier, hospital, scientific-metrics, or policy prose was added.
 
 Red flags fired: integration overpromotion risk remained the live constraint.
 The repair stays inside the Iteration 40 footnote/parenthetical license.
+
+## Iteration 42 (final consistency pass)
+
+Question tackled: Do the book/paper prose, research notes, and roadmap still
+agree on the Iterations 35-41 licenses after the scoped integration repair?
+
+What changed: updated tracking language only. `research/claim_audits.md` now
+marks the current license map as Iteration 42 and treats Iteration 41 as
+closed. `research/open_questions.md` and `research/verification_stack.md`
+replace stale post-Iteration-39 framing with the current closure status while
+preserving the live research questions. `plans/next-steps.md` removes the
+completed Iteration 42 work section and records that the staged repair sequence
+is complete.
+
+Audit result: the targeted searches found no book or paper overpromotion
+requiring prose edits. Remaining `optimal-policy`, `persistent cycle`,
+`endogenous V`, `theorem`, and `stochastic` hits are boundary, exclusion, or
+audit language. No new theorem, empirical, scorecard, measurement-frontier, or
+policy claim was introduced.
+
+What's open now: primitive estimation, stochastic filtering and repair-budget
+design, endogenous-stakes fixed points, changing measured sets or deficits,
+shared bottlenecks, nonconvex response geometry, real-domain frontier
+characterization, and predeclared response-geometry attractor tests remain
+research questions rather than draft claims.
+
+Red flags fired: staleness risk in tracking documents. The repair is
+documentation cleanup only; book and paper prose were left unchanged.

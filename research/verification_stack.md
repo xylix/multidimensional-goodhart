@@ -256,7 +256,7 @@ response estimation and for controlled intervention/gaming environments.
 
 ## Current question map
 
-Iteration 39 consolidation status:
+Current consolidation status after Iteration 42:
 
 - Closed as theorem-boundary: deterministic finite-channel adaptive hardening
   inside the Iteration 35 contract only.
@@ -267,6 +267,10 @@ Iteration 39 consolidation status:
 - Policy-blocked: broad policy prose, policy optimization, hidden-target
   estimates, stochastic repair advice, and endogenous-stakes governance remain
   unlicensed after Iteration 38.
+- Integration repair closed: Iterations 40-41 licensed and completed only the
+  narrow deterministic finite-channel adaptive-hardening boundary correction
+  and the short stochastic/endogenous model-dependence note for book/paper
+  prose. Iteration 42 found no further book or paper prose edits needed.
 - Still live: primitive estimation, stochastic filtering and repair budgets,
   endogenous-stakes fixed points, changing `M`/`d`/`V`, shared bottlenecks,
   nonconvex response geometry, real-domain frontier characterization, and

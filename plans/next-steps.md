@@ -1,13 +1,10 @@
 # Next steps
 
-This is the active roadmap. Iteration 42 is the remaining staged repair
-step after the Iteration 41 scoped integration edit: run the final consistency
-pass. Iteration 36 is
-retained below as completed context for the sequence and is not itself part of
-the active work.
+This is the active roadmap after the Iterations 35-42 staged repair sequence.
+Iteration 36 is retained below as completed context for the sequence and is not
+itself part of the active work.
 
-Do not edit book or paper files except within the narrow Iteration 41 license
-from `research/reviews/integration_readiness_review.md`. The
+Do not edit book or paper files without a new scoped review. The
 application-template promotion gate is closed: Chapter 6 now includes the
 reviewed application discipline, narrowed reusable-template boundary, and
 compact hospital/scientific scorecard mappings. The adaptive-hardening theorem
@@ -20,7 +17,7 @@ The remaining work should repair reviewed-but-excluded gaps separately. Do not
 promote these into theorem, empirical, or policy claims until the relevant
 iteration has its own verification pass.
 
-Current live map after Iteration 40:
+Current live map after Iteration 42:
 
 - Theorem-boundary closed: adaptive hardening only inside the deterministic
   finite-channel capacity contract from Iteration 35. This licenses the exact
@@ -48,6 +45,8 @@ Current live map after Iteration 40:
   deterministic finite-channel adaptive-hardening boundary correction and the
   short stochastic/endogenous model-dependence note. No broader theorem,
   empirical, scorecard, measurement-frontier, or policy prose was added.
+- Iteration 42 closure: final consistency searches found no book or paper
+  overpromotion requiring prose edits. The staged repair sequence is complete.
 
 After finishing an iteration, delete the completed iteration step from this
 document while preserving the later roadmap unless it is superseded.
@@ -81,33 +80,6 @@ License only: these dynamics can break or alter the static capacity story
 under declared update rules. Do not claim a general performative-stability
 result.
 
-## Iteration 42: final consistency pass
-
-Iteration type: `consistency`.
-
-### Purpose
-
-Verify that book/paper prose, research notes, and roadmap agree on licenses and
-open questions.
-
-### Work
-
-1. Run repo-wide claim-audit searches for forbidden overpromotions. Use
-   scoped patterns to avoid false positives on notes that legitimately discuss
-   boundaries: `optimal-policy\b`, `\blimits to\b`, `persistent cycle`,
-   `endogenous V`, and a `\btheorem\b` check limited to `book/` and `paper/`
-   prose. Run a separate `\bstochastic\b` check limited to `book/` and
-   `paper/` prose; do not flag matches in `research/` notes.
-2. Check book/paper prose, research notes, and roadmap against the Iterations
-   35-41 licenses.
-3. Fix only consistency and overpromotion problems; do not add new substantive
-   claims.
-
-### Success condition
-
-No tracked prose overpromotes theorem, dynamics, empirical, integration, or
-policy licenses beyond the review notes.
-
 ## Test plan
 
 For Iteration 36, run `make iteration36` and `make run` from
@@ -135,5 +107,5 @@ Iteration 36 simulation Makefile target.
   toy.
 - Iteration 37 remains an empirical-design artifact and Iteration 38 remains a
   policy-review artifact.
-- Book and paper edits are deferred until Iteration 40 explicitly licenses
-  them.
+- Book and paper edits now require a new scoped review because the Iteration
+  40-42 integration/consistency sequence is complete.

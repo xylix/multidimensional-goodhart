@@ -1,9 +1,10 @@
 # Open questions
 
-## Current map after Iteration 39
+## Current map after Iteration 42
 
-The Iterations 35-38 repair sequence split the adaptive-hardening/application
-work into four statuses:
+The Iterations 35-42 repair sequence split the adaptive-hardening/application
+work into closed boundaries, a completed scoped integration repair, and live
+research questions:
 
 - **Theorem-boundary closed:** Q14 has a narrow deterministic finite-channel
   result. Under fixed measured set `M`, fixed deficit `d`, fixed stakes `V`,
@@ -27,6 +28,11 @@ work into four statuses:
   traces, monitoring hidden-target traces where available, lowering leverage or
   piloting when primitives are unavailable, and withholding toy diagnostics
   when primitives are missing.
+- **Integration repair closed:** Iterations 40-41 licensed and completed only
+  a narrow book/paper correction for the deterministic finite-channel
+  adaptive-hardening boundary and a short stochastic/endogenous
+  model-dependence note. Iteration 42 found no further book or paper prose
+  overpromotion requiring edits.
 
 Live work is therefore not "prove adaptive hardening works" or "write policy
 advice." The licensed live questions are primitive estimation, stochastic
