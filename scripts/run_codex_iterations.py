@@ -45,6 +45,7 @@ def run(
     input_text: str | None = None,
     stdout_path: Path | None = None,
     stderr_path: Path | None = None,
+    stream_output: str = "none",
     check: bool = True,
 ) -> subprocess.CompletedProcess[str]:
     if stdout_path or stderr_path:
@@ -54,6 +55,7 @@ def run(
             input_text=input_text,
             stdout_path=stdout_path,
             stderr_path=stderr_path,
+            stream_output=stream_output,
             check=check,
         )
 
@@ -76,7 +78,7 @@ def run(
 def tee_stream(
     stream: BinaryIO,
     *,
-    console: TextIO,
+    console: TextIO | None,
     log_file: TextIO | None,
     chunks: list[str],
 ) -> None:
@@ -84,8 +86,9 @@ def tee_stream(
 
     def write_text(text: str) -> None:
         chunks.append(text)
-        console.write(text)
-        console.flush()
+        if console:
+            console.write(text)
+            console.flush()
         if log_file:
             log_file.write(text)
             log_file.flush()
@@ -109,6 +112,7 @@ def run_with_tee(
     input_text: str | None = None,
     stdout_path: Path | None = None,
     stderr_path: Path | None = None,
+    stream_output: str = "none",
     check: bool = True,
 ) -> subprocess.CompletedProcess[str]:
     stdout_file = stdout_path.open("w", encoding="utf-8") if stdout_path else None
@@ -131,7 +135,7 @@ def run_with_tee(
             target=tee_stream,
             kwargs={
                 "stream": process.stdout,
-                "console": sys.stdout,
+                "console": sys.stdout if stream_output == "all" else None,
                 "log_file": stdout_file,
                 "chunks": stdout_chunks,
             },
@@ -140,7 +144,9 @@ def run_with_tee(
             target=tee_stream,
             kwargs={
                 "stream": process.stderr,
-                "console": sys.stderr,
+                "console": sys.stderr
+                if stream_output in {"all", "stderr"}
+                else None,
                 "log_file": stderr_file,
                 "chunks": stderr_chunks,
             },
@@ -345,6 +351,7 @@ def run_commit_step(
         input_text=prompt,
         stdout_path=run_dir / "commit-stdout.log",
         stderr_path=run_dir / "commit-stderr.log",
+        stream_output=args.stream_output,
         check=False,
     )
     if result.returncode != 0:
@@ -400,6 +407,7 @@ def run_one_iteration(iteration: Iteration, args: argparse.Namespace) -> str:
         input_text=prompt,
         stdout_path=run_dir / "stdout.log",
         stderr_path=run_dir / "stderr.log",
+        stream_output=args.stream_output,
         check=False,
     )
     if result.returncode != 0:
@@ -471,6 +479,15 @@ def main(argv: Sequence[str]) -> int:
         "--json",
         action="store_true",
         help="ask codex exec to emit JSONL events into the run log",
+    )
+    parser.add_argument(
+        "--stream-output",
+        choices=("stderr", "all", "none"),
+        default="stderr",
+        help=(
+            "which Codex output to mirror to the console while still writing "
+            "full stdout/stderr logs (default: stderr)"
+        ),
     )
     parser.add_argument(
         "--codex-arg",
