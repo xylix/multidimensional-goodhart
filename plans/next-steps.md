@@ -15,17 +15,16 @@ spine. Six claims are explicitly killed; the conditional toys and
 applications are scoped.
 
 The remaining era-1 work is not new research. It is making what survived
-legible: consolidate the project state, produce a canonical theorem
-document, re-spine the manuscripts around what holds, bring the prose up to
-publication quality, and finish figures.
+legible: bring the re-spined manuscripts up to publication prose quality and
+finish figures, references, and build polish.
 
 ## Era-1 deliverables
 
 Era 1 closes when these artifacts exist and are mutually consistent:
 
-1. **The book** — `book/multidimensional-goodhart.typ`, re-spined per
-   `spine-refactor.md`. Long-form, comprehensive, the deep-context
-   reference.
+1. **The book** — `book/multidimensional-goodhart.typ`, re-spined into the
+   six-part structure from `spine-refactor.md`. Long-form, comprehensive, the
+   deep-context reference.
 2. **The abstract** — `book/multidimensional-goodhart-abstract.typ`, 2–4
    pages, standalone discussion starter. Project motivation, core findings,
    killed claims in compressed form, falsifier, minimal literature
@@ -43,9 +42,9 @@ Era 1 closes when these artifacts exist and are mutually consistent:
    the book and abstract from a clean checkout; all simulation targets run
    deterministically; `git status --short` is clean after a build.
 
-The medium-length `multidimensional-goodhart-paper.typ` is **deprecated**
-during the spine refactor and archived rather than rebuilt. The abstract
-absorbs its discussion-starter role; the book absorbs its long-form role.
+The medium-length `multidimensional-goodhart-paper.typ` is **deprecated** and
+archived rather than rebuilt. The abstract absorbs its discussion-starter role;
+the book absorbs its long-form role.
 
 ## Era 2: deliberately open
 
@@ -63,10 +62,8 @@ unless and until someone deliberately picks it up.
 ### Parked era-1 source material
 
 - `could-do/example_draft.md` — worked hospital scorecard contract with
-  action geometry, gaming condition, and evidence split. Alt source for
-  spine-refactor Part IV §15 (which currently cites
-  `research/applications/hospital_scorecard.md`). Pull from either; do not
-  treat as an active obligation.
+  action geometry, gaming condition, and evidence split. Alt source for future
+  hospital-scorecard prose; do not treat as an active obligation.
 
 ## Ordering reasoning, summarized
 
@@ -91,7 +88,7 @@ artifact changes if it succeeds.
 
 ## Guardrails carried from prior plans
 
-- Do not edit book or paper files outside the spine-refactor and prose-pass
+- Do not edit book or archived paper files outside active prose-pass and polish
   scopes. The application-template promotion gate (Iteration 38) and the
   Iteration-35 deterministic-finite-channel adaptive-hardening boundary are
   closed; do not re-promote claims past those gates.
@@ -115,23 +112,6 @@ artifact changes if it succeeds.
 ## Era 1: execution order
 
 Run these in order. Reasoning for the ordering follows each entry.
-
-## Iteration 45: `spine-refactor.md` — book and abstract structural reorganization
-
-Re-spine the long-form book into six parts (~21 sections) around what holds:
-licensing problem → licensed calculations → primitive-attribution table →
-cases → refusals → open agenda. Re-spine the abstract to 2–4 pages carrying
-project motivation, core findings, killed claims, falsifier, and minimal
-literature relation. Archive the deprecated `multidimensional-goodhart-paper.typ`.
-Three new content additions are in scope (killed-claims gallery,
-contributes-vs-omits table, falsifier section); the source material for all
-three already exists in `research/`.
-
-**Why second.** Structural moves must precede line-level prose work, or the
-prose work re-touches sections that get rewritten by the spine. The spine
-also depends on consolidation's question-split and archive decisions: it
-cannot foreground "the residual-shape conjecture (Q18) in Part VI" if the
-open/closed/parked split is still ambiguous.
 
 ## Iteration 46: `prose-pass.md` — Zinsser-style line-level pass
 

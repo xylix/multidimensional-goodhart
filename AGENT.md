@@ -102,9 +102,8 @@ Keep two failure-mode gaps distinct throughout:
 Era 1 is in finishing mode. Prefer the active roadmap before opening new
 speculative threads:
 
-1. **Spine refactor.** Reorganize the book and abstract around the consolidated theorem set, killed claims, and response-modeling contract.
-2. **Prose pass.** Improve line-level prose after structure is stable.
-3. **Polish.** Audit proposition numbering, references, figures, build outputs, and `core-math.md` pointers.
+1. **Prose pass.** Improve line-level prose after the six-part spine.
+2. **Polish.** Audit proposition numbering, references, figures, build outputs, and `core-math.md` pointers.
 
 Avoid spending another iteration rescuing the original recursive/minimum-complexity slogan unless the response geometry, complexity functional, and failure condition are fixed before the analysis.
 

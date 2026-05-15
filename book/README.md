@@ -1,22 +1,20 @@
 # Multidimensional Goodhart — book draft
 
-Working draft of Chapters 1–5 (plus catalogue and visual appendices) of a longer
-treatment of multidimensional Goodhart. This is an *expository* rewrite of the
-research-journal material in `../research/`; the iteration history lives there,
-not here.
+Working draft of the six-part long-form treatment of multidimensional
+Goodhart. This is an *expository* rewrite of the consolidated research material
+in `../research/`; the iteration history lives there, not here.
 
 ## Files
 
 - `multidimensional-goodhart.typ` — the source.
-- `multidimensional-goodhart-paper.typ` — compact paper-style extract from
-  Chapters 1–5.
 - `multidimensional-goodhart-abstract.typ` — two-page technical extended
   abstract for readers who need the current framework and boundaries quickly.
+- `archive/multidimensional-goodhart-paper.typ` — deprecated medium-length
+  paper extract, preserved for history and excluded from the default build.
 - `refs.bib` — bibliography (hand-written; double-check page numbers/venues
   before anything goes out).
 - `multidimensional-goodhart.pdf` — compiled output (regenerated, not
   hand-edited).
-- `multidimensional-goodhart-paper.pdf` — compiled mini-draft output.
 - `multidimensional-goodhart-abstract.pdf` — compiled extended abstract output.
 - `FIGURE_AUDIT.md` — current figure inclusion audit and removal rationale.
 - `scripts/make_appendix_figures.py` — deterministic matplotlib generator for
@@ -31,11 +29,10 @@ With `make`:
 make all
 ```
 
-To build only the book, paper extract, or short abstract:
+To build only the book or short abstract:
 
 ```sh
 make pdf
-make paper
 make abstract
 ```
 
@@ -43,7 +40,6 @@ Or directly:
 
 ```sh
 typst compile multidimensional-goodhart.typ
-typst compile multidimensional-goodhart-paper.typ
 typst compile multidimensional-goodhart-abstract.typ
 ```
 
@@ -56,34 +52,18 @@ uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
 
 ## Contents
 
-- **Ch. 1** — Goodhart's law, multidimensionally: the "error changes shape"
-  thesis, the hierarchy-of-proxies intuition, the `G / P / φ / ε` setup,
-  dimension gap vs. observation gap.
-- **Ch. 2** — Selection channels: Gaussian threshold model, dimensional
-  scaling vs. bounded correlation budget, the `Z²−1` zero-covariance
-  counterexample, threshold response `b_H(t)`, weighted response `B_H(θ)`,
-  covariance as local Boltzmann velocity, the `‖B_H‖ ≤ δ·‖s‖` drift bound.
-- **Ch. 3** — Intervention channels: type-relative response kernels, the
-  selection/intervention distinction, the linear–Gaussian Stackelberg gaming toy
-  (`Δ = √(2κV)`), multidimensional gaming (additive water-filling vs.
-  conjunctive `H = t|M|`, the `h_j = c w_j` exchange-rate condition).
-- **Ch. 4** — Response shape: why generic minimum-complexity attraction fails,
-  and which conditional shape predictions follow from quadratic costs, fixed
-  charges, caps, low-rank affordances, and search priors.
-- **Ch. 5** — Response modeling: the contract a Goodhart claim must declare
-  before making selection/intervention, shape, welfare, or evidence claims.
-- **Paper extract** — A compact draft of the survived argument from Chapters
-  1–5: residual error shape, selection and intervention channels,
-  multidimensional scorecards, the response-modeling contract, MMLU discipline,
-  and open problems.
-- **Technical abstract** — A standalone two-page extended abstract that states
-  the motivation, current findings, transfer rule, and live boundaries without
-  replacing the paper.
-- **Appendix A** — Currently in progress: live research questions feeding the
-  chapters.
-- **Appendix B** — Future open questions, parked for now.
-- **Visual appendices** — Four retained comparison figures: threshold response
-  versus covariance, selection versus intervention, fixed-deficit versus
-  population harm, and response-shape active-set regimes. Removed candidates and
-  design rationales are documented in `FIGURE_AUDIT.md` and
-  `figures/RATIONALES.md`.
+- **Part I** — The licensing problem: slogan failure, multidimensional setup,
+  killed-claims gallery, and the response-modeling contract.
+- **Part II** — Licensed calculations: selection bounds, intervention budget,
+  scorecard exchange-rate result, adaptive-hardening boundary, and conditional
+  response-shape taxonomy.
+- **Part III** — Primitive attribution across fields: genealogy, formal
+  analogues, contributes-vs-omits table, and reduction-not-unification framing.
+- **Part IV** — Cases as stress tests: MMLU, hospital readmissions, and
+  scientific metrics.
+- **Part V** — Refusals: anti-applications and concrete falsifiers.
+- **Part VI** — Open agenda: Q18 residual-shape conjecture, composition and
+  identification gaps, and the practitioner toolkit gap.
+- **Technical abstract** — A standalone 2–4 page discussion starter with
+  motivation, contract, closed theorem set, killed claims, falsifier, minimal
+  literature relation, and Q18.

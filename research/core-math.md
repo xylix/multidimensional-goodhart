@@ -4,7 +4,7 @@ Status: canonical bare theorem document after Iteration 43. This file states
 objects, hypotheses, dependencies, non-transfer clauses, and book pointers. It
 does not duplicate proof prose from the book.
 
-Book pointers refer to the pre-spine-refactor book:
+Book pointers refer to the six-part spine in:
 `book/multidimensional-goodhart.typ`.
 
 ## Stable definitions
@@ -60,7 +60,7 @@ Non-license: not coordinate-free; not a welfare claim; does not apply to
 fixed-type response changes; does not identify hidden coordinates or value
 weights.
 
-Book pointer: Chapter 3, "The selection-channel drift bound", Proposition 1.
+Book pointer: Part II, Section 5, "Selection channel", Theorem T1.
 
 ### T2. Value-weighted/operator selection bound
 
@@ -79,7 +79,7 @@ Non-license: value weights are not learned from `mu_theta`; the bound can be
 uninformative when `chi^2` is large or infinite; no intervention, welfare, or
 application conclusion follows without the response contract.
 
-Book pointer: Chapter 3, "The selection-channel drift bound", Proposition 1'.
+Book pointer: Part II, Section 5, "Selection channel", Theorem T2.
 
 ### T3. Quadratic Stackelberg wedge
 
@@ -97,8 +97,7 @@ Non-license: not a universal intervention law; not an RLHF or neural-training
 model without declared analogues of action, cost, stakes, and pass condition;
 not a welfare claim.
 
-Book pointer: Chapter 4, "A linear-Gaussian Stackelberg gaming model",
-Proposition 2.
+Book pointer: Part II, Section 6, "Intervention channel", Theorem T3.
 
 ### T4. Convex score-deficit budget
 
@@ -118,7 +117,7 @@ Non-license: not a baseline-distribution theorem; not a nonconvex or
 fixed-charge theorem; not an ML/RLHF training claim; not a welfare bound without
 a hidden value/harm functional.
 
-Book pointer: Chapter 4, "A convex-cost intervention bound", Proposition 3.
+Book pointer: Part II, Section 6, "Intervention channel", Theorem T4.
 
 ### T5. Additive exchange-rate iff
 
@@ -140,7 +139,8 @@ Non-license: no population-harm conservation; no claim for arbitrary costs,
 conjunctive/Pareto aggregation, shared bottlenecks, real-improvement channels,
 or empirical welfare.
 
-Book pointer: Chapter 4, "The exchange-rate condition", Proposition 4.
+Book pointer: Part II, Section 7, "Multidimensional scorecards -- the keeper",
+Theorem T5.
 
 ### T6. Deterministic adaptive-hardening capacity boundary
 
@@ -166,9 +166,8 @@ largest-action rules that can stall on floored channels, floors with
 shared bottlenecks, nonseparable or nonconvex geometry, empirical estimation,
 welfare comparison, persistent cycles, or policy optimality.
 
-Book pointer: Chapter 1, "Work in progress", adaptive-hardening bullet, and
-`research/threads/adaptive_hardening_theorem_boundary.md`. The full theorem
-boundary is not yet promoted into a numbered book proposition.
+Book pointer: Part II, Section 8, "Adaptive hardening -- narrow but real",
+Theorem T6.
 
 ## Dependency map
 
@@ -194,4 +193,3 @@ boundary is not yet promoted into a numbered book proposition.
   estimates, or claims that more metrics are generally good or bad.
 - Simulations in `research/simulations/` are Layer-3 checks for scoped toy
   regimes only.
-

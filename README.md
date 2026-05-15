@@ -29,7 +29,9 @@ Start here:
 
 # Repo
 
-- `book/` — typst draft + compiled PDF. `make` in there, or `typst compile multidimensional-goodhart.typ`.
+- `book/` — active Typst book and abstract. `make` in there builds both
+  active artifacts; the deprecated medium paper is archived under
+  `book/archive/`.
 - `research/` — consolidated theorem, question, audit, and iteration records.
 - `research/threads/` — source fragments and historical derivations; check the
   registry before treating a thread as current authority.

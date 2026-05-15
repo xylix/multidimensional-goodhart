@@ -1,6 +1,6 @@
-.PHONY: all figures pdf paper abstract clean
+.PHONY: all figures pdf abstract clean
 
-all: figures pdf paper abstract
+all: figures pdf abstract
 
 figures:
 	uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
@@ -8,11 +8,8 @@ figures:
 pdf:
 	typst compile multidimensional-goodhart.typ
 
-paper:
-	typst compile multidimensional-goodhart-paper.typ
-
 abstract:
 	typst compile multidimensional-goodhart-abstract.typ
 
 clean:
-	rm -f multidimensional-goodhart.pdf multidimensional-goodhart-paper.pdf multidimensional-goodhart-abstract.pdf
+	rm -f multidimensional-goodhart.pdf multidimensional-goodhart-abstract.pdf
