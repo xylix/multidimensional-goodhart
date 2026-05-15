@@ -1091,3 +1091,34 @@ Red flags fired: no book or paper claim, simulation, hidden-target estimate,
 or optimal-policy claim was introduced. The live risk is treating unavailable
 primitives as harmless caveats; the repair is to require an explicit
 deployment, monitoring, or evidence-collection consequence.
+
+## Iteration 38 (policy-readiness review)
+
+Question tackled: Do the Iterations 35-37 repairs jointly support any
+policy-facing prose, or should policy claims remain blocked?
+
+What changed: added
+`research/reviews/policy_readiness_review.md`, a policy-readiness gate covering
+the Iteration 35 deterministic finite-channel theorem boundary, the Iteration
+36 dynamic toys, and the Iteration 37 empirical-auditability note. Updated Q14,
+Q15, and Q19 in `open_questions.md`; recorded Iteration 38 as a policy gate in
+`verification_stack.md`; added a policy-readiness audit block in
+`claim_audits.md`; and removed the active Iteration 38 section from
+`plans/next-steps.md`.
+
+What the review concluded: broad policy prose is blocked. The only licensed
+output is narrow audit/design/evidence language inside a declared application
+contract: document effective score rules, audit repeated-unit action traces,
+monitor hidden-target traces where available, lower leverage or pilot when
+primitives are unavailable, and avoid importing toy diagnostics when primitives
+are missing.
+
+What's open now: policy optimization, primitive estimation, hidden-target
+estimation, stochastic filtering and repair-budget design, endogenous-stakes
+modeling, and book/paper integration remain open. Iteration 40 is still the
+first gate that can license book or paper integration.
+
+Red flags fired: policy overpromotion risk. The repair is explicit blocking:
+Iteration 35 is a theorem-boundary note, Iteration 36 is a dynamic-toy
+boundary, and Iteration 37 is an empirical-design boundary. None of them
+licenses broad regulator advice or hidden-target credit from score movement.

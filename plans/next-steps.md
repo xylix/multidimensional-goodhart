@@ -1,12 +1,12 @@
 # Next steps
 
-This is the active roadmap. Iterations 38-42 are the remaining staged repair
-sequence: review policy readiness, consolidate the roadmap, and only then
-decide whether any book or paper integration is licensed. Iteration 36 is
-retained below as completed context for the sequence and is not itself part of
-the active work.
+This is the active roadmap. Iterations 39-42 are the remaining staged repair
+sequence: consolidate the roadmap, and only then decide whether any book or
+paper integration is licensed. Iteration 36 is retained below as completed
+context for the sequence and is not itself part of the active work.
 
-Do not edit book or paper files before the policy-readiness gate. The
+Do not edit book or paper files before the Iteration 40 integration-readiness
+gate. The
 application-template promotion gate is closed: Chapter 6 now includes the
 reviewed application discipline, narrowed reusable-template boundary, and
 compact hospital/scientific scorecard mappings. The adaptive-hardening theorem
@@ -50,31 +50,6 @@ Completed artifacts:
 License only: these dynamics can break or alter the static capacity story
 under declared update rules. Do not claim a general performative-stability
 result.
-
-## Iteration 38: policy-readiness review
-
-Iteration type: `policy-review`.
-
-### Purpose
-
-Review the theorem-boundary, dynamics, and empirical-audit passes and decide
-whether policy prose is blocked or narrowly licensed.
-
-### Work
-
-1. Add `research/reviews/policy_readiness_review.md`.
-2. Review the prior repair sequence and identify theorem-level, dynamic-toy, and
-   empirical-audit licenses.
-3. Exclude optimal-policy claims unless theorem, dynamics, and empirical-audit
-   licenses jointly support it.
-4. If anything is licensed, phrase it as concrete audit/design/evidence
-   decisions, not generic advice.
-
-### Success condition
-
-A policy-readiness review that either blocks policy claims or states the narrow
-conditions under which concrete design, audit, or evidence decisions are
-licensed.
 
 ## Iteration 39: roadmap consolidation
 
@@ -190,15 +165,15 @@ minimal counterexample.
 ## Public interfaces
 
 No public APIs, schemas, package interfaces, or book/paper claims change
-through Iteration 38. The only executable interface change is the Iteration 36
-simulation Makefile target.
+through the current roadmap. The only executable interface change is the
+Iteration 36 simulation Makefile target.
 
 ## Assumptions
 
 - The project should continue in research-iteration mode, not book-polish mode.
 - Iteration 36 was hybrid: approach comparison plus tiny executable dynamic
   toy.
-- Iterations 37-38 should remain prose/review artifacts unless they uncover a
-  need for a small counterexample.
+- Iteration 37 remains an empirical-design artifact and Iteration 38 remains a
+  policy-review artifact.
 - Book and paper edits are deferred until Iteration 40 explicitly licenses
   them.
