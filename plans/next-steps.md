@@ -17,6 +17,13 @@ The remaining work should repair reviewed-but-excluded gaps separately. Do not
 promote these into theorem, empirical, or policy claims until the relevant
 iteration has its own verification pass.
 
+The next planning gate should use
+`plans/paradigm-forced-review-plan.md`: choose the next review by the missing
+contract fields it forces, the consequence of those missing fields, and the
+artifact that would change. This points first to the post-Iteration-43
+meta-consolidation pass, not to a generic policy review or another
+complexity-attractor rescue.
+
 Current live map after Iteration 42:
 
 - Theorem-boundary closed: adaptive hardening only inside the deterministic
