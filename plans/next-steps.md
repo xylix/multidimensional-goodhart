@@ -47,70 +47,6 @@ The medium-length `multidimensional-goodhart-paper.typ` is **deprecated**
 during the spine refactor and archived rather than rebuilt. The abstract
 absorbs its discussion-starter role; the book absorbs its long-form role.
 
-## Era 1: execution order
-
-Run these in order. Reasoning for the ordering follows each entry.
-
-### 1. `consolidation.md` — project-state consolidation and `core-math.md`
-
-Inventory what survived 1–43, classify files canonical/archive/delete, split
-open/closed/parked questions, compact the iteration log, produce
-`research/core-math.md` as a default deliverable (bare statements with book
-pointers, no proof duplication), and end with a short next-mode memo
-confirming the era-1 finishing order below.
-
-**Why first.** Until this pass runs, the downstream manuscript work has the
-wrong source list. The spine refactor cites `formal_analogue_lit_map.md` and
-`negative_results.md` as authoritative inputs and assumes the open-question
-split is current — both depend on this pass. `core-math.md` is produced here
-because the spine refactor will use it as the canonical statement of which
-theorems land in Part II; producing it after the spine would reverse the
-authority direction.
-
-### 2. `spine-refactor.md` — book and abstract structural reorganization
-
-Re-spine the long-form book into six parts (~21 sections) around what holds:
-licensing problem → licensed calculations → primitive-attribution table →
-cases → refusals → open agenda. Re-spine the abstract to 2–4 pages carrying
-project motivation, core findings, killed claims, falsifier, and minimal
-literature relation. Archive the deprecated `multidimensional-goodhart-paper.typ`.
-Three new content additions are in scope (killed-claims gallery,
-contributes-vs-omits table, falsifier section); the source material for all
-three already exists in `research/`.
-
-**Why second.** Structural moves must precede line-level prose work, or the
-prose work re-touches sections that get rewritten by the spine. The spine
-also depends on consolidation's question-split and archive decisions: it
-cannot foreground "the residual-shape conjecture (Q18) in Part VI" if the
-open/closed/parked split is still ambiguous.
-
-### 3. `prose-pass.md` — Zinsser-style line-level pass
-
-Tics to grep out (`deliberately`, throat-clearing list intros, "I do not
-think the right claim is X" pattern, nominalizations, overloaded sentences,
-apologetic preambles). Lines to preserve through both passes are listed.
-
-**Why third.** Several structural items in the original prose-iteration plan
-are absorbed by spine-refactor (intro reorganization, Ch.7 retitle, demoting
-meta-commentary). The remaining work is line-level and applies to the
-re-spined book. Running this before spine would waste effort on text that
-gets moved or rewritten.
-
-### 4. `polish.md` — figures, references, appendices, build green-light
-
-Proposition numbering audit; `refs.bib` audit against book and abstract;
-figure regeneration or removal; decisions about generated appendix PDFs and
-simulation PNGs; cross-check `core-math.md` book pointers; reproducible-build
-green-light (`make` builds book and abstract from clean checkout, all
-simulation targets run deterministically, `git status --short` clean after
-build).
-
-**Why last.** Everything upstream changes proposition numbering, figure
-references, and prose. Doing figures before spine wastes the figure pass;
-doing the citation audit before the prose pass wastes it. The plan's own
-note ("Ask user before implementing these — they are most efficient to do
-before actually publishing") supports this position.
-
 ## Era 2: deliberately open
 
 Era 2 is not chartered here. By the time era 1 closes, the project will have
@@ -175,3 +111,67 @@ artifact changes if it succeeds.
   preserved in `consolidation.md` as the starting inventory.
 - `could-do/prose-iteration.md` is promoted to active as `prose-pass.md`,
   with sections absorbed by `spine-refactor.md` marked accordingly.
+
+## Era 1: execution order
+
+Run these in order. Reasoning for the ordering follows each entry.
+
+## Iteration 44: `consolidation.md` — project-state consolidation and `core-math.md`
+
+Inventory what survived 1–43, classify files canonical/archive/delete, split
+open/closed/parked questions, compact the iteration log, produce
+`research/core-math.md` as a default deliverable (bare statements with book
+pointers, no proof duplication), and end with a short next-mode memo
+confirming the era-1 finishing order below.
+
+**Why first.** Until this pass runs, the downstream manuscript work has the
+wrong source list. The spine refactor cites `formal_analogue_lit_map.md` and
+`negative_results.md` as authoritative inputs and assumes the open-question
+split is current — both depend on this pass. `core-math.md` is produced here
+because the spine refactor will use it as the canonical statement of which
+theorems land in Part II; producing it after the spine would reverse the
+authority direction.
+
+## Iteration 45: `spine-refactor.md` — book and abstract structural reorganization
+
+Re-spine the long-form book into six parts (~21 sections) around what holds:
+licensing problem → licensed calculations → primitive-attribution table →
+cases → refusals → open agenda. Re-spine the abstract to 2–4 pages carrying
+project motivation, core findings, killed claims, falsifier, and minimal
+literature relation. Archive the deprecated `multidimensional-goodhart-paper.typ`.
+Three new content additions are in scope (killed-claims gallery,
+contributes-vs-omits table, falsifier section); the source material for all
+three already exists in `research/`.
+
+**Why second.** Structural moves must precede line-level prose work, or the
+prose work re-touches sections that get rewritten by the spine. The spine
+also depends on consolidation's question-split and archive decisions: it
+cannot foreground "the residual-shape conjecture (Q18) in Part VI" if the
+open/closed/parked split is still ambiguous.
+
+## Iteration 46: `prose-pass.md` — Zinsser-style line-level pass
+
+Tics to grep out (`deliberately`, throat-clearing list intros, "I do not
+think the right claim is X" pattern, nominalizations, overloaded sentences,
+apologetic preambles). Lines to preserve through both passes are listed.
+
+**Why third.** Several structural items in the original prose-iteration plan
+are absorbed by spine-refactor (intro reorganization, Ch.7 retitle, demoting
+meta-commentary). The remaining work is line-level and applies to the
+re-spined book. Running this before spine would waste effort on text that
+gets moved or rewritten.
+
+## Iteration 47: `polish.md` — figures, references, appendices, build green-light
+
+Proposition numbering audit; `refs.bib` audit against book and abstract;
+figure regeneration or removal; decisions about generated appendix PDFs and
+simulation PNGs; cross-check `core-math.md` book pointers; reproducible-build
+green-light (`make` builds book and abstract from clean checkout, all
+simulation targets run deterministically, `git status --short` clean after
+build).
+
+**Why last.** Everything upstream changes proposition numbering, figure
+references, and prose. Doing figures before spine wastes the figure pass;
+doing the citation audit before the prose pass wastes it. The plan's own
+note ("Ask user before implementing these — they are most efficient to do
+before actually publishing") supports this position.
