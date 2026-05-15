@@ -334,7 +334,7 @@ def main(argv: Sequence[str]) -> int:
     )
     parser.add_argument(
         "--codex-bin",
-        default=os.environ.get("CODEX_BIN", "npx @openai/codex"),
+        default=os.environ.get("CODEX_BIN", "codex"),
         help="Codex executable to run (default: codex or CODEX_BIN)",
     )
     parser.add_argument(
