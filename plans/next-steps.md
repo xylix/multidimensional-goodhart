@@ -1,14 +1,14 @@
 # Next steps
 
-This is the active roadmap. Iterations 39-42 are the remaining staged repair
-sequence: consolidate the roadmap, and only then decide whether any book or
-paper integration is licensed. Iteration 36 is retained below as completed
-context for the sequence and is not itself part of the active work.
+This is the active roadmap. Iterations 40-42 are the remaining staged repair
+sequence after the Iteration 39 roadmap consolidation: decide whether any book
+or paper integration is licensed, make only licensed prose edits, and then run
+the final consistency pass. Iteration 36 is retained below as completed context
+for the sequence and is not itself part of the active work.
 
 Do not edit book or paper files before the Iteration 40 integration-readiness
-gate. The
-application-template promotion gate is closed: Chapter 6 now includes the
-reviewed application discipline, narrowed reusable-template boundary, and
+gate. The application-template promotion gate is closed: Chapter 6 now includes
+the reviewed application discipline, narrowed reusable-template boundary, and
 compact hospital/scientific scorecard mappings. The adaptive-hardening theorem
 boundary is closed only for the narrow finite-channel deterministic capacity
 result; stochastic observation and endogenous stakes have only a tiny dynamic
@@ -18,6 +18,34 @@ static capacity story.
 The remaining work should repair reviewed-but-excluded gaps separately. Do not
 promote these into theorem, empirical, or policy claims until the relevant
 iteration has its own verification pass.
+
+Current live map after Iteration 39:
+
+- Theorem-boundary closed: adaptive hardening only inside the deterministic
+  finite-channel capacity contract from Iteration 35. This licenses the exact
+  `S(M) < d^2/(2V)` no-gaming boundary and the progress-aware termination
+  condition, not stochastic, changing-objective, or policy-optimization claims.
+- Dynamic-toy boundary closed: Iteration 36 shows only that declared stochastic
+  observation and endogenous-stakes rules can alter or break transfer from the
+  static capacity story. It does not license fixed-point, filtering, persistent
+  cycle, or performative-stability claims.
+- Empirical-design boundary closed: Iteration 37 says scorecard primitives can
+  sometimes be predeclared, bounded, defended, or marked unavailable with
+  design consequences. It does not license hidden-target estimates or empirical
+  welfare/research-value inference.
+- Policy gate blocked except for narrow audit/design/evidence actions:
+  Iteration 38 permits documenting effective rules, auditing repeated-unit
+  action traces, monitoring hidden-target traces where available, piloting or
+  lowering leverage when primitives are unavailable, and withholding toy
+  diagnostics when primitives are missing.
+- Live research questions remain: primitive estimation, stochastic filtering
+  and repair budgets, endogenous-stakes fixed points, changing measured sets or
+  deficits, shared bottlenecks and nonconvex response geometry, frontier
+  characterization in real domains, and the broader recursive/complexity
+  attractor question under predeclared response geometry.
+- Licensed next action: Iteration 40 must be an integration-readiness review.
+  It may permit, footnote, or exclude candidate book/paper integrations; it
+  must not edit book or paper prose.
 
 After finishing an iteration, delete the completed iteration step from this
 document while preserving the later roadmap unless it is superseded.
@@ -50,30 +78,6 @@ Completed artifacts:
 License only: these dynamics can break or alter the static capacity story
 under declared update rules. Do not claim a general performative-stability
 result.
-
-## Iteration 39: roadmap consolidation
-
-Iteration type: `roadmap`.
-
-### Purpose
-
-Reconcile the project map after the Iterations 36-38 repair sequence. This
-pass is bookkeeping on research/roadmap docs only; Iteration 42 is a separate
-post-prose-edit consistency check across book/paper prose, and the two should
-not be merged.
-
-### Work
-
-1. Reconcile `plans/next-steps.md`, `research/open_questions.md`,
-   `research/verification_stack.md`, and `research/claim_audits.md`.
-2. Close or rename roadmap items that are now theorem-boundary, dynamic-toy,
-   empirical-design, or policy-blocked.
-3. Produce a compact "what is now live" map for the project.
-
-### Success condition
-
-The roadmap and tracking docs agree on live questions, closed questions,
-blocked claims, and licensed next actions.
 
 ## Iteration 40: integration-readiness review
 

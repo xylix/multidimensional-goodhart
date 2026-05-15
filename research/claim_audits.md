@@ -1,5 +1,15 @@
 # Claim audits
 
+## Current license map (Iteration 39)
+
+| Status | Closed or live item | What is licensed | What is not licensed | Next action |
+| --- | --- | --- | --- | --- |
+| Theorem-boundary closed | Iteration 35 adaptive-hardening capacity result | Exact finite-channel deterministic capacity boundary and progress-aware termination under the declared fixed `M`, fixed `d`, fixed `V`, fixed weights, separable quadratic cost, additive score, deterministic-observation contract. | Stochastic observation, endogenous stakes, changing measured sets or deficits, shared bottlenecks, nonconvex geometry, persistent cycles, empirical estimation, welfare comparison, or policy optimization. | Use only as a non-transfer checklist unless a later theorem pass declares new dynamics. |
+| Dynamic-toy boundary closed | Iteration 36 stochastic observation and endogenous-stakes toys | Declared update rules can alter or break transfer from the static capacity story. | General filtering, repair-budget, fixed-point, performative-stability, trust-governance, or persistent-cycle claims. | Future work must declare observation, forecast, repair-budget, stakes, and response rules before promotion. |
+| Empirical-design boundary closed | Iteration 37 scorecard primitive auditability | Some primitives can be predeclared, bounded, defended, or marked unavailable with operational consequences. | Hidden-target estimates, patient-welfare or research-value inference, cross-domain comparability, or importing toy diagnostics when primitives are missing. | Treat missing primitives as blockers for credit/diagnostic language, not as harmless caveats. |
+| Policy-blocked except narrow actions | Iteration 38 policy-readiness review | Document effective rules, audit repeated-unit action traces, monitor hidden-target traces where available, lower leverage or pilot when primitives are unavailable, and withhold toy diagnostics when primitives are missing. | Broad policy advice, optimal-policy claims, stochastic repair advice, endogenous-stakes governance, empirical welfare/research-value claims, or book/paper integration before Iteration 40. | Iteration 40 may review integration readiness only; it may not edit book or paper prose. |
+| Live research | Remaining Q11/Q14/Q15/Q19 and recursive-attractor extensions | Primitive estimation, stochastic filtering and repair-budget design, endogenous-stakes fixed points, changing measured sets/deficits, shared bottlenecks, nonconvex geometry, real-domain frontier characterization, and predeclared response-geometry attractor tests. | Treating any of the above as already theorem, empirical, or policy results. | Open separate verification passes before promotion. |
+
 ## Recursive Goodhart / Q18 audit (Iteration 8)
 
 | Claim one might use | What is licensed | What is not licensed | Intended use |

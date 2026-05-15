@@ -1,5 +1,40 @@
 # Open questions
 
+## Current map after Iteration 39
+
+The Iterations 35-38 repair sequence split the adaptive-hardening/application
+work into four statuses:
+
+- **Theorem-boundary closed:** Q14 has a narrow deterministic finite-channel
+  result. Under fixed measured set `M`, fixed deficit `d`, fixed stakes `V`,
+  fixed weights, additive score gain, separable quadratic costs, deterministic
+  observation, and monotone lowering of `kappa_j`, gaming is feasible exactly
+  when `S_t(M) >= d^2/(2V)` and stops exactly when
+  `S_t(M) < d^2/(2V)`. Progress-aware multiplicative hardening terminates only
+  with positive-weight finite channels, a progress condition, and floor capacity
+  below threshold.
+- **Dynamic-toy boundary closed:** Q11/Q14 have only the Iteration 36 toy
+  boundary for stochastic observation and endogenous stakes. Declared update
+  rules can alter transfer from the static capacity story, but no fixed-point,
+  filtering, persistent-cycle, or performative-stability claim is live.
+- **Empirical-design boundary closed:** Q19 has an empirical-auditability
+  discipline from Iteration 37. Primitives may be predeclared, bounded,
+  defended, or marked unavailable with design consequences; this is not a
+  hidden-target estimate or empirical welfare/research-value inference.
+- **Policy gate blocked except narrow audit/design/evidence actions:** Q14,
+  Q15, and Q19 inherit Iteration 38's block on broad policy prose. Licensed
+  actions are documenting effective rules, auditing repeated-unit action
+  traces, monitoring hidden-target traces where available, lowering leverage or
+  piloting when primitives are unavailable, and withholding toy diagnostics
+  when primitives are missing.
+
+Live work is therefore not "prove adaptive hardening works" or "write policy
+advice." The licensed live questions are primitive estimation, stochastic
+filtering and repair-budget design, endogenous-stakes fixed points, changing
+measured sets or deficits, shared bottlenecks/nonconvex geometry, real-domain
+measurement-frontier characterization, and predeclared response-geometry tests
+for the broader recursive/complexity-attractor question.
+
 1. What substantive assumptions justify `||r||_2` growing with `dim(ker phi)` rather than remaining bounded by a fixed correlation budget?
 2. Which harm functional is best for dimensional Goodhart: signed drift, normed drift, squared loss, tail probability, or regret relative to a Pareto set?
 3. How does adding proxy dimensions change `ker phi` and the residual `epsilon` simultaneously in a linear-Gaussian model?
