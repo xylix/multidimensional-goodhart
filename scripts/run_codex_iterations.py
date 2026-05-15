@@ -10,15 +10,17 @@ long agent context.
 from __future__ import annotations
 
 import argparse
+import codecs
 import datetime as dt
 import os
 import re
 import shlex
 import subprocess
 import sys
+import threading
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Sequence
+from typing import BinaryIO, Sequence, TextIO
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -45,27 +47,132 @@ def run(
     stderr_path: Path | None = None,
     check: bool = True,
 ) -> subprocess.CompletedProcess[str]:
-    stdout_file = stdout_path.open("w", encoding="utf-8") if stdout_path else None
-    stderr_file = stderr_path.open("w", encoding="utf-8") if stderr_path else None
-    try:
-        result = subprocess.run(
+    if stdout_path or stderr_path:
+        return run_with_tee(
             args,
             cwd=cwd,
-            input=input_text,
-            text=True,
-            stdout=stdout_file if stdout_file else subprocess.PIPE,
-            stderr=stderr_file if stderr_file else subprocess.PIPE,
-            check=False,
+            input_text=input_text,
+            stdout_path=stdout_path,
+            stderr_path=stderr_path,
+            check=check,
         )
+
+    result = subprocess.run(
+        args,
+        cwd=cwd,
+        input=input_text,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+
+    if check and result.returncode != 0:
+        command = " ".join(args)
+        raise RuntimeError(f"command failed ({result.returncode}): {command}")
+    return result
+
+
+def tee_stream(
+    stream: BinaryIO,
+    *,
+    console: TextIO,
+    log_file: TextIO | None,
+    chunks: list[str],
+) -> None:
+    decoder = codecs.getincrementaldecoder("utf-8")("replace")
+
+    def write_text(text: str) -> None:
+        chunks.append(text)
+        console.write(text)
+        console.flush()
+        if log_file:
+            log_file.write(text)
+            log_file.flush()
+
+    try:
+        for chunk in iter(lambda: stream.read(4096), b""):
+            text = decoder.decode(chunk)
+            if text:
+                write_text(text)
+        tail = decoder.decode(b"", final=True)
+        if tail:
+            write_text(tail)
+    finally:
+        stream.close()
+
+
+def run_with_tee(
+    args: Sequence[str],
+    *,
+    cwd: Path = ROOT,
+    input_text: str | None = None,
+    stdout_path: Path | None = None,
+    stderr_path: Path | None = None,
+    check: bool = True,
+) -> subprocess.CompletedProcess[str]:
+    stdout_file = stdout_path.open("w", encoding="utf-8") if stdout_path else None
+    stderr_file = stderr_path.open("w", encoding="utf-8") if stderr_path else None
+    stdout_chunks: list[str] = []
+    stderr_chunks: list[str] = []
+
+    try:
+        process = subprocess.Popen(
+            args,
+            cwd=cwd,
+            stdin=subprocess.PIPE if input_text is not None else None,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+        assert process.stdout is not None
+        assert process.stderr is not None
+
+        stdout_thread = threading.Thread(
+            target=tee_stream,
+            kwargs={
+                "stream": process.stdout,
+                "console": sys.stdout,
+                "log_file": stdout_file,
+                "chunks": stdout_chunks,
+            },
+        )
+        stderr_thread = threading.Thread(
+            target=tee_stream,
+            kwargs={
+                "stream": process.stderr,
+                "console": sys.stderr,
+                "log_file": stderr_file,
+                "chunks": stderr_chunks,
+            },
+        )
+        stdout_thread.start()
+        stderr_thread.start()
+
+        if process.stdin:
+            try:
+                process.stdin.write((input_text or "").encode("utf-8"))
+                process.stdin.close()
+            except BrokenPipeError:
+                pass
+
+        returncode = process.wait()
+        stdout_thread.join()
+        stderr_thread.join()
     finally:
         if stdout_file:
             stdout_file.close()
         if stderr_file:
             stderr_file.close()
 
-    if check and result.returncode != 0:
+    result = subprocess.CompletedProcess(
+        args=args,
+        returncode=returncode,
+        stdout=None if stdout_path else "".join(stdout_chunks),
+        stderr=None if stderr_path else "".join(stderr_chunks),
+    )
+    if check and returncode != 0:
         command = " ".join(args)
-        raise RuntimeError(f"command failed ({result.returncode}): {command}")
+        raise RuntimeError(f"command failed ({returncode}): {command}")
     return result
 
 
