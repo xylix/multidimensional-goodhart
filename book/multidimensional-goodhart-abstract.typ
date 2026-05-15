@@ -24,30 +24,64 @@
   #text(weight: "bold")[Abstract.] The initial hypothesis was that
   multidimensional proxy optimization would push residual error into more
   structured, perhaps more complex, hidden directions. The current framework
-  narrows that into a conditional claim: residual shape is governed by the
-  response channel, action/search geometry, aggregation rule, and declared
-  hidden value model. Selection over fixed states licenses baseline response
-  curves and value-drift bounds. Intervention at fixed type requires action,
-  cost, search, and stakes primitives. Multidimensional scorecards have
-  exchange-rate and entry effects, not a generic "more metrics" sign. The
-  transfer rule is a response-modeling contract rather than a universal
-  Goodhart theorem.
+  replaces that with a conditional contract on what residual structure is
+  licensed. Selection over fixed states licenses baseline response curves and
+  $delta$-reweighting value-drift bounds. Intervention at fixed type requires
+  action, cost, search, and stakes primitives. Multidimensional scorecards
+  yield exchange-rate and entry effects rather than a generic "more metrics"
+  sign: fixed-deficit per-agent harm is conserved across active measured sets
+  if and only if harm-per-score satisfies $h_j = c w_j$. Residual shape is
+  governed by these primitives together with the declared hidden value model.
+  The transfer rule is a response-modeling contract, not a universal Goodhart
+  theorem.
 ]
 
-== Motivation
+== Motivation and positioning
 
 Scalar Goodhart warnings compress two things: the target is reduced to a proxy,
 and the residual error is often reduced to an unnamed loss. In multidimensional
 settings the residual is the object of interest. It has direction, support,
 active constraints, exchange rates, and evidence requirements. The question is
-therefore not whether optimization can break proxies, but which model predicts
-where the error vector moves.
+therefore not whether optimization can break proxies, but which calculation
+about residual structure is licensed once the response channel, action/search
+geometry, aggregation rule, and hidden value model are declared.
 
-Use $G(s) in RR^m$ for target-relevant state, $P(s) in RR^k$ for proxy
-features, $phi$ for the intended proxy relation, and
-$epsilon(s) = P(s) - phi(G(s))$ for proxy residual. A claim about
-multidimensional Goodhart must say how optimization pressure changes the law of
-$s$ or the behavior of fixed types.
+Let $s in S$ denote the latent state of a unit (an agent, a type, or a
+production realization), with baseline law $mu$ on $(S, cal(F))$. Write
+$G(s) in RR^m$ for target-relevant state, $P(s) in RR^k$ for proxy features,
+$phi$ for the intended proxy relation, and $epsilon(s) = P(s) - phi(G(s))$ for
+proxy residual. A claim about multidimensional Goodhart must say how
+optimization pressure changes the law of $s$ (selection) or the behavior of
+fixed types (intervention).
+
+This refines Manheim and Garrabrant's regressional/extremal/causal/adversarial
+taxonomy by mapping the variants onto channel-specific licensed calculations,
+rather than treating the taxonomy itself as the formal object: their selection
+variants correspond to the reweighting channel, causal and adversarial Goodhart
+to the intervention channel with declared cost and worst-case primitives. The
+scorecard analysis extends Holmstrom--Milgrom multitasking to a declared
+hidden-harm vector, recovering the substitution geometry and adding an
+exchange-rate conservation criterion that is absent from the LEN benchmark.
+
+== Contributions
+
+#compact-list[
+- *Channel separation.* Selection (reweighting at fixed kernel) and
+  intervention (kernel change at fixed type) are formally distinct channels
+  with distinct licensed calculations.
+- *Selection bounds.* $delta$-reweighting bounds for hidden-coordinate drift
+  and for any declared scalar value $v dot H$; the coordinate norm and value
+  vector are declared inputs, not inferred from proxy movement.
+- *Exchange-rate conservation.* Fixed-deficit per-agent harm $H_"per"(M,d)$ is
+  conserved across active measured sets if and only if $h_j = c w_j$, the
+  scorecard analogue of, and extension to, Holmstrom--Milgrom multitasking.
+- *Adaptive-hardening boundary.* Under the additive, separable-quadratic,
+  fixed-$(M, d, V)$ contract, fixed-deficit gaming stops exactly when
+  $S_t(M) < d^2 / (2V)$.
+- *Response-modeling contract.* The deflationary framework itself: each
+  applicable calculation requires a declared set of primitives, and unlicensed
+  transfers are named as such.
+]
 
 == Current Findings
 
@@ -76,24 +110,25 @@ $s$ or the behavior of fixed types.
   $m(d) = sup_(lambda >= 0) [lambda d - c^*(lambda w)]$. This is not a welfare
   bound without a hidden-harm functional.
 
-- *Scorecards and exchange rates.* With additive score, separable quadratic
-  costs, fixed deficit $d$, score weights $w_j$, and hidden harm rates $h_j$,
-  fixed-deficit per-agent harm is
+- *Scorecards: the exchange-rate criterion.* The cleanest empirical-design
+  hook in the framework. With additive score, separable quadratic costs, fixed
+  deficit $d$, score weights $w_j$, and hidden harm rates $h_j$, fixed-deficit
+  per-agent harm is
   $H_"per"(M,d) =
     d (sum_(j in M) h_j kappa_j w_j) /
       (sum_(j in M) kappa_j w_j^2)$.
-  Conservation across active measured sets requires $h_j = c w_j$. Population
-  harm is a separate entry object; conjunctive aggregation changes the
-  comparison again.
+  Conservation across active measured sets requires $h_j = c w_j$, the
+  invariance criterion that tells designers what to measure to know whether
+  adding a metric helped, hurt, or merely re-routed harm. Population harm is a
+  separate entry object; conjunctive aggregation changes the comparison again.
 
 - *Response shape.* Proxy pressure does not generically select
   minimum-complexity residuals. Quadratic costs select cost-minimal directions;
   fixed charges and caps can create lumpy active-set switches; low-rank
   affordances constrain drift to an image; search-prior claims require a
-  predeclared coding or search process.
+  predeclared coding or search process, so they are not free-floating
+  simplicity statements but contracts on the description language.
 ]
-
-#pagebreak()
 
 == Why the Framework Matters
 
@@ -137,4 +172,13 @@ commitments.
   The framework does not license hidden-target estimates, welfare or
   research-value inference, RLHF claims, or generic advice that more metrics
   are good or bad without those primitives.
+- *Anti-application and falsification.* The framework is most useful where
+  primitives are declarable and reasonably stable. It fails to be useful when
+  type space drifts, measured sets are unobservable, or no defensible hidden
+  value model is available; a framework that infers welfare from score
+  movement alone does something this contract refuses to do, and that refusal
+  is a limitation when stakeholders need a verdict without primitives. The
+  contract itself would be falsified by a domain where licensed calculations
+  systematically disagree with outcomes that primitive declarations were
+  supposed to track.
 ]
