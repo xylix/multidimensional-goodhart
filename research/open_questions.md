@@ -141,3 +141,5 @@ claim to generalize it.
 Target files: `research/reviews/formal_analogue_lit_map.md` (new primitive-map
 row, mirroring the El-Mhamdi rows); `research/claim_audits.md` (license/non-
 license row once the embedding is settled).
+
+Outcome cross-reference: `research/reviews/agenda_math_correspondence.md` treats Z&HM as a contrast class, not a current anchor, because its `J < L` below-baseline result uses a specific intervention/allocation model with resource tradeoffs and compactness/lower-bound assumptions.
