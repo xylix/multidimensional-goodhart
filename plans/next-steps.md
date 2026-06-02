@@ -1,141 +1,98 @@
 # Next steps
 
-This file is the index for active plans. It states the order of execution and
-the reasoning for that order. Individual plans live in sibling files.
+Index for active plans. Individual plans live in sibling files.
 
-## Where the project is
+## Current direction: crystallization before spine v3.0
 
-The staged repair sequence (Iterations 35–42) is closed. Iteration 43 added
-the manuscript abstract and strengthened its framing. The math spine is stable
-under stated conditions: selection δ-reweighting bounds (T1/T2), quadratic
-Stackelberg wedge (T3), convex score-deficit budget `m(d)` (T4), additive
-conservation iff `h_j = c w_j` (T5), deterministic finite-channel
-adaptive-hardening capacity (T6), and the response-modeling contract as the
-methodological spine. Six claims are explicitly killed; the conditional toys
-and applications are scoped.
+### Hard rule
 
-The remaining era-1 work is not new research. Iteration 47 completed the
-figures, references, appendices, and reproducible-build polish pass. Era 1 is
-ready for closure decision after reviewing the committed outputs.
+Do not structurally rewrite `book/multidimensional-goodhart.typ` until
+`spine.md` is user-approved. The manuscript may be read as source material;
+it is not the active editing target.
 
-## Era-1 deliverables
+### Why crystallization, why now
 
-Era 1 closes when these artifacts exist and are mutually consistent:
+The trigger is concrete: the argument cannot currently be stated in one
+or two sentences. The manuscript has results, a stable math spine, and an
+abstract, but no single thesis that the rest of the document obviously
+serves. Further structural editing on the book before that thesis is fixed
+would be premature.
 
-1. **The book** — `book/multidimensional-goodhart.typ`, re-spined into the
-   six-part structure from `spine-refactor.md`. Long-form, comprehensive, the
-   deep-context reference.
-2. **The abstract** — `book/multidimensional-goodhart-abstract.typ`, 2–4
-   pages, standalone discussion starter. Project motivation, core findings,
-   killed claims in compressed form, falsifier, minimal literature
-   relation. No deep context (deep context lives in the book).
-3. **The theorem document** — `research/core-math.md`. Bare statements,
-   hypotheses, dependencies, non-license clauses, and book pointers for
-   proofs. Independently auditable by a mathematician or LLM. **No proof
-   prose duplicated between this file and the book.**
-4. **The project-state registry** — `research/project_state_after_iteration43.md`,
-   produced by `consolidation.md` Workstream A. The file a future reviewer
-   (human or LLM) reads first.
-5. **The question split** — `research/{closed,open,parked}_questions.md`,
-   produced by `consolidation.md` Workstream E.
-6. **Clean repo** — archive/delete pass complete; `cd book && make` builds
-   the book and abstract from a clean checkout; all simulation targets run
-   deterministically; `git status --short` is clean after a build.
+This is a narrowing step, not another manuscript rewrite. It should produce the
+claim that later editing serves, or fail quickly enough that direct editing can
+resume without much lost motion.
 
-The medium-length `multidimensional-goodhart-paper.typ` is **deprecated** and
-archived rather than rebuilt. The abstract absorbs its discussion-starter role;
-the book absorbs its long-form role.
+**Abandonment criterion.** A wall-clock budget plus user judgment: if
+`spine.md` is not approved within roughly one week of focused work, or if
+the user calls the process stuck before then, drop crystallization and
+return to direct editing under the constraint that every change must name
+the claim it is in service of.
 
-## Era 2: deliberately open
+### Target artifact: `spine.md`
 
-Era 2 is not chartered here. By the time era 1 closes, the project will have
-a clean repo, a re-spined book, a 2–4 page abstract, `core-math.md`, and a
-question split. What to do next — whether to start Lean, pursue a new
-research thread, or pause — is a decision for the moment era 1 ships, not
-now.
+`spine.md` is the compact, mostly non-mathematical source of truth that
+future section planning and manuscript rewriting must obey. It is not a
+scratchpad.
 
-The one parked option with an existing plan is
-`could-do/lean_validation_roadmap.md`. Its gate is `core-math.md`, which
-era 1 produces. The roadmap remains available; it does not become active
-unless and until someone deliberately picks it up.
+**Definition of done for `spine.md`:**
 
-### Parked era-1 source material
+- ≤ 2 pages.
+- Central question stateable in one sentence.
+- Core answer stateable in 2–3 sentences, without theorem inventory.
+- Each prospective section named with a one-sentence role.
+- Refused claims listed explicitly.
+- Reader-interest order honored: context → challenge → typical approach →
+  limitations → proposal and desired properties → evaluation method →
+  roadmap.
 
-- `could-do/example_draft.md` — worked hospital scorecard contract with
-  action geometry, gaming condition, and evidence split. Alt source for future
-  hospital-scorecard prose; do not treat as an active obligation.
+### Process
 
-## Ordering reasoning, summarized
+Five stages, each gated on user approval. The LLM drafts; the user decides.
 
-The execution order is forced by data dependencies, not preference:
+1. **Lock the question and the answer.** LLM proposes 3–5 candidate central
+   questions and, for each, a plain-language answer separating main result,
+   strongest support, and what remains open. User selects or revises both
+   together — question and answer co-determine each other. *Gate:* question
+   + answer pair is locked before moving on.
 
-1. **Source authority** — what is canonical, what is parked, what the
-   canonical theorem set is — has to be settled before any manuscript reorg,
-   because the reorg's source list is exactly that classification.
-   `core-math.md` is produced inside consolidation for the same reason.
-2. **Structure** before **prose**, because structural moves invalidate
-   line-level work.
-3. **Prose** before **figures, references, and build green-light**, because
-   figure references and proposition numbers shift through both upstream
-   passes.
-4. **Era 2 is left open.** No era-2 work is gated by this document; the
-   parked Lean roadmap waits for someone to deliberately pick it up.
+2. **Lock the contribution stack and the comparison target.** LLM maps the
+   answer to conceptual / formal / methodological contribution, implications,
+   and open questions, then names the specific limitation in the typical
+   approach the manuscript responds to (scalar Goodhart slogans, unlicensed
+   theorem transfer, generic dimensionality claims, score-only
+   interpretation, insufficient response modeling, …). User picks the
+   primary contribution level and approves the comparison target. *Gate:*
+   contribution hierarchy and limitation are sharp and fair.
 
-This ordering is also what the paradigm-forced review would force: each step
-declares which contract primitives it needs (canonical theorem set, stable
-section names, fixed proposition numbers, stable figure list) and what
-artifact changes if it succeeds.
+3. **State the proposal and desired properties.** LLM drafts the proposal
+   in non-technical terms and proposes desired properties: declaring the
+   response channel before calculation, separating selection from
+   intervention, separating private affordability from welfare, naming
+   hidden value or harm before scorecard claims, making failure conditions
+   explicit. User marks each property essential or supporting. *Gate:*
+   success criteria are explicit.
 
-## Guardrails carried from prior plans
+4. **Choose the evidence mix.** LLM proposes how to convince the reader:
+   formal theorem inventory, killed-claims gallery, falsifiers, worked
+   stress-test cases, literature primitive-attribution table. User decides
+   the mix and what belongs in `spine.md` vs. later. *Gate:* proof and
+   evidence strategy agreed.
 
-- Do not edit book or archived paper files outside active prose-pass and polish
-  scopes. The application-template promotion gate (Iteration 38) and the
-  Iteration-35 deterministic-finite-channel adaptive-hardening boundary are
-  closed; do not re-promote claims past those gates.
-- Do not start new simulations unless consolidation's Workstream F selects a
-  concrete research question that needs one. Iteration 36's dynamic-toy
-  boundary is the current stop.
-- The recursive / minimum-complexity attractor question (Q18) stays parked
-  until a complexity functional is fixed before inspection and a failure
-  condition is declared.
+5. **Draft `spine.md`, then spine v3.0.** First produce `spine.md` per the
+   definition of done above. After user approval, expand it into spine v3.0:
+   a section-by-section manuscript spine in a separate file (`spine-v3.md`),
+   reviewed section-by-section. Only after spine v3.0 is approved does the
+   manuscript source change.
 
-## What this file replaces
+### Reader-interest mapping
 
-- `meta-consolidation-after-iteration43.md` and `paradigm-forced-review-plan.md`
-  are merged into `consolidation.md`.
-- The Iteration-36 "completed context" block from the previous `next-steps.md`
-  is removed per its own deletion rule. The live map after Iteration 42 is
-  preserved in `consolidation.md` as the starting inventory.
-- `could-do/prose-iteration.md` is promoted to active as `prose-pass.md`,
-  with sections absorbed by `spine-refactor.md` marked accordingly.
+Stage 1 supplies the challenge and the proposal-answer. Stage 2 supplies
+the typical approach and its limitations. Stage 3 supplies the proposal
+and desired properties. Stage 4 supplies the evaluation method. Stage 5
+supplies the roadmap and section roles.
 
-## Era 1: execution order
+## Era-1 audit trail
 
-Run these in order. Reasoning for the ordering follows each entry.
-
-## Iteration 46: `prose-pass.md` — completed book-only prose pass
-
-Completed. The pass edited only `book/multidimensional-goodhart.typ`, preserved
-the Goodhart-opening repair, kept the license/caveat scaffolding, and
-regenerated only the book PDF.
-
-**Why third.** Several structural items in the original prose-iteration plan
-are absorbed by spine-refactor (intro reorganization, Ch.7 retitle, demoting
-meta-commentary). The remaining work is line-level and applies to the
-re-spined book. Running this before spine would waste effort on text that
-gets moved or rewritten.
-
-## Iteration 47: `polish.md` — completed figures, references, appendices, build green-light
-
-Completed. The pass moved current-facing proposition language to T1–T6,
-audited `refs.bib` against the book and abstract, added a compact bibliography
-to the abstract, promoted four high-value generated figures, superseded the old
-appendix figure set, removed dynamic title-page date output, checked
-`core-math.md` pointers, and green-lit the reproducible build and simulation
-stack.
-
-**Why last.** Everything upstream changes proposition numbering, figure
-references, and prose. Doing figures before spine wastes the figure pass;
-doing the citation audit before the prose pass wastes it. The plan's own
-note ("Ask user before implementing these — they are most efficient to do
-before actually publishing") supports this position.
+The Era-1 closure planning is archived at
+[`archived/era1-closure-history.md`](archived/era1-closure-history.md).
+Superseded for active planning by the crystallization process above.

@@ -101,3 +101,43 @@ Failure condition: value weights are unavailable, arbitrary, or chosen after
 observing the selected distribution.
 
 Target files: `research/claim_audits.md`; future application notes.
+
+## O8. Zhuang & Hadfield-Menell incorporation or rejection
+
+Question: does the Zhuang & Hadfield-Menell 2020 below-baseline overoptimization
+result (state with `L` utility attributes, proxy optimizing a strict subset of
+`J < L` of them, true utility driven below the no-optimization baseline as
+optimization pressure rises) instantiate the response-modeling contract, and if
+so under which declared primitives? Concretely: which response channel does it
+declare (allocation/intervention over states, not baseline reweighting), what
+aggregation rule and attribute-coupling assumptions drive the below-baseline
+conclusion, and does the result embed into an existing theorem (T1/T2 selection
+envelope, or the T4/T5 intervention-aggregation calculations) or expose a
+primitive the project has not captured?
+
+Motivation: before this entry, the project had no citation to Z&HM anywhere in
+`book/`, `research/`, or the bibliography, yet it is the most direct prior
+statement of the "optimize a proxy over a subset of attributes, harm the
+unmeasured ones" phenomenon. Any framing of the project as a generalization of
+Z&HM is currently unsupported until the embedding is worked out the way
+El-Mhamdi & Hoang 2024 already was in
+`research/reviews/formal_analogue_lit_map.md`.
+
+Cheapest layer: literature reading plus an embedding attempt against the
+contract primitives, before any new theorem or simulation. Reuse the
+El-Mhamdi/Hoang embedding template: state Z&HM's objects, map them to
+`(U, K_theta, W_theta, P, phi, aggregation, harm)`, and identify the exact
+hypothesis (e.g. unbounded attributes, monotone coupling, fixed resource
+budget) that produces the below-baseline divergence.
+
+Failure condition: the below-baseline result depends on an assumption the
+project has explicitly refused -- unconditional dimensional scaling, a generic
+"more measured dimensions is worse" claim (`negative_results.md` Iter 1, 5), or
+a coupling primitive the project killed (covariance as general primitive, Iter
+2-3). In that case Z&HM is a contrast class, not an anchor, and the project must
+say which refused assumption its own results decline to inherit rather than
+claim to generalize it.
+
+Target files: `research/reviews/formal_analogue_lit_map.md` (new primitive-map
+row, mirroring the El-Mhamdi rows); `research/claim_audits.md` (license/non-
+license row once the embedding is settled).
