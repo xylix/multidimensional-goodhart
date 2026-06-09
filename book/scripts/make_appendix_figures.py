@@ -260,7 +260,7 @@ def population_gaming_band() -> None:
     axes[0].axvline(threshold - delta, color="0.45", lw=0.7, ls=(0, (3, 2)))
     axes[0].text(threshold + 0.06, 0.18, "threshold t", fontsize=7.6, rotation=90, color="0.28")
     axes[0].text(threshold - delta + 0.05, 0.52, "gaming band", fontsize=8.2, color="#7d3d24")
-    axes[0].text(-2.48, 0.90, "0 < t - Q <= sqrt(2 K V)", fontsize=8.2)
+    axes[0].text(-2.48, 0.90, "0 < t - Q <= sqrt(2 κ V)", fontsize=8.2)
     axes[0].set_xlabel("quality Q")
     axes[0].set_ylabel("F_Q(Q)")
     draw_range_frame(axes[0], (-2.6, 2.2), (0.0, 1.02))
@@ -268,12 +268,12 @@ def population_gaming_band() -> None:
     x = np.arange(len(k_values))
     axes[1].bar(x, h_pop_normal, 0.46, color="0.22", linewidth=0)
     axes[1].set_xticks(x, [f"{k:.2g}" for k in k_values])
-    axes[1].set_xlabel("aggregate gaming capacity K")
+    axes[1].set_xlabel("aggregate gaming capacity κ")
     axes[1].set_ylabel("H_pop: population harm")
     axes[1].text(
         -0.35,
         max(h_pop_normal) * 1.12,
-        "larger K widens the entry band, so H_pop grows;\nH_per stays the deficit d for every gamer in the band",
+        "larger κ widens the entry band, so H_pop grows;\nH_per stays the deficit d for every gamer in the band",
         fontsize=7.7,
         color="0.22",
     )

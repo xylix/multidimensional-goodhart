@@ -64,7 +64,7 @@ per point of score it produces. Changing the measured set conserves hidden harm
 exactly when every active channel does the same hidden harm per score point.
 When the rates differ, adding or removing metrics reduces, increases, or
 reroutes harm according to which channels the design leaves cheap. The
-dimension count never enters by itself. That statement is made precise as T5
+dimension count never enters by itself. That statement is made precise as Theorem 5 (T5)
 once the model behind it has been declared. Everything before the theorem
 exists to establish what such a declaration requires; everything after it, to
 say when the calculation does and does not transfer.
@@ -248,17 +248,17 @@ state $s in S$ contains what the evaluation later sees, such as test scores,
 curriculum, student participation, and hidden learning outcomes when they are
 measured.
 
-The response kernel $K_theta(d s | u)$ is the conditional law of the observed
+The response kernel $K_theta (d s | u)$ is the conditional law of the observed
 state for a fixed type $u$ after policy exposure $theta$ — read the
 conditioning in that order: fix the type, expose it to the policy, and the
 kernel returns the distribution over observed states. It is where the model
 puts what the same school does after seeing the funding rule. The selection
-weight $W_theta(u) >= 0$ is where the model puts changes in which fixed types
+weight $W_theta (u) >= 0$ is where the model puts changes in which fixed types
 appear in the realized population. With these objects, the induced law is
 
-$ mu_theta(A) =
-  (integral W_theta(u) K_theta(A | u) nu(d u)) /
-  (integral W_theta(u) nu(d u)). $
+$ mu_theta (A) =
+  (integral W_theta (u) K_theta (A | u) nu(d u)) /
+  (integral W_theta (u) nu(d u)). $
 
 The formula averages fixed-type response laws over the baseline type law,
 weighted by participation, and normalizes. Pure selection means
@@ -285,7 +285,7 @@ rather than a retrospective label:
   threshold, ranking, scorecard, prize, penalty, benchmark, or feedback signal
   indexed by $theta$?]
 - #contract-row[Response channel:][Does $theta$ only reweight fixed types through
-  $W_theta(u)$, change fixed-type behavior through $K_theta(d s | u)$, or both?
+  $W_theta (u)$, change fixed-type behavior through $K_theta (d s | u)$, or both?
   Selection changes who is represented; intervention changes what a fixed unit
   does or produces.]
 - #contract-row[Action/search geometry:][If fixed-type behavior changes, what
@@ -313,7 +313,7 @@ intervention feasibility. The aggregation rule is needed before any scorecard
 comparison has content. A claim that skips a primitive is implicitly asserting
 that its output does not depend on it.
 
-The first row is load-bearing. The contract is not a single formula with one
+The first field is load-bearing. The contract is not a single formula with one
 fixed output. It is an adequacy test for a proposed output. A scalar hidden
 drift claim needs less information than a full response kernel. A distribution
 over $k$ discrete states has $k - 1$ degrees of freedom. A hidden drift vector
@@ -390,7 +390,7 @@ rate: how much hidden harm channel $j$ does per unit of score it produces.
 With $kappa_j > 0$ and $w_j > 0$ on the measured set, the fixed-deficit
 per-agent hidden harm of the cost-minimizing action is
 
-$ H_M(d) =
+$ H_M (d) =
   d (sum_(j in M) h_j kappa_j w_j) /
     (sum_(j in M) kappa_j w_j^2). $
 
@@ -449,7 +449,7 @@ statics, not a corollary; under it, harm can grow with the number of
 components.
 
 *Separable quadratic costs.* Proportional loading, and with it the closed
-form of $H_M(d)$, is quadratic-cost algebra. Other convex costs still give an
+form of $H_M (d)$, is quadratic-cost algebra. Other convex costs still give an
 affordability budget but not the exchange-rate formula.
 
 *Fixed deficit, per agent.* The result prices one unit closing one deficit.
@@ -496,7 +496,7 @@ weights, with the induced law absolutely continuous with respect to baseline,
 $mu_theta << mu_0$. Write
 $L = d mu_theta / d mu_0$ and
 $delta = norm(L - 1)_(L^2(mu_0))$, and call
-$B_H(theta) = EE_(mu_theta)[H] - EE_(mu_0)[H]$
+$B_H (theta) = EE_(mu_theta)[H] - EE_(mu_0)[H]$
 the selection drift of the hidden vector $H$.
 
 #theorem[1][Coordinate-explicit selection bound][
@@ -504,15 +504,15 @@ For hidden coordinates $H_i$ with finite second moments and baseline standard
 deviations $s_i$,
 $ abs(EE_(mu_theta)[H_i] - EE_(mu_0)[H_i]) <= delta s_i $
 for each coordinate. After a Euclidean coordinate metric is declared,
-$ norm(B_H(theta))_2 <= delta norm(s)_2 $.
+$ norm(B_H (theta))_2 <= delta norm(s)_2 . $
 ]
 
 #theorem[2][Value-weighted/operator selection bound][
 For a declared scalar value direction $v$ and covariance $Sigma_H$,
-$ abs(v dot B_H(theta)) <= delta sqrt(v^T Sigma_H v) $.
+$ abs(v dot B_H (theta)) <= delta sqrt(v^T Sigma_H v) . $
 For a declared norm,
-$ norm(B_H(theta))_V <=
-  delta sup_(norm(v)_(V,*) <= 1) sqrt(v^T Sigma_H v) $.
+$ norm(B_H (theta))_V <=
+  delta sup_(norm(v)_(V,*) <= 1) sqrt(v^T Sigma_H v) . $
 ]
 
 These are Hilbert-space Cauchy--Schwarz bounds because hidden drift is an
@@ -565,7 +565,7 @@ primitives — action, cost, stakes, and pass condition — have been declared.
 With finite-dimensional action space, closed proper convex cost $c$, linear
 proxy gain $w dot a$, and regularity for convex duality, define
 $m(d) = inf_a { c(a): w dot a >= d }$. Then
-$ m(d) = sup_(lambda >= 0) [lambda d - c^*(lambda w)] $.
+$ m(d) = sup_(lambda >= 0) [lambda d - c^*(lambda w)] . $
 Gaming under stakes $V$ is feasible exactly when $m(d) <= V$ in this declared
 private-cost model.
 ]
@@ -587,12 +587,12 @@ $kappa_(j,t)$.
 
 #theorem[6][Deterministic adaptive-hardening capacity boundary][
 Let
-$ S_t(M) = sum_(j in M) kappa_(j,t) w_j^2 $
+$ S_t (M) = sum_(j in M) kappa_(j,t) w_j^2 $
 and $T = d^2 / (2V)$. At time $t$, fixed-deficit gaming is feasible exactly
-when $S_t(M) >= T$. Hardening reaches no-gaming exactly when
-$S_t(M) < T$. A progress-aware largest-action multiplicative rule terminates in
+when $S_t (M) >= T$. Hardening reaches no-gaming exactly when
+$S_t (M) < T$. A progress-aware largest-action multiplicative rule terminates in
 finite time when channels are finite, positive-weight, and floor capacity
-satisfies $S_"floor"(M) < T$.
+satisfies $S_"floor" (M) < T$.
 ]
 
 Nothing broader is licensed. The theorem does not cover stochastic
@@ -608,7 +608,8 @@ The project did not prove a generic residual-shape law. What survives is a
 conditional taxonomy:
 
 - Quadratic costs select the minimum-cost direction, often proportional to
-  $C w$ in a smooth unconstrained model.
+  $C w$ — $C$ the declared cost matrix in $c(a) = a^T C^(-1) a \/ 2$, $w$
+  the score weights — in a smooth unconstrained model.
 - Fixed charges create entry thresholds and active-set comparisons.
 - Caps produce spillover only after a channel saturates.
 - Low-rank affordances constrain response to an image, but do not choose a
@@ -931,8 +932,8 @@ Examples include:
   channel.
 - A hardening setting audited as having stable $M$, $d$, $V$, weights,
   separable quadratic costs, and deterministic observation, where gaming
-  remains feasible after $S_t(M) < d^2/(2V)$ or stops while
-  $S_t(M) >= d^2/(2V)$ — showing the audited capacities or observation model
+  remains feasible after $S_t (M) < d^2/(2V)$ or stops while
+  $S_t (M) >= d^2/(2V)$ — showing the audited capacities or observation model
   were not the ones the agents faced.
 - An additive scorecard with defended $w_j$, $kappa_j$, and $h_j$ where
   fixed-deficit per-agent harm is conserved across active measured sets even
