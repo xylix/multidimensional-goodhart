@@ -8,7 +8,13 @@ it still ends with a user check-in before commit.
 
 Phase labels refer to the execution pipeline in `plans/next-steps.md`.
 
-## Phase 0 — Spine-neutral consistency fixes (executable now)
+## Phase 0 — Spine-neutral consistency fixes — EXECUTED June 9, 2026
+
+Executed as Iteration A; all items below done and verified (build clean,
+defect greps clean, no orphan bib keys, citations resolve). The identical
+`Delta(v dot H)` and Q18 defects in the abstract were fixed in the same
+batch, which also resolved an abstract-only `Delta` overload with the T3
+wedge symbol.
 
 Source: consistency review of the Iteration 47 draft (June 9, 2026),
 cross-checking `book/multidimensional-goodhart.typ` against
@@ -23,28 +29,28 @@ approval without violating the hard rule in `next-steps.md`.
 
 ### 0.1 Undefined notation in the book
 
-- [ ] Define `B_H(theta) = E_theta[H] - E_0[H]` (selection drift) in §2.1
+- [x] Define `B_H(theta) = E_theta[H] - E_0[H]` (selection drift) in §2.1
       before T1 uses it. `core-math.md` defines it; the book never does.
-- [ ] Define or rewrite `Delta(v . H)` in T2 (§2.1). core-math.md states the
+- [x] Define or rewrite `Delta(v . H)` in T2 (§2.1). core-math.md states the
       centered form `v . (H - E_0 H)`; the book's `Delta` is unexplained.
-- [ ] `gamma` ("signal adequacy", §4.2 hospital readmissions) is defined
+- [x] `gamma` ("signal adequacy", §4.2 hospital readmissions) is defined
       nowhere in the book or in core-math.md — likely a leftover from an
       earlier draft. Define it or cut the symbol.
-- [ ] State `mu_theta << mu_0` explicitly in §2.1 before writing
+- [x] State `mu_theta << mu_0` explicitly in §2.1 before writing
       `L = d mu_theta / d mu_0`. core-math.md states it; the book only says
       "enough integrable moments" yet a later falsifier bullet leans on
       "the stated moment and absolute-continuity conditions."
 
 ### 0.2 Symbol collision on `M`
 
-- [ ] §2.2 uses a hidden harm vector `(M, 0)` with `M` as a scalar magnitude
+- [x] §2.2 uses a hidden harm vector `(M, 0)` with `M` as a scalar magnitude
       ("hidden harm grows with `M`"), while `M` is the measured channel set
       in T5, T6, and the falsifiers. Rename the scalar to a letter unused in
       the theorem set.
 
 ### 0.3 Verbatim duplication of the `mu_theta` block
 
-- [ ] The `mu_theta(A)` display equation plus the "Pure selection means…
+- [x] The `mu_theta(A)` display equation plus the "Pure selection means…
       Intervention means…" paragraph appears nearly verbatim in §1.2 and
       §1.4. Phase 0 fix: make the §1.4 occurrence visibly reference §1.2
       ("as in §1.2") so it reads as deliberate reprise, not editing
@@ -52,26 +58,26 @@ approval without violating the hard rule in `next-steps.md`.
 
 ### 0.4 Stale cross-file pointers in core-math.md
 
-- [ ] `research/core-math.md` book pointers still say "Part II, Section
+- [x] `research/core-math.md` book pointers still say "Part II, Section
       5/6/7/8" — pre-dating the "Remove manual heading numbering" commit.
       Update to current numbering: T1/T2 → §2.1, T3/T4 → §2.2, T5 → §2.3,
       T6 → §2.4. Section titles already match; only the numbers are stale.
 
 ### 0.5 Bibliography loose ends
 
-- [ ] `lucas1976critique` is in refs.bib but never cited, so Typst silently
+- [x] `lucas1976critique` is in refs.bib but never cited, so Typst silently
       omits it from the rendered references. Either cite it in the Part III
       genealogy (natural companion to @goodhart1975) or delete the entry.
-- [ ] §4.3 name-checks DORA and the Leiden Manifesto with no citations, in a
+- [x] §4.3 name-checks DORA and the Leiden Manifesto with no citations, in a
       document that otherwise cites everything. Add bib entries and cite, or
       drop the names.
 
 ### 0.6 Repo-internal references a book reader cannot resolve
 
-- [ ] §7.1 leads with "The signature open problem is Q18" — internal
+- [x] §7.1 leads with "The signature open problem is Q18" — internal
       question numbering. Name the conjecture (the residual-shape
       conjecture) and drop the index.
-- [ ] Same category as the "This section covers T1 and T2 in
+- [x] Same category as the "This section covers T1 and T2 in
       `research/core-math.md`" lines (also flagged in the human review and
       in Phase 2 §6 below). Scrub all repo-internal addressing from the
       manuscript as one batch.
@@ -84,17 +90,15 @@ approval without violating the hard rule in `next-steps.md`.
       page; iteration tracking stays in source comments and git history.
       Execute the edit with the Phase 0 batch.
 
-### 0.8 Falsifier framing in §6.2 — HELD, user wants more discussion first
+### 0.8 Falsifier framing in §6.2 — approved June 9, 2026
 
-Status June 9, 2026: explicitly not signed off; excluded from the Phase 0
-batch. Debate with the user before touching §6.2. The open question: the
-reframe shifts where falsifiability lives — from the theorems (which, being
-proved, cannot be empirically violated under their hypotheses) to the
-declaration methodology (audited primitives + failed prediction ⇒ the
-contract fields do not track the mechanism). That is more honest but
-rhetorically weaker; decide together whether the book wants it.
+Signed off after discussion: the reframe shifts falsifiability from the
+theorems (which, being proved, cannot be empirically violated under their
+hypotheses) to the declaration methodology (audited primitives + failed
+prediction ⇒ the contract fields do not track the mechanism). User chose
+honesty over rhetoric; included in the Phase 0 batch.
 
-- [ ] Two falsifier bullets describe empirically observing a violation of a
+- [x] Two falsifier bullets describe empirically observing a violation of a
       proven theorem "under the stated conditions," which cannot happen if
       the conditions hold — a hostile reviewer can call the falsifiers
       vacuous. Reframe as tests of the declaration process: independently
@@ -105,10 +109,10 @@ rhetorically weaker; decide together whether the book wants it.
 
 ### 0.9 Verification for the Phase 0 batch
 
-- [ ] `cd book && make` (or `typst compile`) passes after the edits.
-- [ ] For every symbol in core-math.md "Stable definitions" that the book
+- [x] `cd book && make` (or `typst compile`) passes after the edits.
+- [x] For every symbol in core-math.md "Stable definitions" that the book
       uses, confirm the book defines it.
-- [ ] Re-run the refs.bib orphan/resolution audit from the completed
+- [x] Re-run the refs.bib orphan/resolution audit from the completed
       Iteration 47 hygiene pass below.
 
 ## Phase 2/3 — Human-review structural polish pass (blocked on spine v3)

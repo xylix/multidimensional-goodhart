@@ -36,8 +36,6 @@
   #text(size: 2.1em, weight: "bold")[Multidimensional Goodhart]
   #v(0.35cm)
   #text(size: 1.18em)[Response Channels, Scorecards, and Residual Shape]
-  #v(0.9cm)
-  #text(size: 1em)[Iteration 47 draft — seven-part spine]
 ]
 #v(1.7cm)
 
@@ -185,7 +183,8 @@ The response kernel $K_theta(d s | u)$ is the conditional law of the observed
 state for a fixed type $u$ after policy exposure $theta$. It is where the model
 puts what the same school does after seeing the funding rule. The selection
 weight $W_theta(u) >= 0$ is where the model puts changes in which fixed types
-appear in the realized population. With these objects,
+appear in the realized population. With these objects, the induced law from
+the previous section reads the same way, now with school-score content:
 
 $ mu_theta(A) =
   (integral W_theta(u) K_theta(A | u) nu(d u)) /
@@ -287,14 +286,15 @@ movement alone.
 
 == Selection channel
 
-This section covers T1 and T2 in `research/core-math.md`.
-
 Before the theorem can be used, the contract must supply a baseline law, a pure
 selection channel, hidden coordinates or a value metric, and enough integrable
 moments. Pure selection means $K_theta = K_0$ and the policy changes only the
-weights. In the induced marginal law, write
+weights, with the induced law absolutely continuous with respect to baseline,
+$mu_theta << mu_0$. Write
 $L = d mu_theta / d mu_0$ and
-$delta = norm(L - 1)_(L^2(mu_0))$.
+$delta = norm(L - 1)_(L^2(mu_0))$, and call
+$B_H(theta) = EE_(mu_theta)[H] - EE_(mu_0)[H]$
+the selection drift of the hidden vector $H$.
 
 #theorem[1][Coordinate-explicit selection bound][
 For hidden coordinates $H_i$ with finite second moments and baseline standard
@@ -306,7 +306,7 @@ $ norm(B_H(theta))_2 <= delta norm(s)_2 $.
 
 #theorem[2][Value-weighted/operator selection bound][
 For a declared scalar value direction $v$ and covariance $Sigma_H$,
-$ abs(Delta(v dot H)) <= delta sqrt(v^T Sigma_H v) $.
+$ abs(v dot B_H(theta)) <= delta sqrt(v^T Sigma_H v) $.
 For a declared norm,
 $ norm(B_H(theta))_V <=
   delta sup_(norm(v)_(V,*) <= 1) sqrt(v^T Sigma_H v) $.
@@ -328,8 +328,6 @@ zero-covariance example $H = Z^2 - 1$ survives as a warning.
 ) <fig:t1-t2-drift-envelope>
 
 == Intervention channel
-
-This section covers T3 and T4 in `research/core-math.md`.
 
 Before an intervention calculation can be used, the contract must supply a
 fixed-type action model: actions $a$, private cost $c(a)$, proxy gain $w dot a$,
@@ -359,8 +357,8 @@ private-cost model.
 
 Cost minimization and hidden-welfare assessment answer different questions. For
 example, if two proxy channels have equal private cost and equal score weight
-but hidden harm vector $(M, 0)$, cost minimization splits effort while hidden
-harm grows with $M$. The budget licenses private affordability; welfare
+but harm rates $(h, 0)$, cost minimization splits effort while hidden
+harm grows with $h$. The budget licenses private affordability; welfare
 requires a hidden harm functional.
 
 #figure(
@@ -369,8 +367,6 @@ requires a hidden harm functional.
 ) <fig:t4-t5-cost-ellipse>
 
 == Multidimensional scorecards — the keeper
-
-This section covers T5 in `research/core-math.md`.
 
 The scorecard calculation needs more than "more metrics." It needs an additive
 score, measured channel set $M$, weights $w_j$, separable quadratic costs
@@ -406,8 +402,6 @@ can make harm grow with the number of components.
 ) <fig:population-gaming-band>
 
 == Adaptive hardening — narrow but real
-
-This section covers T6 in `research/core-math.md`.
 
 The hardening result is narrow by design. The contract is fixed finite measured
 set $M$, fixed deficit $d$, fixed stakes $V$, fixed weights, additive proxy
@@ -454,7 +448,9 @@ response-shape conjecture into a declared model with falsifiers.
 
 Goodhart, Campbell, Strathern, and Manheim--Garrabrant are genealogy, not proof
 sources for the calculations above. Goodhart's original macroeconomic warning
-concerns policy-contaminated regularities @goodhart1975. Campbell's warning
+concerns policy-contaminated regularities @goodhart1975; the Lucas critique is
+its companion precedent, arguing that policy change invalidates the estimated
+relations policy relies on @lucas1976critique. Campbell's warning
 concerns social indicators under decision pressure @campbell1979. Strathern's
 formulation supplies the familiar compressed warning @strathern1997. Manheim
 and Garrabrant provide a useful cause taxonomy @manheim2018categorizing.
@@ -559,7 +555,7 @@ delayed admissions, patient avoidance, better follow-up care, or mixtures.
 
 The auditable primitives are concrete: effective score weights $w$, stakes
 $V$, response ease $kappa$ for coding, discharge timing, follow-up, and patient
-selection channels, hidden harm rates $h$, and signal adequacy $gamma$ for the
+selection channels, hidden harm rates $h$, and the signal adequacy of the
 measured components. If these are unavailable, the design consequence is not
 "assume the score is bad." It is: do not use the toy diagnostic, collect action
 traces, monitor hidden patient outcomes where possible, pilot or lower leverage,
@@ -573,7 +569,8 @@ model the contract explicitly requires.
 == Scientific metrics
 
 Publication counts, citations, grants, venue prestige, and rankings are already
-covered by responsible-metrics warnings such as DORA and the Leiden Manifesto.
+covered by responsible-metrics warnings such as DORA @dora2013 and the Leiden
+Manifesto @hicks2015leiden.
 The framework does not claim novelty for the warning that crude metrics can
 distort science.
 
@@ -688,40 +685,52 @@ welfare language without the primitives that would make the claim testable.
 
 == Falsifiers
 
-The contract itself is falsifiable as a modeling discipline. A concrete
-falsifier would be a domain where the primitives are declared in advance,
-response channel and action traces are observable enough to distinguish the
-nearby mechanisms, and the licensed calculation systematically predicts the
-wrong response shape or direction while a simpler score-only rule predicts it
-correctly.
+The contract is falsifiable as a modeling discipline, but the failure point
+has to be located honestly. The theorems themselves cannot be empirically
+violated while their hypotheses hold; they are proved. What can fail is the
+claim the contract makes about a domain: that independently audited
+declarations of channel, costs, stakes, and harm rates track the response
+mechanism well enough for the licensed calculation to predict response shape
+or direction. A concrete falsifier is therefore a domain where the primitives
+are declared and audited in advance, response channel and action traces are
+observable enough to distinguish nearby mechanisms, and the licensed
+calculation still systematically predicts wrongly while a simpler score-only
+rule predicts correctly.
 
 Examples include:
 
-- In a pure-selection setting with measured $L$ and hidden coordinates, hidden
-  drift repeatedly exceeds the $delta s_i$ envelope under the stated moment and
-  absolute-continuity conditions.
-- In a fixed finite deterministic hardening setting, with stable $M$, $d$,
-  $V$, weights, separable quadratic costs, and deterministic observation,
-  gaming remains feasible after $S_t(M) < d^2/(2V)$ or stops while
-  $S_t(M) >= d^2/(2V)$.
-- In an additive scorecard with defended $w_j$, $kappa_j$, and $h_j$,
+- A setting independently audited as pure selection, with the declared moment
+  and absolute-continuity conditions checked, where hidden drift repeatedly
+  exceeds the $delta s_i$ envelope. The bound cannot fail under its
+  hypotheses, so repeated excess drift would show that the audit and the
+  contract's response-channel field failed to detect a fixed-type response
+  channel.
+- A hardening setting audited as having stable $M$, $d$, $V$, weights,
+  separable quadratic costs, and deterministic observation, where gaming
+  remains feasible after $S_t(M) < d^2/(2V)$ or stops while
+  $S_t(M) >= d^2/(2V)$ — showing the audited capacities or observation model
+  were not the ones the agents faced.
+- An additive scorecard with defended $w_j$, $kappa_j$, and $h_j$ where
   fixed-deficit per-agent harm is conserved across active measured sets even
-  when the exchange-rate condition $h_j = c w_j$ fails, or fails to be
-  conserved when the condition holds.
+  though the exchange-rate condition $h_j = c w_j$ fails, or moves even
+  though the condition holds — showing the declared channels, costs, or harm
+  rates were not the ones generating the response.
 
-If those failures survived audit, the framework would not merely need prose
-repair; the licensed theorem import would be wrong or the contract fields would
-not track the response mechanism they were supposed to track.
+Such failures, if they survived audit, would not call for prose repair. They
+would mean the contract fields do not track the response mechanisms they were
+designed to track — that disciplined declaration does not buy predictive
+power. That is the falsifiable content of the framework.
 
 = Open Agenda
 
 == The residual-shape conjecture
 
-The signature open problem is Q18: when does repeated proxy repair drive hidden
-failure toward a predictable residual shape, such as a low-complexity attractor?
+The signature open problem is the residual-shape conjecture: when does
+repeated proxy repair drive hidden failure toward a predictable residual
+shape, such as a low-complexity attractor?
 The current answer is negative unless a mechanism is named first.
 
-Resolving Q18 requires at least five declarations: a response mechanism, a
+Resolving it requires at least five declarations: a response mechanism, a
 complexity or shape functional fixed before inspection, a policy-update rule, a
 composition rule for repeated repair, and a failure condition. It would count
 as progress to prove a sparse, low-rank, or low-description-length attractor

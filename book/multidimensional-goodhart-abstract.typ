@@ -65,10 +65,11 @@ calculations can be imported and what it refuses to infer.
 
 #tight[
 - *Selection bounds.* For pure selection with
-  $delta = norm(d mu_theta / d mu_0 - 1)_(L^2(mu_0))$, hidden coordinates
+  $delta = norm(d mu_theta / d mu_0 - 1)_(L^2(mu_0))$ and drift
+  $B_H = EE_(mu_theta)[H] - EE_(mu_0)[H]$, hidden coordinates
   satisfy $abs(B_(H_i)) <= delta s_i$ and, after declaring the Euclidean
   coordinate norm, $norm(B_H)_2 <= delta norm(s)_2$. With a declared scalar
-  value vector $v$, $abs(Delta(v dot H)) <= delta sqrt(v^T Sigma_H v)$.
+  value vector $v$, $abs(v dot B_H) <= delta sqrt(v^T Sigma_H v)$.
   The value metric is an input, not learned from score movement.
 - *Intervention budgets.* In the one-dimensional quadratic threshold toy,
   gaming is worthwhile exactly within the wedge
@@ -136,7 +137,7 @@ scalar tail-conditioned Goodhart provide formal analogues @lucas1976critique
 claim is reduction rather than unification: name the primitive a source
 contributes, and name what it omits.
 
-The signature open problem is Q18, the residual-shape conjecture: under what
+The signature open problem is the residual-shape conjecture: under what
 declared response geometry, update rule, and predeclared complexity functional
 does repeated proxy repair drive hidden failure toward a predictable residual
 shape? The current answer is negative without those declarations.
