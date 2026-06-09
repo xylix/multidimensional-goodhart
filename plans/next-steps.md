@@ -36,8 +36,11 @@ unblocked, finish or hand off cleanly, and not reach into later phases.
 
 ## Active plan files
 
-- `spine.md` — compact source of truth for the next manuscript spine;
-  drafted, awaiting user approval (the pipeline gate).
+- `spine.md` — compact source of truth for the manuscript spine; approved
+  June 9, 2026 (gate passed).
+- `spine-v3.md` — section-by-section manuscript spine expanding spine.md
+  (Phase 1 artifact); drafted June 9, 2026, under section-by-section user
+  review. Approval unblocks Phase 2.
 - `04_06_2026_human_review.md` — active raw human-review notes on the book
   PDF. Source material; actionable items are distilled into `polish.md`.
 - `polish.md` — Phase 0 consistency fixes (executable now) plus the
