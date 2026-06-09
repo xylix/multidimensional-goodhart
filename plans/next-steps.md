@@ -13,13 +13,13 @@ unblocked, finish or hand off cleanly, and not reach into later phases.
   falsifier framing. These survive any spine restructuring, which is the
   carve-out from the hard rule below. Items 0.7 and 0.8 need user input;
   batch ends with a user check-in before commit.
-- **Gate — `spine.md` approval.** User decision, not LLM work. Note on
-  semantics: `spine.md` is a specification, not a task list. "Drafted and
-  meets its definition of done" means the document is complete enough to
-  evaluate; "approval" means the user endorses its central question, core
-  answer, and section roles as the thesis the book must serve. Approval
-  does not archive it — it stays the governing reference through Phases
-  1–2 and moves to `archived/` only after the manuscript rewrite lands.
+- **Gate — `spine.md` approval. PASSED June 9, 2026.** The user approved
+  the central question, core answer (T5 exchange-rate focus), and section
+  roles after discussion. Phase 1 is unblocked. Note on semantics:
+  `spine.md` is a specification, not a task list — it stays the governing
+  reference through Phases 1–2 and moves to `archived/` only after the
+  manuscript rewrite lands. The exchange-rate-empirics track feeds its
+  section roles 9 and 12 at Phase 2+.
 - **Phase 1 — `spine-v3.md`.** After the gate: expand `spine.md` into a
   section-by-section manuscript spine per crystallization stage 5 below,
   reviewed section-by-section.

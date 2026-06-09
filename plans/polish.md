@@ -80,11 +80,19 @@ approval without violating the hard rule in `next-steps.md`.
 
 - [x] Resolved (June 9, 2026): author name stays "Xylix Pelttari" per user
       decision. The book already reads this way; no change needed.
-- [ ] Title page says "Iteration 47 draft"; the header comment cites
-      iteration-43 state files. Pick one convention or drop the iteration
-      string from the title page.
+- [x] Decided (June 9, 2026): drop the iteration string from the title
+      page; iteration tracking stays in source comments and git history.
+      Execute the edit with the Phase 0 batch.
 
-### 0.8 Falsifier framing in §6.2 — small but conceptual, get user sign-off
+### 0.8 Falsifier framing in §6.2 — HELD, user wants more discussion first
+
+Status June 9, 2026: explicitly not signed off; excluded from the Phase 0
+batch. Debate with the user before touching §6.2. The open question: the
+reframe shifts where falsifiability lives — from the theorems (which, being
+proved, cannot be empirically violated under their hypotheses) to the
+declaration methodology (audited primitives + failed prediction ⇒ the
+contract fields do not track the mechanism). That is more honest but
+rhetorically weaker; decide together whether the book wants it.
 
 - [ ] Two falsifier bullets describe empirically observing a violation of a
       proven theorem "under the stated conditions," which cannot happen if
