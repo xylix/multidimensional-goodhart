@@ -1,23 +1,32 @@
 # Prose pass — On Writing Well review of `book/multidimensional-goodhart.typ`
 
-Findings from a Zinsser-style review of the draft. Runs **after** the spine
-work is stable; the superseded detailed spine-refactor plan is archived at
-`plans/archived/spine-refactor.md`.
+**EXECUTED June 9, 2026** against the spine-v3 eight-part draft (Phase 3).
+The Phase 2 structural rewrite had already dissolved most findings; the
+residue was a five-edit pass (meta-prose trim in the contract part, an
+agreement fix and a pointer fix in Parts 4–5, a figure cross-reference,
+one "intentionally" cut) plus the polish.md "licenses" sweep. Verified by
+grep: zero hits remain for "deliberately", the §2.2 throat-clearing intros,
+the §2.3 negation pattern, and the §2.4 nominalization shapes; §3 preserved
+lines all present. The file is retained as the reference for what was
+checked.
 
-Absorption status:
-- §1.1 (open on its own claim, not negation): partly absorbed — spine Part I
-  §1 reframes the opener, but the action of pulling the residual-error line
-  forward and cutting "help science model" still applies to whatever Part I §1
-  becomes.
-- §1.2 (demote §§1.5 and §1.6 meta-commentary): absorbed — spine Part VI
-  moves these to the open agenda. Do not re-do this work.
-- §1.3 (retitle Ch.7 opener): absorbed — Ch.7 is replaced by Part III in the
-  spine.
-- §1.4 (bulletize Licensed-claims remark): still applies — the enumeration
-  re-lands somewhere in Part II §5-9 after spine.
-- All §2.x line-level work: still applies post-spine.
-- §3 (lines to preserve): still applies; protect these through spine and
-  prose passes.
+Findings from a Zinsser-style review of the (pre-spine-v3) draft.
+
+Absorption status (final, June 9, 2026):
+- §1.1 (open on its own claim, not negation): superseded — the approved
+  spine-v3 Part 1 opener is the design question plus the informal T5 answer
+  (first-page rule); the residual-shape question lives in the open agenda by
+  design. The negation-opener and "help science model" parse no longer
+  exist.
+- §1.2 (demote §§1.5 and §1.6 meta-commentary): absorbed by the spine.
+- §1.3 (retitle Ch.7 opener): absorbed by the spine.
+- §1.4 (bulletize Licensed-claims remark): moot — the remark does not exist
+  in the spine-v3 draft.
+- §2.1 ("deliberately"), §2.2 (throat-clearing), §2.3 ("I do not think"),
+  §2.6 (apologetic preambles): verified gone by grep after the rewrite.
+- §2.4 (nominalizations), §2.5 (overloaded sentences): listed instances
+  gone; fresh read-through of the new prose found five local fixes, applied.
+- §3 (lines to preserve): protected and re-verified after the pass.
 
 ## 1. Structural items the spine pass does not cover
 

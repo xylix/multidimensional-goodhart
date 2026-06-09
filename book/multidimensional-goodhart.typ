@@ -201,9 +201,8 @@ stakes. Welfare claims need a hidden value or harm model. The contract is the
 rule that says which story is being claimed before the corresponding
 calculation is imported.
 
-One status distinction does most of the work and is stated here because
-everything downstream depends on it: nearly every contract field is *declared
-or estimated, not observed*. "Hidden" in this book means hidden from the
+One status distinction does most of the work: nearly every contract field is
+*declared or estimated, not observed*. "Hidden" in this book means hidden from the
 scorecard, not necessarily from the analyst. Harm rates, value weights,
 response channels, and action costs are inputs the analyst supplies and
 defends — from audits, side data, or structural knowledge — and every licensed
@@ -234,7 +233,7 @@ scalar score may hide both gaps at once.
 
 #figure(
   image("figures/part-i-dimension-observation-gap.pdf", width: 90%),
-  caption: [Dimension and observation gaps are different contract fields. The schematic licenses the split in vocabulary, not a quantitative conclusion.]
+  caption: [Dimension and observation gaps are different contract fields. The schematic fixes the vocabulary; it draws no quantitative conclusion.]
 ) <fig:dimension-observation-gap>
 
 A type space $U$ is the model's description of the units before the policy
@@ -437,8 +436,8 @@ Affordability is not welfare.
 
 == The non-transfer boundary
 
-Every assumption in the model carries load, and the diagnostic does not
-survive their removal.
+Each assumption in the model carries load, and the diagnostic does not
+survive losing any of them.
 
 *Additive aggregation.* The weighted-average form exists because score
 contributions add. Conjunctive aggregation — requiring every measured
@@ -516,7 +515,7 @@ $ norm(B_H(theta))_V <=
 These are Hilbert-space Cauchy--Schwarz bounds because hidden drift is an
 inner product: it pairs the reweighting residual $L - 1$ with the centered
 hidden variable, and Cauchy--Schwarz turns the pairing into an envelope. The
-bounds license drift envelopes for pure reweighting. They do not identify the
+bounds give drift envelopes for pure reweighting. They do not identify the
 hidden coordinates, the value weights, or the welfare object. They do not
 apply to fixed-type response changes.
 
@@ -570,8 +569,7 @@ private-cost model.
 In T4, $c^*$ is the convex conjugate of the cost and $lambda$ is the
 multiplier pricing the score-deficit constraint. The budget licenses private
 affordability under the declared model and nothing more; the boundary between
-affordability and hidden harm is drawn where the exchange-rate diagnostic
-uses it.
+affordability and hidden harm is drawn with the exchange-rate diagnostic.
 
 == Adaptive hardening: measurement design in time
 
@@ -626,8 +624,8 @@ exchange-rate diagnostic, and each needs its own declared rule.
 Lowering the private cost of reaching the score — adding cheap channels,
 raising capacities — can recruit additional below-threshold units into
 gaming. Per-gamer harm can be conserved while population harm grows on the
-entry margin; the gaming band in the diagnostic's figure separates the two
-quantities.
+entry margin; the gaming band of @fig:population-gaming-band separates the
+two quantities.
 
 *Conjunctive aggregation.* Requiring every measured component to clear a bar
 is a different aggregation rule with different comparative statics: harm can
@@ -869,8 +867,8 @@ credited.
    opposite the claimed target, or theorem conditions failing.],
 )
 
-This sheet is intentionally smaller than the full application template. Its job
-is to slow down the common interpretive jump. If the observed movement is a
+This sheet is smaller than the full application template. Its job is to slow
+down the common interpretive jump. If the observed movement is a
 readmission decline, a benchmark rise, a citation increase, or a ranking gain,
 the first audit question is the same: what response channel could have produced
 this movement? The second is which traces would discriminate that channel from

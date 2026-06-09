@@ -122,10 +122,12 @@ rewrite executed most of this pass. Per-section status:
 
 - §1 (through-line) — **absorbed/done**: Part 1 states the design question
   and five-stories through-line; Parts 4–5 transitions reuse it.
-- §2 (insider wording) — **mostly done**: "not housekeeping" rewritten
-  (Part 2 intro), "survives as a warning" replaced (Part 5 covariance
-  sequence), contract caveat reordered after what-it-does (Part 3).
-  *Remaining for Phase 3:* the global "licenses" wording sweep.
+- §2 (insider wording) — **done**: "not housekeeping" rewritten (Part 2
+  intro), "survives as a warning" replaced (Part 5 covariance sequence),
+  contract caveat reordered after what-it-does (Part 3). "Licenses" sweep
+  executed June 9, 2026 (Phase 3): the two vocabulary-justification uses
+  replaced (Figure 1 caption, T1/T2 envelope sentence); the remaining
+  sites are theorem-boundary or claim-licensing uses and stay.
 - §3 (notation block) — **done**: ker-φ/level-sets sentence, K_θ reading
   order, μ_θ averaging sentence all in Part 3.
 - §4 (negative-results hierarchy) — **absorbed/done**: Part 2 paired
@@ -143,17 +145,19 @@ rewrite executed most of this pass. Per-section status:
   Phase 4 (§10).*
 - §9 (T5 polish) — **done** in Part 4 (sums-don't-cancel sentence, direct
   iff reading, "main additive-scorecard result", H–M as analogue, entry
-  bridge sentence, conjunctive kept separate). *Verify the H–M lit-review
-  note substantiveness in Phase 3.*
+  bridge sentence, conjunctive kept separate). H–M lit-review note verified
+  substantive June 9, 2026 (Phase 3): formal-analogues sentence plus the
+  multitask attribution-table row carry the relation.
 - §10 (figures) — unchanged, runs in Phase 4 (Figure 1 redesign, Figure 3
   caption, labels).
 - §11 (repo-side artifacts) — unchanged, optional, outside the manuscript.
 - §12 (synthesis) — first point (declared-vs-observed prominence) done in
   Part 3; the other two were execution-ordering guidance, now moot.
 
-*Phase 3 residue:* §2 "licenses" sweep, §9 lit-review note check, then
-`prose-pass.md` (re-map its section references via the spine-v3 old→new
-table first).
+*Phase 3 residue:* executed June 9, 2026 — §2 "licenses" sweep done, §9
+lit-review note verified, `prose-pass.md` executed (see its final
+absorption status). Remaining manuscript work is Phase 4 only (§10
+figures + final hygiene).
 
 Source: `plans/04_06_2026_human_review.md` plus follow-up investigation of
 `book/multidimensional-goodhart.typ`, `research/core-math.md`,

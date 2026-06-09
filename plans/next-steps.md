@@ -30,10 +30,10 @@ unblocked, finish or hand off cleanly, and not reach into later phases.
   and Hidden Harm"; core-math.md pointers and book README updated;
   `polish.md` Phase 2/3 reconciled (see its reconciliation ledger);
   `spine.md` archived per the gate-note semantics. Phase 3 is next.
-- **Phase 3 — local polish and prose.** Remaining `polish.md` Phase 2/3
-  items (sections 2, 3, 6–9, 12), then `prose-pass.md`. Note prose-pass
-  section references predate the seven-part spine; re-map them against the
-  then-current draft before editing.
+- **Phase 3 — local polish and prose. DONE June 9, 2026.** The Phase 2
+  rewrite had absorbed most items; the residue was the "licenses" sweep,
+  the H–M lit-note verification, and a five-edit read-through pass (see
+  the polish.md ledger and prose-pass.md final status). Phase 4 is next.
 - **Phase 4 — figures and final hygiene.** `polish.md` section 10 figure
   work, then re-run the completed Iteration-47 hygiene checks
   (reproducible build, refs.bib audit, cross-file consistency).
@@ -50,7 +50,8 @@ unblocked, finish or hand off cleanly, and not reach into later phases.
   PDF. Source material; actionable items are distilled into `polish.md`.
 - `polish.md` — Phase 0 consistency fixes (executable now) plus the
   structural polish pass (Phases 2–4).
-- `prose-pass.md` — line-level prose cleanup; Phase 3.
+- `prose-pass.md` — line-level prose cleanup; executed June 9, 2026
+  (Phase 3); retained as the record of what was checked.
 - `exchange-rate-empirics.md` — research-side track, runs in parallel with
   the manuscript pipeline (not gated by spine approval): mine existing
   hidden-harm evaluations (HRRP, education accountability, NHS targets,
