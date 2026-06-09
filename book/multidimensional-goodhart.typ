@@ -642,7 +642,15 @@ contract treats that as a separate declaration, never a corollary.
 The supporting calculations close here: they say when the exchange-rate frame
 applies, what feeds it, and where it ends.
 
-= Across Disciplines: Primitive Attribution
+= Prior Work and Stress Tests
+
+This part demonstrates the same claim twice: reduction, not unification.
+First on the literature — each nearby formalism supplies some fields of the
+response-modeling contract and omits others, so what transfers is a
+primitive, never a theorem. Then on cases — MMLU, hospital readmissions, and
+scientific metrics are run against the question the book is organized
+around: what would the exchange-rate audit need here, and what does the
+contract refuse without it?
 
 == Genealogy
 
@@ -712,6 +720,14 @@ provide empirical response-geometry candidates, not plug-in parameters
   [A defended mapping from model size, KL, data access, or prize to $kappa$ or
    $V$.],
   [Hypothesis generators for response geometry; no automatic theorem transfer.],
+  [Empirical exchange-rate estimates (placeholder)],
+  [Candidate evidence for per-channel harm rates $h_j$: hospital readmissions
+   versus mortality, education audit-test transfer, public-target gaming,
+   reward-model overoptimization curves.],
+  [Identified per-channel rates; policy-variation designs that separate
+   channel loads from harm movement.],
+  [None yet. This row family is a placeholder for a parallel empirical track;
+   the diagnostic's measured content lands here.],
 )
 
 == Reduction, not unification
@@ -723,7 +739,9 @@ source about adaptive holdouts does not identify hidden welfare. A source about
 costly feature change does not identify value weights. A source about multitask
 contracts does not make "more metrics" good or bad in a new application.
 
-= Cases as Stress Tests
+The same reduction discipline now runs on three concrete cases. Each case
+asks what the exchange-rate audit would need and what the contract refuses
+without it.
 
 == MMLU
 
@@ -753,10 +771,10 @@ For a readmission scorecard, score improvement is compatible with hospitals
 leaving the comparison pool, coding changes, observation-status changes,
 delayed admissions, patient avoidance, better follow-up care, or mixtures.
 
-The auditable primitives are concrete: effective score weights $w$, stakes
-$V$, response ease $kappa$ for coding, discharge timing, follow-up, and patient
-selection channels, hidden harm rates $h$, and the signal adequacy of the
-measured components. If these are unavailable, the design consequence is not
+What the exchange-rate audit would need here is concrete: effective score
+weights $w$, stakes $V$, response ease $kappa$ for coding, discharge timing,
+follow-up, and patient selection channels, hidden harm rates $h$, and the
+signal adequacy of the measured components. If these are unavailable, the design consequence is not
 "assume the score is bad." It is: do not use the toy diagnostic, collect action
 traces, monitor hidden patient outcomes where possible, pilot or lower leverage,
 and mark the missing primitive.
@@ -785,7 +803,11 @@ institution cannot declare the target, aggregation, action traces, and hidden
 value model before interpreting a score rise, the framework returns "no
 licensed hidden-value claim."
 
-= Practical Implications
+What the three cases share is the protocol shape: collect the discriminating
+traces, declare the primitives, and let the contract say which claim is
+licensed. The next part states that protocol in a form meant to be used.
+
+= Using the Framework
 
 == What to do before crediting score movement
 
@@ -864,7 +886,7 @@ law" is a different claim from "selection is harmless." Practical use of the
 framework is mostly this discipline of replacing a large conclusion with the
 smaller one the evidence actually licenses.
 
-= What the Framework Refuses to Do
+= Refusals, Falsifiers, and the Open Agenda
 
 == Anti-applications
 
@@ -921,8 +943,6 @@ would mean the contract fields do not track the response mechanisms they were
 designed to track — that disciplined declaration does not buy predictive
 power. That is the falsifiable content of the framework.
 
-= Open Agenda
-
 == The residual-shape conjecture
 
 The signature open problem is the residual-shape conjecture: when does
@@ -948,7 +968,11 @@ give a general calculus for them.
 Second, primitives are not automatically identifiable. Marginal score movement
 does not identify $W_theta$ versus $K_theta$, hidden harm, action costs, or
 aggregation. The framework needs identification toys and evidence thresholds
-for when a primitive can be treated as declared rather than guessed.
+for when a primitive can be treated as declared rather than guessed. The
+sharpest version of this gap belongs to the exchange-rate diagnostic: under
+what policy-variation designs are per-channel harm rates $h_j$ identifiable
+from aggregate score and harm movement? Until that question has an answer,
+the diagnostic's empirical row stays a placeholder.
 
 Third, the $L^2$ selection bound may not be the portable final form. An
 information-theoretic restatement could travel further if it preserves the

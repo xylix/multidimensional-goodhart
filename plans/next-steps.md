@@ -24,9 +24,12 @@ unblocked, finish or hand off cleanly, and not reach into later phases.
   section-by-section, and approved the same day (five open questions
   resolved in review; resolutions recorded inline in the file). Phase 2 is
   unblocked.
-- **Phase 2 — structural rewrite.** Rewrite the manuscript to spine v3.
-  Before executing, reconcile `polish.md` Phase 2/3 sections 1, 4, 5
-  against `spine-v3.md` and strike what the rewrite absorbs.
+- **Phase 2 — structural rewrite. DONE June 9, 2026.** Manuscript rewritten
+  to the eight-part spine v3 (three commits); abstract reorganized per the
+  first-page rule; subtitle now "Measurement Dimensions, Exchange Rates,
+  and Hidden Harm"; core-math.md pointers and book README updated;
+  `polish.md` Phase 2/3 reconciled (see its reconciliation ledger);
+  `spine.md` archived per the gate-note semantics. Phase 3 is next.
 - **Phase 3 — local polish and prose.** Remaining `polish.md` Phase 2/3
   items (sections 2, 3, 6–9, 12), then `prose-pass.md`. Note prose-pass
   section references predate the seven-part spine; re-map them against the
@@ -37,11 +40,12 @@ unblocked, finish or hand off cleanly, and not reach into later phases.
 
 ## Active plan files
 
-- `spine.md` — compact source of truth for the manuscript spine; approved
-  June 9, 2026 (gate passed).
-- `spine-v3.md` — section-by-section manuscript spine expanding spine.md
-  (Phase 1 artifact); approved June 9, 2026 (eight parts; audit protocol
-  split into its own Part 7 during review). Governs the Phase 2 rewrite.
+- `spine-v3.md` — section-by-section manuscript spine (Phase 1 artifact);
+  approved June 9, 2026 (eight parts; audit protocol split into its own
+  Part 7 during review). The Phase 2 rewrite executed it; stays active
+  through Phase 3 because its old→new table is the re-mapping key for
+  `prose-pass.md` section references. Its governing spec `spine.md` is
+  archived at `archived/spine.md` (rewrite landed June 9, 2026).
 - `04_06_2026_human_review.md` — active raw human-review notes on the book
   PDF. Source material; actionable items are distilled into `polish.md`.
 - `polish.md` — Phase 0 consistency fixes (executable now) plus the

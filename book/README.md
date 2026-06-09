@@ -1,7 +1,7 @@
 # Multidimensional Goodhart — book draft
 
-Working draft of the seven-part long-form treatment of multidimensional
-Goodhart. This is an *expository* rewrite of the consolidated research material
+Working draft of the eight-part long-form treatment of multidimensional
+Goodhart (spine v3). This is an *expository* rewrite of the consolidated research material
 in `../research/`; the iteration history lives there, not here.
 
 ## Files
@@ -53,20 +53,28 @@ uv run --with matplotlib --with numpy scripts/make_appendix_figures.py
 
 ## Contents
 
-- **Part I** — The licensing problem: slogan failure, multidimensional setup,
-  killed-claims gallery, and the response-modeling contract.
-- **Part II** — Licensed calculations: selection bounds, intervention budget,
-  scorecard exchange-rate result, adaptive-hardening boundary, and conditional
-  response-shape taxonomy.
-- **Part III** — Primitive attribution across fields: genealogy, formal
-  analogues, contributes-vs-omits table, and reduction-not-unification framing.
-- **Part IV** — Cases as stress tests: MMLU, hospital readmissions, and
-  scientific metrics.
-- **Part V** — Practical implications: a one-page audit sheet for interpreting
-  score movement before crediting it.
-- **Part VI** — Refusals: anti-applications and concrete falsifiers.
-- **Part VII** — Open agenda: Q18 residual-shape conjecture, composition and
-  identification gaps, and the practitioner toolkit gap.
-- **Technical abstract** — A standalone 2–4 page discussion starter with
-  motivation, contract, closed theorem set, killed claims, falsifier, minimal
-  literature relation, and Q18.
+- **Part 1** — The measurement-dimension question: the scorecard design
+  question, the two folk intuitions, the informal exchange-rate answer, and
+  the five-stories underidentification example.
+- **Part 2** — No generic law: the killed claims in paired "Not X / what
+  survives" form, two tiers; full gallery in the appendix table.
+- **Part 3** — The response-modeling contract: notation, declaration,
+  declared-vs-observed status, and contract adequacy.
+- **Part 4** — The exchange-rate diagnostic: the additive fixed-deficit
+  model, T5, the affordability/harm boundary, and the non-transfer boundary.
+- **Part 5** — Supporting calculations: selection bounds, intervention
+  budgets, adaptive hardening, response-shape taxonomy, and
+  aggregation-and-entry.
+- **Part 6** — Prior work and stress tests: genealogy, primitive-attribution
+  table (with an empirical exchange-rate placeholder row), and the MMLU,
+  hospital-readmissions, and scientific-metrics cases.
+- **Part 7** — Using the framework: the audit sheet for interpreting score
+  movement before crediting it.
+- **Part 8** — Refusals, falsifiers, and the open agenda: anti-applications,
+  falsifiers, the residual-shape conjecture, identification gaps (including
+  per-channel exchange-rate identification), and the toolkit gap.
+- **Appendix** — The full killed-claims gallery as a table.
+- **Technical abstract** — A standalone 2-page discussion starter mirroring
+  the book's order: question, no generic law, contract, exchange-rate
+  diagnostic, supporting calculations, literature relation, falsifiers and
+  the open problem.

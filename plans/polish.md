@@ -115,14 +115,45 @@ honesty over rhetoric; included in the Phase 0 batch.
 - [x] Re-run the refs.bib orphan/resolution audit from the completed
       Iteration 47 hygiene pass below.
 
-## Phase 2/3 — Human-review structural polish pass (blocked on spine v3)
+## Phase 2/3 — Human-review structural polish pass
 
-Status warning for executing iterations: sections 1, 4, and 5 below overlap
-heavily with what the spine-v3 rewrite will decide (through-line, negative-
-results placement, contract presentation). Do not execute them as a
-standalone pass; reconcile each against the approved `spine-v3.md` first and
-strike items the rewrite absorbs. Sections 2, 3, and 6–9 are mostly local
-and should survive; section 10 (figures) runs in Phase 4.
+**Phase 2 reconciliation ledger (June 9, 2026).** The spine-v3 structural
+rewrite executed most of this pass. Per-section status:
+
+- §1 (through-line) — **absorbed/done**: Part 1 states the design question
+  and five-stories through-line; Parts 4–5 transitions reuse it.
+- §2 (insider wording) — **mostly done**: "not housekeeping" rewritten
+  (Part 2 intro), "survives as a warning" replaced (Part 5 covariance
+  sequence), contract caveat reordered after what-it-does (Part 3).
+  *Remaining for Phase 3:* the global "licenses" wording sweep.
+- §3 (notation block) — **done**: ker-φ/level-sets sentence, K_θ reading
+  order, μ_θ averaging sentence all in Part 3.
+- §4 (negative-results hierarchy) — **absorbed/done**: Part 2 paired
+  two-tier form; full gallery in the new appendix table.
+- §5 (contract as evaluative tool) — **absorbed/done**: school example
+  leads via Part 1, "why these primitives" paragraph, declared-vs-observed
+  early, adequacy kept with a concrete school-path example.
+- §6 (T1/T2 scaffolding) — **done** in Part 5 (exclusion framing,
+  Cauchy–Schwarz inner-product reason, tilt phrase, covariance sequence).
+- §7 (T3/T4 scaffolding) — **done** in Part 5 (derivation prose, c\* and
+  λ inline, RLHF non-transfer tied to missing primitives). Relabel to
+  "Toy proposition" declined per spine-v3 review (T-numbering kept).
+- §8 (T4/T5 separation) — **done** in Part 4 ("Affordability is not the
+  diagnostic", (h, 0) stated plainly). *Figure 3 caption revision stays
+  Phase 4 (§10).*
+- §9 (T5 polish) — **done** in Part 4 (sums-don't-cancel sentence, direct
+  iff reading, "main additive-scorecard result", H–M as analogue, entry
+  bridge sentence, conjunctive kept separate). *Verify the H–M lit-review
+  note substantiveness in Phase 3.*
+- §10 (figures) — unchanged, runs in Phase 4 (Figure 1 redesign, Figure 3
+  caption, labels).
+- §11 (repo-side artifacts) — unchanged, optional, outside the manuscript.
+- §12 (synthesis) — first point (declared-vs-observed prominence) done in
+  Part 3; the other two were execution-ordering guidance, now moot.
+
+*Phase 3 residue:* §2 "licenses" sweep, §9 lit-review note check, then
+`prose-pass.md` (re-map its section references via the spine-v3 old→new
+table first).
 
 Source: `plans/04_06_2026_human_review.md` plus follow-up investigation of
 `book/multidimensional-goodhart.typ`, `research/core-math.md`,

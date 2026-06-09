@@ -4,7 +4,8 @@ Status: **APPROVED June 9, 2026** — all parts reviewed; the five open
 questions were resolved in conversation and are recorded inline as
 "Resolved:" lines. Crystallization stage 5 complete; Phase 2 (manuscript
 rewrite) is unblocked.
-Governing spec: `plans/spine.md` (approved June 9, 2026).
+Governing spec: `plans/archived/spine.md` (approved June 9, 2026; archived
+after the Phase 2 rewrite landed).
 
 Conventions: "current §x.y" refers to the post-Phase-0 book
 (`book/multidimensional-goodhart.typ`, commit `2ed22e0`). Spine roles 1–12
