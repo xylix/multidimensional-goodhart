@@ -1,10 +1,10 @@
-# Polish TODOs
+# Polish TODOs — COMPLETE (archived June 9, 2026)
 
-Note: Ask user before implementing these — they are most efficient to do
-before actually publishing or sending a draft over, rather than during
-research iteration loops. Exception: Phase 0 below is spine-neutral and
-pre-approved for execution ahead of spine approval (June 9, 2026 session);
-it still ends with a user check-in before commit.
+All phases executed: Phase 0 (consistency batch), Phases 2/3 (structural
+polish, absorbed into the spine-v3 rewrite + prose pass), Phase 4 (figures
++ hygiene re-run). §11's optional repo-side artifacts moved to
+`could-do/supporting-artifacts.md`. Retained as the audit record of what
+was checked and where each item landed.
 
 Phase labels refer to the execution pipeline in `plans/next-steps.md`.
 
@@ -148,9 +148,12 @@ rewrite executed most of this pass. Per-section status:
   bridge sentence, conjunctive kept separate). H–M lit-review note verified
   substantive June 9, 2026 (Phase 3): formal-analogues sentence plus the
   multitask attribution-table row carry the relation.
-- §10 (figures) — unchanged, runs in Phase 4 (Figure 1 redesign, Figure 3
-  caption, labels).
-- §11 (repo-side artifacts) — unchanged, optional, outside the manuscript.
+- §10 (figures) — **done** June 9, 2026 (Phase 4): Figure 1 redesigned as
+  a block/factor diagram; Figure 2 visualization-only note; Figure 3
+  element labels + caption naming the four elements; Figure 4 per-bar
+  clutter replaced with one H_per-vs-H_pop annotation.
+- §11 (repo-side artifacts) — moved to `could-do/supporting-artifacts.md`;
+  optional, outside the manuscript.
 - §12 (synthesis) — first point (declared-vs-observed prominence) done in
   Part 3; the other two were execution-ordering guidance, now moot.
 
@@ -324,16 +327,8 @@ response model chooses which conditional calculation is valid.
 
 ### 11. Optional supporting artifacts outside the paper
 
-- Add a short machine-learning worked contract in `research/applications/` or
-  `research/threads/`: fixed checkpoint selection versus finetuning/search,
-  what counts as `U`, `K_theta`, action/search geometry, benchmark proxy,
-  hidden target, and evidence standard.
-- Add a minimal Python notebook/script that instantiates the contract fields
-  for a toy school-score or benchmark-score example. Treat it as a pedagogical
-  repo artifact, not a manuscript dependency.
-- If Lean work is desired, start with T3 or the T5 quadratic optimization
-  identity; the full response contract is methodological and not the right
-  first formalization target.
+Moved to `plans/could-do/supporting-artifacts.md` (June 9, 2026) — optional
+repo-side work, not manuscript polish.
 
 ### 12. Synthesis additions from the June 9, 2026 review session
 
