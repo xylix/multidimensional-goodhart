@@ -1,4 +1,4 @@
-// Multidimensional Goodhart — seven-part book spine
+// Multidimensional Goodhart — eight-part book spine (spine v3)
 // Compile with: typst compile multidimensional-goodhart.typ
 //
 // Source authority: research/project_state_after_iteration43.md and
@@ -35,13 +35,39 @@
   #v(2cm)
   #text(size: 2.1em, weight: "bold")[Multidimensional Goodhart]
   #v(0.35cm)
-  #text(size: 1.18em)[Response Channels, Scorecards, and Residual Shape]
+  #text(size: 1.18em)[Measurement Dimensions, Exchange Rates, and Hidden Harm]
 ]
 #v(1.7cm)
 
 #outline(depth: 2, indent: auto)
 
-= The Licensing Problem
+= The Measurement-Dimension Question
+
+== More metrics, fewer metrics, different metrics
+
+Every scorecard owner eventually faces the same design question. A measure is
+under pressure and the gaming has begun. Should the scorecard measure more
+things, fewer things, or different things — and will the hidden damage from
+gaming shrink, grow, or just move?
+
+Two folk intuitions answer immediately, in opposite directions. The first says
+more metrics leave nowhere to hide: every added dimension closes an escape
+route, so a gamed system should be measured more finely. The second says every
+metric is a new attack surface: every added dimension is one more channel that
+can be manufactured, so measurement should stay sparse and robust. Both sound
+like engineering judgment. They cannot both be right as stated, and neither is.
+
+In the one closed model where this book can answer the design question
+completely, the outcome is decided not by how many dimensions are measured but
+by each gaming channel's exchange rate: how much hidden harm the channel does
+per point of score it produces. Changing the measured set conserves hidden harm
+exactly when every active channel does the same hidden harm per score point.
+When the rates differ, adding or removing metrics reduces, increases, or
+reroutes harm according to which channels the design leaves cheap. The
+dimension count never enters by itself. That statement is made precise as T5
+once the model behind it has been declared. Everything before the theorem
+exists to establish what such a declaration requires; everything after it, to
+say when the calculation does and does not transfer.
 
 == The warning and what it does not identify
 
@@ -49,109 +75,20 @@ Goodhart's law is usually introduced through the compressed formulation "When a
 measure becomes a target, it ceases to be a good measure" @strathern1997. The
 original macroeconomic warning is sharper about policy use: "Any observed
 statistical regularity will tend to collapse once pressure is placed upon it for
-control purposes" @goodhart1975. Both formulations describe a real empirical
-phenomenon: once a measure is used for control, the residual error between proxy
-and target can acquire direction, support, active constraints, exchange rates,
-tail behavior, and response dynamics. But none of those shapes is identified by
-the claim that the proxy became a target.
+control purposes" @goodhart1975. Both describe a real empirical phenomenon:
+once a measure is used for control, the residual error between proxy and target
+can acquire direction, support, active constraints, exchange rates, tail
+behavior, and response dynamics. But none of those shapes is identified by the
+claim that the proxy became a target — and neither is the answer to the design
+question above. The warning says a controlled measure will stop tracking its
+target. It does not say what an observed score movement means, and it does not
+say whether measuring differently would help.
 
-The same observed score improvement can come from several mechanisms. A fixed
-pool can be re-ranked so better-scoring units enter the selected set. Continuing
-units can repair measurement errors with no hidden harm. The same units can
-game a high-score, high-harm action channel. Or the score can improve because
-the target itself improved. The aggregate score path does not distinguish those
-stories. A calculation is licensed only after the response model says what is
-fixed, what changes, and what hidden value or harm is being measured.
+== Five stories, one score path
 
-This book treats "multidimensional Goodhart" as a response-modeling framework,
-not as a single universal theorem. The framework asks what proxy pressure
-changes and which primitives are declared before importing a bound.
-
-== What "multidimensional" actually adds
-
-Let $S$ be a state space. A target map $G: S -> RR^m$ records target-relevant
-state and a proxy map $P: S -> RR^k$ records measured features. The intended
-correspondence is $phi: RR^m -> RR^k$, with residual
-$epsilon(s) = P(s) - phi(G(s))$.
-
-Two gaps matter. The *dimension gap* is the part of target variation the proxy
-map cannot see, represented by directions such as $ker phi$. The *observation
-gap* is residual measurement artifact inside the measured domain, represented
-by $epsilon$. A scalar score may hide both gaps at once.
-
-Two response channels matter as much as the geometry. Here $u in U$ is a
-declared fixed type: the agent, unit, hospital, model checkpoint, or institution
-as represented before the policy response being studied. It contains the
-attributes treated as fixed for the comparison; choices made because of the
-policy are not part of $u$. The baseline type law is $nu$. A response kernel
-$K_theta(d s | u)$ is the conditional law of the observed state $s in S$ for a
-unit of type $u$ after policy exposure $theta$. A participation or selection
-weight $W_theta(u) >= 0$ changes how much type $u$ appears in the realized
-population. With these objects,
-
-$ mu_theta(A) =
-  (integral W_theta(u) K_theta(A | u) nu(d u)) /
-  (integral W_theta(u) nu(d u)). $
-
-Pure selection means $K_theta = K_0$ for $nu$-almost every type and policy
-dependence enters only through $W_theta$. Intervention means $K_theta$ changes
-on a positive-$nu$ set of fixed types. Selection and intervention can produce
-similar marginal score movement, so they do not license the same mathematics.
-
-#figure(
-  image("figures/part-i-dimension-observation-gap.pdf", width: 90%),
-  caption: [Dimension and observation gaps are different contract fields. The schematic licenses the split in vocabulary, not a quantitative conclusion.]
-) <fig:dimension-observation-gap>
-
-== What we tried and what failed
-
-The negative results are not housekeeping; they are the reason the framework
-has its current shape.
-
-#boxnote[Claim gallery.][
-- *Unconditional dimensional scaling fails.* Hidden harm does not scale with
-  $dim(ker phi)$ by itself. If hidden coordinates are independent of the
-  selected proxy, thresholding does not move them.
-- *"More measured dimensions means more error" has no sign.* Additive and
-  conjunctive aggregation can give opposite comparative statics from the same
-  primitive action channels.
-- *Signed aggregate hidden error is unstable.* Positive and negative hidden
-  movements can cancel. A value functional, norm, tail risk, or domain loss has
-  to be declared.
-- *Covariance is not a finite-pressure primitive.* With $P = Z$ and
-  $H = Z^2 - 1$, baseline covariance is zero but threshold or Boltzmann
-  selection moves $H$.
-- *Absolute continuity is not the intervention boundary.* It is useful for the
-  reweighting theorem, but fixed-type action changes can remain absolutely
-  continuous with respect to the baseline law.
-- *The selection/intervention split is not marginally identifiable.* It is
-  relative to a declared type/action representation and needs repeated-type,
-  exposure, action-trace, or structural evidence.
-- *The selection bound is not coordinate-free by itself.* It is
-  coordinate-explicit until a value norm or scalar value functional is named.
-- *Convex affordability is not welfare.* A score-deficit cost bounds private
-  action affordability, not hidden harm.
-- *Minimum-complexity attraction is not generic.* Selection follows baseline
-  tails; intervention follows cost, search, caps, fixed charges, and
-  affordances.
-]
-
-These failures block a single "n-dimensional Goodhart law." What survives is a
-set of conditional calculations plus a discipline for saying when each
-calculation applies.
-
-== The response-modeling contract
-
-The contract below is not a theorem about what proxy pressure will do. It is a
-methodological definition: the minimum declaration needed before a proposed
-Goodhart calculation can be evaluated. Its source is the negative result from
-the previous section. Marginal score movement does not identify hidden welfare,
-the type weights $W_theta$, the response kernels $K_theta$, the action costs, or
-the aggregation rule.
-
-Start with a school score. The district announces that funding will depend on a
-test-score metric. Next year the average score rises. That one fact is
-compatible with several different stories:
+The identification problem is concrete. A district announces that school
+funding will depend on a test-score metric. Next year the average score rises.
+That one fact is compatible with several different stories:
 
 - stronger schools entered the funded pool;
 - the same schools taught the underlying material better;
@@ -159,41 +96,176 @@ compatible with several different stories:
 - low-scoring students were excluded from the tested population;
 - reporting errors were repaired with little hidden harm.
 
-Those stories can have the same score path and require different mathematics.
-Selection bounds apply to reweighting a fixed population. Intervention bounds
-need actions, costs, and stakes. Welfare claims need a hidden value or harm
-model. The response-modeling contract is the rule that says which story is being
-claimed before any calculation is imported.
+The same score path fits all five stories; they differ in who changed and
+through which channel. Two channel families matter most and recur through the
+book. *Selection* changes who is represented: the pool is re-ranked or
+re-weighted while each unit keeps behaving as before. *Intervention* changes
+what a fixed unit does: the same school alters its teaching, its test
+preparation, or its reporting. Selection and intervention can produce identical
+marginal score movement, and they do not license the same mathematics. Hidden
+harm is no more readable off the path than mechanism is: the format-drilling
+story and the better-teaching story can move the score by the same amount.
 
-The contract has three plain-language jobs:
+So observed score movement underidentifies both mechanism and harm, and the
+designer's question cannot be answered by watching the score. The book's
+program follows: declare the response model — who can respond, through which
+channels, at what cost, with what hidden harm — and then calculate. There is no
+shortcut around the declaration; the next part shows that every unconditional
+law we tried to prove in its place is false. The part after that states the
+declaration itself, and then the design question gets its answer.
+
+= No Generic Law
+
+The failed stronger claims determine the framework's shape: they rule out a
+single $n$-dimensional Goodhart law and leave conditional calculations tied to
+declared response models. Each failure below also dictates a field of the
+declaration introduced in the next part. The failures come in two tiers:
+stronger laws refuted by explicit counterexample, and methodological
+boundaries — claims that fail because marginal data cannot identify what they
+assert. The load-bearing members of both tiers follow in paired form; the full
+gallery is tabulated in the appendix.
+
+== Refuted by counterexample
+
+*Not: hidden harm scales with the number of unmeasured dimensions.* Hidden harm
+does not scale with $dim(ker phi)$ by itself. In a pure selection model, if
+hidden coordinates are independent of the selected proxy, thresholding does not
+move them — however many of them there are. What survives is a coupling
+question: unmeasured dimensions matter through their dependence on the selected
+proxy and through the declared value metric, not through their count.
+
+*Not: more measured dimensions means more error — or less.* Additive and
+conjunctive aggregation can give opposite comparative statics from the same
+primitive action channels. What survives is an aggregation-conditional
+calculation: the comparative static has a sign only after the aggregation rule
+is declared.
+
+*Not: signed aggregate hidden error measures damage.* Positive and negative
+hidden movements can cancel in a signed aggregate. What survives is a
+declaration requirement: a value functional, norm, tail risk, or domain loss
+must be named before "damage" has a magnitude.
+
+*Not: baseline covariance predicts response under pressure.* With $P = Z$ and
+$H = Z^2 - 1$, baseline covariance between proxy and hidden variable is zero,
+yet threshold or Boltzmann selection moves $H$. The example shows why zero
+baseline covariance is not enough at finite pressure. What survives is
+covariance as a local velocity: the derivative at zero pressure, with
+finite-pressure behavior depending on the whole tilted path.
+
+*Not: what an agent can afford to game is what gaming costs the world.* A
+convex score-deficit cost bounds the proxy movement a unit can privately
+afford; it says nothing about hidden harm. Two channels with equal private cost
+and equal score weight can carry arbitrarily different harm. What survives is a
+division of labor: affordability calculations license affordability claims, and
+welfare claims need a declared harm functional.
+
+== Methodological boundaries
+
+*Not: the data says whether the response was selection or intervention.* The
+selection/intervention split is not identifiable from marginal score movement,
+and it is relative to the declared type representation: enrich the types enough
+and every intervention looks like selection over richer types. What survives is
+the split as a declared, defended field of the claim, supported by
+repeated-type, exposure, action-trace, or structural evidence.
+
+*Not: optimization pressure drives failure toward simple shapes.*
+Minimum-complexity attraction is not generic: selection follows baseline tails,
+and intervention follows costs, caps, fixed charges, and affordances. What
+survives is the response-shape question as a conditional one, taken up with the
+supporting calculations.
+
+Two further boundary entries — absolute continuity as an intervention marker,
+and the coordinate-dependence of the selection bound — are in the appendix
+table; they refine the calculations rather than redirect the design question.
+Together the tiers explain the shape of what follows: no unconditional law
+survives, so the route to the exchange-rate answer runs through a declaration
+discipline.
+
+= The Response-Modeling Contract
+
+== What the contract does
+
+The school-score example left five stories on the table for one score path. The
+response-modeling contract is the instrument that separates them: a
+declaration, made before any calculation is imported, of who can respond, what
+they can do, at what cost, and what hidden value is at stake. The contract has
+three plain-language jobs:
 
 1. State what the claim wants to conclude.
 2. State what response story would make that conclusion meaningful.
 3. State what evidence would distinguish that story from nearby alternatives.
 
-Here is the notation used to do that compactly. A type space $U$ is the model's
-description of the units before the policy response. In the school example,
-$u in U$ might be one school with baseline traits such as size, neighborhood,
-student mix, prior resources, and administrative capacity. The baseline type
-law $nu$ says how common those school types are. The observed state $s in S$
-contains what the evaluation later sees, such as test scores, curriculum,
-student participation, and hidden learning outcomes when they are measured.
+Different stories require different mathematics. Selection bounds apply to
+reweighting a fixed population. Intervention bounds need actions, costs, and
+stakes. Welfare claims need a hidden value or harm model. The contract is the
+rule that says which story is being claimed before the corresponding
+calculation is imported.
+
+One status distinction does most of the work and is stated here because
+everything downstream depends on it: nearly every contract field is *declared
+or estimated, not observed*. "Hidden" in this book means hidden from the
+scorecard, not necessarily from the analyst. Harm rates, value weights,
+response channels, and action costs are inputs the analyst supplies and
+defends — from audits, side data, or structural knowledge — and every licensed
+calculation is conditional on those declarations. The theorems convert
+declared primitives into conclusions; they do not extract the primitives from
+the score path.
+
+The contract is not a theorem about what proxy pressure will do. It is a
+methodological definition: the minimum declaration needed before a proposed
+Goodhart calculation can be evaluated. Its content comes from the failures of
+the previous part — marginal score movement does not identify hidden welfare,
+the type weights $W_theta$, the response kernels $K_theta$, the action costs,
+or the aggregation rule — so the declaration has to supply what the data
+cannot.
+
+== The notation
+
+Let $S$ be a state space. A target map $G: S -> RR^m$ records target-relevant
+state and a proxy map $P: S -> RR^k$ records measured features. The intended
+correspondence is $phi: RR^m -> RR^k$, with residual
+$epsilon(s) = P(s) - phi(G(s))$.
+
+Two gaps matter. The *dimension gap* is the part of target variation the proxy
+map cannot see: when $phi$ is linear it is carried by $ker phi$, and in general
+by variation within the level sets of $phi$. The *observation gap* is residual
+measurement artifact inside the measured domain, represented by $epsilon$. A
+scalar score may hide both gaps at once.
+
+#figure(
+  image("figures/part-i-dimension-observation-gap.pdf", width: 90%),
+  caption: [Dimension and observation gaps are different contract fields. The schematic licenses the split in vocabulary, not a quantitative conclusion.]
+) <fig:dimension-observation-gap>
+
+A type space $U$ is the model's description of the units before the policy
+response. In the school example, $u in U$ might be one school with baseline
+traits such as size, neighborhood, student mix, prior resources, and
+administrative capacity. It contains the attributes treated as fixed for the
+comparison; choices made because of the policy are not part of $u$. The
+baseline type law $nu$ says how common those school types are. The observed
+state $s in S$ contains what the evaluation later sees, such as test scores,
+curriculum, student participation, and hidden learning outcomes when they are
+measured.
 
 The response kernel $K_theta(d s | u)$ is the conditional law of the observed
-state for a fixed type $u$ after policy exposure $theta$. It is where the model
+state for a fixed type $u$ after policy exposure $theta$ — read the
+conditioning in that order: fix the type, expose it to the policy, and the
+kernel returns the distribution over observed states. It is where the model
 puts what the same school does after seeing the funding rule. The selection
 weight $W_theta(u) >= 0$ is where the model puts changes in which fixed types
-appear in the realized population. With these objects, the induced law from
-the previous section reads the same way, now with school-score content:
+appear in the realized population. With these objects, the induced law is
 
 $ mu_theta(A) =
   (integral W_theta(u) K_theta(A | u) nu(d u)) /
   (integral W_theta(u) nu(d u)). $
 
-Pure selection means $K_theta = K_0$ for $nu$-almost every type and policy
-dependence enters only through $W_theta$. Intervention means $K_theta$ changes
-on a positive-$nu$ set of fixed types. Mixtures are allowed, but they must be
-named.
+The formula averages fixed-type response laws over the baseline type law,
+weighted by participation, and normalizes. Pure selection means
+$K_theta = K_0$ for $nu$-almost every type and policy dependence enters only
+through $W_theta$. Intervention means $K_theta$ changes on a positive-$nu$ set
+of fixed types. Mixtures are allowed, but they must be named.
+
+== The declaration
 
 A Goodhart claim must therefore declare the primitives that make it a claim
 rather than a retrospective label:
@@ -232,6 +304,14 @@ rather than a retrospective label:
   would make this contract the wrong one?]
 ]
 
+Each primitive is in the list because some claimed output needs it. Hidden
+value or harm is needed for any welfare conclusion. The selection weight
+$W_theta$ is needed for selection claims, and the response kernel $K_theta$
+for fixed-type response claims. Action costs and stakes are needed for
+intervention feasibility. The aggregation rule is needed before any scorecard
+comparison has content. A claim that skips a primitive is implicitly asserting
+that its output does not depend on it.
+
 The first row is load-bearing. The contract is not a single formula with one
 fixed output. It is an adequacy test for a proposed output. A scalar hidden
 drift claim needs less information than a full response kernel. A distribution
@@ -249,6 +329,8 @@ therefore has to defend why the chosen $u$ is fixed for the comparison and why
 omitted variation belongs in $K_theta$, $W_theta$, or the action model. The
 induced marginal law $mu_theta$ usually cannot distinguish those choices by
 itself.
+
+== Contract adequacy
 
 After the output is named, the contract should pass a small information
 accounting check:
@@ -276,7 +358,10 @@ is enough to identify the claimed output up to the intended invariances. If two
 meaningfully different response stories still satisfy the same declared inputs,
 the contract has not licensed that output. It may still license a weaker output:
 for example, an aggregate score path may license a monitoring trigger while not
-licensing a welfare verdict or a selection/intervention classification.
+licensing a welfare verdict or a selection/intervention classification. The
+school-score path is exactly such a case: the declared inputs — a score rise
+and a known funding rule — leave all five response stories standing, so the
+licensed output is "investigate," not a verdict on any one story.
 
 The contract is demanding by design. It prevents the framework from inferring
 welfare, hidden target movement, or a response channel from marginal score
@@ -766,5 +851,58 @@ improvement.
 Until those tools exist, the framework is best read as a claim-license
 discipline and a theorem inventory. It tells a reader what would have to be
 true before a Goodhart calculation travels.
+
+#heading(numbering: none)[Appendix: The Killed-Claims Gallery]
+
+The full set of failed stronger claims behind the no-generic-law part. Each
+row records the refuted claim and what survives it; load-bearing rows appear
+in paired form in the main text.
+
+#table(
+  columns: (1.2fr, 1.8fr, 0.65fr),
+  inset: 5pt,
+  align: horizon,
+  table.header[*Failed claim*][*What survives*][*Tier*],
+  [Hidden harm scales with $dim(ker phi)$ by itself.],
+  [A coupling question: unmeasured dimensions matter through dependence on the
+   selected proxy and the declared value metric. Independent hidden coordinates
+   do not move under thresholding.],
+  [Counterexample],
+  [More measured dimensions means more (or less) hidden error.],
+  [Aggregation-conditional comparative statics: additive and conjunctive rules
+   give opposite signs from the same action channels.],
+  [Counterexample],
+  [Signed aggregate hidden error measures damage.],
+  [A declared value functional, norm, tail risk, or domain loss; signed hidden
+   movements can cancel.],
+  [Counterexample],
+  [Baseline covariance predicts finite-pressure response.],
+  [Covariance as the zero-pressure derivative. With $P = Z$ and
+   $H = Z^2 - 1$, baseline covariance is zero while threshold or Boltzmann
+   selection moves $H$.],
+  [Counterexample],
+  [Convex affordability is welfare.],
+  [Affordability claims under the declared private-cost model; welfare needs a
+   declared harm functional.],
+  [Counterexample],
+  [Absolute continuity marks the intervention boundary.],
+  [Absolute continuity as a hypothesis of the reweighting theorem; fixed-type
+   action changes can remain absolutely continuous with respect to the
+   baseline law.],
+  [Boundary],
+  [The selection/intervention split is identifiable from marginal data.],
+  [The split as a declared field, relative to a defended type representation,
+   supported by repeated-type, exposure, action-trace, or structural
+   evidence.],
+  [Boundary],
+  [The selection bound is coordinate-free by itself.],
+  [A coordinate-explicit bound until a value norm or scalar value functional
+   is named.],
+  [Boundary],
+  [Optimization pressure drives failure toward minimum-complexity shapes.],
+  [Conditional response-shape statements: selection follows baseline tails;
+   intervention follows cost, search, caps, fixed charges, and affordances.],
+  [Boundary],
+)
 
 #bibliography("refs.bib", title: "References", style: "association-for-computing-machinery")
