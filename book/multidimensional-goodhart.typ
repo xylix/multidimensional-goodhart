@@ -431,7 +431,7 @@ Affordability is not welfare.
 
 #figure(
   image("figures/part-ii-t4-t5-cost-ellipse.pdf", width: 88%),
-  caption: [T4 locates the private cost-minimizing action for a score deficit. T5 then requires hidden harm exchange rates before that action can be interpreted as welfare movement.]
+  caption: [Left (T4): private-cost contours, the score-clearing half-plane $w dot a >= d$, and the cost-minimizing action on its boundary. Right (T5): from that action, channels with equal private cost carry different hidden-harm directions, so reading the action as welfare movement requires the declared exchange rates $h_j$.]
 ) <fig:t4-t5-cost-ellipse>
 
 == The non-transfer boundary

@@ -7,7 +7,7 @@ figures.
 
 | Figure | Claim served | Source | Verdict | Boundary |
 | --- | --- | --- | --- | --- |
-| `part-i-dimension-observation-gap.pdf` | Dimension gap versus observation gap. | `plans/could-do/visualization-ideas.md` candidate 4. | Promote. | Structural vocabulary only; no quantitative claim. |
+| `part-i-dimension-observation-gap.pdf` | Dimension gap versus observation gap. | `plans/could-do/visualization-ideas.md` candidate 4; redesigned as a block/factor diagram June 9, 2026 (polish §10 — the target-space square misread as a literal 2D space). | Promote. | Structural vocabulary only; no quantitative claim. |
 | `part-ii-t1-t2-drift-envelope.pdf` | T1/T2 selection-drift envelope plus finite-pressure paths. | Candidate 1, generated with a seeded toy distribution. | Promote. | Applies only after hidden coordinates/value metric and pure selection are declared. |
 | `part-ii-t4-t5-cost-ellipse.pdf` | T4 private score-deficit budget versus T5 hidden-harm exchange rates. | Candidate 2, convex action-space schematic. | Promote. | Private affordability is not welfare without declared `h`. |
 | `part-ii-population-gaming-band.pdf` | `H_per` versus `H_pop` and the population entry band. | Candidate 3, seeded quality-CDF toy. | Promote. | Toy CDF only; no empirical population-harm estimate. |

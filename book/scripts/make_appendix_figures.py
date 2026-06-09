@@ -29,11 +29,12 @@ PDF_METADATA = {
 
 FIGURE_RATIONALES = {
     "part-i-dimension-observation-gap.pdf": (
-        "Promoted for Part I framing. The schematic separates the dimension "
-        "gap, represented by target directions outside the proxy map, from the "
-        "observation gap, represented by residual proxy artifact inside the "
-        "measured domain. It is explicitly structural: it licenses vocabulary, "
-        "not a quantitative theorem."
+        "Promoted for the contract notation (Part 3). The block diagram "
+        "separates measured target components, which phi carries into the "
+        "proxy, from unmeasured components with no path into the proxy (the "
+        "dimension gap), and shows residual artifact epsilon entering the "
+        "proxy from outside the target (the observation gap). It fixes "
+        "vocabulary; it makes no quantitative claim."
     ),
     "part-ii-t1-t2-drift-envelope.pdf": (
         "Promoted for T1/T2. The ellipse shows the declared selection-drift "
@@ -93,42 +94,52 @@ def draw_range_frame(ax: plt.Axes, xlim: tuple[float, float], ylim: tuple[float,
 
 
 def dimension_observation_gap() -> None:
-    fig, ax = plt.subplots(figsize=(7.2, 2.85))
+    fig, ax = plt.subplots(figsize=(7.2, 2.95))
     ax.axis("off")
     ax.set_xlim(0, 10)
-    ax.set_ylim(0, 4)
+    ax.set_ylim(0, 4.35)
 
-    target = plt.Rectangle((0.55, 0.55), 3.25, 2.9, fill=False, ec="0.15", lw=1.1)
-    proxy = plt.Rectangle((6.05, 0.55), 3.25, 2.9, fill=False, ec="0.15", lw=1.1)
-    ax.add_patch(target)
-    ax.add_patch(proxy)
-    ax.plot([2.22, 2.22], [0.75, 3.25], color="0.55", lw=0.75, ls=(0, (3, 2)))
-    ax.text(0.8, 3.08, "target space", fontsize=10)
-    ax.text(2.42, 3.08, "dimension gap", fontsize=8.4, color="0.32")
-    ax.text(0.86, 0.88, "seen by phi", fontsize=8.2, color="0.25")
-    ax.text(2.43, 0.88, "unseen target\ndirections", fontsize=8.2, color="0.25")
+    def block(x: float, y: float, w: float, h: float, label: str, fc: str = "white") -> None:
+        ax.add_patch(plt.Rectangle((x, y), w, h, fill=True, fc=fc, ec="0.15", lw=1.0))
+        ax.text(x + w / 2, y + h / 2, label, ha="center", va="center", fontsize=8.3, color="0.1")
+
+    ax.text(2.0, 4.08, "target components", fontsize=10, ha="center")
+    block(0.55, 3.0, 2.9, 0.78, "measured component\nof G")
+    block(0.55, 1.95, 2.9, 0.78, "unmeasured component\nof G", fc="0.93")
+    block(0.55, 0.9, 2.9, 0.78, "unmeasured component\nof G", fc="0.93")
+
+    ax.text(8.0, 4.08, "proxy", fontsize=10, ha="center")
+    block(6.7, 2.5, 2.6, 0.95, "proxy score\ncomponents P")
 
     ax.annotate(
         "",
-        xy=(6.25, 2.0),
-        xytext=(2.0, 2.0),
-        arrowprops={"arrowstyle": "->", "lw": 1.0, "color": "0.12"},
+        xy=(6.65, 3.18),
+        xytext=(3.35, 3.39),
+        arrowprops={"arrowstyle": "->", "lw": 1.1, "color": "0.12"},
     )
-    ax.text(4.15, 2.22, "phi maps only\nthe declared component", fontsize=8.2, ha="center")
+    ax.text(5.0, 3.55, "phi carries only the\nmeasured component", fontsize=8.0, ha="center")
 
-    theta = np.linspace(0, 2 * np.pi, 180)
-    blob_x = 7.75 + 0.55 * np.cos(theta) + 0.13 * np.sin(2 * theta)
-    blob_y = 1.7 + 0.36 * np.sin(theta)
-    ax.fill(blob_x, blob_y, color="0.82", ec="0.42", lw=0.8)
-    ax.plot([6.45, 8.85], [2.65, 2.65], color="0.48", lw=0.75)
-    ax.text(6.38, 3.08, "proxy space", fontsize=10)
-    ax.text(6.45, 2.78, "intended image", fontsize=8.2, color="0.28")
-    ax.text(7.18, 1.12, "observation gap\nresidual epsilon", fontsize=8.2, color="0.22")
+    ax.text(
+        3.75,
+        1.62,
+        "dimension gap:\nno path into the proxy",
+        fontsize=8.2,
+        color="0.3",
+        ha="left",
+    )
+
     ax.annotate(
         "",
-        xy=(7.58, 1.72),
-        xytext=(7.08, 2.62),
-        arrowprops={"arrowstyle": "->", "lw": 0.8, "color": "0.35"},
+        xy=(7.6, 2.45),
+        xytext=(7.6, 0.95),
+        arrowprops={"arrowstyle": "->", "lw": 1.0, "color": "0.4", "ls": (0, (3, 2))},
+    )
+    ax.text(
+        7.78,
+        1.42,
+        "observation gap:\nresidual artifact epsilon enters\nfrom outside the target",
+        fontsize=8.0,
+        color="0.25",
     )
     save(fig, "part-i-dimension-observation-gap.pdf")
 
@@ -170,6 +181,7 @@ def drift_envelope() -> None:
     ax.axvline(0, color="0.75", lw=0.6)
     ax.text(-1.25, 0.92, "T1/T2 drift envelope", fontsize=9.3)
     ax.text(-1.25, 0.76, "declared hidden covariance and value metric", fontsize=7.7, color="0.35")
+    ax.text(-1.25, -0.95, "two hidden coordinates drawn\nfor visualization only", fontsize=7.7, color="0.35")
     ax.text(0.12, -0.95, "Boltzmann-style finite-pressure paths", fontsize=7.8, color="0.25")
     ax.set_xlabel("hidden coordinate H1")
     ax.set_ylabel("hidden coordinate H2")
@@ -189,20 +201,20 @@ def cost_ellipse() -> None:
     a_star = np.array([1.45, 0.62]) * w * d / float(np.array([1.45, 0.62]) @ (w**2))
 
     axes[0].contour(xx, yy, cost, levels=[0.08, 0.16, 0.28, 0.42], colors="0.65", linewidths=0.7)
-    axes[0].contourf(xx, yy, cost, levels=[0.0, 0.42], colors=["0.94"], alpha=0.45)
     axes[0].plot(x, d - x, color="0.10", lw=1.4)
     axes[0].fill_between(x, np.maximum(d - x, 0), 1.35, where=x <= d, color="0.86", alpha=0.45)
     axes[0].scatter([a_star[0]], [a_star[1]], c="0.08", s=24)
     axes[0].text(0.07, 1.22, "T4: m(d) <= V", fontsize=9.2)
-    axes[0].text(a_star[0] + 0.035, a_star[1] + 0.03, "cost-minimizer", fontsize=7.5)
-    axes[0].text(0.68, 0.42, "score half-plane\nw . a >= d", fontsize=7.7, color="0.24")
+    axes[0].text(a_star[0] + 0.035, a_star[1] + 0.03, "cost-minimizing action", fontsize=7.5)
+    axes[0].text(0.58, 0.44, "score-clearing half-plane\nw . a >= d", fontsize=7.7, color="0.24")
+    axes[0].text(0.06, 0.5, "private-cost\ncontours", fontsize=7.5, color="0.45")
 
     axes[1].plot(x, d - x, color="0.10", lw=1.4)
     axes[1].scatter([0.5], [0.5], c="0.08", s=24)
     axes[1].arrow(0.5, 0.5, 0.45, 0.0, head_width=0.035, head_length=0.045, color="#8a3f2a", lw=1.0)
     axes[1].arrow(0.5, 0.5, 0.0, 0.16, head_width=0.035, head_length=0.045, color="0.45", lw=1.0)
     axes[1].text(0.07, 1.22, "T5: harm needs h", fontsize=9.2)
-    axes[1].text(0.98, 0.53, "large h1", fontsize=7.7, color="#7d3d24")
+    axes[1].text(0.64, 0.56, "hidden-harm direction:\nlarge h1", fontsize=7.5, color="#7d3d24")
     axes[1].text(0.53, 0.71, "small h2", fontsize=7.7, color="0.35")
     axes[1].text(0.25, 0.28, "same private score cost;\ndifferent hidden harm", fontsize=7.8, color="0.24")
 
@@ -255,13 +267,16 @@ def population_gaming_band() -> None:
 
     x = np.arange(len(k_values))
     axes[1].bar(x, h_pop_normal, 0.46, color="0.22", linewidth=0)
-    for idx, delta_i in enumerate(deltas):
-        axes[1].text(idx, h_pop_normal[idx] + 0.012, f"H_per=d\ninside band", ha="center", fontsize=6.9, color="0.28")
-        axes[1].plot([idx - 0.18, idx + 0.18], [delta_i * 0.05, delta_i * 0.05], color="#9b4d2e", lw=1.0)
     axes[1].set_xticks(x, [f"{k:.2g}" for k in k_values])
     axes[1].set_xlabel("aggregate gaming capacity K")
     axes[1].set_ylabel("H_pop: population harm")
-    axes[1].text(1.55, max(h_pop_normal) * 1.13, "larger K widens entry band", fontsize=8.2)
+    axes[1].text(
+        -0.35,
+        max(h_pop_normal) * 1.12,
+        "larger K widens the entry band, so H_pop grows;\nH_per stays the deficit d for every gamer in the band",
+        fontsize=7.7,
+        color="0.22",
+    )
     draw_range_frame(axes[1], (-0.55, len(k_values) - 0.45), (0.0, max(h_pop_normal) * 1.32))
 
     save(fig, "part-ii-population-gaming-band.pdf")
