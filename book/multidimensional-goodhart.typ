@@ -128,7 +128,8 @@ gallery is tabulated in the appendix.
 == Refuted by counterexample
 
 *Not: hidden harm scales with the number of unmeasured dimensions.* Hidden harm
-does not scale with $dim(ker phi)$ by itself. In a pure selection model, if
+does not scale with $dim(ker phi)$ — the count of directions the proxy map
+cannot see, in the notation of the next part — by itself. In a pure selection model, if
 hidden coordinates are independent of the selected proxy, thresholding does not
 move them — however many of them there are. What survives is a coupling
 question: unmeasured dimensions matter through their dependence on the selected
@@ -145,8 +146,9 @@ hidden movements can cancel in a signed aggregate. What survives is a
 declaration requirement: a value functional, norm, tail risk, or domain loss
 must be named before "damage" has a magnitude.
 
-*Not: baseline covariance predicts response under pressure.* With $P = Z$ and
-$H = Z^2 - 1$, baseline covariance between proxy and hidden variable is zero,
+*Not: baseline covariance predicts response under pressure.* With standard
+normal $Z$, proxy $P = Z$, and hidden variable $H = Z^2 - 1$, baseline
+covariance between proxy and hidden variable is zero,
 yet threshold or Boltzmann selection moves $H$. The example shows why zero
 baseline covariance is not enough at finite pressure. What survives is
 covariance as a local velocity: the derivative at zero pressure, with
@@ -385,7 +387,8 @@ rate $h_j$, set against the score weight $w_j$, is the channel's exchange
 rate: how much hidden harm channel $j$ does per unit of score it produces.
 
 #theorem[5][Additive exchange-rate iff][
-The fixed-deficit per-agent hidden harm of the cost-minimizing action is
+With $kappa_j > 0$ and $w_j > 0$ on the measured set, the fixed-deficit
+per-agent hidden harm of the cost-minimizing action is
 
 $ H_M(d) =
   d (sum_(j in M) h_j kappa_j w_j) /
@@ -451,8 +454,8 @@ affordability budget but not the exchange-rate formula.
 
 *Fixed deficit, per agent.* The result prices one unit closing one deficit.
 Lowering the private cost of reaching the score can recruit additional
-below-threshold units into gaming, so conserved per-gamer harm does not imply
-conserved population harm.
+below-threshold units into gaming, so conserved per-gamer harm $H_"per"$ does
+not imply conserved population harm $H_"pop"$.
 
 *Declared harm rates.* The $h_j$ are contract inputs, hidden from the
 scorecard but declared or estimated by the analyst. Without them there is no
@@ -519,12 +522,13 @@ bounds give drift envelopes for pure reweighting. They do not identify the
 hidden coordinates, the value weights, or the welfare object. They do not
 apply to fixed-type response changes.
 
-Covariance enters as a local velocity and nothing more. Along a valid
-exponential tilt — one whose $exp(beta P)$ stays normalizable over the
-pressure range — the derivative at zero pressure is a covariance. At finite
-pressure the whole tilted path, tail shape, and moment-generating domain
-matter. $H = Z^2 - 1$ is the zero-covariance counterexample: baseline
-covariance zero, finite-pressure drift nonzero.
+Part 2's covariance refutation gets its mechanism here. Covariance enters as
+a local velocity and nothing more: along a valid exponential tilt — one whose
+$exp(beta P)$ stays normalizable over the pressure range — the derivative at
+zero pressure is a covariance, while at finite pressure the whole tilted
+path, tail shape, and moment-generating domain matter. That is what the
+$H = Z^2 - 1$ example exploited: baseline covariance zero, finite-pressure
+drift nonzero.
 
 #figure(
   image("figures/part-ii-t1-t2-drift-envelope.pdf", width: 78%),
