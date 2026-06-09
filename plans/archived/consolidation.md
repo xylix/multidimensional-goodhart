@@ -1,5 +1,9 @@
 # Project-state consolidation (post-Iteration 43)
 
+Status: archived. The consolidation pass produced the current source registry,
+core theorem file, question split, and next-mode decision. It is preserved as
+audit trail, not an active plan.
+
 Purpose: pause open-ended iteration work long enough to clarify what the first
 43 iterations achieved, what they closed, what they left open, and what the
 project should become next. This plan merges the former

@@ -1,5 +1,10 @@
 # Re-spining Multidimensional Goodhart
 
+Status: archived. This plan guided the previous six-part book/abstract
+re-spining and paper deprecation pass. The current gating spine work is
+`plans/spine.md`; active prose and polish follow-ups live in
+`plans/prose-pass.md` and `plans/polish.md`.
+
 ## Context
 
 The project has accumulated a strong stack of results over ~42 iterations, but the current spine (book Intro + 7 chapters + appendices; deprecated paper in 5 sections; abstract in 4 + open) was shaped narratively as the work unfolded, not chosen to foreground the results that survived audit. The goal of this plan is a tabula-rasa critique and a re-spining of the long-form book and standalone abstract organized around what actually holds.

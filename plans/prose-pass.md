@@ -1,8 +1,8 @@
 # Prose pass — On Writing Well review of `book/multidimensional-goodhart.typ`
 
-Findings from a Zinsser-style review of the draft. Runs **after**
-`spine-refactor.md` lands, because the spine refactor rewrites several
-sections this pass would otherwise re-touch.
+Findings from a Zinsser-style review of the draft. Runs **after** the spine
+work is stable; the superseded detailed spine-refactor plan is archived at
+`plans/archived/spine-refactor.md`.
 
 Absorption status:
 - §1.1 (open on its own claim, not negation): partly absorbed — spine Part I
@@ -166,9 +166,9 @@ These are working and should not be edited away in the pass:
 ## 5. Out of scope
 
 - Figures and `refs.bib` audit (tracked in `polish.md`).
-- The deprecated `multidimensional-goodhart-paper.typ` — archived by
-  `spine-refactor.md`; no prose work on it.
-- Abstract prose — handled inside `spine-refactor.md` as part of the 2–4
-  page rescope, not here.
-- Any substantive math, scope, or claim changes (handled by `consolidation.md`
-  and `spine-refactor.md`).
+- The deprecated `multidimensional-goodhart-paper.typ` — archived by the
+  spine-refactor pass; no prose work on it.
+- Abstract prose — handled inside the archived spine-refactor pass as part of
+  the 2–4 page rescope, not here.
+- Any substantive math, scope, or claim changes (handled by the archived
+  consolidation and spine-refactor plans).
