@@ -20,9 +20,10 @@ unblocked, finish or hand off cleanly, and not reach into later phases.
   reference through Phases 1–2 and moves to `archived/` only after the
   manuscript rewrite lands. The exchange-rate-empirics track feeds its
   section roles 9 and 12 at Phase 2+.
-- **Phase 1 — `spine-v3.md`.** After the gate: expand `spine.md` into a
-  section-by-section manuscript spine per crystallization stage 5 below,
-  reviewed section-by-section.
+- **Phase 1 — `spine-v3.md`. DONE June 9, 2026.** Drafted, reviewed
+  section-by-section, and approved the same day (five open questions
+  resolved in review; resolutions recorded inline in the file). Phase 2 is
+  unblocked.
 - **Phase 2 — structural rewrite.** Rewrite the manuscript to spine v3.
   Before executing, reconcile `polish.md` Phase 2/3 sections 1, 4, 5
   against `spine-v3.md` and strike what the rewrite absorbs.
@@ -39,8 +40,8 @@ unblocked, finish or hand off cleanly, and not reach into later phases.
 - `spine.md` — compact source of truth for the manuscript spine; approved
   June 9, 2026 (gate passed).
 - `spine-v3.md` — section-by-section manuscript spine expanding spine.md
-  (Phase 1 artifact); drafted June 9, 2026, under section-by-section user
-  review. Approval unblocks Phase 2.
+  (Phase 1 artifact); approved June 9, 2026 (eight parts; audit protocol
+  split into its own Part 7 during review). Governs the Phase 2 rewrite.
 - `04_06_2026_human_review.md` — active raw human-review notes on the book
   PDF. Source material; actionable items are distilled into `polish.md`.
 - `polish.md` — Phase 0 consistency fixes (executable now) plus the
