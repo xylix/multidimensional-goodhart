@@ -367,9 +367,125 @@ The contract is demanding by design. It prevents the framework from inferring
 welfare, hidden target movement, or a response channel from marginal score
 movement alone.
 
-= Licensed Calculations
+= The Exchange-Rate Diagnostic
 
-== Selection channel
+The design question of Part 1 — more metrics, fewer metrics, different
+metrics — has a complete answer in one closed model. This part declares the
+model, proves the answer, and then marks the boundary of the model's
+assumptions. The contract fields it consumes are the ones the previous part
+introduced: a fixed-type intervention channel, an action-cost geometry, an
+aggregation rule, and declared hidden harm rates.
+
+== The additive fixed-deficit model
+
+The scorecard calculation needs more than "more metrics." It needs an additive
+score over a measured channel set $M$ with weights $w_j$, separable quadratic
+action costs $a_j^2/(2 kappa_j)$, a fixed score deficit $d$ that the gaming
+unit must close, and linear hidden harm $sum_(j in M) h_j a_j$. Each declared
+rate $h_j$, set against the score weight $w_j$, is the channel's exchange
+rate: how much hidden harm channel $j$ does per unit of score it produces.
+
+#theorem[5][Additive exchange-rate iff][
+The fixed-deficit per-agent hidden harm of the cost-minimizing action is
+
+$ H_M(d) =
+  d (sum_(j in M) h_j kappa_j w_j) /
+    (sum_(j in M) kappa_j w_j^2). $
+
+Fixed-deficit harm is conserved across compared active measured sets exactly
+when $h_j = c w_j$ on those active channels.
+]
+
+The formula is a weighted harm-per-score average. The cost-minimizing unit
+closes the deficit by loading each channel in proportion to $kappa_j w_j$ —
+the Lagrange condition prices every channel's score gain at equal marginal
+private cost — so each channel's harm rate enters weighted by exactly that
+load. The sums do not cancel in general because $kappa_j$, $w_j$, and $h_j$
+vary by channel. The iff condition reads off the average: fixed-deficit harm
+is conserved across compared active measured sets exactly when every active
+channel does the same hidden harm per score unit, $h_j \/ w_j = c$.
+
+That is the answer to the design question. Adding or removing measured
+channels conserves, reduces, increases, or reroutes the harm of
+cost-minimizing gaming strictly through the exchange rates of the channels
+the change makes cheap or expensive. The dimension count never enters by
+itself. This is the main additive-scorecard result, and it converts the folk
+intuitions of Part 1 into a checkable condition: before saying whether a
+measured-set change helped, hurt, or only re-routed harm, the hidden harm per
+score unit of the affected channels has to be declared or estimated.
+Holmstrom--Milgrom multitasking is the closest economics precedent
+@holmstrom1991multitask — an analogue for the aggregation-and-effort
+structure, not grounding for the theorem — and the contract here makes the
+hidden-harm exchange rate explicit.
+
+== Affordability is not the diagnostic
+
+The diagnostic sits on top of an affordability calculation and must not be
+confused with it. The convex score-deficit budget (T4, stated with the
+supporting calculations) answers "can the unit afford the proxy movement?"
+under a declared private-cost model; the exchange-rate diagnostic answers
+"what does that movement do to hidden harm?" The two come apart cleanly: if
+two proxy channels have equal private cost and equal score weight but harm
+rates $(h, 0)$, cost minimization splits effort between them while hidden
+harm grows with $h$. Private cost is unchanged; value-weighted harm is not.
+Affordability is not welfare.
+
+#figure(
+  image("figures/part-ii-t4-t5-cost-ellipse.pdf", width: 88%),
+  caption: [T4 locates the private cost-minimizing action for a score deficit. T5 then requires hidden harm exchange rates before that action can be interpreted as welfare movement.]
+) <fig:t4-t5-cost-ellipse>
+
+== The non-transfer boundary
+
+Every assumption in the model carries load, and the diagnostic does not
+survive their removal.
+
+*Additive aggregation.* The weighted-average form exists because score
+contributions add. Conjunctive aggregation — requiring every measured
+component to clear a bar — is a different rule with different comparative
+statics, not a corollary; under it, harm can grow with the number of
+components.
+
+*Separable quadratic costs.* Proportional loading, and with it the closed
+form of $H_M(d)$, is quadratic-cost algebra. Other convex costs still give an
+affordability budget but not the exchange-rate formula.
+
+*Fixed deficit, per agent.* The result prices one unit closing one deficit.
+Lowering the private cost of reaching the score can recruit additional
+below-threshold units into gaming, so conserved per-gamer harm does not imply
+conserved population harm.
+
+*Declared harm rates.* The $h_j$ are contract inputs, hidden from the
+scorecard but declared or estimated by the analyst. Without them there is no
+diagnostic — only the affordability statement.
+
+#figure(
+  image("figures/part-ii-population-gaming-band.pdf", width: 88%),
+  caption: [The gaming band separates fixed-deficit per-gamer harm $H_"per"$ from population harm $H_"pop"$. More capacity widens entry without by itself changing the per-gamer exchange-rate formula.]
+) <fig:population-gaming-band>
+
+The mechanics deferred here — population entry, conjunctive rules, and the
+step from per-agent harm to welfare — are taken up at the end of the next
+part.
+
+= Supporting Calculations
+
+The remaining closed results support the exchange-rate diagnostic; none is an
+independent headline. The selection bounds say when an intervention reading
+is licensed at all — score movement with no unit acting is a different
+mechanism. The affordability results say which channels a design makes cheap,
+the input the diagnostic prices. The hardening result treats capacity
+reduction as measurement design in time. The response-shape taxonomy and the
+aggregation-and-entry mechanics mark where the fixed-deficit frame ends.
+
+== Selection: the channel to exclude first
+
+The same score path the diagnostic explains can be produced with no unit
+acting at all: pure selection reweights a fixed population. Before any
+intervention calculation is licensed, the contract has to rule selection out
+or bound it. Selection is the regime where policy changes only the weights
+over a fixed baseline, so baseline variance and reweighting intensity are
+enough to bound hidden drift.
 
 Before the theorem can be used, the contract must supply a baseline law, a pure
 selection channel, hidden coordinates or a value metric, and enough integrable
@@ -397,22 +513,31 @@ $ norm(B_H(theta))_V <=
   delta sup_(norm(v)_(V,*) <= 1) sqrt(v^T Sigma_H v) $.
 ]
 
-These are Hilbert-space Cauchy--Schwarz bounds. They license drift envelopes
-for pure reweighting. They do not identify the hidden coordinates, the value
-weights, or the welfare object. They do not apply to fixed-type response
-changes.
+These are Hilbert-space Cauchy--Schwarz bounds because hidden drift is an
+inner product: it pairs the reweighting residual $L - 1$ with the centered
+hidden variable, and Cauchy--Schwarz turns the pairing into an envelope. The
+bounds license drift envelopes for pure reweighting. They do not identify the
+hidden coordinates, the value weights, or the welfare object. They do not
+apply to fixed-type response changes.
 
-Covariance belongs here only as a local velocity. Along a valid exponential
-tilt, the derivative at zero pressure is a covariance. At finite pressure, the
-path response, tail shape, and moment-generating domain matter. That is why the
-zero-covariance example $H = Z^2 - 1$ survives as a warning.
+Covariance enters as a local velocity and nothing more. Along a valid
+exponential tilt — one whose $exp(beta P)$ stays normalizable over the
+pressure range — the derivative at zero pressure is a covariance. At finite
+pressure the whole tilted path, tail shape, and moment-generating domain
+matter. $H = Z^2 - 1$ is the zero-covariance counterexample: baseline
+covariance zero, finite-pressure drift nonzero.
 
 #figure(
   image("figures/part-ii-t1-t2-drift-envelope.pdf", width: 78%),
   caption: [T1/T2 give a declared hidden-space envelope. Boltzmann-style pressure paths are trajectories inside that declared geometry, not replacements for the finite-pressure bound.]
 ) <fig:t1-t2-drift-envelope>
 
-== Intervention channel
+== Intervention: when a gaming channel activates
+
+Once fixed types can act, baseline-distribution bounds are no longer the
+right object; the relevant primitive is action affordability under costs and
+stakes. The affordability results say which channels a design makes cheap
+enough to activate — the input the exchange-rate diagnostic consumes.
 
 Before an intervention calculation can be used, the contract must supply a
 fixed-type action model: actions $a$, private cost $c(a)$, proxy gain $w dot a$,
@@ -426,10 +551,12 @@ gaming by a below-threshold unit is privately worthwhile exactly when
 $t - Q <= sqrt(2 kappa V)$.
 ]
 
-The wedge $sqrt(2 kappa V)$ is a signature of this quadratic toy. It is not a
-universal intervention law and should not be read as an RLHF, benchmark, or
-organizational theorem unless the action, cost, stakes, and pass condition have
-been declared.
+In prose: a below-threshold unit must buy the deficit $d = t - Q$; the
+cheapest passing action costs $d^2/(2 kappa)$; gaming is worthwhile exactly
+when that cost is at most $V$. The wedge $sqrt(2 kappa V)$ is a signature of
+this quadratic toy. It is not a universal intervention law and should not be
+read as an RLHF, benchmark, or organizational theorem unless the missing
+primitives — action, cost, stakes, and pass condition — have been declared.
 
 #theorem[4][Convex score-deficit budget][
 With finite-dimensional action space, closed proper convex cost $c$, linear
@@ -440,58 +567,21 @@ Gaming under stakes $V$ is feasible exactly when $m(d) <= V$ in this declared
 private-cost model.
 ]
 
-Cost minimization and hidden-welfare assessment answer different questions. For
-example, if two proxy channels have equal private cost and equal score weight
-but harm rates $(h, 0)$, cost minimization splits effort while hidden
-harm grows with $h$. The budget licenses private affordability; welfare
-requires a hidden harm functional.
+In T4, $c^*$ is the convex conjugate of the cost and $lambda$ is the
+multiplier pricing the score-deficit constraint. The budget licenses private
+affordability under the declared model and nothing more; the boundary between
+affordability and hidden harm is drawn where the exchange-rate diagnostic
+uses it.
 
-#figure(
-  image("figures/part-ii-t4-t5-cost-ellipse.pdf", width: 88%),
-  caption: [T4 locates the private cost-minimizing action for a score deficit. T5 then requires hidden harm exchange rates before that action can be interpreted as welfare movement.]
-) <fig:t4-t5-cost-ellipse>
+== Adaptive hardening: measurement design in time
 
-== Multidimensional scorecards — the keeper
-
-The scorecard calculation needs more than "more metrics." It needs an additive
-score, measured channel set $M$, weights $w_j$, separable quadratic costs
-$a_j^2/(2 kappa_j)$, fixed score deficit $d$, and linear hidden harm
-$sum_(j in M) h_j a_j$.
-
-#theorem[5][Additive exchange-rate iff][
-The fixed-deficit per-agent hidden harm of the cost-minimizing action is
-
-$ H_M(d) =
-  d (sum_(j in M) h_j kappa_j w_j) /
-    (sum_(j in M) kappa_j w_j^2). $
-
-Fixed-deficit harm is conserved across compared active measured sets exactly
-when $h_j = c w_j$ on those active channels.
-]
-
-This is the most exportable scorecard result. It says what must be checked
-before saying whether adding or removing a measured channel helped, hurt, or
-only re-routed harm: the hidden harm per score unit has to be declared or
-estimated. Holmstrom--Milgrom multitasking is the closest economics precedent,
-but the contract here makes the hidden-harm exchange rate explicit.
-
-The result is fixed-deficit and per-agent. Population entry is separate:
-lowering the private cost of reaching the score can recruit more units into
-gaming even when each fixed-deficit gamer has conserved harm. Conjunctive
-aggregation is separate too; requiring every measured component to clear a bar
-can make harm grow with the number of components.
-
-#figure(
-  image("figures/part-ii-population-gaming-band.pdf", width: 88%),
-  caption: [The gaming band separates fixed-deficit per-gamer harm $H_"per"$ from population harm $H_"pop"$. More capacity widens entry without by itself changing the per-gamer exchange-rate formula.]
-) <fig:population-gaming-band>
-
-== Adaptive hardening — narrow but real
-
-The hardening result is narrow by design. The contract is fixed finite measured
-set $M$, fixed deficit $d$, fixed stakes $V$, fixed weights, additive proxy
-gain, separable quadratic costs, deterministic observation, and monotone
-hardening of capacities $kappa_(j,t)$.
+Hardening is the dynamic face of the design question: instead of changing
+which channels are measured, the designer reduces channel capacities over
+time and asks when gaming stops being feasible. The result is narrow by
+design. The contract is fixed finite measured set $M$, fixed deficit $d$,
+fixed stakes $V$, fixed weights, additive proxy gain, separable quadratic
+costs, deterministic observation, and monotone hardening of capacities
+$kappa_(j,t)$.
 
 #theorem[6][Deterministic adaptive-hardening capacity boundary][
 Let
@@ -526,6 +616,31 @@ conditional taxonomy:
 
 These are not theorem transfers between domains. They are ways to turn a
 response-shape conjecture into a declared model with falsifiers.
+
+== Aggregation and entry
+
+Three mechanisms move harm outside the fixed-deficit frame of the
+exchange-rate diagnostic, and each needs its own declared rule.
+
+*Population entry.* The diagnostic prices one unit closing one deficit.
+Lowering the private cost of reaching the score — adding cheap channels,
+raising capacities — can recruit additional below-threshold units into
+gaming. Per-gamer harm can be conserved while population harm grows on the
+entry margin; the gaming band in the diagnostic's figure separates the two
+quantities.
+
+*Conjunctive aggregation.* Requiring every measured component to clear a bar
+is a different aggregation rule with different comparative statics: harm can
+grow with the number of components because gates are cleared, not traded off.
+Nothing in the additive formula transfers without re-derivation.
+
+*From harm to welfare.* Per-agent harm, population harm, and welfare are
+three different objects. Moving between them needs the declared value
+model — who counts, how harms aggregate, and what offsets are allowed. The
+contract treats that as a separate declaration, never a corollary.
+
+The supporting calculations close here: they say when the exchange-rate frame
+applies, what feeds it, and where it ends.
 
 = Across Disciplines: Primitive Attribution
 
