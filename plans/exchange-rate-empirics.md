@@ -56,6 +56,21 @@ small identification toy in the spirit of the existing
 "identification toys and evidence thresholds" item in the book's open
 agenda (§7.2), and far more tractable than Q18.
 
+## Folded in from the June 9, 2026 GPT-5 review
+
+A named deliverable: one minimal hypothetical audit showing what evidence
+would actually estimate a harm rate h_j (the review's point was that the
+book's Part 6 placeholder row says the primitives are hard to estimate
+without showing what estimating one would look like). The natural vehicle is
+the HRRP worked pass below: state the scorecard, the channel set, the
+h_j-like quantity the readmissions-vs-mortality studies estimated, and the
+response-channel assumptions under which that estimate identifies a
+channel-level h_j rather than the realized weighted average H/d (the
+identification gap above). Keep it evidence-contract-shaped — what would
+license the estimate — not policy advice. Book-side landing if it
+crystallizes: the Part 6 readmissions stress test or the placeholder table
+row.
+
 ## Where it lands
 
 - Research side first: a thread or applications file working one literature
