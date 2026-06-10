@@ -15,14 +15,13 @@ built PDF, and an external GPT-5 review, each followed by a committed fix
 batch (records in `quality-checks/09_06_2026_*.md`; commits 607219d,
 e5dca88, a5d3b1c). Neither internal pass found structural problems; the
 GPT-5 round produced the T5 universal-iff precision fix, which also updated
-core-math.md and claim_audits.md. What remains is the content addition
-planned below, research work, and publishing — not editing pipeline work.
+core-math.md and claim_audits.md. The one follow-on content item — the
+worked contract pass on the school example (GPT-5 review item 4) — was
+executed later the same day (`archived/worked-contract-pass.md`). What
+remains is research work and publishing — not editing or book-content work.
 
 ## Active plan files
 
-- `worked-contract-pass.md` — add a worked 4–5 field pass through the
-  school-score example after the contract box in Part 3 (from the GPT-5
-  review, user-approved June 9). The one open book-content item.
 - `exchange-rate-empirics.md` — the active research track: mine existing
   hidden-harm evaluations (HRRP, education accountability, NHS targets,
   reward-model overoptimization) as h_j exchange-rate evidence, plus the
@@ -42,6 +41,7 @@ planned below, research work, and publishing — not editing pipeline work.
   theorems exist, and the approved spine places it accordingly.
 
 Completed or superseded plans are in `archived/`; recently archived:
+`worked-contract-pass.md` (executed June 9),
 `manuscript-pipeline-ledger.md` (the executed Phase 0–4 ledger), `spine.md`
 and `spine-v3.md` (the executed spine artifacts), `prose-pass.md` and
 `polish.md` (executed ledgers, kept as audit records),

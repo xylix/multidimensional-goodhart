@@ -331,6 +331,38 @@ omitted variation belongs in $K_theta$, $W_theta$, or the action model. The
 induced marginal law $mu_theta$ usually cannot distinguish those choices by
 itself.
 
+Filled in for the school-score case of Part 1, the load-bearing fields read:
+
+#boxnote[The contract, filled in: the district's score rise.][
+- #contract-row[Claimed output:][What the district wants to conclude is "the
+  funding rule improved schooling." What the inputs support is at most a
+  monitoring trigger: something responded, and the mechanism is open.]
+- #contract-row[Type representation:][$u$ is one school as it stood before
+  the funding rule: size, neighborhood, student mix, prior resources,
+  administrative capacity. Teaching practice, test preparation, and
+  reporting choices made because of the rule are responses, not type.]
+- #contract-row[Response channel:][Undetermined. The first and fourth
+  stories are selection — the funded pool or the tested population is
+  reweighted through $W_theta (u)$; the other three are intervention — a
+  fixed school changes behavior through $K_theta (d s | u)$. The score path
+  fits both.]
+- #contract-row[Hidden value or harm:][Not declared. Nothing in the score
+  separates format drilling from better teaching, so no harm rates $h_j$ —
+  and no welfare conclusion — are available until learning is measured off
+  the scorecard.]
+- #contract-row[Evidence standard and falsifier:][Participation and pool
+  records separate the selection stories; a low-stakes audit test separates
+  drilling from teaching; reporting traces separate repair from concealment.
+  The contract is the wrong one if the score rise predates the rule's
+  announcement.]
+]
+
+Five fields filled, and the example is not resolved: all five stories are
+still standing. What the declaration has done is convert "did the metric
+work?" into named missing primitives — the response channel and the harm
+model — and named observations that would supply them. The adequacy check
+below says the same thing as an information count.
+
 == Contract adequacy
 
 After the output is named, the contract should pass a small information
@@ -360,9 +392,10 @@ meaningfully different response stories still satisfy the same declared inputs,
 the contract has not licensed that output. It may still license a weaker output:
 for example, an aggregate score path may license a monitoring trigger while not
 licensing a welfare verdict or a selection/intervention classification. The
-school-score path is exactly such a case: the declared inputs — a score rise
-and a known funding rule — leave all five response stories standing, so the
-licensed output is "investigate," not a verdict on any one story.
+filled-in school-score contract is exactly such a case: its declared inputs —
+a score rise and a known funding rule — leave all five response stories
+standing, so the licensed output is "investigate," not a verdict on any one
+story.
 
 The contract is demanding by design. It prevents the framework from inferring
 welfare, hidden target movement, or a response channel from marginal score

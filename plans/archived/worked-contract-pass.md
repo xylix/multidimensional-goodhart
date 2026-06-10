@@ -1,5 +1,14 @@
 # Worked contract pass on the school example
 
+**EXECUTED June 9, 2026.** Option A placement as recommended (end of §3.3,
+after the commentary paragraphs, before §3.4); all five proposed fields;
+§3.4 callback reconciled to a back-reference ("The filled-in school-score
+contract is exactly such a case"). Build deterministic; worked box renders
+whole at the top of p. 10; Part 3 grew by one page (within the acceptance
+bound). Scaled-down fresh-context review of Part 3 passed both checks
+(method demonstration, not example resolution; no seam problems) with no
+fix batch needed.
+
 Status: active plan, created June 9, 2026 from the GPT-5 review (item 4:
 "After the contract table … add one worked pass through the school example
 using 4-5 rows of the contract. That would turn the checklist from
