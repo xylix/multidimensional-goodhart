@@ -129,8 +129,11 @@ harm `sum_{j in M} h_j a_j`.
 Statement: the cost-minimizing fixed-deficit harm is
 `H_M(d) = d (sum_{j in M} h_j kappa_j w_j) /
               (sum_{j in M} kappa_j w_j^2)`.
-Fixed-deficit harm is conserved across active measured sets exactly when
-`h_j = c w_j` on the compared active channels.
+Fixed-deficit harm is conserved across all measured sets drawn from a channel
+pool exactly when `h_j = c w_j` on that pool (singleton sets force each ratio
+`h_j / w_j` to the common value). The iff characterizes invariance across
+every measured-set change within the pool; one particular pair of sets can
+have equal `H_M(d)` without proportional rates.
 
 Dependencies: finite-dimensional quadratic optimization; additive aggregation;
 declared harm exchange rates.

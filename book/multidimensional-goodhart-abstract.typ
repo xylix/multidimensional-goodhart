@@ -56,8 +56,8 @@ Write $G: S -> RR^m$ for target-relevant state, $P: S -> RR^k$ for proxy
 features, $phi$ for the intended proxy relation, and
 $epsilon(s) = P(s) - phi(G(s))$ for residual proxy artifact. A claim must also
 say how policy exposure changes the population or behavior: selection changes
-weights $W_theta(u)$ over fixed types, while intervention changes the
-fixed-type response kernel $K_theta(d s | u)$.
+weights $W_theta (u)$ over fixed types, while intervention changes the
+fixed-type response kernel $K_theta (d s | u)$.
 
 == No Generic Law
 
@@ -91,11 +91,12 @@ calculations can be imported and what it refuses to infer.
 With additive score over a measured channel set $M$, separable quadratic
 costs, fixed score deficit $d$, and declared hidden harm rates $h_j$, the
 per-agent hidden harm of the cost-minimizing response is
-$ H_M(d) =
+$ H_M (d) =
   d (sum_(j in M) h_j kappa_j w_j) /
     (sum_(j in M) kappa_j w_j^2), $
 a weighted harm-per-score average. Fixed-deficit per-agent harm is conserved
-across active measured sets iff $h_j = c w_j$ on those channels; otherwise a
+across all measured sets drawn from a channel pool iff $h_j = c w_j$ on that
+pool; otherwise a
 measured-set change reduces, increases, or reroutes harm through the channels
 it makes cheap. Conjunctive aggregation, population entry, and undeclared
 harm rates each break the transfer.
@@ -122,7 +123,7 @@ harm rates each break the transfer.
 - *Adaptive hardening.* Under fixed finite $M$, fixed $d$, fixed $V$, fixed
   weights, additive proxy gain, separable quadratic costs, deterministic
   observation, and monotone capacity hardening, gaming is feasible exactly when
-  $S_t(M) = sum_j kappa_(j,t) w_j^2 >= d^2/(2V)$ and stops exactly below that
+  $S_t (M) = sum_j kappa_(j,t) w_j^2 >= d^2/(2V)$ and stops exactly below that
   threshold.
 ]
 
@@ -147,7 +148,7 @@ the licensed calculation systematically predicts the wrong response shape or
 direction while a simpler score-only rule predicts it correctly. Narrow theorem
 failures would also falsify the relevant import: selection drift exceeding the
 $delta s_i$ envelope under its hypotheses; deterministic hardening violating
-the $S_t(M) < d^2/(2V)$ boundary; or additive fixed-deficit harm ignoring the
+the $S_t (M) < d^2/(2V)$ boundary; or additive fixed-deficit harm ignoring the
 $h_j = c w_j$ exchange-rate condition.
 
 The framework refuses policy and welfare conclusions when primitives are

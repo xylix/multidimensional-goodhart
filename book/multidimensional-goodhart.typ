@@ -375,7 +375,9 @@ metrics — has a complete answer in one closed model. This part declares the
 model, proves the answer, and then marks the boundary of the model's
 assumptions. The contract fields it consumes are the ones the previous part
 introduced: a fixed-type intervention channel, an action-cost geometry, an
-aggregation rule, and declared hidden harm rates.
+aggregation rule, and declared hidden harm rates. Theorem numbers follow the
+research record's fixed inventory T1--T6; the headline result is T5, and the
+supporting results T1--T4 and T6 are stated in the next part.
 
 == The additive fixed-deficit model
 
@@ -394,18 +396,24 @@ $ H_M (d) =
   d (sum_(j in M) h_j kappa_j w_j) /
     (sum_(j in M) kappa_j w_j^2). $
 
-Fixed-deficit harm is conserved across compared active measured sets exactly
-when $h_j = c w_j$ on those active channels.
+Fixed-deficit harm is conserved across all measured sets drawn from a channel
+pool exactly when $h_j = c w_j$ on that pool.
 ]
 
 The formula is a weighted harm-per-score average. The cost-minimizing unit
 closes the deficit by loading each channel in proportion to $kappa_j w_j$ —
 the Lagrange condition prices every channel's score gain at equal marginal
-private cost — so each channel's harm rate enters weighted by exactly that
-load. The sums do not cancel in general because $kappa_j$, $w_j$, and $h_j$
-vary by channel. The iff condition reads off the average: fixed-deficit harm
-is conserved across compared active measured sets exactly when every active
-channel does the same hidden harm per score unit, $h_j \/ w_j = c$.
+private cost, and under the positivity hypotheses every measured channel
+carries nonzero load ("active" means exactly this) — so each channel's harm
+rate enters weighted by exactly that load. The sums do not cancel in general
+because $kappa_j$, $w_j$, and $h_j$ vary by channel. The iff condition reads
+off the average: fixed-deficit harm is conserved across every measured-set
+change within a channel pool exactly when each channel in the pool does the
+same hidden harm per score unit, $h_j \/ w_j = c$ — singleton sets force
+every ratio to the common value. The universality matters: one particular
+pair of measured sets can have equal weighted averages by coincidence,
+without proportional rates. The condition characterizes invariance across
+all comparisons, not a single match.
 
 That is the answer to the design question. Adding or removing measured
 channels conserves, reduces, increases, or reroutes the harm of
@@ -571,7 +579,9 @@ private-cost model.
 ]
 
 In T4, $c^*$ is the convex conjugate of the cost and $lambda$ is the
-multiplier pricing the score-deficit constraint. The budget licenses private
+multiplier pricing the score-deficit constraint; the regularity hypothesis is
+the standard strong-duality requirement of convex analysis, a Slater-type
+interior-feasibility condition. The budget licenses private
 affordability under the declared model and nothing more; the boundary between
 affordability and hidden harm is drawn with the exchange-rate diagnostic.
 
@@ -594,6 +604,11 @@ $S_t (M) < T$. A progress-aware largest-action multiplicative rule terminates in
 finite time when channels are finite, positive-weight, and floor capacity
 satisfies $S_"floor" (M) < T$.
 ]
+
+The terminating rule is concrete: at each step, multiply by a fixed
+$alpha in (0, 1)$ the capacity of a largest-action channel among those not
+yet at their floor — "progress-aware" rules out stalling on an
+already-floored channel.
 
 Nothing broader is licensed. The theorem does not cover stochastic
 observation, arbitrary hardening rules, changing measured sets, changing
@@ -936,7 +951,8 @@ Examples include:
   $S_t (M) >= d^2/(2V)$ — showing the audited capacities or observation model
   were not the ones the agents faced.
 - An additive scorecard with defended $w_j$, $kappa_j$, and $h_j$ where
-  fixed-deficit per-agent harm is conserved across active measured sets even
+  fixed-deficit per-agent harm stays conserved across every audited
+  measured-set change even
   though the exchange-rate condition $h_j = c w_j$ fails, or moves even
   though the condition holds — showing the declared channels, costs, or harm
   rates were not the ones generating the response.
