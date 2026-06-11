@@ -44,13 +44,21 @@ linear algebra over the stacked profile matrix `A` with rows `a*(r)`.
    timing), harm-on-actions is a regression `H_i = a_i . h`. One regime can
    suffice: unit-level heterogeneity in `kappa_i` varies the channel mix
    across units, so the trace matrix is generically full rank. Traces are
-   what convert an average into a decomposition.
+   what convert an average into a decomposition — but watch the left-hand
+   side. Regressing the *score* on traces (the common published design)
+   attributes score movement to channels and can rule a channel in or out
+   as a score driver; it identifies nothing about `h_j`. Only the
+   harm-on-actions regression is case 2 proper.
 
 3. **No traces, policy variation.** Each regime contributes one equation.
-   The `h_j` are identified on the channels of interest **iff the matrix of
-   induced action profiles across regimes has full rank there**. Distinct
-   sites/years with genuinely different scorecard weights — the plan's
-   "trial and error" route — is exactly this design.
+   The full vector `h` is identified **iff the matrix of induced action
+   profiles across regimes has full column rank**; an individual `h_j` is
+   identified iff the unit vector `e_j` lies in the row space of that
+   matrix. (Full rank of a channel-restricted submatrix is neither
+   necessary nor sufficient: one regime with profile `(1, 1)` has a
+   full-rank restriction to channel 1 but identifies only `h_1 + h_2`.)
+   Distinct sites/years with genuinely different scorecard weights — the
+   plan's "trial and error" route — is exactly this design.
 
 ## Named failure modes
 
@@ -64,10 +72,13 @@ linear algebra over the stacked profile matrix `A` with rows `a*(r)`.
 - **Selection contamination.** If realized harm includes a pool-composition
   term correlated with the design (harm moves through entry/exit without
   any action), every harm equation is biased and full-rank variation does
-  not rescue the regression. The contract's response-channel field is
-  exactly the needed exclusion restriction: only panel-frozen (or
-  selection-corrected) observations belong in the system. This unifies the
-  econometric requirement with a contract field the book already demands.
+  not rescue the regression. The needed assumption is exclusion-
+  restriction-shaped — the design moves harm only through induced actions
+  — and the contract's response-channel field is where that assumption is
+  declared and defended: only panel-frozen (or selection-corrected)
+  observations belong in the system. Declaring the field does not make the
+  restriction true; it makes the dependence explicit and auditable.
+  [tentative]
 
 Maintained assumption throughout: structural invariance of `h_j` and
 `kappa_j` across regimes — the same defense the contract demands for the
@@ -84,7 +95,7 @@ the system estimates nothing stable.
 | `full_rank_regimes_identify_h` | full-rank regime variation solves `h` exactly, including a zero-harm channel |
 | `collinear_regimes_leave_h_unidentified` | rank-1 profiles admit an alternative `h` that matches all observations and mispredicts a held-out design |
 | `action_traces_regression_recovers_h` | traces plus `kappa` heterogeneity recover `h` from a single regime |
-| `selection_contamination_biases_recovery` | design-correlated pool drift biases naive recovery; panel-frozen subset restores it |
+| `selection_contamination_biases_recovery` | a design-correlated additive term (stand-in for pool drift) biases naive recovery; the uncontaminated subset restores it |
 
 ## Non-license
 
@@ -118,18 +129,21 @@ the system estimates nothing stable.
 - Step 2 (HRRP worked audit, executed same day:
   `research/applications/hrrp_evidence_audit.md`): Wadhera/Gupta-type
   studies supply a contested H/d (case 1); Zuckerman supplies an
-  observation-status trace (case 2) whose within-hospital regression
-  returned a null — the trace's decomposition work was ruling the channel
-  *out* as the dominant score driver; nothing supplies the regime variation
-  (case 3, structurally unavailable under a uniform national design) —
-  verdict: partial decomposition where traces exist, no full `h_j` vector
+  observation-status trace in a *score-side* regression (case-2-shaped,
+  wrong left-hand side for `h_j`) whose within-hospital null ruled the
+  channel *out* as the dominant score driver; nothing supplies the regime
+  variation (case 3 — structural-unavailability tentative pending the
+  FY2019 peer-group stratification) — verdict: partial decomposition of
+  the *score* movement where traces exist, nothing on channel-level `h_j`
   from public aggregates.
 - Step 3 (education mini-pass, executed same day:
   `research/applications/education_evidence_mini_pass.md`): the pattern
-  replicates one rung higher — the low-stakes audit test gives a unit-level
-  H-analog (many equations, not one), traces exist for the cheating and
-  pool-shaping channels, and the selection channel's trace makes the
-  exclusion restriction testable rather than assumed.
+  replicates one rung higher in the in-principle sense — the low-stakes
+  audit test makes a unit-level H-analog observable, traces exist for the
+  cheating and pool-shaping channels, and pool-shaping (a fixed-type
+  action producing composition contamination, not selection over units)
+  is itself traced, so the contamination HRRP must assume away is
+  observable there.
 - Book integration (step 4, minimal): the Part 6 placeholder row gets
   "realized averages and partial traces exist; channel-level designs
   don't"; the Part 8 identification question gets the rank condition as its

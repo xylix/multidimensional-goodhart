@@ -21,8 +21,9 @@ refs.bib additions deferred to step 4.
 1. **Jacob BA.** Accountability, incentives and behavior: the impact of
    high-stakes testing in the Chicago Public Schools. *Journal of Public
    Economics*. 2005;89(5–6):761–796. High-stakes test scores rose sharply
-   after Chicago's accountability introduction; the gains did not appear on
-   a low-stakes test; and the response included observable test-pool
+   after Chicago's accountability introduction; the gains did not lead to
+   comparable gains on a low-stakes test; and the response included
+   observable test-pool
    shaping — increased special-education placement and preemptive
    retention — alongside substitution toward tested skills.
 2. **Jacob BA, Levitt SD.** Rotten Apples: An Investigation of the
@@ -44,19 +45,24 @@ not welfare in any deeper sense.
 
 ## Mapping, in the identification note's vocabulary
 
-- **The audit test upgrades case 1.** The high-stakes/low-stakes gap is the
-  H/d analog, but unlike HRRP's contested aggregate it is observable per
-  school-grade-year: non-transferring gain is measured at the unit level,
-  turning one aggregate equation into many unit equations. This is why
-  Jacob 2005 could *decompose* — attributing gains to test-specific skills
-  and effort rather than general achievement — where the HRRP literature
-  could only contest a single average.
-- **Two channels have traces (case 2), and one trace was validated.**
+- **The audit test upgrades case 1 — in principle.** The high-stakes/
+  low-stakes gap is the H/d analog, but unlike HRRP's contested aggregate
+  it is observable per school-grade-year: non-transferring gain is
+  measurable at the unit level, turning one aggregate equation into many.
+  That is an observability claim, not a description of what Jacob 2005
+  did: its decomposition — attributing gains to test-specific skills and
+  effort rather than general achievement — came from item-level skill
+  analysis and directly observed responses. The audit instrument is what
+  made that analysis possible at all, which is the upgrade this pass
+  relies on. [tentative]
+- **Two channels have traces (case 2-shaped, score-side).**
   Jacob–Levitt's detection algorithm is a per-classroom trace on `a_cheat`;
-  Jacob 2005's exemption and retention rates are traces on `a_pool`. Note
-  what `a_pool` traces mean structurally: the selection channel itself
-  leaves a trace here, so the exclusion restriction that HRRP must *assume*
-  (panel freeze) is *testable* in education.
+  Jacob 2005's exemption and retention rates are traces on `a_pool`. In
+  contract terms `a_pool` is fixed-type intervention that produces
+  composition contamination via an action — not selection over units
+  (`W_theta`) — and what matters structurally is that the contaminating
+  action is itself traced here: the contamination HRRP must assume away
+  (panel freeze) is observable in education.
 - **Incentive responsiveness is comparative-statics evidence.** Cheating
   frequency moving with minor incentive changes is exactly the response-
   model comparative static the hospital contract lists as its secondary
@@ -69,12 +75,13 @@ not welfare in any deeper sense.
 
 ## Verdict
 
-The pattern replicates, one rung higher on the identification ladder:
-education has a unit-level H-analog (the audit-test gap), multiple
-per-channel traces, and mild comparative-statics evidence — and
-consequently the literature achieved partial decomposition (cheating and
-pool-shaping shares bounded, transfer failure measured) where HRRP could
-only contest an average. What is still missing is the same in both
+The pattern replicates, one rung higher on the identification ladder in
+the in-principle sense: education has a unit-level H-analog (the
+audit-test gap), multiple per-channel traces, and mild comparative-statics
+evidence — and the literature achieved partial decomposition of the score
+movement (the cheating channel's extent bounded, transfer failure
+measured) where HRRP could only contest an average. What is still missing
+is the same in both
 domains: no design delivers a channel-level rate vector, and the "harm"
 education measures is proxy inflation, not welfare — long-horizon welfare
 rates remain researcher-hidden, exactly the limit the plan states for
@@ -83,7 +90,8 @@ trial-and-error identification.
 The cross-domain regularity worth keeping: **where audit instruments and
 traces exist, decomposition happened; where only aggregates exist, the
 literature fights about the average.** Evidence shape, not domain, predicts
-how far the decomposition got.
+how far the decomposition got. [tentative — an n=2 induction; a third
+domain (NHS targets or RLHF overoptimization) would test it]
 
 ## Non-license
 

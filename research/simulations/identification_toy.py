@@ -174,12 +174,9 @@ def action_traces_regression_recovers_h() -> Check:
     w = np.array([1.0, 0.5, 0.8])
     n_units = 20
     unit_kappas = rng.uniform(0.3, 3.0, size=(n_units, 3))
-    unit_deficits = rng.uniform(0.5, 2.0, size=n_units)
+    # Deficits held fixed so kappa heterogeneity is the only rank source.
     traces = np.stack(
-        [
-            best_response(unit_kappas[i], w, float(unit_deficits[i]))
-            for i in range(n_units)
-        ]
+        [best_response(unit_kappas[i], w, DEFICIT) for i in range(n_units)]
     )
     rank = int(np.linalg.matrix_rank(traces))
     unit_harms = traces @ H_TRUE
@@ -190,9 +187,10 @@ def action_traces_regression_recovers_h() -> Check:
     return Check(
         name="action_traces_regression_recovers_h",
         tests=(
-            "When per-channel action traces are observed (the Zuckerman-style case), harm-on-actions "
-            "is a regression: a single regime suffices because unit-level kappa heterogeneity varies "
-            "the channel mix across units."
+            "When per-channel action traces are observed, harm-on-actions is a regression: a single "
+            "regime suffices because unit-level kappa heterogeneity varies the channel mix across "
+            "units (deficits held fixed so kappa heterogeneity is the only rank source). Note this is "
+            "the harm-side design; published score-side trace regressions identify no h_j."
         ),
         result=(
             f"{n_units} units, one regime, trace matrix rank={rank}, "
@@ -216,8 +214,8 @@ def selection_contamination_biases_recovery() -> Check:
         np.array([0.6, 0.1, 0.9]),
     ]
     profiles = action_profile_matrix(KAPPA, regimes, DEFICIT)
-    # Pool-composition drift in the first three regimes (no panel freeze):
-    # harm moves with the design's weight on channel 1 without any action.
+    # Design-correlated additive term on the first three equations, a
+    # stand-in for pool-composition drift; no pool or entry/exit is modeled.
     gamma = 0.6
     selection = np.array([gamma * float(w[0]) for w in regimes[:3]] + [0.0, 0.0, 0.0])
     observed = profiles @ H_TRUE + selection
@@ -235,19 +233,20 @@ def selection_contamination_biases_recovery() -> Check:
     return Check(
         name="selection_contamination_biases_recovery",
         tests=(
-            "If realized harm includes a pool-composition term correlated with the design, every "
-            "harm equation is biased and full-rank variation does not save the regression; "
-            "restricting to panel-frozen regimes (the contract's response-channel field as an "
-            "exclusion restriction) restores exact recovery."
+            "If realized harm includes a design-correlated additive term (a stand-in for "
+            "pool-composition drift), every harm equation is biased and full-rank variation does "
+            "not save the regression; restricting to equations known to be uncontaminated (a "
+            "stand-in for panel-frozen regimes) restores exact recovery. Only this trivial "
+            "direction is tested: the toy is told which equations are clean."
         ),
         result=(
             f"naive h_hat={fmt_vec(h_naive)} (max error {naive_error:.4f}); "
-            f"panel-frozen subset rank={frozen_rank}, recovered h={fmt_vec(h_frozen)}, "
+            f"uncontaminated subset rank={frozen_rank}, recovered h={fmt_vec(h_frozen)}, "
             f"true h={fmt_vec(H_TRUE)}"
         ),
         kill_condition=(
             "Would narrow this toy if a design-correlated additive selection term left the "
-            "least-squares estimate unbiased, or if the frozen-subset solve failed in the "
+            "least-squares estimate unbiased, or if the clean-subset solve failed in the "
             "noiseless declared model."
         ),
     )

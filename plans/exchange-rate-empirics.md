@@ -122,15 +122,19 @@ h_j" is already a stated condition rather than a gesture:
    assumed exclusion testable here). Cross-domain regularity for the book
    row: evidence shape, not domain, predicts how far decomposition gets.
 
-### Remaining: step 4, book integration (gated)
+### Remaining: step 4, book integration (gate passed)
 
-**Gate (agreed June 10, 2026):** a scaled fresh-context review of the three
-step-1–3 artifacts runs first — two acceptance questions: does the
-rank-condition logic survive a cold read, and do the audit verdicts follow
-from the verified findings rather than from the plan's prior expectations.
-Fix batch if needed, then step 4 as one commit with the worked-contract-pass
-verification ritual (deterministic double rebuild, page-break check,
-acceptance bound stated up front).
+**Gate (agreed and executed June 10, 2026):** the scaled fresh-context
+review ran (record:
+`quality-checks/10_06_2026_empirics_fresh_context_review.md`); both
+acceptance questions returned pass-with-fixes, and the fix batch was
+applied and committed the same day. Key correction now load-bearing for
+step 4's wording: the published HRRP trace regression is *score-side*, so
+the verdict is "partial decomposition of the score movement where traces
+exist; nothing on channel-level h_j from public aggregates." Step 4
+proceeds as one commit with the worked-contract-pass verification ritual
+(deterministic double rebuild, page-break check, acceptance bound stated
+up front).
 
 Scope, limited to: fill the Part 6 placeholder row with "realized averages
 + partial traces exist; channel-level designs don't," and give Part 8's

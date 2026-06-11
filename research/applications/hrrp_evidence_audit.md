@@ -87,7 +87,8 @@ readmissions for the targeted conditions.
 - **The trace-shaped hint:** the mortality increase concentrating among
   *non-readmitted* patients is not a per-channel action trace, but it is
   channel-discriminating evidence: it points toward treatment-location
-  movement (`a_d`-type: ER/observation care in place of inpatient care)
+  movement (on the `a_c`/`a_d` boundary: ER/observation care in place of
+  inpatient admission)
   rather than toward harm among the readmitted. The study itself flags this
   as a possibility, not a finding. In contract terms: a candidate channel is
   named; its action trace is not measured.
@@ -97,11 +98,12 @@ readmissions for the targeted conditions.
 - **Identification case:** case 1 again, on registry rather than claims
   data.
 - **Contract fields filled:** type representation. The registry's clinical
-  risk adjustment is the study's main lever, and its harm estimate differs
-  from claims-based nulls — demonstrating that the H/d estimate is sensitive
-  to exactly the field the contract makes hospitals' type representation
-  carry. A second equation, but from (approximately) the same regime: it
-  adds robustness information, not rank.
+  risk adjustment is the study's main lever — and the claims literature is
+  itself split (Wadhera finds harm; Dharmarajan does not), so registry vs
+  claims is one lever among several. The point is that the H/d estimate
+  moves with exactly the field the contract makes hospitals' type
+  representation carry. A second equation, but from (approximately) the
+  same regime: it adds robustness information, not rank.
 
 ### Dharmarajan 2017 — the counter-average, and why the disagreement is a feature
 
@@ -109,22 +111,28 @@ readmissions for the targeted conditions.
   *change-on-change* correlation rather than population time series. Weak
   positive correlation between readmission reduction and mortality
   reduction.
-- **What the disagreement with Wadhera/Gupta maps onto:** not noise, but
-  contract fields. The studies differ in type representation (claims vs
-  registry risk adjustment), population definition (which admissions enter
-  the denominator; survival to discharge), and attribution design
-  (policy-window time series vs within-hospital correlation). The
+- **What the disagreement with Wadhera/Gupta maps onto:** not noise, and
+  largely contract fields. The studies differ in type representation
+  (claims vs registry risk adjustment) and population definition (which
+  admissions enter the denominator; survival to discharge) — both contract
+  fields — and in attribution design (policy-window time series vs
+  within-hospital correlation), which is a study-design difference outside
+  the contract's field set. The
   contested-ness of the HRRP mortality literature is exactly what the
   contract predicts when case-1 evidence is asked to answer a channel-level
   question: under-identification shows up as estimates that move with
   auxiliary modeling choices. [tentative]
 
-### Zuckerman 2016 — the one true action trace, with a null verdict
+### Zuckerman 2016 — the one action trace, in a score-side regression
 
-- **Identification case:** case 2 (action trace observed). Observation-stay
-  use per hospital is a direct trace on the `a_c`/`a_d` boundary, and the
-  within-hospital regression of score change on trace change is precisely
-  the harm-on-actions design the identification note describes.
+- **Identification case:** case-2-shaped, but score-side. Observation-stay
+  use per hospital is a direct trace on the `a_c`/`a_d` boundary — but the
+  within-hospital regression puts *score* change, not harm, on the
+  left-hand side. A score-on-actions regression attributes score movement
+  to channels and can rule a channel in or out as a score driver; it
+  identifies nothing about that channel's `h_j` even in principle. The
+  harm-on-actions design that the identification note's case 2 actually
+  describes has not been run in this literature.
 - **Verdict the trace licensed:** the substitution channel did not covary
   with score improvement across hospitals, so observation-stay
   reclassification is ruled out as the dominant driver of the *measured
@@ -143,27 +151,40 @@ construction. Time variation exists (penalty phase-in, condition-set
 changes) but moves the design slowly and roughly proportionally — the
 collinear-regimes failure mode, not the full-rank route. The action-profile
 matrix across observable "regimes" is rank-deficient in the channels of
-interest.
+interest. [tentative]
+
+One documented candidate cuts against the structural-unavailability claim
+and needs its own audit before the verdict hardens: the FY2019 peer-group
+stratification (21st Century Cures Act), which recomputes penalties within
+dual-eligible-share quintiles. That is a non-proportional design change,
+though plausibly one that varies stakes and comparison pools rather than
+channel weights; this audit's four studies all predate it.
 
 ## Verdict
 
-As predicted: **partial decomposition where traces exist; no full `h_j`
-vector from public aggregates.**
+As predicted, with one sharpening the evidence forced: **partial
+decomposition of the *score* movement where traces exist; nothing — not
+even partial — on channel-level `h_j` from public aggregates.** The one
+published trace regression is score-side, so the decomposition work done
+to date allocates the readmission decline, not the harm.
 
 - The realized average H/d exists but is contested, and the contestation
-  itself maps onto contract fields (type representation, population
-  definition, attribution design) — the formal signature of asking case-1
-  evidence a channel-level question.
+  maps largely onto contract fields (type representation, population
+  definition) plus one study-design dimension outside the field set
+  (attribution design) — the signature of asking case-1 evidence a
+  channel-level question.
 - One channel has trace evidence (observation status), and the trace did
-  decompositional work: it ruled the channel out as the main score driver.
+  score-side decompositional work: it ruled the channel out as the main
+  driver of the measured decline.
 - The minimal design that would identify channel-level `h_j` here, in the
   identification note's vocabulary: per-channel action traces (coding,
   observation status, admission thresholds, follow-up intensity, selection)
   for a panel of continuing hospitals — the panel freeze supplying the
   selection-contamination exclusion — with unit-level cost heterogeneity or
-  genuine weight variation supplying the rank. The trace route is the
-  feasible one; the regime-variation route is structurally unavailable under
-  a uniform national design.
+  genuine weight variation supplying the rank, and hidden outcomes, not the
+  score, on the left-hand side. The trace route is the feasible one; the
+  regime-variation route appears structurally unavailable under a uniform
+  national design, pending the FY2019 stratification audit.
 
 ## Non-license
 
@@ -180,7 +201,9 @@ vector from public aggregates.**
 
 - A published study supplying genuine cross-site or sharply non-proportional
   time variation in HRRP-relevant scorecard weights would falsify the
-  "case 3 structurally unavailable" claim and should replace it.
+  "case 3 structurally unavailable" claim and should replace it. The live
+  candidate is the FY2019 peer-group stratification literature, which this
+  audit has not yet examined.
 - A study measuring multiple per-channel traces against hidden outcomes for
   a hospital panel would upgrade the verdict from "partial decomposition
   possible" to an actual partial `h_j` estimate, and this audit should then
