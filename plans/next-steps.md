@@ -27,8 +27,9 @@ remains is research work and publishing — not editing or book-content work.
   reward-model overoptimization) as h_j exchange-rate evidence, plus the
   channel-level identification question. Now also carries the minimal
   hypothetical harm-rate audit deliverable folded in from the GPT-5 review.
-  Book integration re-enters via the Part 6 placeholder table row and the
-  Part 8 identification question.
+  Sequencing agreed June 10, 2026: identification toy + simulation → HRRP
+  worked audit → education mini-pass → book integration (limited to the
+  Part 6 placeholder table row and the Part 8 identification question).
 
 ## Parked or declined
 

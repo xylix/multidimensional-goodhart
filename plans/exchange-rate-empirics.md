@@ -48,13 +48,104 @@ verdict remains correct, and trial-and-error has lags measured in years.
 Identification gap: aggregate data (total score movement, total harm
 movement) estimates the realized weighted-average exchange rate H/d — which
 is exactly T5's summary statistic — but the iff-condition is about
-channel-level h_j. Decomposition needs action traces or policy variation
-that shifts the channel mix (different weights/measured sets across sites
-or time = the "trial and error" route). Tractable question: under what
-policy-variation designs are channel-level h_j identifiable? This is a
-small identification toy in the spirit of the existing
-"identification toys and evidence thresholds" item in the book's open
-agenda (§7.2), and far more tractable than Q18.
+channel-level h_j. The literature estimates T5's *output*, not its inputs,
+and the realized average does not transfer across designs: change the
+scorecard and the loading weights κ_jw_j change with it, so last regime's
+average is the wrong number for the next regime. This is the Lucas critique
+applied to the book's own diagnostic (the book already cites Lucas as the
+companion precedent): H/d is design-relative; the h_j are design-invariant
+within the model's assumptions.
+
+Under T5's model harm is linear in actions, H = Σ h_j·a_j, so identification
+is linear algebra:
+
+- **One regime, no traces:** one equation (H/d), n unknowns. Hopeless — the
+  formal version of the Part 6 placeholder row.
+- **Action traces observed:** harm-on-actions is a regression; channel rates
+  are identified directly where traces exist (coding reclassification,
+  observation stays, discharge timing).
+- **No traces, policy variation:** each regime r with weights w^(r) induces
+  a predicted action profile a*_j(r) ∝ κ_jw_j^(r), giving one equation per
+  regime. The h_j are identified iff the matrix of action profiles across
+  regimes has full rank in the channels of interest. Different sites/years
+  with different scorecard weights — the "trial and error" route above — is
+  exactly this.
+
+Two named failure modes fall out: **collinear regimes** (rank deficiency —
+all sites weight channels the same way, so the variation is fake) and
+**selection contamination** (the harm outcome moves through pool changes
+without any action, biasing every harm equation — the contract's
+response-channel field doubles as an econometric exclusion restriction).
+Structural invariance of h_j, κ_j across regimes is the maintained
+assumption — the same defense the contract already demands for the type
+representation.
+
+This identification toy is small, fully in-model, and is the spine of the
+rest of the track: it defines what "an h_j estimate" even means before any
+literature gets audited. It is in the spirit of the existing "identification
+toys and evidence thresholds" item in the book's open agenda (§7.2) and far
+more tractable than Q18. It starts as a worked note plus simulation, not a
+formal era-2 result; promote to research/ era-2 status only if it
+crystallizes into something theorem-shaped.
+
+## Agreed sequencing (June 10, 2026)
+
+Math first, because the audit is much sharper when "what would identify
+h_j" is already a stated condition rather than a gesture:
+
+1. **Identification toy + simulation.** The note above, plus a simulation in
+   `research/simulations/` following the existing conventions (property-style
+   checks, README table row, marked as boundary test / exploratory toy per
+   `could-do/lean_validation_roadmap.md` Step 2): generate data from the T5
+   model under multiple regimes, recover h_j, show recovery fail under
+   collinear regimes and under selection contamination.
+2. **HRRP worked audit** (the GPT-5 deliverable, consuming the toy's
+   vocabulary). Frame: show which contract field each study fills —
+   Wadhera/Gupta-type studies supply a contested H/d; Zuckerman supplies a
+   coding-channel action trace; nothing supplies the regime variation. The
+   contested-ness of the HRRP mortality findings is a feature: the
+   disagreement maps onto missing contract fields (risk-adjustment = type
+   representation; observation-status = action trace). Expected verdict:
+   partial decomposition possible where traces exist; no full h_j vector
+   from public aggregates — the honest, book-consistent landing.
+3. **Education mini-pass.** Replication of the pattern (audit-test transfer
+   = the H/d analog; Jacob–Levitt cheating detection = the trace). Short
+   parallel pass, not a full audit.
+4. **Book integration**, limited to: fill the Part 6 placeholder row with
+   "realized averages + partial traces exist; channel-level designs don't,"
+   and give Part 8's identification question the rank-condition answer.
+
+RLHF (Gao et al.) is where the identification *design* is actually feasible
+— regime variation is free, so the rank condition can be satisfied on
+purpose by varying reward-model weights across runs and measuring
+gold-reward loss by behavior category. That is a could-do experiment
+sketch, not book material.
+
+## Boundaries
+
+- The candidate citations above are from model memory; web verification is
+  a **hard gate** before anything enters refs.bib (blocks step 2's
+  reference list, not its drafting).
+- The track must not drift into policy evaluation of HRRP itself — the
+  book's anti-application warnings apply to this work too.
+- The book pipeline is closed; book integration stays limited to the
+  Part 6 placeholder row and the Part 8 agenda sentence unless the user
+  reopens it.
+- The failure case is publishable: "channel-level h_j is not identifiable
+  from any existing public dataset; here is the minimal design that would
+  identify it" is a perfectly good landing — arguably the most on-brand one.
+
+## Could-do connections
+
+- `could-do/supporting-artifacts.md` asks for a minimal Python toy
+  instantiating contract fields; the step-1 identification simulation can
+  satisfy that item in passing.
+- `could-do/example_draft.md` is a worked hospital-scorecard contract draft
+  (type space, channels, response-channel ambiguity); it is the natural
+  skeleton for step 2's contract-field mapping rather than starting fresh.
+- `could-do/lean_validation_roadmap.md` Step 2 (executable response lab)
+  sets the conventions the new simulation should follow; the identification
+  toy is not a Lean target.
 
 ## Folded in from the June 9, 2026 GPT-5 review
 
@@ -73,11 +164,8 @@ row.
 
 ## Where it lands
 
-- Research side first: a thread or applications file working one literature
-  (HRRP is the cleanest) into contract fields, showing which h_j-like
-  quantity the study estimated and under what response-channel assumptions.
-- Book side (Phase 2+, per spine roles 9/12): the prior-work table gains a
-  row family for "empirical exchange-rate estimates" — literatures that
-  supply the h_j primitive that the formal analogues omit; the open agenda
-  gains the identification question.
-- Possible refs.bib additions after verification.
+Superseded by the agreed sequencing above: research side first
+(identification toy, then the HRRP audit as a thread or applications file),
+book side last and minimal (the Part 6 placeholder row and the Part 8
+identification question). Possible refs.bib additions only after citation
+verification.
