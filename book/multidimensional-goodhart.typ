@@ -771,14 +771,17 @@ provide empirical response-geometry candidates, not plug-in parameters
   [A defended mapping from model size, KL, data access, or prize to $kappa$ or
    $V$.],
   [Hypothesis generators for response geometry; no automatic theorem transfer.],
-  [Empirical exchange-rate estimates (placeholder)],
-  [Candidate evidence for per-channel harm rates $h_j$: hospital readmissions
-   versus mortality, education audit-test transfer, public-target gaming,
-   reward-model overoptimization curves.],
-  [Identified per-channel rates; policy-variation designs that separate
-   channel loads from harm movement.],
-  [None yet. This row family is a placeholder for a parallel empirical track;
-   the diagnostic's measured content lands here.],
+  [Empirical exchange-rate estimates],
+  [Realized average harm per unit score movement, contested across
+   risk-adjustment and population choices @wadhera2018hrrp
+   @dharmarajan2017readmissions; score-side action traces: observation stays
+   @zuckerman2016observation, cheating detection @jacoblevitt2003rotten,
+   audit-test transfer @jacob2005accountability.],
+  [Channel-level $h_j$: the published trace regressions put the score, not
+   harm, on the left-hand side; no design supplies full-rank regime
+   variation.],
+  [Score-side channel exclusions and monitoring triggers, not exchange
+   rates; the harm-on-actions design remains unrun.],
 )
 
 == Reduction, not unification
@@ -1021,10 +1024,15 @@ Second, primitives are not automatically identifiable. Marginal score movement
 does not identify $W_theta$ versus $K_theta$, hidden harm, action costs, or
 aggregation. The framework needs identification toys and evidence thresholds
 for when a primitive can be treated as declared rather than guessed. The
-sharpest version of this gap belongs to the exchange-rate diagnostic: under
-what policy-variation designs are per-channel harm rates $h_j$ identifiable
-from aggregate score and harm movement? Until that question has an answer,
-the diagnostic's empirical row stays a placeholder.
+sharpest version of this gap belongs to the exchange-rate diagnostic, and
+the toy model now states its answer: with harm linear in actions, each
+policy regime contributes one equation through its induced action profile,
+and the rate vector is identifiable exactly when those profiles have full
+column rank across regimes. Designs that differ only in stringency are
+rank-deficient, and design-correlated pool composition biases every
+equation unless excluded. The open half is empirical: existing literatures
+supply contested realized averages and score-side traces, not the
+harm-side designs the condition asks for.
 
 Third, the $L^2$ selection bound may not be the portable final form. An
 information-theoretic restatement could travel further if it preserves the
