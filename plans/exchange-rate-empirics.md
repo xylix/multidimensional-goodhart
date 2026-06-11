@@ -93,7 +93,12 @@ crystallizes into something theorem-shaped.
 Math first, because the audit is much sharper when "what would identify
 h_j" is already a stated condition rather than a gesture:
 
-1. **Identification toy + simulation.** The note above, plus a simulation in
+1. **Identification toy + simulation.** ✅ Executed June 10, 2026: worked
+   note at `research/threads/exchange_rate_identification.md`, simulation at
+   `research/simulations/identification_toy.py` (`make identification`;
+   five seeded checks, all passing). The simulation also satisfies the
+   minimal-Python-toy item in `could-do/supporting-artifacts.md` in
+   passing. Original scope: the note above, plus a simulation in
    `research/simulations/` following the existing conventions (property-style
    checks, README table row, marked as boundary test / exploratory toy per
    `could-do/lean_validation_roadmap.md` Step 2): generate data from the T5

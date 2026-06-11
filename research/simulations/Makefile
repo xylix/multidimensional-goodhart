@@ -1,6 +1,6 @@
-.PHONY: run iteration20 iteration21 iteration27 iteration36
+.PHONY: run iteration20 iteration21 iteration27 iteration36 identification
 
-run: iteration20 iteration21 iteration27 iteration36
+run: iteration20 iteration21 iteration27 iteration36 identification
 
 iteration20:
 	uv run --with numpy --with scipy python iteration20_selection_intervention.py
@@ -13,3 +13,6 @@ iteration27:
 
 iteration36:
 	uv run --with numpy python iteration36_response_dynamics.py
+
+identification:
+	uv run --with numpy python identification_toy.py
