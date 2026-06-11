@@ -1,6 +1,17 @@
 # Exchange-rate empirics: existing hidden-harm evaluations as h_j evidence
 
-Status: active plan, captured June 9, 2026 from user direction during the
+**Executed-note (June 11, 2026):** all four sequencing steps complete and
+this plan is archived. Steps 1–3 June 10 (commits fd788aa, 0d38cd4,
+448b9a9), fresh-context review gate + fix batch same day (62f8fbd; record
+in `quality-checks/10_06_2026_empirics_fresh_context_review.md`), step 4
+book integration June 11 (6d915f6): the Part 6 empirical row filled with
+five gate-verified citations, the Part 8 identification question answered
+with the rank condition; body pagination unchanged, references +1 page.
+The RLHF experiment sketch was extracted to
+`could-do/rlhf-identification-experiment.md`.
+
+Status at archival follows. Originally: active plan, captured June 9, 2026
+from user direction during the
 spine discussion and promoted to plans/ root the same day. Research-side
 track that runs in parallel with the manuscript pipeline in `next-steps.md`
 (research/ files are not gated by spine approval); the book-side integration

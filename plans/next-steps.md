@@ -22,14 +22,17 @@ remains is research work and publishing — not editing or book-content work.
 
 ## Active plan files
 
-- `exchange-rate-empirics.md` — the active research track. Steps 1–3 of
-  the agreed sequencing executed June 10, 2026 (identification toy +
-  simulation, commit fd788aa; HRRP worked audit, 0d38cd4; education
-  mini-pass, 448b9a9 — execution record in the plan file). Remaining:
-  step 4, minimal book integration (Part 6 placeholder row + Part 8
-  identification question), gated on a scaled fresh-context review of the
-  three new research artifacts, then the worked-contract-pass verification
-  ritual.
+None. The exchange-rate empirics track completed June 11, 2026 (all four
+steps plus a fresh-context review gate; execution record in
+`archived/exchange-rate-empirics.md`). The book's Part 6 empirical row is
+filled and Part 8's identification question answered; the book remains
+content-stable otherwise.
+
+What remains for the project is the **publishing decision** (venue,
+format, release checklist) — unplanned as of this writing — and optional
+items in `could-do/` (now including
+`could-do/rlhf-identification-experiment.md`, the one feasible harm-side
+identification design, extracted from the empirics plan at archival).
 
 ## Parked or declined
 
