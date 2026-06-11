@@ -22,14 +22,14 @@ remains is research work and publishing — not editing or book-content work.
 
 ## Active plan files
 
-- `exchange-rate-empirics.md` — the active research track: mine existing
-  hidden-harm evaluations (HRRP, education accountability, NHS targets,
-  reward-model overoptimization) as h_j exchange-rate evidence, plus the
-  channel-level identification question. Now also carries the minimal
-  hypothetical harm-rate audit deliverable folded in from the GPT-5 review.
-  Sequencing agreed June 10, 2026: identification toy + simulation → HRRP
-  worked audit → education mini-pass → book integration (limited to the
-  Part 6 placeholder table row and the Part 8 identification question).
+- `exchange-rate-empirics.md` — the active research track. Steps 1–3 of
+  the agreed sequencing executed June 10, 2026 (identification toy +
+  simulation, commit fd788aa; HRRP worked audit, 0d38cd4; education
+  mini-pass, 448b9a9 — execution record in the plan file). Remaining:
+  step 4, minimal book integration (Part 6 placeholder row + Part 8
+  identification question), gated on a scaled fresh-context review of the
+  three new research artifacts, then the worked-contract-pass verification
+  ritual.
 
 ## Parked or declined
 

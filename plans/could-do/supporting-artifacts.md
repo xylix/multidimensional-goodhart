@@ -8,9 +8,12 @@ artifacts, not manuscript work.
   or `research/threads/`: fixed checkpoint selection versus
   finetuning/search, what counts as `U`, `K_theta`, action/search geometry,
   benchmark proxy, hidden target, and evidence standard.
-- Add a minimal Python notebook/script that instantiates the contract
+- ~~Add a minimal Python notebook/script that instantiates the contract
   fields for a toy school-score or benchmark-score example. Treat it as a
-  pedagogical repo artifact, not a manuscript dependency.
+  pedagogical repo artifact, not a manuscript dependency.~~ **Done
+  June 10, 2026** by the empirics track:
+  `research/simulations/identification_toy.py` instantiates the T5
+  contract fields (kappa, w, h, d) and runs recovery checks on them.
 - If Lean work is desired, start with T3 or the T5 quadratic optimization
   identity; the full response contract is methodological and not the right
   first formalization target. (See also `lean_validation_roadmap.md` in

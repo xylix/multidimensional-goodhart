@@ -93,53 +93,51 @@ crystallizes into something theorem-shaped.
 Math first, because the audit is much sharper when "what would identify
 h_j" is already a stated condition rather than a gesture:
 
-1. **Identification toy + simulation.** ✅ Executed June 10, 2026: worked
-   note at `research/threads/exchange_rate_identification.md`, simulation at
-   `research/simulations/identification_toy.py` (`make identification`;
-   five seeded checks, all passing). The simulation also satisfies the
-   minimal-Python-toy item in `could-do/supporting-artifacts.md` in
-   passing. Original scope: the note above, plus a simulation in
-   `research/simulations/` following the existing conventions (property-style
-   checks, README table row, marked as boundary test / exploratory toy per
-   `could-do/lean_validation_roadmap.md` Step 2): generate data from the T5
-   model under multiple regimes, recover h_j, show recovery fail under
-   collinear regimes and under selection contamination.
-2. **HRRP worked audit** ✅ Executed June 10, 2026:
+### Execution record (steps 1–3 done June 10, 2026)
+
+1. **Identification toy + simulation** — commit fd788aa. Worked note at
+   `research/threads/exchange_rate_identification.md`; simulation at
+   `research/simulations/identification_toy.py` (`make identification`,
+   five seeded checks, all passing; full `make run` verified). States the
+   three identification cases and the rank condition on induced action
+   profiles; both failure modes demonstrated. Also satisfies the
+   minimal-Python-toy item in `could-do/supporting-artifacts.md`.
+2. **HRRP worked audit** — commit 0d38cd4.
    `research/applications/hrrp_evidence_audit.md`. Citations verified
    against PubMed/publisher pages (Wadhera JAMA 2018;320(24):2542–2552;
    Gupta JAMA Cardiology 2018;3(1):44–53; Dharmarajan JAMA
-   2017;318(3):270–278; Zuckerman NEJM 2016;374(16):1543–1551) — the hard
-   gate is passed; refs.bib additions still deferred to step 4. One
-   memory-based gloss corrected during verification: Zuckerman's
-   observation-status trace returned a *null* (substitution ruled out as
-   the dominant score driver), which is decomposition work in the opposite
-   direction from what the plan assumed. Verdict as predicted: partial
-   decomposition where traces exist; no full h_j vector from public
-   aggregates; case-3 regime variation structurally unavailable under a
-   uniform national design. Original frame: show which contract field each
-   study fills —
-   Wadhera/Gupta-type studies supply a contested H/d; Zuckerman supplies a
-   coding-channel action trace; nothing supplies the regime variation. The
-   contested-ness of the HRRP mortality findings is a feature: the
-   disagreement maps onto missing contract fields (risk-adjustment = type
-   representation; observation-status = action trace). Expected verdict:
-   partial decomposition possible where traces exist; no full h_j vector
-   from public aggregates — the honest, book-consistent landing.
-3. **Education mini-pass.** ✅ Executed June 10, 2026:
+   2017;318(3):270–278; Zuckerman NEJM 2016;374(16):1543–1551) — hard gate
+   passed; refs.bib still deferred to step 4. Verification corrected one
+   memory-based gloss: Zuckerman's observation-status trace returned a
+   *null* (substitution ruled out as the dominant score driver). Verdict
+   as predicted: partial decomposition where traces exist; no full h_j
+   vector from public aggregates; case-3 regime variation structurally
+   unavailable under a uniform national design.
+3. **Education mini-pass** — commit 448b9a9.
    `research/applications/education_evidence_mini_pass.md`. Citations
    verified (Jacob J Public Econ 2005;89(5–6):761–796; Jacob & Levitt QJE
-   2003;118(3):843–877). The pattern replicates one rung higher: the
-   low-stakes audit test makes the H-analog observable per unit, two
-   channels have traces (cheating detection, pool shaping — the selection
-   channel itself leaves a trace, so HRRP's assumed exclusion is testable
-   here), and partial decomposition was actually achieved. Cross-domain
-   regularity for the book row: evidence shape, not domain, predicts how
-   far decomposition gets. Original scope: replication of the pattern
-   (audit-test transfer = the H/d analog; Jacob–Levitt cheating detection
-   = the trace). Short parallel pass, not a full audit.
-4. **Book integration**, limited to: fill the Part 6 placeholder row with
-   "realized averages + partial traces exist; channel-level designs don't,"
-   and give Part 8's identification question the rank-condition answer.
+   2003;118(3):843–877). Pattern replicates one rung higher: unit-level
+   H-analog via the low-stakes audit test; traces on the cheating and
+   pool-shaping channels (the selection channel's trace makes HRRP's
+   assumed exclusion testable here). Cross-domain regularity for the book
+   row: evidence shape, not domain, predicts how far decomposition gets.
+
+### Remaining: step 4, book integration (gated)
+
+**Gate (agreed June 10, 2026):** a scaled fresh-context review of the three
+step-1–3 artifacts runs first — two acceptance questions: does the
+rank-condition logic survive a cold read, and do the audit verdicts follow
+from the verified findings rather than from the plan's prior expectations.
+Fix batch if needed, then step 4 as one commit with the worked-contract-pass
+verification ritual (deterministic double rebuild, page-break check,
+acceptance bound stated up front).
+
+Scope, limited to: fill the Part 6 placeholder row with "realized averages
++ partial traces exist; channel-level designs don't," and give Part 8's
+identification question the rank-condition answer. Scope decisions already
+made: refs.bib gains only the citations the row actually names; no effect
+magnitudes enter book prose (the 0.3 SD / 4–5% figures need primary-text
+re-verification and the row does not need them).
 
 RLHF (Gao et al.) is where the identification *design* is actually feasible
 — regime variation is free, so the rank condition can be satisfied on
@@ -163,9 +161,9 @@ sketch, not book material.
 
 ## Could-do connections
 
-- `could-do/supporting-artifacts.md` asks for a minimal Python toy
-  instantiating contract fields; the step-1 identification simulation can
-  satisfy that item in passing.
+- `could-do/supporting-artifacts.md` asked for a minimal Python toy
+  instantiating contract fields; the step-1 identification simulation
+  satisfied that item (marked done there June 10, 2026).
 - `could-do/example_draft.md` is a worked hospital-scorecard contract draft
   (type space, channels, response-channel ambiguity); it is the natural
   skeleton for step 2's contract-field mapping rather than starting fresh.
