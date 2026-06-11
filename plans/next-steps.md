@@ -28,9 +28,19 @@ steps plus a fresh-context review gate; execution record in
 filled and Part 8's identification question answered; the book remains
 content-stable otherwise.
 
-What remains for the project is the **publishing decision** (venue,
-format, release checklist) — unplanned as of this writing — and optional
-items in `could-do/` (now including
+Agreed direction (June 11, 2026), in order:
+
+1. **One more reading round** on the post-empirics manuscript (it has
+   changed since the June 9 "editing done" milestone: the worked contract
+   box, the Part 6 empirical row, the Part 8 identification answer): an
+   LLM pass plus a manual human read, fix batch after, per the
+   established review workflow.
+2. **Circulate the draft** — send to someone for comments and/or post on
+   LessWrong. This, not formal publishing, is the next external step.
+3. Only then start the **publishing decision** proper (venue, format,
+   release checklist).
+
+Optional items live in `could-do/` (now including
 `could-do/rlhf-identification-experiment.md`, the one feasible harm-side
 identification design, extracted from the empirics plan at archival).
 
