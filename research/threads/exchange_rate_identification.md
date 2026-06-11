@@ -124,6 +124,12 @@ the system estimates nothing stable.
   (case 3, structurally unavailable under a uniform national design) —
   verdict: partial decomposition where traces exist, no full `h_j` vector
   from public aggregates.
+- Step 3 (education mini-pass, executed same day:
+  `research/applications/education_evidence_mini_pass.md`): the pattern
+  replicates one rung higher — the low-stakes audit test gives a unit-level
+  H-analog (many equations, not one), traces exist for the cheating and
+  pool-shaping channels, and the selection channel's trace makes the
+  exclusion restriction testable rather than assumed.
 - Book integration (step 4, minimal): the Part 6 placeholder row gets
   "realized averages and partial traces exist; channel-level designs
   don't"; the Part 8 identification question gets the rank condition as its

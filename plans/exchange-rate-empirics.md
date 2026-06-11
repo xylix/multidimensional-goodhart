@@ -125,9 +125,18 @@ h_j" is already a stated condition rather than a gesture:
    representation; observation-status = action trace). Expected verdict:
    partial decomposition possible where traces exist; no full h_j vector
    from public aggregates — the honest, book-consistent landing.
-3. **Education mini-pass.** Replication of the pattern (audit-test transfer
-   = the H/d analog; Jacob–Levitt cheating detection = the trace). Short
-   parallel pass, not a full audit.
+3. **Education mini-pass.** ✅ Executed June 10, 2026:
+   `research/applications/education_evidence_mini_pass.md`. Citations
+   verified (Jacob J Public Econ 2005;89(5–6):761–796; Jacob & Levitt QJE
+   2003;118(3):843–877). The pattern replicates one rung higher: the
+   low-stakes audit test makes the H-analog observable per unit, two
+   channels have traces (cheating detection, pool shaping — the selection
+   channel itself leaves a trace, so HRRP's assumed exclusion is testable
+   here), and partial decomposition was actually achieved. Cross-domain
+   regularity for the book row: evidence shape, not domain, predicts how
+   far decomposition gets. Original scope: replication of the pattern
+   (audit-test transfer = the H/d analog; Jacob–Levitt cheating detection
+   = the trace). Short parallel pass, not a full audit.
 4. **Book integration**, limited to: fill the Part 6 placeholder row with
    "realized averages + partial traces exist; channel-level designs don't,"
    and give Part 8's identification question the rank-condition answer.
