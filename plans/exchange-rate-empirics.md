@@ -104,8 +104,20 @@ h_j" is already a stated condition rather than a gesture:
    `could-do/lean_validation_roadmap.md` Step 2): generate data from the T5
    model under multiple regimes, recover h_j, show recovery fail under
    collinear regimes and under selection contamination.
-2. **HRRP worked audit** (the GPT-5 deliverable, consuming the toy's
-   vocabulary). Frame: show which contract field each study fills —
+2. **HRRP worked audit** ✅ Executed June 10, 2026:
+   `research/applications/hrrp_evidence_audit.md`. Citations verified
+   against PubMed/publisher pages (Wadhera JAMA 2018;320(24):2542–2552;
+   Gupta JAMA Cardiology 2018;3(1):44–53; Dharmarajan JAMA
+   2017;318(3):270–278; Zuckerman NEJM 2016;374(16):1543–1551) — the hard
+   gate is passed; refs.bib additions still deferred to step 4. One
+   memory-based gloss corrected during verification: Zuckerman's
+   observation-status trace returned a *null* (substitution ruled out as
+   the dominant score driver), which is decomposition work in the opposite
+   direction from what the plan assumed. Verdict as predicted: partial
+   decomposition where traces exist; no full h_j vector from public
+   aggregates; case-3 regime variation structurally unavailable under a
+   uniform national design. Original frame: show which contract field each
+   study fills —
    Wadhera/Gupta-type studies supply a contested H/d; Zuckerman supplies a
    coding-channel action trace; nothing supplies the regime variation. The
    contested-ness of the HRRP mortality findings is a feature: the

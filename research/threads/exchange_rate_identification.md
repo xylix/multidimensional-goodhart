@@ -115,11 +115,15 @@ the system estimates nothing stable.
 
 ## Feeds
 
-- Step 2 (HRRP worked audit): Wadhera/Gupta-type studies supply a contested
-  H/d (case 1); Zuckerman supplies a coding-channel trace (case 2); nothing
-  supplies the regime variation (case 3) — expected verdict: partial
-  decomposition where traces exist, no full `h_j` vector from public
-  aggregates.
+- Step 2 (HRRP worked audit, executed same day:
+  `research/applications/hrrp_evidence_audit.md`): Wadhera/Gupta-type
+  studies supply a contested H/d (case 1); Zuckerman supplies an
+  observation-status trace (case 2) whose within-hospital regression
+  returned a null — the trace's decomposition work was ruling the channel
+  *out* as the dominant score driver; nothing supplies the regime variation
+  (case 3, structurally unavailable under a uniform national design) —
+  verdict: partial decomposition where traces exist, no full `h_j` vector
+  from public aggregates.
 - Book integration (step 4, minimal): the Part 6 placeholder row gets
   "realized averages and partial traces exist; channel-level designs
   don't"; the Part 8 identification question gets the rank condition as its
