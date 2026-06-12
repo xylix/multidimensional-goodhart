@@ -30,11 +30,16 @@ content-stable otherwise.
 
 Agreed direction (June 11, 2026), in order:
 
-1. **One more reading round** on the post-empirics manuscript (it has
-   changed since the June 9 "editing done" milestone: the worked contract
-   box, the Part 6 empirical row, the Part 8 identification answer): an
-   LLM pass plus a manual human read, fix batch after, per the
-   established review workflow.
+1. **One more reading round** before circulation. *LLM half done June 11:*
+   two clean-context reviews (GPT + Claude), both "ready to circulate
+   after fixes"; disposition record at
+   `quality-checks/11_06_2026_llm_reviews_disposition.md`; fix batches
+   committed (3a51552 refs, b74e353 book text, d10583f worked-positive
+   example, f48094a abstract; the prior-work table was separately
+   converted to per-family blocks in 3345a59). *Remaining: the manual
+   human read* — check items include the notation-overload TODO
+   (`could-do/notation-overload-pass.md`) and a read of the new
+   worked-positive subsection (book pp. 23–24).
 2. **Circulate the draft** — send to someone for comments and/or post on
    LessWrong. This, not formal publishing, is the next external step.
 3. Only then start the **publishing decision** proper (venue, format,
