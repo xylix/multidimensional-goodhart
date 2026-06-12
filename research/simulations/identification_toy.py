@@ -252,6 +252,47 @@ def selection_contamination_biases_recovery() -> Check:
     )
 
 
+def synthetic_worked_positive_example() -> Check:
+    # Book section "A synthetic positive" (Part 7): kappa = w = 1 on a
+    # three-channel pool, h = (0, 1, 3), d = 1, V = 1.
+    kappa = np.ones(3)
+    h = np.array([0.0, 1.0, 3.0])
+    deficit, stakes = 1.0, 1.0
+
+    def harm(measured: list[int]) -> float:
+        w = np.zeros(3)
+        w[measured] = 1.0
+        a = best_response(kappa, w, deficit)
+        return float(h @ a)
+
+    def cost(measured: list[int]) -> float:
+        return deficit**2 / (2.0 * len(measured))
+
+    h_12, h_23, h_123 = harm([0, 1]), harm([1, 2]), harm([0, 1, 2])
+
+    assert all(cost(m) <= 0.25 < stakes for m in ([0, 1], [1, 2], [0, 1, 2]))
+    assert np.isclose(h_12, 0.5)
+    assert np.isclose(h_23, 2.0)
+    assert np.isclose(h_123, 4.0 / 3.0)
+    assert h_123 > h_12 and h_123 < h_23
+    return Check(
+        name="synthetic_worked_positive_example",
+        tests=(
+            "The book's worked-positive example: with all contract fields declared by fiat, T5 "
+            "licenses an end-to-end calculation, harm is not conserved (h not proportional to w), "
+            "and adding a metric moves harm in opposite directions depending on its exchange rate."
+        ),
+        result=(
+            f"H over deficit: measure {{1,2}} -> {h_12:.4f}, {{2,3}} -> {h_23:.4f}, "
+            f"{{1,2,3}} -> {h_123:.4f}; gaming affordable in every design (m(d) <= 1/4 < V)"
+        ),
+        kill_condition=(
+            "Would kill the book section's arithmetic if any stated value differs from the "
+            "T5 best-response computation under the declared primitives."
+        ),
+    )
+
+
 def run_all() -> list[Check]:
     return [
         realized_average_is_design_relative(),
@@ -259,6 +300,7 @@ def run_all() -> list[Check]:
         collinear_regimes_leave_h_unidentified(),
         action_traces_regression_recovers_h(),
         selection_contamination_biases_recovery(),
+        synthetic_worked_positive_example(),
     ]
 
 

@@ -981,6 +981,49 @@ law" is a different claim from "selection is harmless." Practical use of the
 framework is mostly this discipline of replacing a large conclusion with the
 smaller one the evidence actually licenses.
 
+== A synthetic positive: the contract licensing a calculation
+
+Every worked case above ends in a refusal, and the pattern invites a fair
+objection: is the contract ever satisfiable, or does the framework only
+explain why conclusions are unavailable? The honest answer is that the
+refusals are about evidence, not about the machinery — and the cheapest way
+to show it is a world where the evidence problem is removed by fiat.
+
+Declare a synthetic scorecard outright. Three channels form the pool; every
+channel has capacity $kappa_j = 1$ and score weight $w_j = 1$; the response
+is the fixed-type T5 cost-minimizer with no entry or exit; the deficit is
+$d = 1$ and stakes are $V = 1$; hidden harm is linear with declared rates
+$h = (0, 1, 3)$ — channel 1 is harmless proxy repair, channel 3 does three
+units of hidden harm per score point. In this world the declarations are
+true by construction, so every contract field is filled and the diagnostic
+is licensed end to end.
+
+The calculation then runs without apology. Buying the deficit costs
+$m(d) = d^2 / (2 abs(M)) <= 1\/4 < V$ for every measured set below, so the
+response occurs in each design. With $kappa_j = w_j = 1$, T5's formula
+reduces to the mean declared harm rate of the measured set,
+$H_M (d) = d (sum_(j in M) h_j) \/ abs(M)$: measuring channels 1 and 2
+gives $H = 1\/2$; measuring channels 2 and 3 gives $H = 2$; measuring all
+three gives $H = 4\/3$.
+
+The licensed conclusions are concrete and signed. Harm is not conserved
+across measured sets, exactly as the iff predicts, because $h_j$ is not
+proportional to $w_j$ on this pool. And the same act of "adding a metric"
+moves harm in opposite directions: adding channel 3 to a scorecard
+measuring channels 1 and 2 raises fixed-deficit harm from $1\/2$ to
+$4\/3$, while adding channel 1 to a scorecard measuring channels 2 and 3
+lowers it from $2$ to $4\/3$. A designer in this world is licensed to
+conclude that the scorecard should not measure channel 3 without pricing
+its exchange rate — a positive, falsifiable design statement, checkable by
+simulating the declared world.
+
+What the synthetic world supplies that the real cases above do not is not
+mathematical: it is the evidence standard, satisfied by fiat. Real
+scorecards fail the contract at the declaration step — unobserved costs,
+undeclared harm rates, contested response channels — and that is where
+every refusal in this book lives. The machinery downstream of the
+declarations is the easy part.
+
 = Refusals, Falsifiers, and the Open Agenda
 
 == Anti-applications
