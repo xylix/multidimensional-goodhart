@@ -36,6 +36,10 @@
   #text(size: 2.1em, weight: "bold")[Multidimensional Goodhart]
   #v(0.35cm)
   #text(size: 1.18em)[Measurement Dimensions, Exchange Rates, and Hidden Harm]
+  #v(0.55cm)
+  #text(size: 1.0em)[Xylix Pelttari]
+  #v(0.1cm)
+  #text(size: 0.92em)[June 2026]
 ]
 #v(1.7cm)
 
@@ -405,7 +409,7 @@ movement alone.
 
 The design question of Part 1 — more metrics, fewer metrics, different
 metrics — has a complete answer in one closed model. This part declares the
-model, proves the answer, and then marks the boundary of the model's
+model, derives the answer, and then marks the boundary of the model's
 assumptions. The contract fields it consumes are the ones the previous part
 introduced: a fixed-type intervention channel, an action-cost geometry, an
 aggregation rule, and declared hidden harm rates. Theorem numbers follow the
@@ -422,8 +426,11 @@ rate $h_j$, set against the score weight $w_j$, is the channel's exchange
 rate: how much hidden harm channel $j$ does per unit of score it produces.
 
 #theorem[5][Additive exchange-rate iff][
-With $kappa_j > 0$ and $w_j > 0$ on the measured set, the fixed-deficit
-per-agent hidden harm of the cost-minimizing action is
+Assume an additive score $sum_(j in M) w_j a_j$ over the measured set $M$,
+separable quadratic action costs $a_j^2 / (2 kappa_j)$ with $kappa_j > 0$
+and $w_j > 0$, a fixed score deficit $d > 0$, and linear hidden harm
+$sum_(j in M) h_j a_j$. The fixed-deficit per-agent hidden harm of the
+cost-minimizing action is
 
 $ H_M (d) =
   d (sum_(j in M) h_j kappa_j w_j) /
@@ -640,8 +647,9 @@ satisfies $S_"floor" (M) < T$.
 
 The terminating rule is concrete: at each step, multiply by a fixed
 $alpha in (0, 1)$ the capacity of a largest-action channel among those not
-yet at their floor — "progress-aware" rules out stalling on an
-already-floored channel.
+yet at their floor, clamping the result at that channel's floor. Floors are
+positive, so each channel reaches its floor after finitely many updates, and
+"progress-aware" rules out stalling on an already-floored channel.
 
 Nothing broader is licensed. The theorem does not cover stochastic
 observation, arbitrary hardening rules, changing measured sets, changing
@@ -727,7 +735,9 @@ anchors @el-mhamdi2024goodhart @majka2025goodhart. Hardt et al. strategic
 classification supplies costly feature-change intervention @hardt2016strategic.
 Perdomo et al. performative prediction supplies deployment-induced response
 kernels @perdomo2020performative. Skalse et al. supply proxy/target and
-RL-specific response-kernel tools @skalse2022rewardgaming @skalse2023goodhart.
+RL-specific response-kernel tools @skalse2022rewardgaming, and Karwowski et
+al. chart Goodhart behavior under proxy optimization inside MDPs
+@skalse2023goodhart.
 Holmstrom--Milgrom supplies the closest multitask incentive analogue for
 aggregation and action costs @holmstrom1991multitask. Cawley--Talbot, reusable
 holdout, leaderboard work, and optimizer's curse supply selection and evidence
@@ -803,7 +813,8 @@ the primitives it omits, and what transfer is licensed.
   Realized average harm per unit score movement, contested across
   risk-adjustment and population choices @wadhera2018hrrp
   @dharmarajan2017readmissions; score-side action traces: observation stays
-  @zuckerman2016observation, cheating detection @jacoblevitt2003rotten,
+  (a within-hospital null) @zuckerman2016observation, cheating detection
+  @jacoblevitt2003rotten,
   audit-test transfer @jacob2005accountability.
 ][
   Channel-level $h_j$: the published trace regressions put the score, not
