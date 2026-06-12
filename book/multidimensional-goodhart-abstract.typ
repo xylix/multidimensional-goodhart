@@ -15,7 +15,7 @@
   #v(0.12em)
   #text(size: 1.02em)[Measurement Dimensions, Exchange Rates, and Hidden Harm — Technical Abstract]
   #v(0.32em)
-  #text(size: 0.9em)[Kerkko "Xylix" Pelttari]
+  #text(size: 0.9em)[Xylix Pelttari — June 2026]
 ]
 
 #v(0.35em)
@@ -24,9 +24,10 @@
   #text(weight: "bold")[Abstract.] How do measurement dimensions affect hidden
   harm? Multidimensional Goodhart is not a theorem that more metrics help,
   hurt, or make residuals complex. In the one closed model where the question
-  has a complete answer, hidden harm is conserved under changes of the
-  measured set exactly when every active gaming channel does the same hidden
-  harm per score point (an additive exchange-rate iff-condition); otherwise
+  has a complete answer, per-agent fixed-deficit hidden harm is conserved
+  under changes of the measured set exactly when every active gaming channel
+  does the same hidden harm per score point (an additive exchange-rate
+  iff-condition); otherwise
   harm is reduced, increased, or rerouted through the channels the design
   makes cheap, and the dimension count never enters by itself. The result is
   licensed by a response-modeling contract: proxy pressure supports a
@@ -43,10 +44,10 @@
 
 Should a gamed scorecard measure more things, fewer things, or different
 things — and will the hidden damage shrink, grow, or just move? Scalar
-Goodhart warnings compress two questions and answer neither @goodhart1975
-@campbell1979 @strathern1997. First, the target is reduced to a proxy.
-Second, the residual between proxy and target is often treated as an unnamed
-loss. In multidimensional settings the residual is the object of interest: it
+Goodhart warnings perform two compressions and answer neither of the
+questions underneath them @goodhart1975 @campbell1979 @strathern1997.
+First, the target is reduced to a proxy. Second, the residual between proxy
+and target is treated as an unnamed loss. In multidimensional settings the residual is the object of interest: it
 has direction, support, exchange rates, active constraints, and evidence
 requirements. The question is therefore not whether proxy pressure can break
 a measure, but which response model makes a proposed calculation about hidden
@@ -65,6 +66,8 @@ fixed-type response kernel $K_theta (d s | u)$.
 - Dimension count alone does not determine hidden harm.
 - "More measured dimensions" has no sign without an aggregation rule and harm
   exchange rates.
+- Signed aggregate hidden error does not measure damage: positive and
+  negative hidden movements can cancel before a value functional is named.
 - Baseline covariance is only a local velocity, not a finite-pressure
   selection primitive.
 - Absolute continuity is not the causal intervention boundary.
@@ -136,9 +139,14 @@ prediction, multitask incentives, reward hacking, adaptive holdout work, and
 scalar tail-conditioned Goodhart provide formal analogues @lucas1976critique
 @hardt2016strategic @perdomo2020performative @holmstrom1991multitask
 @skalse2022rewardgaming @dwork2015generalization @el-mhamdi2024goodhart
-@majka2025goodhart, but each supplies only some primitives. The framework's
-claim is reduction rather than unification: name the primitive a source
-contributes, and name what it omits.
+@majka2025goodhart, but each supplies only some primitives. On the empirical
+side, the hospital-readmissions and education-accountability literatures
+supply realized harm-per-score averages and score-side action traces, but
+not the harm-side designs that would identify channel-level exchange rates
+@wadhera2018hrrp @dharmarajan2017readmissions @zuckerman2016observation
+@jacob2005accountability @jacoblevitt2003rotten. The framework's claim is
+reduction rather than unification: name the primitive a source contributes,
+and name what it omits.
 
 == Falsifiers, Refusals, and the Open Problem
 
@@ -155,6 +163,12 @@ The framework refuses policy and welfare conclusions when primitives are
 unavailable. Examples include drifting type spaces, unobservable scorecard
 weights, changing measured sets, no defensible hidden value model, or
 applications where score movement is the only evidence.
+
+The channel-identification question, by contrast, now has a toy-model
+answer: with harm linear in actions, the rate vector $h$ is identifiable
+exactly when the action profiles induced across policy regimes have full
+column rank — regimes differing only in stringency are rank-deficient — so
+what remains open there is empirical, not mathematical.
 
 The signature open problem is the residual-shape conjecture: under what
 declared response geometry, update rule, and predeclared complexity functional
