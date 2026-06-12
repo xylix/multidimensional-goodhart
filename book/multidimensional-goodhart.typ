@@ -738,51 +738,81 @@ provide empirical response-geometry candidates, not plug-in parameters
 
 == What each discipline contributes vs. omits
 
-#table(
-  columns: (1.25fr, 1.35fr, 1.35fr, 1.35fr),
-  inset: 5pt,
-  align: horizon,
-  table.header[*Source family*][*Primitives supplied*][*Primitives omitted*][*Licensed transfer*],
-  [Tail-conditioned Goodhart],
-  [Selection, scalar proxy/target, tail assumptions.],
-  [Vector aggregation, intervention, hidden welfare.],
-  [Sharp scalar asymptotics where the tail contract holds; otherwise only a
-   reweighting analogy.],
-  [Strategic classification and performative prediction],
-  [Response kernels, costly action or endogenous deployment.],
-  [General hidden value, scorecard exchange rates, marginal identification.],
-  [Intervention framing after action/cost or deployment response is declared.],
-  [RL reward hacking],
-  [Proxy/target separation, MDP occupancy geometry, optimization pressure.],
-  [Non-MDP domains, empirical welfare, generic cost parameter.],
-  [RL-specific response calculations only inside the MDP/occupancy contract.],
-  [Multitask incentives],
-  [Aggregation and multidimensional effort/cost.],
-  [The book's value-metric contract, non-LEN settings unless separately shown.],
-  [External precedent for the scorecard exchange-rate question, not a proof of
-   this book's theorem.],
-  [Adaptive holdout and leaderboard hygiene],
-  [Selection/evidence standards for repeated benchmark use.],
-  [Fixed-type finetuning, contamination, welfare, action cost.],
-  [Evidence discipline for selection over fixed candidates and public/private
-   score interpretation.],
-  [Reward overoptimization empirics],
-  [Candidate search and optimization-pressure variables.],
-  [A defended mapping from model size, KL, data access, or prize to $kappa$ or
-   $V$.],
-  [Hypothesis generators for response geometry; no automatic theorem transfer.],
-  [Empirical exchange-rate estimates],
-  [Realized average harm per unit score movement, contested across
-   risk-adjustment and population choices @wadhera2018hrrp
-   @dharmarajan2017readmissions; score-side action traces: observation stays
-   @zuckerman2016observation, cheating detection @jacoblevitt2003rotten,
-   audit-test transfer @jacob2005accountability.],
-  [Channel-level $h_j$: the published trace regressions put the score, not
-   harm, on the left-hand side; no design supplies full-rank regime
-   variation.],
-  [Score-side channel exclusions and monitoring triggers, not exchange
-   rates; the harm-on-actions design remains unrun.],
-)
+Each source family below is answered three ways: the primitives it supplies,
+the primitives it omits, and what transfer is licensed.
+
+#let analogue(family, supplies, omits, transfer) = block(spacing: 0.65em)[
+  *#family.* _Supplies:_ #supplies
+  _Omits:_ #omits
+  _Licensed transfer:_ #transfer
+]
+
+#analogue[Tail-conditioned Goodhart][
+  Selection, scalar proxy/target, tail assumptions.
+][
+  Vector aggregation, intervention, hidden welfare.
+][
+  Sharp scalar asymptotics where the tail contract holds; otherwise only a
+  reweighting analogy.
+]
+
+#analogue[Strategic classification and performative prediction][
+  Response kernels, costly action or endogenous deployment.
+][
+  General hidden value, scorecard exchange rates, marginal identification.
+][
+  Intervention framing after action/cost or deployment response is declared.
+]
+
+#analogue[RL reward hacking][
+  Proxy/target separation, MDP occupancy geometry, optimization pressure.
+][
+  Non-MDP domains, empirical welfare, generic cost parameter.
+][
+  RL-specific response calculations only inside the MDP/occupancy contract.
+]
+
+#analogue[Multitask incentives][
+  Aggregation and multidimensional effort/cost.
+][
+  The book's value-metric contract, non-LEN settings unless separately shown.
+][
+  External precedent for the scorecard exchange-rate question, not a proof of
+  this book's theorem.
+]
+
+#analogue[Adaptive holdout and leaderboard hygiene][
+  Selection/evidence standards for repeated benchmark use.
+][
+  Fixed-type finetuning, contamination, welfare, action cost.
+][
+  Evidence discipline for selection over fixed candidates and public/private
+  score interpretation.
+]
+
+#analogue[Reward overoptimization empirics][
+  Candidate search and optimization-pressure variables.
+][
+  A defended mapping from model size, KL, data access, or prize to $kappa$ or
+  $V$.
+][
+  Hypothesis generators for response geometry; no automatic theorem transfer.
+]
+
+#analogue[Empirical exchange-rate estimates][
+  Realized average harm per unit score movement, contested across
+  risk-adjustment and population choices @wadhera2018hrrp
+  @dharmarajan2017readmissions; score-side action traces: observation stays
+  @zuckerman2016observation, cheating detection @jacoblevitt2003rotten,
+  audit-test transfer @jacob2005accountability.
+][
+  Channel-level $h_j$: the published trace regressions put the score, not
+  harm, on the left-hand side; no design supplies full-rank regime
+  variation.
+][
+  Score-side channel exclusions and monitoring triggers, not exchange
+  rates; the harm-on-actions design remains unrun.
+]
 
 == Reduction, not unification
 
