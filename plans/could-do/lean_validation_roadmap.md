@@ -3,8 +3,9 @@
 ## Purpose
 
 This plan consolidates the existing formalization notes, formal-analogue plan,
-verification stack, and current core-claim priority list into one staged path
-for validating the project's mathematical results.
+verification stack, current core-claim priority list, and the later lean-pass
+planning note into one staged path for validating the project's mathematical
+results.
 
 The goal is not to move the whole project into Lean. The goal is to add formal
 proofs for stable theorem kernels while preserving the current adversarial
@@ -14,6 +15,11 @@ primitive-mapping discipline for external theorem analogues.
 Current repo state as of the planning pass: no Lean/Lake project is present in
 the checkout, and `lean`, `lake`, and `elan` were not found on PATH. Lean work
 therefore begins with toolchain/project setup, not theorem editing.
+
+Activation status: this is still a `could-do` plan. The activation gate from
+`research/parked_questions.md` is satisfied only when a human deliberately
+chooses to start Lean validation. Era-1 editing is complete, so the remaining
+reason to keep this parked is prioritization, not manuscript instability.
 
 ## Roadmap summary
 
@@ -31,6 +37,21 @@ The first implementation step should be the Lean core kernel scaffold. Later
 steps should expand only after the first kernels build and the verification
 ledger makes recurring theorem use visible.
 
+## Lean pass summary
+
+Run a narrow Lean validation pass for the stable theorem kernel only. This is
+not a full formalization of the framework, applications, response contracts,
+empirical work, stochastic dynamics, recursive Goodhart, or ML/RLHF analogues.
+
+Current repo facts to honor:
+
+- No Lean/Lake project exists.
+- `lean`, `lake`, and `elan` are not currently on PATH.
+- Canonical theorem source is `research/core-math.md`, especially T1-T6.
+- Active non-Lean research remains separate; in particular, the
+  exchange-rate empirics / identification-toy track is a simulation and
+  application-audit track, not a Lean target.
+
 ## Step 1: Lean core kernel
 
 Create a minimal Lean 4/Lake project for theorem kernels that are already stable
@@ -45,17 +66,22 @@ Implementation targets:
   summing to one.
 - Represent vectors as `Fin n -> Real` or mathlib finite-dimensional vectors,
   choosing the simpler option for finite sums and dot products.
+- Add only a small shared finite-sum/probability helper layer if repeated proof
+  friction appears; avoid premature abstraction.
 - Avoid full measure theory, general Markov kernels, conditional expectations,
   and empirical application contracts in the first Lean pass.
 
 First theorem modules:
 
 1. `Goodhart.Selection`
+   - Use a finite-population specialization of T1/T2 rather than the full
+     measure-theoretic statement.
    - Pure-selection scalar value drift bound by Cauchy-Schwarz:
      `|E_theta[v · (H - E_0 H)]| <= ||L - 1||_2 * sqrt(v^T Sigma_H v)`.
    - Euclidean coordinate corollary after declaring hidden coordinates and the
      identity value metric.
-   - Duplicate-coordinate/value-functional invariance example.
+   - Duplicate-coordinate/value-functional invariance example if cheap;
+     otherwise ledger it as deferred.
 
 2. `Goodhart.QuadraticGaming`
    - One-dimensional noiseless Stackelberg wedge:
@@ -71,7 +97,8 @@ First theorem modules:
      `H_M(d) = d * (sum_j h_j * kappa_j * w_j) /
        (sum_j kappa_j * w_j^2)`.
    - Conservation under re-routing when `h_j = c * w_j` on active channels.
-   - Counterexample or non-conservation lemma when harm-per-score ratios differ.
+   - Two-channel counterexample or non-conservation lemma when harm-per-score
+     ratios differ.
 
 4. `Goodhart.Hardening`
    - Capacity definition `S_t(M) = sum_j kappa_{j,t} * w_j^2`.
@@ -85,9 +112,11 @@ First theorem modules:
 Minimum success criterion:
 
 - The Lean project builds.
-- The selection value-drift bound and Stackelberg wedge are proved.
+- The one-dimensional Stackelberg wedge is proved.
+- A finite selection value-drift/Cauchy-Schwarz specialization is proved.
 - At least one quadratic multichannel algebra lemma is proved or reduced to
   clearly named finite-sum lemmas.
+- The verification ledger exists and maps T1-T6 to proof status.
 
 Do not include in Step 1:
 
@@ -96,6 +125,20 @@ Do not include in Step 1:
 - RLHF, finetuning, or reward-model applications.
 - Empirical application templates.
 - External formal-analogue theorem families.
+
+Suggested implementation order:
+
+1. Install/setup Lean with `elan`, create the Lake/mathlib project, and commit
+   the generated pinned toolchain files.
+2. Add empty modules and make `lake build` pass.
+3. Prove the T3 Stackelberg wedge first as the lowest-risk kernel.
+4. Prove one multichannel quadratic identity next, preferably the
+   minimum-cost/capacity identity used by T5/T6.
+5. Prove the finite selection value-drift bound after the algebraic kernels are
+   stable.
+6. Add or complete the verification ledger and mark every T1-T6 claim as
+   `Lean-proved`, `Lean-partial`, `symbolic/algebra-checked`, or `deferred`.
+7. Run `lake build` as the acceptance check.
 
 ## Step 2: Executable response lab
 
@@ -174,6 +217,15 @@ Promotion rule:
 - If a claim is analogy-based, it belongs in the formal-analogue map with a
   citation, primitive mapping, non-license, and falsifier.
 
+Ledger scope rule:
+
+- The ledger must distinguish the finite Lean specialization from the original
+  prose theorem in `research/core-math.md`.
+- A compiled Lean toy lemma must not upgrade any application-facing,
+  empirical, stochastic, or recursive claim.
+- Any theorem mismatch discovered during formalization should be logged before
+  manuscript or research claims are changed.
+
 ## Step 4: Formal-analogue boundary work
 
 Keep the formal-analogue chapter as a citation and primitive-mapping discipline,
@@ -233,11 +285,20 @@ The first milestone is complete when:
 - A Lean/Lake project exists and `lake build` succeeds.
 - The verification ledger exists and lists the initial core claims.
 - Lean proves at least:
-  - the finite pure-selection value-drift bound, and
-  - the one-dimensional quadratic Stackelberg wedge.
+  - the one-dimensional quadratic Stackelberg wedge;
+  - one finite pure-selection value-drift/Cauchy-Schwarz specialization;
+  - one multichannel quadratic algebra lemma used by T5/T6.
 - The roadmap is linked or referenced from the existing planning notes.
 - No speculative or empirical claim has been silently promoted to theorem
   status.
+
+Test plan:
+
+- `lake build` must pass from a clean checkout after Lean toolchain
+  installation.
+- Each Lean module should compile through the root import.
+- The ledger must include T1-T6 and clearly distinguish finite Lean
+  specializations, original prose statements, and non-transfer clauses.
 
 ## Working principle
 
