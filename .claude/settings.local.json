@@ -12,7 +12,16 @@
       "WebSearch",
       "Bash(make)",
       "Bash(echo \"build exit: $?\")",
-      "Bash(echo \"\\(exit $? — 1 means clean\\)\")"
+      "Bash(echo \"\\(exit $? — 1 means clean\\)\")",
+      "Bash(git -C /Users/xylix/Code/xylix-projects/multidimensional-goodhart log --oneline -15)",
+      "Bash(grep -n 'hidden vector\\\\|hidden coordinate\\\\|hidden quantity \\\\$H\\\\|quantity $H$' multidimensional-goodhart.typ)",
+      "Bash(grep -n '\\\\$\\\\.' multidimensional-goodhart.typ)",
+      "Bash(make all *)",
+      "Bash(uv run *)",
+      "Bash(make pdf *)",
+      "Bash(make abstract *)",
+      "Bash(echo \"BUILD EXIT: $?\")",
+      "Bash(echo \"OK exit=$?\")"
     ]
   }
 }
