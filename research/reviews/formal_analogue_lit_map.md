@@ -200,7 +200,13 @@ appear only in Chapter 2 §2.1 as pre-formal context.
 - Goodhart 1975 (informal macroeconomic claim).
 - Campbell 1976/1979 (social-science empirical generalization).
 - Strathern 1997 (anthropological aphorism).
-- Manheim & Garrabrant 2018 (taxonomy, no theorems).
+- Manheim & Garrabrant 2018 (taxonomy, no theorems) — theorem-free as a
+  *source*, so it gets no import row above. Its four variants are nonetheless
+  promoted into the formal-analogue treatment as a *correspondence* (variant →
+  channel → what the book's formalization adds or does not), recorded in
+  `research/reviews/mg_taxonomy_correspondence.md` and distilled into the book
+  subsection "The four variants by channel". The correspondence rows live
+  there, not in the source-to-primitive import table.
 
 ## Promotion-to-book status
 

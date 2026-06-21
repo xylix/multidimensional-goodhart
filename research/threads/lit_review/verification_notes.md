@@ -182,7 +182,7 @@ to `genealogy` or omit from primitive-map table.
 | Skalse et al. 2023 | `load-bearing` or `analogue` | verified |
 | Skalse et al. 2022 | `analogue` | verified |
 | Majka & El-Mhamdi 2025 | `analogue` | verified |
-| Manheim & Garrabrant 2018 | `genealogy` | typology only, no theorems |
+| Manheim & Garrabrant 2018 | `genealogy` source; correspondence promoted | typology, no theorems; variant→channel correspondence in `research/reviews/mg_taxonomy_correspondence.md` |
 | Goodhart 1975, Campbell 1976, Strathern 1997 | `genealogy` | canonical citations |
 | Lucas 1976 | `analogue` | canonical citation, deferred full verify |
 | Smith & Winkler 2006 | `analogue` (optional) | canonical citation |

@@ -27,7 +27,7 @@ proxy-target / aggregation / evidence-standard).
 | --- | --- | --- |
 | El-Mhamdi & Hoang 2024 (arXiv:2410.09638) | `load-bearing` (anchor candidate) | Scalar bounds with tail-distribution dependence; Theorems 1 and 4 verified via WebFetch. |
 | Skalse et al. 2023 (arXiv:2310.09144, "Goodhart's Law in RL") | `load-bearing` (anchor candidate) or `analogue` | RL-specific angle-bound early stopping; Theorem 1 verified via WebFetch. |
-| Manheim & Garrabrant 2018 (arXiv:1803.04585) | `genealogy` | Taxonomy, not theorem. Chapter 2 §2.2. |
+| Manheim & Garrabrant 2018 (arXiv:1803.04585) | `genealogy` source; correspondence promoted | Theorem-free as a source, but its four variants are mapped to the book's two channels (selection/intervention) in `research/reviews/mg_taxonomy_correspondence.md` and the book subsection "The four variants by channel". |
 | Goodhart 1975 | `genealogy` | Informal macroeconomic claim. |
 | Campbell 1976/1979 | `genealogy` | Social-science empirical generalization. |
 | Strathern 1997 | `genealogy` | Anthropological aphorism. |

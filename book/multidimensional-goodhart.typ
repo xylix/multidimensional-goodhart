@@ -720,12 +720,75 @@ its companion precedent, arguing that policy change invalidates the estimated
 relations policy relies on @lucas1976critique. Campbell's warning
 concerns social indicators under decision pressure @campbell1979. Strathern's
 formulation supplies the familiar compressed warning @strathern1997. Manheim
-and Garrabrant provide a useful cause taxonomy @manheim2018categorizing.
+and Garrabrant provide a cause taxonomy whose four variants the next section
+maps onto the book's two channels @manheim2018categorizing.
 
 This book does not replace that genealogy with a grander taxonomy. It uses the
 genealogy to ask which primitives are present: selection, response kernel,
 action cost, proxy/target separation, aggregation, hidden value, and evidence
 standard.
+
+== The four variants by channel
+
+Manheim and Garrabrant classify Goodhart by cause; this book classifies by
+channel, because the channel is what licenses a calculation. The four variants
+reduce two-and-two onto the book's two channels: regressional and extremal are
+selection ($K_theta = K_0$, policy exposure only through the participation
+weight); causal and adversarial are intervention ($K_theta != K_0$ at fixed
+type). The reduction is deliberately asymmetric. The book sharpens two of the
+four, modestly generalizes one, and only draws a boundary around the last.
+Stating the asymmetry is the point: a framework that discriminates should say
+where it adds nothing.
+
+#let variant(name, channel, adds, caution) = block(spacing: 0.65em)[
+  *#name* (#channel). _Adds:_ #adds _Guardrail:_ #caution
+]
+
+#variant[Regressional][selection][
+  The distribution-free drift envelope $delta s_i$ (T1) and its value-weighted
+  form (T2), which hold for dependent, non-Gaussian, and multidimensional
+  hidden coordinates where the scalar regression-shrinkage picture does not
+  reach.
+][
+  A modest generalization, not a sharper bound. The tail-conditioned
+  asymptotic rate stays with El-Mhamdi--Hoang @el-mhamdi2024goodhart; $delta
+  s_i$ only envelopes it.
+]
+
+#variant[Extremal][selection, at its boundary][
+  No new theorem. Under extreme selection $delta$ diverges and the T1/T2
+  envelope retires; the residual $epsilon(s) = P(s) - phi(G(s))$ is what grows
+  in the tail.
+][
+  A boundary clause, not a result. A fixed well-behaved joint shows no reversal
+  from $delta$ alone, so the dangerous extremal case is imported from
+  tail-conditioned anchors, not proven here.
+]
+
+#variant[Causal][intervention][
+  The sharpest gain. The cause question leaves the non-identifiable symmetric
+  correlation model and enters the action map: causal Goodhart is exactly the
+  failure of $h_j = c w_j$ — the score-raising action off the
+  harm-proportional line — carrying the exact fixed-deficit harm of T5.
+][
+  Bought with the declared contract ($w_j$, $h_j$, $kappa_j$), not free
+  identification.
+]
+
+#variant[Adversarial][intervention, in time][
+  Cost geometry and time: the activation wedge $sqrt(2 kappa V)$ (T3), convex
+  feasibility (T4), and the deterministic hardening boundary (T6) that a static
+  gaming model cannot express.
+][
+  Scoped toys under their non-license clauses. Metric secrecy and
+  randomization, which the taxonomy treats as the central mitigation, stay
+  unmodeled.
+]
+
+This is reduction plus selective sharpening, not a rival four-fold taxonomy.
+The channel, not the cause name, licenses each calculation — and the marginal
+score movement the audit watches does not by itself reveal which variant
+produced it.
 
 == Formal analogues, primitive by primitive
 
