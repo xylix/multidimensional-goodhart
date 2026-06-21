@@ -1047,10 +1047,14 @@ smaller one the evidence actually licenses.
 == A synthetic positive: the contract licensing a calculation
 
 Every worked case above ends in a refusal, and the pattern invites a fair
-objection: is the contract ever satisfiable, or does the framework only
-explain why conclusions are unavailable? The honest answer is that the
-refusals are about evidence, not about the machinery — and the cheapest way
-to show it is a world where the evidence problem is removed by fiat.
+objection: is the contract ever satisfiable in principle, or is the machinery
+rigged so that "no verdict" is the only output it can reach? Read precisely,
+that is a question about the machinery, not about any real domain — whether
+real scorecards can fill the fields is the separate empirical question the
+falsifiers and open agenda below take up. The honest answer to the
+in-principle question is that the refusals are about evidence, not about the
+machinery, and the cheapest way to show it is a world where the evidence
+problem is removed by fiat.
 
 Declare a synthetic scorecard outright. Three channels form the pool; every
 channel has capacity $kappa_j = 1$ and score weight $w_j = 1$; the response
@@ -1075,10 +1079,13 @@ proportional to $w_j$ on this pool. And the same act of "adding a metric"
 moves harm in opposite directions: adding channel 3 to a scorecard
 measuring channels 1 and 2 raises fixed-deficit harm from $1\/2$ to
 $4\/3$, while adding channel 1 to a scorecard measuring channels 2 and 3
-lowers it from $2$ to $4\/3$. A designer in this world is licensed to
-conclude that the scorecard should not measure channel 3 without pricing
-its exchange rate — a positive, falsifiable design statement, checkable by
-simulating the declared world.
+lowers it from $2$ to $4\/3$. A designer in this world is licensed to a
+concrete, signed conclusion: adding channel 3 to a scorecard measuring
+channels 1 and 2 raises fixed-deficit gaming harm from $1\/2$ to $4\/3$ — a
+positive, falsifiable design statement, checkable by simulating the declared
+world. The transferable moral, the one the real cases cannot reach, is then
+named as a moral: a channel should not be added to the measured set without
+first pricing the exchange rate that fixes the sign of its effect.
 
 What the synthetic world supplies that the real cases above do not is not
 mathematical: it is the evidence standard, satisfied by fiat. Real
