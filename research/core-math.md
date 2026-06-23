@@ -56,11 +56,32 @@ declared.
 Dependencies: measure-theoretic absolute continuity; finite second moments;
 Hilbert-space Cauchy-Schwarz.
 
+Sharpness (added 2026-06-23):
+- Tightness — the constant `delta s_i` is best possible, attained, not merely
+  an upper bound. Witness: two-point hidden coordinate `H = E_0[H] +/- s` each
+  with baseline probability 1/2 (so `sd_0(H) = s`); for any `delta in (0, 1]`
+  set `L = 1 + (delta/s)(H - E_0[H]) = 1 +/- delta`. Then `E_0[L] = 1`,
+  `L >= 0` (valid density), `||L - 1||_2 = delta`, and
+  `B_H = E_0[(L-1)(H - E_0 H)] = (delta/s) Var_0(H) = delta s`. Equality is the
+  Cauchy-Schwarz equality case (`L - 1` proportional to centered `H`). Hence no
+  smaller universal multiple of `s_i` holds.
+- Necessity of `L in L^2(mu_0)` (finite `delta`, finite chi^2) — cannot be
+  dropped; finite hidden variance alone does not bound drift. Witness: baseline
+  `mu_0(n) prop n^{-4}` on the positive integers (so `sum n^{-4} = zeta(4)`),
+  hidden `H(n) = n` with `E_0[H^2] prop sum n^{-2} = zeta(2) < infinity`
+  (finite `s`). Selection `mu_theta(n) prop n^{-2}` is `<< mu_0` with
+  `L(n) prop n^2` and `E_0[L^2] prop sum 1 = infinity` (the only failed
+  hypothesis). Drift `E_theta[H] prop sum n . n^{-2} = sum n^{-1} = infinity`.
+  So a finite-variance coordinate drifts without bound once `delta` is infinite.
+  This makes precise T2's existing "uninformative when chi^2 is large or
+  infinite" non-license: the conclusion genuinely fails, not just the bound.
+
 Non-license: not coordinate-free; not a welfare claim; does not apply to
 fixed-type response changes; does not identify hidden coordinates or value
 weights.
 
-Book pointer: book section 5.1, "Selection: the channel to exclude first", Theorem T1.
+Book pointer: book section 5.1, "Selection: the channel to exclude first",
+Theorem T1; sharpness remark in the same section after the T1/T2 prose.
 
 ### T2. Value-weighted/operator selection bound
 
@@ -74,6 +95,15 @@ For a declared norm,
 
 Dependencies: T1 objects; finite-dimensional covariance or the corresponding
 operator/support-function formulation; declared value metric.
+
+Sharpness (added 2026-06-23): same Cauchy-Schwarz structure as T1, so the same
+two witnesses apply. Tightness — for scalar value `V_H = v . (H - E_0 H)`,
+align the tilt with the value-projected coordinate (`L - 1 prop V_H/sd_0(V_H)`,
+two-point) to attain `|Delta V_H| = delta sqrt(v^T Sigma_H v)`. Necessity —
+the T1 `n^{-4}/n^{-2}` witness with `v` loading the unbounded coordinate sends
+`Delta V_H` to infinity at infinite `delta`. The operator form's supremum over
+the value unit ball is attained at the value direction realizing the
+worst-case projected variance.
 
 Non-license: value weights are not learned from `mu_theta`; the bound can be
 uninformative when `chi^2` is large or infinite; no intervention, welfare, or

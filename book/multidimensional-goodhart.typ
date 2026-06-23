@@ -570,6 +570,21 @@ bounds give drift envelopes for pure reweighting. They do not identify the
 hidden coordinates, the value weights, or the welfare object. They do not
 apply to fixed-type response changes.
 
+The envelope is the right one in two senses. It is _attained_: take a two-point
+hidden coordinate at $EE_(mu_0)[H] plus.minus s$ and the matching tilt
+$L = 1 + (delta\/s)(H - EE_(mu_0)[H])$, valid as a density for $delta <= 1$,
+and the pairing reaches $abs(B_H) = delta s$ with equality (the Cauchy--Schwarz
+equality case, $L - 1$ proportional to the centered coordinate). So $delta s$ is
+the best constant, not a loose one; no smaller universal multiple of $s$ holds.
+And the finite-$delta$ hypothesis is _necessary_, not decorative: finite hidden
+variance alone does not bound drift. Drop only the requirement that
+$L in L^2(mu_0)$ — equivalently that the $chi^2$ divergence is finite — and a
+coordinate with finite baseline variance can drift without bound. Baseline
+$mu_0(n) prop n^(-4)$ on the positive integers with hidden $H(n) = n$ has finite
+$s$; the absolutely continuous selection $mu_theta(n) prop n^(-2)$ has
+$L(n) prop n^2 in.not L^2(mu_0)$ and sends $EE_(mu_theta)[H]$ to infinity. The
+$L^2$ condition is what converts finite hidden variance into finite drift.
+
 Part 2's covariance refutation gets its mechanism here. Covariance enters as
 a local velocity and nothing more: along a valid exponential tilt — one whose
 $exp(beta P)$ stays normalizable over the pressure range — the derivative at
