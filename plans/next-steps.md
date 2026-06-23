@@ -38,8 +38,10 @@ Agreed direction (June 11, 2026), in order:
    example, f48094a abstract; the prior-work table was separately
    converted to per-family blocks in 3345a59). *Remaining: the manual
    human read* — check items include the notation-overload TODO
-   (`could-do/notation-overload-pass.md`) and a read of the new
-   worked-positive subsection (book pp. 23–24).
+   (`could-do/notation-overload-pass.md`), the divergence-seam paper-1
+   improvements (`could-do/divergence-seam-paper1-improvements.md`: I1/I2/I5
+   ride with this read; I3 is a separate pre/post-circulation decision), and a
+   read of the new worked-positive subsection (book pp. 23–24).
 2. **Circulate the draft** — send to someone for comments and/or post on
    LessWrong. This, not formal publishing, is the next external step.
 3. Only then start the **publishing decision** proper (venue, format,
