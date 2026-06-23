@@ -56,6 +56,14 @@ deferring it rather than missing it.
   prose as a live assumption, not fine print.
 - Why (seam): that caveat is paper 2's thesis in seed form (conjecture C1).
 - Risk if skipped: paper 2 has to re-introduce the tail condition as if new.
+- Status (2026-06-23, from the sharpness session): **effectively done — reconcile,
+  don't restate.** Commit 1d939c4 added a T1/T2 necessity witness (finite hidden
+  variance + infinite `delta` => infinite drift) with a reader-facing "Sharpness"
+  paragraph in book §5.1 and worked witnesses in `core-math.md`. That promotes the
+  `L^2`/finite-`chi^2` hypothesis from fine print to a named load-bearing
+  assumption *and* sharpens the non-license: the conclusion genuinely fails, not
+  just the bound. The remaining I2 action is to ensure the fix batch
+  cross-references that paragraph rather than adding a second caveat.
 
 ### I3. Add a named open-problem subsection to Part 8, anchored to the Extremal boundary clause
 
@@ -73,6 +81,16 @@ already provides the anchor.
   El-Mhamdi / Majka tail families rather than proves. Paper 2's tail-index
   divergence (conjecture C1) is precisely the formalization of that retired
   regime.
+- Anchor now concrete (2026-06-23, from the sharpness session): commit 1d939c4
+  added the `delta -> infinity => infinite drift` necessity witness and a
+  "Sharpness" paragraph in book §5.1. That witness *is* the precise "where the
+  envelope retires" statement, so the Part 8 subsection should **cite it as its
+  anchor** rather than re-derive the retirement. Scope caution: the witness
+  isolates the *selection-intensity* route (`delta -> infinity`, finite hidden
+  variance); paper 2's C1 is the *hidden-value tail-index* route. They are two
+  faces of "tails diverge," not the same statement — mark the `delta` half as
+  in-scope-and-witnessed and the heavy-tailed-value severity half as deferred to
+  the track.
 - Where: Part 8 ("Refusals, Falsifiers, and the Open Agenda", book ~line 1097),
   a new subsection parallel to `== The residual-shape conjecture` (~line 1155).
   Cross-reference the Part 7 Extremal treatment (`== The four variants by
