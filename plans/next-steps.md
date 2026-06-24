@@ -22,13 +22,49 @@ remains is research work and publishing — not editing or book-content work.
 
 ## Active plan files
 
-None. The exchange-rate empirics track completed June 11, 2026 (all four
-steps plus a fresh-context review gate; execution record in
-`archived/exchange-rate-empirics.md`). The book's Part 6 empirical row is
-filled and Part 8's identification question answered; the book remains
-content-stable otherwise.
+**Prior-art / novelty-refactor program (added June 23, 2026)** — inserted
+*ahead of circulation* because it changes the manuscript significantly. The T5
+exchange-rate lit review found that core "survived" theorems are likely
+classical results in other clothes (T5 = contract-theory congruence), and that
+each parallel lives in the theorem's *native field*, not the Goodhart
+literature. The paper's honest contribution is therefore elementary cross-field
+synthesis, not novel math — which, stated proudly, is stronger than the current
+motte-and-bailey. Three lit reviews resolve this against each theorem's home,
+then a capstone refactors prose and math to cite existing results and reduce
+novelty claims:
 
-Agreed direction (June 11, 2026), in order:
+1. `litrev-selection-bounds.md` — T1/T2 vs Chapman–Robbins / χ²-DRO (highest
+   priority; our own `research/reviews/formal_analogue_lit_map.md` currently
+   asserts the opposite, "no χ² analogue").
+2. `litrev-convex-budget.md` — T4 vs Fenchel/Rockafellar (low-effort confirm).
+3. `litrev-lower-tier.md` — selection/intervention identification, exponential
+   tilt, T3, T6 (bundled).
+4. `novelty-refactor.md` — capstone; **blocked on 1–3 plus the completed T5
+   review** (`research/threads/lit_review/looking-for-exchange-rate-results/`);
+   reframes the paper as synthesis + contract + the subset-invariance reading.
+   Reopens the "editing done" milestone.
+
+Context is captured in the `t5-prior-art-congruity` and
+`paper1-is-elementary-synthesis` memories.
+
+**Gap paper (proposed June 24, 2026)** — `literature-reference-gap-paper/plan.md`
+(self-contained directory: plan + citation audit + eventual draft). A short
+*standalone* paper spun out of the June 24 lit-review session: the AI-safety Goodhart canon
+cites essentially none of the economics / management-science / accounting prior
+art that contains the same math (verified across 7 anchor papers). Contribution
+is bibliographic + synthesis (a coded citation audit + the cross-field
+dictionary + "what AI safety can learn"), so it is **not blocked** on the T1/T2,
+T4, lower-tier verdicts and could circulate ahead of Paper 1. Seeds Paper 1's
+reframed related-work; does not replace the novelty-refactor.
+
+The exchange-rate empirics track completed June 11, 2026 (all four steps plus a
+fresh-context review gate; execution record in
+`archived/exchange-rate-empirics.md`). The book's Part 6 empirical row is filled
+and Part 8's identification question answered; the book is otherwise
+content-stable except for the refactor program above.
+
+Agreed direction (June 11, 2026; the novelty-refactor program above now precedes
+step 2 "Circulate"), in order:
 
 1. **One more reading round** before circulation. *LLM half done June 11:*
    two clean-context reviews (GPT + Claude), both "ready to circulate
