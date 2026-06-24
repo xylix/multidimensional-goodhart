@@ -65,7 +65,8 @@ to cite existing results and reduce novelty claims:
   subset-invariance reading. Reopens the "editing done" milestone.
 
 Context is captured in the `t5-prior-art-congruity` and
-`paper1-is-elementary-synthesis` memories.
+`paper1-is-elementary-synthesis` memories. A fresh-context pickup TL;DR for this
+track (method, per-review status, guardrails) is at `litrev-handoff.md`.
 
 Book content state: the exchange-rate empirics track completed June 11, 2026
 (execution record in `archived/exchange-rate-empirics.md`); Part 6's empirical row

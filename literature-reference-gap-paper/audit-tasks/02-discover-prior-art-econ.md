@@ -35,9 +35,13 @@ store raw) **and** autonomous web/API sweeps:
   Montgomery 1972, notched-policy gaming (Sallee, Kleven).
 - **Management / org science & social measurement:** Ridgway 1956, Kerr 1975,
   Campbell 1976/1979, Strathern 1997, performance-management dysfunction lit.
+- **Signaling / contest theory (lower-tier T3 home):** Spence 1973 job-market
+  signaling, contest / all-pay auction theory, costly threshold-crossing.
+  (Strategic classification is the *AI-side* parallel — discover it in task 01.)
 
 For each result found: record the **statement it makes** and a **preliminary
-mapping** to the book theorem / AI result it parallels.
+mapping** to the book theorem / AI result it parallels (including the lower-tier
+theorems — this discovery feeds Track A's `litrev-lower-tier.md`).
 
 ## Output
 `../citation-audit/discovery-prior-art-econ.md`: per-subfield list (result ·

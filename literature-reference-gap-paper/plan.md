@@ -185,6 +185,11 @@ Concrete imports, each tied to a named economics result — not vibes:
   Baker 2002, DKL 2001, Chetty 2009 were partly paywalled in the T5 review).
 - Keep consistent with `paper1-is-elementary-synthesis`: state elementariness
   proudly; the value is the translation table and the transfer, not new math.
+- **Do not over-correct into "it's all trivial" either.** Keep the genuinely
+  original layer credited: the response-modeling contract, the subset-invariance
+  reading, and the completeness of the synthesis/dictionary itself. The pride is
+  earned by the completeness of the translation table — that is the substance,
+  not damage control. (Track A guardrail, applies here too.)
 
 ## What this plan deliberately does not do
 

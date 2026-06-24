@@ -16,9 +16,11 @@ stronger if the formal side is mapped too.
 ## Inputs
 - `../citation-audit/audit.md` (ESTIM tier + caveats).
 - Track A reviews — `../../plans/litrev-selection-bounds.md` (T1/T2),
-  `../../plans/litrev-convex-budget.md` (T4): **harvest their hypotheses; do not
-  duplicate.** Coordinate so the gap paper cites Track A for the math and claims
-  only the *citation gap* per family.
+  `../../plans/litrev-convex-budget.md` (T4), `../../plans/litrev-lower-tier.md`
+  (L1–L4): this discovery and those reviews are **largely the same searches** —
+  run them as shared infrastructure (see the README's "Relationship to Track A").
+  Harvest their hypotheses; feed your findings back; do not double-run. The gap
+  paper cites Track A for the math and claims only the *citation gap* per family.
 
 ## Protocol
 Sweep each area to saturation (autonomous sweeps + multi-LLM where a result is
@@ -34,8 +36,18 @@ contested):
 - **Index-number theory / aggregation:** Diewert, Eichhorn–Voeller, Blackorby–
   Primont, consistency-in-aggregation.
 - **Control / information theory** (only if a genuine proxy-gaming parallel surfaces).
+- **Causal inference / identification (lower-tier L1 home):** observational
+  equivalence, Heckman selection, Rubin potential outcomes, Pearl do-calculus,
+  Manski partial identification, mixture-model non-identifiability.
+- **Exponential families / large deviations (lower-tier L2 home):**
+  natural-parameter tilting, cumulant generating functions, Gibbs–Boltzmann
+  measures, importance sampling.
+- **Security games / resource scheduling (lower-tier L4 home):** Stackelberg
+  security games, moving-target defense, greedy monotone resource reduction.
 
-For each: record the statement + preliminary mapping to T1/T2/T4.
+For each: record the statement + preliminary mapping to T1/T2/T4 **and the
+lower-tier theorems** (T3, T6, identification, tilt) — this discovery feeds Track
+A's `litrev-lower-tier.md`.
 
 ## Output
 `../citation-audit/discovery-prior-art-formal.md`: per-area list (result ·

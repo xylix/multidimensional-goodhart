@@ -54,8 +54,31 @@ Freezing earlier would bake in selection bias and sink the bibliometric claim.
   `../../research/threads/lit_review/looking-for-exchange-rate-results/`.
 - **Where outputs go:** `../citation-audit/` for consolidated artifacts; raw
   multi-LLM passes in per-task subfolders (e.g. `../citation-audit/exceptions-hunt/`).
+- **Adversarial harness method (reuse the T5 recipe).** When running the
+  optimistic/pessimistic × ChatGPT/Claude/Gemini passes: (a) **name the suspected
+  classical result explicitly in the prompt** so the models pattern-match — this
+  is exactly what avoids the Goodhart-only false negative that started this
+  program; (b) **the spread is the signal** — record where the optimistic and
+  pessimistic framings and the three models *disagree*, not just the consensus;
+  (c) **synthesis output follows the T5 README format** (verdict · consolidated
+  closest-prior-art table · what survives as contribution · where the passes
+  diverged · caveats), per
+  `../../research/threads/lit_review/looking-for-exchange-rate-results/README.md`.
 - **Close each task** by appending a dated result note to `findings.md` and
   ticking its box below.
+
+## Relationship to Track A (shared discovery — do not double-run)
+
+Track A (`../../plans/litrev-selection-bounds.md`, `litrev-convex-budget.md`,
+`litrev-lower-tier.md`, capstone `novelty-refactor.md`) finds the *native
+mathematical home* of each book theorem (T1/T2 = HCR/χ²-DRO, T4 = Fenchel,
+lower-tier L1–L4 = causal inference / exponential families / signaling / greedy).
+The gap paper's discovery tasks 02–04 are **largely the same searches**, just
+consumed differently: Track A cites-and-reframes each theorem; the gap paper
+aggregates into the citation-gap claim + the cross-field dictionary. Run the
+discovery once as **shared infrastructure** — feed Track A's reviews from it and
+harvest their per-theorem depth back. The two share evidence but have distinct
+deliverables; do not conflate them, and do not run the discovery twice.
 
 ## The sequence
 
