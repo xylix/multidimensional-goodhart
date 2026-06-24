@@ -28,78 +28,86 @@ before the manuscript is ready to circulate or publish. **Editing is not done.**
 
 ## Active plan files
 
-**Prior-art / novelty-refactor program (added June 23, 2026)** — inserted
-*ahead of circulation* because it changes the manuscript significantly. The T5
-exchange-rate lit review found that core "survived" theorems are likely
-classical results in other clothes (T5 = contract-theory congruence), and that
-each parallel lives in the theorem's *native field*, not the Goodhart
-literature. The paper's honest contribution is therefore elementary cross-field
-synthesis, not novel math — which, stated proudly, is stronger than the current
-motte-and-bailey. Three lit reviews resolve this against each theorem's home,
-then a capstone refactors prose and math to cite existing results and reduce
-novelty claims:
+**Current focus → close the gap-paper citation audit (Track B).** Two open items
+in `literature-reference-gap-paper/citation-audit/findings.md`: (a) line-verify
+the "absent" negatives on the largest reference lists (Amodei 2016, Leike 2018)
+and re-check the Kaufmann/Wang surveys against clean reference lists; (b) freeze
+the corpus (25 papers now — decide whether to extend toward 30–40). Then structure
+the gap paper. Track A resumes after, starting with the T1/T2 review.
 
-1. `litrev-selection-bounds.md` — T1/T2 vs Chapman–Robbins / χ²-DRO (highest
-   priority; our own `research/reviews/formal_analogue_lit_map.md` currently
-   asserts the opposite, "no χ² analogue").
-2. `litrev-convex-budget.md` — T4 vs Fenchel/Rockafellar (low-effort confirm).
-3. `litrev-lower-tier.md` — selection/intervention identification, exponential
-   tilt, T3, T6 (bundled).
-4. `novelty-refactor.md` — capstone; **blocked on 1–3 plus the completed T5
-   review** (`research/threads/lit_review/looking-for-exchange-rate-results/`);
-   reframes the paper as synthesis + contract + the subset-invariance reading.
-   Reopens the "editing done" milestone.
+The project has bifurcated into two deliverables, run on parallel tracks.
+
+### Track A — Paper 1 / the book (critical path to publishing)
+
+**Prior-art / novelty-refactor program (added June 23, 2026)** — inserted *ahead
+of circulation* because it changes the manuscript significantly. The T5
+exchange-rate lit review found that core "survived" theorems are likely classical
+results in other clothes (T5 = contract-theory congruence), and that each parallel
+lives in the theorem's *native field*, not the Goodhart literature. The paper's
+honest contribution is therefore elementary cross-field synthesis, not novel math
+— stronger, stated proudly, than the current motte-and-bailey. Three lit reviews
+resolve this against each theorem's home, then a capstone refactors prose and math
+to cite existing results and reduce novelty claims:
+
+- ✅ **T5 exchange-rate** — done (`research/threads/lit_review/looking-for-exchange-rate-results/`).
+- ⬜ `litrev-selection-bounds.md` — T1/T2 vs Chapman–Robbins / χ²-DRO. **Not
+  started; highest priority** (our own `research/reviews/formal_analogue_lit_map.md`
+  currently asserts the opposite, "no χ² analogue").
+- ⬜ `litrev-convex-budget.md` — T4 vs Fenchel/Rockafellar. Not started (low-effort confirm).
+- ⬜ `litrev-lower-tier.md` — selection/intervention identification, exponential
+  tilt, T3, T6 (bundled). Not started.
+- ⬜ `novelty-refactor.md` — capstone; **blocked on the three reviews above plus
+  the completed T5 review**; reframes the paper as synthesis + contract + the
+  subset-invariance reading. Reopens the "editing done" milestone.
 
 Context is captured in the `t5-prior-art-congruity` and
 `paper1-is-elementary-synthesis` memories.
 
-**Gap paper (proposed June 24, 2026)** — `literature-reference-gap-paper/plan.md`
-(self-contained directory: plan + citation audit + eventual draft). A short
-*standalone* paper spun out of the June 24 lit-review session: the AI-safety Goodhart canon
-cites essentially none of the economics / management-science / accounting prior
-art that contains the same math — confirmed by a 25-paper systematic coded audit
-(`literature-reference-gap-paper/citation-audit/`); the gap is real but localized
-to the performance-measurement branch of contract theory. Contribution
-is bibliographic + synthesis (a coded citation audit + the cross-field
-dictionary + "what AI safety can learn"), so it is **not blocked** on the T1/T2,
-T4, lower-tier verdicts and could circulate ahead of Paper 1. Seeds Paper 1's
-reframed related-work; does not replace the novelty-refactor.
+Book content state: the exchange-rate empirics track completed June 11, 2026
+(execution record in `archived/exchange-rate-empirics.md`); Part 6's empirical row
+is filled and Part 8's identification question answered. The book is **not**
+otherwise content-stable — the novelty-refactor will change T1–T6 prose and math,
+the related work, the intro, and `refs.bib`.
 
-The exchange-rate empirics track completed June 11, 2026 (all four steps plus a
-fresh-context review gate; execution record in
-`archived/exchange-rate-empirics.md`). The book's Part 6 empirical row is filled
-and Part 8's identification question answered. The book is **not** otherwise
-content-stable: the prior-art / novelty-refactor program and the gap-paper
-integration above will change T1–T6 prose and math, the related work, the intro,
-and `refs.bib`.
+Track A pipeline (revised June 24, 2026); nothing is ready to circulate or publish
+until these land, in order:
 
-Agreed direction (revised June 24, 2026). The lit-review program reordered this:
-nothing is ready to circulate or publish until the literature-review thread is
-finished and integrated. In order:
-
-1. **Finish the literature-review thread.** The three pending reviews —
-   `litrev-selection-bounds.md` (T1/T2), `litrev-convex-budget.md` (T4),
-   `litrev-lower-tier.md` — plus the gap-paper citation audit
-   (`literature-reference-gap-paper/`, recorded in `citation-audit/`). The gap
-   paper is a parallel track and can circulate independently, ahead of Paper 1.
-2. **Integrate via the novelty-refactor capstone** (`novelty-refactor.md`),
-   which reopens book-content work: T1–T6 prose/math, the related work, the
-   intro, and `refs.bib`.
+1. **Finish the three lit reviews** (T1/T2 first), per the status list above.
+2. **Integrate via the novelty-refactor capstone** — reopens book-content work:
+   T1–T6 prose/math, related work, intro, `refs.bib`.
 3. **Final reading round — after integration.** The June 11 LLM reviews (two
    clean-context, both "ready to circulate after fixes"; disposition at
    `quality-checks/11_06_2026_llm_reviews_disposition.md`; fix batches 3a51552,
    b74e353, d10583f, f48094a; prior-work table reflowed in 3345a59) and the
    in-progress manual human read **predate the refactor and only partly carry
    over** — the changed sections need a fresh read. Remaining human-read items
-   still apply: the notation-overload TODO
-   (`could-do/notation-overload-pass.md`), the divergence-seam paper-1
-   improvements (`could-do/divergence-seam-paper1-improvements.md`: I1/I2/I5
-   ride with the read; I3 is a separate pre/post-circulation decision), and the
-   worked-positive subsection (book pp. 23–24).
-4. **Circulate the draft** — send for comments and/or post on LessWrong; the
-   next external step, not formal publishing.
-5. Only then the **publishing decision** proper (venue, format, release
-   checklist).
+   still apply: the notation-overload TODO (`could-do/notation-overload-pass.md`),
+   the divergence-seam paper-1 improvements
+   (`could-do/divergence-seam-paper1-improvements.md`: I1/I2/I5 ride with the read;
+   I3 is a separate pre/post-circulation decision), and the worked-positive
+   subsection (book pp. 23–24).
+4. **Circulate the draft** — send for comments and/or post on LessWrong; the next
+   external step, not formal publishing.
+5. Only then the **publishing decision** proper (venue, format, release checklist).
+
+### Track B — Gap paper (parallel; can circulate ahead of Paper 1)
+
+**Gap paper (proposed June 24, 2026)** — `literature-reference-gap-paper/`
+(self-contained: `plan.md` + `citation-audit/` + eventual draft). A short
+*standalone* paper: the AI-safety Goodhart canon cites essentially none of the
+economics / management-science / accounting prior art that contains the same math
+— confirmed by a 25-paper systematic coded audit (`citation-audit/audit.md`); the
+gap is real but localized to the performance-measurement branch of contract
+theory. Contribution is bibliographic + synthesis (the coded audit + the
+cross-field dictionary + "what AI safety can learn"). **Not blocked** on the
+Track-A lit reviews; can circulate ahead of Paper 1. Seeds Paper 1's reframed
+related-work; does not replace the novelty-refactor.
+
+- ✅ Citation audit executed — 25-paper coded table (`citation-audit/audit.md`)
+  and refined-thesis findings (`citation-audit/findings.md`).
+- 🔶 **Audit not fully closed** — two open items (see Current focus above):
+  line-verify the big-list negatives + re-check the recent surveys; freeze the corpus.
+- ⬜ Structure the gap paper — only after the audit is closed (per plan sequencing).
 
 Optional items live in `could-do/` (now including
 `could-do/rlhf-identification-experiment.md`, the one feasible harm-side
