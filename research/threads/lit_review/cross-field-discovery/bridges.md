@@ -248,20 +248,122 @@ reading. BBS proves the *concept* travels; it does not prove the *theorem*.
 
 ---
 
-## GATE VERDICT (written by lead)
+## GATE VERDICT (written by lead, 2026-06-24)
 
-_[Placeholder — to be written by the lead. Do not fill in from this autonomous pass.]_
+**Plan-invalidating question (from `plans/litrev-discovery.md`):** *"Is the gap
+real, and is our delta over BBS 2023 real?"*
+
+**Verdict: BOTH SURVIVE on the autonomous evidence — PROCEED, with two forced
+scope adjustments and one pending confirmation (the adversarial multi-LLM hunt
+below). This is a preliminary PASS; final `[confident]` coding of the gap claim
+waits on that pass returning no further exceptions.**
+
+### 1. Is the gap real? — YES, localized, with an explicit exception floor.
+
+Bibliographic facts (`[confident]` — every count auditable, query log §below):
+- **Forward-citation census (§1):** across 11 priority prior-art items spanning
+  the congruity / sufficiency / χ²-DRO tier, **zero** genuine AI-alignment papers
+  cite any of them *and connect it to Goodhart*. The sharpest rows are the ones
+  that are heavily cited inside adjacent ML (Ben-Tal 2013: 766 cites / 129 CS
+  citers; Chapman–Robbins: 259 / 88; HM1987: 2957 / 27) — the χ²-DRO and
+  estimation communities use this math constantly, yet **not one** of those CS
+  citers is a reward-hacking / Goodhart paper. Non-citation is a *community
+  boundary*, not an indexing artifact.
+- **Vocabulary probe (§3):** clean negative — 7 of 9 econ/stats terms entirely
+  absent from the AI corpus; the two that appear ("distortion", "multitask" in
+  the agency sense) appear in *exactly one* paper (2603.28063), which imports them
+  from HM1991/Baker. The literatures are terminologically disjoint.
+
+Interpretation (`[tentative]`, pending the adversarial pass): the fields are
+genuinely disconnected at the level of the *math*, not merely the eponym.
+
+**The exception floor (the bounds the gap claim must state up front):**
+- **CHAI / Berkeley (CIRL 2016, Off-Switch 2017, Zhuang–HM 2020):** reach HM1991 /
+  HM1987 / Baker 2002 / Kerr 1975 only, via a control / incomplete-contracting /
+  off-switch framing — **not** the congruity / multidimensional-Goodhart framing.
+- **Hendrycks "Unsolved Problems in ML Safety" 2021:** cites Ridgway 1956 at the
+  *genealogy/folklore* tier ("systems optimize what is measurable"), not for
+  Ridgway's composite-measure math.
+- **NEW, strongest exception — Wang & Huang, arXiv:2603.28063 (Mar 2026):** the
+  one AI-alignment paper that *formally* bridges contract theory to Goodhart —
+  instantiates HM1991, derives a "distortion index," frames a Goodhart→Campbell
+  transition (existence of paper independently verified at arXiv, 2026-06-24). But
+  it (a) reaches only the **same two items CHAI reached** (HM1991 + Baker 1992)
+  and (b) **re-derives** the distortion geometry rather than citing Feltham–Xie /
+  Banker–Datar / Baker 2002 / DKL or **any** estimation / χ²-DRO item. So even the
+  field's single contract-theory→Goodhart bridge *reinvents* the math instead of
+  citing the congruity/estimation tier — it **narrows but does not close** the gap.
+
+**Refined gap claim (what survives saturation):** *the performance-measurement /
+congruity prior art (Feltham–Xie, Banker–Datar, Baker 2002, DKL, Bénabou–Tirole)
+and the estimation / χ²-DRO prior art (Chapman–Robbins, Ben-Tal, Namkoong–Duchi)
+— which contain the actual mathematics of multidimensional Goodhart — remain
+uncited by the formal-Goodhart / reward-overoptimization literature. The only
+bridges reach HM1991 / Baker via a control framing (CHAI) or re-derive the
+distortion geometry without citing the congruity/estimation tier (2603.28063).*
+This is sharper and far harder to dismiss than "they cite nothing."
+
+### 2. Is the delta over BBS 2023 real? — YES.
+
+BBS ("Proxy failure," John et al., *Behavioral and Brain Sciences*) is the only
+document spanning econ + AI + biology, but it stays **qualitative / conceptual**
+(§4): it proposes "proxy failure" as a verbally-described unifying mechanism and
+taxonomizes named phenomena across fields. It cites Baker 2002 (which carries the
+distortion=cosine math) and Holmström 1979/2017 — but **does not restate them as a
+proxy-vs-goal vector theorem** (no congruity condition h=c·w, no distortion=1−cosθ,
+no proof) — and reaches neither Feltham–Xie nor HM1991 nor the estimation tier.
+**Our delta:** carry the *formal* contract-theory + estimation math BBS only
+gestures at into an explicit multidimensional proxy-vs-goal theorem, plus the
+subset-invariance reading. BBS proves the *concept* travels; not the *theorem*.
+
+### 3. Two forced scope adjustments (consequences for downstream tracks)
+
+1. **Cite 2603.28063 and rescope the novelty.** The gap paper can no longer claim
+   to be the *first* to connect contract theory to a formal Goodhart result — that
+   bridge now exists (HM1991→distortion index, Mar 2026). The surviving
+   contribution is the **breadth** (the congruity/sufficiency/χ²-DRO cross-field
+   dictionary that 2603.28063 and CHAI both omit), the **quantified citation-gap
+   audit** itself, and the **subset-invariance reading** (per the T5 verdict).
+2. **State the gap as LOCALIZED with the exception floor named in the abstract**
+   (CHAI + BBS + Hendrycks-Ridgway + 2603.28063), not as a totality. The seed
+   audit's "localized, not total" framing is confirmed at saturation.
+
+### 4. Caveats on this verdict (bars to clear before `[confident]`)
+
+- **The adversarial multi-LLM exceptions hunt is still pending** (prompts handed
+  to the user; see below). The autonomous census found no exception beyond the
+  four above, but the "gap is real" interpretation stays `[tentative]` until the
+  optimistic/pessimistic × 3-model pass confirms no further alignment paper
+  connects the congruity/estimation tier to Goodhart.
+- **BBS body-PDF was not read** (Cambridge HTML/S2-null); the qualitative-not-
+  formal call rests on abstract + venue + resolved reference list. A body grep for
+  "theorem"/"congruity"/an explicit G,P-vector equation is flagged before coding
+  the BBS-is-qualitative claim `[confident]`.
+- **Several 2026 arXiv IDs in `ai-corpus.md` are unverified** (hallucination risk
+  in the discovery pool) — the *freeze* phase (tasks 05/07) must verify each before
+  it enters the denominator. The one load-bearing 2026 item here (2603.28063) **is**
+  verified to exist.
+
+### 5. HARD STOP
+
+Per `plans/litrev-discovery.md`, this is the gate. **Stopping here** — no corpus
+freeze (05), no coding (06), no Track A consumption — until (a) the user runs the
+adversarial hunt below and the pass is synthesized, and (b) the human reviews this
+verdict. Discovery (01–04 + 08) autonomous portions are complete and saturated.
 
 ---
 
 ## PENDING: adversarial multi-LLM exceptions hunt
 
-_[Placeholder — handled separately by the lead. The census above is the FLOOR
-(CHAI + BBS + Braganza) plus the two new census hits (Hendrycks-Ridgway,
-genealogy-tier) and the one new vocabulary-probe hit (2603.28063 Wang & Huang,
-the strongest exception). The adversarial hunt should pressure-test whether any
-further alignment paper connects the congruity/sufficiency/χ²-DRO tier to
-Goodhart — this pass found none beyond 2603.28063's HM1991+Baker re-derivation.]_
+The optimistic/pessimistic deep-research prompt pair is written and handed to the
+user to run on ChatGPT, Claude, and Gemini deep research:
+`exceptions-hunt/optimistic_prompt.md`, `exceptions-hunt/pessimistic_prompt.md`.
+Raw pasted results go in `exceptions-hunt/{chatgpt,claude,gemini}_{optimistic,
+pessimistic}.md`; synthesis appends to this file in the T5 README format. The
+census above is the FLOOR the prompts are seeded with (CHAI + BBS + Braganza +
+Hendrycks-Ridgway + 2603.28063); the hunt's job is to surface any *further*
+alignment paper that connects the congruity/sufficiency/χ²-DRO tier to Goodhart.
+This autonomous pass found none beyond 2603.28063's HM1991+Baker re-derivation.
 
 ---
 

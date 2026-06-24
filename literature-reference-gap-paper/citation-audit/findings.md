@@ -90,3 +90,51 @@ reward-overoptimization literature.* This is both true and harder to dismiss tha
 - **Lock the "should-be-cited" econ set** (T5 core + Ridgway/Prendergast/Gibbons/
   Holmström2017/Courty–Marschke) as the dictionary's economics column.
 - **Add to `refs.bib`** the verified-absent precedents actually used + BBS 2023.
+
+---
+
+## Phase 0 unified discovery — result notes (2026-06-24)
+
+Discovery tasks 01–04 (+08) executed; outputs in
+`../../research/threads/lit_review/cross-field-discovery/`. **Gate (task 04)
+preliminary verdict: PASS — gap real, BBS delta real. STOP before freeze/code.**
+
+- **01 AI corpus** (`ai-corpus.md`): saturated, ~95 candidates (superset of the
+  25). Clusters A–H + strategic-ML (F) and ADA/benchmark (G) flagged borderline.
+  Caveat: several 2026 arXiv IDs unverified — freeze phase must check.
+- **02 econ prior art** (`prior-art-econ.md`): saturated, ~38 items across 7
+  subfields. Strongest *new* beyond the T5 set: Banker–Datar 1989 (weight ∝
+  sensitivity×precision), Chetty 2009 (elasticity sufficient iff no externality),
+  Ridgway 1956 (composite weighted-sum measures, 19y pre-Goodhart), Frankel–Kartik
+  2019 (measure-degrades-when-used), Şabac–Yoo (sufficient aggregation),
+  Braganza 2022 (formal proxy-competition dynamics).
+- **03 formal prior art** (`prior-art-formal.md`): saturated. **The "no χ²
+  analogue" internal negative is overturned** — T1 = Hammersley–Chapman–Robbins
+  rearranged; T2 = matrix HCR ellipsoid; three independent homes (HCR, χ²-DRO,
+  Bayesian-robustness). T4 = Fenchel/Rockafellar. All lower-tier homes (L1–L4) found.
+- **04 bridges** (`bridges.md`): forward-citation census of 11 priority prior-art
+  items → **0 genuine alignment citers connect the congruity/sufficiency/χ²-DRO
+  tier to Goodhart** (incl. heavily-cited Ben-Tal 766, Chapman–Robbins 259 with
+  large CS citer sets that contain no reward-hacking paper). Vocabulary probe =
+  clean negative (7/9 terms absent). Exception floor: CHAI (control framing),
+  Hendrycks-Ridgway (genealogy tier), **+ NEW: Wang & Huang arXiv:2603.28063 (Mar
+  2026)** — formally bridges HM1991+Baker1992 to Goodhart but re-derives the
+  distortion index and omits the congruity/estimation tier (narrows, doesn't close
+  the gap; existence arXiv-verified). BBS = qualitative, not formal → delta real.
+- **08 verification** (`prior-art-verification.md`): 7 verified-primary, 6
+  secondary, 8 flagged for user pull. **Two corrections:** Reynaert–Sallee
+  either-direction welfare is **Prop. 2** (not Prop. 4); **Ben-Tal 2013 has no
+  "mean+√r·sd" prop** — that is Namkoong–Duchi Thm 1, constant **√(2ρ/n)**.
+  Recommended scope: lead with estimation/χ²-DRO (T1/T2) + corrective-Goodhart
+  (both primary-pinned now); T5 congruity tight on substance but key prop labels
+  paywalled.
+
+**Forced scope adjustments (from the gate):** (1) cite 2603.28063 and rescope —
+the gap paper is no longer "first to bridge contract theory to formal Goodhart";
+surviving contribution = breadth dictionary + quantified audit + subset-invariance.
+(2) State the gap as LOCALIZED with the exception floor named up front.
+
+**Still PENDING (before any `[confident]` coding / freeze):** the adversarial
+multi-LLM exceptions hunt (prompts in `cross-field-discovery/exceptions-hunt/`) and
+the task-02 breadth passes (`cross-field-discovery/prior-art-hunt/`) — handed to the
+user to run on ChatGPT/Claude/Gemini. Also: BBS body-grep for a formal-claim check.

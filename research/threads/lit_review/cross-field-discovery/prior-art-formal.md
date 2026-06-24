@@ -1,7 +1,16 @@
 # Prior-art discovery — formal-math / statistics side (Task 03)
 
 Discovery + preliminary mapping only. **Verification of every exact statement,
-proposition number, and constant is Task 08.** Statements below are recorded as
+proposition number, and constant is Task 08.**
+
+> **CORRECTION (Task 08, 2026-06-24):** `prior-art-verification.md` supersedes two
+> claims below. (1) **Ben-Tal 2013 does NOT contain a "worst-case = mean + √r·sd"
+> proposition** — that closed form is mis-attributed here; it belongs to
+> **Namkoong–Duchi 2017, Theorem 1**, with the exact constant **√(2ρ/n)** (resolving
+> the open √(ρ/n) question; the 2 comes from the φ(t)=½(t−1)² χ² normalization —
+> match the book's χ² before equating δ). Cite Ben-Tal only for the φ-divergence
+> conjugate robust-counterpart machinery. (2) Use Polyanskiy–Wu §29.1 eq. (29.1) /
+> Thm 29.1 as the verified-primary HCR statement. Statements below are recorded as
 found via WebSearch/WebFetch + OpenAlex; treat them as discovery-grade until
 primary-source verified. Paywalled items flagged `[PAYWALL]`.
 

@@ -106,15 +106,17 @@ prior-art discovery (02,03) and can run early.
 
 ## Checklist (update as tasks land)
 
-- [ ] 01 AI corpus discovered (saturated)
-- [ ] 02 prior art discovered — econ/management side (saturated)
-- [ ] 03 prior art discovered — formal-math side (saturated)
-- [ ] 04 bridges mapped + BBS locked
+- [x] 01 AI corpus discovered (saturated) — `cross-field-discovery/ai-corpus.md`
+- [x] 02 prior art discovered — econ/management side (saturated) — `prior-art-econ.md` (autonomous; adversarial breadth passes in `prior-art-hunt/` pending user)
+- [x] 03 prior art discovered — formal-math side (saturated) — `prior-art-formal.md`
+- [~] 04 bridges mapped + BBS locked — `bridges.md` (census/vocab/BBS + gate verdict done; **adversarial exceptions hunt pending user**, prompts in `exceptions-hunt/`)
 - [ ] 05 corpus + tier scheme frozen
 - [ ] 06 full corpus coded
 - [ ] 07 coding double-verified
-- [ ] 08 prior-art primary sources verified + scope set
+- [x] 08 prior-art primary sources verified + scope set — `prior-art-verification.md`
 - [ ] 09 why-the-gap evidenced
 - [ ] 10 synthesized & audit closed
 
-**Start here:** task 01 (and, in parallel if you like, 02 and 03).
+**GATE (task 04) preliminary verdict: PASS — gap real + BBS delta real. HARD STOP
+before 05–10 / Track A** until the adversarial multi-LLM passes are run and
+synthesized. See `cross-field-discovery/bridges.md` § GATE VERDICT.

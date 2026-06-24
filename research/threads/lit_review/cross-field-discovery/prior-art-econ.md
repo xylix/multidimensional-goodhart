@@ -10,7 +10,12 @@ pressure on scalarized Σ w_j P_j, hidden harm in unmeasured directions).
 **What this is / isn't.** Discovery + *preliminary* mapping only. Primary-source
 proposition-number verification is Task 08; below I flag paywalled originals and
 tag statements reconstructed from secondary sources rather than asserting exact
-theorem numbers. Tags: `[fetched]` = abstract/result confirmed from a fetched
+theorem numbers.
+
+> **CORRECTION (Task 08, 2026-06-24):** `prior-art-verification.md` supersedes the
+> proposition labels here. Notably, Reynaert–Sallee's *either-direction welfare*
+> result is **Proposition 2** (not Prop. 4; Prop. 4 is the tighter-policy⇒more-
+> gaming comparative static). Use the verified file for any pinned number. Tags: `[fetched]` = abstract/result confirmed from a fetched
 page or OpenAlex record; `[secondary]` = statement reconstructed from a review /
 summary, original not yet read; `[paywalled]` = original behind paywall, flag for
 Task 08.
