@@ -28,12 +28,13 @@ before the manuscript is ready to circulate or publish. **Editing is not done.**
 
 ## Active plan files
 
-**Current focus → close the gap-paper citation audit (Track B).** Two open items
-in `literature-reference-gap-paper/citation-audit/findings.md`: (a) line-verify
-the "absent" negatives on the largest reference lists (Amodei 2016, Leike 2018)
-and re-check the Kaufmann/Wang surveys against clean reference lists; (b) freeze
-the corpus (25 papers now — decide whether to extend toward 30–40). Then structure
-the gap paper. Track A resumes after, starting with the T1/T2 review.
+**Current focus → close the gap-paper citation audit (Track B).** Executed as a
+sequence of eight precise, individually-runnable subtasks for a fresh agent:
+`literature-reference-gap-paper/audit-tasks/` (start at `README.md`). They cover
+corpus freeze, double-coded verification, forward-citation census, a multi-LLM
+adversarial exceptions hunt, primary-source verification, the bridge/why
+evidence, and synthesis. **Next action: `audit-tasks/01-freeze-corpus.md`.** Then
+structure the gap paper. Track A resumes after, starting with the T1/T2 review.
 
 The project has bifurcated into two deliverables, run on parallel tracks.
 
@@ -105,8 +106,9 @@ related-work; does not replace the novelty-refactor.
 
 - ✅ Citation audit executed — 25-paper coded table (`citation-audit/audit.md`)
   and refined-thesis findings (`citation-audit/findings.md`).
-- 🔶 **Audit not fully closed** — two open items (see Current focus above):
-  line-verify the big-list negatives + re-check the recent surveys; freeze the corpus.
+- 🔶 **Audit not fully closed** — eight-task closing sequence in `audit-tasks/`
+  (corpus freeze → verify → census → exceptions hunt → primary sources →
+  bridge/why → synthesize). Start: `audit-tasks/01-freeze-corpus.md`.
 - ⬜ Structure the gap paper — only after the audit is closed (per plan sequencing).
 
 Optional items live in `could-do/` (now including
