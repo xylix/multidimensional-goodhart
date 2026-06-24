@@ -75,6 +75,9 @@ discovery of both sides (AI corpus + cross-field prior art) and maps the bridges
 and only *then* freezes the corpus, codes, double-verifies, verifies econ/formal
 primary sources, evidences the "why," and synthesizes. The bullets below are the
 design rationale; freezing is deliberately deferred until discovery saturates.
+Tasks 01–04 (+08) are the project's **unified cross-field discovery**, shared with
+Track A (`../plans/litrev-discovery.md`); their outputs live in the neutral home
+`research/threads/lit_review/cross-field-discovery/`, consumed by both papers.
 
 - **Define the corpus.** Target ~25–40 papers: the formal AI-safety Goodhart /
   reward-hacking / reward-overoptimization / specification-gaming literature

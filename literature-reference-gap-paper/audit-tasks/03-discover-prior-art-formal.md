@@ -50,9 +50,11 @@ lower-tier theorems** (T3, T6, identification, tilt) — this discovery feeds Tr
 A's `litrev-lower-tier.md`.
 
 ## Output
-`../citation-audit/discovery-prior-art-formal.md`: per-area list (result ·
-statement · preliminary mapping · source) + saturation note + a cross-reference
-to what Track A already established.
+**Shared discovery output** (neutral home, also consumed by Track A's
+litrev-selection-bounds / -convex-budget / -lower-tier):
+`../../research/threads/lit_review/cross-field-discovery/prior-art-formal.md` —
+per-area list (result · statement · preliminary mapping · source) + saturation
+note + a cross-reference to what Track A already established.
 
 ## Done criteria
 - Formal areas swept to saturation; set recorded with mappings.

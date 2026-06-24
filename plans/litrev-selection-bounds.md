@@ -5,6 +5,12 @@ novelty-refactor capstone (`plans/novelty-refactor.md`). Models the proven
 exchange-rate harness (`research/threads/lit_review/looking-for-exchange-rate-results/`),
 not any older lit-review plan.
 
+**Consumes the unified cross-field discovery** (`plans/litrev-discovery.md`); the
+HCR / χ²-DRO prior art is discovered once there (outputs in
+`research/threads/lit_review/cross-field-discovery/`). Do not run independent
+searches — this review produces the **T1/T2 per-theorem verdict / reframe** from
+that shared discovery.
+
 ## Why this exists
 
 The T5 exercise established that core "survived" theorems are likely classical

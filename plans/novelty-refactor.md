@@ -5,7 +5,9 @@ the completed exchange-rate / T5 review
 (`research/threads/lit_review/looking-for-exchange-rate-results/`), plus
 `plans/litrev-selection-bounds.md` (T1/T2), `plans/litrev-convex-budget.md` (T4),
 and `plans/litrev-lower-tier.md` (identification, tilt, T3, T6). Do not start
-drafting prose until those produce verdicts.
+drafting prose until those produce verdicts. Those three reviews now **consume
+the unified cross-field discovery** (`plans/litrev-discovery.md`, shared Phase 0)
+rather than each running its own searches.
 
 This is the stage that changes the manuscript significantly, which is why the
 whole program is inserted ahead of circulation in `plans/next-steps.md`.

@@ -10,7 +10,8 @@ will reject hand-waving. Several mechanisms are actually testable from the data
 already gathered.
 
 ## Inputs
-- `../citation-audit/bridge-mapping.md` (vocabulary probe + bridge counts).
+- `../../research/threads/lit_review/cross-field-discovery/bridges.md` (vocabulary
+  probe + bridge counts).
 - `../citation-audit/verification.md` and `audit.md` (coding + Amodei PDF grep).
 
 ## Protocol

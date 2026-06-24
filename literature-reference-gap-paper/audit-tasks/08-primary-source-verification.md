@@ -12,7 +12,8 @@ originals reconstructed from secondary sources — those must be verified before
 proposition number is cited.
 
 ## Inputs
-- `../citation-audit/discovery-prior-art-econ.md`, `discovery-prior-art-formal.md`.
+- `../../research/threads/lit_review/cross-field-discovery/prior-art-econ.md`,
+  `prior-art-formal.md` (shared discovery outputs).
 - `../../research/threads/lit_review/looking-for-exchange-rate-results/README.md`
   (T5 verdict + paywall caveats — build on it).
 
@@ -32,8 +33,11 @@ proposition number is cited.
    for the math, claim only the *citation gap* per family; avoid double-claiming.
 
 ## Output
-`../citation-audit/prior-art-verification.md`: per-result verified statement +
-source + proposition number (or paywall flag); the scope decision + rationale.
+**Shared discovery output** (neutral home, also consumed by Track A — the
+verified statements are what its per-theorem reviews cite):
+`../../research/threads/lit_review/cross-field-discovery/prior-art-verification.md`
+— per-result verified statement + source + proposition number (or paywall flag);
+the scope decision + rationale.
 
 ## Done criteria
 - Every leaned-on prior-art result verified at source or explicitly flagged.

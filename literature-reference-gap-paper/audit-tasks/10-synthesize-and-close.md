@@ -7,7 +7,10 @@ paper-structuring phase can build on directly, and flip the project status to
 **Depends on:** 01–09. **Blocks:** structuring the gap paper (Track B next phase).
 
 ## Inputs
-- All `../citation-audit/*.md` artifacts from 01–09.
+- Shared discovery outputs in
+  `../../research/threads/lit_review/cross-field-discovery/` (tasks 01–04, 08).
+- Gap-specific artifacts in `../citation-audit/` (tasks 05–09:
+  `corpus.md`, `audit.md`, `verification.md`, `findings.md`, `why-the-gap.md`).
 
 ## Protocol
 1. **Update the core artifacts** to final state:

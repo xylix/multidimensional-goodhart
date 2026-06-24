@@ -13,9 +13,10 @@ Freezing only after saturation is what makes the denominator defensible — the
 freeze must reflect the real landscape, not the seed.
 
 ## Inputs
-- `../citation-audit/discovery-ai.md` (candidate pool).
-- `../citation-audit/discovery-prior-art-econ.md`, `discovery-prior-art-formal.md`.
-- `../citation-audit/bridge-mapping.md`.
+- `../../research/threads/lit_review/cross-field-discovery/ai-corpus.md` (candidate pool).
+- `../../research/threads/lit_review/cross-field-discovery/prior-art-econ.md`,
+  `prior-art-formal.md`.
+- `../../research/threads/lit_review/cross-field-discovery/bridges.md`.
 
 ## Protocol
 1. **Confirm saturation.** If 01–03 are still surfacing new fields/papers, kick

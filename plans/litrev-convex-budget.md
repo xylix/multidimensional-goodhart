@@ -5,6 +5,12 @@ capstone (`plans/novelty-refactor.md`). This is the cheapest of the three: the
 prior art is already half-acknowledged internally, so the task is confirmation
 and a clean citation, not a full adversarial sweep.
 
+**Consumes the unified cross-field discovery** (`plans/litrev-discovery.md`); the
+Fenchel/Rockafellar prior art is discovered once there (outputs in
+`research/threads/lit_review/cross-field-discovery/`). Do not run independent
+searches — this review produces the **T4 per-theorem verdict / citation** from
+that shared discovery.
+
 ## Why this exists
 
 T4 is the one core result whose standardness is already named in the research

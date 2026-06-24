@@ -44,9 +44,12 @@ mapping** to the book theorem / AI result it parallels (including the lower-tier
 theorems — this discovery feeds Track A's `litrev-lower-tier.md`).
 
 ## Output
-`../citation-audit/discovery-prior-art-econ.md`: per-subfield list (result ·
-statement · preliminary mapping · source) + an explicit saturation note. Raw
-multi-LLM passes under `../citation-audit/prior-art-hunt/`.
+**Shared discovery output** (neutral home, also consumed by Track A's
+`litrev-lower-tier.md` and the capstone):
+`../../research/threads/lit_review/cross-field-discovery/prior-art-econ.md` —
+per-subfield list (result · statement · preliminary mapping · source) + an
+explicit saturation note. Raw multi-LLM passes under
+`../../research/threads/lit_review/cross-field-discovery/prior-art-hunt/`.
 
 ## Done criteria
 - Each subfield swept to saturation; set substantially beyond audit.md's list.

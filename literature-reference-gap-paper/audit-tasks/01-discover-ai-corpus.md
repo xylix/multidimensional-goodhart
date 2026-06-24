@@ -32,8 +32,10 @@ attackable. Breadth now → a defensible denominator later.
    resolve inclusion here.
 
 ## Output
-`../citation-audit/discovery-ai.md`: the candidate pool (a clear superset of the
-25) with provenance per item, and an explicit saturation note.
+**Shared discovery output** (neutral home, also consumed by Track A):
+`../../research/threads/lit_review/cross-field-discovery/ai-corpus.md` — the
+candidate pool (a clear superset of the 25) with provenance per item, and an
+explicit saturation note.
 
 ## Done criteria
 - Saturation reached and documented (what searches stopped yielding new papers).

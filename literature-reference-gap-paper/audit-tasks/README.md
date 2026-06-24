@@ -67,18 +67,23 @@ Freezing earlier would bake in selection bias and sink the bibliometric claim.
 - **Close each task** by appending a dated result note to `findings.md` and
   ticking its box below.
 
-## Relationship to Track A (shared discovery — do not double-run)
+## Relationship to Track A — unified discovery (do not double-run)
 
+**Tasks 01–04 (+ 08) ARE the project's unified cross-field discovery (shared
+Phase 0)** — see `../../plans/litrev-discovery.md` for the spec, anchor,
+plan-invalidating gate, and blocking graph. They serve *both* paper-1 tracks:
 Track A (`../../plans/litrev-selection-bounds.md`, `litrev-convex-budget.md`,
-`litrev-lower-tier.md`, capstone `novelty-refactor.md`) finds the *native
-mathematical home* of each book theorem (T1/T2 = HCR/χ²-DRO, T4 = Fenchel,
-lower-tier L1–L4 = causal inference / exponential families / signaling / greedy).
-The gap paper's discovery tasks 02–04 are **largely the same searches**, just
-consumed differently: Track A cites-and-reframes each theorem; the gap paper
-aggregates into the citation-gap claim + the cross-field dictionary. Run the
-discovery once as **shared infrastructure** — feed Track A's reviews from it and
-harvest their per-theorem depth back. The two share evidence but have distinct
-deliverables; do not conflate them, and do not run the discovery twice.
+`litrev-lower-tier.md`, capstone `novelty-refactor.md`) consumes them for
+per-theorem cite-and-reframe; the gap paper consumes them for the aggregate
+citation-gap claim + dictionary. **Their outputs go to the neutral home
+`../../research/threads/lit_review/cross-field-discovery/`, not this folder**, so
+both tracks read the same artifacts. Run discovery once; neither track runs
+independent cross-field searches.
+
+Tasks **05–10** are gap-paper-specific (freeze its corpus view, code, verify,
+why, synthesize) and write to `../citation-audit/`. Task 04 is the confirming
+gate for the plan-invalidating question — if it shows no real gap / no BBS delta,
+stop before 05–10.
 
 ## The sequence
 

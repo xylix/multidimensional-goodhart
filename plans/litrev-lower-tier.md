@@ -6,6 +6,12 @@ capstone (`plans/novelty-refactor.md`). These are lower-stakes than T1/T2 and T4
 native-field parallel that the paper should anchor rather than re-derive. Bundled
 because none individually justifies a full three-model sweep.
 
+**Consumes the unified cross-field discovery** (`plans/litrev-discovery.md`); the
+L1–L4 native homes (causal inference, exponential-family cumulants, signaling/
+Spence, greedy/security games) are discovered once there (outputs in
+`research/threads/lit_review/cross-field-discovery/`). Do not run independent
+searches — this review produces the **per-item verdicts** from that shared discovery.
+
 ## Why this exists
 
 The same discipline as the other two plans: review each claim against its own

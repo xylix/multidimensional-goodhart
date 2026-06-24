@@ -62,6 +62,8 @@ stated proudly (see `paper1-is-elementary-synthesis` memory).
   (Track A).
 - T5 synthesis: `research/threads/lit_review/looking-for-exchange-rate-results/README.md`.
 - Memories: `t5-prior-art-congruity`, `paper1-is-elementary-synthesis`.
-- Parallel Track B (gap paper) shares discovery — see
-  `../literature-reference-gap-paper/audit-tasks/README.md` ("Relationship to
-  Track A"); run the cross-field discovery once as shared infrastructure.
+- **Unified discovery (shared Phase 0):** `litrev-discovery.md` — the three
+  reviews above now *consume* one shared cross-field discovery (don't run
+  independent searches); it serves Track A and the parallel Track B gap paper
+  alike. Runbook in `../literature-reference-gap-paper/audit-tasks/` 01–04 (+08);
+  outputs in `research/threads/lit_review/cross-field-discovery/`.

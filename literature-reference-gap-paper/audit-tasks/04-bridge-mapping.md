@@ -14,8 +14,8 @@ Holmström–Milgrom 1991 / Baker 2002; BBS bridge; Zhuang–Hadfield-Menell's
 transaction-cost cluster) must be the floor, not the ceiling.
 
 ## Inputs
-- `../citation-audit/discovery-ai.md`, `discovery-prior-art-econ.md`,
-  `discovery-prior-art-formal.md`.
+- `../../research/threads/lit_review/cross-field-discovery/ai-corpus.md`,
+  `prior-art-econ.md`, `prior-art-formal.md` (shared discovery outputs).
 - `../citation-audit/audit.md` (known exceptions + reverse-sweep seeds).
 
 ## Protocol
@@ -41,9 +41,16 @@ transaction-cost cluster) must be the floor, not the ceiling.
    to control/agency.
 
 ## Output
-`../citation-audit/bridge-mapping.md`: census table + complete bridge/exception
-catalogue + the BBS lock + the bounded localized-gap statement. Raw passes in
-`exceptions-hunt/`.
+**Shared discovery output** (neutral home, also consumed by Track A):
+`../../research/threads/lit_review/cross-field-discovery/bridges.md` — census
+table + complete bridge/exception catalogue + the BBS lock + the bounded
+localized-gap statement. Raw passes in
+`../../research/threads/lit_review/cross-field-discovery/exceptions-hunt/`.
+
+**This task is the confirming gate for the plan-invalidating question** (is the
+gap real? is the BBS delta real? — see `../../plans/litrev-discovery.md`). If the
+gap is not real or BBS already covers the delta, **stop** before the consume
+phase (tasks 05–10 / Track A reviews).
 
 ## Done criteria
 - Census counts for all prior-art papers; near-complete exception catalogue.

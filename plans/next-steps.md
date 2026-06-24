@@ -28,18 +28,29 @@ before the manuscript is ready to circulate or publish. **Editing is not done.**
 
 ## Active plan files
 
-**Current focus → close the gap-paper citation audit (Track B).** Executed as a
-**discovery-first** sequence of ten precise, individually-runnable subtasks for a
-fresh agent: `literature-reference-gap-paper/audit-tasks/` (start at `README.md`).
-The existing 25-paper pass is a *seed, not a corpus* — it came from narrow,
-T5-specific hunts, so the sequence first does a comprehensive, multi-LLM,
-look-outside-ML discovery of both sides (AI corpus + cross-field prior art) and
-maps the bridges, and only then freezes, codes, double-verifies, and synthesizes.
-**Next action: `audit-tasks/01-discover-ai-corpus.md`** (02 and 03 can run in
-parallel). Then structure the gap paper. Track A resumes after, starting with the
-T1/T2 review.
+**Current focus → run the unified cross-field discovery (shared Phase 0).** Both
+paper-1 tracks consume *one* discovery effort instead of running the same searches
+twice. Spec, anchor, plan-invalidating gate, and blocking graph:
+`plans/litrev-discovery.md`. Runbook: `literature-reference-gap-paper/audit-tasks/`
+tasks 01–04 (+08), outputs → `research/threads/lit_review/cross-field-discovery/`.
+The existing 25-paper pass is a *seed, not a corpus*. **Next action:
+`audit-tasks/01-discover-ai-corpus.md`** (02, 03 can run in parallel); task 04 is
+the confirming gate (gap real? BBS delta?). Then both tracks consume in parallel.
+Freeze last.
 
-The project has bifurcated into two deliverables, run on parallel tracks.
+The project has bifurcated into two deliverables that **share one discovery phase
+(Phase 0)** and then run on parallel tracks.
+
+### Phase 0 — Unified cross-field discovery (shared) — `plans/litrev-discovery.md`
+
+One discovery effort feeds both tracks: discover the AI corpus, the cross-field
+prior art (every theorem family's native home + the broad landscape), and all
+AI↔prior-art bridges, then verify prior-art primary sources. Runbook =
+`literature-reference-gap-paper/audit-tasks/` 01–04 (+08); outputs →
+`research/threads/lit_review/cross-field-discovery/`. Discover-before-freeze: the
+seed 25 papers are not a corpus; nothing freezes until discovery saturates. Task
+04 is the plan-invalidating gate. Both tracks below consume this; neither runs
+independent cross-field searches.
 
 ### Track A — Paper 1 / the book (critical path to publishing)
 
@@ -49,9 +60,10 @@ exchange-rate lit review found that core "survived" theorems are likely classica
 results in other clothes (T5 = contract-theory congruence), and that each parallel
 lives in the theorem's *native field*, not the Goodhart literature. The paper's
 honest contribution is therefore elementary cross-field synthesis, not novel math
-— stronger, stated proudly, than the current motte-and-bailey. Three lit reviews
-resolve this against each theorem's home, then a capstone refactors prose and math
-to cite existing results and reduce novelty claims:
+— stronger, stated proudly, than the current motte-and-bailey. The three lit
+reviews **consume Phase 0** (no independent searches) to resolve each theorem
+against its native home, then a capstone refactors prose and math to cite existing
+results and reduce novelty claims:
 
 - ✅ **T5 exchange-rate** — done (`research/threads/lit_review/looking-for-exchange-rate-results/`).
 - ⬜ `litrev-selection-bounds.md` — T1/T2 vs Chapman–Robbins / χ²-DRO. **Not
@@ -77,7 +89,10 @@ the related work, the intro, and `refs.bib`.
 Track A pipeline (revised June 24, 2026); nothing is ready to circulate or publish
 until these land, in order:
 
-1. **Finish the three lit reviews** (T1/T2 first), per the status list above.
+0. **(Shared Phase 0)** Finish the unified discovery first — see above; the three
+   reviews below consume it.
+1. **Finish the three lit reviews** (T1/T2 first) — each = the per-theorem verdict
+   from Phase 0, per the status list above.
 2. **Integrate via the novelty-refactor capstone** — reopens book-content work:
    T1–T6 prose/math, related work, intro, `refs.bib`.
 3. **Final reading round — after integration.** The June 11 LLM reviews (two
@@ -110,9 +125,9 @@ related-work; does not replace the novelty-refactor.
 
 - ✅ Seed pass — 25-paper coded table (`citation-audit/audit.md`) and
   refined-thesis findings (`citation-audit/findings.md`). A seed, not a corpus.
-- 🔶 **Audit not closed** — ten-task **discovery-first** sequence in `audit-tasks/`:
-  discover AI corpus + cross-field prior art (econ & formal) → map bridges →
-  *then* freeze → code → double-verify → primary sources → why → synthesize.
+- 🔶 **Audit not closed** — its tasks 01–04 (+08) **are the shared Phase 0**
+  above; tasks 05–10 are gap-specific (freeze → code → double-verify → why →
+  synthesize), gated on task 04 confirming the gap / BBS delta.
   Start: `audit-tasks/01-discover-ai-corpus.md`.
 - ⬜ Structure the gap paper — only after the audit is closed (per plan sequencing).
 
