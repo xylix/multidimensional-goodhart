@@ -67,11 +67,14 @@ just etiquette.
 
 ### G1. Systematic citation audit (the empirical spine)
 
-**Operationalized** as an eight-task closing sequence in `audit-tasks/` (see
-`audit-tasks/README.md`): a first 25-paper pass is done (`citation-audit/audit.md`,
-`findings.md`); the tasks freeze the corpus, double-code, run the forward-citation
-census and a multi-LLM exceptions hunt, verify econ primary sources, lock the
-bridge/why, and synthesize. The bullets below are the design rationale.
+**Operationalized** as a **discovery-first** ten-task sequence in `audit-tasks/`
+(see `audit-tasks/README.md`). The first 25-paper pass (`citation-audit/audit.md`,
+`findings.md`) is a **seed, not a corpus** — it came from narrow, T5-specific
+hunts. So the sequence first does comprehensive, multi-LLM, look-outside-ML
+discovery of both sides (AI corpus + cross-field prior art) and maps the bridges,
+and only *then* freezes the corpus, codes, double-verifies, verifies econ/formal
+primary sources, evidences the "why," and synthesizes. The bullets below are the
+design rationale; freezing is deliberately deferred until discovery saturates.
 
 - **Define the corpus.** Target ~25–40 papers: the formal AI-safety Goodhart /
   reward-hacking / reward-overoptimization / specification-gaming literature

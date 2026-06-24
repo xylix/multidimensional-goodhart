@@ -29,12 +29,15 @@ before the manuscript is ready to circulate or publish. **Editing is not done.**
 ## Active plan files
 
 **Current focus → close the gap-paper citation audit (Track B).** Executed as a
-sequence of eight precise, individually-runnable subtasks for a fresh agent:
-`literature-reference-gap-paper/audit-tasks/` (start at `README.md`). They cover
-corpus freeze, double-coded verification, forward-citation census, a multi-LLM
-adversarial exceptions hunt, primary-source verification, the bridge/why
-evidence, and synthesis. **Next action: `audit-tasks/01-freeze-corpus.md`.** Then
-structure the gap paper. Track A resumes after, starting with the T1/T2 review.
+**discovery-first** sequence of ten precise, individually-runnable subtasks for a
+fresh agent: `literature-reference-gap-paper/audit-tasks/` (start at `README.md`).
+The existing 25-paper pass is a *seed, not a corpus* — it came from narrow,
+T5-specific hunts, so the sequence first does a comprehensive, multi-LLM,
+look-outside-ML discovery of both sides (AI corpus + cross-field prior art) and
+maps the bridges, and only then freezes, codes, double-verifies, and synthesizes.
+**Next action: `audit-tasks/01-discover-ai-corpus.md`** (02 and 03 can run in
+parallel). Then structure the gap paper. Track A resumes after, starting with the
+T1/T2 review.
 
 The project has bifurcated into two deliverables, run on parallel tracks.
 
@@ -104,11 +107,12 @@ cross-field dictionary + "what AI safety can learn"). **Not blocked** on the
 Track-A lit reviews; can circulate ahead of Paper 1. Seeds Paper 1's reframed
 related-work; does not replace the novelty-refactor.
 
-- ✅ Citation audit executed — 25-paper coded table (`citation-audit/audit.md`)
-  and refined-thesis findings (`citation-audit/findings.md`).
-- 🔶 **Audit not fully closed** — eight-task closing sequence in `audit-tasks/`
-  (corpus freeze → verify → census → exceptions hunt → primary sources →
-  bridge/why → synthesize). Start: `audit-tasks/01-freeze-corpus.md`.
+- ✅ Seed pass — 25-paper coded table (`citation-audit/audit.md`) and
+  refined-thesis findings (`citation-audit/findings.md`). A seed, not a corpus.
+- 🔶 **Audit not closed** — ten-task **discovery-first** sequence in `audit-tasks/`:
+  discover AI corpus + cross-field prior art (econ & formal) → map bridges →
+  *then* freeze → code → double-verify → primary sources → why → synthesize.
+  Start: `audit-tasks/01-discover-ai-corpus.md`.
 - ⬜ Structure the gap paper — only after the audit is closed (per plan sequencing).
 
 Optional items live in `could-do/` (now including

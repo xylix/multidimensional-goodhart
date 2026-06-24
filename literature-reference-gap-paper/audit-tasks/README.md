@@ -2,76 +2,91 @@
 
 **For a clean Claude instance picking this up.** Goal: *land* the citation-gap
 literature review with enough rigor that the central claim — "the AI-safety
-Goodhart literature does not cite the economics/management/accounting prior art
-that contains the same math" — survives a hostile referee. The gap has stood in
-the field for years; we are now spending tokens and multi-LLM deep-research
-queries freely to nail it. Accuracy and auditability beat speed.
+Goodhart literature does not cite the economics/management/accounting/statistics
+prior art that contains the same math" — survives a hostile referee. The gap has
+stood for years; we are now spending tokens and multi-LLM deep-research queries
+freely to nail it. Accuracy and auditability beat speed.
+
+## The shape of this sequence (read this first)
+
+The work is **discovery-first, freeze-last**. The existing 25-paper pass
+(`../citation-audit/audit.md`, `findings.md`) was assembled by *narrow* hunts —
+T5/exchange-rate congruity alternatives and one "look outside ML" sweep. It is a
+**seed, not a corpus.** We must comprehensively discover the full related
+literature on **both sides** (the AI corpus we audit, and the cross-field prior
+art it should cite) and map the bridges **before** freezing a denominator.
+Freezing earlier would bake in selection bias and sink the bibliometric claim.
+
+- **Phase 1 — Discovery (01–04):** saturate the literature, both sides + bridges.
+- **Phase 2 — Freeze & code (05–07):** freeze once saturated, then code + double-code.
+- **Phase 3 — Verify & contextualize (08–09):** primary sources + the "why."
+- **Phase 4 — Close (10):** synthesize, freeze, flip status.
 
 ## Read first (context, in this order)
 
 1. `../plan.md` — the gap paper's overall plan, positioning, contribution.
-2. `../citation-audit/audit.md` — current 25-paper coded table, **the coding
-   scheme, the name-collision rules**, the reverse sweep, caveats. This is the
-   shared reference every task depends on.
-3. `../citation-audit/findings.md` — the refined thesis ("gap real but localized
-   to the performance-measurement branch") and the original open items.
+2. `../citation-audit/audit.md` — the seed 25-paper table, **the coding scheme,
+   the name-collision rules**, the reverse sweep, caveats. The shared reference.
+3. `../citation-audit/findings.md` — refined thesis ("gap real but localized")
+   and known exceptions (CHAI lineage, BBS bridge).
 
 ## How to run this
 
-- **One task file per fresh instance.** Each `NN-*.md` is self-contained:
-  objective, dependencies, protocol, output artifact, done-criteria, guardrails.
-  Do not start a task until its `Depends on` tasks are done.
-- **Execute precisely; do not widen scope.** If a task surfaces new work, record
-  it as a note in `findings.md` for a future task — do not absorb it mid-task.
+- **One task file per fresh instance.** Each `NN-*.md` is self-contained. Do not
+  start a task until its `Depends on` tasks are done.
+- **Execute precisely; do not widen scope.** New work a task surfaces → record it
+  as a note in `findings.md` for a later task; don't absorb it mid-task.
 - **Every claim auditable.** Record the method (API + query + date, or PDF + grep
-  term) for each cell/count. Flag anything unverifiable rather than guessing.
+  term) per cell/count. Flag unverifiable items rather than guessing.
 
 ## Shared conventions
 
-- **Coding scheme & name-collision rules:** defined once in `audit.md` ("Coding
-  scheme" + "Name-collision rules"). Reuse verbatim; never re-invent per task.
-- **Data sources:** Semantic Scholar Graph API and OpenAlex for reference lists
-  and citation counts; arXiv/published PDF (`pdftotext`) as the authority when a
-  list is large or an API is empty/rate-limited. S2 is often rate-limited on the
-  shared pool — fall back to OpenAlex.
-- **Autonomous vs. external research.** The agent runs API sweeps and spawns its
-  own web sub-agents directly. For the heavy *adversarial* passes, the agent
-  **writes the deep-research prompts and hands them to the user** to run on
-  external ChatGPT / Claude / Gemini deep research, then stores and synthesizes
-  the pasted results — exactly the proven harness in
-  `../../research/threads/lit_review/looking-for-exchange-rate-results/`
-  (optimistic + pessimistic prompts × 3 models, synthesized in a README).
+- **Coding scheme & name-collision rules:** defined once in `audit.md`. Reuse
+  verbatim; never re-invent per task.
+- **Data sources:** Semantic Scholar Graph API + OpenAlex for reference lists and
+  citation counts; arXiv/published PDF (`pdftotext`) as authority for long lists
+  or empty/rate-limited APIs (S2's shared pool rate-limits often → use OpenAlex).
+- **Autonomous vs. external research.** The agent runs API sweeps and spawns web
+  sub-agents directly. For the heavy *adversarial* passes it **writes the
+  deep-research prompts and hands them to the user** to run on external ChatGPT /
+  Claude / Gemini deep research, then stores + synthesizes the pasted results —
+  the proven harness in
+  `../../research/threads/lit_review/looking-for-exchange-rate-results/`.
 - **Where outputs go:** `../citation-audit/` for consolidated artifacts; raw
-  multi-LLM passes in a per-task subfolder (e.g.
-  `../citation-audit/exceptions-hunt/`). Each task says exactly where.
-- **Close each task** by appending a dated one-paragraph result note to
-  `findings.md` and ticking its box in this README's checklist below.
+  multi-LLM passes in per-task subfolders (e.g. `../citation-audit/exceptions-hunt/`).
+- **Close each task** by appending a dated result note to `findings.md` and
+  ticking its box below.
 
 ## The sequence
 
 | # | Task | Depends on | One line |
 |---|------|-----------|----------|
-| 01 | `01-freeze-corpus.md` | — | Reproducible corpus protocol; freeze N (≈30–40) |
-| 02 | `02-verify-existing-coding.md` | 01 | Double-code the existing 25; line-verify big-list & survey negatives |
-| 03 | `03-code-new-corpus.md` | 01 | Code the papers added by 01, double-checked |
-| 04 | `04-forward-citation-census.md` | — | Quantitative reverse sweep: who cites each econ paper; count AI |
-| 05 | `05-exceptions-hunt.md` | 04 | Multi-LLM adversarial hunt for EVERY AI↔econ bridge/exception |
-| 06 | `06-primary-source-verification.md` | — | Verify econ "should-be-cited" results at source; scope decision |
-| 07 | `07-bridge-and-why.md` | 04,06 | Lock the BBS bridge; gather evidence for the "why the gap" claims |
-| 08 | `08-synthesize-and-close.md` | 01–07 | Consolidate, freeze, refs.bib, flip status to "audit closed" |
+| 01 | `01-discover-ai-corpus.md` | — | Broad multi-modal hunt: all AI/ML proxy-divergence work (superset of the 25) |
+| 02 | `02-discover-prior-art-econ.md` | — | Comprehensive cross-field hunt: econ / accounting / management / welfare / public finance |
+| 03 | `03-discover-prior-art-formal.md` | — | Comprehensive hunt: statistics / estimation / DRO / OR / control / index-number |
+| 04 | `04-bridge-mapping.md` | 01,02,03 | Census + multi-LLM adversarial hunt for ALL AI↔prior-art bridges; lock BBS |
+| 05 | `05-freeze-corpus.md` | 01–04 | Freeze the AI corpus + prior-art tier scheme — *now justified by saturation* |
+| 06 | `06-code-corpus.md` | 05 | Code the full frozen corpus (first pass) |
+| 07 | `07-verify-coding.md` | 06 | Independent double-code; PDF-grep big lists; line-verify negatives |
+| 08 | `08-primary-source-verification.md` | 02,03 | Verify prior-art statements at source; theorem-family scope |
+| 09 | `09-why-the-gap.md` | 04,07 | Evidence the mechanisms (vocabulary probe, citation-graph siloing) |
+| 10 | `10-synthesize-and-close.md` | 01–09 | Consolidate, freeze, refs.bib, flip status to "audit closed" |
 
-Recommended order is the table order. 04 and 06 are independent of 01–03 and can
-run earlier if a fresh instance wants them, but do 01 before any coding task.
+Discovery tasks 01–03 are independent and may run in parallel; 04 needs all
+three; nothing freezes (05) until 01–04 have saturated. 08 needs only the
+prior-art discovery (02,03) and can run early.
 
 ## Checklist (update as tasks land)
 
-- [ ] 01 corpus frozen
-- [ ] 02 existing coding verified
-- [ ] 03 new corpus coded
-- [ ] 04 forward-citation census
-- [ ] 05 exceptions hunt
-- [ ] 06 primary-source verification + scope
-- [ ] 07 bridge + why
-- [ ] 08 synthesized & audit closed
+- [ ] 01 AI corpus discovered (saturated)
+- [ ] 02 prior art discovered — econ/management side (saturated)
+- [ ] 03 prior art discovered — formal-math side (saturated)
+- [ ] 04 bridges mapped + BBS locked
+- [ ] 05 corpus + tier scheme frozen
+- [ ] 06 full corpus coded
+- [ ] 07 coding double-verified
+- [ ] 08 prior-art primary sources verified + scope set
+- [ ] 09 why-the-gap evidenced
+- [ ] 10 synthesized & audit closed
 
-**Start here:** task 01.
+**Start here:** task 01 (and, in parallel if you like, 02 and 03).

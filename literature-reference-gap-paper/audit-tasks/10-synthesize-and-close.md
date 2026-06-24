@@ -1,33 +1,32 @@
-# Task 08 — Synthesize, freeze, and close the audit
+# Task 10 — Synthesize, freeze, and close the audit
 
-**Objective.** Consolidate tasks 01–07 into a final, frozen audit that the
+**Objective.** Consolidate tasks 01–09 into a final, frozen audit the
 paper-structuring phase can build on directly, and flip the project status to
 "audit closed."
 
-**Depends on:** 01–07. **Blocks:** structuring the gap paper (Track B next phase).
+**Depends on:** 01–09. **Blocks:** structuring the gap paper (Track B next phase).
 
 ## Inputs
-- All `../citation-audit/*.md` artifacts produced by 01–07.
+- All `../citation-audit/*.md` artifacts from 01–09.
 
 ## Protocol
-1. **Update the core artifacts** to the final state:
+1. **Update the core artifacts** to final state:
    - `audit.md`: master table at the frozen N (verified, double-coded); updated
      tier totals; incorporate the verification corrections.
    - `findings.md`: final thesis with precise numbers, the bounded exceptions
-     (from 05), and the verified should-be-cited set (from 06).
+     (from 04), and the verified should-be-cited set (from 08).
 2. **Write `../citation-audit/SUMMARY.md`** — the single source the structuring
-   phase reads: the headline numbers (N, tier-zero counts); the localized-gap
-   claim with its exact bounds and named exceptions; the verified econ
-   should-be-cited set with proposition numbers; the BBS delta; the "why" with
-   evidence levels.
-3. **Prepare references.** Add the verified-absent precedents actually used + the
+   phase reads: headline numbers (N, tier-zero counts); the localized-gap claim
+   with exact bounds + named exceptions; the verified should-be-cited set with
+   proposition numbers; the BBS delta; the "why" with evidence levels; the
+   theorem-family scope decision.
+3. **Prepare references.** Add the verified-absent precedents used + the
    should-be-cited set + BBS 2023 to `../../book/refs.bib` (or a gap-paper-local
-   refs file if keeping it separate from the book). Mark any unverified/paywalled
-   entry.
+   refs file). Mark any unverified/paywalled entry.
 4. **Update status.** Tick the README checklist; in `../../plans/next-steps.md`
    mark Track B's audit ✅ closed and set Current focus → "structure the gap
-   paper." Update the `citation-gap-finding` memory if the headline numbers
-   changed materially from the 25-paper figures.
+   paper." Update the `citation-gap-finding` memory if the headline numbers moved
+   materially from the seed 25-paper figures.
 
 ## Output
 `../citation-audit/SUMMARY.md` (the deliverable) + updated `audit.md`,
@@ -41,5 +40,5 @@ paper-structuring phase can build on directly, and flip the project status to
 
 ## Guardrails
 - Do not start writing the paper's prose here — closing the audit is the boundary.
-- If any task 01–07 left a flagged/unverified item, surface it in SUMMARY.md as a
-  known limitation rather than papering over it.
+- Surface any flagged/unverified item from 01–09 as a known limitation in
+  SUMMARY.md rather than papering over it.
