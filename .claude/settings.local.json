@@ -21,7 +21,9 @@
       "Bash(make pdf *)",
       "Bash(make abstract *)",
       "Bash(echo \"BUILD EXIT: $?\")",
-      "Bash(echo \"OK exit=$?\")"
+      "Bash(echo \"OK exit=$?\")",
+      "WebFetch(domain:www.arxiv.org)",
+      "WebFetch(domain:par.nsf.gov)"
     ]
   }
 }
