@@ -2,23 +2,29 @@
 
 Index for active plans. Individual plans live in sibling files.
 
-## Status (June 9, 2026)
+## Status (updated June 24, 2026)
 
 The manuscript pipeline (Phases 0–4: consistency fixes, spine gate, spine-v3,
 structural rewrite, polish, figures/hygiene) completed June 9, 2026; its
 phase ledger is archived at
 [`archived/manuscript-pipeline-ledger.md`](archived/manuscript-pipeline-ledger.md).
 
-A post-pipeline editing round ran the same day and is the project's
-**"editing done" milestone**: a fresh-context seam pass, a cold read of the
-built PDF, and an external GPT-5 review, each followed by a committed fix
-batch (records in `quality-checks/09_06_2026_*.md`; commits 607219d,
-e5dca88, a5d3b1c). Neither internal pass found structural problems; the
-GPT-5 round produced the T5 universal-iff precision fix, which also updated
-core-math.md and claim_audits.md. The one follow-on content item — the
-worked contract pass on the school example (GPT-5 review item 4) — was
-executed later the same day (`archived/worked-contract-pass.md`). What
-remains is research work and publishing — not editing or book-content work.
+A post-pipeline editing round ran the same day: a fresh-context seam pass, a
+cold read of the built PDF, and an external GPT-5 review, each followed by a
+committed fix batch (records in `quality-checks/09_06_2026_*.md`; commits
+607219d, e5dca88, a5d3b1c). Neither internal pass found structural problems;
+the GPT-5 round produced the T5 universal-iff precision fix, which also updated
+core-math.md and claim_audits.md. The one follow-on content item — the worked
+contract pass on the school example (GPT-5 review item 4) — was executed later
+the same day (`archived/worked-contract-pass.md`).
+
+That round was treated as an **"editing done" milestone at the time, but it is
+now superseded**: the prior-art lit-review program (June 23) and the
+literature-reference gap paper (June 24) reopened book-content work. The gap
+paper's audit surfaced new prior art and a field-wide reference gap, and an
+entire literature-review thread — the three pending reviews plus the gap-paper
+audit — must be **finished and integrated** (via the novelty-refactor capstone)
+before the manuscript is ready to circulate or publish. **Editing is not done.**
 
 ## Active plan files
 
@@ -51,7 +57,9 @@ Context is captured in the `t5-prior-art-congruity` and
 (self-contained directory: plan + citation audit + eventual draft). A short
 *standalone* paper spun out of the June 24 lit-review session: the AI-safety Goodhart canon
 cites essentially none of the economics / management-science / accounting prior
-art that contains the same math (verified across 7 anchor papers). Contribution
+art that contains the same math — confirmed by a 25-paper systematic coded audit
+(`literature-reference-gap-paper/citation-audit/`); the gap is real but localized
+to the performance-measurement branch of contract theory. Contribution
 is bibliographic + synthesis (a coded citation audit + the cross-field
 dictionary + "what AI safety can learn"), so it is **not blocked** on the T1/T2,
 T4, lower-tier verdicts and could circulate ahead of Paper 1. Seeds Paper 1's
@@ -60,28 +68,38 @@ reframed related-work; does not replace the novelty-refactor.
 The exchange-rate empirics track completed June 11, 2026 (all four steps plus a
 fresh-context review gate; execution record in
 `archived/exchange-rate-empirics.md`). The book's Part 6 empirical row is filled
-and Part 8's identification question answered; the book is otherwise
-content-stable except for the refactor program above.
+and Part 8's identification question answered. The book is **not** otherwise
+content-stable: the prior-art / novelty-refactor program and the gap-paper
+integration above will change T1–T6 prose and math, the related work, the intro,
+and `refs.bib`.
 
-Agreed direction (June 11, 2026; the novelty-refactor program above now precedes
-step 2 "Circulate"), in order:
+Agreed direction (revised June 24, 2026). The lit-review program reordered this:
+nothing is ready to circulate or publish until the literature-review thread is
+finished and integrated. In order:
 
-1. **One more reading round** before circulation. *LLM half done June 11:*
-   two clean-context reviews (GPT + Claude), both "ready to circulate
-   after fixes"; disposition record at
-   `quality-checks/11_06_2026_llm_reviews_disposition.md`; fix batches
-   committed (3a51552 refs, b74e353 book text, d10583f worked-positive
-   example, f48094a abstract; the prior-work table was separately
-   converted to per-family blocks in 3345a59). *Remaining: the manual
-   human read* — check items include the notation-overload TODO
+1. **Finish the literature-review thread.** The three pending reviews —
+   `litrev-selection-bounds.md` (T1/T2), `litrev-convex-budget.md` (T4),
+   `litrev-lower-tier.md` — plus the gap-paper citation audit
+   (`literature-reference-gap-paper/`, recorded in `citation-audit/`). The gap
+   paper is a parallel track and can circulate independently, ahead of Paper 1.
+2. **Integrate via the novelty-refactor capstone** (`novelty-refactor.md`),
+   which reopens book-content work: T1–T6 prose/math, the related work, the
+   intro, and `refs.bib`.
+3. **Final reading round — after integration.** The June 11 LLM reviews (two
+   clean-context, both "ready to circulate after fixes"; disposition at
+   `quality-checks/11_06_2026_llm_reviews_disposition.md`; fix batches 3a51552,
+   b74e353, d10583f, f48094a; prior-work table reflowed in 3345a59) and the
+   in-progress manual human read **predate the refactor and only partly carry
+   over** — the changed sections need a fresh read. Remaining human-read items
+   still apply: the notation-overload TODO
    (`could-do/notation-overload-pass.md`), the divergence-seam paper-1
    improvements (`could-do/divergence-seam-paper1-improvements.md`: I1/I2/I5
-   ride with this read; I3 is a separate pre/post-circulation decision), and a
-   read of the new worked-positive subsection (book pp. 23–24).
-2. **Circulate the draft** — send to someone for comments and/or post on
-   LessWrong. This, not formal publishing, is the next external step.
-3. Only then start the **publishing decision** proper (venue, format,
-   release checklist).
+   ride with the read; I3 is a separate pre/post-circulation decision), and the
+   worked-positive subsection (book pp. 23–24).
+4. **Circulate the draft** — send for comments and/or post on LessWrong; the
+   next external step, not formal publishing.
+5. Only then the **publishing decision** proper (venue, format, release
+   checklist).
 
 Optional items live in `could-do/` (now including
 `could-do/rlhf-identification-experiment.md`, the one feasible harm-side
