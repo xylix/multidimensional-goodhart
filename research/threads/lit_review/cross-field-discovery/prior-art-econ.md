@@ -594,3 +594,77 @@ names, which is the paper's core claim made concrete:
 7. All `[secondary]` STATEMENT lines need proposition-number verification against
    the primary source (Prendergast, Gibbons, Bénabou–Tirole, Courty–Marschke,
    Roychowdhury, Nørreklit, Feldstein 1999, Kleven, Spence, Campbell 1979 page).
+
+---
+
+## ADVERSARIAL BREADTH PASS — SYNTHESIS (2026-06-28)
+
+Six deep-research passes (ChatGPT/Claude/Gemini × optimistic/pessimistic), raw in
+`prior-art-hunt/`. Purpose: did we miss prior art, are the mappings right, does any
+single source already unify the framework. **The spread is the signal.**
+
+### New prior-art items to fold into the dictionary (verify in Task 08)
+- **Amershi, Banker & Datar 1990** "Economic Sufficiency and Statistical
+  Sufficiency in Accounting Aggregation," *Accounting Review* 65(1):113–130 — both
+  Claude passes call it a **closer home for piece 4 (sufficiency) than Chetty
+  2009**: it directly separates economic vs statistical sufficiency of an aggregate.
+- **Ito & Sallee 2018** "The Economics of Attribute-Based Regulation," *REStat*
+  100(2):319–336 — the **multidimensional (attribute-by-weight) regulator-gaming**
+  home; "closest existing analogue of the weighted-proxy setup" (3 passes). Strong
+  new piece-5 item beyond Reynaert–Sallee.
+- **Choi, Hecht & Tayler 2012** "Strategy Selection, Surrogation, and SPMS,"
+  *JAR* 51(1):105–133 — accounting "surrogation" (proxy becomes the target);
+  pieces 2/3.
+- **Slemrod 2001 / Saez–Slemrod–Giertz 2012** (elasticity of taxable income) —
+  least-cost-margin gaming outside agency theory; piece 1.
+- **Budde 2007** (*JAR*) — used as the **open primary-grade derivation** of the
+  Feltham–Xie congruity index (cos²β / parallel-vectors) since the originals are
+  paywalled (already leaned on in `prior-art-verification.md`).
+- Pre-Ridgway genealogy roots: **Merton 1940** (goal displacement), **Blau 1955**
+  (*Dynamics of Bureaucracy*, quota gaming) — older than Ridgway 1956 for the
+  qualitative metric-corruption proposition (Gemini; Claude calls Ridgway still the
+  first *clean* statement — a recorded disagreement).
+- **Likely hallucinated / unverifiable — DO NOT cite without a source:**
+  "Hennessy–Goodhart formalizations" (Gemini, no venue), bare "Kim 1995",
+  "Yoo 2019" (no titles); the exact Marschak–Radner sufficiency statement (Claude,
+  self-flagged unverified).
+
+### Mapping corrections (load-bearing)
+- **Piece 4 (sufficiency): Chetty 2009 is the WEAKER/wrong home for the
+  *statistical* sufficiency object** (≥3 passes agree). The lossless-scalarization
+  condition's native home is **Banker–Datar 1989 / Amershi–Banker–Datar 1990 /
+  Şabac–Yoo**; Chetty is the *welfare* analogue (still useful, but by analogy).
+- **Piece 3 (set-monotonicity) is the thinnest overlap / most plausibly novel.**
+  DKL 2001 proves non-monotone *weights / value of a measure*, **not** a theorem
+  about *harm as a function of channel count*. The contribution is **naming** the
+  property. (Biggest model disagreement: Gemini-opt "exact match in Feltham–Xie";
+  ChatGPT-pess "wrong unless constrained — extra signals are useful-or-ignored";
+  Claude both runs + Gemini-pess "unstated corollary / naming contribution.")
+- **Piece 2 off-axis:** the "weighted-average-of-exchange-rates h_j/w_j" object
+  **diverges from Baker's `1−cosθ` off the knife-edge** (angle metric is
+  rescaling-invariant; the ratio-average is not) — Claude-pess names this "the only
+  defensible new object in piece 2." Gemini-pess calls the same thing "a trivial
+  change of basis." (Recorded disagreement.)
+- **Reynaert–Sallee welfare sign:** their headline is that gaming can **benefit
+  buyers** (pass-through outweighs distortion). If the framework treats gaming as
+  unambiguously harmful, this is a *substantive divergence*, not a relabeling
+  (flagged by 3 passes — echoes the T5 value→harm interpretive inversion).
+
+### Unifying-source finding (most important for the synthesis-novelty claim)
+**No pass found a single source unifying all six pieces.** BUT subset-unifiers are
+real and damaging to any "we first unified this" claim: the **multitask-LEN
+lineage** (HM1991 + Feltham–Xie + Baker + DKL + Banker–Datar) already co-locates
+pieces **1, 2, 3, 4** (Claude, both runs). Gemini-pessimistic goes furthest —
+claims **Bolton & Dewatripont 2005 *Contract Theory* Ch. 4 & 8** already unify
+pieces 1–4 ("taught in PhD courses for two decades"); **only Gemini checked this**
+(its aggressive-deflation signature) — **flag Bolton–Dewatripont for a body-verify.**
+This *reinforces* `paper1-is-elementary-synthesis`: the math is largely co-located
+within contract theory; the gap paper's contribution is the **citation gap + the
+econ⇄stats⇄AI breadth**, not novel unification *within* economics.
+
+### Net
+Breadth saturated; the autonomous econ sweep missed no major home (the new items
+are refinements). The mapping corrections (Chetty→Banker–Datar for sufficiency;
+set-monotonicity = naming; Reynaert–Sallee welfare sign) feed Track A's per-theorem
+reviews. None of this is gate-invalidating — it sharpens the dictionary and the
+honest novelty scope.

@@ -253,10 +253,13 @@ reading. BBS proves the *concept* travels; it does not prove the *theorem*.
 **Plan-invalidating question (from `plans/litrev-discovery.md`):** *"Is the gap
 real, and is our delta over BBS 2023 real?"*
 
-**Verdict: BOTH SURVIVE on the autonomous evidence — PROCEED, with two forced
-scope adjustments and one pending confirmation (the adversarial multi-LLM hunt
-below). This is a preliminary PASS; final `[confident]` coding of the gap claim
-waits on that pass returning no further exceptions.**
+**Verdict: BOTH SURVIVE — PROCEED. CONFIRMED by the adversarial multi-LLM hunt
+(6 passes, synthesis at the bottom of this file, 2026-06-28): the hunt found
+additional bridges but every one lands in the same two pockets already
+identified (benchmark/contract papers reaching only HM1991/Baker; χ²-DRO papers
+using the estimation prior art as *tooling*, not as the prior theory of
+Goodhart). The gap is sharpened, not broken. Two forced scope adjustments stand;
+the exception floor is expanded (see §2 and the synthesis).**
 
 ### 1. Is the gap real? — YES, localized, with an explicit exception floor.
 
@@ -330,11 +333,15 @@ subset-invariance reading. BBS proves the *concept* travels; not the *theorem*.
 
 ### 4. Caveats on this verdict (bars to clear before `[confident]`)
 
-- **The adversarial multi-LLM exceptions hunt is still pending** (prompts handed
-  to the user; see below). The autonomous census found no exception beyond the
-  four above, but the "gap is real" interpretation stays `[tentative]` until the
-  optimistic/pessimistic × 3-model pass confirms no further alignment paper
-  connects the congruity/estimation tier to Goodhart.
+- **The adversarial multi-LLM exceptions hunt is now complete** (6 passes,
+  synthesis below). It surfaced more bridges than the autonomous census but none
+  that break the gap — they cluster in the benchmark/contract pocket (reaching
+  only HM1991/Baker) and the χ²-DRO-tooling pocket (using the estimation prior art
+  as machinery, not as Goodhart's prior theory). The "gap is real" interpretation
+  is now `[confident]` for the χ²-DRO/HCR and cosine-congruity tiers and for the
+  unanimous type-(iii) items (Reynaert–Sallee, Chetty, Feltham–Xie-as-Goodhart-
+  math, Banker–Datar, DKL), `[tentative→confident]` for "the fields are
+  disconnected" as a whole.
 - **BBS body-PDF was not read** (Cambridge HTML/S2-null); the qualitative-not-
   formal call rests on abstract + venue + resolved reference list. A body grep for
   "theorem"/"congruity"/an explicit G,P-vector equation is flagged before coding
@@ -353,17 +360,108 @@ verdict. Discovery (01–04 + 08) autonomous portions are complete and saturated
 
 ---
 
-## PENDING: adversarial multi-LLM exceptions hunt
+## ADVERSARIAL MULTI-LLM EXCEPTIONS HUNT — SYNTHESIS (2026-06-28)
 
-The optimistic/pessimistic deep-research prompt pair is written and handed to the
-user to run on ChatGPT, Claude, and Gemini deep research:
-`exceptions-hunt/optimistic_prompt.md`, `exceptions-hunt/pessimistic_prompt.md`.
-Raw pasted results go in `exceptions-hunt/{chatgpt,claude,gemini}_{optimistic,
-pessimistic}.md`; synthesis appends to this file in the T5 README format. The
-census above is the FLOOR the prompts are seeded with (CHAI + BBS + Braganza +
-Hendrycks-Ridgway + 2603.28063); the hunt's job is to surface any *further*
-alignment paper that connects the congruity/sufficiency/χ²-DRO tier to Goodhart.
-This autonomous pass found none beyond 2603.28063's HM1991+Baker re-derivation.
+Six passes (ChatGPT / Claude / Gemini × optimistic / pessimistic), raw in
+`exceptions-hunt/{chatgpt,claude,gemini}_{optimistic,pessimistic}.md`. Synthesis
+in the T5 README format. **The spread is the signal**, not the consensus.
+
+### Verdict (TL;DR)
+
+All six passes converge: **the gap is real but localized; it is narrowing in two
+specific 2024–2026 pockets, and is sharpest (zero genuine bridges) exactly where
+the book's formal math lives.** The hunt found *more* bridges than the autonomous
+census — but every one falls into a pattern that confirms, rather than breaks, the
+refined claim. No pass found an alignment paper that connects the **cosine-
+congruity geometry** (Feltham–Xie / Baker 2002) **or the χ²-DRO / Chapman–Robbins
+estimation tier** to Goodhart *as prior theory*. The two unanimous strong results:
+
+1. **χ²-DRO / HCR branch — zero type-(i) bridges (all six agree, sharpest result).**
+   The two papers that use χ² for overoptimization *and frame it as Goodhart* —
+   Laidlaw 2024 (occupancy-measure χ², arXiv:2403.03185) and χPO (Huang et al.
+   2024, arXiv:2407.13399) — cite **none** of HCR / Ben-Tal / Namkoong–Duchi
+   (type-iii). χPO's own bound `E_π[·] ≤ √(χ²(π‖π_ref)·Var(R̂−R))` *is the HCR
+   variational identity* (noted independently by Claude and Gemini) yet is sourced
+   only to Tsybakov 2008. A separate 2025–26 robust-RLHF cluster (DRO-REBEL
+   arXiv:2509.19104; Robust-DPO arXiv:2502.01930; DR Token Opt. arXiv:2604.08577;
+   Mandal et al. arXiv:2503.00539) *does* cite Ben-Tal/Namkoong–Duchi — but as
+   **DRO machinery** for robust training, type-(ii), not as the prior mathematics
+   of Goodhart. (This refines the census's "0 citers": the prior art *is* reached
+   by reward-overopt papers, but only as a tool, never as Goodhart's prior theory.)
+
+2. **Corrective-Goodhart + public-finance sufficiency — unanimous type-(iii).**
+   **Reynaert–Sallee 2016, Chetty 2009, Lipsey–Lancaster 1956, Şabac–Yoo**: zero
+   alignment citations, every pass, with auditable empty-search logs. Striking for
+   Reynaert–Sallee, which has "Goodhart's Law" in its title.
+
+### New bridges surfaced (the expanded exception floor)
+
+| Bridge paper | prior art reached | pocket | type | verified |
+|---|---|---|---|---|
+| **Haupt et al. 2026** "Welfare, Improvability, and Variance" (arXiv:2605.30916) | HM1991, Baker 2002 | benchmark design | **(i)** Goodhart-framed multitask P-A for benchmark aggregation; derives v*=(M+rΣ)⁻¹Mw | **exists, confirmed** (title/authors via arXiv; HM1991/Baker citing-sentences from passes' body reads) |
+| Haupt et al. 2026 "Optimal Aggregation Mechanisms for AI Benchmarking" | HM1991, Strathern 1997 | benchmark design | (i) same pocket | flagged (OpenReview; not independently confirmed) |
+| **The Content Moderator's Dilemma** (arXiv:2412.16114, 2024) | **HM1991 + Feltham–Xie 1994** | content-moderation econ (NOT core safety) | (i) — the *only* Feltham–Xie bridge found, and it is outside the reward-hacking corpus | flagged for body-verify |
+| DRO-REBEL / Robust-DPO / DR-Token-Opt / Mandal 2025–26 | Ben-Tal 2013, Namkoong–Duchi 2017, (HCR in DRO-REBEL appendix) | robust-RLHF tooling | **(ii)** — DRO machinery, not Goodhart bridge | IDs return arXiv 200; tooling role per ChatGPT/Claude |
+| Hadfield-Menell & Hadfield "Incomplete Contracting and AI Alignment" (arXiv:1804.04268) | HM1991, Baker et al. 1994 | CHAI/control | (ii) — deep restatement, incomplete-contracting framing | known-lineage |
+| Athey et al. "AI Design: Sufficient Statistics" (MIT 2025/26) | Chetty 2009 | human–AI delegation (NOT Goodhart) | (ii) — sufficient-stat *method*, not reward-hacking | **Gemini-only; unverified — flag** |
+
+Plus the confirmed floor: **Wang & Huang 2026 (arXiv:2603.28063)** type-(i)
+HM1991+Baker 1992 → distortion index; CHAI (control); BBS (qualitative);
+Hendrycks-Ridgway (genealogy).
+
+### Two corrections the hunt forces on the earlier census/verdict
+
+- **The cosine-congruity geometry is still un-bridged.** Claude's close read:
+  Wang & Huang's "distortion index" is a **weight ratio** D_i = w̃_i/w_i and cites
+  **Baker 1992**, *not* Baker 2002's `1−cosθ`. So even the field's strongest
+  contract-theory→Goodhart bridge does **not** reach the cosine/congruity geometry
+  (Baker 2002, Feltham–Xie). The book's projection/cos-θ reading remains genuinely
+  uncited in the safety corpus — this *sharpens* the surviving delta.
+- **"0 alignment citers" → "0 type-(i) bridges; type-(ii) tooling citations exist."**
+  The χ²-DRO prior art is cited by reward-overopt papers as DRO machinery. The
+  defensible claim is the sharper one: *no paper recognizes HCR / χ²-DRO as the
+  prior theory of the Goodhart selection bound* — and the two papers that use the
+  exact χ² object for Goodhart cite none of it.
+
+### Where the passes diverged (recorded for honesty)
+
+- **Most willing to call tooling a "formal bridge": Gemini** (both framings) — it
+  labels the DRO-tooling citations (Ben-Tal/Namkoong–Duchi in robust-RLHF) and the
+  Athey sufficient-stat method as type-(i) bridges. **More careful: ChatGPT and
+  Claude**, which classify the identical citations type-(ii) (machinery / different
+  purpose) and give auditable empty logs for the type-(iii) items. This is the
+  same Gemini-optimism signature seen in the T5 hunt; the careful reading is
+  correct under the stated type-(i)/(ii) definition (connects-to-Goodhart vs
+  cites-for-another-purpose).
+- **Net:** the spread is over *how much credit to give χ²-DRO-as-tooling and
+  benchmark-pocket bridges*, not over the headline. All six agree: cosine-congruity
+  and the χ²-DRO/HCR-as-Goodhart-theory links are uncited, and Reynaert–Sallee /
+  Chetty / Şabac–Yoo are type-(iii) across the board.
+
+### Caveats
+
+- Most new bridges are **2025–2026 preprints** (Haupt 2605.30916, Wang–Huang
+  2603.28063, the robust-RLHF cluster); framing/reference lists may shift in
+  revision. Haupt 2605.30916 and Wang–Huang 2603.28063 are arXiv-confirmed to
+  exist; the second Haupt paper, the Content-Moderator Feltham–Xie bridge, and the
+  Athey/Chetty item need a body-verify before any is cited `[confident]`.
+- The χPO `E_π ≤ √(χ²·Var)` = HCR-identity observation (Claude, Gemini) is a strong
+  *near-miss* finding (the field reinvented the HCR bound for Goodhart without
+  citing it) — worth a primary check of the χPO statement before the gap paper
+  leans on it.
+
+### Consequence for the contribution (updated)
+
+The hunt **tightens** the surviving delta rather than eroding it. The gap paper's
+defensible contribution is now: (a) the **quantified, reproducible citation-gap
+audit**; (b) the **cross-field dictionary / breadth** (congruity ⇄ sufficiency ⇄
+χ²-DRO ⇄ corrective-Goodhart), which no bridge paper assembles — the benchmark
+pocket reaches only HM1991/Baker, the robust-RLHF pocket only χ²-DRO-as-tooling;
+(c) the **specific uncited identities** the field reinvented — χ²-occupancy =
+HCR/χ²-DRO (Laidlaw/χPO), and the cosine-congruity geometry (Baker 2002 /
+Feltham–Xie) still unreached; (d) the **subset-invariance reading** (per T5). It is
+**no longer** "first to bridge contract theory to formal Goodhart" (Wang–Huang and
+Haupt 2026 hold that), and the abstract must name the expanded exception floor.
 
 ---
 

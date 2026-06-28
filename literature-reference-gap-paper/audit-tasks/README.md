@@ -107,9 +107,9 @@ prior-art discovery (02,03) and can run early.
 ## Checklist (update as tasks land)
 
 - [x] 01 AI corpus discovered (saturated) — `cross-field-discovery/ai-corpus.md`
-- [x] 02 prior art discovered — econ/management side (saturated) — `prior-art-econ.md` (autonomous; adversarial breadth passes in `prior-art-hunt/` pending user)
+- [x] 02 prior art discovered — econ/management side (saturated) — `prior-art-econ.md` (+ adversarial breadth synthesis, 12 passes done)
 - [x] 03 prior art discovered — formal-math side (saturated) — `prior-art-formal.md`
-- [~] 04 bridges mapped + BBS locked — `bridges.md` (census/vocab/BBS + gate verdict done; **adversarial exceptions hunt pending user**, prompts in `exceptions-hunt/`)
+- [x] 04 bridges mapped + BBS locked — `bridges.md` (census/vocab/BBS + gate verdict + adversarial exceptions-hunt synthesis, all done)
 - [ ] 05 corpus + tier scheme frozen
 - [ ] 06 full corpus coded
 - [ ] 07 coding double-verified
@@ -117,6 +117,8 @@ prior-art discovery (02,03) and can run early.
 - [ ] 09 why-the-gap evidenced
 - [ ] 10 synthesized & audit closed
 
-**GATE (task 04) preliminary verdict: PASS — gap real + BBS delta real. HARD STOP
-before 05–10 / Track A** until the adversarial multi-LLM passes are run and
-synthesized. See `cross-field-discovery/bridges.md` § GATE VERDICT.
+**GATE (task 04) verdict: PASS — gap real + BBS delta real, CONFIRMED by the
+adversarial multi-LLM hunt (gap sharpened, not broken). HARD STOP before 05–10 /
+Track A** until the human reviews. See `cross-field-discovery/bridges.md` § GATE
+VERDICT + § ADVERSARIAL … SYNTHESIS, and the residual body-verifies listed in
+`citation-audit/findings.md`.

@@ -134,7 +134,36 @@ the gap paper is no longer "first to bridge contract theory to formal Goodhart";
 surviving contribution = breadth dictionary + quantified audit + subset-invariance.
 (2) State the gap as LOCALIZED with the exception floor named up front.
 
-**Still PENDING (before any `[confident]` coding / freeze):** the adversarial
-multi-LLM exceptions hunt (prompts in `cross-field-discovery/exceptions-hunt/`) and
-the task-02 breadth passes (`cross-field-discovery/prior-art-hunt/`) — handed to the
-user to run on ChatGPT/Claude/Gemini. Also: BBS body-grep for a formal-claim check.
+### Adversarial multi-LLM passes — DONE (2026-06-28), gate CONFIRMED
+
+All 12 passes run (4 prompts × ChatGPT/Claude/Gemini); syntheses in
+`bridges.md` (exceptions hunt) and `prior-art-econ.md` (breadth). **Gate verdict
+holds and is sharpened, not broken.**
+- **Exceptions hunt:** new bridges found, but all in two pockets that confirm the
+  refined claim. (i) Benchmark/contract pocket reaching only HM1991/Baker:
+  **Haupt et al. 2026 (arXiv:2605.30916, confirmed real)** joins Wang–Huang 2026 as
+  a formal type-(i) bridge — neither reaches the cosine-congruity geometry. (ii)
+  χ²-DRO robust-RLHF pocket (DRO-REBEL, Robust-DPO, etc.) cites Ben-Tal/Namkoong–
+  Duchi as **tooling (type-ii)**, not as Goodhart's prior theory; the two χ²-for-
+  Goodhart papers (Laidlaw 2024, χPO 2025) cite **none** of the estimation tier.
+  **Reynaert–Sallee, Chetty, Şabac–Yoo, Lipsey–Lancaster = unanimous type-(iii).**
+  Two corrections to the census: cosine-congruity (Baker 2002/Feltham–Xie) is still
+  un-bridged (Wang–Huang uses Baker 1992 + a *weight-ratio* index, not 1−cosθ); and
+  "0 alignment citers" sharpens to "0 type-(i); type-(ii) tooling citations exist."
+- **Breadth pass:** no missed major home; new items = Amershi–Banker–Datar 1990
+  (closer sufficiency home than Chetty), Ito–Sallee 2018 (multidim regulator
+  gaming), Merton 1940/Blau 1955 (pre-Ridgway roots). Mapping fixes: Chetty is the
+  *weaker* home for statistical sufficiency (→ Banker–Datar); set-monotonicity is a
+  *naming* contribution; Reynaert–Sallee's gaming can *benefit* buyers. No single
+  source unifies all six pieces, but the multitask-LEN lineage co-locates 1–4
+  (reinforces `paper1-is-elementary-synthesis`); flag Bolton–Dewatripont 2005
+  (Gemini-only claim) for a body-verify.
+
+**Surviving contribution (tightened):** quantified citation-gap audit + the
+econ⇄stats⇄AI breadth dictionary (no bridge paper assembles it) + the specific
+uncited identities (χ²-occupancy = HCR/χ²-DRO; cosine-congruity unreached) + the
+subset-invariance reading. **Drop** "first to bridge contract theory to formal
+Goodhart" (Wang–Huang/Haupt 2026 hold it); name the expanded exception floor in the
+abstract. **HARD STOP still in force** — no freeze/code/Track-A until the human
+reviews; residual body-verifies: Haupt-2 / Content-Moderator-Feltham–Xie /
+Athey-Chetty / Bolton–Dewatripont / χPO=HCR-identity / BBS-formal-claim.
