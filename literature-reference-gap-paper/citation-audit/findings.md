@@ -166,7 +166,17 @@ subset-invariance reading. **Drop** "first to bridge contract theory to formal
 Goodhart" (Wang–Huang/Haupt 2026 hold it); name the expanded exception floor in the
 abstract. **HARD STOP still in force** — no freeze/code/Track-A until the human
 reviews; residual body-verifies: Haupt-2 / Content-Moderator-Feltham–Xie /
-Athey-Chetty / Bolton–Dewatripont / χPO=HCR-identity.
+Athey-Chetty / Bolton–Dewatripont.
+
+**Tier-1 bridge ref-lists PRIMARY-VERIFIED (2026-06-30):** Wang–Huang 2603.28063 →
+only HM1991 + **Baker 1992** (distortion index = weight ratio, not 1−cosθ); Haupt
+2605.30916 → HM1991/1987 + **Baker 2002** + Strathern, Goodhart-framed. **Neither
+cites Feltham–Xie / Banker–Datar / DKL / Bénabou–Tirole / any estimation item** —
+cosine-congruity + estimation tier confirmed unreached. **χPO correction:** χPO
+(2407.13399) is **type-(ii) not type-(iii)** — it cites Duchi–Namkoong 2019 as a
+genealogy footnote, and its bound (Lemma 5.1, χ²-change-of-measure) is **not** the
+literal HCR identity (the Gemini/Claude "χPO IS HCR" near-miss was overstated). The
+clean reinvented-uncited example is **Laidlaw 2024** (type-iii). Details in `bridges.md`.
 
 **BBS body-verify DONE (2026-06-30) — delta CONFIRMED `[confident]` and
 strengthened.** Full target article read (`sources/Dead-rats-…_BBS_2023.pdf`

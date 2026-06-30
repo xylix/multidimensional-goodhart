@@ -112,7 +112,7 @@ the expanded exception floor: CHAI, BBS, Hendrycks-Ridgway, Wang–Huang, Haupt.
 1. **Haupt-2** "Optimal Aggregation Mechanisms for AI Benchmarking" — confirm exists + what it cites (OpenReview).
 2. **The Content Moderator's Dilemma (arXiv:2412.16114)** — the *only* Feltham–Xie bridge found; confirm it cites Feltham–Xie and that it's content-moderation econ (adjacent, not core safety).
 3. **Bolton–Dewatripont 2005 *Contract Theory* Ch. 4 & 8** — does it really co-locate pieces 1–4 (Gemini's deflationary claim)? (Textbook — may need the human.)
-4. **χPO (arXiv:2407.13399)** — verify its bound `E_π ≤ √(χ²·Var)` is the HCR variational identity (open arXiv — AI can do). Strongest "reinvented uncited" data point.
+4. ~~χPO (arXiv:2407.13399) HCR check~~ **DONE 2026-06-30 — corrected.** χPO is **type-(ii)** (cites Duchi–Namkoong 2019 as a genealogy footnote), and its Lemma 5.1 bound is a χ²-change-of-measure inequality, **not** the literal HCR identity. The clean type-(iii) "reinvented uncited" example is **Laidlaw 2024**, not χPO. Wang–Huang + Haupt ref-lists also primary-verified (reach only HM1991/Baker; cosine-congruity + estimation tier unreached). See `bridges.md`.
 5. ~~BBS PDF body grep~~ **DONE 2026-06-30** — read in full; qualitative confirmed (see `bridges.md §4`).
 6. **Athey et al. "AI Design: Sufficient Statistics"** (Gemini-only Chetty bridge) — confirm exists + that it's human–AI delegation method, not a Goodhart bridge.
 

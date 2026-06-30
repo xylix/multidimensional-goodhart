@@ -399,12 +399,21 @@ congruity geometry** (Feltham–Xie / Baker 2002) **or the χ²-DRO / Chapman–
 estimation tier** to Goodhart *as prior theory*. The two unanimous strong results:
 
 1. **χ²-DRO / HCR branch — zero type-(i) bridges (all six agree, sharpest result).**
-   The two papers that use χ² for overoptimization *and frame it as Goodhart* —
+   The two papers that use χ² for overoptimization *and frame it as Goodhart* are
    Laidlaw 2024 (occupancy-measure χ², arXiv:2403.03185) and χPO (Huang et al.
-   2024, arXiv:2407.13399) — cite **none** of HCR / Ben-Tal / Namkoong–Duchi
-   (type-iii). χPO's own bound `E_π[·] ≤ √(χ²(π‖π_ref)·Var(R̂−R))` *is the HCR
-   variational identity* (noted independently by Claude and Gemini) yet is sourced
-   only to Tsybakov 2008. A separate 2025–26 robust-RLHF cluster (DRO-REBEL
+   2024, arXiv:2407.13399). **[PRIMARY-VERIFIED 2026-06-30 — corrects the passes:]**
+   **Laidlaw is the clean type-(iii)** — full-text check finds no Hammersley /
+   Chapman–Robbins / Ben-Tal / Namkoong–Duchi (only the imitation-learning lineage).
+   **χPO is type-(ii), NOT type-(iii):** its PDF (refs + §7 footnote) *does* cite
+   **Duchi–Namkoong 2019** (the variance-regularization = χ²-DRO result), but only as
+   genealogy — *"More classically, χ²-divergence is known to play a fundamental role
+   in asymptotic statistics (Tsybakov, 2008; Duchi and Namkoong, 2019)"* — not as the
+   prior theory of its Goodhart bound. And **χPO's bound is NOT literally the HCR
+   identity**: its Lemma 5.1/F.3 is a χ²-*change-of-measure* bound (reward-error
+   transfer `≲ √((1+χ²(π‖π_ref))·ε²_stat)`) — same χ² machinery as HCR, different
+   inequality; the passes' (esp. Gemini's) "χPO's bound IS the HCR identity" was an
+   overstatement. χPO still cites **no** Chapman–Robbins / Ben-Tal / Hammersley.
+   A separate 2025–26 robust-RLHF cluster (DRO-REBEL
    arXiv:2509.19104; Robust-DPO arXiv:2502.01930; DR Token Opt. arXiv:2604.08577;
    Mandal et al. arXiv:2503.00539) *does* cite Ben-Tal/Namkoong–Duchi — but as
    **DRO machinery** for robust training, type-(ii), not as the prior mathematics
@@ -464,13 +473,19 @@ Hendrycks-Ridgway (genealogy).
 
 - Most new bridges are **2025–2026 preprints** (Haupt 2605.30916, Wang–Huang
   2603.28063, the robust-RLHF cluster); framing/reference lists may shift in
-  revision. Haupt 2605.30916 and Wang–Huang 2603.28063 are arXiv-confirmed to
-  exist; the second Haupt paper, the Content-Moderator Feltham–Xie bridge, and the
-  Athey/Chetty item need a body-verify before any is cited `[confident]`.
-- The χPO `E_π ≤ √(χ²·Var)` = HCR-identity observation (Claude, Gemini) is a strong
-  *near-miss* finding (the field reinvented the HCR bound for Goodhart without
-  citing it) — worth a primary check of the χPO statement before the gap paper
-  leans on it.
+  revision. **[REF-LISTS PRIMARY-VERIFIED 2026-06-30:]** Wang–Huang reaches only
+  **HM1991 + Baker 1992** (+ Grossman–Hart, Hart–Moore, Afriat); distortion index =
+  weight ratio `w̃_i/w_i`. Haupt reaches **HM1991/1987 + Baker 2002 + Strathern**,
+  Goodhart/Campbell-framed, citing Baker 2002 for effort-reallocation (not the
+  1−cosθ congruity condition). **Neither cites Feltham–Xie, Banker–Datar, DKL,
+  Bénabou–Tirole, or any estimation item** — cosine-congruity geometry + estimation
+  tier confirmed unreached. (Still need a body-verify: the second Haupt paper, the
+  Content-Moderator Feltham–Xie bridge, the Athey/Chetty item.)
+- **χPO ≠ HCR-identity (corrected 2026-06-30).** The Claude/Gemini "χPO's bound IS
+  the HCR variational identity, uncited" near-miss was **overstated**: χPO's Lemma
+  5.1 is a χ²-change-of-measure bound (different inequality, same family), and χPO
+  *does* cite Duchi–Namkoong 2019 as a genealogy footnote. The clean
+  "reinvented-uncited" example is **Laidlaw 2024** (verified type-iii), not χPO.
 
 ### Consequence for the contribution (updated)
 
