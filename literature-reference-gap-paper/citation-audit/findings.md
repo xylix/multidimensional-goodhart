@@ -166,4 +166,16 @@ subset-invariance reading. **Drop** "first to bridge contract theory to formal
 Goodhart" (Wang–Huang/Haupt 2026 hold it); name the expanded exception floor in the
 abstract. **HARD STOP still in force** — no freeze/code/Track-A until the human
 reviews; residual body-verifies: Haupt-2 / Content-Moderator-Feltham–Xie /
-Athey-Chetty / Bolton–Dewatripont / χPO=HCR-identity / BBS-formal-claim.
+Athey-Chetty / Bolton–Dewatripont / χPO=HCR-identity.
+
+**BBS body-verify DONE (2026-06-30) — delta CONFIRMED `[confident]` and
+strengthened.** Full target article read (`sources/Dead-rats-…_BBS_2023.pdf`
+pp. 1–16): BBS is qualitative — prose propositions (Table 2), an "illustrative"
+causal diagram (Fig. 1), the scalar-proxy necessity argued via revealed preference
+(not ΣwⱼPⱼ), and a prose *review* of Baker-2002 distortion that never restates the
+1−cosθ / congruity math. §6 has the authors stating outright that "a formal model
+of the unified mechanism" does not exist / it is "unclear … how [one] might look."
+Refs confirm the corrected premises (no Feltham–Xie/HM1991/Banker–Datar/DKL/Lipsey/
+Raj-Chetty; has Baker 2002, Holmström 1979/2017, Kerr, Bénabou–Tirole, Aghion–
+Tirole, **Hennessy–Goodhart 2021 SSRN** — flag the latter for Track B coding). See
+`bridges.md §4` for the full body-verified lock. This clears the gate's weakest pillar.

@@ -17,7 +17,7 @@ the load-bearing joints rather than trusting wholesale. Minimum viable due dilig
 ≈ 2 hours. Ranked by (impact if false) × (how well-verified now):
 
 **Tier 1 — the three things that would flip the verdict (check personally):**
-- [ ] **Read BBS 2023 yourself** (`sources/Dead-rats-dopamine-performance-metrics-and-peacock-tails-proxy-failure_BBS_2023.pdf`). The "BBS is qualitative, not formal → our delta is real" pillar was decided **without reading the body**. Check: does it state a formal proxy-vs-goal *vector* theorem (G/P vectors, congruity/proportionality, distortion=1−cosθ, a proof), or stay verbal while merely *citing* Baker 2002/Holmström? Latter → delta intact; former → rescope. **Weakest-verified pillar.**
+- [x] **Read BBS 2023** (`sources/Dead-rats-…_BBS_2023.pdf`) — **DONE 2026-06-30, delta CONFIRMED + strengthened.** Body read confirms qualitative: prose propositions (Table 2), illustrative causal diagram (Fig. 1), scalar-proxy via revealed preference (not ΣwⱼPⱼ), Baker-2002 distortion only *reviewed* in prose; §6 states outright no formal unified model exists. (`bridges.md §4`.) **You should still skim it yourself for an independent sign-off — but the weakest-verified pillar is now cleared.**
 - [ ] **Confirm the two new bridges don't reach the core.** Wang–Huang (arXiv:2603.28063) and Haupt (arXiv:2605.30916) are verified to *exist*; the load-bearing claim that they reach **only HM1991/Baker** (not Feltham–Xie / Baker-2002 cosine / HCR) is from the passes. Skim their reference lists / relevant sections.
 - [ ] **Sanity-check χPO = HCR identity** (arXiv:2407.13399): confirm its χ² bound is the HCR variational form and its refs exclude Chapman–Robbins/Ben-Tal/Namkoong–Duchi. Strongest "reinvented uncited" data point. (AI-doable.)
 
@@ -44,7 +44,7 @@ the load-bearing joints rather than trusting wholesale. Minimum viable due dilig
 - [ ] Feltham–Xie 1994 (own prop #) · Baker 1992 & 2002 (scanned — need clean copy/OCR) · Holmström–Milgrom 1991 · Datar–Kulp–Lambert 2001 · Rockafellar 1970 *Convex Analysis* (Fenchel/perturbation theorem #) · Ridgway 1956 (verbatim composite-measure quote) · Chetty AEJ version (only if "Prop. N" vs w13844 eq. numbers) · Lehmann–Casella TPE §2.7 (only if a *numbered* matrix-HCR primary is wanted).
 
 **C. Body-verifies that likely need your access:**
-- [ ] BBS body grep (covered by §0 read).
+- [x] BBS body read — DONE 2026-06-30 (delta confirmed + strengthened; `bridges.md §4`).
 - [ ] Bolton–Dewatripont 2005 *Contract Theory* Ch. 4 & 8 — does it co-locate framework pieces 1–4? (Gemini-only deflationary claim; textbook, hard to verify online.)
 
 **D. Optional:** run any further adversarial deep-research passes (the harness is yours to run).

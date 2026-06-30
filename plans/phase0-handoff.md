@@ -95,9 +95,12 @@ the expanded exception floor: CHAI, BBS, Hendrycks-Ridgway, Wang–Huang, Haupt.
 - **Self-flagged likely hallucinations from the breadth pass** (do NOT cite without a
   source): "Hennessy–Goodhart formalizations", bare "Kim 1995", "Yoo 2019", the exact
   Marschak–Radner sufficiency statement.
-- **BBS body-PDF was never read** (Cambridge HTML / S2-null). The "BBS is qualitative,
-  not formal" call rests on abstract + venue + resolved reference list. Needs a body
-  grep before coding `[confident]`.
+- **BBS body now READ (2026-06-30) — delta CONFIRMED `[confident]`.** The "BBS is
+  qualitative, not formal" call is body-verified (target article pp. 1–16, in
+  `sources/`): prose propositions (Table 2), illustrative causal diagram (Fig. 1),
+  scalar-proxy argued via revealed preference not ΣwⱼPⱼ, Baker-2002 distortion only
+  *reviewed* in prose, and §6 states outright that no formal unified model exists.
+  Strengthens the delta. Details in `bridges.md §4`. (No longer a residual item.)
 - **Reynaert–Sallee welfare sign:** in their model, gaming can *benefit buyers*. If
   the book treats gaming as unambiguously harmful, that's a substantive divergence
   (echoes the T5 value→harm interpretive inversion), not a relabel.
@@ -110,7 +113,7 @@ the expanded exception floor: CHAI, BBS, Hendrycks-Ridgway, Wang–Huang, Haupt.
 2. **The Content Moderator's Dilemma (arXiv:2412.16114)** — the *only* Feltham–Xie bridge found; confirm it cites Feltham–Xie and that it's content-moderation econ (adjacent, not core safety).
 3. **Bolton–Dewatripont 2005 *Contract Theory* Ch. 4 & 8** — does it really co-locate pieces 1–4 (Gemini's deflationary claim)? (Textbook — may need the human.)
 4. **χPO (arXiv:2407.13399)** — verify its bound `E_π ≤ √(χ²·Var)` is the HCR variational identity (open arXiv — AI can do). Strongest "reinvented uncited" data point.
-5. **BBS PDF body grep** for "theorem"/"congruity"/an explicit G,P-vector equation (Cambridge — likely needs the human to pull).
+5. ~~BBS PDF body grep~~ **DONE 2026-06-30** — read in full; qualitative confirmed (see `bridges.md §4`).
 6. **Athey et al. "AI Design: Sufficient Statistics"** (Gemini-only Chetty bridge) — confirm exists + that it's human–AI delegation method, not a Goodhart bridge.
 
 ## 7. Manual pulls the AI cannot do (paywalled / scanned — from prior-art-verification.md §"MUST be pulled")

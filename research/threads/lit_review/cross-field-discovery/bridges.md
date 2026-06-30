@@ -230,12 +230,34 @@ multidimensional-Goodhart theorem.**
   proportionality condition (h = c·w), no distortion = 1−cosθ statement, no
   multitask projection theorem, no proof. BBS is a *Behavioral and Brain Sciences*
   target article (interdisciplinary conceptual synthesis with peer commentary), not
-  a formal-results paper. (Direct PDF body fetch was blocked by Cambridge/HTML and
-  S2-references returned null; determination rests on the abstract, TLDR, venue
-  type, and the resolved reference list — sufficient to establish *conceptual, not
-  formal*. A belt-and-suspenders body grep for "theorem"/"congruity"/an explicit
-  G,P vector equation is flagged for the lead if a formal-claim is to be coded
-  `[confident]`.)
+  a formal-results paper.
+- **BODY-VERIFIED `[confident]` (2026-06-30, full target article read,
+  `sources/Dead-rats-…_BBS_2023.pdf` pp. 1–16).** The determination no longer rests
+  on abstract+venue. Concrete evidence:
+  - **Table 2 ("Key propositions and their corollaries," p. 4)** states Props A/B/C
+    + Corollaries 1–5 in **prose**, no equations (e.g. Prop B: "the use of the proxy
+    for regulatory feedback creates a pressure towards proxy failure").
+  - **Fig. 1 (p. 6)** is a Goal/Proxy/Regulator/Agent causal-arrow diagram,
+    explicitly "illustrative rather than comprehensive" — not a vector space.
+  - **§3.2** argues the scalar-proxy necessity *verbally* via revealed preference
+    (Houthakker 1950; Samuelson 1938; von Neumann–Morgenstern 1944) — **no Σ wⱼPⱼ
+    projection, no congruity condition.**
+  - **§4.2 + Box 3** *review* the principal-agent math in prose ("'optimal incentive
+    contract,' given noise or the potential for active 'distortion' (Baker, 2002;
+    Hennessy & Goodhart, 2021)") — Baker's 1−cosθ / multitask projection is **never
+    restated**.
+  - **§6 (Conclusion), decisive:** the authors themselves state *"formal theories
+    and models of proxy failure tend to be highly domain specific: It is unclear how
+    they relate to each other, or how a formal model of the unified mechanism
+    presently outlined might look."* → BBS openly flags the **absence of a formal
+    unified model** as the open gap. This *strengthens* our delta.
+  - **Reference list (read):** contains Baker 2002, Holmström 1979/2017, Kerr 1975,
+    Bénabou–Tirole 2016, Aghion–Tirole 1997, Hennessy–Goodhart **2021** ("Goodhart's
+    law and machine learning," SSRN 3639508); Amodei 2016, Manheim 2018, Manheim–
+    Garrabrant 2018, Everitt/Hutter/Kumar/Krakovna 2021. Does **not** contain
+    Feltham–Xie, HM1991, Banker–Datar, DKL, Lipsey–Lancaster, or Raj Chetty —
+    confirms the corrected premises. (New incidental: BBS cites **Hennessy–Goodhart
+    2021 SSRN**, distinct from the 2023 IER paper — flag for Track B corpus coding.)
 
 **Delta over BBS (what the gap paper adds):** BBS is the qualitative cross-domain
 unification ("proxy failure" as a named conceptual mechanism, citing the econ
