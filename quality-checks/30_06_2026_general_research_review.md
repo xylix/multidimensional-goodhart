@@ -96,3 +96,53 @@ the main strength.
 - The gap paper's "zero contract-theory cites" headline is API-checkable and is
   where the project's value concentrates; treat it as the thing to keep
   line-verified as the corpus grows (status: confirmed 2026-06-28; keep it so).
+
+## Codex addendum — 2026-06-30
+
+Independent whole-repo read after the above pass. I agree with the central
+verdict: the project is strongest as synthesis, translation, and claim-licensing,
+not as novel theorem work. Distinct findings not already covered above:
+
+- **Public-facing state is stale in small but credibility-relevant ways.**
+  `README.md` still says the gap was checked across "7 anchor papers"; the
+  current audit files say 25 minable papers plus reverse sweep. Fix this before
+  anyone external reads the repo. The same README should say plainly that Paper 1
+  is not content-stable until the prior-art / novelty-refactor program lands.
+- **The falsifiability section needs careful handling.** The book correctly says
+  the proved theorems cannot be empirically violated while their hypotheses hold;
+  failures would mean the audited contract did not track the real mechanism. A
+  skeptical reader can read that as "the framework cannot lose." The best repair
+  is not more caveat prose; it is one positive worked audit where predeclared
+  primitives make a signed prediction, plus a failure condition that would
+  actually reject the contract.
+- **The response-modeling contract is genuinely citation-worthy.** The strongest
+  reusable claim is: score movement underidentifies both channel and harm, so a
+  Goodhart claim must declare type representation, response kernel or selection
+  weights, action/search geometry, aggregation, hidden value/harm, evidence
+  standard, and falsifier before importing any bound. That is more original and
+  useful than the theorem labels.
+- **The open questions are unusually well-shaped.** `research/open_questions.md`
+  now tracks missing primitive + cheapest verification layer + failure condition.
+  Keep that pattern. It is one of the repo's real process strengths and prevents
+  parked conjectures from masquerading as active results.
+- **The gap-paper audit should preserve raw auditability, not only summaries.**
+  The coded table is strong, but "zero citations across N papers" needs
+  reproducible artifacts: exact corpus freeze, reference-list source per paper,
+  grep strings / API queries where possible, and explicit handling of partial
+  reference lists. The current caveats are honest; close them before drafting.
+- **Divergence thresholds are the best future theory direction, but not yet
+  publishable.** The tail-comparison idea is a promising successor because it
+  targets severity after activation rather than yet another activation condition.
+  It is still conjecture-stage and should stay separate from Paper 1 until it has
+  a clean toy boundary or a literature embedding.
+- **Generated and historical clutter should be separated from research authority.**
+  `.DS_Store`, `scripts/__pycache__/`, and generated artifacts are pure cleanup.
+  `draft.md`, `misc_convo_logs.md`, and old plans are useful history but should
+  not compete with `project_state_after_iteration43.md`, `core-math.md`, and the
+  current plans as sources of truth.
+
+Most build-worthy artifacts, in order: citation-gap paper; Paper 1 as
+synthesis + contract + exchange-rate diagnostic; primitive-identification
+examples; divergence-threshold follow-up. Least build-worthy right now:
+recursive-Goodhart revival, generic minimum-complexity attractor, and broad
+policy guidance.
