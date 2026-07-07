@@ -143,9 +143,29 @@
   31.98828005770334,
   45.24654716684251
  ],
+ "kl_bound": [
+  0.0,
+  0.6215258330269874,
+  1.1280907420237882,
+  1.5520576933090056,
+  1.9157707181391939,
+  2.2347196257247695,
+  2.5197254149449186,
+  2.7784322068100265,
+  3.0163168581830266,
+  3.2373686073845556,
+  3.4445459404976595,
+  3.640084413144673,
+  3.8257052440940464
+ ],
  "checks": [
   [
    "T1 bound holds for A_gaussian",
+   true,
+   "[]"
+  ],
+  [
+   "KL bound holds for A_gaussian",
    true,
    "[]"
   ],
@@ -155,14 +175,49 @@
    "[]"
   ],
   [
+   "KL bound holds for B_t4_unitvar",
+   true,
+   "[]"
+  ],
+  [
    "T1 bound holds for C_t2_infvar",
    true,
    "[]"
   ],
   [
+   "KL bound holds for C_t2_infvar",
+   true,
+   "[]"
+  ],
+  [
+   "KL bound tighter than chi^2 bound for all n >= 4",
+   true,
+   "at n=4096: 3.83 vs 45.25"
+  ],
+  [
+   "KL bound within 2x of the true curve at n=4096 (A)",
+   true,
+   "1.49"
+  ],
+  [
    "analytic Gaussian curve matches MC (max |dev| in SEs)",
    true,
    "2.02"
+  ],
+  [
+   "declared variant A maps to regime[benign]",
+   true,
+   "regime[benign]"
+  ],
+  [
+   "declared variants B/C (independent) map to regime[weak]",
+   true,
+   "regime[weak]"
+  ],
+  [
+   "dependence-undeclared B/C maps to strong-not-excluded",
+   true,
+   "regime[strong-not-excluded]"
   ],
   [
    "variant A still gaining from n=256 to n=4096",
@@ -180,7 +235,12 @@
    "-0.187"
   ],
   [
-   "certificate identical for A and B (tail-blind)",
+   "variant C reverts toward baseline mean 0 (weak, not strong: no descent toward inf)",
+   true,
+   "0.057"
+  ],
+  [
+   "moment-route certificates identical for A and B (tail-blind)",
    true,
    "same declared moments => same delta(n)*sd"
   ]
