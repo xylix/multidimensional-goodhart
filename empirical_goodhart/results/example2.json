@@ -1,0 +1,262 @@
+{
+ "configs": {
+  "near_p0.01": {
+   "s_prime": 4,
+   "p": 0.01,
+   "vi_misaligned": false,
+   "true_value_loss": 0.0,
+   "hitting_prob_hack_first": 0.7376477955233824,
+   "empirical": {
+    "2000": [
+     0.0,
+     0.016666666666666666,
+     0.9833333333333333
+    ],
+    "10000": [
+     0.35,
+     0.05,
+     0.6
+    ],
+    "50000": [
+     0.9833333333333333,
+     0.016666666666666666,
+     0.0
+    ],
+    "200000": [
+     1.0,
+     0.0,
+     0.0
+    ]
+   },
+   "static_findings": "CERTIFICATE spec-misalignment = 0 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0.5133; ALIGNED: proxy-optimal policy is true-optimal at start; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nCERTIFICATE basin-discovery[hack-first] = 0.737648 [hitting probability of the declared uniform random walk (coarse abstraction)] P(uniform explorer reaches the hack state before the true goal from start) = 0.7376; coarse proxy for early-training commitment when the spec is misaligned; conditions: abstraction: ignores that epsilon-greedy departs from the uniform walk once Q-values form; prediction target: small-T commitment frequency, not asymptotic behavior; asymptotics come from spec-misalignment instead: converged Q-learning camps iff the spec is misaligned",
+   "refusal_without_exploration_model": "CERTIFICATE spec-misalignment = 0 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0.5133; ALIGNED: proxy-optimal policy is true-optimal at start; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nREFUSAL    P(learner commits to the hack basin at finite training budget T) -- dynamics-level probability needs a declared exploration/learning model; the spec-level MDP does not contain one (missing declaration: exploration_model)"
+  },
+  "near_p0.05": {
+   "s_prime": 4,
+   "p": 0.05,
+   "vi_misaligned": true,
+   "true_value_loss": 0.5133420832795047,
+   "hitting_prob_hack_first": 0.7376477955233824,
+   "empirical": {
+    "2000": [
+     0.0,
+     0.016666666666666666,
+     0.9833333333333333
+    ],
+    "10000": [
+     0.08333333333333333,
+     0.35,
+     0.5666666666666667
+    ],
+    "50000": [
+     0.016666666666666666,
+     0.9166666666666666,
+     0.06666666666666667
+    ],
+    "200000": [
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   "static_findings": "CERTIFICATE spec-misalignment = 0.513342 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0; MISALIGNED: the proxy asks for the hack; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nCERTIFICATE basin-discovery[hack-first] = 0.737648 [hitting probability of the declared uniform random walk (coarse abstraction)] P(uniform explorer reaches the hack state before the true goal from start) = 0.7376; coarse proxy for early-training commitment when the spec is misaligned; conditions: abstraction: ignores that epsilon-greedy departs from the uniform walk once Q-values form; prediction target: small-T commitment frequency, not asymptotic behavior; asymptotics come from spec-misalignment instead: converged Q-learning camps iff the spec is misaligned",
+   "refusal_without_exploration_model": "CERTIFICATE spec-misalignment = 0.513342 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0; MISALIGNED: the proxy asks for the hack; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nREFUSAL    P(learner commits to the hack basin at finite training budget T) -- dynamics-level probability needs a declared exploration/learning model; the spec-level MDP does not contain one (missing declaration: exploration_model)"
+  },
+  "near_p0.10": {
+   "s_prime": 4,
+   "p": 0.1,
+   "vi_misaligned": true,
+   "true_value_loss": 0.5133420832795047,
+   "hitting_prob_hack_first": 0.7376477955233824,
+   "empirical": {
+    "2000": [
+     0.0,
+     0.06666666666666667,
+     0.9333333333333333
+    ],
+    "10000": [
+     0.0,
+     0.8833333333333333,
+     0.11666666666666667
+    ],
+    "50000": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "200000": [
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   "static_findings": "CERTIFICATE spec-misalignment = 0.513342 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0; MISALIGNED: the proxy asks for the hack; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nCERTIFICATE basin-discovery[hack-first] = 0.737648 [hitting probability of the declared uniform random walk (coarse abstraction)] P(uniform explorer reaches the hack state before the true goal from start) = 0.7376; coarse proxy for early-training commitment when the spec is misaligned; conditions: abstraction: ignores that epsilon-greedy departs from the uniform walk once Q-values form; prediction target: small-T commitment frequency, not asymptotic behavior; asymptotics come from spec-misalignment instead: converged Q-learning camps iff the spec is misaligned",
+   "refusal_without_exploration_model": "CERTIFICATE spec-misalignment = 0.513342 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0; MISALIGNED: the proxy asks for the hack; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nREFUSAL    P(learner commits to the hack basin at finite training budget T) -- dynamics-level probability needs a declared exploration/learning model; the spec-level MDP does not contain one (missing declaration: exploration_model)"
+  },
+  "far_p0.01": {
+   "s_prime": 56,
+   "p": 0.01,
+   "vi_misaligned": false,
+   "true_value_loss": 0.0,
+   "hitting_prob_hack_first": 0.5452814731261295,
+   "empirical": {
+    "2000": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "10000": [
+     0.45,
+     0.0,
+     0.55
+    ],
+    "50000": [
+     0.9833333333333333,
+     0.016666666666666666,
+     0.0
+    ],
+    "200000": [
+     1.0,
+     0.0,
+     0.0
+    ]
+   },
+   "static_findings": "CERTIFICATE spec-misalignment = 0 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0.5133; ALIGNED: proxy-optimal policy is true-optimal at start; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nCERTIFICATE basin-discovery[hack-first] = 0.545281 [hitting probability of the declared uniform random walk (coarse abstraction)] P(uniform explorer reaches the hack state before the true goal from start) = 0.5453; coarse proxy for early-training commitment when the spec is misaligned; conditions: abstraction: ignores that epsilon-greedy departs from the uniform walk once Q-values form; prediction target: small-T commitment frequency, not asymptotic behavior; asymptotics come from spec-misalignment instead: converged Q-learning camps iff the spec is misaligned",
+   "refusal_without_exploration_model": "CERTIFICATE spec-misalignment = 0 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0.5133; ALIGNED: proxy-optimal policy is true-optimal at start; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nREFUSAL    P(learner commits to the hack basin at finite training budget T) -- dynamics-level probability needs a declared exploration/learning model; the spec-level MDP does not contain one (missing declaration: exploration_model)"
+  },
+  "far_p0.05": {
+   "s_prime": 56,
+   "p": 0.05,
+   "vi_misaligned": true,
+   "true_value_loss": 0.5133420832795047,
+   "hitting_prob_hack_first": 0.5452814731261295,
+   "empirical": {
+    "2000": [
+     0.0,
+     0.0,
+     1.0
+    ],
+    "10000": [
+     0.08333333333333333,
+     0.23333333333333334,
+     0.6833333333333333
+    ],
+    "50000": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "200000": [
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   "static_findings": "CERTIFICATE spec-misalignment = 0.513342 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0; MISALIGNED: the proxy asks for the hack; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nCERTIFICATE basin-discovery[hack-first] = 0.545281 [hitting probability of the declared uniform random walk (coarse abstraction)] P(uniform explorer reaches the hack state before the true goal from start) = 0.5453; coarse proxy for early-training commitment when the spec is misaligned; conditions: abstraction: ignores that epsilon-greedy departs from the uniform walk once Q-values form; prediction target: small-T commitment frequency, not asymptotic behavior; asymptotics come from spec-misalignment instead: converged Q-learning camps iff the spec is misaligned",
+   "refusal_without_exploration_model": "CERTIFICATE spec-misalignment = 0.513342 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0; MISALIGNED: the proxy asks for the hack; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nREFUSAL    P(learner commits to the hack basin at finite training budget T) -- dynamics-level probability needs a declared exploration/learning model; the spec-level MDP does not contain one (missing declaration: exploration_model)"
+  },
+  "far_p0.10": {
+   "s_prime": 56,
+   "p": 0.1,
+   "vi_misaligned": true,
+   "true_value_loss": 0.5133420832795047,
+   "hitting_prob_hack_first": 0.5452814731261295,
+   "empirical": {
+    "2000": [
+     0.0,
+     0.016666666666666666,
+     0.9833333333333333
+    ],
+    "10000": [
+     0.0,
+     0.9,
+     0.1
+    ],
+    "50000": [
+     0.0,
+     1.0,
+     0.0
+    ],
+    "200000": [
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   "static_findings": "CERTIFICATE spec-misalignment = 0.513342 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0; MISALIGNED: the proxy asks for the hack; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nCERTIFICATE basin-discovery[hack-first] = 0.545281 [hitting probability of the declared uniform random walk (coarse abstraction)] P(uniform explorer reaches the hack state before the true goal from start) = 0.5453; coarse proxy for early-training commitment when the spec is misaligned; conditions: abstraction: ignores that epsilon-greedy departs from the uniform walk once Q-values form; prediction target: small-T commitment frequency, not asymptotic behavior; asymptotics come from spec-misalignment instead: converged Q-learning camps iff the spec is misaligned",
+   "refusal_without_exploration_model": "CERTIFICATE spec-misalignment = 0.513342 [value iteration on the declared MDP (residual-gap analysis, contract field 6)] true value at start: optimal = 0.5133, proxy-optimal policy = 0; MISALIGNED: the proxy asks for the hack; conditions: exact for the declared P, R_proxy, R_true, gamma; says nothing about finite-training dynamics\nREFUSAL    P(learner commits to the hack basin at finite training budget T) -- dynamics-level probability needs a declared exploration/learning model; the spec-level MDP does not contain one (missing declaration: exploration_model)"
+  }
+ },
+ "checks": [
+  [
+   "near_p0.01: VI misalignment matches closed form",
+   true,
+   "VI=False closed-form=False"
+  ],
+  [
+   "near_p0.01: reaches goal at T=200000 (spec aligned)",
+   true,
+   "goal=1.00"
+  ],
+  [
+   "near_p0.05: VI misalignment matches closed form",
+   true,
+   "VI=True closed-form=True"
+  ],
+  [
+   "near_p0.05: camps at T=200000 (spec says hack)",
+   true,
+   "camp=1.00"
+  ],
+  [
+   "near_p0.10: VI misalignment matches closed form",
+   true,
+   "VI=True closed-form=True"
+  ],
+  [
+   "near_p0.10: camps at T=200000 (spec says hack)",
+   true,
+   "camp=1.00"
+  ],
+  [
+   "far_p0.01: VI misalignment matches closed form",
+   true,
+   "VI=False closed-form=False"
+  ],
+  [
+   "far_p0.01: reaches goal at T=200000 (spec aligned)",
+   true,
+   "goal=1.00"
+  ],
+  [
+   "far_p0.05: VI misalignment matches closed form",
+   true,
+   "VI=True closed-form=True"
+  ],
+  [
+   "far_p0.05: camps at T=200000 (spec says hack)",
+   true,
+   "camp=1.00"
+  ],
+  [
+   "far_p0.10: VI misalignment matches closed form",
+   true,
+   "VI=True closed-form=True"
+  ],
+  [
+   "far_p0.10: camps at T=200000 (spec says hack)",
+   true,
+   "camp=1.00"
+  ],
+  [
+   "early commitment ordering near>=far at p0.05",
+   true,
+   "near=0.02 far=0.00"
+  ],
+  [
+   "early commitment ordering near>=far at p0.10",
+   true,
+   "near=0.07 far=0.02"
+  ]
+ ]
+}
