@@ -1,10 +1,13 @@
 # Citation audit — methods, corpus, and master coded table
 
-Status: first systematic pass, 2026-06-24. Executed via four parallel research
-agents (clusters A–C forward audit + reverse/bridge sweep), each retrieving full
-reference lists and coding them against a fixed scheme. This is the auditable
-spine of the gap paper's central empirical claim. Interpretation lives in
-`findings.md`; this file is the data.
+Status: **task 06 complete, 2026-07-10** — full frozen corpus (N=117, `corpus.md`)
+coded via 13 parallel agents under `../audit-tasks/coding-protocol.md`; raw batch
+outputs with verbatim hit strings and retrieval notes in `coding-batches.md`.
+The master N=117 table and updated totals are in §Master coded table (full
+corpus) below. The June 24 seed pass (25 papers) is retained beneath it as
+historical data; its codes carry over unchanged (scheme identical).
+Interpretation lives in `findings.md`; this file is the data. Independent
+double-verification = task 07 (not yet run).
 
 ## Thesis under test
 
@@ -53,10 +56,127 @@ prior art that contains the same formal mathematics.
 - BBS-bridge premise correction: its "Chetty" = Marshini Chetty (privacy/HCI), **not**
   Raj Chetty; and there is **no Lipsey reference at all** in BBS (earlier premise was wrong).
 
-## Master coded table
+## Master coded table (full corpus, N=117, task 06, 2026-07-10)
 
-✓ = present (author-year); — = absent; n/a = no minable reference list.
-"Goodhart" column = the eponym (Goodhart 1975/1984) only.
+✓ = present; ~ = borderline; — = absent; n/a = no minable list. IDs = pool IDs
+(`corpus.md`). Only non-empty cells shown as text; verbatim strings + retrieval
+method/completeness per paper in `coding-batches.md` (seed rows: see historical
+table below). ESTIM annotations: tooling / genealogy / prior-theory. CONTRACT
+annotations: pm = performance-measurement branch, ctl = control branch.
+
+| id | Paper | CONTRACT | PUBFIN | 2BEST | CORRECT | MGMT | ESTIM | Lucas | Goodhart |
+|---|---|---|---|---|---|---|---|---|---|
+| A1 | 1803.04585 Manheim–Garrabrant | — | — | — | — | ✓ Campbell | — | — | ✓ |
+| A2 | 2209.13085 Skalse | — | — | — | — | — | — | — | ✓ |
+| A3 | 2310.09144 Karwowski | — | — | — | — | — | — | — | ✓ |
+| A4 | 2410.09638 El-Mhamdi–Hoang | — | — | — | — | ✓ Campbell, Strathern | ~ robust-stats | ✓ | ✓ |
+| A5 | 2505.23445 Majka–El-Mhamdi | — | — | — | — | ✓ Strathern, Hoskin | ~ copula/tail | ✓ | ✓ |
+| A6 | 2407.14503 Kwa | — | — | — | — | ✓ Strathern | ~ tail-theory | — | — |
+| A7 | 2102.03896 Zhuang–HM | △ transaction-cost econ (not multitask tier) | — | — | — | ✓ Kerr | — | — | — |
+| A8 | 2510.02840 | — | — | — | — | ✓ Strathern | — | — | ✓ |
+| A9 | 2603.15017 | ✓ HM1991 (pm) | — | — | — | ✓ Strathern | — | — | — |
+| A10 | 2506.19248 | — | — | — | — | — | — | — | ✓ |
+| A11 | 2602.13934 | — | — | — | — | — | — | — | — |
+| A12 | OpenReview HTpPKXkUnw | n/a (refs publisher-elided) | | | | | | | |
+| A13 | 2011.01010 Ashton | — | — | — | — | ✓ Campbell, Rodamar | — | — | ✓ |
+| A14 | 1810.10862 Manheim | — | — | — | — | ✓ Campbell | — | — | ✓ |
+| A15 | 2002.08512 Thomas–Uesato | — | — | — | — | ✓ Strathern | — | — | — |
+| B1 | 1606.06565 Amodei | — | — | — | — | — | ~ GMM/IV | — | ✓ |
+| B2 | 2201.03544 Pan | — | — | — | — | — | — | — | — |
+| B3 | 2403.03185 Laidlaw | — | — | — | — | — | ~ uses χ², cites no ESTIM prior art (type-iii locked) | — | ✓ |
+| B4 | 1811.07871 Leike | — | — | — | — | — | — | — | — |
+| B5 | 1908.04734 Everitt | — | — | — | — | — | — | — | — |
+| B6–B13 | (8 papers, see `coding-batches.md`) | — | — | — | — | — | — | — | — |
+| B14 | 2303.09387 | — | — | — | — | — | — | — | ✓ |
+| B15 | 2410.06491 | — | — | — | — | — | — | — | — |
+| B16 | 2507.05619 | — | — | — | — | — | — | — | ✓ |
+| B17, B18 | 2606.15385, 2412.07177 | — | — | — | — | — | — | — | — |
+| B19 | 2211.08714 | — | — | — | — | — | — | — | ✓ (1975) |
+| B20, B21, B23–B25 | (5 papers) | — | — | — | — | — | — | — | — |
+| B22 | 2604.13602 Wang survey | — | — | — | — | — | — | — | — |
+| C1 | 2210.10760 Gao | — | — | — | — | ✓ Campbell | — | — | ✓ |
+| C2–C5 | Rafailov, Coste, Eisenstein, Moskovitz | — | — | — | — | — | — | — | C5 ✓ only |
+| C6 | 2401.12187 WARM | — | — | — | — | ✓ Strathern | — | — | — |
+| C7–C10 | (4 papers) | — | — | — | — | — | — | — | — |
+| C11 | 2505.12763 | — | — | — | — | — | — | — | ✓ |
+| C12, C13, C14 | (3 papers) | — | — | — | — | — | — | — | — |
+| C15 | 2604.12086 | — | — | — | — | — | — | — | ✓ |
+| C16–C19 | (4 papers) | — | — | — | — | — | — | — | — |
+| C20 | 2310.05199 | — | — | — | — | ✓ Strathern | — | — | — |
+| C21–C25 | (5 papers incl. Casper 227 refs) | — | — | — | — | — | — | — | — |
+| C26 | 2409.19024 | — | — | — | — | — | — | — | ✓ |
+| C27 | 2410.05584 | — | — | — | — | — | — | — | ✓ |
+| C28 | 2510.03231 Trench Coat | — | — | — | — | — | — | — | ✓ |
+| C29, C30 | (2 papers) | — | — | — | — | — | — | — | — |
+| C31 | 2407.13399 χPO | — | — | — | — | — | ✓ Duchi–Namkoong 2019 + Tsybakov (genealogy; type-ii) | — | — |
+| C32 | 2509.19104 DRO-REBEL | — | — | — | — | — | ✓ D–N 2021/2022, N–D 2017, Rockafellar–Wets (tooling) | — | — |
+| C33 | 2502.01930 | — | — | — | — | — | ✓ D–N cluster (tooling) | — | — |
+| C34 | 2604.08577 | — | — | — | — | — | ✓ D–N cluster (tooling) | — | — |
+| C35 | 2503.00539 | — | — | — | — | — | ✓ **Ben-Tal 2013** + Sinha–N–D (tooling) | — | — |
+| D1 | 1711.02827 IRD | — | — | — | — | — | ~ Rockafellar–Uryasev CVaR | — | — |
+| D2 | 1606.03137 CIRL | ✓ HM1991 + HM1987 + Gibbons98 (pm) | — | — | — | ✓ Kerr | — | — | — |
+| D3 | 1611.08219 Off-Switch | ✓ Baker2002 + Gibbons98 (ctl) [HM1991 UNCONFIRMED — task 07] | — | — | — | ✓ Kerr | — | — | — |
+| D4–D9 | (6 papers) | — | — | — | — | — | — | — | — |
+| E1, E2 | Hubinger, Ngo | — | — | — | — | — | — | — | — |
+| F1, F2 | Hardt, Perdomo | — | — | — | — | — | — | — | — |
+| F3 | 1910.10362 Miller | ✓ HM1991 (pm) + Grossman–Hart (ctl) | — | — | — | ✓ Strathern | — | — | — |
+| F4 | 2106.12705 | — | — | — | — | — | — | ✓ **Lucas 1976** | — |
+| F5 | 2204.01884 | — | ✓ **Chetty (Raj)** | — | — | — | ~ Rockafellar (role-unknown) | — | — |
+| F6 | 2411.08998 | — | — | — | — | ✓ Campbell | — | — | — |
+| F7–F12 | (6 papers; F7 PARTIAL refs) | — | — | — | — | — | — | — | — |
+| F13 | 2508.14927 | ✓ Holmström 1979+1980 (ctl) | — | — | — | — | — | — | — |
+| F14 | 2605.06324 | — | — | — | — | — | — | — | — |
+| F15 | 2412.16114 Content Moderator | ✓ **Feltham–Xie 1994** + HM1991 (pm) | — | — | — | — | — | — | — |
+| G1–G4, G7 | ADA foundations + contamination survey | — | — | — | — | — | — | — | — |
+| G5 | 2410.09247 | — | — | — | — | ✓ Strathern | — | — | ✓ |
+| G6 | 2502.06559 | — | — | — | — | ✓ Strathern | — | — | — |
+| H1, H2 | Zhong, Kaufmann surveys | — | — | — | — | — | — | — | — |
+| H5 | 2310.19852 Ji survey | — | — | — | — | — | ✓ Ben-Tal 2009 + D–G–N 2021 (tooling) | — | ✓ |
+| H6 | 2109.13916 Hendrycks | — | — | — | — | ✓ **Ridgway 1956** + Strathern | — | — | ✓ |
+| H7, H8 | (2 surveys) | — | — | — | — | — | — | — | — |
+| I1 | 2603.28063 Wang–Huang | ✓ HM1991 + **Baker 1992** (pm) + Grossman–Hart + Hart–Moore (ctl) | — | — | — | — | — | — | — |
+| I2 | 2605.30916 Haupt | ✓ HM1987 + HM1991 + Baker 2002 (pm) | — | — | — | ✓ Strathern | — | — | — |
+| I3 | OpenReview Y5qABVr7uB | n/a (access-limited) | | | | | | | |
+
+## Tier totals (full frozen corpus: N=117; minable N=115 — A12, I3 n/a)
+
+- **CONTRACT: 8 clean ✓ + 1 △ of 115** — and the distribution IS the finding:
+  **0 in the reward-hacking core (B: 0/25), 0 in RLHF-overoptimization (C: 0/35),
+  0 in mesa-opt/ADA/surveys-but-Hendrycks (E, G, H)**. All 8 hits sit in three
+  pockets: the 2026 benchmark-contract bridges (I1, I2, + new candidate A9), the
+  CHAI control lineage (D2, D3), and the strategic-ML/platform periphery (F3,
+  F13, F15). Branch split: pm = A9, D2, F3, F15, I1, I2; ctl = D3, F13 (+ I1's
+  Grossman–Hart/Hart–Moore, F3's Grossman–Hart).
+- **Feltham–Xie 1994: 1 of 115** — F15 only (econ-authored platform paper,
+  "Goodhart" absent from its text). **Baker 1992: 1** (I1). **Baker 2002: 2**
+  (D3, I2). **DKL 2001: 0. Prendergast: 0. Holmström 2017: 0.**
+- **PUBFIN (Raj Chetty / Feldstein): 1 of 115** — F5 (strategic-ML), method use.
+- **2BEST: 0 of 115. CORRECT: 0 of 115.** (Lipsey–Lancaster, Reynaert–Sallee,
+  Baumol–Oates, Montgomery: zero across the entire denominator.)
+- **ESTIM: 6 ✓ + 7 ~** — every ✓ is tooling except χPO's genealogy footnote
+  (type-ii per the 2026-06-30 primary read). **Hammersley / Chapman–Robbins /
+  Cramér–Rao as prior theory of a Goodhart bound: 0 of 115.** The two papers
+  using χ² *for* Goodhart (B3 Laidlaw, C31 χPO) cite none of the estimation
+  lineage as such.
+- **MGMT (folklore tier): 21 of 115** — Strathern 13, Campbell 6, Kerr 3,
+  Hoskin 1, Rodamar 1, **Ridgway 1** (Hendrycks only).
+- **Lucas 1976: 3 of 115** (A4, A5, F4 — two of them econ-audience-adjacent).
+- **Goodhart eponym: 24 of 115** (23× 1984, 1× 1975).
+
+**Headline (licensed by this table):** in the frozen 115-paper minable
+denominator, the performance-measurement contract-theory tier that contains the
+multidimensional-Goodhart math (Feltham–Xie congruity, Baker distortion, DKL)
+is reached only by the 2026 benchmark-design bridges, the CHAI control lineage,
+and econ-authored platform work — **never by the reward-hacking /
+RLHF-overoptimization core (0 of 60 in clusters B+C)**, whose only econ contact
+is the Goodhart eponym (24) and the Strathern/Campbell/Kerr folklore tier (21).
+The public-finance, second-best, and corrective-tax tiers are at 0–1 of 115,
+and the estimation tier is never cited as prior theory. Scope note: clusters C,
+F, G are anchor+representative samples per `corpus.md` — the totals are claims
+about that documented denominator, not an enumeration of the unbounded 2025–26
+mitigation tail.
+
+## Historical: seed pass master coded table (2026-06-24, 25 papers)
 
 | # | Paper | CONTRACT | PUBFIN | 2BEST | CORRECT | MGMT | ESTIM | Lucas | Goodhart |
 |---|---|---|---|---|---|---|---|---|---|
@@ -143,6 +263,31 @@ Strongest items the AI Goodhart literature omits (relevance + canonical weight):
 - **Bénabou–Tirole 2016** "Bonus Culture" (JPE, 217); **Feltham–Xie 1994** congruity.
 
 ## Caveats / auditability flags
+
+### Task-06 caveats (2026-07-10) — feed directly into task 07
+
+- **Two S2 wrong-list incidents:** the S2 references endpoint returned another
+  paper's list for B12 (got B11's) and C28 (got C29's); both caught by the
+  agents via arXiv identity checks and re-coded from ar5iv. Consequence: task
+  07 must second-source every ✓ hit and a random sample of ~10 all-absent rows.
+- **D3 (Off-Switch) HM1991 UNCONFIRMED:** the complete 20-ref S2 list has
+  Baker 2002 + Gibbons only; the seed pass and OpenAlex sweep claimed HM1991.
+  PDF check required before publishing any D3-specific claim.
+- **A9 (2603.15017) is a NEW exception-floor candidate** (HM1991, pm-branch) not
+  in the June hunt's floor — verify identity + citing-sentence type in task 07,
+  then fold into `bridges.md` §exception floor.
+- **G2 label errata:** pool title says Blum–Hardt "The Ladder"; arXiv 1908.03156
+  is actually a different overfitting paper. Fix label or swap in 1502.04585.
+- **A12, I3 n/a (access-limited):** minable N = 115. Both are workshop items
+  whose reference lists are behind OpenReview bot-challenges / publisher elision.
+- ~14 papers had NO API-indexed references (S2 and OpenAlex both 0) and were
+  coded from arXiv HTML / ar5iv / PDF / LaTeX source — method recorded per
+  paper in `coding-batches.md`.
+- χPO annotation discipline: its ESTIM ✓ is a genealogy footnote (type-ii per
+  the 2026-06-30 primary read, `plans/phase0-handoff.md` §6) — do not re-inflate
+  to a prior-theory bridge in downstream prose.
+
+### Seed-pass caveats (2026-06-24)
 
 - Krakovna 2020 is a DeepMind blog post — no reference list; coded n/a.
 - Kaufmann 2023 survey: S2 `/references` empty; "absent" coding from arXiv

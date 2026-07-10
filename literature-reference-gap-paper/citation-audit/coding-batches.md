@@ -1,9 +1,9 @@
-# Task 06 — raw coding-batch results (staging; merge into audit.md when all batches done)
+# Task 06 — raw coding-batch results (data annex to audit.md)
 
-Status: **PAUSED 2026-07-10** (usage limit). 6 of 13 batches complete (below);
-7 batches stopped mid-run and must be **re-run from scratch** (§Resume). Coding
-protocol: `../audit-tasks/coding-protocol.md` (agents read it verbatim).
-Tier scheme + name-collision rules: `audit.md`; frozen N=117: `corpus.md`.
+Status: **COMPLETE 2026-07-10** — all 13 batches done (6 before the usage-limit
+pause, 7 re-run after). Master table + totals: `audit.md`. Coding protocol:
+`../audit-tasks/coding-protocol.md` (agents read it verbatim). Tier scheme +
+name-collision rules: `audit.md`; frozen N=117: `corpus.md`.
 
 Cell values: `—` absent · `✓` present · `~` borderline · n/a no minable list.
 
@@ -159,24 +159,163 @@ Baumol–Oates → not CORRECT.
 Chetty, Lucas, Grossman–Hart) — the citation gap is specific to the AI-safety
 reward-hacking lineage, visible from both sides. Feed to task 09.**
 
-## Partial (killed mid-run — findings NOT to be trusted; re-run fully)
+## Completed batch: cluster B batch 2 (B13–B18, rerun 2026-07-10)
 
-- C batch 1: C6 (WARM, 152 refs) had MGMT ✓ Strathern; Namkoong-as-coauthor
-  collisions correctly rejected. UNFINISHED — re-run whole batch.
+| id | Paper | CONTRACT | PUBFIN | 2BEST | CORRECT | MGMT | ESTIM | Lucas | Goodhart |
+|---|---|---|---|---|---|---|---|---|---|
+| B13 | 2301.03652 | — | — | — | — | — | — | — | — |
+| B14 | 2303.09387 | — | — | — | — | — | — | — | ✓ Goodhart 1984 |
+| B15 | 2410.06491 | — | — | — | — | — | — | — | — |
+| B16 | 2507.05619 | — | — | — | — | — | — | — | ✓ Goodhart 1984 |
+| B17 | 2606.15385 | — | — | — | — | — | — | — | — |
+| B18 | 2412.07177 | — | — | — | — | — | — | — | — |
 
-## Resume — batches to re-run from scratch
+Methods: B13 S2 COMPLETE 46; B14 S2 COMPLETE 206; B15 S2 COMPLETE 26; B16 S2
+COMPLETE 38; B17 S2 COMPLETE 31; B18 **pdftotext of arXiv PDF** COMPLETE ~300
+(S2 AND OpenAlex both report 0 refs for this thesis). Verbatim: B14/B16
+Goodhart = "Problems of Monetary Management: The UK Experience — C. Goodhart,
+1984". Collision rejections: ML "Xie" authors (B18), Goodhart-in-title
+Manheim–Garrabrant (B14).
 
-Use the protocol at `../audit-tasks/coding-protocol.md`, one agent per batch:
-1. **B batch 2:** B13 2301.03652, B14 2303.09387, B15 2410.06491, B16 2507.05619, B17 2606.15385, B18 2412.07177
-2. **C batch 1:** C6 2401.12187, C7 2402.09345, C8 2405.16436, C9 2503.18130, C10 2505.18126, C11 2505.12763, C12 2510.13694, C13 2502.18770
-3. **C batch 3:** C22 2309.16155, C23 2402.10184, C24 2307.15217, C25 2501.09620, C26 2409.19024, C27 2410.05584, C28 2510.03231, C29 2604.01476
-4. **C batch 4:** C30 2604.26360, C31 2407.13399 (χPO — other tiers + confirm Duchi–Namkoong genealogy footnote), C32 2509.19104 (DRO-REBEL — annotate ESTIM roles), C33 2502.01930, C34 2604.08577, C35 2503.00539
-5. **E+H batch:** E1 1906.01820, E2 2209.00626, H5 2310.19852, H6 2109.13916 (expect Ridgway 1956 — quote verbatim), H7 2505.02666, H8 2506.15421
-6. **F batch 2:** F9 2310.16608, F10 2509.02391, F11 2011.00355, F12 2412.02000, F13 2508.14927, F14 2605.06324, F15 2412.16114 (confirm Feltham–Xie + HM1991 verbatim)
-7. **G+I batch:** G1 1506.02629, G2 1908.03156, G3 2102.13189, G4 1604.02492, G5 2410.09247, G6 2502.06559, G7 2406.04244; I1 2603.28063 (confirm HM1991 + Baker 1992 verbatim); I2 2605.30916 (confirm HM1991/1987 + Baker 2002 + Strathern); I3 OpenReview Y5qABVr7uB (api.openreview.net + S2 title search; n/a-flag if unreachable — do NOT copy sibling's codes)
+## Completed batch: cluster C batch 1 (C6–C13, rerun 2026-07-10)
 
-After all 13 batches: merge into `audit.md` master table (keep cluster order,
-one row per paper), recompute tier totals over N=117 (117 = 24 seed-coded + 93
-here; A12/I3 may be n/a), carry ALL verbatim strings + method/completeness
-notes + anomalies (esp. the B12 wrong-list S2 caveat and the D3 HM1991
-correction), then commit. Task 07 (independent double-verify) follows.
+| id | Paper | CONTRACT | PUBFIN | 2BEST | CORRECT | MGMT | ESTIM | Lucas | Goodhart |
+|---|---|---|---|---|---|---|---|---|---|
+| C6 | 2401.12187 WARM | — | — | — | — | ✓ Strathern | — | — | — |
+| C7 | 2402.09345 | — | — | — | — | — | — | — | — |
+| C8 | 2405.16436 | — | — | — | — | — | — | — | — |
+| C9 | 2503.18130 | — | — | — | — | — | — | — | — |
+| C10 | 2505.18126 | — | — | — | — | — | — | — | — |
+| C11 | 2505.12763 | — | — | — | — | — | — | — | ✓ Goodhart 1984 |
+| C12 | 2510.13694 | — | — | — | — | — | — | — | — |
+| C13 | 2502.18770 | — | — | — | — | — | — | — | — |
+
+Methods: all S2 COMPLETE (271/62/95/58/52/53/92/61 refs). Verbatim: C6 MGMT =
+Strathern 1997; C11 Goodhart = Goodhart 1984. Collision rejections: Namkoong
+as Wortsman-coauthor ×3 in C6 and ×1 in C10 (NOT Namkoong–Duchi ESTIM); Nathan
+Lambert + Bowen Baker (C11).
+
+## Completed batch: cluster C batch 3 (C22–C29, rerun 2026-07-10)
+
+| id | Paper | CONTRACT | PUBFIN | 2BEST | CORRECT | MGMT | ESTIM | Lucas | Goodhart |
+|---|---|---|---|---|---|---|---|---|---|
+| C22 | 2309.16155 | — | — | — | — | — | — | — | — |
+| C23 | 2402.10184 | — | — | — | — | — | — | — | — |
+| C24 | 2307.15217 Casper | — | — | — | — | — | — | — | — |
+| C25 | 2501.09620 | — | — | — | — | — | — | — | — |
+| C26 | 2409.19024 | — | — | — | — | — | — | — | ✓ Goodhart 1984 |
+| C27 | 2410.05584 | — | — | — | — | — | — | — | ✓ Goodhart 1984 |
+| C28 | 2510.03231 Trench Coat | — | — | — | — | — | — | — | ✓ Goodhart 1984 |
+| C29 | 2604.01476 | — | — | — | — | — | — | — | — |
+
+Methods: all S2 COMPLETE (77/46/227/61/24/29/33) except **C28 coded from ar5iv
+(~161 refs) — SECOND S2 WRONG-LIST INCIDENT: the S2 endpoint for 2510.03231
+returned C29's 33-entry list; identities verified via arXiv abs pages and C28
+re-retrieved.** Verbatim Goodhart-1984 strings recorded for C26/C27/C28.
+
+## Completed batch: cluster C batch 4 (C30–C35, rerun 2026-07-10) — the χ²/DRO pocket
+
+| id | Paper | CONTRACT | PUBFIN | 2BEST | CORRECT | MGMT | ESTIM | Lucas | Goodhart |
+|---|---|---|---|---|---|---|---|---|---|
+| C30 | 2604.26360 | — | — | — | — | — | — | — | — |
+| C31 | 2407.13399 χPO | — | — | — | — | — | ✓ Duchi–Namkoong 2019 + Tsybakov 2008 (**genealogy footnote; type-ii per handoff §6 primary read — do NOT re-inflate**) | — | — |
+| C32 | 2509.19104 DRO-REBEL | — | — | — | — | — | ✓ Duchi–Namkoong 2021/2022 + Namkoong–Duchi 2017 + Rockafellar–Wets Variational Analysis (**tooling**) | — | — |
+| C33 | 2502.01930 | — | — | — | — | — | ✓ Duchi–Namkoong + Namkoong–Duchi 2016 + Lévy–Carmon–Duchi–Sidford (**tooling**) | — | — |
+| C34 | 2604.08577 | — | — | — | — | — | ✓ Duchi–Glynn–Namkoong 2016 + Namkoong–Duchi 2016 (**tooling**) | — | — |
+| C35 | 2503.00539 | — | — | — | — | — | ✓ **Ben-Tal 2013** + Sinha–Namkoong–Duchi + Lévy et al. (**tooling**) | — | — |
+
+Methods: C30 arXiv-HTML COMPLETE 54; C31 arXiv-HTML COMPLETE 103 (S2+OpenAlex
+0 refs); C32 arXiv-HTML COMPLETE 70 (S2+OpenAlex 0 refs); C33 S2 COMPLETE 76;
+C34 S2 COMPLETE 36; C35 S2 COMPLETE 56. All verbatim strings in agent output;
+key ones: C31 = "Duchi and Namkoong (2019). Variance-based regularization with
+convex objectives. JMLR" + "Tsybakov (2008). Introduction to Nonparametric
+Estimation"; C35 = "Robust Solutions of Optimization Problems Affected by
+Uncertain Probabilities (2013) — A. Ben-Tal et al.". Notes: Ben-Tal ABSENT
+from C32 (expected "possibly"; its HCR-adjacent hit is Duchi–Namkoong 2022
+generalized empirical likelihood). **Zero CONTRACT/MGMT/eponym anywhere in the
+pocket; zero Hammersley/Chapman–Robbins anywhere.**
+
+## Completed batch: E+H (rerun 2026-07-10)
+
+| id | Paper | CONTRACT | PUBFIN | 2BEST | CORRECT | MGMT | ESTIM | Lucas | Goodhart |
+|---|---|---|---|---|---|---|---|---|---|
+| E1 | 1906.01820 | — | — | — | — | — | — | — | — |
+| E2 | 2209.00626 | — | — | — | — | — | — | — | — |
+| H5 | 2310.19852 Ji survey | — | — | — | — | — | ✓ Ben-Tal 2009 + Duchi–Glynn–Namkoong 2021 (**tooling**, DRO/OOD subsection) | — | ✓ Goodhart 1984 |
+| H6 | 2109.13916 Hendrycks | — | — | — | — | ✓ **Ridgway 1956** + Strathern | — | — | ✓ Goodhart 1984 |
+| H7 | 2505.02666 | — | — | — | — | — | — | — | — |
+| H8 | 2506.15421 | — | — | — | — | — | — | — | — |
+
+Methods: E1 S2 COMPLETE 41; E2 S2 COMPLETE 208; H5 **pdftotext** COMPLETE 838
+(S2+OpenAlex 0 refs); H6 S2 COMPLETE 225; H7 S2 COMPLETE 181; H8 S2 COMPLETE 78.
+Verbatim: H6 MGMT = "Dysfunctional Consequences of Performance Measurements —
+V. Ridgway — 1956" + Strathern 1997; H5 ESTIM = "Ben-Tal, El Ghaoui, Nemirovski
+2009. Robust optimization. Princeton UP" + "Duchi, Glynn, Namkoong 2021.
+Statistics of robust optimization. Math. OR". Collision rejections: Herbert
+Robbins bandit paper ≠ Chapman–Robbins (H8); Donald Campbell hedonic-treadmill
+paper = right author wrong work, not coded (H6); Rosie Campbell / Jamie Kerr /
+Campbell-Gillingham / "Renduchintala"⊃"duchi" / "Budden"≈"budde" all rejected
+(E2, H7).
+
+## Completed batch: cluster F batch 2 (F9–F15, rerun 2026-07-10)
+
+| id | Paper | CONTRACT | PUBFIN | 2BEST | CORRECT | MGMT | ESTIM | Lucas | Goodhart |
+|---|---|---|---|---|---|---|---|---|---|
+| F9 | 2310.16608 | — | — | — | — | — | — | — | — |
+| F10 | 2509.02391 | — | — | — | — | — | — | — | — |
+| F11 | 2011.00355 | — | — | — | — | — | — | — | — |
+| F12 | 2412.02000 | — | — | — | — | — | — | — | — |
+| F13 | 2508.14927 | ✓ **Holmström 1979 + 1980** (control/moral-hazard) | — | — | — | — | — | — | — |
+| F14 | 2605.06324 | — | — | — | — | — | — | — | — |
+| F15 | 2412.16114 Content Moderator | ✓ **Feltham–Xie 1994 + HM1991** (perf-measurement) | — | — | — | — | — | — | — |
+
+Methods: F9 S2 COMPLETE 105; F10 S2 COMPLETE 97; F11 S2 COMPLETE 45; F12 S2
+COMPLETE 63; F13 arXiv-HTML COMPLETE 83; F14 **LaTeX source** COMPLETE 18 (S2
+429, OpenAlex 0, HTML bibliography renders empty); F15 arXiv-HTML COMPLETE 128
+(S2 0 refs, OpenAlex DOI 404). Verbatim: F13 = "Holmström, B. Moral hazard and
+observability. Bell J. Econ 1979" + "Holmström, B. On the theory of delegation.
+1980" (1980 outside the enumerated list, counted as supporting Holmström P-A);
+F15 = "Feltham, G. A. and X. Xie (1994). Performance measure congruity and
+diversity in multi-task principal/agent relations. Accounting Review" +
+"Holmstrom, B. and P. Milgrom (1991). Multitask principal–agent analyses…".
+F14's own body uses "Goodhart's law" but cites no eponym → coded —. Collision
+rejections: FL "contract theory" ML papers (F10), Bowen Baker + "Chapman and
+Hall" publisher ≠ Chapman–Robbins (F13).
+
+## Completed batch: G + I (rerun 2026-07-10)
+
+| id | Paper | CONTRACT | PUBFIN | 2BEST | CORRECT | MGMT | ESTIM | Lucas | Goodhart |
+|---|---|---|---|---|---|---|---|---|---|
+| G1 | 1506.02629 Dwork | — | — | — | — | — | — | — | — |
+| G2 | 1908.03156 (see errata) | — | — | — | — | — | — | — | — |
+| G3 | 2102.13189 | — | — | — | — | — | — | — | — |
+| G4 | 1604.02492 | — | — | — | — | — | — | — | — |
+| G5 | 2410.09247 | — | — | — | — | ✓ Strathern | — | — | ✓ Goodhart 1984 |
+| G6 | 2502.06559 | — | — | — | — | ✓ Strathern | — | — | — |
+| G7 | 2406.04244 | — | — | — | — | — | — | — | — |
+| I1 | 2603.28063 Wang–Huang | ✓ **HM1991 + Baker 1992** (perf-meas) **+ Grossman–Hart 1986 + Hart–Moore 1990** (control) | — | — | — | — | — | — | — |
+| I2 | 2605.30916 Haupt | ✓ **HM1987 + HM1991 + Baker 2002** (perf-meas) | — | — | — | ✓ Strathern | — | — | — |
+| I3 | OpenReview Y5qABVr7uB | n/a — access-limited (OpenReview api/api2 403 ChallengeRequired; PDF bot-shell; S2 search 429 ×retries; NOT copied from sibling) | | | | | | | |
+
+Methods: G1–G4 OpenAlex COMPLETE 33/16/22/12 (S2 429 all session); G5–G7 S2
+COMPLETE 46/146/213; I1 arXiv-HTML COMPLETE 21; I2 arXiv-HTML COMPLETE ~65.
+All I1/I2 econ strings confirmed verbatim (in agent output; JPE/JLEO/JHR
+citations exactly as primary-verified 2026-06-30). Near-tier items excluded in
+I2: Lazear–Rosen 1981, Carroll 2015, Pratt 1964 (P-A adjacent, not
+scheme-listed); Stephen Campbell NHS ≠ Donald Campbell; Jacob–Levitt 2003 +
+Eterno–Silverman (metric-gaming, outside enumerated MGMT set).
+
+**Errata (freeze bookkeeping):** the pool labels G2 (1908.03156) as Blum–Hardt
+"The Ladder"; the ID actually resolves to a different test-set-overfitting
+paper ("Optimal multiclass overfitting…", 2019). Still rule-3 in-scope
+(coded as-is, zero hits either way), but the corpus row title is wrong and the
+real Ladder (arXiv:1502.04585) is NOT in the frozen denominator. Task-07 call:
+fix label only, or swap/add the Ladder.
+
+---
+
+**All 13 batches complete.** Master table + tier totals: `audit.md`. Open
+items handed to task 07: (1) D3 HM1991 unconfirmed (PDF check); (2) A9 new
+exception-floor candidate — verify + type from citing sentence; (3) the two S2
+wrong-list incidents (B12, C28) → every hit and a sample of absences need a
+second-source check; (4) G2 label errata; (5) A12/I3 remain n/a (access).

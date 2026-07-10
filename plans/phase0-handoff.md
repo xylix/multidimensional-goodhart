@@ -334,8 +334,13 @@ re-code).
       results integrated into `bridges.md` + `ai-corpus.md`. Only residual:
       Haupt-2's own ref list (OpenReview bot-challenge; verified via sibling).
 - [ ] **Phase 1b** — Track B leads (per the 2026-07-10 decisions):
-  - **Track B (leads):** 05 freeze corpus **including F & G** + tier scheme →
-    06 code → 07 verify (right-sized per §11 resolution) → (08 done) →
+  - **Track B (leads):** ✅ 05 freeze DONE 2026-07-10 (N=117 incl. F & G,
+    `citation-audit/corpus.md`) → ✅ 06 code DONE 2026-07-10 (N=115 minable
+    coded; master table + totals in `citation-audit/audit.md`, raw batches in
+    `coding-batches.md`; headline: CONTRACT 0/60 in the B+C core, all 8 hits in
+    bridges/CHAI/strategic-ML pockets; NEW exception-floor candidate A9
+    2603.15017) → 07 verify (right-sized per §11 resolution; must second-source
+    all hits — two S2 wrong-list incidents; D3 HM1991 + A9 checks) → (08 done) →
     09 why-the-gap → 10 synthesize/close → structure the **LessWrong post**
     (applicable math foregrounded; audit as repo-internal evidence).
   - **Track A (follows / parallel):** per-theorem novelty reviews
