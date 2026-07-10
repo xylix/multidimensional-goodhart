@@ -36,7 +36,7 @@ Provenance abbreviations: `S2-cite:<id>` = found in Semantic Scholar forward-cit
 | A9 | 2603.15017 | 2026 | (preprint) | "Consequentialist Objectives and Catastrophe" — formal catastrophe conditions under proxy optimization. | S2-cite:2410.09638 |
 | A10 | 2506.19248 | 2025 | (preprint) | "Inference-Time Reward Hacking in LLMs" — formal analysis of best-of-n / proxy gap at inference. | S2-cite:2410.09638; WS:"Goodhart RL" |
 | A11 | 2602.13934 | 2026 | (preprint) | "Why Code, Why Now: Information-Theoretic Perspective on Limits of ML" (cites El-Mhamdi Goodhart). | S2-cite:2410.09638 |
-| A12 | "On the Strength of Causal Goodhart's Law" | (n.d.) | (preprint, no arXiv id captured) | Causal-Goodhart strengthening result. **FLAG: id unverified — needs lookup.** | S2-cite:2410.09638 |
+| A12 | **"On the Strength of Goodhart's Law"** (S2's "Causal" in the title is garbled) | 2025 | **Workshop poster, no arXiv id exists** — 2nd Workshop on Models of Human Feedback for AI Alignment (MoFA), ICML 2025; OpenReview `HTpPKXkUnw` | Majka, Bouaziz, El-Mhamdi. Causal-structure Goodhart (confounding / mirror-confounding / cascading). Distinct from the same group's 2505.23445. **RESOLVED 2026-07-10** (ICML virtual page + S2 citations API; OpenReview abstract behind bot-challenge). | S2-cite:2410.09638 |
 | A13 | 2011.01010 | 2020 | (preprint) | **SEED-ADJACENT (Ashton 2021).** "Causal Campbell-Goodhart's law and RL"; causal variant in RL agents. | seed; S2-cite:1803.04585 |
 | A14 | 1810.10862 | 2018 | (preprint) | Manheim "Overoptimization Failures and Specification Gaming in Multi-agent Systems"; multi-agent Goodhart. | S2-cite:1803.04585 |
 | A15 | 2002.08512 | 2020 | (preprint/essay) | Thomas & Uesato "Reliance on metrics is a fundamental challenge for AI" ("The problem with metrics…"). **BORDERLINE: position/essay.** | S2-cite:1803.04585; WS:"Goodhart taxonomy" |
@@ -129,7 +129,7 @@ Provenance abbreviations: `S2-cite:<id>` = found in Semantic Scholar forward-cit
 | D4 | 2212.03201 | 2022 | NeurIPS 2022 | **SEED.** Skalse & Abate "Misspecification in Inverse RL"; when does proxy reward recover true reward. | seed; S2-cite:2209.13085 |
 | D5 | 2309.15257 | 2023 | (preprint) | **SEED.** Skalse et al. STARC; pseudometric quantifying differences between reward functions. | seed; S2-cite:2209.13085 |
 | D6 | 2403.06854 | 2024 | (preprint) | "Quantifying the Sensitivity of IRL to Misspecification". | S2-cite:2309.15257 |
-| D7 | "Partial identifiability and misspecification in IRL" | 2026 | JMLR? | Partial identifiability of reward under proxy/misspecification. **FLAG: arXiv id not captured.** | S2-cite:2209.13085; S2-cite:2309.15257 |
+| D7 | "Partial Identifiability and Misspecification in Inverse Reinforcement Learning" | 2024 | **arXiv:2411.15951** (Skalse & Abate; combined treatment; also Oxford ORA) | Partial identifiability of reward under proxy/misspecification. Component strands if needed separately: 2203.07475 (ICML 2023, partial identifiability) + Skalse–Abate AAAI 2023 (misspecification, DOI 10.1609/aaai.v37i12.26766); adjacent: 2403.06854. **RESOLVED 2026-07-10** (arXiv abs pages fetched). | S2-cite:2209.13085; S2-cite:2309.15257 |
 | D8 | 2312.08358 | 2023 | (preprint) | "Distributional Preference Learning: Hidden Context in RLHF". | S2-cite:2102.03896 |
 | D9 | 2412.16475 | 2024 | (preprint) | "When Can Proxies Improve the Sample Complexity of Preference Learning?". | S2-cite:2310.09144 |
 
@@ -236,9 +236,10 @@ is appropriate for a denominator population since the audit's "does X cite the
 econ prior art" question turns on the anchor/canonical papers, not on every
 2026 RLVR mitigation preprint.
 
-**Items flagged as unverified (need a lookup before any coding):** A12 ("On the
-Strength of Causal Goodhart's Law", no arXiv id — appears in S2 citation list of
-2410.09638 without an id) and D7 ("Partial identifiability and misspecification in
-IRL", no id captured). Flagged rather than guessed. (B10 → 2210.01790, B19 →
-2211.08714, D3 → 1611.08219 were verified via S2/WebSearch during discovery and
-are no longer flagged.)
+**Items flagged as unverified — ALL RESOLVED 2026-07-10 (Phase 1a):** A12 is a
+real ICML 2025 MoFA workshop poster with no arXiv id (canonical title "On the
+Strength of Goodhart's Law" — S2's "Causal" is garbled; Majka, Bouaziz,
+El-Mhamdi; OpenReview `HTpPKXkUnw`); D7 is arXiv:2411.15951 (Skalse & Abate
+2024). Details in the table rows. (B10 → 2210.01790, B19 → 2211.08714, D3 →
+1611.08219 were verified via S2/WebSearch during discovery.) **No flagged IDs
+remain — the corpus is clear for the task-05 freeze.**

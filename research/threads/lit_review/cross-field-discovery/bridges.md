@@ -404,6 +404,16 @@ estimation tier** to Goodhart *as prior theory*. The two unanimous strong result
    2024, arXiv:2407.13399). **[PRIMARY-VERIFIED 2026-06-30 — corrects the passes:]**
    **Laidlaw is the clean type-(iii)** — full-text check finds no Hammersley /
    Chapman–Robbins / Ben-Tal / Namkoong–Duchi (only the imitation-learning lineage).
+   **[LOCKED 2026-07-10 — Phase 1a re-grep:]** the COMPLETE 92-entry reference list
+   (Semantic Scholar API, all letter ranges seen) contains none of: Hammersley,
+   Chapman–Robbins, Ben-Tal 2013, Namkoong–Duchi, Duchi–Namkoong, Tsybakov, Csiszár,
+   or any "distributionally robust"-titled paper; nearest-in-spirit cites are recent
+   ML papers (χPO, Kwa "Catastrophic Goodhart", Go f-divergence). Cite it by its
+   current title: **"Correlated Proxies: A New Definition and Improved Mitigation
+   for Reward Hacking" (Laidlaw, Singhal, Dragan; v4 2025, ICLR 2025 spotlight)** —
+   the older working title "Preventing Reward Hacking with Occupancy Measure
+   Regularization" is stale. (Caveat: S2's resolver can rarely drop an unparsed
+   entry; the 92-entry list was internally complete.)
    **χPO is type-(ii), NOT type-(iii):** its PDF (refs + §7 footnote) *does* cite
    **Duchi–Namkoong 2019** (the variance-regularization = χ²-DRO result), but only as
    genealogy — *"More classically, χ²-divergence is known to play a fundamental role
@@ -430,11 +440,11 @@ estimation tier** to Goodhart *as prior theory*. The two unanimous strong result
 | Bridge paper | prior art reached | pocket | type | verified |
 |---|---|---|---|---|
 | **Haupt et al. 2026** "Welfare, Improvability, and Variance" (arXiv:2605.30916) | HM1991, Baker 2002 | benchmark design | **(i)** Goodhart-framed multitask P-A for benchmark aggregation; derives v*=(M+rΣ)⁻¹Mw | **exists, confirmed** (title/authors via arXiv; HM1991/Baker citing-sentences from passes' body reads) |
-| Haupt et al. 2026 "Optimal Aggregation Mechanisms for AI Benchmarking" | HM1991, Strathern 1997 | benchmark design | (i) same pocket | flagged (OpenReview; not independently confirmed) |
-| **The Content Moderator's Dilemma** (arXiv:2412.16114, 2024) | **HM1991 + Feltham–Xie 1994** | content-moderation econ (NOT core safety) | (i) — the *only* Feltham–Xie bridge found, and it is outside the reward-hacking corpus | flagged for body-verify |
+| Haupt et al. 2026 "Optimal Aggregation Mechanisms for AI Benchmarking **and Platinum Benchmarks**" (Haupt, Reuel, Kochenderfer, Koyejo; ICLR 2026 Workshop on AI for Mechanism Design; OpenReview `Y5qABVr7uB`) | HM1991, Strathern 1997 (indirect) | benchmark design | (i) same pocket | **VERIFIED-EXISTS 2026-07-10** (author page + ICLR listing); workshop sibling of 2605.30916, same program. **Own ref list unread** (OpenReview bot-challenge) — econ cites confirmed only via the arXiv sibling (HM1991, Strathern, Baker 2002 present; Feltham–Xie absent) |
+| **The Content Moderator's Dilemma: Removal of Toxic Content and Distortions to Online Discourse** (arXiv:2412.16114, 2024; Habibi, Hovy, Schwarz) | **HM1991 + Feltham–Xie 1994** (both verbatim in refs + cited together in intro) | content-moderation econ (NOT core safety) | (i)-ish — the *only* Feltham–Xie bridge found; outside the reward-hacking corpus, and **"Goodhart" does not appear anywhere in the paper** (multitask P-A framing only) | **BODY-VERIFIED 2026-07-10** (abs + full HTML + ar5iv bibliography) |
 | DRO-REBEL / Robust-DPO / DR-Token-Opt / Mandal 2025–26 | Ben-Tal 2013, Namkoong–Duchi 2017, (HCR in DRO-REBEL appendix) | robust-RLHF tooling | **(ii)** — DRO machinery, not Goodhart bridge | IDs return arXiv 200; tooling role per ChatGPT/Claude |
 | Hadfield-Menell & Hadfield "Incomplete Contracting and AI Alignment" (arXiv:1804.04268) | HM1991, Baker et al. 1994 | CHAI/control | (ii) — deep restatement, incomplete-contracting framing | known-lineage |
-| Athey et al. "AI Design: Sufficient Statistics" (MIT 2025/26) | Chetty 2009 | human–AI delegation (NOT Goodhart) | (ii) — sufficient-stat *method*, not reward-hacking | **Gemini-only; unverified — flag** |
+| ~~Athey et al. "AI Design: Sufficient Statistics"~~ → **Agarwal, Moehring & Wolitzky 2025, "Designing Human-AI Collaboration: A Sufficient-Statistic Approach"** (MIT WP, June 2025) | Chetty 2009 (verbatim; footnote 2 + welfare-analysis passage) | human–AI delegation (NOT Goodhart — no "Goodhart"/"proxy gaming"/"reward hacking" in text) | (ii) — sufficient-stat *method*, not reward-hacking | **RESOLVED 2026-07-10: real paper, Gemini MISATTRIBUTED** — Athey is only a cited reference (Athey–Bryan–Gans 2020) and the phantom title came from the PDF filename `AI_Design__Sufficient_Statistics.pdf`. Full PDF read. |
 
 Plus the confirmed floor: **Wang & Huang 2026 (arXiv:2603.28063)** type-(i)
 HM1991+Baker 1992 → distortion index; CHAI (control); BBS (qualitative);
@@ -479,8 +489,13 @@ Hendrycks-Ridgway (genealogy).
   Goodhart/Campbell-framed, citing Baker 2002 for effort-reallocation (not the
   1−cosθ congruity condition). **Neither cites Feltham–Xie, Banker–Datar, DKL,
   Bénabou–Tirole, or any estimation item** — cosine-congruity geometry + estimation
-  tier confirmed unreached. (Still need a body-verify: the second Haupt paper, the
-  Content-Moderator Feltham–Xie bridge, the Athey/Chetty item.)
+  tier confirmed unreached. **[Phase 1a, 2026-07-10 — the three residual
+  body-verifies are DONE:** Content-Moderator Feltham–Xie bridge body-verified
+  (real, both cites verbatim, not Goodhart-framed); the second Haupt paper
+  verified-exists (workshop sibling of 2605.30916; own ref list unreadable behind
+  OpenReview bot-challenge — the one remaining indirect link); the "Athey/Chetty"
+  item resolved as a real Agarwal–Moehring–Wolitzky paper Gemini misattributed,
+  type-(ii), no Goodhart content. See the updated table rows above.**]
 - **χPO ≠ HCR-identity (corrected 2026-06-30).** The Claude/Gemini "χPO's bound IS
   the HCR variational identity, uncited" near-miss was **overstated**: χPO's Lemma
   5.1 is a χ²-change-of-measure bound (different inequality, same family), and χPO

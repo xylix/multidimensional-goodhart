@@ -162,13 +162,16 @@ floor** (CHAI, BBS, Hendrycks-Ridgway, Wang–Huang, Haupt), not claim totality.
 | Hendrycks "Unsolved Problems in ML Safety" 2021 | Ridgway 1956 | genealogy tier, **type-(ii)** | known floor |
 | robust-RLHF cluster: DRO-REBEL (2509.19104), Robust-DPO (2502.01930), DR-Token-Opt (2604.08577), Mandal (2503.00539) | Ben-Tal 2013, Namkoong–Duchi 2017 (DRO-REBEL appendix also HCR) | **DRO tooling, type-(ii)** | from passes; tooling role per ChatGPT/Claude |
 | χPO (2407.13399) | Duchi–Namkoong 2019 (genealogy footnote) | **type-(ii)** | **PRIMARY-VERIFIED 2026-06-30** — see §6 correction |
-| Content Moderator's Dilemma (2412.16114, 2024) | HM1991 + **Feltham–Xie 1994** | content-moderation econ (NOT core safety), type-(i)-ish | **unverified — residual** (§10); the *only* Feltham–Xie bridge found, and it's outside the reward-hacking corpus |
-| Haupt-2 "Optimal Aggregation Mechanisms for AI Benchmarking" | HM1991 + Strathern | benchmark, type-(i) | **unverified — residual** |
-| Athey et al. "AI Design: Sufficient Statistics" | Chetty 2009 | human–AI delegation method (NOT Goodhart) | **Gemini-only, unverified — residual** |
+| Content Moderator's Dilemma (2412.16114, 2024; Habibi–Hovy–Schwarz) | HM1991 + **Feltham–Xie 1994** (both verbatim) | content-moderation econ (NOT core safety), type-(i)-ish; **"Goodhart" absent from the paper** | **BODY-VERIFIED 2026-07-10**; the *only* Feltham–Xie bridge found, outside the reward-hacking corpus |
+| Haupt-2 "Optimal Aggregation Mechanisms for AI Benchmarking and Platinum Benchmarks" (ICLR 2026 wkshp, OpenReview `Y5qABVr7uB`) | HM1991 + Strathern (indirect, via arXiv sibling) | benchmark, type-(i) | **VERIFIED-EXISTS 2026-07-10**; workshop sibling of 2605.30916; own ref list unread (bot-challenge) |
+| ~~Athey~~ **Agarwal–Moehring–Wolitzky 2025** "Designing Human-AI Collaboration: A Sufficient-Statistic Approach" (MIT WP) | Chetty 2009 (verbatim) | human–AI delegation method (NOT Goodhart — term absent) | **RESOLVED 2026-07-10**: real paper, **Gemini misattributed** (Athey only in its refs; title from PDF filename); full PDF read |
 
 **The clean reinvented-uncited case is Laidlaw 2024 (2403.03185)** — occupancy-measure
-χ² for Goodhart, cites **no** estimation lineage (type-iii, full-text checked by the
-passes). Use Laidlaw, not χPO, as the headline example.
+χ² for Goodhart, cites **no** estimation lineage. **Type-(iii) LOCKED 2026-07-10:**
+complete 92-entry reference list (S2 API) has zero estimation/DRO-lineage items.
+Cite by current title: **"Correlated Proxies: A New Definition and Improved
+Mitigation for Reward Hacking"** (Laidlaw, Singhal, Dragan; ICLR 2025 spotlight).
+Use Laidlaw, not χPO, as the headline example.
 
 ---
 
@@ -196,7 +199,7 @@ things:
 | BBS is qualitative, not formal (delta real) | **primary (BBS body read)**; `[confident]` |
 | Wang–Huang / Haupt reach only HM1991/Baker, not the core | **primary (ref-lists pulled)**; `[confident]` |
 | χPO is type-(ii); its bound ≠ HCR identity | **primary (PDF read)**; `[confident]` |
-| Laidlaw 2024 is the clean type-(iii) | passes' full-text check; `[confident-tentative]` (re-grep possible) |
+| Laidlaw 2024 is the clean type-(iii) | **primary (complete S2 ref-list re-grep 2026-07-10)**; `[confident]` |
 | Reynaert–Sallee / Chetty / Şabac–Yoo / Lipsey–Lancaster type-(iii) | 6 passes + census, auditable empty logs; `[confident]` |
 | Prior-art statements (Reynaert–Sallee Prop 2/4, Chetty eq 3/7, Banker–Datar Prop 1/2, Frankel–Kartik Prop 2, HCR Thm 29.1, Namkoong–Duchi Thm 1 √(2ρ/n)) | **verified-primary** (Task 08) |
 | Feltham–Xie / Baker 1992&2002 / HM1991 / DKL / Rockafellar proposition numbers | **paywalled — flagged for user pull** (substance verified-secondary) |
@@ -244,16 +247,26 @@ things:
 
 ## 10. Residual verifies (open — none are gate-critical)
 
-**AI-doable (next session, Phase 1a):**
-1. **Content Moderator's Dilemma (arXiv:2412.16114)** — confirm it cites Feltham–Xie
-   and that it's content-moderation econ (adjacent, not core safety). The only
-   Feltham–Xie bridge found.
-2. **Haupt-2 "Optimal Aggregation Mechanisms for AI Benchmarking"** — confirm exists
-   + what it cites (OpenReview).
-3. **Athey et al. "AI Design: Sufficient Statistics"** — confirm exists + that it's a
-   delegation-method use of Chetty, not a Goodhart bridge. (Gemini-only.)
-4. **Re-grep Laidlaw 2403.03185 references** to lock its type-(iii) `[confident]`.
-5. **Verify the unverified 2026 arXiv IDs** in `ai-corpus.md` before the freeze.
+**AI-doable — ALL DONE 2026-07-10 (Phase 1a executed; details written into
+`bridges.md` and `ai-corpus.md`):**
+1. ✅ **Content Moderator's Dilemma (arXiv:2412.16114)** — body-verified: real
+   (Habibi–Hovy–Schwarz 2024), cites Feltham–Xie 1994 AND HM1991 verbatim,
+   content-moderation econ, **"Goodhart" absent from the paper**.
+2. ✅ **Haupt-2** — real: "…AI Benchmarking **and Platinum Benchmarks**" (Haupt,
+   Reuel, Kochenderfer, Koyejo; ICLR 2026 workshop; OpenReview `Y5qABVr7uB`);
+   workshop sibling of 2605.30916. Own ref list unreadable (bot-challenge);
+   econ cites confirmed only via the sibling — the one residual indirect link.
+3. ✅ **"Athey et al."** — resolved as **Gemini misattribution of a real paper**:
+   Agarwal, Moehring & Wolitzky 2025 (MIT), "Designing Human-AI Collaboration:
+   A Sufficient-Statistic Approach"; cites Chetty 2009 methodologically; no
+   Goodhart/proxy-gaming content. Not a bridge.
+4. ✅ **Laidlaw 2403.03185 type-(iii) LOCKED** — complete 92-entry S2 ref list,
+   zero estimation/DRO lineage. Title correction: "Correlated Proxies…"
+   (ICLR 2025 spotlight).
+5. ✅ **Flagged IDs resolved** — A12 = "On the Strength of Goodhart's Law"
+   (Majka–Bouaziz–El-Mhamdi, ICML 2025 MoFA poster, OpenReview `HTpPKXkUnw`,
+   no arXiv id exists; S2's "Causal" title is garbled); D7 = arXiv:2411.15951
+   (Skalse & Abate 2024). **No flagged IDs remain — corpus clear for freeze.**
 
 **Human-access likely needed:**
 6. **Bolton–Dewatripont 2005 *Contract Theory* Ch. 4 & 8** — does it co-locate
@@ -317,7 +330,9 @@ re-code).
       Dewatripont (§10 item 6).
 
 ### AI (clean next session)
-- [ ] **Phase 1a** — clear the AI-doable residual verifies (§10 items 1–5).
+- [x] **Phase 1a** — DONE 2026-07-10: all five residual verifies cleared (§10);
+      results integrated into `bridges.md` + `ai-corpus.md`. Only residual:
+      Haupt-2's own ref list (OpenReview bot-challenge; verified via sibling).
 - [ ] **Phase 1b** — Track B leads (per the 2026-07-10 decisions):
   - **Track B (leads):** 05 freeze corpus **including F & G** + tier scheme →
     06 code → 07 verify (right-sized per §11 resolution) → (08 done) →
