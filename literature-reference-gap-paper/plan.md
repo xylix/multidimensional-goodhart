@@ -1,12 +1,30 @@
 # Gap paper: the AI-safety Goodhart literature does not cite its own prior art
 
-Status: proposed, 2026-06-24. A short **standalone** paper whose contribution is
-bibliographic + synthesis, not new theorems. Spun out of the part-2 finding in
-the June 24 lit-review session: the canonical AI-safety formalizations of
-Goodhart's law cite essentially none of the economics / management-science /
-accounting literature that contains the same formal mathematics.
+Status: **rescoped 2026-07-10 → a LessWrong-post-size artifact** (was: proposed
+2026-06-24 as a short standalone paper). Contribution is synthesis of the
+*applicable math*, not new theorems and not bibliometrics-as-headline. Spun out
+of the part-2 finding in the June 24 lit-review session: the canonical AI-safety
+formalizations of Goodhart's law cite essentially none of the economics /
+management-science / accounting literature that contains the same formal
+mathematics.
 
 ## Decision record
+
+- **Rescope (2026-07-10, human decision after the Phase-0 gate):** target is a
+  **LessWrong post**, not an academic paper. Foreground the **actually
+  applicable math** — the cross-field dictionary (G2) and the what-transfers
+  payoff (G3). **De-emphasize the citation-trackery content** ("this paper
+  deserved a citation but the idea got re-invented"): the coded audit, census
+  logs, and findings stay in the repo as the evidence base behind any published
+  number, but they are not the post's pitch. Sections G1/G4 below are therefore
+  re-weighted: G1 completes as a repo artifact; G4's venue question is settled
+  (LW post; arXiv/workshop versions only if the post warrants it later).
+- **Corpus freeze scope (2026-07-10):** **include clusters F & G** — one
+  denominator, no boundary to defend. Coding rigor stays (published numbers rest
+  on the coded table); the paper-grade apparatus (methods note, inter-rater
+  ceremony) may be right-sized by the executing session.
+- **Track order (2026-07-10):** B leads, A follows — this post is the shortest
+  path to a circulatable artifact and seeds Paper 1's related work.
 
 - **Positioning: standalone, seeds Paper 1.** Publishes first and independently;
   its synthesis later becomes Paper 1's reframed related-work

@@ -2,6 +2,26 @@
 
 Index for active plans. Individual plans live in sibling files.
 
+## Update (July 10, 2026) — Phase 0 closed, HARD STOP lifted, Track B rescoped
+
+Phase 0 (unified cross-field discovery) completed, gate passed, adversarially
+confirmed and primary-verified (June 28–30; master doc:
+`phase0-handoff.md`). The human judgment calls landed July 10:
+
+- **Track B rescoped to a LessWrong-post-size artifact** foregrounding the
+  applicable math (dictionary + what-transfers); the citation-trackery content
+  stays repo-internal as evidence, not the published pitch.
+- **Corpus widened to include clusters F & G** (one denominator, no exclusion
+  to defend).
+- **Order: Track B leads, Track A follows/parallel.** Next actions: Phase 1a
+  residual verifies (`phase0-handoff.md` §10 items 1–5), then task 05 freeze.
+
+Cross-track couplings noted July 10: `empirical_goodhart`'s multidimensional-
+gridworld step (its README next-step 2) waits on Track A settling T5's
+congruity reframe; `divergence-thresholds` needs its re-scope gate vs
+Majka–El-Mhamdi 2025 before activation
+(`divergence-thresholds/plans/rescope-vs-majka-elmhamdi.md`).
+
 ## Status (updated June 24, 2026)
 
 The manuscript pipeline (Phases 0–4: consistency fixes, spine gate, spine-v3,
@@ -111,6 +131,11 @@ until these land, in order:
 5. Only then the **publishing decision** proper (venue, format, release checklist).
 
 ### Track B — Gap paper (parallel; can circulate ahead of Paper 1)
+
+> **Rescoped July 10, 2026:** target is now a **LessWrong post**, not an academic
+> paper — applicable math foregrounded, citation audit repo-internal; corpus
+> includes clusters F & G. See the July 10 update above and
+> `phase0-handoff.md` §11.
 
 **Gap paper (proposed June 24, 2026)** — `literature-reference-gap-paper/`
 (self-contained: `plan.md` + `citation-audit/` + eventual draft). A short

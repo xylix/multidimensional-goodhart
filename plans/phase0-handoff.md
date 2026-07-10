@@ -22,8 +22,12 @@ no longer claim to be "first to bridge contract theory to formal Goodhart"** (tw
 dictionary, the specific uncited identities, and the subset-invariance reading all
 survive** — see §4.
 
-The HARD STOP is still in force: **no corpus freeze (05), no coding (06), no Track
-A consumption until the human signs off.**
+~~The HARD STOP is still in force: **no corpus freeze (05), no coding (06), no Track
+A consumption until the human signs off.**~~ **RESOLVED 2026-07-10 — the human
+sign-off landed and the HARD STOP is lifted.** The three decisions are recorded in
+§11: Track B is rescoped to a LessWrong-post-size artifact foregrounding the
+applicable math (citation-trackery stays repo-internal); the corpus is widened to
+include clusters F & G; Track B leads, Track A follows.
 
 ---
 
@@ -279,27 +283,50 @@ wrong; you judge the contribution too thin (→ kill Track B, keep Track A's
 per-theorem reframes); the corpus boundary feels indefensible (→ widen it and
 re-code).
 
+### RESOLVED 2026-07-10 (human decisions, recorded verbatim in intent)
+
+1. **Judgment call 1 → rescope, don't kill.** Track B becomes a
+   **LessWrong-post-size artifact**, not an academic paper. The post foregrounds
+   the *actually applicable math* (the breadth dictionary, the uncited identities,
+   what transfers — plan.md's G2/G3 material). The academic citation-trackery
+   content ("this paper deserved a citation but people re-invented the idea") is
+   **de-emphasized in the post** — those observations stay noted in the repo
+   (audit table, findings, census logs) as the evidence base, but are not the
+   published pitch.
+2. **Judgment call 2 / freeze scope → widen the corpus to include clusters F & G**
+   (strategic-ML and benchmark-overfitting). One denominator, no exclusion to
+   defend. Sizing note: the full 06→07 double-verify apparatus was calibrated for
+   a hostile academic referee; with the audit now repo-internal evidence for a
+   post, coding stays rigorous (published numbers must still rest on the coded
+   table) but the paper-grade apparatus (methods note, inter-rater ceremony) can
+   be right-sized by the executing session.
+3. **Track choice → B leads, A follows.** Gap post first (shortest path to a
+   circulatable artifact; seeds Paper 1's related work), Track A per-theorem
+   reviews start in parallel/after.
+
 ---
 
 ## 12. TODO
 
 ### Human (before the next AI session)
-- [ ] Make the two judgment calls (§11) → approve / disapprove / rescope.
-- [ ] Choose next: **Track A** (per-theorem reviews), **Track B** (gap paper 05→10),
-      or **both in parallel**.
-- [ ] Set corpus-freeze scope for Track B: include/exclude clusters F & G; final N
-      (~25 core, or pad to 30–40).
+- [x] Make the two judgment calls (§11) → **rescoped 2026-07-10** (LW-post size,
+      applicable math foregrounded; trackery repo-internal).
+- [x] Choose next: **Track B leads, Track A follows** (2026-07-10).
+- [x] Set corpus-freeze scope for Track B: **include clusters F & G** (2026-07-10).
 - [ ] (Optional) Pull the paywalled primaries (§10 item 7) and check Bolton–
       Dewatripont (§10 item 6).
 
 ### AI (clean next session)
 - [ ] **Phase 1a** — clear the AI-doable residual verifies (§10 items 1–5).
-- [ ] **Phase 1b** — per the chosen track:
-  - **Track B:** 05 freeze corpus + tier scheme → 06 code → 07 double-verify →
-    (08 done) → 09 why-the-gap → 10 synthesize/close. Fold in pulled prop numbers.
-  - **Track A:** per-theorem novelty reviews (`litrev-selection-bounds` T1/T2,
-    `litrev-convex-budget` T4, `litrev-lower-tier` L1–L4) → novelty-refactor capstone.
-  - Both: write the abstract with the **expanded exception floor named** and **drop**
+- [ ] **Phase 1b** — Track B leads (per the 2026-07-10 decisions):
+  - **Track B (leads):** 05 freeze corpus **including F & G** + tier scheme →
+    06 code → 07 verify (right-sized per §11 resolution) → (08 done) →
+    09 why-the-gap → 10 synthesize/close → structure the **LessWrong post**
+    (applicable math foregrounded; audit as repo-internal evidence).
+  - **Track A (follows / parallel):** per-theorem novelty reviews
+    (`litrev-selection-bounds` T1/T2, `litrev-convex-budget` T4,
+    `litrev-lower-tier` L1–L4) → novelty-refactor capstone.
+  - Both: name the **expanded exception floor** and **drop**
     "first to bridge contract theory to formal Goodhart."
 - [ ] Standing rule: do NOT re-run cross-field searches.
 

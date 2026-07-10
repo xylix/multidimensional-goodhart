@@ -56,6 +56,11 @@ boundary is a tail comparison.*
 
 ## Current work
 
+- **`plans/rescope-vs-majka-elmhamdi.md` — BLOCKING GATE (2026-07-10): the
+  track's tail-comparison hypothesis is substantially anticipated by Majka &
+  El-Mhamdi 2025 (arXiv:2505.23445); re-scope against it before trusting any
+  plan below or activating the track.**
 - `research/threads/selection_tail_divergence.md` — opening conjecture (C1),
-  cheapest test, failure condition.
-- `plans/could-do/paper_spine.md` — paper outline + thread registry.
+  cheapest test, failure condition. Predates the gate note above.
+- `plans/could-do/paper_spine.md` — paper outline + thread registry. Predates
+  the gate note above.
