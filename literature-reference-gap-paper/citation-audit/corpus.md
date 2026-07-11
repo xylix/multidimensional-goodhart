@@ -185,7 +185,7 @@ IDs are the discovery-pool IDs (stable). Decision default: **INCLUDE (rules
 | id | ref | decision |
 |---|---|---|
 | G1 | 1506.02629 Dwork reusable holdout | include |
-| G2 | 1908.03156 ~~The Ladder~~ (**errata 2026-07-10:** ID resolves to a different test-set-overfitting paper, "Optimal multiclass overfitting…" 2019; still rule-3 in-scope, coded as-is; the real Ladder 1502.04585 is NOT in N — task-07 call to relabel or swap) | include |
+| G2 | 1908.03156 "Optimal multiclass overfitting by sequence reconstruction from Hamming queries" (Acharya–Suresh 2019) (**errata resolved 2026-07-11, task 07:** ID governs → relabeled; arXiv-API-verified identity; pool title had wrongly said Blum–Hardt "The Ladder" — the real Ladder 1502.04585 remains OUTSIDE N, swap declined to keep the freeze; all-absent coding re-verified against the correct paper's PDF, `verification.md` §2.4) | include |
 | G3 | 2102.13189 Rip van Winkle | include |
 | G4 | 1604.02492 Bayesian ADA | include |
 | G5 | 2410.09247 Benchmark Inflation | include |

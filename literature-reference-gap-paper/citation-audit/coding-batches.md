@@ -319,3 +319,10 @@ items handed to task 07: (1) D3 HM1991 unconfirmed (PDF check); (2) A9 new
 exception-floor candidate — verify + type from citing sentence; (3) the two S2
 wrong-list incidents (B12, C28) → every hit and a sample of absences need a
 second-source check; (4) G2 label errata; (5) A12/I3 remain n/a (access).
+
+**⟦Task 07, 2026-07-11⟧ All four open items resolved — see `verification.md`.**
+Corrections superseding rows above: D3 HM1991 REFUTED + Baker 2002 v1-only;
+D2 HM1991/HM1987 v1-preprint-only (record cites Gibbons+Kerr); F3 Strathern
+v1-only; F5 Chetty v1-only (PUBFIN → 0/115 current-version); A9 HM1991 = genealogy
+nod; G2 relabeled (Acharya–Suresh 2019); B12/C28 first-pass rows confirmed from
+correct lists; Goodhart eponym split corrected to 16×1984 / 8×1975.

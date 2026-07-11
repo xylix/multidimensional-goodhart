@@ -64,16 +64,20 @@ Every AI↔prior-art citation found (the FLOOR = known CHAI/BBS exceptions;
 plus the new ones this census surfaced). Each tagged: which prior-art branch,
 what's cited, **and whether it connects to GOODHART vs only control/agency/genealogy.**
 
-### A. CHAI / Berkeley lineage (Hadfield-Menell / Russell) — known floor, CONFIRMED
+### A. CHAI / Berkeley lineage (Hadfield-Menell / Russell) — known floor, **CORRECTED 2026-07-11 (task 07)**
 | AI paper | prior-art cited | branch | connects to Goodhart? |
 |---|---|---|---|
-| CIRL 2016 (1606.03137) | **HM1991**; HM1987 (W2106580408 census-confirmed) | CONTRACT (multitask/aggregation) | **NO** — cooperative-IRL / control framing |
-| Off-Switch Game 2017 (1611.08219) | **HM1991 + Baker 2002** | CONTRACT | **NO** — off-switch / incomplete-contracting framing |
-| Zhuang–Hadfield-Menell 2020 (2102.03896) | Kerr 1975 + transaction-cost cluster (Williamson/Klein/Shavell) | MGMT + transaction-cost econ (a *different* econ branch) | partial — the paper IS a Goodhart paper, but cites only Kerr (folklore) + transaction-cost, **not** congruity math |
+| CIRL 2016 (1606.03137) | **HM1991 + HM1987 in arXiv v1 preprint ONLY** — both absent from the NeurIPS 2016 version of record and arXiv v4; record cites Kerr 1975 + Gibbons 1998 | CONTRACT (v1: multitask/aggregation; record: Gibbons survey) | **NO** — cooperative-IRL / control framing |
+| Off-Switch Game 2017 (1611.08219) | **HM1991: REFUTED — cited in NO version** (OpenAlex merge artifact). **Baker 2002 in arXiv v1 ONLY** — absent from v2/v3/IJCAI 2017 record; record cites Kerr 1975 + Gibbons 1998 + Tirole 2009 | CONTRACT (record: Gibbons + Tirole incomplete-contracting) | **NO** — off-switch / incomplete-contracting framing |
+| Zhuang–Hadfield-Menell 2020 (2102.03896) | Kerr 1975 + transaction-cost cluster (Klein–Crawford–Alchian/Shavell/HM-Hadfield) | MGMT + transaction-cost econ (a *different* econ branch) | partial — the paper IS a Goodhart paper, but cites only Kerr (folklore) + transaction-cost, **not** congruity math |
 
-CHAI reaches **HM1991, HM1987, Baker 2002** only, via an
-incomplete-contracting / off-switch / cooperative-control framing — **not** the
-multidimensional-Goodhart / congruity framing. (Matches audit reverse-sweep R1/R2.)
+**Task-07 correction (2026-07-11, all versions + venue PDFs read directly —
+`citation-audit/verification.md` §2.2):** in the versions of record the CHAI
+lineage reaches only **Kerr 1975 + Gibbons 1998 (+ Tirole 2009)**. The
+HM1991/HM1987/Baker-2002 contacts existed only in first arXiv preprints and were
+dropped at camera-ready; the earlier census line "CIRL cites HM1987
+(W2106580408)" and audit reverse-sweep R1/R2 inherit this version caveat. The
+exception floor here is thinner than previously recorded.
 
 ### B. BBS bridge — known floor, CONFIRMED & re-locked (see §4)
 John/Caldwell/McCoy/Braganza 2023. Econ: Holmström 1979 & 2017, Baker 2002,
@@ -143,6 +147,32 @@ lineage (Cluster F in ai-corpus.md), NOT the AI-safety reward-hacking corpus:
   as a distinct, self-citing lineage). They show the econ prior art IS reachable
   by adjacent CS communities — sharpening that the *alignment* community's
   non-citation is a community boundary, not an indexing artifact.
+
+### G. **Marklund–Infanger–Van Roy 2026 "Consequentialist Objectives and Catastrophe"** — NEW genealogy-tier exception (task-07 confirmed, 2026-07-11)
+**arXiv:2603.15017** (v1 16 Mar 2026, v3 24 Apr 2026) [cs.AI], Stanford. Surfaced
+by the task-06 full-corpus coding (audit id **A9**, cluster A formal-Goodhart);
+not in the June exceptions hunt's floor. Identity arXiv-API-verified; v3 PDF read
+(`citation-audit/verification.md` §2.1).
+- **Prior-art cited:** **Holmström–Milgrom 1991** (reference list, verified:
+  "Multitask principal–agent analyses: Incentive contracts, asset ownership, and
+  job design"), bundled with Laffont–Martimort 2001 (textbook) and
+  Hadfield-Menell & Hadfield 2019. Also Strathern 1997 (MGMT tier).
+- **Branch:** CONTRACT (pm-anchor by item), but see type.
+- **Connects to Goodhart? The paper does; the citation does not carry the math.**
+  HM1991 appears exactly once, in a related-work paragraph:
+  > "Economic principal–agent models. The problem of specifying reward functions
+  > in AI is closely related to the principal–agent problem in economics
+  > [Hadfield-Menell and Hadfield, 2019], where a principal designs incentives
+  > for an agent whose actions are imperfectly observable [Holmstrom and
+  > Milgrom, 1991, Laffont and Martimort, 2001]."
+  No multitask/congruity math is used in the paper's results (its theorems are
+  about information requirements of safe consequentialist objectives). **Type:
+  genealogy/related-work nod** — the Hendrycks–Ridgway pattern (§D), not the
+  Wang–Huang pattern (§E).
+- **Floor impact:** first cluster-A (formal-Goodhart-theory) paper to cite HM1991
+  at all; leaves the substantive pm-branch floor unchanged (still I1/I2/F15 +
+  F3's body use of HM1991 complementarity). The gap paper can cite it as
+  evidence the nod is starting to appear without the import.
 
 ---
 
