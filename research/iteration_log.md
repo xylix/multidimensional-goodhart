@@ -276,3 +276,50 @@ Red flags fired: "suspiciously elementary" fires by construction
 (T6-static = T4, L2 derivative identity, L3 derivation) and clear, with one
 adopted repair — the L4 security-game anchor downgraded from
 theorem-adjacent to recognition altitude. Nothing logged to red_flags.md.
+
+## Lit-review iteration, 2026-07-11: T4 convex-budget verdict (Track A)
+
+Iteration type: `review` (literature review, per litrev-convex-budget plan;
+consumes the shared Phase 0 discovery + Task 08 verification records — no
+new deep-research passes run).
+
+Question tackled: is T4's score-deficit budget textbook convex duality, what
+is the correct primary citation, and does any Goodhart /
+strategic-classification source already state the affordability-budget form?
+
+What changed: wrote the verdict synthesis
+`research/threads/lit_review/convex-budget-fenchel/README.md`.
+Verdict: T4's identity is the Lagrangian dual / perturbation
+(value-function) conjugacy of a linearly-constrained convex program,
+verbatim specialization — shown by two self-contained two-line routes
+(Lagrangian; m* (lambda) = c*(lambda w) biconjugacy), [confident] as math.
+Attribution capped at [verified-secondary] per Task 08 B5: cite Rockafellar
+1970 by section only (Fenchel duality §31; perturbation/value-function
+conjugacy §28–30) — no theorem number until the user's book pull lands
+(pinned-number upgrade path recorded in the README). Quadratic corollary
+d²/(2S) = elementary quadratic conjugate (Rockafellar §12 /
+Boyd–Vandenberghe §3.3-grade). Protocol step 2 answered from repo evidence
+only: auditable negative — no Goodhart/strategic-classification source in
+the audited corpus or discovery record states the conjugate-dual budget
+form; nearest is Hardt et al. 2016 (feasibility idea in substance,
+discovery-grade; audit coded F1 with zero prior-art-family citations).
+Survives as ours: the gaming-affordability reading (m(d) <= V as the
+intervention-channel activation test in the response contract) and the
+channel placement (budget is not a mu_0-functional), both framing, scoped by
+the Hardt near-antecedent. Fact-vs-Theorem recommendation: YES — demote T4
+to "Fact (standard convex analysis)," keep the criterion + readings in
+prose, preserve T3/T5/T6 dependency labels (decision owned by the capstone).
+
+What's open now: capstone (`plans/novelty-refactor.md`) owns the reframe and
+citations — now unblocked (all three Track A reviews + T5 closed). Pull that
+would upgrade caps: Rockafellar 1970 (pin the Fenchel-duality theorem number
+and §28–30 statement). Benchmark reads that would erase the protocol-step-2
+negative: Hardt et al. 2016 best-response section, Milli et al. 2019,
+Perdomo et al. 2020.
+
+Red flags fired: "suspiciously elementary" fires by construction
+(established posture — the finding is that the theorem is textbook);
+adversarial pass run on the identification and quadratic algebra and clear,
+with one adopted precision note (T4 names its regularity condition
+generically; capstone should name Slater or the thread's concrete
+strict-feasibility form). Nothing logged to red_flags.md.

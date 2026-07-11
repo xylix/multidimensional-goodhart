@@ -94,7 +94,14 @@ results and reduce novelty claims:
   = selection-channel reading + declared-value-norm packaging (framing, not
   math). The `formal_analogue_lit_map.md` "no χ² analogue" false negative is
   corrected in place.
-- ⬜ `litrev-convex-budget.md` — T4 vs Fenchel/Rockafellar. Not started (low-effort confirm).
+- ✅ `litrev-convex-budget.md` — done July 11, 2026
+  (`research/threads/lit_review/convex-budget-fenchel/README.md`).
+  Verdict: T4 = textbook Lagrangian/perturbation value-function duality
+  (Rockafellar 1970 §28–31, by section until pulled); quadratic corollary =
+  elementary conjugate; no Goodhart/strategic-classification source states
+  the budget form (auditable negative; Hardt 2016 nearest in substance);
+  surviving contribution = affordability reading + channel placement
+  (framing, not math). Recommend demoting T4 to "Fact" in the capstone.
 - ✅ `litrev-lower-tier.md` — done July 11, 2026
   (`research/threads/lit_review/lower-tier-parallels/README.md`).
   Verdict: L1 = observational equivalence / selection-vs-treatment

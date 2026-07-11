@@ -1,9 +1,17 @@
 # Lit review: T4 convex score-deficit budget vs Fenchel/Rockafellar duality
 
-Status: active, low-effort lit review. One of three feeding the novelty-refactor
-capstone (`plans/novelty-refactor.md`). This is the cheapest of the three: the
-prior art is already half-acknowledged internally, so the task is confirmation
-and a clean citation, not a full adversarial sweep.
+Status: done, 2026-07-11. Verdict: T4 = textbook Lagrangian/perturbation
+(value-function) conjugate duality specialized to a linear proxy constraint —
+cite Rockafellar 1970 by section (§31 Fenchel duality, §28–30 perturbation
+conjugacy; theorem number pending the user's book pull); no Goodhart/
+strategic-classification antecedent states the budget form (auditable
+negative, Hardt 2016 nearest in substance); survives = the affordability
+reading + channel placement; recommend demoting T4 to "Fact." Synthesis:
+`research/threads/lit_review/convex-budget-fenchel/README.md`. One of three
+feeding the novelty-refactor capstone (`plans/novelty-refactor.md`). This was
+the cheapest of the three: the prior art was already half-acknowledged
+internally, so the task was confirmation and a clean citation, not a full
+adversarial sweep.
 
 **Consumes the unified cross-field discovery** (`plans/litrev-discovery.md`); the
 Fenchel/Rockafellar prior art is discovered once there (outputs in
