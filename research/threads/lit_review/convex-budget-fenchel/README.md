@@ -199,8 +199,8 @@ corpus and discovery record," not "no antecedent exists."**
 
 | Book item | Closest prior art | Status of match | Verification status |
 | --- | --- | --- | --- |
-| T4 dual identity `m(d) = sup_{lambda>=0}[lambda d - c^*(lambda w)]` | Lagrangian dual / perturbation-value-function conjugacy: **Rockafellar 1970, Fenchel duality §31, perturbation conjugacy §28–30 (by section)** | verbatim specialization (two self-contained derivations above) | `[verified-secondary]` statement; primary `[paywalled-flag-for-user]` (Task 08 B5) |
-| T4 regularity condition | Slater-type strict feasibility for strong duality | match; T4 names it generically | same B5 cap |
+| T4 dual identity `m(d) = sup_{lambda>=0}[lambda d - c^*(lambda w)]` | Lagrangian dual / perturbation-value-function conjugacy: **Rockafellar 1970, Thm 31.1 / Cor 31.2.1 (Fenchel duality, §31); Thm 29.1 + Thm 30.2 (perturbation/value-function conjugacy, §28–30)** | verbatim specialization (two self-contained derivations above) | **`[verified-primary]` — pinned 2026-07-11** (Task 08 addendum B5′; was `[paywalled-flag-for-user]` section-only cap) |
+| T4 regularity condition | Slater-type strict feasibility for strong duality: **Rockafellar 1970, Thm 28.2** | match; T4 names it generically | **`[verified-primary]` — pinned 2026-07-11** (was B5 cap) |
 | T4 quadratic corollary `d^2/(2S)` | Quadratic conjugate `f^* = (1/2) y^T Q^{-1} y` (Rockafellar §12; Boyd–Vandenberghe §3.3-grade) | elementary, verbatim | `[verified-secondary]` as citation; standard as math (Phase 0 C2) |
 | T4 quadratic, structural twin | Least-cost allocation / equimarginal (Montgomery 1972) | recognition anchor | Phase 0 D1, discovery-grade; **Task 02's claim** |
 | Feasibility criterion `m(d) <= V`, in substance | Costly threshold-crossing best response (Hardt et al. 2016; Spence-threshold home H1) | idea present, form absent | `[tentative]` discovery-grade (Phase 0 H1/H2; lit-map row carried from Codex) |
@@ -252,10 +252,11 @@ Flagged to this review by the Phase 0 CROSS-REFERENCE table; recommendation
    specialization; a "Theorem" box inflates it under the
    elementary-synthesis framing.
 2. **Cite Rockafellar 1970 by section** (Fenchel duality §31;
-   perturbation/value-function conjugacy §28–30) — **no theorem number until
-   the user's book pull lands** (upgrade path in Caveats). Boyd–Vandenberghe
-   §5 (duality) / §3.3 (conjugates) may be added as an open-access
-   section-level anchor, same cap.
+   perturbation/value-function conjugacy §28–30) — ~~no theorem number until
+   the user's book pull lands~~ **(updated 2026-07-11: pull landed; cite
+   Thm 31.1 / Cor 31.2.1, Thm 28.2 for Slater, Thm 29.1 + Thm 30.2 — see
+   Caveats)**. Boyd–Vandenberghe §5 (duality) / §3.3 (conjugates) may be
+   added as an open-access section-level anchor.
 3. **Keep the feasibility criterion `m(d) <= V` and the two readings in
    prose**, not in the Fact box — the criterion is definitional in the
    declared model, and boxing it as proved content is exactly the
@@ -317,16 +318,17 @@ and one intended-direction confirmation (item 5).
 
 ## Caveats and caps
 
-- **Rockafellar section-only cap (binding, Task 08 B5):** the primary is
-  `[paywalled-flag-for-user]`; cite *Convex Analysis* by section (Fenchel
-  duality §31; perturbation/value-function conjugacy §28–30) and assert no
-  theorem number. **Upgrade path:** the user is pulling the book in
-  parallel; once pulled, pin the Fenchel-duality theorem number (Task 08
-  notes "commonly Thm 31.1 / Cor 31.2.1" as the expected location — recorded
-  as expectation, not citation) and the §28–30 value-function statement, then
-  upgrade the attribution row to `[verified-primary]`. Nothing in this
-  verdict waits on the pull: the displayed derivations carry the
-  mathematical claim in the meantime.
+- **Rockafellar section-only cap — RESOLVED 2026-07-11 (dated post-freeze
+  correction; the pull landed).** Numbers read in the source (Task 08
+  addendum B5′): **Theorem 31.1** (Fenchel's Duality Theorem) and
+  **Corollary 31.2.1** (the linear-map form T4 specializes), §31;
+  **Theorem 28.2** (Kuhn–Tucker vector exists under the Slater-type
+  strict-feasibility condition — the adversarial-pass item-2 "name Slater"
+  note now has its pin); **Theorem 29.1** (Kuhn–Tucker vectors =
+  −∂(inf F)(0) — the value-function-subgradient/affordability reading) and
+  **Theorem 30.2** ((−inf F)\* = F\*0, the perturbation conjugacy), §28–30.
+  The expected locations recorded at cap time were correct. Attribution rows
+  above upgraded to `[verified-primary]`; original cap text in git history.
 - The quadratic-conjugate citation (Rockafellar §12 / Boyd–Vandenberghe
   §3.3) is likewise section-level, `[verified-secondary]`; the algebra is
   self-contained above.
@@ -350,9 +352,9 @@ and one intended-direction confirmation (item 5).
    (unlike the T1/T2 review): its Hardt row is accurate, and T4 never had a
    false-negative "no analogue" entry — the internal thread always named
    Fenchel duality.
-4. Pinned-number upgrade on the Rockafellar pull (see Caveats) — a
-   bookkeeping edit to this README plus the capstone's citation, nothing
-   verdict-level.
+4. Pinned-number upgrade on the Rockafellar pull — **DONE 2026-07-11** (see
+   Caveats); the capstone cites Thm 31.1 / Cor 31.2.1 (+ Thm 28.2 Slater,
+   Thms 29.1/30.2 value-function reading). Nothing verdict-level changed.
 
 ## File index / evidence pointers
 
@@ -360,8 +362,9 @@ and one intended-direction confirmation (item 5).
   Area H for the Hardt lane; Area J for the AI near-misses; CROSS-REFERENCE
   table row "T4 convex budget").
 - Primary verification: `../cross-field-discovery/prior-art-verification.md`
-  (B5 Rockafellar `[paywalled-flag-for-user]`, statement
-  `[verified-secondary]`, section-only citing guidance).
+  (B5 Rockafellar — originally `[paywalled-flag-for-user]` section-only;
+  **upgraded `[verified-primary]` with pinned numbers, 2026-07-11 addendum
+  B5′**).
 - Protocol step 2 evidence: `literature-reference-gap-paper/citation-audit/`
   (`corpus.md` F1 = Hardt et al. 2016; `coding-batches.md` cluster F batch 1;
   `SUMMARY.md` ESTIM row); `research/reviews/formal_analogue_lit_map.md`

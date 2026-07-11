@@ -401,6 +401,23 @@ clarification in item 2; verdict-language weakening in item 5).
   Lehmann–Casella §2.7 or the full Polyanskiy–Wu notes are pulled (Task 08
   flag inherited). The three-line derivation from the scalar form is offered
   as the checkable route in the meantime.
+  → **UPDATE 2026-07-11 (dated post-freeze correction; TPE pulled and
+  read — Task 08 addendum B2′):** the conditional resolves **partial /
+  negative**. (i) The **scalar** HCR now has a numbered print-textbook
+  anchor: **Lehmann–Casella *TPE* 2nd ed., §2.5, Example 5.2, eq. (5.6),
+  pp. 113–114** — citable alongside Polyanskiy–Wu eq. (29.1). (ii) The
+  **matrix** HCR hope is dead in TPE: §2.6 gives only the regularity-based
+  Fisher-information-matrix inequality; the difference-based multiparameter
+  extension appears solely as a bibliographic remark (§2.6 extensions
+  note (b), p. 129 — "Hammersley 1950, Chapman and Robbins 1951, … Sen and
+  Ghosh 1976"), with **no numbered matrix-HCR statement**. (The old "§2.7"
+  pointer was wrong — §2.7 is the problems section.) **The matrix-HCR cap
+  therefore STAYS `[verified-secondary]`**; the checkable route remains the
+  three-line derivation above, and the remaining primary candidates are the
+  full Polyanskiy–Wu notes or Sen–Ghosh 1976. The named benchmark "an
+  explicit dual-norm drift bound in Lehmann–Casella §2.7" is now
+  checked-and-absent; the T2-wrapper auditable negative survives one more
+  read.
 - The Bayesian-robustness (Gustafson) and Lam sensitivity homes are
   discovery-grade `[tentative]`: no primary pulled; no proposition numbers.
 - The auditable negative for the T2 wrapper is bounded by Phase 0's

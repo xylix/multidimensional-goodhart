@@ -138,6 +138,9 @@ any pinned number goes into external prose. Full bibtex with per-entry status:
 | Feltham–Xie congruity *substance* | **via Budde working paper eq. (5)**: congruity index φ = cos²β, full congruity iff sensitivity vector ∝ value vector (attributed to Feltham–Xie 1994 p. 433 and Baker) — primary-grade open derivation, not the original's own label |
 
 ### Substance solid, numbers NOT pinned — pull before citing a number
+> **DATED CORRECTION 2026-07-11: this list is now almost entirely RESOLVED —
+> see the addendum block immediately below.** Original list kept for the
+> audit trail; the addendum supersedes it item-by-item.
 - **Feltham–Xie 1994** — original prop number [paywalled-flag-for-user]
 - **Baker 1992 / Baker 2002** — scanned/paywalled; iff-alignment and
   distortion = 1−cosθ are [verified-secondary] via Budde/OpenAlex
@@ -157,6 +160,35 @@ any pinned number goes into external prose. Full bibtex with per-entry status:
 - **Ben-Tal et al. 2013** — [verified-primary] *for the correction*: it contains
   the φ-divergence conjugate-RCP **machinery only** (Tables 1–2). It has **no**
   "mean+√r·sd" proposition — do not cite it for the envelope
+
+### ADDENDUM 2026-07-11 — the pulls landed; pinned numbers now citable
+
+The user pulled every flagged primary into `sources/`; each number below was
+read in the source (full verbatim record:
+`research/threads/lit_review/cross-field-discovery/prior-art-verification.md`,
+2026-07-11 addendum). **These entries move to the citable-NOW tier:**
+
+| Item | Pinned statement (now [verified-primary]) |
+|---|---|
+| Feltham–Xie 1994 | **Definition + Prop. 1, p. 435** (L(η)=0 iff rσ₁²=0 and μ₁ⱼ=λbⱼ — congruity = sensitivity ∝ benefit); multi-measure spanning = **Prop. 3, p. 439**. (Budde's "p. 433" is off by two pages) |
+| Baker 1992 | **No numbered propositions exist.** Cite **p. 605**: eq. (8) + "Pₑ = Vₑ in all states … necessary and sufficient … first-best" (necessity proof fn. 11) |
+| Baker 2002 | **No numbered propositions exist.** Cite **eq. (3), p. 733** (b\* = FG·cosθ/(G²+2hσ²)); cosθ-as-distortion discussion + Fig. 1, pp. 733–734. Baker's object is cosθ; "1−cosθ" is our paraphrase — say so |
+| Holmström–Milgrom 1991 | **Prop. 1, p. 34** (fixed wage optimal even risk-neutral); **Prop. 2, p. 36**; equal-compensation substance = **eq. (24) + Prop. 7, pp. 47–48**. The *name* "equal compensation principle" is Milgrom–Roberts 1992, not HM1991 |
+| Datar–Kulp–Lambert 2001 | **Prop. 1, p. 79** (weights formula); **Prop. 2, p. 80** (incongruity Σⱼ[fⱼ−Σᵢβᵢgᵢⱼ]² minimized; spanning condition); **Prop. 4, p. 83** (non-monotone weights) |
+| Chetty 2009 (AEJ, version of record) | **No Proposition labels in print.** Renumbered vs w13844: Feldstein formula = **eq. (6)**; generalized weighted-average = **eq. (18)**, weight **μ** (was κ), pp. 35–38. Cite the AEJ numbers |
+| Ridgway 1956 | Composite definition **p. 241** ("weighted in some fashion and then added or averaged"); Wagner Air-Force composite-score pressure quote + role/value-conflict consequences **p. 246** |
+| Lipsey–Lancaster 1956 | Prose statement verbatim-confirmed in the original, **§I, pp. 11–12** (no numbered theorem exists, as recorded) |
+| Rockafellar 1970 | **Thm 31.1 / Cor 31.2.1** (Fenchel duality, §31); **Thm 28.2** (Slater-type condition); **Thm 29.1** (KT vectors = −∂(inf F)(0)) + **Thm 30.2** ((−inf F)\* = F\*0), §28–30 |
+| Scalar HCR (textbook anchor) | **Lehmann–Casella *TPE* 2e, §2.5, Example 5.2, eq. (5.6), pp. 113–114** — print anchor alongside Polyanskiy–Wu eq. (29.1) |
+
+**Still NOT pinned (the residue):**
+- **Matrix HCR (ellipsoid form)** — **stays [verified-secondary]**: TPE
+  contains **no numbered matrix-HCR** (§2.6 has the Fisher-matrix inequality;
+  the difference-based extension is only a bibliographic remark, p. 129; the
+  old "§2.7" pointer was wrong — that is the problems section). Remaining
+  primary candidates: full Polyanskiy–Wu notes; Sen–Ghosh 1976.
+- **Gustafson 1996** — pulled but not engaged (the Bayesian-robustness third
+  home is cited nowhere in the repo); no pin recorded.
 
 ### The dictionary's two settled rows (Track A verdicts, closed)
 
@@ -247,12 +279,18 @@ citation gap only as evidence. Family ranking by primary-source backing:
    fully settled (congruity = cos²β via Budde; Banker–Datar Props 1–2;
    Reynaert–Sallee Props 2/4; Chetty eqs. 3/7) but the Feltham–Xie / Baker /
    HM1991 / DKL **proposition labels are paywalled** — cite substance now,
-   numbers after user pull.
+   numbers after user pull. → **RESOLVED 2026-07-11: pulled and pinned (§3
+   addendum) — FX Prop. 1 p. 435; Baker 1992/2002 have no numbered props
+   (cite eq. 8 / eq. 3); DKL Props 1/2/4; Chetty = AEJ eqs. (6)/(18).**
 3. **Second-best / corrective-Goodhart** — solid; Reynaert–Sallee and
-   Frankel–Kartik primary-pinned; Lipsey–Lancaster has no number to pin.
+   Frankel–Kartik primary-pinned; Lipsey–Lancaster has no number to pin
+   (**page-pinned §I pp. 11–12 as of 2026-07-11**).
 4. **Convex duality (T4)** — Rockafellar by section only until pulled. (Track A
    review `litrev-convex-budget` not yet run — T4 is not one of the settled
-   dictionary rows; don't present it as such.)
+   dictionary rows; don't present it as such.) → **UPDATE 2026-07-11: the
+   review closed (d0a0471) and Rockafellar is pinned (Thm 31.1 / Cor 31.2.1
+   §31; Thms 28.2/29.1/30.2) — T4 is now a settled row; see the Track A
+   README for the Fact-reframe framing.**
 
 ---
 
@@ -283,7 +321,10 @@ citation gap only as evidence. Family ranking by primary-source backing:
    references; their hits rest on two independent text extractions of the same
    arXiv artifact class, flagged "2X" not silently promoted (`verification.md` §3).
 8. **Paywalled proposition labels** (§3 list) must be pulled before any pinned
-   number appears in external prose. Also grep hygiene for replicators:
+   number appears in external prose. → **RESOLVED 2026-07-11:** the pulls
+   landed and the numbers are pinned (§3 addendum); the only residue is the
+   matrix-HCR numbered primary (cap stays) and unengaged Gustafson. Also grep
+   hygiene for replicators:
    letter-spaced small-caps bibliographies and diacritic renderings defeat
    naive surname greps; normalize first (`verification.md` §1).
 9. **Task-08 verification date is 2026-06-24** — proposition-number checks

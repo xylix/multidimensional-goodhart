@@ -415,3 +415,210 @@ substance, number deferred (verified-secondary):**
    form is mis-attributed. Use **Namkoong–Duchi Thm 1 (√(2ρ/n))** for the envelope;
    cite Ben-Tal only for the φ-divergence conjugate-RCP framework. [prior-art-formal.md B1/B2]
    Also: the χ²-DRO constant is **√(2ρ/n)** (resolves the open √(ρ/n) vs √(2ρ/n) question).
+
+---
+
+## ADDENDUM 2026-07-11 — pinned-number pass over the user's pulls (`sources/`)
+
+**Dated addendum; the task-08 record above is a closed audit record and is not
+rewritten.** The user pulled every `[paywalled-flag-for-user]` primary plus all
+conditionals into `sources/` (gitignored). Method: `pdftotext` per file (all
+twelve extracted cleanly — including Baker 1992, whose earlier open copies were
+unreadable scans; this JSTOR copy carries a text layer), the numbered statement
+read off the extracted text, page numbers confirmed per PDF page. The guardrail
+holds: **every number below was read in the source.**
+
+### A3′. Feltham–Xie 1994 — UPGRADED `[verified-primary]`
+- **Source.** `sources/Feltham-PerformanceMeasureCongruity-1994.pdf` (JSTOR,
+  *The Accounting Review* 69(3):429–453).
+- **Definition (noncongruity), p. 435.** Two-action form Δᵢ = [b₁μᵢ₂ − b₂μᵢ₁]²
+  (fn. 13 gives the n>2 sum-of-2×2-minors form); "Performance measure yᵢ is
+  perfectly congruent with b … if, and only if, there exists a constant λᵢ ≥ 0
+  such that μᵢⱼ = λᵢbⱼ."
+- **Proposition 1, p. 435 (verbatim).** "If there is a single performance
+  measure (m = 1), then L(η) = 0 if, and only if, rσ₁² = 0 and there exists a
+  constant λ such that μ₁ⱼ = λbⱼ, j = 1,2." — zero first-best loss iff
+  (risk-neutral or noiseless) AND sensitivity ∝ benefit. **This is the
+  congruity/proportionality proposition; cite "Feltham–Xie 1994, Prop. 1,
+  p. 435."**
+- **Proposition 3 (fn. 16), p. 439.** Multi-measure version: additional
+  measures add nothing iff the spanning/sufficient-statistic condition (13)
+  holds (μ₂ = Γμ₁ and Σ₂₁ = ΓΣ₁₁); extends Holmström 1979.
+- **Correction to Budde's attribution.** Budde cites "Feltham and Xie 1994,
+  p. 433" for the congruity condition; the Definition and Prop. 1 are actually
+  on **p. 435** (p. 433 is model setup). Cite p. 435.
+
+### A4′. Baker 1992 (JPE) — UPGRADED `[verified-primary]`; **no numbered propositions exist**
+- **Source.** `sources/Baker-IncentiveContractsPerformance-1992.pdf` (JSTOR,
+  *JPE* 100(3):598–614; readable text layer).
+- **Finding: the paper carries NO numbered propositions/theorems** — results
+  live in numbered equations and footnoted proofs. There is no "Baker 1992
+  Prop. N" to cite; do not invent one.
+- **Optimal piece rate, eqs. (7)–(8), p. 605 (verbatim region).**
+  b\* = E[VₑPₑ]/E[Pₑ²]; normalized (E[Pₑ]=E[Vₑ]=1):
+  b\* = (cov(Vₑ,Pₑ)+1)/(var(Pₑ)+1) = (ρ·σ_{Vₑ}·σ_{Pₑ}+1)/(σ²_{Pₑ}+1), ρ = the
+  correlation between marginal products Vₑ and Pₑ.
+- **The iff-alignment statement, p. 605 + fn. 11 (verbatim).** "…Pₑ = Vₑ in all
+  states of the world; this is a necessary and sufficient condition for a
+  first-best contract." Necessity is proved in **footnote 11**. Cite as
+  "Baker 1992, p. 605 (nec./suff. condition; proof fn. 11) and eq. (8)."
+- Relative-performance corollary (Pₑ,Vₑ perfectly correlated ⇒ first-best
+  under observable effort): pp. 611–612.
+
+### A5′. Baker 2002 (JHR) — UPGRADED `[verified-primary]`; **no numbered propositions exist**
+- **Source.** `sources/Baker-DistortionRiskOptimal-2002.pdf` (JSTOR, *J. Human
+  Resources* 37(4):728–751).
+- **Finding: no numbered propositions** — the citable pins are equations.
+- **Equation (3), p. 733 (verbatim, extraction-repaired).**
+  b\*_P = F·G·cosθ / (G² + 2hσ²) — F = ‖f‖ (marginal products on firm value),
+  G = ‖g‖ (on the measure), θ = the angle between f and g. **Equation (4)**
+  rewrites it as b\* = (F/G)·S_P·cosθ/(S_P + 2h) with S_P = G²/σ² the
+  signal-to-noise ratio.
+- **cosθ-as-distortion, pp. 733–734 (verbatim).** "CosΘ is a measure of how
+  distorted the performance measure is with respect to firm value. Higher cosΘ
+  means lower distortion." Figure 1 (p. 734) is the two-task vector diagram.
+- **Wording caution.** Baker's own object is **cosθ** (congruence); "distortion
+  = 1−cosθ" is our paraphrase, not his notation — phrase as "Baker measures
+  alignment by cosθ (eq. 3); the distortion defect is 1−cosθ in our notation."
+
+### A7′. Holmström–Milgrom 1991 — UPGRADED `[verified-primary]`
+- **Source.** `sources/1991 JLEO Holmstrom Milgrom.pdf` (*JLEO* 7(sp):24–52).
+- **Proposition 1, p. 34 (verbatim).** "For the home contractor model specified
+  in the last paragraph, the efficient linear compensation rule pays a fixed
+  wage and contains no incentive component (α = 0), even if the contractor is
+  risk neutral." (Fn. 11 connects this to Baker's incorrect-weightings result.)
+- **Proposition 2, p. 36.** With τ₁₂ > max(τ₁,τ₂), the optimal employment
+  contract always pays a fixed wage (α = 0); independent contracting gets
+  high-powered incentives — the muted-incentives/multitask headline result.
+- **Proposition 3, p. 40.** Optimal exclusion of personal-business tasks
+  (the "freedom to pursue personal business rises with the main-job reward"
+  comparative static).
+- **Equal-compensation substance: eq. (24) + Proposition 7, pp. 47–48
+  (verbatim).** "ᾱᵢ(k) = C′(t̄) = ᾱᵢ for all k. Thus, normalized commissions
+  must all be equal for an agent" (perfect-substitutes attention). **Naming
+  caution:** HM1991 never uses the phrase "equal compensation principle" — that
+  label is Milgrom–Roberts 1992 (*Economics, Organization and Management*).
+  Cite the substance as "HM1991 eq. (24) / Prop. 7"; attribute the *name* to
+  Milgrom–Roberts or drop it.
+- (Capstone note: the book's "HM1991 closest precedent" claim is REMOVED per
+  novelty-refactor R1; these pins serve related-work text only.)
+
+### A9′. Datar–Kulp–Lambert 2001 — UPGRADED `[verified-primary]`
+- **Source.** `sources/J of Accounting Research - 2002 - Datar - Balancing
+  Performance Measures.pdf` (Wiley, *JAR* 39(1):75–92).
+- **Proposition 1, p. 79.** The relative-weights formula (congruity effect ×
+  sensitivity-precision effect; the multiple-regression reading).
+- **Proposition 2, p. 80 (verbatim).** "If the agent is risk neutral or the
+  performance measures are all noiseless, the performance measures are weighted
+  to minimize the incongruity of the agent's overall performance to the firm's
+  outcome, where the incongruity is defined as Σⱼ[fⱼ − Σᵢβᵢgᵢⱼ]²." Perfect
+  congruity iff ∃β: Σᵢβᵢgᵢⱼ = fⱼ for all j (spanning). Fn. 3 (p. 81) maps this
+  to the Feltham–Xie incongruity formula.
+- **Proposition 4, p. 83 (verbatim).** Relative weight on the local measure is
+  "(i) increasing then decreasing in g₂₁ … (ii) increasing then decreasing in
+  f₁" — **the non-monotone-weights result.** Confirms the task-08 caution: DKL
+  prove non-monotone *weights*, not a harm-vs-channel-count theorem;
+  set-monotonicity naming stays the book's.
+
+### A2′. Chetty 2009 — published AEJ version checked; **no Proposition labels; equations renumbered**
+- **Source.** `sources/2009-is-the-taxable-income-elasticity-sufficient-….pdf`
+  (*AEJ: Economic Policy* 1(2):31–52 — the version of record).
+- **Finding.** The published version contains **zero "Proposition" labels**
+  (grep over full text). The conditional resolves: there are no AEJ proposition
+  numbers to prefer.
+- **Renumbering (differs from w13844!).** Feldstein sufficient-statistic
+  formula = **eq. (6)** (pp. 35–36); transfer-cost-model formula (dW/dt =
+  t·dLI/dt) = **eq. (11)** (p. 37); the generalized weighted-average formula =
+  **eq. (18)** (p. 38), with weight **μ = g′(e)/(z′(e)+g′(e))** (the WP's κ is
+  renamed **μ** in print): dW/dt = −t/(1−t)·{μ·TI·ε_TI + (1−μ)·wl·ε_LI}; μ=1
+  recovers (6), μ=0 recovers (11).
+- **Citing guidance (supersedes the w13844 numbers for citation purposes).**
+  Cite the AEJ version: **eq. (6)** for the Feldstein formula, **eq. (18)** for
+  the generalization, symbol μ. (w13844 eqs. (3)/(7) = AEJ (6)/(18).)
+
+### B2′/B5′ etc. — formal side
+
+**B5′. Rockafellar 1970 — UPGRADED `[verified-primary]` (T4's citation).**
+- **Source.** `sources/…Rockafellar - Convex Analysis….pdf` (Princeton 1970).
+- **Theorem 31.1 (Fenchel's Duality Theorem), §31 (verbatim).** "Let f be a
+  proper convex function on Rⁿ, and let g be a proper concave function on Rⁿ.
+  One has inf_x{f(x) − g(x)} = sup_{x*}{g*(x*) − f*(x*)} if either … (a)
+  ri(dom f) ∩ ri(dom g) ≠ ∅; (b) f and g are closed, and ri(dom g*) ∩
+  ri(dom f*) ≠ ∅. Under (a) the supremum is attained …; under (b) the infimum
+  is attained …" (+ polyhedral refinement dropping ri).
+- **Corollary 31.2.1 (linear map, verbatim).** inf_x{f(x) − g(Ax)} =
+  sup_{u*}{g*(u*) − f*(A*u*)} under the corresponding ri conditions —
+  **T4's m(d) = inf_a{c(a): w·a ≥ d} = sup_{λ≥0}[λd − c*(λw)] is this,
+  specialized to the linear proxy constraint.**
+- **Theorem 28.2.** Existence of a Kuhn–Tucker vector under the Slater-type
+  condition (a feasible point in ri C satisfying all non-affine inequality
+  constraints strictly) — **this is where "name Slater explicitly" pins.**
+- **Theorem 29.1 (verbatim core).** The perturbation function inf F is convex;
+  "the Kuhn-Tucker vectors for (P) are precisely the vectors u* such that
+  −u* ∈ ∂(inf F)(0)" — multipliers = value-function subgradients (the
+  affordability reading's formal home).
+- **Theorem 30.2.** (−inf F)* = F*0 and (F*0)* = −cl(inf F) — the
+  perturbation/value-function conjugacy proper (§28–30 machinery).
+- **Citing guidance for T4/capstone:** "Fact (standard convex analysis;
+  Rockafellar 1970, Thm 31.1 / Cor 31.2.1 for Fenchel duality; Thm 28.2 for
+  Slater; Thm 29.1 + Thm 30.2 for the value-function/perturbation reading)."
+
+**B2′. Lehmann–Casella TPE (2nd ed. 1998) — conditional resolves PARTIAL/NEGATIVE.**
+- **Source.** `sources/…Lehmann, George Casella - Theory of Point Estimation….pdf`.
+- **Scalar HCR: numbered and citable.** **§2.5, Example 5.2, eq. (5.6),
+  pp. 113–114 (verbatim):** var(δ) ≥ [g(θ+Δ) − g(θ)]² / E_θ[(p(X,θ+Δ)/p(X,θ) −
+  1)²], sup over Δ; attributed there to Hammersley (1950) and Chapman–Robbins
+  (1951). A print-textbook anchor now exists alongside Polyanskiy–Wu eq. (29.1).
+- **Matrix HCR: NEGATIVE — no numbered matrix-HCR statement exists in TPE.**
+  §2.6 ("The Multiparameter Case and Other Extensions") gives the
+  Fisher-information-matrix inequality (regularity-based, eqs. 6.6–6.10), and
+  the difference-based multiparameter extension appears only as bibliographic
+  remark (b) of the §2.6 extensions list (p. 129: "avoids the need for
+  regularity conditions by considering differences … See Hammersley 1950,
+  Chapman and Robbins 1951, … Sen and Ghosh 1976 …"). **T2's matrix/ellipsoid
+  skeleton therefore keeps its `[verified-secondary]` cap** — the earlier
+  "§2.7" pointer was wrong (§2.7 is the problems section) and no textbook
+  numbered matrix-HCR was found here.
+
+### A8′/A11′. The 1956 pair — page pins landed
+
+**A8′. Lipsey–Lancaster 1956 — UPGRADED `[verified-primary]` (page-pinned prose).**
+- **Source.** `sources/Lipsey-GeneralTheorySecond-1956.pdf` (*RES* 24(1):11–32).
+- **§I, p. 11 (verbatim — matches the tertiary-source wording recorded above
+  exactly):** "The general theorem for the second best optimum states that if
+  there is introduced into a general equilibrium system a constraint which
+  prevents the attainment of one of the Paretian conditions, the other Paretian
+  conditions, although still attainable, are, in general, no longer desirable."
+  Negative corollary + the "nothing can be said about the direction or the
+  magnitude of the secondary departures" restatement: pp. 11–12. No numbered
+  theorem exists (confirmed) — cite "§I, pp. 11–12."
+
+**A11′. Ridgway 1956 — UPGRADED `[verified-primary]` (page-pinned quotes).**
+- **Source.** `sources/Ridgway-DysfunctionalConsequencesPerformance-1956.pdf`
+  (*ASQ* 1(2):240–247).
+- **Composite definition, p. 241 (verbatim):** "Composite criteria occur when
+  the separate quantities are weighted in some fashion and then added or
+  averaged."
+- **COMPOSITES section, p. 246 (verbatim):** "there must be an implied or
+  explicit weighting of these criteria. When such a weighting system is
+  available, it is an easy task to combine the measures of the various subgoals
+  into a composite score for over-all performance." And the Wagner Air Force
+  case: "When the organizations were put under pressure to raise their
+  composite score without proportionate increases in the organization's means
+  of achieving them, there were observable unanticipated consequences" —
+  tension, role and value conflicts, reduced morale (p. 246).
+
+### Skipped (condition not met)
+- **Gustafson 1996** (local sensitivity of posterior expectations) was pulled,
+  but the Bayesian-robustness "third home" is cited nowhere in the repo
+  (grep over md/bib/tex, 2026-07-11) — per the handoff condition, no pin
+  recorded. The PDF sits in `sources/` if that home is ever engaged.
+
+### Net effect on the MUST-be-pulled list (all items resolved)
+Feltham–Xie ✅ (Prop. 1, p. 435) · Baker 1992 ✅ (no props exist; eq. 8 +
+p. 605 iff) · Baker 2002 ✅ (no props exist; eqs. 3–4, p. 733) · HM1991 ✅
+(Props 1/2/3, eq. 24) · DKL ✅ (Props 1/2/4) · Rockafellar ✅ (Thm 31.1,
+Cor 31.2.1, Thms 28.2/29.1/30.2) · Chetty AEJ ✅ (no props; eqs. 6/18, symbol
+μ) · Ridgway ✅ (pp. 241, 246) · Lehmann–Casella ✅ scalar (Ex. 5.2 eq. 5.6) /
+❌ matrix (no numbered statement — T2 cap stays) · Lipsey–Lancaster ✅
+(§I pp. 11–12; no number exists, as recorded).
