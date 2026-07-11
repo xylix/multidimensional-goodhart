@@ -73,7 +73,9 @@ explicit version annotations, not silently counted or dropped.
 
 Bibliographic facts (all four artifacts read):
 - **v1 (2016-11-24) PDF:** cites Baker 2002 ("Distortion and risk in optimal incentive
-  contracts. Journal of Human Resources"), Gibbons 1998, Kerr 1975. **No
+  contracts. Journal of Human Resources"), Gibbons 1998, Kerr 1975, **and Tirole 2009**
+  ⟦09 correction: Tirole is in v1's list and body — the record did NOT add it; the only
+  v1→record cuts were Baker 2002 + Dewey 2011; `why-the-gap.md` M4 case D3⟧. **No
   Holmström–Milgrom (any year).**
 - **v2 and v3 (2017-06-16) PDFs:** Baker 2002 **removed**; Gibbons 1998, Kerr 1975,
   Tirole 2009 ("Cognition and incomplete contracts", AER) present. No HM.
@@ -167,7 +169,7 @@ agree; **2X** = two independent extractions of the same method class (API dead);
 | D3 | CONTRACT ✓ Gibbons98; **Baker 2002 v1-only; HM1991 refuted**; MGMT Kerr | see §2.2 | S2₆+PDF₇(v1,v2,v3)+PUB | 2M, version-annotated |
 | F3 | CONTRACT ✓ HM1991 + Grossman–Hart; **MGMT Strathern v1-only** | v3+PMLR: body "This complementarity (Holmstrom and Milgrom, 1991)…" + refs HM1991, "Grossman, Hart. An analysis of the principal-agent problem" ; Strathern in v1 only (body+ref), absent v3+PMLR | S2₆+PDF₇(v1,v3)+PUB(PMLR v119) | 2M, version-annotated |
 | F4 | Lucas | "Robert E Lucas Jr. Econometric policy evaluation: A critique…" (Hennessy–Goodhart 2020 also present — correctly not eponym-coded) | S2₆+PDF₇ | 2M |
-| F5 | **PUBFIN Chetty v1-only**; ESTIM ~ Rockafellar | v1: "Raj Chetty. Sufficient statistics for welfare analysis…" + body "method… motivated by prior works [Chetty, 2009, Wager and Xu, 2021]"; **absent from v2 (2022-12-26) through v5**; "R Tyrrell Rockafellar. Convex analysis, volume 18. Princeton UP, 1970" present v1–v5 (author named in PDF — task-06 "authorless, inferred" upgraded) | S2₆+PDF₇(v1,v2,v3,v5) | 2M, version-annotated |
+| F5 | **PUBFIN Chetty v1-only**; ESTIM ~ Rockafellar | v1: "Raj Chetty. Sufficient statistics for welfare analysis…" + body "method… motivated by prior works [Chetty, 2009, Wager and Xu, 2021]"; **absent from v2 (2022-12-26) through v5**; "R Tyrrell Rockafellar. Convex analysis, volume 18. Princeton UP, 1970" present v2–v5 ⟦09 correction: ADDED in v2, absent from v1's complete bibliography — same revision that dropped Chetty; `why-the-gap.md` M4 case F5⟧ (author named in PDF — task-06 "authorless, inferred" upgraded) | S2₆+PDF₇(v1,v2,v3,v5) | 2M, version-annotated |
 | F6 | MGMT Campbell | "Donald T Campbell. Assessing the impact of planned social change" + body "Campbell's law (Campbell, 1979)" | S2₆+PDF₇ | 2M |
 | F13 | CONTRACT ✓ Holmström 1979+1980 (ctl) | "[37] Holmström, B. Moral hazard and observability. Bell J. Econ 1979"; "[38] Holmström, B. On the theory of delegation. 1980"; body: "principal-agent problems more broadly [37, 38]" | H₆+PDF₇+S2₇(1979 ✓; 1980 not in S2's 81) | 2M |
 | F15 | CONTRACT ✓ Feltham–Xie 1994 + HM1991 (pm) | v3 refs (page-range extraction): "Feltham, G. A. and **J.** Xie (1994). Performance measure congruity and diversity in multi-task…"; "Holmstrom, B. and P. Milgrom (1991). Multitask principal–agent analyses… JLEO 7 (special issue), 24–52."; v1 body: "The economic theory of multitask models (Holmstrom and Milgrom, 1991; Feltham and Xie, 1994) predicts…" | H₆+PDF₇(v1+v3) (S2₇ 0 refs, OA₇ 404) | 2M (two artifact classes; API dead) |

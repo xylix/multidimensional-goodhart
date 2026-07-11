@@ -118,8 +118,8 @@ annotations: pm = performance-measurement branch, ctl = control branch.
 | C34 | 2604.08577 | — | — | — | — | — | ✓ D–N cluster (tooling) | — | — |
 | C35 | 2503.00539 | — | — | — | — | — | ✓ **Ben-Tal 2013** + Sinha–N–D (tooling) | — | — |
 | D1 | 1711.02827 IRD | — | — | — | — | — | ~ Rockafellar–Uryasev CVaR | — | — |
-| D2 | 1606.03137 CIRL | ✓ Gibbons98 (pm) ⟦07: HM1991+HM1987 in arXiv **v1 preprint only** — absent from NeurIPS-2016 version of record & v4⟧ | — | — | — | ✓ Kerr | — | — | — |
-| D3 | 1611.08219 Off-Switch | ✓ Gibbons98 (ctl) ⟦07: Baker2002 in **v1 preprint only** — absent v2/v3/IJCAI-2017 record; **HM1991 REFUTED, no version**; +Tirole 2009 non-scheme⟧ | — | — | — | ✓ Kerr | — | — | — |
+| D2 | 1606.03137 CIRL | ✓ Gibbons98 (pm) ⟦07: HM1991+HM1987 in arXiv **v1 preprint only** — absent from NeurIPS-2016 version of record & v4; ⟦09⟧ record retains Jensen–Meckling 1976 (non-scheme)⟧ | — | — | — | ✓ Kerr | — | — | — |
+| D3 | 1611.08219 Off-Switch | ✓ Gibbons98 (ctl) ⟦07: Baker2002 in **v1 preprint only** — absent v2/v3/IJCAI-2017 record; **HM1991 REFUTED, no version**; Tirole 2009 all versions, non-scheme ⟦09⟧⟧ | — | — | — | ✓ Kerr | — | — | — |
 | D4–D9 | (6 papers) | — | — | — | — | — | — | — | — |
 | E1, E2 | Hubinger, Ngo | — | — | — | — | — | — | — | — |
 | F1, F2 | Hardt, Perdomo | — | — | — | — | — | — | — | — |
