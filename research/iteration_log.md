@@ -233,3 +233,46 @@ a new unresolved flag); adversarial pass on the T1=HCR identification run
 and clear, with two adopted repairs (inequality-vs-named-theorem altitude
 clarification; verdict language weakened from "verbatim" to "inequality
 verbatim, sharpness pair assembled"). Nothing logged to red_flags.md.
+
+## Lit-review iteration, 2026-07-11: lower-tier bundle verdicts L1-L4 (Track A)
+
+Iteration type: `review` (literature review, per litrev-lower-tier plan;
+consumes the shared Phase 0 discovery + Task 08 verification records — no
+new deep-research passes run; one pass per item, pessimistic default,
+optimistic check on L1 only).
+
+Question tackled: for each of L1 (selection/intervention
+non-identifiability), L2 (covariance-as-local-velocity / exponential tilt),
+L3 (T3 quadratic wedge), L4 (T6 adaptive hardening), what is classical and
+where, and what if anything is the book's own?
+
+What changed: wrote the verdict synthesis
+`research/threads/lit_review/lower-tier-parallels/README.md`. Verdicts:
+L1 = observational equivalence / selection-vs-treatment identification
+(Heckman/Manski/mixture non-identifiability, all discovery-grade tentative —
+no Task 08 primary read); optimistic check leaves one framing residual, the
+representation-relativity clause (enrich-the-types absorption move), as an
+auditable negative. L2 = wholly classical exponential-family cumulant fact
+(derivative of tilted mean = covariance); toy H = Z^2 - 1 recomputed and
+verified; one-line nod suffices; attribution anchors discovery-grade.
+L3 = quadratic-cost instance of costly threshold-crossing (Spence /
+strategic classification; Hardt et al. already the lit-map nearest
+analogue); only in-family verified-primary is Frankel-Kartik 2019 Prop. 2
+(family-level, not the wedge constant); no mathematical residual.
+L4 = static threshold is exactly T4 specialized (two-line Lagrange check
+displayed, confident); dynamic shape anchored to Stackelberg security
+games / MTD at recognition altitude only (discovery-grade, and those
+results concern optimal allocation, which T6 disclaims); surviving residual
+= the termination argument, credited as elementary, with the erasing
+benchmark named. No escalation to a follow-up plan for any item.
+
+What's open now: capstone (`plans/novelty-refactor.md`) owns integration;
+pulls that would upgrade caps: any F/G/I primary (Heckman, Manski, Teicher,
+exp-family texts, Tambe/Sinha, MTD line) before citing numbered statements;
+benchmarks that would erase the residuals are named per item in the README.
+
+Red flags fired: "suspiciously elementary" fires by construction
+(established posture); adversarial pass run on the confident claims
+(T6-static = T4, L2 derivative identity, L3 derivation) and clear, with one
+adopted repair — the L4 security-game anchor downgraded from
+theorem-adjacent to recognition altitude. Nothing logged to red_flags.md.

@@ -95,8 +95,15 @@ results and reduce novelty claims:
   math). The `formal_analogue_lit_map.md` "no χ² analogue" false negative is
   corrected in place.
 - ⬜ `litrev-convex-budget.md` — T4 vs Fenchel/Rockafellar. Not started (low-effort confirm).
-- ⬜ `litrev-lower-tier.md` — selection/intervention identification, exponential
-  tilt, T3, T6 (bundled). Not started.
+- ✅ `litrev-lower-tier.md` — done July 11, 2026
+  (`research/threads/lit_review/lower-tier-parallels/README.md`).
+  Verdict: L1 = observational equivalence / selection-vs-treatment
+  identification (representation-relativity clause survives as framing); L2 =
+  textbook exponential-family cumulant fact (one-line nod); L3 = quadratic-cost
+  costly threshold-crossing (Spence / Hardt; Frankel–Kartik Prop. 2 the only
+  verified-primary in family); L4 = static threshold exactly T4 specialized,
+  security-games anchor at recognition altitude, termination argument survives
+  as the book's elementary construction. No escalations.
 - ⬜ `novelty-refactor.md` — capstone; **blocked on the three reviews above plus
   the completed T5 review**; reframes the paper as synthesis + contract + the
   subset-invariance reading. Reopens the "editing done" milestone.

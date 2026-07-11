@@ -1,6 +1,16 @@
 # Lit review: lower-tier parallels (identification, exponential tilt, T3, T6)
 
-Status: active, bundled lit review. Third of three feeding the novelty-refactor
+Status: **done, 2026-07-11.** Verdicts (synthesis in
+`research/threads/lit_review/lower-tier-parallels/README.md`): L1 =
+observational equivalence / selection-vs-treatment identification (anchors
+discovery-grade; representation-relativity clause survives as framing, auditable
+negative); L2 = textbook exponential-family cumulant fact, one-line nod
+suffices; L3 = quadratic-cost costly threshold-crossing (Spence / strategic
+classification; Frankel–Kartik Prop. 2 the only verified-primary in family);
+L4 = static threshold exactly T4 specialized, dynamic anchored to security
+games/MTD at recognition altitude, termination argument survives as the book's
+elementary construction. No item escalated. Was: active, bundled lit review.
+Third of three feeding the novelty-refactor
 capstone (`plans/novelty-refactor.md`). These are lower-stakes than T1/T2 and T4
 — some are framing claims rather than headline theorems — but each has a strong
 native-field parallel that the paper should anchor rather than re-derive. Bundled
