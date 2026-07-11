@@ -155,11 +155,18 @@ related-work; does not replace the novelty-refactor.
 
 - ✅ Seed pass — 25-paper coded table (`citation-audit/audit.md`) and
   refined-thesis findings (`citation-audit/findings.md`). A seed, not a corpus.
-- 🔶 **Audit not closed** — its tasks 01–04 (+08) **are the shared Phase 0**
-  above; tasks 05–10 are gap-specific (freeze → code → double-verify → why →
-  synthesize), gated on task 04 confirming the gap / BBS delta.
-  Start: `audit-tasks/01-discover-ai-corpus.md`.
-- ⬜ Structure the gap paper — only after the audit is closed (per plan sequencing).
+- ✅ **Audit CLOSED (2026-07-11, tasks 05–10 complete, verified).** Frozen
+  corpus N=117 / 115 minable; every hit two-method verified; headline:
+  CONTRACT 8✓+1△/115 with **0/60 in the reward-hacking+RLHF core**;
+  PUBFIN/2BEST/CORRECT 0/115; ESTIM never as prior theory; exception floor =
+  2026 bridges (I1/I2/A9) + CHAI (record-version Gibbons/Kerr only) + F-cluster
+  periphery. Single consolidated source: **`citation-audit/SUMMARY.md`**
+  (headlines, exceptions, verified should-be-cited set, BBS delta, mechanisms,
+  limitations, overclaim pass) + `citation-audit/gap-refs.bib`.
+- ⬜ **Next action: structure the LessWrong post from `citation-audit/SUMMARY.md`**
+  (applicable math foregrounded per the July 10 rescope; audit stays
+  repo-internal evidence; no post prose exists yet — synthesis stopped at the
+  audit-closure boundary).
 
 Optional items live in `could-do/` (now including
 `could-do/rlhf-identification-experiment.md`, the one feasible harm-side

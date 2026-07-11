@@ -110,15 +110,21 @@ prior-art discovery (02,03) and can run early.
 - [x] 02 prior art discovered — econ/management side (saturated) — `prior-art-econ.md` (+ adversarial breadth synthesis, 12 passes done)
 - [x] 03 prior art discovered — formal-math side (saturated) — `prior-art-formal.md`
 - [x] 04 bridges mapped + BBS locked — `bridges.md` (census/vocab/BBS + gate verdict + adversarial exceptions-hunt synthesis, all done)
-- [ ] 05 corpus + tier scheme frozen
-- [ ] 06 full corpus coded
-- [ ] 07 coding double-verified
+- [x] 05 corpus + tier scheme frozen (2026-07-10, N=117 incl. F & G) — `citation-audit/corpus.md`
+- [x] 06 full corpus coded (2026-07-10, 115 minable) — `citation-audit/audit.md` + `coding-batches.md`
+- [x] 07 coding double-verified (2026-07-11; all hits 2-method; big-list absences PDF-grepped) — `citation-audit/verification.md`
 - [x] 08 prior-art primary sources verified + scope set — `prior-art-verification.md`
-- [ ] 09 why-the-gap evidenced
-- [ ] 10 synthesized & audit closed
+- [x] 09 why-the-gap evidenced (2026-07-11, mechanisms M1–M5 with evidence levels) — `citation-audit/why-the-gap.md`
+- [x] 10 synthesized & audit closed (2026-07-11) — **`citation-audit/SUMMARY.md`** (+ final `findings.md`, `gap-refs.bib`)
 
 **GATE (task 04) verdict: PASS — gap real + BBS delta real, CONFIRMED by the
-adversarial multi-LLM hunt (gap sharpened, not broken). HARD STOP before 05–10 /
-Track A** until the human reviews. See `cross-field-discovery/bridges.md` § GATE
-VERDICT + § ADVERSARIAL … SYNTHESIS, and the residual body-verifies listed in
-`citation-audit/findings.md`.
+adversarial multi-LLM hunt (gap sharpened, not broken).** The HARD STOP was
+lifted 2026-07-10 (human sign-off; Track B rescoped to a LessWrong post,
+corpus widened to F & G — `plans/phase0-handoff.md` §11). See
+`cross-field-discovery/bridges.md` § GATE VERDICT + § ADVERSARIAL … SYNTHESIS.
+
+**AUDIT CLOSED 2026-07-11** (tasks 05–10 complete and verified). The single
+source for the next phase is **`citation-audit/SUMMARY.md`**; next action =
+structure the LessWrong post from it (do not re-open coding without recording
+the arXiv version read — reference lists in this corpus are revision-unstable,
+`verification.md` §6).

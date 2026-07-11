@@ -1,0 +1,517 @@
+% gap-refs.bib — citation-audit reference set (task 10, 2026-07-11)
+% Contents: the verified should-be-cited prior art, the verified-absent
+% precedents, BBS 2023, and the named exception-floor papers.
+% Every entry's `note` carries its verification status per
+% prior-art-verification.md (task 08) / verification.md (task 07):
+%   [verified-primary]        — statement + number read in the source
+%   [verified-secondary]      — statement confirmed, no pinned number
+%   [paywalled — needs pull]  — user must pull before citing any prop number
+% DO NOT merge into book/refs.bib here — the novelty-refactor capstone owns
+% the book bibliography (see SUMMARY.md §9).
+
+% ======================================================================
+% A. Should-be-cited economics / accounting / management prior art
+% ======================================================================
+
+@article{felthamxie1994,
+  author  = {Feltham, Gerald A. and Xie, Jim},
+  title   = {Performance Measure Congruity and Diversity in Multi-Task Principal/Agent Relations},
+  journal = {The Accounting Review},
+  year    = {1994},
+  volume  = {69},
+  number  = {3},
+  pages   = {429--453},
+  note    = {[paywalled -- needs pull] for the original proposition number. Congruity substance (full congruity iff sensitivity vector proportional to value vector; index = cos^2 beta) is [verified-primary] via the open Budde working-paper derivation (budde-wp below), which attributes it to Feltham--Xie 1994 p.~433. Audit: cited by exactly 1/115 corpus papers (F15, econ-authored).}
+}
+
+@article{baker1992,
+  author  = {Baker, George P.},
+  title   = {Incentive Contracts and Performance Measurement},
+  journal = {Journal of Political Economy},
+  year    = {1992},
+  volume  = {100},
+  number  = {3},
+  pages   = {598--614},
+  doi     = {10.1086/261831},
+  note    = {[paywalled -- needs pull]: open PDFs are scanned images, no proposition/equation number read. iff-alignment substance [verified-secondary]. Audit: cited by 1/115 (I1 Wang--Huang).}
+}
+
+@article{baker2002,
+  author  = {Baker, George P.},
+  title   = {Distortion and Risk in Optimal Incentive Contracts},
+  journal = {Journal of Human Resources},
+  year    = {2002},
+  volume  = {37},
+  number  = {4},
+  pages   = {728--751},
+  doi     = {10.2307/3069615},
+  note    = {[paywalled -- needs pull] for proposition numbers. Distortion = 1-cos(theta) substance [verified-secondary] via Budde. Audit: 1/115 current-version (I2); D3 Off-Switch cited it in its v1 preprint only.}
+}
+
+@article{holmstrommilgrom1991,
+  author  = {Holmstr{\"o}m, Bengt and Milgrom, Paul},
+  title   = {Multitask Principal-Agent Analyses: Incentive Contracts, Asset Ownership, and Job Design},
+  journal = {Journal of Law, Economics, \& Organization},
+  year    = {1991},
+  volume  = {7},
+  number  = {special issue},
+  pages   = {24--52},
+  doi     = {10.1093/jleo/7.special_issue.24},
+  note    = {[paywalled -- needs pull] for proposition numbers; multitask / equal-compensation substance [verified-secondary] (incl. via Holmstr{\"o}m's Nobel lecture). Audit: 5/115 current-version (A9 genealogy nod, F3 body-use, F15, I1, I2); D2 CIRL cited it in its v1 preprint only.}
+}
+
+@article{holmstrommilgrom1987,
+  author  = {Holmstr{\"o}m, Bengt and Milgrom, Paul},
+  title   = {Aggregation and Linearity in the Provision of Intertemporal Incentives},
+  journal = {Econometrica},
+  year    = {1987},
+  volume  = {55},
+  number  = {2},
+  pages   = {303--328},
+  note    = {[verified-secondary] (census + corpus ref strings). Audit: 1/115 current-version (I2); D2 CIRL v1-preprint-only.}
+}
+
+@article{holmstrom1979,
+  author  = {Holmstr{\"o}m, Bengt},
+  title   = {Moral Hazard and Observability},
+  journal = {Bell Journal of Economics},
+  year    = {1979},
+  volume  = {10},
+  number  = {1},
+  pages   = {74--91},
+  note    = {[verified-secondary]; informativeness principle. Audit: cited only by F13 (control branch) and by BBS 2023.}
+}
+
+@article{holmstrom2017,
+  author  = {Holmstr{\"o}m, Bengt},
+  title   = {Pay for Performance and Beyond},
+  journal = {American Economic Review},
+  year    = {2017},
+  volume  = {107},
+  number  = {7},
+  pages   = {1753--1777},
+  note    = {Nobel lecture; [verified-secondary]. Audit: 0/115; cited by BBS 2023.}
+}
+
+@article{bankerdatar1989,
+  author  = {Banker, Rajiv D. and Datar, Srikant M.},
+  title   = {Sensitivity, Precision, and Linear Aggregation of Signals for Performance Evaluation},
+  journal = {Journal of Accounting Research},
+  year    = {1989},
+  volume  = {27},
+  number  = {1},
+  pages   = {21--39},
+  doi     = {10.2307/2491205},
+  note    = {[verified-primary] (open Duke copy, pdftotext): Prop.~1 (sufficient) / Prop.~2 (necessary \& sufficient) for linear-aggregation optimality; \S4 weight proportional to sensitivity x precision (interpretation, not a numbered prop). Audit: 0/115.}
+}
+
+@article{datarkulplambert2001,
+  author  = {Datar, Srikant and Kulp, Susan Cohen and Lambert, Richard A.},
+  title   = {Balancing Performance Measures},
+  journal = {Journal of Accounting Research},
+  year    = {2001},
+  volume  = {39},
+  number  = {1},
+  pages   = {75--92},
+  doi     = {10.1111/1475-679X.00004},
+  note    = {[paywalled -- needs pull] for proposition number; set-monotonicity substance (adding a measure can help or hurt) [verified-secondary]. Audit: 0/115.}
+}
+
+@article{chetty2009,
+  author  = {Chetty, Raj},
+  title   = {Is the Taxable Income Elasticity Sufficient to Calculate Deadweight Loss? {The} Implications of Evasion and Avoidance},
+  journal = {American Economic Journal: Economic Policy},
+  year    = {2009},
+  volume  = {1},
+  number  = {2},
+  pages   = {31--52},
+  doi     = {10.1257/pol.1.2.31},
+  note    = {[verified-primary] via NBER w13844 (equation numbers, not propositions): eq.~(3) Feldstein sufficient-statistic formula; eq.~(7) generalized weighted average, sufficient iff kappa=1. AEJ "Proposition N" labels would need a pull. Audit: 0/115 current-version (F5's cite was v1-preprint-only, Apr--Dec 2022).}
+}
+
+@article{feldstein1999,
+  author  = {Feldstein, Martin},
+  title   = {Tax Avoidance and the Deadweight Loss of the Income Tax},
+  journal = {Review of Economics and Statistics},
+  year    = {1999},
+  volume  = {81},
+  number  = {4},
+  pages   = {674--680},
+  note    = {Sufficient-statistic ancestor; statement carried via Chetty 2009 eq.~(3) [verified-primary there]; not independently task-08-verified. Audit: 0/115 (zero occurrences in all 68 PDF-grepped texts).}
+}
+
+@article{lipseylancaster1956,
+  author  = {Lipsey, R. G. and Lancaster, Kelvin},
+  title   = {The General Theory of Second Best},
+  journal = {Review of Economic Studies},
+  year    = {1956},
+  volume  = {24},
+  number  = {1},
+  pages   = {11--32},
+  doi     = {10.2307/2296233},
+  note    = {[verified-secondary]; the original contains NO numbered theorem -- cite as a named principle with the prose statement. Audit: 0/115; "second best" has zero occurrences in the corpus.}
+}
+
+@techreport{reynaertsallee2016,
+  author      = {Reynaert, Mathias and Sallee, James M.},
+  title       = {Corrective Policy and {Goodhart}'s Law: The Case of Carbon Emissions from Automobiles},
+  institution = {NBER},
+  number      = {w22911},
+  year        = {2016},
+  doi         = {10.3386/w22911},
+  note        = {[verified-primary] (NBER PDF read): Prop.~4 = tighter standard induces more gaming (the Goodhart comparative static); Prop.~2 + Cor.~1 = gaming can raise or lower welfare (do NOT attribute this to Prop.~4). Published in AEJ: Economic Policy (2021). Audit: 0/115 despite "Goodhart's Law" in the title.}
+}
+
+@article{frankelkartik2019,
+  author  = {Frankel, Alex and Kartik, Navin},
+  title   = {Muddled Information},
+  journal = {Journal of Political Economy},
+  year    = {2019},
+  volume  = {127},
+  number  = {4},
+  pages   = {1739--1776},
+  doi     = {10.1086/701604},
+  note    = {[verified-primary] (author copy read): Prop.~2 parts 2--3 (at high stakes no fully informative equilibrium; approximately uninformative), Prop.~4 LQE version. Audit: 0 alignment citers (census).}
+}
+
+@article{ridgway1956,
+  author  = {Ridgway, V. F.},
+  title   = {Dysfunctional Consequences of Performance Measurements},
+  journal = {Administrative Science Quarterly},
+  year    = {1956},
+  volume  = {1},
+  number  = {2},
+  pages   = {240--247},
+  doi     = {10.2307/2390989},
+  note    = {[verified-secondary]; [paywalled -- needs pull] for a verbatim composite-measure quote/page. Genealogical origin, 19 years pre-Goodhart. Audit: cited by exactly 1/115 (H6 Hendrycks, genealogy/folklore tier).}
+}
+
+@article{prendergast1999,
+  author  = {Prendergast, Canice},
+  title   = {The Provision of Incentives in Firms},
+  journal = {Journal of Economic Literature},
+  year    = {1999},
+  volume  = {37},
+  number  = {1},
+  pages   = {7--63},
+  note    = {Canonical multitask-distortion survey; not task-08 number-verified (survey, no single prop to pin). Audit: 0/115.}
+}
+
+@article{gibbons1998,
+  author  = {Gibbons, Robert},
+  title   = {Incentives in Organizations},
+  journal = {Journal of Economic Perspectives},
+  year    = {1998},
+  volume  = {12},
+  number  = {4},
+  pages   = {115--132},
+  note    = {[verified-secondary] (corpus ref strings). The one CONTRACT-tier item the CHAI versions of record kept (D2, D3).}
+}
+
+@article{benaboutirole2016,
+  author  = {B{\'e}nabou, Roland and Tirole, Jean},
+  title   = {Bonus Culture: Competitive Pay, Screening, and Multitasking},
+  journal = {Journal of Political Economy},
+  year    = {2016},
+  volume  = {124},
+  number  = {2},
+  pages   = {305--370},
+  note    = {[verified-secondary] (census + BBS ref list). Audit: 0/115; cited by BBS 2023.}
+}
+
+@article{courtymarschke2004,
+  author  = {Courty, Pascal and Marschke, Gerald},
+  title   = {An Empirical Investigation of Gaming Responses to Explicit Performance Incentives},
+  journal = {Journal of Labor Economics},
+  year    = {2004},
+  volume  = {22},
+  number  = {1},
+  pages   = {23--56},
+  note    = {Empirical gaming of performance incentives; discovery-grade (not task-08 verified). Audit: 0/115.}
+}
+
+@misc{budde-wp,
+  author       = {Budde, J{\"o}rg},
+  title        = {[SFB/TR 15 Discussion Paper 204 -- title not recorded in the task-08 notes; verify on pull]},
+  howpublished = {\url{https://www.econstor.eu/bitstream/10419/93913/1/sfb-tr15-dp204.pdf}},
+  note         = {[verified-primary] as the open derivation of the Feltham--Xie congruity index: eq.~(5) phi(d,y) = (d'y)^2/((y'y)(d'd)) = cos^2 beta, full congruity iff y proportional to d; attributes the cosine measure to Baker (2000, 2002) and the setting to Feltham--Xie 1994 p.~433. The citable route to the congruity substance until the paywalled originals are pulled.}
+}
+
+% ---- folklore tier + genealogy (present in the corpus; context refs) ----
+
+@article{kerr1975,
+  author  = {Kerr, Steven},
+  title   = {On the Folly of Rewarding {A}, While Hoping for {B}},
+  journal = {Academy of Management Journal},
+  year    = {1975},
+  volume  = {18},
+  number  = {4},
+  pages   = {769--783},
+  note    = {MGMT/folklore tier; 3/115 corpus citers (A7, D2, D3).}
+}
+
+@article{strathern1997,
+  author  = {Strathern, Marilyn},
+  title   = {`Improving Ratings': Audit in the {British} University System},
+  journal = {European Review},
+  year    = {1997},
+  volume  = {5},
+  number  = {3},
+  pages   = {305--321},
+  note    = {MGMT/folklore tier; 13/115 corpus citers (the most-cited econ-adjacent item in the corpus).}
+}
+
+@article{campbell1979,
+  author  = {Campbell, Donald T.},
+  title   = {Assessing the Impact of Planned Social Change},
+  journal = {Evaluation and Program Planning},
+  year    = {1979},
+  volume  = {2},
+  number  = {1},
+  pages   = {67--90},
+  note    = {Campbell's law; MGMT/folklore tier; 6/115 corpus citers.}
+}
+
+@incollection{goodhart1984,
+  author    = {Goodhart, Charles A. E.},
+  title     = {Problems of Monetary Management: The {UK} Experience},
+  booktitle = {Monetary Theory and Practice: The {UK} Experience},
+  publisher = {Macmillan},
+  year      = {1984},
+  pages     = {91--121},
+  note      = {The eponym, 1984 reprint; 16/115 corpus citers use this year.}
+}
+
+@incollection{goodhart1975,
+  author    = {Goodhart, Charles A. E.},
+  title     = {Problems of Monetary Management: The {UK} Experience},
+  booktitle = {Papers in Monetary Economics},
+  publisher = {Reserve Bank of Australia},
+  year      = {1975},
+  note      = {The eponym, original 1975 conference version; 8/115 corpus citers use this year. Original title variant cited by A5: "Monetary Relationships: A View from Threadneedle Street".}
+}
+
+@article{lucas1976,
+  author  = {Lucas, Robert E., Jr.},
+  title   = {Econometric Policy Evaluation: A Critique},
+  journal = {Carnegie-Rochester Conference Series on Public Policy},
+  year    = {1976},
+  volume  = {1},
+  pages   = {19--46},
+  note    = {Genealogy tier; 3/115 corpus citers (A4, A5, F4).}
+}
+
+% ======================================================================
+% B. Should-be-cited formal / statistics prior art
+% ======================================================================
+
+@misc{polyanskiywu-notes,
+  author       = {Polyanskiy, Yury and Wu, Yihong},
+  title        = {Information Theory: From Coding to Learning (lecture notes, statistics chapters)},
+  howpublished = {\url{https://people.lids.mit.edu/yp/homepage/data/LN_stats.pdf}},
+  note         = {[verified-primary] (task 08): \S29.1 eq.~(29.1) = the two-measure chi-squared variational inequality (= T1 rearranged); Thm~29.1 eq.~(29.3) = the HCR estimation bound. The pinned citation for the HCR/selection-bound anchor row.}
+}
+
+@article{chapmanrobbins1951,
+  author  = {Chapman, Douglas G. and Robbins, Herbert},
+  title   = {Minimum Variance Estimation Without Regularity Assumptions},
+  journal = {Annals of Mathematical Statistics},
+  year    = {1951},
+  volume  = {22},
+  number  = {4},
+  pages   = {581--586},
+  note    = {[verified-secondary] (census, OpenAlex W2018637760; statement cited via Polyanskiy--Wu). Companion: Hammersley 1950 (JRSS-B). Audit: 0 alignment citers among 88 CS-tagged citers; never cited as prior theory of a Goodhart bound (0/115).}
+}
+
+@inproceedings{namkoongduchi2017,
+  author    = {Namkoong, Hongseok and Duchi, John C.},
+  title     = {Variance-based Regularization with Convex Objectives},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2017},
+  note      = {arXiv:1610.02581; also JMLR 20(68), 2019. [verified-primary] (task 08): Theorem~1, eq.~(10), constant sqrt(2 rho/n) -- the chi-squared-DRO worst-case envelope; the 2 is the phi(t)=(1/2)(t-1)^2 normalization (convert before equating with delta). Cite THIS, not Ben-Tal 2013, for the mean + sqrt(r) sd closed form. Audit: cited in-corpus only as DRO tooling (type-ii).}
+}
+
+@article{bental2013,
+  author  = {Ben-Tal, Aharon and den Hertog, Dick and De Waegenaere, Anja and Melenberg, Bertrand and Rennen, Gijs},
+  title   = {Robust Solutions of Optimization Problems Affected by Uncertain Probabilities},
+  journal = {Management Science},
+  year    = {2013},
+  volume  = {59},
+  number  = {2},
+  pages   = {341--357},
+  note    = {[verified-primary] for the CORRECTION (task 08): contains the phi-divergence conjugate robust-counterpart MACHINERY only (Tables 1--2); has NO "mean + sqrt(r) sd" proposition -- do not cite it for the envelope. Audit: 129 CS-tagged citers, all DRO-ML, zero reward-hacking/Goodhart; in-corpus citations (C35, H5) are tooling.}
+}
+
+@book{rockafellar1970,
+  author    = {Rockafellar, R. Tyrrell},
+  title     = {Convex Analysis},
+  publisher = {Princeton University Press},
+  year      = {1970},
+  note      = {[paywalled -- needs pull] for theorem numbers; cite BY SECTION only (Fenchel duality \S31; perturbation/value-function conjugacy \S28--30) until the book is pulled (task 08 B5).}
+}
+
+@book{lehmanncasella1998,
+  author    = {Lehmann, Erich L. and Casella, George},
+  title     = {Theory of Point Estimation},
+  edition   = {2nd},
+  publisher = {Springer},
+  year      = {1998},
+  note      = {[paywalled -- needs pull]: only needed if a NUMBERED matrix-HCR primary (\S2.7) is wanted; the scalar-to-matrix derivation is otherwise three lines from Polyanskiy--Wu eq.~(29.1).}
+}
+
+% ======================================================================
+% C. The bridge document
+% ======================================================================
+
+@article{john2023proxyfailure,
+  author  = {John, Yohan J. and Caldwell, Leigh and McCoy, Dakota E. and Braganza, Oliver},
+  title   = {Dead Rats, Dopamine, Performance Metrics, and Peacock Tails: Proxy Failure is an Inherent Risk in Goal-Oriented Systems},
+  journal = {Behavioral and Brain Sciences},
+  year    = {2023},
+  volume  = {47},
+  pages   = {e67},
+  doi     = {10.1017/S0140525X23002753},
+  note    = {[verified-primary] (full target article read 2026-06-30). The qualitative econ+AI+biology bridge: cites Holmstr{\"o}m 1979/2017, Baker 2002, Kerr, B{\'e}nabou--Tirole + Amodei/Manheim--Garrabrant/Everitt; does NOT reach Feltham--Xie, HM1991, Banker--Datar, DKL, Lipsey, Raj Chetty, or any estimation item; its \S6 states the missing formal unified model. See SUMMARY.md \S4 for the delta.}
+}
+
+% ======================================================================
+% D. Named exception-floor papers (the bounds of the localized-gap claim)
+% ======================================================================
+
+@misc{wanghuang2026,
+  author       = {Wang and Huang},
+  title        = {Reward Hacking as Equilibrium under Finite Evaluation},
+  howpublished = {arXiv:2603.28063},
+  year         = {2026},
+  note         = {[verified-primary ref list, 2026-06-30]. Corpus I1. Strongest exception: type-(i) substantive import -- instantiates HM1991, cites Baker 1992, derives a weight-ratio distortion index D_i = w-tilde_i/w_i (NOT the 1-cos(theta) congruity geometry). First names not recorded in audit artifacts -- complete on pull; preprint, not camera-ready-checked.}
+}
+
+@misc{haupt2026welfare,
+  author       = {Haupt and others},
+  title        = {Welfare, Improvability, and Variance},
+  howpublished = {arXiv:2605.30916},
+  year         = {2026},
+  note         = {[verified-primary ref list, 2026-06-30]. Corpus I2. Type-(i) bridge: HM1987 + HM1991 + Baker 2002 + Strathern for benchmark aggregation (v* = (M+r Sigma)^{-1} M w); cites Baker 2002 for effort-reallocation, not congruity. Full author list not recorded -- complete on pull; preprint.}
+}
+
+@misc{haupt2026platinum,
+  author       = {Haupt and Reuel and Kochenderfer and Koyejo},
+  title        = {Optimal Aggregation Mechanisms for AI Benchmarking and Platinum Benchmarks},
+  howpublished = {ICLR 2026 Workshop on AI for Mechanism Design; OpenReview Y5qABVr7uB},
+  year         = {2026},
+  note         = {[verified-exists 2026-07-10; own ref list UNREAD (OpenReview bot-challenge) -- econ citations known only via the arXiv sibling]. Corpus I3, coded n/a.}
+}
+
+@misc{marklund2026,
+  author       = {Marklund, Henrik and Infanger, Alex and Van Roy, Benjamin},
+  title        = {Consequentialist Objectives and Catastrophe},
+  howpublished = {arXiv:2603.15017},
+  year         = {2026},
+  note         = {[verified-primary, v3 PDF read 2026-07-11]. Corpus A9. GENEALOGY NOD only: HM1991 cited once in a related-work paragraph, multitask math unused -- do not inflate to a substantive bridge (verification.md \S2.1).}
+}
+
+@inproceedings{hadfieldmenell2016cirl,
+  author    = {Hadfield-Menell, Dylan and Russell, Stuart J. and Abbeel, Pieter and Dragan, Anca},
+  title     = {Cooperative Inverse Reinforcement Learning},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2016},
+  note      = {arXiv:1606.03137. Corpus D2. [version-annotated, verification.md \S2.2]: the NeurIPS version of record cites Gibbons 1998 + Kerr 1975 (+ Jensen--Meckling); HM1991 + HM1987 appeared in the arXiv v1 preprint ONLY and were cut at camera-ready with the whole multitask-distortion passage.}
+}
+
+@inproceedings{hadfieldmenell2017offswitch,
+  author    = {Hadfield-Menell, Dylan and Dragan, Anca and Abbeel, Pieter and Russell, Stuart},
+  title     = {The Off-Switch Game},
+  booktitle = {Proceedings of IJCAI 2017},
+  year      = {2017},
+  note      = {arXiv:1611.08219. Corpus D3. [version-annotated]: record cites Gibbons 1998 + Kerr 1975 + Tirole 2009; Baker 2002 was v1-preprint-only; "cites HM1991" is REFUTED in every version (OpenAlex merge artifact).}
+}
+
+@inproceedings{zhuang2020consequences,
+  author    = {Zhuang, Simon and Hadfield-Menell, Dylan},
+  title     = {Consequences of Misaligned AI},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2020},
+  note      = {arXiv:2102.03896. Corpus A7, coded CONTRACT-borderline: transaction-cost econ cluster (Williamson/Klein/Shavell) + Kerr, NOT the multitask/congruity tier. Title from general knowledge -- verify on pull.}
+}
+
+@inproceedings{miller2020strategic,
+  author    = {Miller, John and Milli, Smitha and Hardt, Moritz},
+  title     = {Strategic Classification is Causal Modeling in Disguise},
+  booktitle = {Proceedings of ICML 2020, PMLR 119},
+  year      = {2020},
+  note      = {arXiv:1910.10362. Corpus F3 (strategic-ML, not safety core). One-line body use of HM1991 complementarity, ADDED at camera-ready (the counter-direction case in why-the-gap.md M4); v1's Strathern/Goodhart framing dropped from the record.}
+}
+
+@misc{habibi2024contentmoderator,
+  author       = {Habibi and Hovy and Schwarz},
+  title        = {The Content Moderator's Dilemma: Removal of Toxic Content and Distortions to Online Discourse},
+  howpublished = {arXiv:2412.16114},
+  year         = {2024},
+  note         = {[body-verified 2026-07-10]. Corpus F15 (flagged borderline: econ-authored platform governance). The ONLY Feltham--Xie bridge found anywhere; also cites HM1991; "Goodhart" absent from its text. First names not recorded -- complete on pull.}
+}
+
+@misc{f13-strategic-testing,
+  title        = {[Strategic Behaviour Testing -- abbreviated title per corpus.md; verify full title/authors on pull]},
+  howpublished = {arXiv:2508.14927},
+  year         = {2025},
+  note         = {Corpus F13. CONTRACT hit via Holmstr{\"o}m 1979 + 1980 (control branch), [verified 2M: HTML + PDF + S2]. Author list not recorded in audit artifacts.}
+}
+
+@inproceedings{laidlaw2025correlated,
+  author    = {Laidlaw, Cassidy and Singhal, Shivam and Dragan, Anca},
+  title     = {Correlated Proxies: A New Definition and Improved Mitigation for Reward Hacking},
+  booktitle = {ICLR 2025 (spotlight)},
+  year      = {2025},
+  note      = {arXiv:2403.03185. Corpus B3. The clean type-(iii) reinvented-uncited case: uses occupancy-measure chi-squared for Goodhart, cites ZERO estimation/DRO lineage (complete 92-entry ref list locked 2026-07-10). Cite by this current title, not the stale working title.}
+}
+
+@misc{huang2024chipo,
+  author       = {Huang, Audrey and others},
+  title        = {[chi-PO: chi-squared preference optimization -- full title not recorded in audit artifacts; verify on arXiv:2407.13399 before external citation]},
+  howpublished = {arXiv:2407.13399},
+  year         = {2024},
+  note         = {Corpus C31. Type-(ii): cites Duchi--Namkoong 2019 as a genealogy footnote only; its Lemma 5.1 is a chi-squared change-of-measure bound, NOT the HCR identity (correction locked 2026-06-30 -- do not re-inflate).}
+}
+
+@misc{hendrycks2021unsolved,
+  author       = {Hendrycks, Dan and Carlini, Nicholas and Schulman, John and Steinhardt, Jacob},
+  title        = {Unsolved Problems in ML Safety},
+  howpublished = {arXiv:2109.13916},
+  year         = {2021},
+  note         = {Corpus H6. The one Ridgway 1956 citer in the corpus -- genealogy/folklore tier ("systems will optimize what is measurable"), not Ridgway's composite-measure math.}
+}
+
+% ---- econ-side floor / adjacent (not AI-corpus members) ----
+
+@misc{braganza2022proxyeconomics,
+  author       = {Braganza, Oliver},
+  title        = {[Proxyeconomics -- title per discovery pool; verify on pull]},
+  howpublished = {arXiv:1803.00345; Royal Society Open Science (2022)},
+  note         = {Econ-side formal proxy-competition model; prior-art side, not in the AI denominator.}
+}
+
+@misc{hennessygoodhart2021,
+  author       = {Hennessy, Christopher A. and Goodhart, Charles A. E.},
+  title        = {Goodhart's Law and Machine Learning},
+  howpublished = {SSRN 3639508},
+  year         = {2021},
+  note         = {Econ-authored Goodhart+ML item, cited by BBS 2023; prior-art side (its 2023 IER sibling was moved out of the denominator at freeze).}
+}
+
+% ---- corpus anchors (for the post's framing; verified corpus members) ----
+
+@misc{amodei2016concrete,
+  author       = {Amodei, Dario and Olah, Chris and Steinhardt, Jacob and Christiano, Paul and Schulman, John and Man{\'e}, Dan},
+  title        = {Concrete Problems in AI Safety},
+  howpublished = {arXiv:1606.06565},
+  year         = {2016},
+  note         = {Corpus B1; the field anchor (cited by ~40\% of the sampled core, why-the-gap.md M3); carries zero contract/estimation references -- only the Goodhart 1984 eponym and a GMM/IV aside.}
+}
+
+@misc{manheimgarrabrant2018,
+  author       = {Manheim, David and Garrabrant, Scott},
+  title        = {Categorizing Variants of Goodhart's Law},
+  howpublished = {arXiv:1803.04585},
+  year         = {2018},
+  note         = {Corpus A1; the canonical AI-side Goodhart taxonomy; econ contact = Campbell + Goodhart 1975 eponym only.}
+}

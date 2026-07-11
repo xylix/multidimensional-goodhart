@@ -1,5 +1,69 @@
 # Citation audit — findings & refined thesis
 
+Status: **FINAL — audit CLOSED 2026-07-11** (tasks 05–10 complete). The
+consolidated, self-contained synthesis the post-structuring phase should read is
+**`SUMMARY.md`** (this directory); this file records the thesis and its history.
+Everything below the "HISTORICAL" divider is the 2026-06-24 seed pass (25
+papers), retained as a record — its numbers are **superseded** by the frozen
+full-corpus figures here and in `SUMMARY.md` / `audit.md`.
+
+## Final thesis (full frozen corpus, verified)
+
+Across the frozen corpus — **N=117, minable N=115** (A12/I3 n/a); clusters C/F/G
+anchor+representative samples per `corpus.md`; cells = current arXiv version =
+version of record, all headlines invariant to the any-version reading
+(`why-the-gap.md` §M4) — the AI-side Goodhart / reward-hacking /
+overoptimization literature does not cite the economics / statistics prior art
+that contains its mathematics, **except in three named pockets**:
+
+- **CONTRACT: 8 ✓ + 1 △ of 115, with 0/60 in the reward-hacking + RLHF core
+  (B: 0/25, C: 0/35).** The 8 hits: the 2026 benchmark-contract bridges (I1
+  Wang–Huang, I2 Haupt — substantive imports; A9 Marklund et al. — genealogy
+  nod), the CHAI control lineage (D2/D3 — versions of record keep only
+  Gibbons 1998 + Kerr; the HM1991/HM1987/Baker-2002 contacts were
+  v1-preprint-only, and D3-cites-HM1991 is refuted in every version), and the
+  strategic-ML/platform periphery (F3 body-use, F13, F15 econ-authored).
+- **The specific math tier is essentially untouched:** Feltham–Xie congruity
+  **1/115** (F15, econ-authored, "Goodhart" absent from its text); Baker 1992
+  **1** (I1); Baker 2002 **1** (I2); HM1991 **5** current-version; DKL /
+  Prendergast / Holmström-2017 **0**.
+- **PUBFIN 0/115** (F5's Chetty cite was v1-preprint-only, Apr–Dec 2022);
+  **2BEST 0/115; CORRECT 0/115** — including Reynaert–Sallee, which has
+  "Goodhart's Law" in its title.
+- **ESTIM 6 ✓ + 7 ~, never as prior theory of a Goodhart bound (0/115):**
+  every ✓ is DRO tooling except χPO's genealogy footnote; the two papers using
+  χ² *for* Goodhart (Laidlaw B3, χPO C31) cite none of the estimation lineage.
+- The corpus's actual econ contact is the **Goodhart eponym (24/115: 16×1984,
+  8×1975)** and the **folklore tier (MGMT 20/115:** Strathern 13, Campbell 6,
+  Kerr 3, Rodamar 2, Ridgway 1), plus Lucas 1976 (3).
+
+**Refined claim (final wording discipline — see `SUMMARY.md` §8 for the full
+licensed-claim/overclaim pass):** the performance-measurement branch of contract
+theory and the estimation/χ²-DRO tier — the actual mathematics of
+multidimensional Goodhart — remain uncited *as prior theory* by the
+reward-hacking / RLHF-overoptimization core; contact exists only via the named
+exception floor. NOT licensed: "AI safety ignores economics" (folklore + eponym
+are heavily cited), "nobody bridged" (BBS 2023 conceptually; Wang–Huang / Haupt
+2026 formally at the HM1991/Baker anchor), or any first-to-bridge claim.
+
+**Why (task 09, `why-the-gap.md`):** vocabulary divergence [confident],
+ML-internal reference space / community boundary [confident-facts],
+inherited pruned base (Amodei + surveys carried nothing) [confident-facts,
+tentative-mechanism], camera-ready pruning of exactly the technical-tier
+contacts [confident per-case, guess on intent], 2026 anchor-nod closing
+[tentative, not a trend].
+
+**Deltas vs the seed pass below:** the CHAI exception was *narrowed* by
+verification (its celebrated HM1991/Baker citations were preprint artifacts);
+PUBFIN moved 1→0 (version convention); the exception floor gained the 2026
+bridges (I1/I2/A9) and F-cluster contacts (F3/F13/F15); "first to bridge
+contract theory to formal Goodhart" is dead (Wang–Huang/Haupt). The seed
+headline ("gap real but localized") survived intact.
+
+---
+
+## HISTORICAL — seed-pass findings (2026-06-24, 25 papers; numbers superseded)
+
 Status: 2026-06-24, after the first systematic pass (`audit.md`). This is the
 interpretive layer that will seed the paper's argument. The headline survives,
 but the deep pass **sharpened it** and **corrected an overclaim** from the
