@@ -163,10 +163,12 @@ related-work; does not replace the novelty-refactor.
   periphery. Single consolidated source: **`citation-audit/SUMMARY.md`**
   (headlines, exceptions, verified should-be-cited set, BBS delta, mechanisms,
   limitations, overclaim pass) + `citation-audit/gap-refs.bib`.
-- ⬜ **Next action: structure the LessWrong post from `citation-audit/SUMMARY.md`**
-  (applicable math foregrounded per the July 10 rescope; audit stays
-  repo-internal evidence; no post prose exists yet — synthesis stopped at the
-  audit-closure boundary).
+- ⬜ **Next action: write the LessWrong post from `citation-audit/SUMMARY.md`**
+  — **HUMAN-AUTHORED by decision (July 11, 2026)**: prose written by Kerkko on
+  his own schedule; agent roles limited to outline sparring, fact-checking
+  against SUMMARY.md §10, and overclaim-pass review of drafts. Plan:
+  `could-do/track-b-lesswrong-post.md`. Not blocking Track A (which now
+  proceeds: two remaining litrevs → novelty-refactor capstone).
 
 Optional items live in `could-do/` (now including
 `could-do/rlhf-identification-experiment.md`, the one feasible harm-side
