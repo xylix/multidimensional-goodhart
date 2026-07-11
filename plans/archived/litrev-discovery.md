@@ -1,6 +1,9 @@
 # Unified cross-field literature discovery (shared Phase 0)
 
-Status: active. The **single** discovery effort that serves *both* paper-1
+Status: **CLOSED — executed in full (gate passed June 28–30, 2026; archived
+July 11, 2026).** Master record: `phase0-handoff.md` (same directory); outputs:
+`research/threads/lit_review/cross-field-discovery/`. Was: active. The
+**single** discovery effort that serves *both* paper-1
 literature tracks. Created 2026-06-24 when the tracks were unified: previously the
 gap paper (Track B) and the per-theorem novelty-refactor reviews (Track A) would
 each have run their own cross-field searches — the *same* searches. Run discovery

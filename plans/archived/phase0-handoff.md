@@ -1,6 +1,15 @@
 # Phase 0 → consume-phase handoff (master doc)
 
-**Last updated: 2026-06-30.** Single self-contained entry point for the next
+> **CLOSED 2026-07-11; archived.** Everything this doc was blocking on has
+> executed: Phase 1a (2026-07-10), Phase 1b's Track B audit through task 10
+> (commits 997e7e3, 44640f8, 6cc7732; single source
+> `literature-reference-gap-paper/citation-audit/SUMMARY.md`), all four Track A
+> lit reviews (2026-07-11), and the §10-item-7 paywalled pulls (now in
+> `sources/`, gitignored). Kept as the Phase-0 audit record. The active entry
+> point is `plans/handoff-2026-07-11.md`.
+
+**Last updated: 2026-06-30 (closure note above added 2026-07-11).** Single
+self-contained entry point for the next
 (clean) session. Read this first; it points to the artifacts. Supersedes the
 earlier handoff and folds in `phase0-todo.md` (now a thin pointer to §11–12 here).
 
@@ -326,33 +335,44 @@ re-code).
       applicable math foregrounded; trackery repo-internal).
 - [x] Choose next: **Track B leads, Track A follows** (2026-07-10).
 - [x] Set corpus-freeze scope for Track B: **include clusters F & G** (2026-07-10).
-- [ ] (Optional) Pull the paywalled primaries (§10 item 7) and check Bolton–
-      Dewatripont (§10 item 6).
+- [x] (Optional) Pull the paywalled primaries (§10 item 7) — **DONE 2026-07-11**:
+      all hard-flagged and conditional pulls landed in `sources/` (gitignored);
+      pinned-number verification pass = `handoff-2026-07-11.md` Step 2.
+- [ ] Check Bolton–Dewatripont Ch. 4 & 8 (§10 item 6) — still open; affects
+      honest novelty scope only, not the gap.
 
 ### AI (clean next session)
 - [x] **Phase 1a** — DONE 2026-07-10: all five residual verifies cleared (§10);
       results integrated into `bridges.md` + `ai-corpus.md`. Only residual:
       Haupt-2's own ref list (OpenReview bot-challenge; verified via sibling).
-- [ ] **Phase 1b** — Track B leads (per the 2026-07-10 decisions):
+- [x] **Phase 1b** — Track B leads (per the 2026-07-10 decisions) —
+      **DONE 2026-07-11** except the two deliberately-gated tail items:
   - **Track B (leads):** ✅ 05 freeze DONE 2026-07-10 (N=117 incl. F & G,
     `citation-audit/corpus.md`) → ✅ 06 code DONE 2026-07-10 (N=115 minable
     coded; master table + totals in `citation-audit/audit.md`, raw batches in
     `coding-batches.md`; headline: CONTRACT 0/60 in the B+C core, all 8 hits in
     bridges/CHAI/strategic-ML pockets; NEW exception-floor candidate A9
-    2603.15017) → 07 verify (right-sized per §11 resolution; must second-source
-    all hits — two S2 wrong-list incidents; D3 HM1991 + A9 checks) → (08 done) →
-    09 why-the-gap → 10 synthesize/close → structure the **LessWrong post**
-    (applicable math foregrounded; audit as repo-internal evidence).
-  - **Track A (follows / parallel):** per-theorem novelty reviews
-    (`litrev-selection-bounds` T1/T2, `litrev-convex-budget` T4,
-    `litrev-lower-tier` L1–L4) → novelty-refactor capstone.
+    2603.15017) → ✅ 07 verify DONE (commit 997e7e3) → (08 done) →
+    ✅ 09 why-the-gap DONE (commit 44640f8) → ✅ 10 synthesize/close DONE —
+    **AUDIT CLOSED 2026-07-11** (commit 6cc7732; single source
+    `citation-audit/SUMMARY.md`) → ⬜ the **LessWrong post** — HUMAN-AUTHORED
+    by decision (2026-07-11); plan `could-do/track-b-lesswrong-post.md`.
+  - **Track A (follows / parallel):** ✅ per-theorem novelty reviews ALL DONE
+    2026-07-11 (`litrev-selection-bounds` T1/T2, `litrev-convex-budget` T4,
+    `litrev-lower-tier` L1–L4; commits fef0325, d0a0471) → ⬜ novelty-refactor
+    capstone (unblocked; gated on Xylix's green-light —
+    `handoff-2026-07-11.md` Step 3).
   - Both: name the **expanded exception floor** and **drop**
     "first to bridge contract theory to formal Goodhart."
 - [ ] Standing rule: do NOT re-run cross-field searches.
 
 ---
 
-## 13. Blocking graph from here (per `plans/litrev-discovery.md`)
+## 13. Blocking graph from here (per `litrev-discovery.md`, same directory)
+
+> **2026-07-11:** fully executed except the two terminal nodes — the
+> novelty-refactor capstone (gated on Xylix's green-light) and the gap post
+> (human-authored). See `plans/handoff-2026-07-11.md`.
 
 ```
 [Phase 0 gate ✅ PASSED + CONFIRMED + PRIMARY-VERIFIED]
@@ -378,6 +398,6 @@ re-runs cross-field searches. Track A cites the math; the gap paper claims only 
 - Formal prior art: `…/prior-art-formal.md` · Primary-source verification: `…/prior-art-verification.md`
 - Raw adversarial passes: `…/exceptions-hunt/`, `…/prior-art-hunt/`
 - Gap-paper findings/thesis: `literature-reference-gap-paper/citation-audit/findings.md`, `audit.md`
-- Plan/spec: `plans/litrev-discovery.md` · Track A plans: `plans/litrev-*.md`, `plans/novelty-refactor.md`
+- Plan/spec: `litrev-discovery.md` (same directory) · Track A plans: `plans/archived/litrev-*.md`, `plans/novelty-refactor.md`
 - BBS PDF: `sources/Dead-rats-…_BBS_2023.pdf`
 - Memory: `citation-gap-finding`, `t5-prior-art-congruity`, `paper1-is-elementary-synthesis`

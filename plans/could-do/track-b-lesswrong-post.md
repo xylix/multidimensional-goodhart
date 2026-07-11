@@ -7,7 +7,7 @@ frozen and won't drift while this waits.
 
 ## The human-prose rule
 
-The post's prose is to be written by Kerkko, not drafted by an agent. This is
+The post's prose is to be written by Xylix, not drafted by an agent. This is
 a deliberate authorship decision for a public, community-facing artifact:
 the voice, emphasis, and judgment calls should be the author's own.
 
@@ -19,7 +19,7 @@ Agent-appropriate support roles (on request, never unprompted drafting):
 - An overclaim-pass review of a finished draft (SUMMARY.md §8 is the rubric).
 - Reference formatting from `citation-audit/gap-refs.bib`.
 
-## Scope (per the July 10 rescope, `phase0-handoff.md` §11)
+## Scope (per the July 10 rescope, `plans/archived/phase0-handoff.md` §11)
 
 A LessWrong-post-size artifact that **foregrounds the applicable math**
 (the cross-field dictionary + what-transfers), with the citation audit as

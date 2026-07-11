@@ -23,7 +23,14 @@
       "Bash(echo \"BUILD EXIT: $?\")",
       "Bash(echo \"OK exit=$?\")",
       "WebFetch(domain:www.arxiv.org)",
-      "WebFetch(domain:par.nsf.gov)"
+      "WebFetch(domain:par.nsf.gov)",
+      "Bash(make -C research/simulations iteration20)",
+      "WebFetch(domain:ar5iv.labs.arxiv.org)",
+      "Bash(git -C /Users/xylix/Code/xylix-projects/multidimensional-goodhart status --short)",
+      "Bash(git -C /Users/xylix/Code/xylix-projects/multidimensional-goodhart show --stat 1479203)",
+      "Bash(git -C /Users/xylix/Code/xylix-projects/multidimensional-goodhart log --oneline --date=short --pretty='%ad %h %s')",
+      "Bash(git -C /Users/xylix/Code/xylix-projects/multidimensional-goodhart show --stat 898a187)",
+      "Bash(git check-ignore *)"
     ]
   }
 }

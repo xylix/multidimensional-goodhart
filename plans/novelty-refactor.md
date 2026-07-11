@@ -1,13 +1,17 @@
 # Paper 1 novelty refactor: reference existing results, reduce novelty claims
 
-Status: active, capstone. **Blocked on all lit reviews resolving.** Depends on:
-the completed exchange-rate / T5 review
+Status: active, capstone. **UNBLOCKED 2026-07-11 — all four lit reviews are
+closed — but gated on Xylix's explicit green-light** (being handed the plan
+does not constitute it), and preceded by the pinned-number pass over `sources/`
+(`handoff-2026-07-11.md` Step 2; the consolidated change list is its Step 3).
+The verdicts consumed: the exchange-rate / T5 review
 (`research/threads/lit_review/looking-for-exchange-rate-results/`), plus
-`plans/litrev-selection-bounds.md` (T1/T2), `plans/litrev-convex-budget.md` (T4),
-and `plans/litrev-lower-tier.md` (identification, tilt, T3, T6). Do not start
-drafting prose until those produce verdicts. Those three reviews now **consume
-the unified cross-field discovery** (`plans/litrev-discovery.md`, shared Phase 0)
-rather than each running its own searches.
+`plans/archived/litrev-selection-bounds.md` (T1/T2),
+`plans/archived/litrev-convex-budget.md` (T4),
+and `plans/archived/litrev-lower-tier.md` (identification, tilt, T3, T6).
+Those three reviews **consumed
+the unified cross-field discovery** (`plans/archived/litrev-discovery.md`,
+shared Phase 0) rather than each running its own searches.
 
 This is the stage that changes the manuscript significantly, which is why the
 whole program is inserted ahead of circulation in `plans/next-steps.md`.
@@ -21,7 +25,8 @@ measurement failures the book formalizes are classical results in different
 clothes; the contribution is the dictionary between them, the response-modeling
 contract that says which result applies, and the few readings nobody wrote down.
 
-What the lit reviews are converging on:
+What the lit reviews converged on (all verdicts in as of 2026-07-11; per-review
+synthesis READMEs under `research/threads/lit_review/`):
 
 - **T5** = contract-theory congruence / zero-distortion (Feltham–Xie 1994; Baker
   1992/2002), with the public-finance sufficient-statistic lineage (Chetty 2009 /
@@ -30,16 +35,28 @@ What the lit reviews are converging on:
   statement. The all-subsets-with-arbitrary-weights invariance reading appears
   unstated. Reynaert–Sallee 2016 is a named non-AI "Goodhart's Law for
   externalities" sibling. (See the `t5-prior-art-congruity` memory.)
-- **T1/T2** (pending) = Hammersley–Chapman–Robbins / χ²-DRO.
-- **T4** (pending) = Fenchel/Rockafellar duality.
-- **Lower tier** (pending) = causal-inference identification; exponential-family
-  cumulants; signaling/strategic classification; greedy capacity reduction.
+- **T1/T2** (confirmed) = Hammersley–Chapman–Robbins rearranged (Polyanskiy–Wu
+  §29.1) / χ²-DRO worst case (Namkoong–Duchi Thm 1); survives =
+  selection-channel reading + declared-value-norm packaging.
+- **T4** (confirmed) = textbook Lagrangian/perturbation value-function
+  conjugacy (Rockafellar 1970 §28–31); recommend demoting to "Fact"; survives =
+  affordability reading + channel placement.
+- **Lower tier** (confirmed) = L1 observational equivalence /
+  selection-vs-treatment identification (representation-relativity survives as
+  framing); L2 textbook exponential-family cumulant fact (one-line nod); L3
+  quadratic-cost costly threshold-crossing (Spence / Hardt; Frankel–Kartik
+  Prop. 2); L4 = T4 specialized, security-games anchor at recognition altitude,
+  termination argument survives.
 
 The genuinely original layer that survives: the response-modeling contract
 (`formal_analogue_lit_map.md` argues it is original), the subset-invariance
 reading, and the synthesis/dictionary itself.
 
-## Work items (run only after the three lit-review verdicts land)
+## Work items
+
+All verdicts landed 2026-07-11; run on Xylix's green-light, with the Step-2
+pinned numbers in hand. The consolidated change list is
+`handoff-2026-07-11.md` Step 3.
 
 ### R1. Per-theorem prior-art correction
 
@@ -54,7 +71,8 @@ Concrete known fixes:
 - T1/T2: state the envelope as Chapman–Robbins / the χ²-DRO worst case; **correct
   the `formal_analogue_lit_map.md` false negative** ("no χ² analogue").
 - T4: cite Rockafellar; mark it standard convex duality.
-- T3/T6/identification/tilt: anchor per `plans/litrev-lower-tier.md` outcomes.
+- T3/T6/identification/tilt: anchor per `plans/archived/litrev-lower-tier.md`
+  outcomes.
 
 ### R2. Math simplification
 

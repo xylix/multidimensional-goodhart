@@ -2,19 +2,36 @@
 
 Index for active plans. Individual plans live in sibling files.
 
+## Update (July 11, 2026) — lit-review program closed; current focus
+
+All four Track A lit reviews are closed (T5, T1/T2, T4, L1–L4 — status list
+below) and the Track B citation audit is closed (single source:
+`literature-reference-gap-paper/citation-audit/SUMMARY.md`). The paywalled
+primaries from task 08 are pulled into `sources/` (gitignored — never commit).
+The Phase-0-era plan files are archived in `archived/`.
+
+**Current focus → `handoff-2026-07-11.md`** (the active pickup doc): the
+pinned-number verification pass over `sources/` (its Step 2), then the
+novelty-refactor capstone (its Step 3 — **gated on Xylix's explicit
+green-light**; being handed the plan does not constitute it). Track B's next
+action is the human-authored LessWrong post
+(`could-do/track-b-lesswrong-post.md`). **Do not re-run discovery** — Phase 0
+closed June 30, 2026 (master record: `archived/phase0-handoff.md`).
+
 ## Update (July 10, 2026) — Phase 0 closed, HARD STOP lifted, Track B rescoped
 
 Phase 0 (unified cross-field discovery) completed, gate passed, adversarially
 confirmed and primary-verified (June 28–30; master doc:
-`phase0-handoff.md`). The human judgment calls landed July 10:
+`archived/phase0-handoff.md`). The human judgment calls landed July 10:
 
 - **Track B rescoped to a LessWrong-post-size artifact** foregrounding the
   applicable math (dictionary + what-transfers); the citation-trackery content
   stays repo-internal as evidence, not the published pitch.
 - **Corpus widened to include clusters F & G** (one denominator, no exclusion
   to defend).
-- **Order: Track B leads, Track A follows/parallel.** Next actions: Phase 1a
-  residual verifies (`phase0-handoff.md` §10 items 1–5), then task 05 freeze.
+- **Order: Track B leads, Track A follows/parallel.** Next actions at the time:
+  Phase 1a residual verifies (`archived/phase0-handoff.md` §10 items 1–5), then
+  task 05 freeze — **both executed July 10–11**; see the July 11 update above.
 
 Cross-track couplings noted July 10: `empirical_goodhart`'s multidimensional-
 gridworld step (its README next-step 2) waits on Track A settling T5's
@@ -48,29 +65,21 @@ before the manuscript is ready to circulate or publish. **Editing is not done.**
 
 ## Active plan files
 
-**Current focus → run the unified cross-field discovery (shared Phase 0).** Both
-paper-1 tracks consume *one* discovery effort instead of running the same searches
-twice. Spec, anchor, plan-invalidating gate, and blocking graph:
-`plans/litrev-discovery.md`. Runbook: `literature-reference-gap-paper/audit-tasks/`
-tasks 01–04 (+08), outputs → `research/threads/lit_review/cross-field-discovery/`.
-The existing 25-paper pass is a *seed, not a corpus*. **Next action:
-`audit-tasks/01-discover-ai-corpus.md`** (02, 03 can run in parallel); task 04 is
-the confirming gate (gap real? BBS delta?). Then both tracks consume in parallel.
-Freeze last.
+**Current focus: see the July 11 update at the top of this file** —
+`handoff-2026-07-11.md` Steps 2–3.
 
-The project has bifurcated into two deliverables that **share one discovery phase
-(Phase 0)** and then run on parallel tracks.
+The project has bifurcated into two deliverables that **shared one discovery
+phase (Phase 0)** and then run on parallel tracks.
 
-### Phase 0 — Unified cross-field discovery (shared) — `plans/litrev-discovery.md`
+### Phase 0 — Unified cross-field discovery (shared) — CLOSED June 30, 2026
 
-One discovery effort feeds both tracks: discover the AI corpus, the cross-field
-prior art (every theorem family's native home + the broad landscape), and all
-AI↔prior-art bridges, then verify prior-art primary sources. Runbook =
-`literature-reference-gap-paper/audit-tasks/` 01–04 (+08); outputs →
-`research/threads/lit_review/cross-field-discovery/`. Discover-before-freeze: the
-seed 25 papers are not a corpus; nothing freezes until discovery saturates. Task
-04 is the plan-invalidating gate. Both tracks below consume this; neither runs
-independent cross-field searches.
+**Executed in full; do not re-run cross-field searches.** One discovery effort
+fed both tracks (AI corpus, cross-field prior art, AI↔prior-art bridges,
+primary-source verification); the plan-invalidating gate PASSED, was confirmed
+by 12 adversarial passes, and primary-verified on every pillar that could flip
+it. Master record: `archived/phase0-handoff.md`; spec:
+`archived/litrev-discovery.md`; outputs:
+`research/threads/lit_review/cross-field-discovery/`. Both tracks consumed it.
 
 ### Track A — Paper 1 / the book (critical path to publishing)
 
@@ -86,7 +95,7 @@ against its native home, then a capstone refactors prose and math to cite existi
 results and reduce novelty claims:
 
 - ✅ **T5 exchange-rate** — done (`research/threads/lit_review/looking-for-exchange-rate-results/`).
-- ✅ `litrev-selection-bounds.md` — done July 11, 2026
+- ✅ `archived/litrev-selection-bounds.md` — done July 11, 2026
   (`research/threads/lit_review/selection-bound-chapman-robbins/README.md`).
   Verdict: T1's inequality = HCR rearranged (Polyanskiy–Wu §29.1 eq. 29.1);
   envelope = χ²-DRO worst case (Namkoong–Duchi Thm 1; Ben-Tal machinery only);
@@ -94,7 +103,7 @@ results and reduce novelty claims:
   = selection-channel reading + declared-value-norm packaging (framing, not
   math). The `formal_analogue_lit_map.md` "no χ² analogue" false negative is
   corrected in place.
-- ✅ `litrev-convex-budget.md` — done July 11, 2026
+- ✅ `archived/litrev-convex-budget.md` — done July 11, 2026
   (`research/threads/lit_review/convex-budget-fenchel/README.md`).
   Verdict: T4 = textbook Lagrangian/perturbation value-function duality
   (Rockafellar 1970 §28–31, by section until pulled); quadratic corollary =
@@ -102,7 +111,7 @@ results and reduce novelty claims:
   the budget form (auditable negative; Hardt 2016 nearest in substance);
   surviving contribution = affordability reading + channel placement
   (framing, not math). Recommend demoting T4 to "Fact" in the capstone.
-- ✅ `litrev-lower-tier.md` — done July 11, 2026
+- ✅ `archived/litrev-lower-tier.md` — done July 11, 2026
   (`research/threads/lit_review/lower-tier-parallels/README.md`).
   Verdict: L1 = observational equivalence / selection-vs-treatment
   identification (representation-relativity clause survives as framing); L2 =
@@ -111,13 +120,16 @@ results and reduce novelty claims:
   verified-primary in family); L4 = static threshold exactly T4 specialized,
   security-games anchor at recognition altitude, termination argument survives
   as the book's elementary construction. No escalations.
-- ⬜ `novelty-refactor.md` — capstone; **blocked on the three reviews above plus
-  the completed T5 review**; reframes the paper as synthesis + contract + the
-  subset-invariance reading. Reopens the "editing done" milestone.
+- ⬜ `novelty-refactor.md` — capstone; **unblocked July 11, 2026 (all four
+  reviews closed) but gated on Xylix's explicit green-light**; run with the
+  pinned numbers from `handoff-2026-07-11.md` Step 2 in hand; reframes the
+  paper as synthesis + contract + the subset-invariance reading. Reopens the
+  "editing done" milestone.
 
 Context is captured in the `t5-prior-art-congruity` and
-`paper1-is-elementary-synthesis` memories. A fresh-context pickup TL;DR for this
-track (method, per-review status, guardrails) is at `litrev-handoff.md`.
+`paper1-is-elementary-synthesis` memories. The lit-review-era pickup TL;DR
+(method, per-review status, guardrails) is archived at
+`archived/litrev-handoff.md`; the active pickup doc is `handoff-2026-07-11.md`.
 
 Book content state: the exchange-rate empirics track completed June 11, 2026
 (execution record in `archived/exchange-rate-empirics.md`); Part 6's empirical row
@@ -128,12 +140,12 @@ the related work, the intro, and `refs.bib`.
 Track A pipeline (revised June 24, 2026); nothing is ready to circulate or publish
 until these land, in order:
 
-0. **(Shared Phase 0)** Finish the unified discovery first — see above; the three
-   reviews below consume it.
-1. **Finish the three lit reviews** (T1/T2 first) — each = the per-theorem verdict
-   from Phase 0, per the status list above.
-2. **Integrate via the novelty-refactor capstone** — reopens book-content work:
-   T1–T6 prose/math, related work, intro, `refs.bib`.
+0. ✅ **(Shared Phase 0)** — closed June 30, 2026 (see above).
+1. ✅ **The lit reviews** — all closed July 11, 2026, per the status list above.
+2. **Integrate via the novelty-refactor capstone** — **next, gated on Xylix's
+   green-light** (preceded by the `handoff-2026-07-11.md` Step-2 pinned-number
+   pass) — reopens book-content work: T1–T6 prose/math, related work, intro,
+   `refs.bib`.
 3. **Final reading round — after integration.** The June 11 LLM reviews (two
    clean-context, both "ready to circulate after fixes"; disposition at
    `quality-checks/11_06_2026_llm_reviews_disposition.md`; fix batches 3a51552,
@@ -154,7 +166,7 @@ until these land, in order:
 > **Rescoped July 10, 2026:** target is now a **LessWrong post**, not an academic
 > paper — applicable math foregrounded, citation audit repo-internal; corpus
 > includes clusters F & G. See the July 10 update above and
-> `phase0-handoff.md` §11.
+> `archived/phase0-handoff.md` §11.
 
 **Gap paper (proposed June 24, 2026)** — `literature-reference-gap-paper/`
 (self-contained: `plan.md` + `citation-audit/` + eventual draft). A short
@@ -178,8 +190,8 @@ related-work; does not replace the novelty-refactor.
   (headlines, exceptions, verified should-be-cited set, BBS delta, mechanisms,
   limitations, overclaim pass) + `citation-audit/gap-refs.bib`.
 - ⬜ **Next action: write the LessWrong post from `citation-audit/SUMMARY.md`**
-  — **HUMAN-AUTHORED by decision (July 11, 2026)**: prose written by Kerkko on
-  his own schedule; agent roles limited to outline sparring, fact-checking
+  — **HUMAN-AUTHORED by decision (July 11, 2026)**: prose written by Xylix on
+  her own schedule; agent roles limited to outline sparring, fact-checking
   against SUMMARY.md §10, and overclaim-pass review of drafts. Plan:
   `could-do/track-b-lesswrong-post.md`. Not blocking Track A (which now
   proceeds: two remaining litrevs → novelty-refactor capstone).
@@ -198,7 +210,12 @@ identification design, extracted from the empirics plan at archival).
   item 7) — the audit table is only meaningful after the contract and
   theorems exist, and the approved spine places it accordingly.
 
-Completed or superseded plans are in `archived/`; recently archived:
+Completed or superseded plans are in `archived/`; recently archived (July 11,
+2026, at lit-review-program close): `phase0-handoff.md` (the Phase-0 master
+record), `phase0-todo.md`, `litrev-discovery.md` (the Phase-0 spec),
+`litrev-selection-bounds.md`, `litrev-convex-budget.md`,
+`litrev-lower-tier.md` (the three executed review plans), and
+`litrev-handoff.md` (the lit-review-era pickup doc). Earlier:
 `worked-contract-pass.md` (executed June 9),
 `manuscript-pipeline-ledger.md` (the executed Phase 0–4 ledger), `spine.md`
 and `spine-v3.md` (the executed spine artifacts), `prose-pass.md` and

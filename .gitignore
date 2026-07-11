@@ -5,3 +5,4 @@ research/simulations/outputs/*.png
 research/simulations/outputs/*.pdf
 .codex-runs/
 __pycache__/
+sources/

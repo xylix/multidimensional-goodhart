@@ -1,5 +1,9 @@
 # Literature-review program for paper 1 — handoff (Track A)
 
+> **SUPERSEDED 2026-07-11; archived.** All four reviews in the table below are
+> closed and the capstone is unblocked (gated on Xylix's green-light). The
+> active pickup doc is `plans/handoff-2026-07-11.md`.
+
 Provenance: self-contained handoff TL;DR written 2026-06-24 by a prior agent
 working the novelty-refactor lit-review program. Scoped to **Track A** (see
 `next-steps.md`). Saved verbatim-in-substance as the pickup doc for a
