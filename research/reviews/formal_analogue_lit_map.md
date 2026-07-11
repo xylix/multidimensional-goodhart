@@ -135,11 +135,30 @@ What primitives have no clean external analogue in this set?
   None of the surveyed sources offer a contract structure for *declaring*
   which Goodhart variant a claim is about before importing toy bounds.
   The contract is original to this book.
-- **The chi-square reweighting budget** ($\delta = \sqrt{\chi^2}$) as the
+- ~~**The chi-square reweighting budget** ($\delta = \sqrt{\chi^2}$) as the
   selection-channel summary statistic. Several sources have related
   divergence-based tools (Dwork's adaptive-holdout machinery uses
   differential privacy / max information; Lucas uses structural-vs-reduced
-  form), but none use $\chi^2$ in this exact role.
+  form), but none use $\chi^2$ in this exact role.~~
+  **CORRECTION (2026-07-11): this was a false negative.** The conclusion
+  above was reached by searching only Goodhart-adjacent sources (El-Mhamdi,
+  Dwork, Lucas); it never looked in the bound's native fields (estimation
+  theory, distributionally robust optimization). The T1/T2 selection-bounds
+  review found the analogue in three independent homes: T1's inequality is
+  the Hammersley–Chapman–Robbins $\chi^2$ inequality rearranged
+  (Polyanskiy–Wu, *Information Theory*, §29.1 eq. (29.1),
+  `[verified-primary]`); the identical envelope is the Pearson-$\chi^2$-DRO
+  worst-case mean (Namkoong–Duchi 2017, Thm 1 eq. (10), exact constant after
+  normalization conversion, `[verified-primary]`); and Bayesian-robustness
+  posterior sensitivity (Gustafson 1996, discovery-grade) is a third home.
+  What remains without a found external statement is only the
+  *selection-channel reading* and the declared-value-norm operator packaging
+  of T2 — see the verdict and auditable negative in
+  `research/threads/lit_review/selection-bound-chapman-robbins/README.md`.
+  The erroneous sentence is preserved struck-through as a record of the
+  methodology failure (native-field search was skipped), per
+  RESEARCH-ITERATIONS.md planning norm "don't build a plan on an unverified
+  negative."
 - **The dimensional decomposition ker$\,\phi$ vs (ker$\,\phi$)$^\perp$**
   (book Chapter 2). Holmström-Milgrom's measured-vs-unmeasured effort
   split is the closest analogue but is not stated in projection-operator

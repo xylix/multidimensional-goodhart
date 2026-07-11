@@ -1,9 +1,13 @@
 # Lit review: T1/T2 selection bounds vs Chapman–Robbins / χ²-DRO
 
-Status: active, highest-priority lit review. One of three feeding the
-novelty-refactor capstone (`plans/novelty-refactor.md`). Models the proven
-exchange-rate harness (`research/threads/lit_review/looking-for-exchange-rate-results/`),
-not any older lit-review plan.
+Status: **DONE (2026-07-11).** Verdict synthesis:
+`research/threads/lit_review/selection-bound-chapman-robbins/README.md`.
+T1's inequality = HCR rearranged; envelope = χ²-DRO worst case
+(Namkoong–Duchi Thm 1, Ben-Tal machinery only); T2 skeleton classical;
+declared-value-norm wrapper = auditable negative (reading, not math). The
+lit-map false negative is corrected. Integration belongs to the capstone.
+One of three reviews feeding the novelty-refactor capstone
+(`plans/novelty-refactor.md`).
 
 **Consumes the unified cross-field discovery** (`plans/litrev-discovery.md`); the
 HCR / χ²-DRO prior art is discovered once there (outputs in

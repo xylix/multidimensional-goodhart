@@ -189,3 +189,47 @@ Canonical files: `research/threads/adaptive_hardening_theorem_boundary.md`,
 `research/reviews/policy_readiness_review.md`,
 `research/reviews/scoped_manuscript_review_iteration43.md`,
 `plans/next-steps.md`.
+
+## Lit-review iteration, 2026-07-11: T1/T2 selection-bound verdict (Track A)
+
+Iteration type: `review` (literature review, per litrev-selection-bounds
+plan; consumes the shared Phase 0 discovery + Task 08 verification records —
+no new deep-research passes run).
+
+Question tackled: is T1 the Hammersley–Chapman–Robbins inequality rearranged,
+what is the closest chi²-DRO statement of the envelope, and is T2's
+declared-value-norm operator form stated anywhere in the discovered prior
+art?
+
+What changed: wrote the verdict synthesis
+`research/threads/lit_review/selection-bound-chapman-robbins/README.md`.
+Verdict: T1's inequality = HCR (Polyanskiy–Wu §29.1 eq. 29.1,
+verified-primary) verbatim after a three-step rearrangement, with the
+hypothesis-by-hypothesis check showing exact match except the sharpness pair
+(attainment + necessity-of-L² witnesses), which is standard-but-assembled
+rather than verbatim prior art. Second home: Namkoong–Duchi 2017 Thm 1
+eq. (10) with the phi-normalization conversion making their sqrt(2rho/n)
+exactly the book's delta (verified-primary); Ben-Tal 2013 credited only for
+the phi-divergence RCP machinery per the Task 08 correction. Third home
+(Bayesian robustness, Gustafson) stays tentative/discovery-grade. T2: scalar
+form is scalar HCR applied to v·H (verified-primary); matrix-HCR ellipsoid +
+support function give the skeleton (verified-secondary citation, but
+derivable in three lines from the scalar form — shown); the declared-value-
+norm dual-ball wrapper is an auditable negative (unstated in Phase 0's
+saturated Areas A/B/C2, but a one-line corollary — credit as a reading, like
+T5(D)). Corrected the false negative in
+`research/reviews/formal_analogue_lit_map.md` (Non-map pass "no chi²
+analogue") in place with a dated strike-through note.
+
+What's open now: capstone (`plans/novelty-refactor.md`) owns the T1/T2 prose
+reframe and citations; pulls that would upgrade caps: Lehmann–Casella §2.7
+or full Polyanskiy–Wu notes (numbered matrix HCR), Gustafson 1996 primary.
+Benchmark that would erase the T2 residual: a dual-norm-ball drift bound in
+those texts or a phi-divergence DRO survey's vector-mean section.
+
+Red flags fired: "suspiciously elementary" fires by construction (the
+finding is that the theorem is classical — established project posture, not
+a new unresolved flag); adversarial pass on the T1=HCR identification run
+and clear, with two adopted repairs (inequality-vs-named-theorem altitude
+clarification; verdict language weakened from "verbatim" to "inequality
+verbatim, sharpness pair assembled"). Nothing logged to red_flags.md.

@@ -86,9 +86,14 @@ against its native home, then a capstone refactors prose and math to cite existi
 results and reduce novelty claims:
 
 - ✅ **T5 exchange-rate** — done (`research/threads/lit_review/looking-for-exchange-rate-results/`).
-- ⬜ `litrev-selection-bounds.md` — T1/T2 vs Chapman–Robbins / χ²-DRO. **Not
-  started; highest priority** (our own `research/reviews/formal_analogue_lit_map.md`
-  currently asserts the opposite, "no χ² analogue").
+- ✅ `litrev-selection-bounds.md` — done July 11, 2026
+  (`research/threads/lit_review/selection-bound-chapman-robbins/README.md`).
+  Verdict: T1's inequality = HCR rearranged (Polyanskiy–Wu §29.1 eq. 29.1);
+  envelope = χ²-DRO worst case (Namkoong–Duchi Thm 1; Ben-Tal machinery only);
+  T2 skeleton = matrix-HCR ellipsoid + support function; surviving contribution
+  = selection-channel reading + declared-value-norm packaging (framing, not
+  math). The `formal_analogue_lit_map.md` "no χ² analogue" false negative is
+  corrected in place.
 - ⬜ `litrev-convex-budget.md` — T4 vs Fenchel/Rockafellar. Not started (low-effort confirm).
 - ⬜ `litrev-lower-tier.md` — selection/intervention identification, exponential
   tilt, T3, T6 (bundled). Not started.
