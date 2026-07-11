@@ -361,10 +361,15 @@ as prior theory: congruity/cos²β (Feltham–Xie/Baker; 1 econ-authored citer),
 HCR/χ²-DRO (0 as prior theory — the two χ²-for-Goodhart papers cite none of the
 estimation lineage), sufficiency (Banker–Datar/Chetty; 0), second-best /
 corrective-Goodhart (0, incl. a paper with "Goodhart's Law" in its title).*
-- **What it proves:** the field independently reinvents (Laidlaw's χ²,
-  Wang–Huang's distortion index) rather than importing, at exactly the tier
-  where the math already exists — and the prior art is demonstrably reachable
-  (adjacent ML communities cite it heavily).
+- **What it proves:** the field independently reinvents (Laidlaw's χ²) rather
+  than importing, at exactly the tier where the math already exists — and the
+  prior art is demonstrably reachable (adjacent ML communities cite it
+  heavily). **[Corrected 2026-07-11, GPT-5.6 review F2: the original listed
+  "Wang–Huang's distortion index" as a second reinvention exemplar — wrong.
+  Wang–Huang explicitly imports HM1991/Baker 1992; its Dᵢ = w̃ᵢ/wᵢ index is
+  new-within-the-imported-model and a different object from 1−cosθ (Pocket 1).
+  Wang–Huang is bridge/exception-floor evidence, not reinvention evidence;
+  Laidlaw's χ² carries the reinvention claim alone.]**
 - **Must NOT imply:** ❌ "No contact at all with these literatures" — type-(ii)
   tooling citations exist (robust-RLHF cluster, χPO's footnote); state "never
   as prior theory," not "never cited." ❌ "Our math is novel" — the opposite:
@@ -375,7 +380,11 @@ corrective-Goodhart (0, incl. a paper with "Goodhart's Law" in its title).*
   (overstatement, corrected 2026-06-30). ❌ "First to bridge contract theory
   to formal Goodhart" (Wang–Huang/Haupt hold it).
 
-**Claim 3 — the mechanism story.** *The gap is self-reproducing: terminologically
+**Claim 3 — the mechanism story.** *The gap ~~is self-reproducing~~ **has
+persisted across generations of the canon** [headline corrected 2026-07-11,
+GPT-5.6 review F2: "self-reproducing" was a dynamics claim on snapshot
+evidence; the snapshots license persistence plus the mechanism description
+below, not a self-reinforcing loop]: terminologically
 disjoint vocabularies (M1), an almost purely ML-internal reference space (M2),
 anchor documents that carried no econ base (M3), and revision pressure that
 removed exactly the non-load-bearing technical-tier contacts while keeping

@@ -55,14 +55,24 @@ sample) — a biased-toward-hits sample, which makes the clean negative *stronge
 
 ### Licensed interpretation
 
+> **Dated post-freeze correction (2026-07-11, GPT-5.6 review F2).** The
+> original wording below said keyword search "cannot reach" the prior art and
+> "structurally misses" it — behavioral generalizations the snapshot evidence
+> does not license (they would extend to search behaviors we did not test,
+> e.g. semantic or LLM-assisted search). Corrected to the tested fact; the
+> `[confident]` tag covers the disjointness, not any search-behavior claim.
+
 `[confident]` The two literatures are **terminologically disjoint** at the level
-of the technical vocabulary: an AI-safety researcher searching from the corpus's
-native vocabulary ("reward hacking", "overoptimization", "regressional/extremal
-Goodhart", "information bottleneck") **cannot reach** the congruity /
-sufficiency / HCR prior art by keyword search, and conversely the econ terms
-retrieve nothing in the corpus. Keyword-driven literature search **structurally
-misses** this prior art. Two independent methods (WebSearch probe June 2026;
-local full-text grep over the verified extraction set July 2026) agree.
+of the technical vocabulary: **the tested vocabularies do not cross in either
+direction (two methods)** — the corpus's native terms ("reward hacking",
+"overoptimization", "regressional/extremal Goodhart", "information bottleneck")
+do not co-occur with the congruity / sufficiency / HCR prior art, and
+conversely the econ terms retrieve nothing in the corpus. Two independent
+methods (WebSearch probe June 2026; local full-text grep over the verified
+extraction set July 2026) agree. *Consequence (scoped):* a literature search
+driven by **these tested keywords** would not surface this prior art in either
+direction; whether richer search modes (semantic, citation-chaining,
+LLM-assisted) cross the gap was not tested and is not claimed.
 
 ### What this does NOT license
 
